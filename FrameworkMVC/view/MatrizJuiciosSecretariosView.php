@@ -149,10 +149,10 @@
 		    <div class="panel panel-default">
   			<div class="panel-body">
   			
-  		 <div class="col-xs-2">
+  		 <div class="col-lg-2 col-md-2 col-xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsores:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control">
-			     <option value=""><?php echo "--TODOS--";  ?> </option>
+			     <option value="0"><?php echo "--TODOS--";  ?> </option>
 					<?php foreach($resultImpul as $res) {?>
 						<option value="<?php echo $res->id_abogado; ?>"<?php if($sel_id_abogado==$res->id_abogado){echo "selected";}?> ><?php echo $res->impulsores;  ?> </option>
 			            <?php } ?>
@@ -180,7 +180,7 @@
 		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
-			  		<option value=""><?php echo "--TODOS--";  ?> </option>
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
 					<?php foreach($resultEstadoProcesal as $res) {?>
 						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
 			            <?php } ?>
@@ -190,7 +190,7 @@
          <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
-			  		<option value=""><?php echo "--TODOS--";  ?> </option>
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
 					<?php foreach($resultProv as $res) {?>
 						<option value="<?php echo $res->id_provincias; ?>"<?php if($sel_id_provincias==$res->id_provincias){echo "selected";}?> ><?php echo $res->nombre_provincias;  ?> </option>
 			            <?php } ?>

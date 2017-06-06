@@ -291,7 +291,7 @@
 		    <div class="panel panel-default">
   			<div class="panel-body">
   		
-  		<div class="col-xs-2">
+  		<div class="col-lg-2 col-md-2 col-xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Juzgado:</p>
 			  	<select name="id_ciudad" id="id_ciudad"  class="form-control">
 			     <option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -301,33 +301,33 @@
 			    </select>
 		 </div>
   		
-  		  <div class="col-xs-2">
+  		  <div class="col-lg-2 col-md-2 col-xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Secretarios:</p>
 			  <select name="id_secretario" id="id_secretario"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
 		 </div>
 		   	
-		  <div class="col-xs-2">
+		  <div class="col-lg-2 col-md-2 col-xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsores:</p>
 			  	<select name="id_impulsor" id="id_impulsor"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
 		 </div>
   							
-  		<div class="col-lg-2 col-md-2 xs-6">
+  		<div class="col-lg-2 col-md-2 col-xs-6">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $sel_juicio_referido_titulo_credito;?>" class="form-control "/> 
 			   
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-6">
          		<p class="formulario-subtitulo" ># Opreación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-6">
          		<p class="formulario-subtitulo" >Identificación:</p>
 			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
 			    

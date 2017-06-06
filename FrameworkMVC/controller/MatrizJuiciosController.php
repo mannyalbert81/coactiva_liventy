@@ -124,9 +124,9 @@ class MatrizJuiciosController extends ControladorBase{
 							
 						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
 							
-						if($id_provincias!=""){$where_3=" AND provincias.id_provincias='$id_provincias'";}
+						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 						
-						if($id_estados_procesales_juicios!=""){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 						
 						
 						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4;
@@ -189,6 +189,8 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+								$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 								$html.='</tr>';
 								$html.='</thead>';
 								$html.='<tbody>';
@@ -221,6 +223,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
+									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
+									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 						
 						
@@ -253,15 +257,19 @@ class MatrizJuiciosController extends ControladorBase{
 							
 						if(isset($_POST["reporte_rpt"]))
 						{
-							//parametros q van al servidor de reportes
-			
-							$parametros = array();
-			
 							
 			
-							//para local
-							$pagina="conHistorialCreditos.aspx";
+							$parametros = array();
+							$parametros['id_abogado']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+							$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+							$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+							$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+								
 			
+							$pagina="conProvidenciaSuspension.aspx";
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
 							//$conexion_rpt['port']="59584";
@@ -431,11 +439,11 @@ class MatrizJuiciosController extends ControladorBase{
 							
 						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
 							
-						if($id_provincias!=""){$where_3=" AND provincias.id_provincias='$id_provincias'";}
+						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 				
-						if($id_estados_procesales_juicios!=""){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 				
-						if($id_abogado!=""){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
+						if($id_abogado!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
 						
 				
 						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5;
@@ -498,6 +506,8 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+								$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 								$html.='</tr>';
 								$html.='</thead>';
 								$html.='<tbody>';
@@ -530,6 +540,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
+									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
+									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 				
 				
@@ -562,14 +574,20 @@ class MatrizJuiciosController extends ControladorBase{
 							
 						if(isset($_POST["reporte_rpt"]))
 						{
-							//parametros q van al servidor de reportes
 								
+							
 							$parametros = array();
+							$parametros['id_secretario']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+							$parametros['id_abogado']=isset($_POST['id_abogado'])?trim($_POST['id_abogado']):0;
+							$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+							$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+							$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+							
 								
-								
-								
-							//para local
-							$pagina="conHistorialCreditos.aspx";
+							$pagina="conProvidenciaSuspension.aspx";
 								
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
@@ -774,6 +792,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+									$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 									$html.='</tr>';
 									$html.='</thead>';
 									$html.='<tbody>';
@@ -806,6 +826,8 @@ class MatrizJuiciosController extends ControladorBase{
 										$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
+										$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
+										$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 										$html.='</tr>';
 				
 				
@@ -838,14 +860,20 @@ class MatrizJuiciosController extends ControladorBase{
 								
 							if(isset($_POST["reporte_rpt"]))
 							{
-								//parametros q van al servidor de reportes
+								
 				
+
 								$parametros = array();
-				
-				
-				
-								//para local
-								$pagina="conHistorialCreditos.aspx";
+								$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
+								$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
+								$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
+								$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+								$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+								$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+								$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+									
+								
+								$pagina="conProvidenciaSuspension.aspx";
 				
 								$conexion_rpt = array();
 								$conexion_rpt['pagina']=$pagina;
@@ -1011,6 +1039,43 @@ class MatrizJuiciosController extends ControladorBase{
 			$resultImpulsor=$usuarios->getCondiciones($columnas ,$tablas , $where, $id);
 				
 			echo json_encode($resultImpulsor);
+		}
+	
+	}
+	
+	
+	
+	
+	
+	public function Imprimir_Providencia()
+	{
+		if(isset($_REQUEST['id_juicios']))
+		{
+	
+			$id_juicios= $_GET['id_juicios'];
+			$id_clientes= $_GET['id_clientes'];
+			$id_titulo_credito= $_GET['id_titulo_credito'];
+				
+			
+				$parametros = array();
+	
+				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+	
+				$pagina="conProvidenciaSuspension.aspx";
+				
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				//$conexion_rpt['port']="59584";
+	
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+	
+	
+				die();
+	
 		}
 	
 	}
