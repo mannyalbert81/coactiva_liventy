@@ -1,4 +1,9 @@
- <!DOCTYPE HTML>
+ 	   <?php include("view/modulos/head.php"); ?>
+       <?php include("view/modulos/modal.php"); ?>
+       <?php include("view/modulos/menu.php"); ?>
+       <?php include("view/MATRIZJUICIOS/modal/modal_matriz_juicios.php");?>
+
+<!DOCTYPE HTML>
 <html lang="es">
 
       <head>
@@ -15,6 +20,10 @@
 		<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
         <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
         <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+        
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+          <script type="text/javascript" src="view/MATRIZJUICIOS/js/VentanaCentrada.js"></script>
+          <script type="text/javascript" src="view/MATRIZJUICIOS/js/procesos_matriz_juicios.js"></script>
  		
  		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 		
@@ -92,9 +101,7 @@
     </head>
     <body style="background-color: #d9e3e4;">
     
-       <?php include("view/modulos/head.php"); ?>
-       <?php include("view/modulos/modal.php"); ?>
-       <?php include("view/modulos/menu.php"); ?>
+      
        
        <?php
        
@@ -142,7 +149,7 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios</h4>
 	         </div>
 	         <div class="panel-body">
-			
+			 <button type="button" class="btn btn-warning glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></button>
 		    <div class="panel panel-default">
   			<div class="panel-body">
   			

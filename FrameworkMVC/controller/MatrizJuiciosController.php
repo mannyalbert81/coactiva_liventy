@@ -223,8 +223,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
-									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 						
 						
@@ -540,8 +540,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
-									$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 				
 				
@@ -826,8 +826,8 @@ class MatrizJuiciosController extends ControladorBase{
 										$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-										$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicons-edit"></i></a></span></td>';
-										$html.='<td style="color:#000000;font-size:80%;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 										$html.='</tr>';
 				
 				
