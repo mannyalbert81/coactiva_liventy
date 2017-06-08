@@ -4,14 +4,6 @@ ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
 
 
-//include_once('class/phpjasperxml/class/tcpdf/tcpdf.php');
-//include_once("class/phpjasperxml/class/PHPJasperXML.inc.php");
-
-//include_once ('class/phpjasperxml/setting.php');
-
-
-
-//include_once('setting.php');//no se puede enviar nada mas que el reporte, NINGUN espacio o caracter previo al repote
 
 class UsuariosController extends ControladorBase{
     
@@ -45,7 +37,7 @@ public function index(){
 			
 			
 			$ciudad = new CiudadModel();
-			$resultCiu = $ciudad->getBy("nombre_ciudad='QUITO' OR nombre_ciudad='GUAYAQUIL'" );
+			$resultCiu = $ciudad->getBy("nombre_ciudad='Quito' OR nombre_ciudad='Guayaquil'" );
 			
 	
 			$usuarios = new UsuariosModel();
@@ -281,11 +273,30 @@ public function index(){
 		    else
 		    {
 		    
+		    	$where_TO = "cedula_usuarios = '$_cedula_usuarios'";
+		    	 
+		    	$result=$usuarios->getBy($where_TO);
+		    	
+		    	if ( !empty($result) )
+		    	{
+		    	
 		    	$colval = " nombre_usuarios = '$_nombre_usuario',  clave_usuarios = '$_clave_usuario', telefono_usuarios = '$_telefono_usuario', celular_usuarios = '$_celular_usuario', correo_usuarios = '$_correo_usuario', id_rol = '$_id_rol', id_estado = '$_id_estado', usuario_usuarios = '$_usuario_usuario', id_ciudad = '$_id_ciudad'  ";
 		    	$tabla = "usuarios";
 		    	$where = "cedula_usuarios = '$_cedula_usuarios'";
 		    
 		    	$resultado=$usuarios->UpdateBy($colval, $tabla, $where);
+		    	 }
+		    	 
+		    	 
+		    	 else{
+		    	 	
+		    	 	$funcion = "ins_usuarios";
+		    	 	$parametros = " '$_nombre_usuario' ,'$_clave_usuario' , '$_telefono_usuario', '$_celular_usuario', '$_correo_usuario' , '$_id_rol', '$_id_estado' , '$_usuario_usuario', '$_cedula_usuarios', '$_id_ciudad', '$imagen_usuarios'";
+		    	 	$usuarios->setFuncion($funcion);
+		    	 	$usuarios->setParametros($parametros);
+		    	 	$resultado=$usuarios->Insert();
+		    	 	
+		    	 }
 		    	 
 		    }
 			
@@ -456,7 +467,7 @@ public function index(){
 				$where    = " usuarios.id_usuarios = '$_id_usuario' ";
 				$resultEdit = $usuarios->getBy($where);
 				
-				$resultCiu = $ciudad->getBy("nombre_ciudad='QUITO' OR nombre_ciudad='GUAYAQUIL'");
+				$resultCiu = $ciudad->getBy("nombre_ciudad='Quito' OR nombre_ciudad='Guayaquil'");
 				
 
 				if ( isset($_POST["Guardar"]) )

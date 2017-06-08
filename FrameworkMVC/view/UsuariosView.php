@@ -464,7 +464,7 @@
             <div class="row">
 		    <div class="col-xs-6 col-md-6">
 			  	<p  class="formulario-subtitulo" >Cedula</p>
-			  	<input type="text"  name="cedula_usuarios" id="cedula_usuarios" value="<?php echo $resEdit->cedula_usuarios; ?>" class="form-control"/> 
+			  	<input type="text"  name="cedula_usuarios" id="cedula_usuarios" value="<?php echo $resEdit->cedula_usuarios; ?>" class="form-control" readonly/> 
 			    <div id="mensaje_cedula" class="errores"></div>
 			  </div>
 			   </div>
@@ -747,12 +747,7 @@
 			                    <a href="<?php echo $helper->url("Usuarios","borrarId"); ?>&id_usuarios=<?php echo $res->id_usuarios; ?>" class="btn btn-danger" onClick="Borrar()" style="font-size:65%;">Borrar</a>
 			                </div>
 			           </td>
-		               <td>   
-			                	<div class="right">
-			                	<a href="/FrameworkMVC/view/ireports/ContUsuariosSubReport.php?id_usuarios=<?php echo $res->id_usuarios; ?>"onclick="window.open(this.href, this.target, ' width=1000, height=800, menubar=no');return false"; class="btn btn-success" style="font-size:65%;">Reporte</a>
-			                 </div>
-			               <hr/>
-		               </td>
+		               
 		    		</tr>
 		        <?php } }else{ ?>
             <tr>

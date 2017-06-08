@@ -198,14 +198,14 @@ class MatrizJuiciosController extends ControladorBase{
 						
 									
 								
-									
+								$i=0;
 									
 								foreach ($resultSet as $res)
 								{
-									
+									$i++;
 						
 									$html.='<tr>';
-									$html.='<td style="font-size: 9px;">'.$res->orden.'</td>';
+									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
@@ -225,7 +225,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 									
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$res->orden.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';		            
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';		            
 												         
 								//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
 									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
@@ -300,10 +300,16 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 						
+							
+							
 								
 							$pagina="contMatrizJuicios.aspx";
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
+							
+							
+							
+							
 							//$conexion_rpt['port']="59584";
 								
 							$this->view("ReporteRpt", array(
@@ -547,14 +553,14 @@ class MatrizJuiciosController extends ControladorBase{
 				
 									
 				
-									
+								$i=0;
 									
 								foreach ($resultSet as $res)
 								{
-										
-				
+									$i++;
+									
 									$html.='<tr>';
-									$html.='<td style="font-size: 9px;">'.$res->orden.'</td>';
+									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
@@ -573,7 +579,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$res->orden.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
 										
 									//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
 									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
@@ -702,7 +708,7 @@ class MatrizJuiciosController extends ControladorBase{
 					$juicios = new JuiciosModel();
 						
 					$ciudad = new CiudadModel();
-					$resultDatos=$ciudad->getBy("nombre_ciudad='QUITO' OR nombre_ciudad='GUAYAQUIL'");
+					$resultDatos=$ciudad->getBy("nombre_ciudad='Quito' OR nombre_ciudad='Guayaquil'");
 					
 					
 							
@@ -866,14 +872,14 @@ class MatrizJuiciosController extends ControladorBase{
 				
 										
 				
-										
+									$i=0;
 										
 									foreach ($resultSet as $res)
 									{
 				
-				
+										$i++;
 										$html.='<tr>';
-										$html.='<td style="font-size: 9px;">'.$res->orden.'</td>';
+										$html.='<td style="font-size: 9px;">'.$i.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
@@ -1200,7 +1206,6 @@ class MatrizJuiciosController extends ControladorBase{
 				estrategia_seguir='$_estrategia_seguir',
 				observaciones='$_observaciones',
 				descripcion_estado_procesal='$_descripcion_estado_procesal',
-				orden='$_orden',
 				regional='$_regional',
 				cuantia_inicial='$_cuantia_inicial',
 				riesgo_actual='$_riesgo_actual'";
