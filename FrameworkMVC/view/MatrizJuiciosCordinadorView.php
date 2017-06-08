@@ -341,7 +341,7 @@
   		<div class="col-lg-12" style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		 <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i></button>         
+		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i></button>         
 	  
 	 
 	     </div>

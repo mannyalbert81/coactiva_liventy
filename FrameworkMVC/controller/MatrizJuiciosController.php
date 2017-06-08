@@ -70,6 +70,7 @@ class MatrizJuiciosController extends ControladorBase{
 								  clientes.identificacion_clientes,
 								  clientes.nombres_clientes,
 								  clientes.nombre_garantes,
+								  clientes.identificacion_garantes,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -223,7 +224,11 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$res->orden.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';		            
+												         
+								//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
+									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 						
@@ -269,7 +274,7 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 								
 			
-							$pagina="conProvidenciaSuspension.aspx";
+							$pagina="contProvidenciaSuspension.aspx";
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
 							//$conexion_rpt['port']="59584";
@@ -280,6 +285,33 @@ class MatrizJuiciosController extends ControladorBase{
 			
 							die();
 			
+						}
+						
+						if(isset($_POST["reporte_rpt_matriz"]))
+						{
+								
+								
+							$parametros = array();
+							$parametros['id_abogado']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+							$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+							$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+							$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						
+								
+							$pagina="contMatrizJuicios.aspx";
+							$conexion_rpt = array();
+							$conexion_rpt['pagina']=$pagina;
+							//$conexion_rpt['port']="59584";
+								
+							$this->view("ReporteRpt", array(
+									"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+							));
+								
+							die();
+								
 						}
 			
 			
@@ -384,6 +416,7 @@ class MatrizJuiciosController extends ControladorBase{
 								  clientes.identificacion_clientes,
 								  clientes.nombres_clientes,
 								  clientes.nombre_garantes,
+								  clientes.identificacion_garantes,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -540,7 +573,10 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$res->orden.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+										
+									//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
+									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 				
@@ -587,7 +623,7 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 							
 								
-							$pagina="conProvidenciaSuspension.aspx";
+							$pagina="contProvidenciaSuspension.aspx";
 								
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
@@ -599,6 +635,35 @@ class MatrizJuiciosController extends ControladorBase{
 								
 							die();
 								
+						}
+						
+						if(isset($_POST["reporte_rpt_matriz"]))
+						{
+						
+								
+							$parametros = array();
+							$parametros['id_secretario']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+							$parametros['id_abogado']=isset($_POST['id_abogado'])?trim($_POST['id_abogado']):0;
+							$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+							$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+							$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+								
+						
+							$pagina="contMatrizJuicios.aspx";
+						
+							$conexion_rpt = array();
+							$conexion_rpt['pagina']=$pagina;
+							//$conexion_rpt['port']="59584";
+						
+							$this->view("ReporteRpt", array(
+									"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+							));
+						
+							die();
+						
 						}
 							
 							
@@ -671,6 +736,7 @@ class MatrizJuiciosController extends ControladorBase{
 								  clientes.identificacion_clientes,
 								  clientes.nombres_clientes,
 								  clientes.nombre_garantes,
+								  clientes.identificacion_garantes,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -826,8 +892,6 @@ class MatrizJuiciosController extends ControladorBase{
 										$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
-										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 										$html.='</tr>';
 				
 				
@@ -858,7 +922,7 @@ class MatrizJuiciosController extends ControladorBase{
 							}
 				
 								
-							if(isset($_POST["reporte_rpt"]))
+							if(isset($_POST["reporte_rpt_matriz"]))
 							{
 								
 				
@@ -873,7 +937,7 @@ class MatrizJuiciosController extends ControladorBase{
 								$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 									
 								
-								$pagina="conProvidenciaSuspension.aspx";
+								$pagina="contMatrizJuicios.aspx";
 				
 								$conexion_rpt = array();
 								$conexion_rpt['pagina']=$pagina;
@@ -1063,7 +1127,7 @@ class MatrizJuiciosController extends ControladorBase{
 				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
 				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
 	
-				$pagina="conProvidenciaSuspension.aspx";
+				$pagina="contProvidenciaSuspension.aspx";
 				
 				$conexion_rpt = array();
 				$conexion_rpt['pagina']=$pagina;
@@ -1077,6 +1141,166 @@ class MatrizJuiciosController extends ControladorBase{
 				die();
 	
 		}
+	
+	}
+	
+	
+	
+	public function ActualizarMatriz()
+	{
+		$respuesta='';
+		session_start();
+		$permisos_rol=new PermisosRolesModel();
+		$clientes = new ClientesModel();
+		$juicios = new JuiciosModel();
+		$titulo_credito = new TituloCreditoModel();
+	
+		$nombre_controladores = "MatrizJuicios";
+		$id_rol= $_SESSION['id_rol'];
+		$resultPer = $permisos_rol->getPermisosEditar("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
+			
+		if (!empty($resultPer))
+		{
+			if(isset($_POST["id_juicios"]))
+			{
+				
+				$_id_juicios= $_POST["id_juicios"];
+				$_orden= $_POST["orden"];
+				$_regional= $_POST["regional"];
+				$_juicio_referido_titulo_credito= $_POST["juicio_referido_titulo_credito"];
+				$_year_juicios= $_POST["year_juicios"];
+				$_identificacion_clientes= $_POST["identificacion_clientes"];
+				$_nombres_clientes= $_POST["nombres_clientes"];
+				$_nombre_garantes= $_POST["nombre_garantes"];
+				$_identificacion_garantes= $_POST["identificacion_garantes"];
+				$_nombre_provincias= $_POST["nombre_provincias"];
+				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
+				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+				$_cuantia_inicial= $_POST["cuantia_inicial"];
+				$_riesgo_actual= $_POST["riesgo_actual"];
+				$_nombre_estados_procesales_juicios= $_POST["nombre_estados_procesales_juicios"];
+				$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
+				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+				$_estrategia_seguir= $_POST["estrategia_seguir"];
+				$_observaciones= $_POST["observaciones"];
+				$_impulsores= $_POST["impulsores"];
+				$_secretarios= $_POST["secretarios"];
+				$_id_provincias= $_POST["id_provincias"];
+				$_id_estados_procesales_juicios= $_POST["id_estados_procesales_juicios"];
+				$_id_clientes= $_POST["id_clientes"];
+				$_id_titulo_credito= $_POST["id_titulo_credito"];
+				
+				
+				$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
+				id_estados_procesales_juicios='$_id_estados_procesales_juicios',
+				fecha_emision_juicios='$_fecha_emision_juicios',
+				numero_juicios='$_juicio_referido_titulo_credito',
+				year_juicios='$_year_juicios',
+				fecha_ultima_providencia='$_fecha_ultima_providencia',
+				estrategia_seguir='$_estrategia_seguir',
+				observaciones='$_observaciones',
+				descripcion_estado_procesal='$_descripcion_estado_procesal',
+				orden='$_orden',
+				regional='$_regional',
+				cuantia_inicial='$_cuantia_inicial',
+				riesgo_actual='$_riesgo_actual'";
+				
+				$tabla1="juicios";
+				$where1="id_juicios='$_id_juicios' AND id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+	
+				try {
+						
+					$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+					
+						$respuesta='1';
+					
+						
+				}catch (Exception $ex)
+				{
+						
+				}
+	
+				
+			}
+			
+			
+			
+			if(isset($_POST["id_clientes"]))
+			{
+				$_identificacion_clientes= $_POST["identificacion_clientes"];
+				$_nombres_clientes= $_POST["nombres_clientes"];
+				$_nombre_garantes= $_POST["nombre_garantes"];
+				$_identificacion_garantes= $_POST["identificacion_garantes"];
+				$_nombre_provincias= $_POST["nombre_provincias"];
+				$_id_provincias= $_POST["id_provincias"];
+				$_id_clientes= $_POST["id_clientes"];
+				
+			
+				$colval="identificacion_clientes='$_identificacion_clientes',
+				nombres_clientes='$_nombres_clientes',
+				nombre_garantes='$_nombre_garantes',
+				identificacion_garantes='$_identificacion_garantes',
+				id_provincias='$_id_provincias'";
+			
+				$tabla="clientes";
+				$where="id_clientes='$_id_clientes'";
+			
+				try {
+			
+					$resultado=$clientes->UpdateBy($colval, $tabla, $where);
+						
+					$respuesta='1';
+						
+			
+				}catch (Exception $ex)
+				{
+			
+				}
+			
+			
+			}
+			
+			
+			if(isset($_POST["id_titulo_credito"]))
+			{
+
+				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
+				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+				$_id_clientes= $_POST["id_clientes"];
+				$_id_titulo_credito= $_POST["id_titulo_credito"];
+			
+					
+				$colval2="numero_titulo_credito='$_numero_titulo_credito',
+				fecha_emision='$_fecha_emision_juicios',
+				fecha_corte='$_fecha_emision_juicios',
+				fecha_ultima_providencia='$_fecha_ultima_providencia'";
+					
+				$tabla2="titulo_credito";
+				$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+					
+				try {
+						
+					$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
+			
+					$respuesta='1';
+			
+						
+				}catch (Exception $ex)
+				{
+						
+				}
+					
+					
+			}
+	
+		}
+		else
+		{
+			$respuesta='sin permisos';
+		}
+	
+		echo json_encode($respuesta);
 	
 	}
 	
