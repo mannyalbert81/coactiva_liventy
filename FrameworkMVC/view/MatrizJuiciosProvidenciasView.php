@@ -100,7 +100,7 @@
  <script type="text/javascript">
 function validar(obj) {
   patron = /^\d{4}\/\d{2}\/\d{2}$/
-  alert(patron.test(obj.value));
+  alert("Formato Incorrecto, Ingrese yyyy-mm-dd");
 }
 </script>
  
@@ -278,10 +278,12 @@ function validar(obj) {
 				                 var numero_titulo_credito_verificar= $('#modal_edit_numero_titulo_credito').val();
 				                 var identificacion_garantes_verificar= $('#modal_edit_cedula_garante').val();
 				                 var nombre_garantes_verificar= $('#modal_edit_nombres_garante').val();
+				                 var fecha_ultima_providencia_verificar= $('#modal_edit_fecha_ultima_providencia').val();
+				                 var fecha_emision_juicios_verificar= $('#modal_edit_fecha_emision_juicios').val();
 				                
 				                
 			                    
-			                     if(id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
+			                     if( fecha_emision_juicios_verificar == /^\d{4}\/\d{2}\/\d{2}$/  && fecha_ultima_providencia_verificar == /^\d{4}\/\d{2}\/\d{2}$/  &&  id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
 			                     {
 					                $.ajax({
 				                           url:"<?php echo $helper->url("MatrizJuicios","ActualizarMatriz");?>"
@@ -310,6 +312,16 @@ function validar(obj) {
 				                     
 			                     }else
 			                     {
+
+			                    	 
+			                    	 if(fecha_emision_juicios_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
+						                 textFail("modal_edit_fecha_emision_juicios");
+					                 }
+
+			                    	 if(fecha_ultima_providencia_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
+						                 textFail("modal_edit_fecha_ultima_providencia");
+					                 }
+					                 
 				                     if(orden_verificar==''){
 					                 textFail("modal_edit_orden");
 				                     }
