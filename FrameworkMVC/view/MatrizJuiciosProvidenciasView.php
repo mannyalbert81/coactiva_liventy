@@ -1,4 +1,4 @@
- 	   <?php include("view/modulos/head.php"); ?>
+  	   <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
        <?php include("view/MATRIZJUICIOS/modal/modal_matriz_juicios.php");?>
@@ -352,9 +352,9 @@ function validar(obj) {
 				        }); 
 
 
-					
 
-				        var  html = "";
+						////aqui 
+						var  html = "";
 				        html+="<h4 style='color:#ec971f;'>Actualizar Datos Matriz Juicios</h4><hr/>";
 				        html+="<div class='col-xs-6 col-md-12' id='modal_espera_edit' style='text-align:center'></div><br>";
 				        html+="<div class='panel panel-info'>";
@@ -399,71 +399,58 @@ function validar(obj) {
 				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Clientes</h4>";
 				        html+="</div>";
 				        html+="<div class='panel-body'>";
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_cedula' class='control-label'>Cedula Cliente 1</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_cedula' name='modal_edit_cedula' value='"+identificacion_clientes+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombres_cliente' class='control-label'>Nombres Cliente 1</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombres_cliente' name='modal_edit_nombres_cliente' value='"+nombres_clientes+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
 				        
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_1' name='modal_edit_identificacion_clientes_1' value='"+identificacion_clientes_1+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_clientes_1' class='control-label'>Nombres Cliente 2</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_1' name='modal_edit_nombre_clientes_1' value='"+nombre_clientes_1+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";
 
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_2' name='modal_edit_identificacion_clientes_2' value='"+identificacion_clientes_2+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_clientes_2' class='control-label'>Nombres Cliente 3</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_2' name='modal_edit_nombre_clientes_2' value='"+nombre_clientes_2+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";
 
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_3' name='modal_edit_identificacion_clientes_3' value='"+identificacion_clientes_3+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_clientes_3' class='control-label'>Nombres Cliente 4</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_3' name='modal_edit_nombre_clientes_3' value='"+nombre_clientes_3+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";
 				        
-				        html+="<div class='col-xs-6 col-md-3'>";
-				        html+="<div class='form-group'>";
-				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
-				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
-				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
-				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
-						html+="<?php } }else{?>";
-						html+="<option value='-1'>Sin-Especificar</option>";
-						html+="<?php }?>";
-					    html+="</select>"; 
-					    html+="<span class='help-block'></span>"; 
-					    html+="</div>";
-					    html+="</div>";
 				        
 				        html+="</div>";
 				        html+="</div>";	
@@ -474,52 +461,52 @@ function validar(obj) {
 				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Garantes</h4>";
 				        html+="</div>";
 				        html+="<div class='panel-body'>";
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_cedula_garante' class='control-label'>Cedula Garante 1</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_cedula_garante' name='modal_edit_cedula_garante' value='"+identificacion_garantes+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombres_garante' class='control-label'>Nombres Garante 1</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombres_garante' name='modal_edit_nombres_garante' value='"+nombre_garantes+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
 
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_garantes_1' class='control-label'>Cedula Garante 2</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_1' name='modal_edit_identificacion_garantes_1' value='"+identificacion_garantes_1+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_garantes_1' class='control-label'>Nombres Garante 2</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_1' name='modal_edit_nombre_garantes_1' value='"+nombre_garantes_1+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
 
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_garantes_2' class='control-label'>Cedula Garante 3</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_2' name='modal_edit_identificacion_garantes_2' value='"+identificacion_garantes_2+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_garantes_2' class='control-label'>Nombres Garante 3</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_2' name='modal_edit_nombre_garantes_2' value='"+nombre_garantes_2+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
 
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_3' name='modal_edit_identificacion_garantes_3' value='"+identificacion_garantes_3+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class = 'col-xs-6 col-md-4'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_nombre_garantes_3' class='control-label'>Nombres Garante 4</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_3' name='modal_edit_nombre_garantes_3' value='"+nombre_garantes_3+"' onfocus='textSucces(this)' >";
@@ -561,7 +548,23 @@ function validar(obj) {
 				        html+="<input type='text' class='form-control' id='modal_edit_riesgo_actual' name='modal_edit_riesgo_actual' value='"+riesgo_actual+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
-				        html+="<div class='col-xs-6 col-md-3'>";
+
+
+				        html+="<div class='col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
+				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
+				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
+				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
+						html+="<?php } }else{?>";
+						html+="<option value='-1'>Sin-Especificar</option>";
+						html+="<?php }?>";
+					    html+="</select>"; 
+					    html+="<span class='help-block'></span>"; 
+					    html+="</div>";
+					    html+="</div>";
+				        
+				        html+="<div class='col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_estado_procesal' class='control-label'>Estado Procesal</label>";
 				        html+="<select name='modal_edit_estado_procesal' id='modal_edit_estado_procesal'  class='form-control' >";
@@ -574,7 +577,7 @@ function validar(obj) {
 					    html+="<span class='help-block'></span>"; 
 					    html+="</div>";
 					    html+="</div>";
-					    html+="<div class = 'col-xs-6 col-md-3'>";
+					    html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_fecha_ultima_providencia' class='control-label'>Fecha Ultima Providencia</label><br>";
 				        html+="<input type='date' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)' onblur='validar(this)' >";
@@ -614,7 +617,11 @@ function validar(obj) {
 				        html+="</div>";
 				        html+="</div>";
 					    html+="<div class='col-xs-6 col-md-12' id='modal_respuesta_edit'></div><br>";
+						
 
+							
+
+				       
 					    				       
 				        $('#modal_edit_cuenta').html (html);  
 				       
@@ -873,4 +880,5 @@ function validar(obj) {
     </html>   
     
   
+
     
