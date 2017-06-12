@@ -249,13 +249,6 @@ class MatrizJuiciosController extends ControladorBase{
 								{
 									$i++;
 						
-									
-									
-									
-									
-									
-									
-									
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -674,13 +667,7 @@ class MatrizJuiciosController extends ControladorBase{
 								foreach ($resultSet as $res)
 								{
 									$i++;
-								
-										
-										
-										
-										
-										
-										
+									
 										
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
@@ -1407,14 +1394,7 @@ class MatrizJuiciosController extends ControladorBase{
 								foreach ($resultSet as $res)
 								{
 									$i++;
-								
-										
-										
-										
-										
-										
-										
-										
+									
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -1829,13 +1809,7 @@ class MatrizJuiciosController extends ControladorBase{
 								{
 									$i++;
 								
-										
-										
-										
-										
-										
-										
-										
+											
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
