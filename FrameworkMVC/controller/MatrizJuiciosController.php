@@ -83,6 +83,14 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.nombre_garantes_2,
 								clientes.identificacion_garantes_3,
 								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -106,7 +114,7 @@ class MatrizJuiciosController extends ControladorBase{
 						
 						
 						
-			
+						
 			
 			
 						$tablas=" public.clientes,
@@ -191,9 +199,30 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
@@ -220,6 +249,13 @@ class MatrizJuiciosController extends ControladorBase{
 								{
 									$i++;
 						
+									
+									
+									
+									
+									
+									
+									
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -227,7 +263,28 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
@@ -241,10 +298,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 									
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';		            
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';		            
 												         
-								//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
-									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 						
@@ -451,6 +506,14 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.nombre_garantes_2,
 								clientes.identificacion_garantes_3,
 								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -558,9 +621,30 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
@@ -578,15 +662,22 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='</tr>';
 								$html.='</thead>';
 								$html.='<tbody>';
-				
+								
 									
-				
+								
 								$i=0;
 									
 								foreach ($resultSet as $res)
 								{
 									$i++;
-									
+								
+										
+										
+										
+										
+										
+										
+										
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -594,7 +685,28 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
@@ -607,10 +719,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
-										
-									//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
-									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 				
@@ -783,6 +892,14 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.nombre_garantes_2,
 								clientes.identificacion_garantes_3,
 								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1125,6 +1242,14 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.nombre_garantes_2,
 								clientes.identificacion_garantes_3,
 								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1229,9 +1354,30 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
@@ -1249,15 +1395,22 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='</tr>';
 								$html.='</thead>';
 								$html.='<tbody>';
-	
+								
 									
-	
+								
 								$i=0;
 									
 								foreach ($resultSet as $res)
 								{
 									$i++;
-	
+								
+										
+										
+										
+										
+										
+										
+										
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -1265,7 +1418,28 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
@@ -1278,10 +1452,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
 										
-									//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
-									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 	
@@ -1488,6 +1660,14 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.nombre_garantes_2,
 								clientes.identificacion_garantes_3,
 								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1595,9 +1775,30 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Coactivado</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
@@ -1615,14 +1816,21 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='</tr>';
 								$html.='</thead>';
 								$html.='<tbody>';
-	
+								
 									
-	
+								
 								$i=0;
 									
 								foreach ($resultSet as $res)
 								{
 									$i++;
+								
+										
+										
+										
+										
+										
+										
 										
 									$html.='<tr>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
@@ -1631,7 +1839,28 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
@@ -1644,10 +1873,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+									$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
 										
-									//	$html.='<td style="font-size: 7px;"><span class="pull-right"><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal" data-id='. $res->id_juicios .' ><i class="glyphicon glyphicon-edit"></i></button></span></td>';
-									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-edit"></i></a></span></td>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 	
@@ -2081,6 +2308,16 @@ class MatrizJuiciosController extends ControladorBase{
 				$_nombre_garantes_2= $_POST["nombre_garantes_2"];
 				$_identificacion_garantes_3= $_POST["identificacion_garantes_3"];
 				$_nombre_garantes_3= $_POST["nombre_garantes_3"];
+				
+				
+				$_correo_clientes= $_POST["correo_clientes"];
+				$_correo_clientes_1= $_POST["correo_clientes_1"];
+				$_correo_clientes_2= $_POST["correo_clientes_2"];
+				$_correo_clientes_3= $_POST["correo_clientes_3"];
+				$_direccion_clientes= $_POST["direccion_clientes"];
+				$_direccion_clientes_1= $_POST["direccion_clientes_1"];
+				$_direccion_clientes_2= $_POST["direccion_clientes_2"];
+				$_direccion_clientes_3= $_POST["direccion_clientes_3"];
 			
 				$colval="identificacion_clientes='$_identificacion_clientes',
 				nombres_clientes='$_nombres_clientes',
@@ -2098,8 +2335,18 @@ class MatrizJuiciosController extends ControladorBase{
 				identificacion_garantes_2='$_identificacion_garantes_2',
 				nombre_garantes_2='$_nombre_garantes_2',
 				identificacion_garantes_3='$_identificacion_garantes_3',
-				nombre_garantes_3='$_nombre_garantes_3'";
-			
+				nombre_garantes_3='$_nombre_garantes_3',
+				correo_clientes='$_correo_clientes',
+				correo_clientes_1='$_correo_clientes_1',
+				correo_clientes_2='$_correo_clientes_2',
+				correo_clientes_3='$_correo_clientes_3',
+				direccion_clientes='$_direccion_clientes',
+				direccion_clientes_1='$_direccion_clientes_1',
+				direccion_clientes_2='$_direccion_clientes_2',
+				direccion_clientes_3='$_direccion_clientes_3'";
+				
+				
+				
 				$tabla="clientes";
 				$where="id_clientes='$_id_clientes'";
 			

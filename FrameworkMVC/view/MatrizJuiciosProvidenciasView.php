@@ -154,6 +154,16 @@ function editar_matriz(rowTabla){
 		        	var nombre_garantes_3  = '';
 
 
+		        	var correo_clientes = '';
+		        	var correo_clientes_1  = '';
+		        	var correo_clientes_2  = '';
+		        	var correo_clientes_3  = '';
+		        	var direccion_clientes  = '';
+		        	var direccion_clientes_1  = '';
+		        	var direccion_clientes_2  = '';
+		        	var direccion_clientes_3  = '';
+
+
 		        	
 		        	
 		        	var datoscuenta = rowTabla.id;
@@ -201,14 +211,16 @@ function editar_matriz(rowTabla){
 		        	 nombre_garantes_3 = array_datos[36];
 
 
+		        	 correo_clientes = array_datos[37];
+			        correo_clientes_1 = array_datos[38];
+			        correo_clientes_2  = array_datos[39];
+			        correo_clientes_3 = array_datos[40];
+			        direccion_clientes = array_datos[41];
+			        direccion_clientes_1 = array_datos[42];
+			        direccion_clientes_2  = array_datos[43];
+			        direccion_clientes_3  = array_datos[44];
 
-		        	
-		        	
-		        	 //alert(array_datos[21]);
-		        	//console.log(id_juicios+'\n'+orden+'\n'+regional+'\n'+juicio_referido_titulo_credito+'\n'+year_juicios+'\n'+identificacion_clientes+'\n'+nombres_clientes+'\n'+nombre_garantes+'\n'+identificacion_garantes);
-		        	 
-
-		        	  
+			      
 		        	   
 		        	if(datoscuenta!='')
 				    {
@@ -263,7 +275,19 @@ function editar_matriz(rowTabla){
 						        	 identificacion_garantes_2:$('#modal_edit_identificacion_garantes_2').val(),
 						        	 nombre_garantes_2:$('#modal_edit_nombre_garantes_2').val(),
 						        	 identificacion_garantes_3:$('#modal_edit_identificacion_garantes_3').val(),
-						        	 nombre_garantes_3:$('#modal_edit_nombre_garantes_3').val()
+						        	 nombre_garantes_3:$('#modal_edit_nombre_garantes_3').val(),
+
+
+						        	correo_clientes:$('#modal_edit_correo_clientes').val(),
+							        correo_clientes_1:$('#modal_edit_correo_clientes_1').val(),
+							        correo_clientes_2:$('#modal_edit_correo_clientes_2').val(),
+							        correo_clientes_3:$('#modal_edit_correo_clientes_3').val(),
+							        direccion_clientes:$('#modal_edit_direccion_clientes').val(),
+							        direccion_clientes_1:$('#modal_edit_direccion_clientes_1').val(),
+							        direccion_clientes_2:$('#modal_edit_direccion_clientes_2').val(),
+							        direccion_clientes_3:$('#modal_edit_direccion_clientes_3').val()
+
+						        	 
 
 			                    	 	 };
 		                    	 	 
@@ -380,8 +404,7 @@ function editar_matriz(rowTabla){
 					     // global_id = id_provincias;
 					      //document.cookie = 'variable='+global_id+'; expires=Thu, 2 Aug 2021 20:47:11 UTC; path=/';;
  //console.log(global_id);
-					 <?php $goblal_php= 0; // $_COOKIE["variable"];// "<script> document.write(global_id) </script>"; //echo $goblal_php;//29 ?>
-
+					 
 						////aqui 
 						var  html = "";
 				        html+="<h4 style='color:#ec971f;'>Actualizar Datos Matriz Juicios</h4><hr/>";
@@ -440,6 +463,25 @@ function editar_matriz(rowTabla){
 				        html+="<input type='text' class='form-control' id='modal_edit_nombres_cliente' name='modal_edit_nombres_cliente' value='"+nombres_clientes+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes' class='control-label'>Correo Cliente 1</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes' name='modal_edit_correo_clientes' value='"+correo_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes' class='control-label'>Dirección Cliente 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes' name='modal_edit_direccion_clientes' value='"+direccion_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+
+
+				        
+				        
+
+
 				        
 				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
@@ -456,6 +498,20 @@ function editar_matriz(rowTabla){
 
 				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_1' class='control-label'>Correo Cliente 2</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_1' name='modal_edit_correo_clientes_1' value='"+correo_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_1' class='control-label'>Dirección Cliente 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_1' name='modal_edit_direccion_clientes_1' value='"+direccion_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+
+				       
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_2' name='modal_edit_identificacion_clientes_2' value='"+identificacion_clientes_2+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
@@ -469,6 +525,19 @@ function editar_matriz(rowTabla){
 
 				        html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_2' class='control-label'>Correo Cliente 3</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_2' name='modal_edit_correo_clientes_2' value='"+correo_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_2' class='control-label'>Dirección Cliente 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_2' name='modal_edit_direccion_clientes_2' value='"+direccion_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+				        
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>";
 				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_3' name='modal_edit_identificacion_clientes_3' value='"+identificacion_clientes_3+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
@@ -479,8 +548,20 @@ function editar_matriz(rowTabla){
 				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_3' name='modal_edit_nombre_clientes_3' value='"+nombre_clientes_3+"' onfocus='textSucces(this)' >";
 				        html+="</div>";
 				        html+="</div>";
-				        
-				        
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_3' class='control-label'>Correo Cliente 4</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_3' name='modal_edit_correo_clientes_3' value='"+correo_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_3' class='control-label'>Dirección Cliente 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_3' name='modal_edit_direccion_clientes_3' value='"+direccion_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+				       
 				        html+="</div>";
 				        html+="</div>";	
 
@@ -584,11 +665,8 @@ function editar_matriz(rowTabla){
 				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
 				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
 				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
-				        html+="<?php if($res->id_provincias==$goblal_php){?>";
-				        html+="<option value='<?php echo $res->id_provincias; ?>' selected ><?php echo $res->nombre_provincias; ?> </option>";
-				        html+="<?php  }else{?>";
 				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
-						html+="<?php } }}else{?>";
+				        html+="<?php } }else{?>";
 						html+="<option value='-1'>Sin-Especificar</option>";
 						html+="<?php }?>";
 					    html+="</select>"; 
