@@ -109,8 +109,9 @@ function validar(obj) {
 		
 		//sin definir el click
 				
-		  function editar_matriz(rowTabla){
+function editar_matriz(rowTabla){
 
+			var global_id=0;
 		        	var  valCuentas = 1;		        	
 		        	var id_juicios = '';
 		        	var orden = '';
@@ -304,7 +305,7 @@ function validar(obj) {
 				                                //loading();
 					                           }else
 					                           {
-					                        	   $('#modal_edit_cuenta').html ("<span style='color:red'>!datos no han sido actualizados..</span>"); 
+					                        	   $('#modal_respuesta_edit').html ("<span style='color:red'>!datos no han sido actualizados..</span>"); 
 							                     
 					                           }
 				                           }
@@ -316,30 +317,55 @@ function validar(obj) {
 			                    	 
 			                    	 if(fecha_emision_juicios_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
 						                 textFail("modal_edit_fecha_emision_juicios");
-					                 }
+						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Formato de Fecha Incorrecto:</b> Ingrese(yyyy-mm-dd).</span>"); 
+						             	$('#modal_respuesta_edit').fadeIn("slow"); //Muestra mensaje de error
+					                      return false;
+			     			    }
+			     		    	else 
+			     		    	{
+			     		    		$('#modal_respuesta_edit').fadeOut("slow"); //Muestra mensaje de error
+			     		            
+			     				}
 
 			                    	 if(fecha_ultima_providencia_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
 						                 textFail("modal_edit_fecha_ultima_providencia");
+						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Formato de Fecha Incorrecto:</b> Ingrese(yyyy-mm-dd).</span>"); 
+						                 $('#modal_respuesta_edit').fadeIn("slow"); //Muestra mensaje de error
+					                      return false;
 					                 }
+			                    	 else 
+					     		    	{
+					     		    		$('#modal_respuesta_edit').fadeOut("slow"); //Muestra mensaje de error
+					     		            
+					     				}
 					                 
 				                     if(orden_verificar==''){
 					                 textFail("modal_edit_orden");
+					                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Orden Obligatorio.</span>"); 
+			                         
 				                     }
 				                     if(numero_titulo_credito_verificar==''){
 						                 textFail("modal_edit_numero_titulo_credito");
+						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo # Titulo Credito Obligatorio.</span>"); 
+				                         
 					                 }
 				                     if(juicio_referido_titulo_credito_verificar==''){
 						                 textFail("modal_edit_juicio");
+						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo # Juicio Obligatorio.</span>"); 
+				                         
 					                 }
 				                     
 				                     if(id_provincias_verificar<1){
 				                    	 textFail("modal_edit_provincia");
+				                    	 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Provincia Obligatorio.</span>"); 
+				                         
 					                 }
 				                     if(id_estados_procesales_juicios_verificar<1){
 				                    	 textFail("modal_edit_estado_procesal");
+				                    	 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Estado Procesal Obligatorio.</span>"); 
+				                         
 					                 }
 
-			                         $('#modal_respuesta_edit').html ("<span style='color:red'>!Existen campos vacios..</span>"); 
 			                           
 			                     }                      
 				   
@@ -351,7 +377,10 @@ function validar(obj) {
 
 				        }); 
 
-
+					     // global_id = id_provincias;
+					      //document.cookie = 'variable='+global_id+'; expires=Thu, 2 Aug 2021 20:47:11 UTC; path=/';;
+ //console.log(global_id);
+					 <?php $goblal_php= 0; // $_COOKIE["variable"];// "<script> document.write(global_id) </script>"; //echo $goblal_php;//29 ?>
 
 						////aqui 
 						var  html = "";
@@ -533,7 +562,7 @@ function validar(obj) {
 				        html+="<div class = 'col-xs-6 col-md-3'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>";
-				        html+="<input type='date' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)' onblur='validar(this)' >";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)' onblur='validar(this)' >";
 				        html+="</div>";
 				        html+="</div>";	
 				        html+="<div class = 'col-xs-6 col-md-3'>";
@@ -555,8 +584,11 @@ function validar(obj) {
 				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
 				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
 				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
+				        html+="<?php if($res->id_provincias==$goblal_php){?>";
+				        html+="<option value='<?php echo $res->id_provincias; ?>' selected ><?php echo $res->nombre_provincias; ?> </option>";
+				        html+="<?php  }else{?>";
 				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
-						html+="<?php } }else{?>";
+						html+="<?php } }}else{?>";
 						html+="<option value='-1'>Sin-Especificar</option>";
 						html+="<?php }?>";
 					    html+="</select>"; 
@@ -580,7 +612,7 @@ function validar(obj) {
 					    html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_fecha_ultima_providencia' class='control-label'>Fecha Ultima Providencia</label><br>";
-				        html+="<input type='date' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)' onblur='validar(this)' >";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)' onblur='validar(this)' >";
 				        html+="</div>";
 				        html+="</div>";
 				        html+="<div class = 'col-xs-6 col-md-3'>";
