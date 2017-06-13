@@ -396,9 +396,9 @@
 				        </div>
 				        </div>	
 <br>
- 						<div class="row">
+ 						<div class="row" >
  						<div class="col-xs-6 col-md-2">
- 						 <div class='form-group' style="margin-rigth:20px">
+ 						 <div class='form-group'>
 			  			 <label for='id_provincias' class='control-label'>Provincia</label>
 			  			<select name="id_provincias" id="id_provincias"  class="form-control" >
 						<?php foreach($resultProv as $res) {?>
