@@ -665,7 +665,7 @@ function editar_matriz(rowTabla){
 				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
 				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
 				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
-				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
+				        html+="<option value='<?php echo $res->id_provincias; ?>'  ><?php echo $res->nombre_provincias; ?> </option>";
 				        html+="<?php } }else{?>";
 						html+="<option value='-1'>Sin-Especificar</option>";
 						html+="<?php }?>";
