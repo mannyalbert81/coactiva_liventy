@@ -116,12 +116,13 @@ public function index(){
 		{
 			
 			$respuesta_incidencia = new RespuestaIncidenciaModel();
-			
+			$incidencia= new IncidenciaModel();
+			$usuarios = new UsuariosModel();
 			$id_incidencia=$_POST['id_incidencia'];
 			$descripcion_respuesta=$_POST['descripcion_respuesta'];
 			$id_usuarios=$_SESSION['id_usuarios'];
 			
-			$upload_folder =$_SERVER['DOCUMENT_ROOT']."/coactiva/incidencia/respuesta";
+			$upload_folder =$_SERVER['DOCUMENT_ROOT']."/coactiva_liventy/incidencia/respuesta";
 			
 			$nombre_archivo = $_FILES['image_respuesta']['name'];
 					
@@ -136,6 +137,7 @@ public function index(){
 			if (move_uploaded_file($tmp_archivo, $archivador)) 
 			{
 				$data = file_get_contents($archivador);
+				//$_imagen_correo=$archivador;
 				$imagen_respuesta = pg_escape_bytea($data);
 				
 				$funcion = "ins_respuesta_incidencia";
@@ -146,7 +148,10 @@ public function index(){
 				$respuesta_incidencia->setParametros($parametros);
 				$resultado=$respuesta_incidencia->Insert();
 				
-				$update=$respuesta_incidencia->UpdateBy("respuesta_incidencia='true'", "incidencia", "id_incidencia='$id_incidencia'");
+
+				$update=$incidencia->UpdateBy("respuesta_incidencia='true'", "incidencia", "id_incidencia='$id_incidencia'");
+					
+
 				
 				if(!$resultado)
 				{
@@ -167,6 +172,36 @@ public function index(){
 		}
 		
 		echo json_encode($return);
+		
+
+		$resultIncidencia = $incidencia->getBy("id_incidencia='$id_incidencia'");
+		$_id_usuario=$resultIncidencia[0]->id_usuario;
+		$_asunto_incidencia=$resultIncidencia[0]->asunto_incidencia;
+		
+		$resultUsu = $usuarios->getBy("id_usuarios='$_id_usuario'");
+		$_correo_usuarios=$resultUsu[0]->correo_usuarios;
+		
+		
+		$columnas = " respuesta_incidencia.id_respuesta_incidencia,
+						  respuesta_incidencia.descripcion_respuesta,
+						usuarios.nombre_usuarios,
+						  respuesta_incidencia.image_respuesta,
+						 respuesta_incidencia.creado";
+		
+		$tablas   = "public.respuesta_incidencia,
+  							public.usuarios";
+		$where    = "respuesta_incidencia.id_usuarios = usuarios.id_usuarios AND respuesta_incidencia.id_usuarios='$id_usuarios' AND respuesta_incidencia.descripcion_respuesta='$descripcion_respuesta'";
+		$id       = "respuesta_incidencia.creado";
+		$lista = $respuesta_incidencia->getCondiciones($columnas, $tablas, $where, $id);
+		
+		
+			
+		$asunto= $_asunto_incidencia;
+		$titulo= "";
+		$imagen = "";
+		$para =  $_correo_usuarios;
+		
+		$respuesta_incidencia->SendMailRespuesta($para, $titulo, $lista, $imagen, $asunto);
 		
 	}
 	

@@ -155,7 +155,7 @@ class IncidenciasController extends ControladorBase{
 						$cantidad= count($_FILES["image_incidencia"]["name"]);
 						
 						
-						$directorio = $_SERVER['DOCUMENT_ROOT'].'/coactiva/incidencia/';
+						$directorio = $_SERVER['DOCUMENT_ROOT'].'/coactiva_liventy/incidencia/';
 						$hoy = date("Y-m-d");
 						
 						//por defecto solo una imagen
@@ -177,25 +177,7 @@ class IncidenciasController extends ControladorBase{
 							$incidencia->setFuncion($funcion);
 							$incidencia->setParametros($parametros);
 							$resultado=$incidencia->Insert();
-							
-							
-							
-							
-							
-							//$mail=$incidencia->phpMailerSend(); die();
-							
-							/*
-							$my_file = $nombre; // puede ser cualquier formato
-							$my_path = $_SERVER['DOCUMENT_ROOT']."/incidencia/";
-							$my_name = "Danny";
-							$my_mail = "danny@masoft.net";//aqui va el correo_from
-							$my_replyto = "maycol@masoft.net";
-							$my_subject = $_asunto_incidencia;
-							$my_message = $_descripcion_incidencia;
-							//como parametro va el correo_to
-							$this->mail_attachment($my_file, $my_path, "steven@masoft.net", $my_mail, $my_name, $my_replyto, $my_subject, $my_message);
-						
-							*/					 
+									 
 						} 
 						
 						

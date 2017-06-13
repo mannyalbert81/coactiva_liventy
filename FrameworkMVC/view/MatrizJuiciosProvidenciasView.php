@@ -308,7 +308,7 @@ function editar_matriz(rowTabla){
 				                
 				                
 			                    
-			                     if( fecha_emision_juicios_verificar == /^\d{4}\/\d{2}\/\d{2}$/  && fecha_ultima_providencia_verificar == /^\d{4}\/\d{2}\/\d{2}$/  &&  id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
+			                     if( id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
 			                     {
 					                $.ajax({
 				                           url:"<?php echo $helper->url("MatrizJuicios","ActualizarMatriz");?>"
@@ -339,57 +339,32 @@ function editar_matriz(rowTabla){
 			                     {
 
 			                    	 
-			                    	 if(fecha_emision_juicios_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
-						                 textFail("modal_edit_fecha_emision_juicios");
-						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Formato de Fecha Incorrecto:</b> Ingrese(yyyy-mm-dd).</span>"); 
-						             	$('#modal_respuesta_edit').fadeIn("slow"); //Muestra mensaje de error
-					                      return false;
-			     			    }
-			     		    	else 
-			     		    	{
-			     		    		$('#modal_respuesta_edit').fadeOut("slow"); //Muestra mensaje de error
-			     		            
-			     				}
-
-			                    	 if(fecha_ultima_providencia_verificar != /^\d{4}\/\d{2}\/\d{2}$/){
-						                 textFail("modal_edit_fecha_ultima_providencia");
-						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Formato de Fecha Incorrecto:</b> Ingrese(yyyy-mm-dd).</span>"); 
-						                 $('#modal_respuesta_edit').fadeIn("slow"); //Muestra mensaje de error
-					                      return false;
-					                 }
-			                    	 else 
-					     		    	{
-					     		    		$('#modal_respuesta_edit').fadeOut("slow"); //Muestra mensaje de error
-					     		            
-					     				}
+			                    	
 					                 
 				                     if(orden_verificar==''){
 					                 textFail("modal_edit_orden");
-					                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Orden Obligatorio.</span>"); 
-			                         
+					                
 				                     }
 				                     if(numero_titulo_credito_verificar==''){
 						                 textFail("modal_edit_numero_titulo_credito");
-						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo # Titulo Credito Obligatorio.</span>"); 
-				                         
+						                
 					                 }
 				                     if(juicio_referido_titulo_credito_verificar==''){
 						                 textFail("modal_edit_juicio");
-						                 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo # Juicio Obligatorio.</span>"); 
-				                         
+						                
 					                 }
 				                     
 				                     if(id_provincias_verificar<1){
 				                    	 textFail("modal_edit_provincia");
-				                    	 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Provincia Obligatorio.</span>"); 
-				                         
+				                    	 
 					                 }
 				                     if(id_estados_procesales_juicios_verificar<1){
 				                    	 textFail("modal_edit_estado_procesal");
-				                    	 $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Campo Estado Procesal Obligatorio.</span>"); 
-				                         
+				                    	 
 					                 }
-
+					                 
+				                     $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Existen Campos Vacios.</span>"); 
+				                        
 			                           
 			                     }                      
 				   
@@ -643,7 +618,7 @@ function editar_matriz(rowTabla){
 				        html+="<div class = 'col-xs-6 col-md-3'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>";
-				        html+="<input type='text' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)' onblur='validar(this)' >";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)'  >";
 				        html+="</div>";
 				        html+="</div>";	
 				        html+="<div class = 'col-xs-6 col-md-3'>";
@@ -690,7 +665,7 @@ function editar_matriz(rowTabla){
 					    html+="<div class = 'col-xs-6 col-md-2'>";
 				        html+="<div class='form-group'>";
 				        html+="<label for='modal_edit_fecha_ultima_providencia' class='control-label'>Fecha Ultima Providencia</label><br>";
-				        html+="<input type='text' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)' onblur='validar(this)' >";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)'  >";
 				        html+="</div>";
 				        html+="</div>";
 				        html+="<div class = 'col-xs-6 col-md-3'>";
@@ -772,6 +747,8 @@ function editar_matriz(rowTabla){
 		</script>
   
  
+ 
+
         
     <script type="text/javascript">
 	$(document).ready(function(){

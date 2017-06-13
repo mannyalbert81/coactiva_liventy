@@ -168,6 +168,9 @@ $controladores=$_SESSION['controladores'];
           <a href="index.php?controller=ConsultaAvocoLiquidador&action=consulta_liquidador_avoco_firmados"><span class=" glyphicon glyphicon-console" aria-hidden="true"> Avoco Conocimiento</span> </a>
           </li>	
           -->  
+           <li style="<?php echo getcontrolador("ActualizarMatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=MatrizJuicios&action=index3"><span class=" glyphicon glyphicon-console" aria-hidden="true"> Actualizar Matriz Juicios</span> </a>
+          </li>	
           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index"><span class=" glyphicon glyphicon-console" aria-hidden="true"> Providencia de Suspensión</span> </a>
           </li>	
@@ -292,7 +295,7 @@ $controladores=$_SESSION['controladores'];
 </ul>
 </li>
 
-
+--> 
 <li class="dropdown" style="<?php echo getcontrolador("MenuSoporte",$controladores) ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-refresh" ><?php echo " Soporte" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -307,7 +310,7 @@ $controladores=$_SESSION['controladores'];
           
 </ul>
 </li>
---> 
+
 
 </ul>
     </div>
