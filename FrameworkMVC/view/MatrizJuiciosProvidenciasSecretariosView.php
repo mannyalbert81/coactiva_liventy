@@ -89,13 +89,14 @@
 		}
 		 </style>
   
-  	<!-- script editar cuenta -->
+  <!-- script editar cuenta -->
 		<script type="text/javascript">
 		
 		//sin definir el click
 				
-		  function editar_matriz(rowTabla){
+function editar_matriz(rowTabla){
 
+			var global_id=0;
 		        	var  valCuentas = 1;		        	
 		        	var id_juicios = '';
 		        	var orden = '';
@@ -136,6 +137,16 @@
 		        	var nombre_garantes_2  = '';
 		        	var identificacion_garantes_3  = '';
 		        	var nombre_garantes_3  = '';
+
+
+		        	var correo_clientes = '';
+		        	var correo_clientes_1  = '';
+		        	var correo_clientes_2  = '';
+		        	var correo_clientes_3  = '';
+		        	var direccion_clientes  = '';
+		        	var direccion_clientes_1  = '';
+		        	var direccion_clientes_2  = '';
+		        	var direccion_clientes_3  = '';
 
 
 		        	
@@ -185,14 +196,16 @@
 		        	 nombre_garantes_3 = array_datos[36];
 
 
+		        	 correo_clientes = array_datos[37];
+			        correo_clientes_1 = array_datos[38];
+			        correo_clientes_2  = array_datos[39];
+			        correo_clientes_3 = array_datos[40];
+			        direccion_clientes = array_datos[41];
+			        direccion_clientes_1 = array_datos[42];
+			        direccion_clientes_2  = array_datos[43];
+			        direccion_clientes_3  = array_datos[44];
 
-		        	
-		        	
-		        	 //alert(array_datos[21]);
-		        	//console.log(id_juicios+'\n'+orden+'\n'+regional+'\n'+juicio_referido_titulo_credito+'\n'+year_juicios+'\n'+identificacion_clientes+'\n'+nombres_clientes+'\n'+nombre_garantes+'\n'+identificacion_garantes);
-		        	 
-
-		        	  
+			      
 		        	   
 		        	if(datoscuenta!='')
 				    {
@@ -247,7 +260,19 @@
 						        	 identificacion_garantes_2:$('#modal_edit_identificacion_garantes_2').val(),
 						        	 nombre_garantes_2:$('#modal_edit_nombre_garantes_2').val(),
 						        	 identificacion_garantes_3:$('#modal_edit_identificacion_garantes_3').val(),
-						        	 nombre_garantes_3:$('#modal_edit_nombre_garantes_3').val()
+						        	 nombre_garantes_3:$('#modal_edit_nombre_garantes_3').val(),
+
+
+						        	correo_clientes:$('#modal_edit_correo_clientes').val(),
+							        correo_clientes_1:$('#modal_edit_correo_clientes_1').val(),
+							        correo_clientes_2:$('#modal_edit_correo_clientes_2').val(),
+							        correo_clientes_3:$('#modal_edit_correo_clientes_3').val(),
+							        direccion_clientes:$('#modal_edit_direccion_clientes').val(),
+							        direccion_clientes_1:$('#modal_edit_direccion_clientes_1').val(),
+							        direccion_clientes_2:$('#modal_edit_direccion_clientes_2').val(),
+							        direccion_clientes_3:$('#modal_edit_direccion_clientes_3').val()
+
+						        	 
 
 			                    	 	 };
 		                    	 	 
@@ -263,10 +288,12 @@
 				                 var numero_titulo_credito_verificar= $('#modal_edit_numero_titulo_credito').val();
 				                 var identificacion_garantes_verificar= $('#modal_edit_cedula_garante').val();
 				                 var nombre_garantes_verificar= $('#modal_edit_nombres_garante').val();
+				                 var fecha_ultima_providencia_verificar= $('#modal_edit_fecha_ultima_providencia').val();
+				                 var fecha_emision_juicios_verificar= $('#modal_edit_fecha_emision_juicios').val();
 				                
 				                
 			                    
-			                     if(id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
+			                     if( id_juicios_verificar!='' && orden_verificar!='' && numero_titulo_credito_verificar!='' && juicio_referido_titulo_credito_verificar!='' && id_provincias_verificar!='' && id_estados_procesales_juicios_verificar!='')
 			                     {
 					                $.ajax({
 				                           url:"<?php echo $helper->url("MatrizJuicios","ActualizarMatriz");?>"
@@ -287,7 +314,7 @@
 				                                //loading();
 					                           }else
 					                           {
-					                        	   $('#modal_edit_cuenta').html ("<span style='color:red'>!datos no han sido actualizados..</span>"); 
+					                        	   $('#modal_respuesta_edit').html ("<span style='color:red'>!datos no han sido actualizados..</span>"); 
 							                     
 					                           }
 				                           }
@@ -295,24 +322,34 @@
 				                     
 			                     }else
 			                     {
+
+			                    	 
+			                    	
+					                 
 				                     if(orden_verificar==''){
 					                 textFail("modal_edit_orden");
+					                
 				                     }
 				                     if(numero_titulo_credito_verificar==''){
 						                 textFail("modal_edit_numero_titulo_credito");
+						                
 					                 }
 				                     if(juicio_referido_titulo_credito_verificar==''){
 						                 textFail("modal_edit_juicio");
+						                
 					                 }
 				                     
 				                     if(id_provincias_verificar<1){
 				                    	 textFail("modal_edit_provincia");
+				                    	 
 					                 }
 				                     if(id_estados_procesales_juicios_verificar<1){
 				                    	 textFail("modal_edit_estado_procesal");
+				                    	 
 					                 }
-
-			                         $('#modal_respuesta_edit').html ("<span style='color:red'>!Existen campos vacios..</span>"); 
+					                 
+				                     $('#modal_respuesta_edit').html ("<span style='color:red'><b>Error:</b> Existen Campos Vacios.</span>"); 
+				                        
 			                           
 			                     }                      
 				   
@@ -324,274 +361,337 @@
 
 				        }); 
 
+					     // global_id = id_provincias;
+					      //document.cookie = 'variable='+global_id+'; expires=Thu, 2 Aug 2021 20:47:11 UTC; path=/';;
+ //console.log(global_id);
+					 
+						////aqui 
+						var  html = "";
+				        html+="<h4 style='color:#ec971f;'>Actualizar Datos Matriz Juicios</h4><hr/>";
+				        html+="<div class='col-xs-6 col-md-12' id='modal_espera_edit' style='text-align:center'></div><br>";
+				        html+="<div class='panel panel-info'>";
+				        html+="<div class='panel-heading'>";
+				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Juicio</h4>";
+				        html+="</div>";
+				        html+="<div class='panel-body'>";
+					    html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_orden' class='control-label'>Orden</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value='"+orden+"' readonly >";
+				        html+="</div>";
+					    html+="</div>";
+					    html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_regional' class='control-label'>Regional</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_regional' name='modal_edit_regional' value='"+regional+"' onfocus='textSucces(this)' >";
+				        html+="<input type='hidden' class='form-control'  id='modal_edit_id_juicios' name='modal_edit_id_juicios' value='"+id_juicios+"'  >";
+				        html+="<input type='hidden' class='form-control'  id='modal_edit_id_clientes' name='modal_edit_id_clientes' value='"+id_clientes+"'  >";
+				        html+="<input type='hidden' class='form-control'  id='modal_edit_id_titulo_credito' name='modal_edit_id_titulo_credito' value='"+id_titulo_credito+"'  >";
+						html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_juicio' class='control-label'># Juicio</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_juicio' name='modal_edit_juicio' value='"+juicio_referido_titulo_credito+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_año_juicio' class='control-label'>Año Juicio</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_año_juicio' name='modal_edit_año_juicio' value='"+year_juicios+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="</div>";
+				        html+="</div>";	
+				       
+				         
+				        
+				        html+="<div class='panel panel-info'>";
+				        html+="<div class='panel-heading'>";
+				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Clientes</h4>";
+				        html+="</div>";
+				        html+="<div class='panel-body'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_cedula' class='control-label'>Cedula Cliente 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_cedula' name='modal_edit_cedula' value='"+identificacion_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombres_cliente' class='control-label'>Nombres Cliente 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombres_cliente' name='modal_edit_nombres_cliente' value='"+nombres_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
 
-					
-
-					  ////aqui 
-							var  html = "";
-					        html+="<h4 style='color:#ec971f;'>Actualizar Datos Matriz Juicios</h4><hr/>";
-					        html+="<div class='col-xs-6 col-md-12' id='modal_espera_edit' style='text-align:center'></div><br>";
-					        html+="<div class='panel panel-info'>";
-					        html+="<div class='panel-heading'>";
-					        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Juicio</h4>";
-					        html+="</div>";
-					        html+="<div class='panel-body'>";
-						    html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_orden' class='control-label'>Orden</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value='"+orden+"' readonly >";
-					        html+="</div>";
-						    html+="</div>";
-						    html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_regional' class='control-label'>Regional</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_regional' name='modal_edit_regional' value='"+regional+"' onfocus='textSucces(this)' >";
-					        html+="<input type='hidden' class='form-control'  id='modal_edit_id_juicios' name='modal_edit_id_juicios' value='"+id_juicios+"'  >";
-					        html+="<input type='hidden' class='form-control'  id='modal_edit_id_clientes' name='modal_edit_id_clientes' value='"+id_clientes+"'  >";
-					        html+="<input type='hidden' class='form-control'  id='modal_edit_id_titulo_credito' name='modal_edit_id_titulo_credito' value='"+id_titulo_credito+"'  >";
-							html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_juicio' class='control-label'># Juicio</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_juicio' name='modal_edit_juicio' value='"+juicio_referido_titulo_credito+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_año_juicio' class='control-label'>Año Juicio</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_año_juicio' name='modal_edit_año_juicio' value='"+year_juicios+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="</div>";
-					        html+="</div>";	
-					       
-					         
-					        
-					        html+="<div class='panel panel-info'>";
-					        html+="<div class='panel-heading'>";
-					        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Clientes</h4>";
-					        html+="</div>";
-					        html+="<div class='panel-body'>";
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_cedula' class='control-label'>Cedula Cliente 1</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_cedula' name='modal_edit_cedula' value='"+identificacion_clientes+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombres_cliente' class='control-label'>Nombres Cliente 1</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombres_cliente' name='modal_edit_nombres_cliente' value='"+nombres_clientes+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_1' name='modal_edit_identificacion_clientes_1' value='"+identificacion_clientes_1+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_clientes_1' class='control-label'>Nombres Cliente 2</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_1' name='modal_edit_nombre_clientes_1' value='"+nombre_clientes_1+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_2' name='modal_edit_identificacion_clientes_2' value='"+identificacion_clientes_2+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_clientes_2' class='control-label'>Nombres Cliente 3</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_2' name='modal_edit_nombre_clientes_2' value='"+nombre_clientes_2+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_3' name='modal_edit_identificacion_clientes_3' value='"+identificacion_clientes_3+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_clientes_3' class='control-label'>Nombres Cliente 4</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_3' name='modal_edit_nombre_clientes_3' value='"+nombre_clientes_3+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-					        
-					        
-					        html+="</div>";
-					        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes' class='control-label'>Correo Cliente 1</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes' name='modal_edit_correo_clientes' value='"+correo_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes' class='control-label'>Dirección Cliente 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes' name='modal_edit_direccion_clientes' value='"+direccion_clientes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
 
 
-					        html+="<div class='panel panel-info'>";
-					        html+="<div class='panel-heading'>";
-					        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Garantes</h4>";
-					        html+="</div>";
-					        html+="<div class='panel-body'>";
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_cedula_garante' class='control-label'>Cedula Garante 1</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_cedula_garante' name='modal_edit_cedula_garante' value='"+identificacion_garantes+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombres_garante' class='control-label'>Nombres Garante 1</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombres_garante' name='modal_edit_nombres_garante' value='"+nombre_garantes+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_garantes_1' class='control-label'>Cedula Garante 2</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_1' name='modal_edit_identificacion_garantes_1' value='"+identificacion_garantes_1+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_garantes_1' class='control-label'>Nombres Garante 2</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_1' name='modal_edit_nombre_garantes_1' value='"+nombre_garantes_1+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_garantes_2' class='control-label'>Cedula Garante 3</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_2' name='modal_edit_identificacion_garantes_2' value='"+identificacion_garantes_2+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_garantes_2' class='control-label'>Nombres Garante 3</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_2' name='modal_edit_nombre_garantes_2' value='"+nombre_garantes_2+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-
-					        html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_3' name='modal_edit_identificacion_garantes_3' value='"+identificacion_garantes_3+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-4'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_nombre_garantes_3' class='control-label'>Nombres Garante 4</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_3' name='modal_edit_nombre_garantes_3' value='"+nombre_garantes_3+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="</div>";
-					        html+="</div>";	
+				        
+				        
 
 
-						    
+				        
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_1' name='modal_edit_identificacion_clientes_1' value='"+identificacion_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_clientes_1' class='control-label'>Nombres Cliente 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_1' name='modal_edit_nombre_clientes_1' value='"+nombre_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_1' class='control-label'>Correo Cliente 2</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_1' name='modal_edit_correo_clientes_1' value='"+correo_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_1' class='control-label'>Dirección Cliente 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_1' name='modal_edit_direccion_clientes_1' value='"+direccion_clientes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+
+				       
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_2' name='modal_edit_identificacion_clientes_2' value='"+identificacion_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_clientes_2' class='control-label'>Nombres Cliente 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_2' name='modal_edit_nombre_clientes_2' value='"+nombre_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_2' class='control-label'>Correo Cliente 3</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_2' name='modal_edit_correo_clientes_2' value='"+correo_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_2' class='control-label'>Dirección Cliente 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_2' name='modal_edit_direccion_clientes_2' value='"+direccion_clientes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+				        
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_clientes_3' name='modal_edit_identificacion_clientes_3' value='"+identificacion_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_clientes_3' class='control-label'>Nombres Cliente 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_clientes_3' name='modal_edit_nombre_clientes_3' value='"+nombre_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_correo_clientes_3' class='control-label'>Correo Cliente 4</label><br>";
+				        html+="<input type='email' class='form-control' id='modal_edit_correo_clientes_3' name='modal_edit_correo_clientes_3' value='"+correo_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_direccion_clientes_3' class='control-label'>Dirección Cliente 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_direccion_clientes_3' name='modal_edit_direccion_clientes_3' value='"+direccion_clientes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+				       
+				        html+="</div>";
+				        html+="</div>";	
 
 
-					        html+="<div class='panel panel-info'>";
-					        html+="<div class='panel-heading'>";
-					        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Operación</h4>";
-					        html+="</div>";
-					        html+="<div class='panel-body'>";
-						    html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_numero_titulo_credito' class='control-label'># Operación</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_numero_titulo_credito' name='modal_edit_numero_titulo_credito' value='"+numero_titulo_credito+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>";
-					        html+="<input type='date' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)' onblur='validar(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_cuantia_inicial' class='control-label'>Cuantia Inicial</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_cuantia_inicial' name='modal_edit_cuantia_inicial' value='"+cuantia_inicial+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_riesgo_actual' class='control-label'>Riesgo Actual</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_riesgo_actual' name='modal_edit_riesgo_actual' value='"+riesgo_actual+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
+				        html+="<div class='panel panel-info'>";
+				        html+="<div class='panel-heading'>";
+				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Garantes</h4>";
+				        html+="</div>";
+				        html+="<div class='panel-body'>";
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_cedula_garante' class='control-label'>Cedula Garante 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_cedula_garante' name='modal_edit_cedula_garante' value='"+identificacion_garantes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombres_garante' class='control-label'>Nombres Garante 1</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombres_garante' name='modal_edit_nombres_garante' value='"+nombre_garantes+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_garantes_1' class='control-label'>Cedula Garante 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_1' name='modal_edit_identificacion_garantes_1' value='"+identificacion_garantes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_garantes_1' class='control-label'>Nombres Garante 2</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_1' name='modal_edit_nombre_garantes_1' value='"+nombre_garantes_1+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_garantes_2' class='control-label'>Cedula Garante 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_2' name='modal_edit_identificacion_garantes_2' value='"+identificacion_garantes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_garantes_2' class='control-label'>Nombres Garante 3</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_2' name='modal_edit_nombre_garantes_2' value='"+nombre_garantes_2+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+
+				        html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_identificacion_garantes_3' name='modal_edit_identificacion_garantes_3' value='"+identificacion_garantes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-4'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_nombre_garantes_3' class='control-label'>Nombres Garante 4</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_nombre_garantes_3' name='modal_edit_nombre_garantes_3' value='"+nombre_garantes_3+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="</div>";
+				        html+="</div>";	
 
 
-					        html+="<div class='col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
-					        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
-					        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
-					        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
-							html+="<?php } }else{?>";
-							html+="<option value='-1'>Sin-Especificar</option>";
-							html+="<?php }?>";
-						    html+="</select>"; 
-						    html+="<span class='help-block'></span>"; 
-						    html+="</div>";
-						    html+="</div>";
-					        
-					        html+="<div class='col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_estado_procesal' class='control-label'>Estado Procesal</label>";
-					        html+="<select name='modal_edit_estado_procesal' id='modal_edit_estado_procesal'  class='form-control' >";
-					        html+="<?php if(!empty($resultEstadoProcesal)){ foreach($resultEstadoProcesal as $res) {?>";
-					        html+="<option value='<?php echo $res->id_estados_procesales_juicios; ?>' ><?php echo $res->nombre_estados_procesales_juicios; ?> </option>";
-							html+="<?php } }else{?>";
-							html+="<option value='-1'>Sin-Especificar</option>";
-							html+="<?php }?>";
-						    html+="</select>"; 
-						    html+="<span class='help-block'></span>"; 
-						    html+="</div>";
-						    html+="</div>";
-						    html+="<div class = 'col-xs-6 col-md-2'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_fecha_ultima_providencia' class='control-label'>Fecha Ultima Providencia</label><br>";
-					        html+="<input type='date' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)' onblur='validar(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_impulsor' class='control-label'>Impulsor</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_impulsor' name='modal_edit_impulsor' value='"+impulsores+"' readonly onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-					        html+="<div class = 'col-xs-6 col-md-3'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_secretario' class='control-label'>Secretario</label><br>";
-					        html+="<input type='text' class='form-control' id='modal_edit_secretario' name='modal_edit_secretario' value='"+secretarios+"' readonly onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";
-						    html+="<div class = 'col-xs-6 col-md-6'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_descripcion_etapa_procesal' class='control-label'>Descripción Etapa Procesal</label><br>";
-					        html+="<textarea type='text' class='form-control' id='modal_edit_descripcion_etapa_procesal' name='modal_edit_descripcion_etapa_procesal'  placeholder='Descripción'>"+descripcion_estado_procesal+"</textarea>";
-	                        //html+="<input type='text' class='form-control' id='modal_edit_descripcion_etapa_procesal' name='modal_edit_descripcion_etapa_procesal' value='"+descripcion_estado_procesal+"' onfocus='textSucces(this)' >";
-					        html+="</div>";
-					        html+="</div>";	
-					        html+="<div class = 'col-xs-6 col-md-6'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_estrategia_seguir' class='control-label'>Estrategia Seguir</label><br>";
-					        html+="<textarea type='text' class='form-control' id='modal_edit_estrategia_seguir' name='modal_edit_estrategia_seguir'  placeholder='Estrategia a Seguir'>"+estrategia_seguir+"</textarea>";
-		                    html+="</div>";///no carga mijin
-					        html+="</div>";
-					        html+="<div class = 'col-xs-6 col-md-12'>";
-					        html+="<div class='form-group'>";
-					        html+="<label for='modal_edit_observaciones' class='control-label'>Observaciones</label><br>";
-					        html+="<textarea type='text' class='form-control' id='modal_edit_observaciones' name='modal_edit_observaciones'  placeholder='Observaciones'>"+observaciones+"</textarea>";
-			                html+="</div>";
-					        html+="</div>";
-					        html+="</div>";
-					        html+="</div>";
-						    html+="<div class='col-xs-6 col-md-12' id='modal_respuesta_edit'></div><br>";
+					    
 
+
+				        html+="<div class='panel panel-info'>";
+				        html+="<div class='panel-heading'>";
+				        html+="<h4><i class='glyphicon glyphicon-edit'></i> Datos Operación</h4>";
+				        html+="</div>";
+				        html+="<div class='panel-body'>";
+					    html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_numero_titulo_credito' class='control-label'># Operación</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_numero_titulo_credito' name='modal_edit_numero_titulo_credito' value='"+numero_titulo_credito+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_emision_juicios' name='modal_edit_fecha_emision_juicios' value='"+fecha_emision_juicios+"' onfocus='textSucces(this)'  >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_cuantia_inicial' class='control-label'>Cuantia Inicial</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_cuantia_inicial' name='modal_edit_cuantia_inicial' value='"+cuantia_inicial+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_riesgo_actual' class='control-label'>Riesgo Actual</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_riesgo_actual' name='modal_edit_riesgo_actual' value='"+riesgo_actual+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+
+
+				        html+="<div class='col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_provincia' class='control-label'>Provincia</label>";
+				        html+="<select name='modal_edit_provincia' id='modal_edit_provincia'  class='form-control' >";
+				        html+="<?php if(!empty($resultProv)){ foreach($resultProv as $res) {?>";
+				        html+="<option value='<?php echo $res->id_provincias; ?>' ><?php echo $res->nombre_provincias; ?> </option>";
+				        html+="<?php } }else{?>";
+						html+="<option value='-1'>Sin-Especificar</option>";
+						html+="<?php }?>";
+					    html+="</select>"; 
+					    html+="<span class='help-block'></span>"; 
+					    html+="</div>";
+					    html+="</div>";
+				        
+				        html+="<div class='col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_estado_procesal' class='control-label'>Estado Procesal</label>";
+				        html+="<select name='modal_edit_estado_procesal' id='modal_edit_estado_procesal'  class='form-control' >";
+				        html+="<?php if(!empty($resultEstadoProcesal)){ foreach($resultEstadoProcesal as $res) {?>";
+				        html+="<option value='<?php echo $res->id_estados_procesales_juicios; ?>' ><?php echo $res->nombre_estados_procesales_juicios; ?> </option>";
+						html+="<?php } }else{?>";
+						html+="<option value='-1'>Sin-Especificar</option>";
+						html+="<?php }?>";
+					    html+="</select>"; 
+					    html+="<span class='help-block'></span>"; 
+					    html+="</div>";
+					    html+="</div>";
+					    html+="<div class = 'col-xs-6 col-md-2'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_fecha_ultima_providencia' class='control-label'>Fecha Ultima Providencia</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_fecha_ultima_providencia' name='modal_edit_fecha_ultima_providencia' value='"+fecha_ultima_providencia+"' onfocus='textSucces(this)'  >";
+				        html+="</div>";
+				        html+="</div>";
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_impulsor' class='control-label'>Impulsor</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_impulsor' name='modal_edit_impulsor' value='"+impulsores+"' readonly onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+				        html+="<div class = 'col-xs-6 col-md-3'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_secretario' class='control-label'>Secretario</label><br>";
+				        html+="<input type='text' class='form-control' id='modal_edit_secretario' name='modal_edit_secretario' value='"+secretarios+"' readonly onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";
+					    html+="<div class = 'col-xs-6 col-md-6'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_descripcion_etapa_procesal' class='control-label'>Descripción Etapa Procesal</label><br>";
+				        html+="<textarea type='text' class='form-control' id='modal_edit_descripcion_etapa_procesal' name='modal_edit_descripcion_etapa_procesal'  placeholder='Descripción'>"+descripcion_estado_procesal+"</textarea>";
+                        //html+="<input type='text' class='form-control' id='modal_edit_descripcion_etapa_procesal' name='modal_edit_descripcion_etapa_procesal' value='"+descripcion_estado_procesal+"' onfocus='textSucces(this)' >";
+				        html+="</div>";
+				        html+="</div>";	
+				        html+="<div class = 'col-xs-6 col-md-6'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_estrategia_seguir' class='control-label'>Estrategia Seguir</label><br>";
+				        html+="<textarea type='text' class='form-control' id='modal_edit_estrategia_seguir' name='modal_edit_estrategia_seguir'  placeholder='Estrategia a Seguir'>"+estrategia_seguir+"</textarea>";
+	                    html+="</div>";///no carga mijin
+				        html+="</div>";
+				        html+="<div class = 'col-xs-6 col-md-12'>";
+				        html+="<div class='form-group'>";
+				        html+="<label for='modal_edit_observaciones' class='control-label'>Observaciones</label><br>";
+				        html+="<textarea type='text' class='form-control' id='modal_edit_observaciones' name='modal_edit_observaciones'  placeholder='Observaciones'>"+observaciones+"</textarea>";
+		                html+="</div>";
+				        html+="</div>";
+				        html+="</div>";
+				        html+="</div>";
+					    html+="<div class='col-xs-6 col-md-12' id='modal_respuesta_edit'></div><br>";
+						
+
+							
+
+				       
 					    				       
 				        $('#modal_edit_cuenta').html (html);  
 				       
@@ -610,6 +710,7 @@
 
 		
 		</script>
+	
 	
   
   	<script type="text/javascript">
@@ -809,6 +910,21 @@
 	  
 	 
 	     </div>
+	     
+	     <div class="col-lg-12 col-md-12 xs-12" style="text-align: center; margin-top: 10px">
+  		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
+  		 			
+		 		</div>
+		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
+		 			<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="dd/MM/aaaa"/>
+		 			<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="HH:mm"/>
+		 			<button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte Providencia"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Providencias</button>
+		 		</div>
+		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
+		 		</div>	         
+	     </div>
+	     
+	     
 		 
 		</div>
 		    

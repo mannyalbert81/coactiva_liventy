@@ -89,25 +89,14 @@
 				}
 		    	
 		    	
-
-			
-		    					    
-
 			}); 
 
-
-		 
-				
+	
 				$( "#nombre_ciudad" ).focus(function() {
 					$("#mensaje_nombres").fadeOut("slow");
     			});
 				
-			
-		
-				
-		
-		      
-				    
+					    
 		}); 
 
 	</script>
@@ -154,6 +143,10 @@
             
 	    <h4 style="color:#ec971f;">Generar Incidencias</h4>
             	<hr/>
+            	<div class="col-lg-11" style=" text-aling: justify;">
+            	 <p align="justify"><center><b><font face="univers" size=3>***Porfavor actualice su correo electrónico, ya que las respuestas a sus problema seran respondidas a su correo electrónico. ***</font></b></center></p>
+				</div>
+			     <br>
             <div class="col-lg-6">
 			 <div class="row">
 		     <div class="col-xs-6 col-md-6">
@@ -194,7 +187,7 @@
 		     <div class="row">
 		     <div class="col-xs-12 col-md-12">
 			  	<p  class="formulario-subtitulo" >Seleccionar:</p>
-			  	<input type="file" id="image_incidencia" accept="image/*" name="image_incidencia[]" onchange="loadFile(event)" multiple/>
+			  	<input type="file" id="image_incidencia" class="form-control" accept="image/*" name="image_incidencia[]" onchange="loadFile(event)" multiple/>
 	          </div>
 		    <div class="col-xs-12 col-md-12" style="height: 300px;">
 			  	<p  class="formulario-subtitulo" >Archivos:</p>

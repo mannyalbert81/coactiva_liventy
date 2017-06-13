@@ -167,7 +167,7 @@
          <!-- comienxza busqueda  -->
          <div class="col-lg-12" style="margin-top: 10px">
          
-       	 <h4 style="color:#ec971f;">INCIDENCIAS</h4>
+       	 <h4 style="color:#ec971f;">RESPONDER INCIDENCIAS</h4>
 		 </div>
 		 
 		 
@@ -186,12 +186,12 @@
         <table class="table table-hover ">
 	         <tr >
 	            
-				<th style="color:#456789;font-size:80%;"><b>Id</b></th>
+				<th style="color:#456789;font-size:80%;"></th>
 	    		<th style="color:#456789;font-size:80%;">Descripcion</th>
 	    		<th style="color:#456789;font-size:80%;">Usuario</th>
 	    		<th style="color:#456789;font-size:80%;">Asunto</th>
 	    		<th style="color:#456789;font-size:80%;">Fecha</th>
-	    		<th style="color:#456789;font-size:80%;">Imagen</th>
+	    		<th style="color:#456789;font-size:80%;"></th>
 	    	
 	    		<th></th>
 	  		</tr>
@@ -200,14 +200,14 @@
 	        		<tr>
 	        		
 	        		  
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->id_incidencia; ?></td>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->descripcion_incidencia; ?>     </td> 
+	                   <td> <input type="image" name="image" src="view/DevuelveImagen.php?id_valor=<?php echo $res->id_incidencia; ?>&id_nombre=id_incidencia&tabla=incidencia&campo=imagen_incidencia"  alt="<?php echo $res->id_incidencia; ?>" width="80" height="60" >      </td>
+		               <td style="color:#000000;font-size:80%;"> <?php echo $res->descripcion_incidencia; ?>     </td> 
 		               <td style="color:#000000;font-size:80%;"> <?php echo $res->id_usuario; ?>     </td> 
 		               <td style="color:#000000;font-size:80%;"> <?php echo $res->asunto_incidencia; ?>     </td> 
 		               <td style="color:#000000;font-size:80%;"> <?php echo $res->creado; ?>     </td> 
 		               <td style="color:#000000;font-size:80%;">
 		                  <?php //$datoscuenta=$res->id_plan_cuentas.','.$res->codigo_plan_cuentas.','.$res->nombre_plan_cuentas; ?>
-			              <a  title="<?php echo $res->id_usuario; ?>" id="<?php echo $res->id_incidencia; ?>"  href="javascript:null()" class="btn btn-warning" onclick="respuesta_incidencias(this);" style="font-size:85%;">Respuesta</a>
+			              <a  title="<?php echo $res->id_usuario; ?>" id="<?php echo $res->id_incidencia; ?>"  href="javascript:null()" class="btn btn-warning" onclick="respuesta_incidencias(this);" style="font-size:85%;">Responder</a>
 			           </td> 
 		    		</tr>
 		        <?php } }  ?>
