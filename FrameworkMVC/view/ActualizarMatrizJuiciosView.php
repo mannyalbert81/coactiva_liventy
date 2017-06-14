@@ -1,8 +1,7 @@
   	   <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
-       <?php include("view/MATRIZJUICIOS/modal/modal_matriz_juicios.php");?>
-
+       
 <!DOCTYPE HTML>
 <html lang="es">
 
@@ -146,7 +145,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","index3"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      <form action="<?php echo $helper->url("MatrizJuicios","index3"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
                <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
             
