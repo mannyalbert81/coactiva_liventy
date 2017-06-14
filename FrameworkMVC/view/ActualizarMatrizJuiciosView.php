@@ -1,7 +1,6 @@
   	   <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
-     
 
 <!DOCTYPE HTML>
 <html lang="es">
@@ -45,13 +44,6 @@
          
   
    
-  
- 
- 
-	
-  
-  
-
         
     <script type="text/javascript">
 	$(document).ready(function(){
@@ -145,7 +137,9 @@
   
        <!-- empieza el form --> 
        
-        
+
+         
+
                <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
               <form action="<?php echo $helper->url("MatrizJuicios","ActualizarMatriz"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
      

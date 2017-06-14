@@ -1,12 +1,8 @@
 <?php
-
 class MatrizJuiciosController extends ControladorBase{
-
 	public function __construct() {
 		parent::__construct();
 	}
-
-
 	public function index(){
 	
 		    session_start();
@@ -1079,7 +1075,6 @@ class MatrizJuiciosController extends ControladorBase{
 							{
 								
 				
-
 								$parametros = array();
 								$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
 								$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
@@ -2202,6 +2197,8 @@ class MatrizJuiciosController extends ControladorBase{
 		{
 			if(isset($_POST["id_juicios"]))
 			{
+				$_cantidad_clientes = 0;
+				$_cantidad_garantes = 0;
 				
 				$_id_juicios= $_POST["id_juicios"];
 				$_orden= $_POST["orden"];
@@ -2267,8 +2264,16 @@ class MatrizJuiciosController extends ControladorBase{
 			{
 				$_identificacion_clientes= $_POST["identificacion_clientes"];
 				$_nombres_clientes= $_POST["nombres_clientes"];
+				if ( $_nombres_clientes !=""  )
+				{
+					$_cantidad_clientes = 1;
+				}
 				$_nombre_garantes= $_POST["nombre_garantes"];
 				$_identificacion_garantes= $_POST["identificacion_garantes"];
+				if ( $_nombre_garantes !=""  )
+				{
+					$_cantidad_garantes = 1;
+				}
 				$_nombre_provincias= $_POST["nombre_provincias"];
 				$_id_provincias= $_POST["id_provincias"];
 				$_id_clientes= $_POST["id_clientes"];
@@ -2277,16 +2282,55 @@ class MatrizJuiciosController extends ControladorBase{
 				
 				$_identificacion_clientes_1= $_POST["identificacion_clientes_1"];
 				$_nombre_clientes_1= $_POST["nombre_clientes_1"];
+				
+				if ( $_nombre_clientes_1 !=""  )
+				{
+					$_cantidad_clientes = 2;
+				}
 				$_identificacion_clientes_2= $_POST["identificacion_clientes_2"];
 				$_nombre_clientes_2= $_POST["nombre_clientes_2"];
+				
+				if ( $_nombre_clientes_2 !=""  )
+				{
+					$_cantidad_clientes = 3;
+				}
+				
 				$_identificacion_clientes_3= $_POST["identificacion_clientes_3"];
 				$_nombre_clientes_3= $_POST["nombre_clientes_3"];
+				
+				
+				if ( $_nombre_clientes_3 !=""  )
+				{
+					$_cantidad_clientes = 4;
+				}
+				
 				$_identificacion_garantes_1= $_POST["identificacion_garantes_1"];
 				$_nombre_garantes_1= $_POST["nombre_garantes_1"];
+				
+				if ( $_nombre_garantes_1 !=""  )
+				{
+					$_cantidad_garantes = 2;
+				}
+				
+				
 				$_identificacion_garantes_2= $_POST["identificacion_garantes_2"];
 				$_nombre_garantes_2= $_POST["nombre_garantes_2"];
+				
+				if ( $_nombre_garantes_2 !=""  )
+				{
+					$_cantidad_garantes = 3;
+				}
+				
+				
+				
 				$_identificacion_garantes_3= $_POST["identificacion_garantes_3"];
 				$_nombre_garantes_3= $_POST["nombre_garantes_3"];
+				
+				if ( $_nombre_garantes_3 !=""  )
+				{
+					$_cantidad_garantes = 4;
+				}
+				
 				
 				
 				$_correo_clientes= $_POST["correo_clientes"];
@@ -2322,7 +2366,11 @@ class MatrizJuiciosController extends ControladorBase{
 				direccion_clientes='$_direccion_clientes',
 				direccion_clientes_1='$_direccion_clientes_1',
 				direccion_clientes_2='$_direccion_clientes_2',
-				direccion_clientes_3='$_direccion_clientes_3'";
+				direccion_clientes_3='$_direccion_clientes_3',
+				cantidad_clientes='$_cantidad_clientes',
+				cantidad_garantes='$_cantidad_garantes' 
+				
+				";
 				
 				
 				
@@ -2347,7 +2395,6 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			if(isset($_POST["id_titulo_credito"]))
 			{
-
 				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
 				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
@@ -2377,6 +2424,10 @@ class MatrizJuiciosController extends ControladorBase{
 					
 				
 			}
+			
+			
+			
+			
 			$this->redirect("MatrizJuicios", "index3");
 		}
 		else
@@ -2413,7 +2464,6 @@ class MatrizJuiciosController extends ControladorBase{
 	
 	
 	
-
 	public function index3(){
 	
 		session_start();
