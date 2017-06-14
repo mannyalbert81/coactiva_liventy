@@ -1,7 +1,7 @@
   	   <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
-       <?php include("view/MATRIZJUICIOS/modal/modal_matriz_juicios.php");?>
+     
 
 <!DOCTYPE HTML>
 <html lang="es">
@@ -22,8 +22,7 @@
         <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
         
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-          <script type="text/javascript" src="view/MATRIZJUICIOS/js/VentanaCentrada.js"></script>
-          <script type="text/javascript" src="view/MATRIZJUICIOS/js/procesos_matriz_juicios.js"></script>
+         
  		
  		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 		
@@ -146,10 +145,10 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","index3"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
-         
+        
                <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-            
+              <form action="<?php echo $helper->url("MatrizJuicios","ActualizarMatriz"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+     
                        <br>         
          <div class="col-lg-12">
 	         <div class="panel panel-info">
@@ -476,10 +475,11 @@
 			<br>
 			
 			</div>
-            
+            </form>
             
 		     <?php } } else {?>
-                 
+               <form action="<?php echo $helper->url("MatrizJuicios","index3"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+         
                  <br>         
          <div class="col-lg-12">
 	         <div class="panel panel-info">
@@ -548,9 +548,8 @@
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
-	  <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte Providencia"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Providencias</button>
-		 	
+		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
+	 	 	
 	 
 	     </div>
 		 
