@@ -199,6 +199,17 @@
 				        <input type='text' class='form-control' id='nombres_clientes' name='nombres_clientes' value="<?php echo $resEdit->nombres_clientes; ?>"  >
 				        </div>
 				        </div>	
+						
+						<div class = 'col-xs-6 col-md-1'>
+				        <div class='form-group'>
+				        <label for='sexo_clientes' class='control-label'>Sexo</label><br>
+						<select name="sexo_clientes" id="sexo_clientes"  class="form-control">
+							<option value="" selected="selected">---</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_clientes =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_clientes =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>	
 
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
@@ -206,7 +217,7 @@
 				        <input type='email' class='form-control' id='correo_clientes' name='correo_clientes' value="<?php echo $resEdit->correo_clientes; ?>"  >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-6 col-md-4'>
+				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='direccion_clientes' class='control-label'>Dirección Cliente 1</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes' name='direccion_clientes' value="<?php echo $resEdit->direccion_clientes; ?>"  >
@@ -226,13 +237,24 @@
 				        </div>
 				        </div>
 
+						<div class = 'col-xs-6 col-md-1'>
+				        <div class='form-group'>
+				        <label for='sexo_clientes_1' class='control-label'>Sexo</label><br>
+						<select name="sexo_clientes_1" id="sexo_clientes_1"  class="form-control">
+							<option value="" selected="selected">---</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_clientes_1 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_clientes_1 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='correo_clientes_1' class='control-label'>Correo Cliente 2</label><br>
 				        <input type='email' class='form-control' id='correo_clientes_1' name='correo_clientes_1' value="<?php echo $resEdit->correo_clientes_1; ?>"  >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-6 col-md-4'>
+				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='direccion_clientes_1' class='control-label'>Dirección Cliente 2</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_1' name='direccion_clientes_1' value="<?php echo $resEdit->direccion_clientes_1; ?>" >
@@ -253,13 +275,24 @@
 				        </div>
 				        </div>
 
+						<div class = 'col-xs-6 col-md-1'>
+				        <div class='form-group'>
+				        <label for='sexo_clientes_2' class='control-label'>Sexo</label><br>
+						<select name="sexo_clientes_2" id="sexo_clientes_2"  class="form-control">
+							<option value="" selected="selected">---</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_clientes_2 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_clientes_2 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='correo_clientes_2' class='control-label'>Correo Cliente 3</label><br>
 				        <input type='email' class='form-control' id='correo_clientes_2' name='correo_clientes_2' value="<?php echo $resEdit->correo_clientes_2; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-6 col-md-4'>
+				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='direccion_clientes_2' class='control-label'>Dirección Cliente 3</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_2' name='direccion_clientes_2' value="<?php echo $resEdit->direccion_clientes_2; ?>"  >
@@ -278,6 +311,17 @@
 				        <input type='text' class='form-control' id='nombre_clientes_3' name='nombre_clientes_3' value="<?php echo $resEdit->nombre_clientes_3; ?>"  >
 				        </div>
 				        </div>
+						
+						<div class = 'col-xs-6 col-md-1'>
+				        <div class='form-group'>
+				        <label for='sexo_clientes_3' class='control-label'>Sexo</label><br>
+						<select name="sexo_clientes_3" id="sexo_clientes_3"  class="form-control">
+							<option value="" selected="selected">---</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_clientes_3 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_clientes_3 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
 
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
@@ -285,7 +329,7 @@
 				        <input type='email' class='form-control' id='correo_clientes_3' name='correo_clientes_3' value="<?php echo $resEdit->correo_clientes_3; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-6 col-md-4'>
+				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='direccion_clientes_3' class='control-label'>Dirección Cliente 4</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_3' name='direccion_clientes_3' value="<?php echo $resEdit->direccion_clientes_3; ?>"  >
@@ -304,6 +348,8 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Garante</h4>
 	         </div>
 	         <div class="panel-body">
+	        		   
+	        		    <div class = 'row'>
 						<div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes' class='control-label'>Cedula Garante 1</label><br>
@@ -317,6 +363,19 @@
 				        </div>
 				        </div>	
 
+						<div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='sexo_garantes' class='control-label'>Sexo</label><br>
+						<select name="sexo_garantes" id="sexo_garantes"  class="form-control">
+							<option value="" selected="selected">--Seleccione--</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_garantes =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_garantes =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        </div>	
+				        
+				        <div class = 'row'>
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_1' class='control-label'>Cedula Garante 2</label><br>
@@ -330,6 +389,19 @@
 				        </div>
 				        </div>	
 
+						<div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='sexo_garantes_1' class='control-label'>Sexo</label><br>
+						<select name="sexo_garantes_1" id="sexo_garantes_1"  class="form-control">
+							<option value="" selected="selected">--Seleccione--</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_garantes_1 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_garantes_1 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        </div>
+				         
+				        <div class = 'row'>
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_2' class='control-label'>Cedula Garante 3</label><br>
@@ -343,6 +415,19 @@
 				        </div>
 				        </div>	
 
+						<div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='sexo_garantes_2' class='control-label'>Sexo</label><br>
+						<select name="sexo_garantes_2" id="sexo_garantes_2"  class="form-control">
+							<option value="" selected="selected">--Seleccione--</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_garantes_2 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_garantes_2 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        </div>
+				        
+				        <div class = 'row'>
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>
@@ -355,6 +440,19 @@
 				        <input type='text' class='form-control' id='nombre_garantes_3' name='nombre_garantes_3' value="<?php echo $resEdit->nombre_garantes_3; ?>"  >
 				        </div>
 				        </div>	
+				        
+				        <div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='sexo_garantes_3' class='control-label'>Sexo</label><br>
+						<select name="sexo_garantes_3" id="sexo_garantes_3"  class="form-control">
+						<option value="" selected="selected">--Seleccione--</option>
+										<option value="M"  <?php  if ( $resEdit->sexo_garantes_3 =='M')  echo ' selected="selected" ' ; ?> >M </option>
+						            	<option value="F" <?php  if ( $resEdit->sexo_garantes_3 =='F')  echo ' selected="selected" ' ; ?> >F </option>
+					    </select>
+  						</div>
+				        </div>
+				        </div>
+				        
 		    </div>
 		</div>
 		

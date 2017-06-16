@@ -87,6 +87,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								 clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -191,7 +201,6 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';
 								$html.='<tr class="info">';
-								$html.='<th style="color:#456789; font-size:80%;"><input type="checkbox" id="marcar_todo" class="checkbox"> </th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
@@ -247,8 +256,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$i++;
 						
 									$html.='<tr>';
-									$html.='<th style="color:#456789;font-size:80%;"><input type="checkbox" id="id_juicios[]"   name="id_juicios[]"  value="'.$res->id_juicios.'" class="marcados"></th>';
-	                				$html.='<td style="font-size: 9px;">'.$i.'</td>';
+									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
@@ -288,7 +296,9 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-							    	//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									 
 									$html.='</tr>';
 						
 										
@@ -461,7 +471,7 @@ class MatrizJuiciosController extends ControladorBase{
 					
 					
 				$permisos_rol = new PermisosRolesModel();
-				$nombre_controladores = "MatrizJuicios";
+				$nombre_controladores = "MatrizJuiciosSecretarios";
 				$id_rol= $_SESSION['id_rol'];
 				$resultPer = $juicios->getPermisosVer("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
 					
@@ -508,6 +518,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -708,7 +728,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 									//$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									//$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 				
 				
@@ -752,7 +772,9 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-							
+							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+								
 								
 							$pagina="contProvidenciaSuspension.aspx";
 								
@@ -888,6 +910,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+									clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1237,6 +1269,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1433,8 +1475,7 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 									//$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
-										
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 	
 	
@@ -1477,7 +1518,9 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-	
+							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+								
 								
 							$pagina="contAvocoConocimiento.aspx";
 							$conexion_rpt = array();
@@ -1558,7 +1601,7 @@ class MatrizJuiciosController extends ControladorBase{
 				
 			//rol secretario
 				
-				
+				/*
 				
 				
 			if ($id_rol==5){
@@ -1648,6 +1691,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -1847,9 +1900,8 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-									//$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+								//	$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 										
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' " target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 									$html.='</tr>';
 	
 	
@@ -1962,7 +2014,7 @@ class MatrizJuiciosController extends ControladorBase{
 					
 			}
 				
-			
+			*/
 	
 		}
 		else
@@ -2102,79 +2154,172 @@ class MatrizJuiciosController extends ControladorBase{
 	}
 	
 	
-	
-	
+	public function Imprimir_Providencia_Datos()
+	{
+		session_start();
+		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+			$datos=array();
+			
+
+			if(isset($_GET["id_juicios"]) && isset($_GET["id_clientes"])&& isset($_GET["id_titulo_credito"]))
+			{
+				$id_juicios= $_GET['id_juicios'];
+				$id_clientes= $_GET['id_clientes'];
+				$id_titulo_credito= $_GET['id_titulo_credito'];
+				$juicio_referido_titulo_credito= $_GET['juicio_referido_titulo_credito'];
+				$numero_titulo_credito= $_GET['numero_titulo_credito'];
+				$nombres_clientes= $_GET['nombres_clientes'];
+				
+				
+				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
+					
+			}
+			
+			
+			$this->view("FechasJuiciosProvidencias",array(
+					"datos"=>$datos
+						
+			));
+			
+		}
+		else 
+		{
+			$this->view("Error",array(
+					"resultado"=>"Debe Iniciar Sesion"
+		
+			));
+		}
+	}
 	
 	public function Imprimir_Providencia()
 	{
+		
 		session_start();
-		if(isset($_REQUEST['id_juicios']))
+		
+		if(isset($_POST['generar']))
 		{
-	
-			$id_juicios= $_GET['id_juicios'];
-			$id_clientes= $_GET['id_clientes'];
-			$id_titulo_credito= $_GET['id_titulo_credito'];
-				
+		
 			
-				$parametros = array();
-	
-				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
-				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
-				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-	
-				$pagina="contProvidenciaSuspension.aspx";
+			$id_juicios= $_POST['id_juicios'];
+			$id_clientes= $_POST['id_clientes'];
+			$id_titulo_credito= $_POST['id_titulo_credito'];
+			$fecha_providencias= $_POST['fecha_providencias'];
+			$hora_providencias= $_POST['hora_providencias'];
+			$razon_providencias= $_POST['razon_providencias'];
+			
+			
 				
-				$conexion_rpt = array();
-				$conexion_rpt['pagina']=$pagina;
-				//$conexion_rpt['port']="59584";
-	
-				$this->view("ReporteRpt", array(
-						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
-				));
-	
-	
-				die();
-	
+			$parametros = array();
+			
+			$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+			$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+			$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+			$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+			$parametros['fecha_providencias']=isset($fecha_providencias)?trim($fecha_providencias):0;
+			$parametros['hora_providencias']=isset($hora_providencias)?trim($hora_providencias):0;
+			$parametros['razon_providencias']=isset($razon_providencias)?trim($razon_providencias):'';
+			
+			$pagina="contProvidenciaSuspension.aspx";
+			
+			$conexion_rpt = array();
+			$conexion_rpt['pagina']=$pagina;
+			
+			$this->view("ReporteRpt", array(
+					"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			));
+			
+			
+			die();
+			
+			
 		}
-	
+		
 	}
 	
+	public function Imprimir_AvocoConocimiento_Datos()
+	{
+		session_start();
 	
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+			$datos=array();
+				
+	
+			if(isset($_GET["id_juicios"]) && isset($_GET["id_clientes"])&& isset($_GET["id_titulo_credito"]))
+			{
+				$id_juicios= $_GET['id_juicios'];
+				$id_clientes= $_GET['id_clientes'];
+				$id_titulo_credito= $_GET['id_titulo_credito'];
+				$juicio_referido_titulo_credito= $_GET['juicio_referido_titulo_credito'];
+				$numero_titulo_credito= $_GET['numero_titulo_credito'];
+				$nombres_clientes= $_GET['nombres_clientes'];
+	
+	
+				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
+					
+			}
+				
+				
+			$this->view("FechasJuiciosAvocoConocimiento",array(
+					"datos"=>$datos
+	
+			));
+				
+		}
+		else
+		{
+			$this->view("Error",array(
+					"resultado"=>"Debe Iniciar Sesion"
+	
+			));
+		}
+	}
 	
 	
 	public function Imprimir_AvocoConocimiento()
 	{
 		session_start();
-		if(isset($_REQUEST['id_juicios']))
+		if(isset($_POST['generar']))
 		{
-	
-			$id_juicios= $_GET['id_juicios'];
-			$id_clientes= $_GET['id_clientes'];
-			$id_titulo_credito= $_GET['id_titulo_credito'];
-	
+		
 				
+			$id_juicios= $_POST['id_juicios'];
+			$id_clientes= $_POST['id_clientes'];
+			$id_titulo_credito= $_POST['id_titulo_credito'];
+			$fecha_avoco= $_POST['fecha_avoco'];
+			$hora_avoco= $_POST['hora_avoco'];
+			$razon_avoco= $_POST['razon_avoco'];
+		
 			$parametros = array();
-	
+				
 			$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
 			$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
 			$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-			$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-	
+			$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+			$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+			$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+			$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+			
 			$pagina="contAvocoConocimiento.aspx";
-	
+				
 			$conexion_rpt = array();
 			$conexion_rpt['pagina']=$pagina;
-			//$conexion_rpt['port']="59584";
-	
+				
 			$this->view("ReporteRpt", array(
 					"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
 			));
-	
-	
+				
+				
 			die();
-	
+				
+				
 		}
+		
+		
+		
+		
 	
 	}
 	
@@ -2341,6 +2486,18 @@ class MatrizJuiciosController extends ControladorBase{
 				$_direccion_clientes_1= $_POST["direccion_clientes_1"];
 				$_direccion_clientes_2= $_POST["direccion_clientes_2"];
 				$_direccion_clientes_3= $_POST["direccion_clientes_3"];
+				
+				
+				
+				$_sexo_clientes = $_POST["sexo_clientes"];
+				$_sexo_clientes_1 = $_POST["sexo_clientes_1"];
+				$_sexo_clientes_2 = $_POST["sexo_clientes_2"];
+				$_sexo_clientes_3 = $_POST["sexo_clientes_3"];
+				$_sexo_garantes = $_POST["sexo_garantes"];
+				$_sexo_garantes_1 = $_POST["sexo_garantes_1"];
+				$_sexo_garantes_2 = $_POST["sexo_garantes_2"];
+				$_sexo_garantes_3 = $_POST["sexo_garantes_3"];
+				
 			
 				$colval="identificacion_clientes='$_identificacion_clientes',
 				nombres_clientes='$_nombres_clientes',
@@ -2368,9 +2525,15 @@ class MatrizJuiciosController extends ControladorBase{
 				direccion_clientes_2='$_direccion_clientes_2',
 				direccion_clientes_3='$_direccion_clientes_3',
 				cantidad_clientes='$_cantidad_clientes',
-				cantidad_garantes='$_cantidad_garantes' 
-				
-				";
+				cantidad_garantes='$_cantidad_garantes',
+				sexo_clientes='$_sexo_clientes',
+				sexo_clientes_1='$_sexo_clientes_1',
+				sexo_clientes_2='$_sexo_clientes_2',
+				sexo_clientes_3='$_sexo_clientes_3',
+				sexo_garantes='$_sexo_garantes',
+				sexo_garantes_1='$_sexo_garantes_1',
+				sexo_garantes_2='$_sexo_garantes_2',
+				sexo_garantes_3='$_sexo_garantes_3'";
 				
 				
 				
@@ -2548,6 +2711,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,
@@ -2660,26 +2833,34 @@ class MatrizJuiciosController extends ControladorBase{
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 1</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 1</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 2</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 3</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Sexo 4</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
@@ -2715,26 +2896,34 @@ class MatrizJuiciosController extends ControladorBase{
 									$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_clientes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_clientes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_clientes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_clientes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_garantes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_garantes_1.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_garantes_2.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->sexo_garantes_3.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
@@ -2793,8 +2982,6 @@ class MatrizJuiciosController extends ControladorBase{
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 								
-							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 								
 								
 								
@@ -2884,6 +3071,16 @@ class MatrizJuiciosController extends ControladorBase{
 								clientes.direccion_clientes_1,
 								clientes.direccion_clientes_2,
 								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
 								  provincias.id_provincias,
 								  provincias.nombre_provincias,
 								  titulo_credito.id_titulo_credito,

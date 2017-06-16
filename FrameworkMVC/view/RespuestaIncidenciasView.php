@@ -92,8 +92,10 @@
 			                    	 	 };
 				                 
 					                $.ajax({
+					                	 
 				                           url:"<?php echo $helper->url("RespuestaIncidencias","enviarRespuesta");?>"
-				                           ,type : "POST"
+				                          
+					                       ,type : "POST"
 				                           ,async: true
 				                           ,data : data
 				                           ,contentType: false
@@ -108,8 +110,7 @@
 					                           {
 					                        	//console.log('llego');
 				                                $('#modal_incidencia').dialog('close');
-				                                var header = "<?php echo $helper->url("RespuestaIncidencias","index"); ?>";
-				                                window.location = header;
+				                                
 				                                //loading();
 					                           }else
 					                           {
