@@ -175,6 +175,10 @@ $controladores=$_SESSION['controladores'];
           <a href="index.php?controller=MatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Providencia de Suspensión</span> </a>
           </li>	
           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=MatrizJuicios&action=index4"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Providencia de Levantamiento</span> </a>
+          </li>	
+          
+          <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index2"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Avoco Conocimiento</span> </a>
           </li>	
            <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">

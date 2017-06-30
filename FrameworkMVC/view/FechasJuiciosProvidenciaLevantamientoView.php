@@ -34,9 +34,9 @@
 		    $("#generar").click(function() 
 			{
 		   
-		    	var fecha_providencias = $("#fecha_providencias").val();
-		     	var hora_providencias = $("#hora_providencias").val();
-		     	var razon_providencias = $("#razon_providencias").val();
+		    	var fecha_providencias = $("#fecha_levantamiento").val();
+		     	var hora_providencias = $("#hora_levantamiento").val();
+		     	var razon_providencias = $("#razon_levantamiento").val();
 		    
 		   				
 		    	if (fecha_providencias == "")
@@ -84,14 +84,14 @@
 			}); 
 
 	
-				$( "#fecha_providencias" ).focus(function() {
+				$( "#fecha_levantamiento" ).focus(function() {
 					$("#mensaje_fecha").fadeOut("slow");
     			});
 
-				$( "#hora_providencias" ).focus(function() {
+				$( "#hora_levantamiento" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
-				$( "#razon_providencias" ).focus(function() {
+				$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
     			});
 				
@@ -143,7 +143,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
                  <!-- comienxza busqueda  -->
                  
@@ -151,7 +151,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Suspensión</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Levantamiento</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -160,7 +160,7 @@
   							
   		<div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Providencia:</p>
-			  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_levantamiento" id="fecha_levantamiento" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
@@ -170,7 +170,7 @@
 		 
 		  <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Hora Providencia:</p>
-			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="" class="form-control "/> 
+			  	<input type="time"  name="hora_levantamiento" id="hora_levantamiento" value="" class="form-control "/> 
 			    <div id="mensaje_hora" class="errores"></div>
 		 </div>
 		 
@@ -197,7 +197,7 @@
              <div class="col-xs-12 col-md-12">
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
-                                  <textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value=""  placeholder="Ingrese Razón"></textarea>
+                                  <textarea type="text"  class="form-control" id="razon_levantamiento" name="razon_levantamiento" value=""  placeholder="Ingrese Razón"></textarea>
                                  <div id="mensaje_razon" class="errores"></div>
              </div>
 		

@@ -79,7 +79,7 @@
 
 		$("#matriz").fadeIn('slow');
 		$.ajax({
-			url:"<?php echo $helper->url("MatrizJuicios","index");?>",
+			url:"<?php echo $helper->url("MatrizJuicios","index4");?>",
             type : "POST",
             async: true,			
 			data: con_datos,
@@ -138,7 +138,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      <form action="<?php echo $helper->url("MatrizJuicios","index4"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <!-- comienxza busqueda  -->
                  
@@ -146,7 +146,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Providencias Suspensión</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Providencias Levantamiento</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
