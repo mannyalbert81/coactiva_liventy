@@ -1,30 +1,42 @@
-<!DOCTYPE HTML>
-<html lang="es">
-    <head>
-        <meta charset="utf-8"/>
-        <title>Login Coactiva 2016</title>
-       
-       
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <?php include("view/modulos/head.php"); ?>
+  
+<!DOCTYPE html>
+<html>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		
-		
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   
-       
-        <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-        </style>
-        <style>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Login Maycol</title>
+	<link rel="stylesheet" href="view/css/bootstrap.css">
+    
+  <script src="view/js/jquery.js"></script>
+  <script src="view/js/bootstrap.min.js"></script>
+  <script src="view/js/bootstrapValidator.min.js"></script>
+  <script src="view/js/noty.js"></script>
+  <script src="view/js/ValidarLogin.js"></script>
+	
+	<script>
+   function verificar(){
+	   usuario = $('#usuarios').val();
+       pass = $('#clave').val();
+
+       //Comparamos si el usuario y la contraseña son correctos
+       if(usuario == "" || pass == ""){
+       	 nota("error","Los Datos Son Incorrectos.");
+       }
+
+        else{
+          
+        	
+       }
+       function nota(op,msg,time){
+   	    if(time == undefined)time = 1000;
+   	    var n = noty({text:msg,maxVisible: 1,type:op,killer:true,timeout:time,layout: 'inline'});
+   	  }
+        }
+   	
+	</script>
+   <style>
 			body {
 			
 			    /* Ubicación de la imagen */
@@ -48,100 +60,63 @@
 		
 		  /* Fijamos un color de fondo para que se muestre mientras se está
 		    cargando la imagen de fondo o si hay problemas para cargarla  */
-		  background-color: #464646;
+		  
 			}
-			</style>
-    </head>
-   
-   
-   
-    <body class="img-responsive" style="background-color: #d9e3e4;" >
-     <?php include("view/modulos/modal.php"); ?>
-     <?php include("view/modulos/head.php"); ?>
+			</style>	
+		
+</head >
+
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
        
    
-   
-        <form action="<?php echo $helper->url("usuarios","Loguear"); ?>" method="post"  class="col-lg-12" style=" padding-top:150px;">
-        
-        <div class="row">
-        
-        
-        	<div class="col-xs-2 col-md-2">
-        	</div>
-        	<div class="col-xs-8 col-md-4">
-        		<div class="col-xs-4 col-md-2">
-        		</div>
-        	    <div class="col-xs-8 col-md-8">
-		        	  <div   style="background:#d93e1b ;border-radius: 5px;  border: 1px solid #063B41;"  >
-		     		     <div class="row">
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-								<div class="col-xs-8 col-md-8">					
-									<h5 class="text-center" style="color: #ffffff;" >Inicio de Sesión</h5>
-								</div>
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-						</div>            	
-		            		
-		     		     
-		     		     
-		   
-		        		<div class="text-center"  >
-							<div class="row">
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-								<div class="col-xs-8 col-md-8">					
-									<input type="text" name="usuarios" class="form-control" placeholder="Usuario"  style="text-align: center; " />
-								</div>
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-							</div>            	
-		            		<div class="row">
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-								<div class="col-xs-8 col-md-8">					
-									<input type="password" name="clave" placeholder="Clave" class="form-control"  style="text-align: center; "/>
-								</div>
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-							</div>            	
-		            		
-		            		<div class="row">
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-								<div class="col-xs-8 col-md-8">					
-									<input type="submit" value="Login" class="btn btn-default" />
-								</div>
-								<div class="col-xs-2 col-md-2">					
-									
-								</div>
-							</div>            	
-		            		
-		            	
-		            	</div>
-		              </div>
-		          </div>
-		          <div class="col-xs-2 col-md-2">
-        		  </div>
-        	</div>
-            <div class="col-xs-2 col-md-2">
-        	</div>
-        	
+ <form id="form-login"  action="<?php echo $helper->url("Usuarios","Loguear"); ?>" method="post" class="col-lg-6" style="padding-top:100px;">
+                     
+    <div id="login-overlay" class="modal-dialog" style="padding-left: 100px">
+      <div class="modal-content">
           
-    	</div>    
-        </form>
-       
-   
+          <div class="modal-body">
+              
+              <div class="row" >
+               <div class="col-lg-6 col-md-6" >
+                      <div class="well">
+                              <div class="form-group">
+                                  <label for="usuarios" class="control-label">Usuario</label>
+                                  <input type="text" class="form-control" id="usuarios" name="usuarios" value=""  placeholder="Usuario">
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="clave" class="control-label">Password</label>
+                                  <input type="password" class="form-control" id="clave" name="clave" value="" placeholder="Password">
+                                  <span class="help-block"></span>
+                              </div>
+                             
+                              <button type="submit" class="btn btn-success btn-block" onclick="verificar()">Login</button>
+                               
+                      </div>
+                  </div>
+                  
+                		  <div class="col-lg-6 col-md-6">
+		                      <p class="lead">Consejos de Seguridad <span class="text-success"></span></p>
+		                      <ul class="list-unstyled" style="line-height: 2">
+		                          <li><span class="fa fa-check text-success"></span> Recuerda tu usuario y tu clave.</li>
+		                          <li><span class="fa fa-check text-success"></span> No enseñes a nadie tu clave.</li>
+		                          <li><span class="fa fa-check text-success"></span> La clave es personal.</li>
+		                          <li><span class="fa fa-check text-success"></span> Cuidala.</li>
+		                     
+		                      </ul>
+		                  </div>
+              </div>
+              
+          </div>
+      </div>
+ </div>
+ </form>
+ 
+ <br>
         
-    	<footer class="col-lg-12">
+        <footer class="col-lg-12">
            <?php include("view/modulos/footer.php"); ?>
-        </footer>     
-    </body>
+        </footer> 
+</body>
 </html>
