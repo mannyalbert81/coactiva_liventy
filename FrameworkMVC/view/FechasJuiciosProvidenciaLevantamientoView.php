@@ -36,9 +36,11 @@
 		   
 		    	var fecha_providencias = $("#fecha_levantamiento").val();
 		     	var hora_providencias = $("#hora_levantamiento").val();
-		     	var razon_providencias = $("#razon_levantamiento").val();
-		    
-		   				
+		     
+		        var numero_oficio  = $("#numero_oficio").val();
+		        var dirigido_levantamiento  = $("#dirigido_levantamiento").val();
+		    	var razon_providencias = $("#razon_levantamiento").val();
+		    			
 		    	if (fecha_providencias == "")
 		    	{
 			    	
@@ -67,6 +69,34 @@
 				}
 
 
+		    	
+
+		    	if (numero_oficio == "")
+		    	{
+			    	
+		    		$("#mensaje_numero_oficio").text("Introduzca # Oficio y Fecha");
+		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	if (dirigido_levantamiento == "")
+		    	{
+			    	
+		    		$("#mensaje_dirigido").text("Introduzca a quién va Dirigido");
+		    		$("#mensaje_dirigido").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_dirigido").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 		    	if (razon_providencias == "")
 		    	{
 			    	
@@ -80,7 +110,6 @@
 		            
 				}
 		    	
-		    	
 			}); 
 
 	
@@ -91,10 +120,18 @@
 				$( "#hora_levantamiento" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
+				
+
+				$( "#numero_oficio" ).focus(function() {
+					$("#mensaje_numero_oficio").fadeOut("slow");
+    			});
+				$( "#dirigido_levantamiento" ).focus(function() {
+					$("#mensaje_dirigido").fadeOut("slow");
+    			});
+
 				$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
     			});
-				
 					    
 		}); 
 
@@ -186,14 +223,24 @@
 			    
 		 </div>
 		 
-		   <div class="col-lg-2 col-md-2 xs-6">
+		 <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $datos['numero_titulo_credito']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		  
+		   <div class="col-lg-12 col-md-12 xs-6">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio:</p>
+			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio" class="errores"></div>
+		  </div>
 		   
+		    <div class="col-xs-12 col-md-12">
+		                          
+		                          <p class="formulario-subtitulo" >Dirigido A:</p>
+                                  <textarea type="text"  class="form-control" id="dirigido_levantamiento" name="dirigido_levantamiento" value=""  placeholder="Ingrese a quién va Dirigido"></textarea>
+                                 <div id="mensaje_dirigido" class="errores"></div>
+             </div>
              <div class="col-xs-12 col-md-12">
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>

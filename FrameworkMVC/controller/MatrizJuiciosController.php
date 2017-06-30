@@ -3681,6 +3681,8 @@ class MatrizJuiciosController extends ControladorBase{
 			$fecha_avoco= $_POST['fecha_levantamiento'];
 			$hora_avoco= $_POST['hora_levantamiento'];
 			$razon_avoco= $_POST['razon_levantamiento'];
+			$numero_oficio= $_POST['numero_oficio'];
+			$dirigido_levantamiento= $_POST['dirigido_levantamiento'];
 	
 			$parametros = array();
 	
@@ -3691,6 +3693,8 @@ class MatrizJuiciosController extends ControladorBase{
 			$parametros['fecha_levantamiento']=isset($fecha_avoco)?trim($fecha_avoco):0;
 			$parametros['hora_levantamiento']=isset($hora_avoco)?trim($hora_avoco):0;
 			$parametros['razon_levantamiento']=isset($razon_avoco)?trim($razon_avoco):'';
+			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			$parametros['dirigido_levantamiento']=isset($dirigido_levantamiento)?trim($dirigido_levantamiento):'';
 	
 			$pagina="contProvidenciaLevantamiento.aspx";
 	
