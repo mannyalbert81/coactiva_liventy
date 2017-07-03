@@ -42,6 +42,66 @@
             
         </style>
          
+     <script >
+		$(document).ready(function(){
+
+		    // cada vez que se cambia el valor del combo
+		    $("#actualizar").click(function() 
+			{
+		   
+		    	var fecha_emision_juicios = $("#fecha_emision_juicios").val();
+		     	var fecha_ultima_providencia = $("#fecha_ultima_providencia").val();
+		     	
+		    
+		   				
+		    	if (fecha_emision_juicios == "")
+		    	{
+			    	
+		    		$("#mensaje_fecha_emision_juicios").text("Introduzca una Fecha");
+		    		$("#mensaje_fecha_emision_juicios").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_fecha_emision_juicios").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	if (fecha_ultima_providencia == "")
+		    	{
+			    	
+		    		$("#mensaje_fecha_ultima_providencia").text("Introduzca una Fecha");
+		    		$("#mensaje_fecha_ultima_providencia").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_fecha_ultima_providencia").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	
+		    	
+		    	
+			}); 
+
+	
+				$( "#fecha_emision_juicios" ).focus(function() {
+					$("#mensaje_fecha_emision_juicios").fadeOut("slow");
+    			});
+
+				$( "#fecha_ultima_providencia" ).focus(function() {
+					$("#mensaje_fecha_ultima_providencia").fadeOut("slow");
+    			});
+				
+				
+					    
+		}); 
+
+	</script>
+	
   
    
         
@@ -472,6 +532,7 @@
 				        <div class='form-group'>
 				        <label for='fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>
 				        <input type='date' class='form-control' id='fecha_emision_juicios' name='fecha_emision_juicios' value="<?php echo $resEdit->fecha_emision_juicios; ?>"   >
+				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-6 col-md-2'>
@@ -516,6 +577,7 @@
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Providencia</label><br>
 				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' value="<?php echo $resEdit->fecha_ultima_providencia; ?>"  >
+				         <div id="mensaje_fecha_ultima_providencia" class="errores"></div>
 				        </div>
 				        </div>
 				        
@@ -557,8 +619,8 @@
 			
 			  <div class="row">
 			  <div class="col-xs-12 col-md-12" style="text-align: center;" >
-			  	<input type="submit" id="actualizar" name="actualizar"  onclick="this.form.action='<?php echo $helper->url("MatrizJuicios","ActualizarMatriz"); ?>'" value="Actualizar"  class="btn btn-info"/>
-		
+			   <button type="submit" id="actualizar" name="actualizar" value="Actualizar"   class="btn btn-success" style="margin-top: 10px;" > Actualizar</button>         
+	 	
 			  </div>
 			</div> 
 			<br>

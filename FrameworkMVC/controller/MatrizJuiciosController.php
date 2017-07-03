@@ -2359,16 +2359,18 @@ class MatrizJuiciosController extends ControladorBase{
 		$nombre_controladores = "ActualizarMatrizJuicios";
 		$id_rol= $_SESSION['id_rol'];
 		$resultPer = $permisos_rol->getPermisosEditar("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
-			
+		
+	
 		if (!empty($resultPer))
 		{
 			if(isset($_POST["id_juicios"]))
 			{
+			
 				$_cantidad_clientes = 0;
 				$_cantidad_garantes = 0;
 				
 				$_id_juicios= $_POST["id_juicios"];
-				$_orden= $_POST["orden"];
+				//$_orden= $_POST["orden"];
 				$_regional= $_POST["regional"];
 				$_juicio_referido_titulo_credito= $_POST["juicio_referido_titulo_credito"];
 				$_year_juicios= $_POST["year_juicios"];
@@ -2376,12 +2378,12 @@ class MatrizJuiciosController extends ControladorBase{
 				$_nombres_clientes= $_POST["nombres_clientes"];
 				$_nombre_garantes= $_POST["nombre_garantes"];
 				$_identificacion_garantes= $_POST["identificacion_garantes"];
-				$_nombre_provincias= $_POST["nombre_provincias"];
+				//$_nombre_provincias= $_POST["nombre_provincias"];
 				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
 				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_cuantia_inicial= $_POST["cuantia_inicial"];
 				$_riesgo_actual= $_POST["riesgo_actual"];
-				$_nombre_estados_procesales_juicios= $_POST["nombre_estados_procesales_juicios"];
+				//$_nombre_estados_procesales_juicios= $_POST["nombre_estados_procesales_juicios"];
 				$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
 				$_estrategia_seguir= $_POST["estrategia_seguir"];
@@ -2407,18 +2409,22 @@ class MatrizJuiciosController extends ControladorBase{
 				cuantia_inicial='$_cuantia_inicial',
 				riesgo_actual='$_riesgo_actual'";
 				
+			
+				
 				$tabla1="juicios";
-				$where1="id_juicios='$_id_juicios' AND id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+				$where1="id_juicios='$_id_juicios'";
 	
 				try {
 						
 					$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
 					
-						$respuesta='1';
+						
 					
 						
 				}catch (Exception $ex)
 				{
+					
+					die($ex);
 						
 				}
 	
@@ -2429,6 +2435,8 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			if(isset($_POST["id_clientes"]))
 			{
+				
+				
 				$_identificacion_clientes= $_POST["identificacion_clientes"];
 				$_nombres_clientes= $_POST["nombres_clientes"];
 				if ( $_nombres_clientes !=""  )
@@ -2441,7 +2449,7 @@ class MatrizJuiciosController extends ControladorBase{
 				{
 					$_cantidad_garantes = 1;
 				}
-				$_nombre_provincias= $_POST["nombre_provincias"];
+				//$_nombre_provincias= $_POST["nombre_provincias"];
 				$_id_provincias= $_POST["id_provincias"];
 				$_id_clientes= $_POST["id_clientes"];
 				
@@ -2566,7 +2574,7 @@ class MatrizJuiciosController extends ControladorBase{
 			
 					$resultado=$clientes->UpdateBy($colval, $tabla, $where);
 						
-					$respuesta='1';
+					
 						
 			
 				}catch (Exception $ex)
@@ -2580,6 +2588,7 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			if(isset($_POST["id_titulo_credito"]))
 			{
+				
 				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
 				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
@@ -2599,7 +2608,7 @@ class MatrizJuiciosController extends ControladorBase{
 						
 					$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
 			
-					$respuesta='1';
+					
 			
 						
 				}catch (Exception $ex)
@@ -2610,7 +2619,7 @@ class MatrizJuiciosController extends ControladorBase{
 				
 			}
 			
-			
+		
 			
 			
 			$this->redirect("MatrizJuicios", "index3");
