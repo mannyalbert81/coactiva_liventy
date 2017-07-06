@@ -181,16 +181,18 @@ $controladores=$_SESSION['controladores'];
           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index2"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Avoco Conocimiento</span> </a>
           </li>	
-           <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
+          <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Consulta Matriz Juicios</span> </a>
           </li>
           <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Matriz Juicios</span> </a>
           </li>	
            <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
-          <a href="index.php?controller=GraficasMatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Graficas</span> </a>
+          <a href="index.php?controller=GraficasMatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Consulta Gráficas</span> </a>
           </li>	
-         
+          <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
+          <a href="index.php?controller=GraficasMatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Consulta Gráficas</span> </a>
+          </li>
 </ul>
 </li>
 <!-- 

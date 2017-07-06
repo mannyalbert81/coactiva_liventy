@@ -102,10 +102,12 @@
   			<div id="modal_edit_cuenta"></div>
   			
   		 <div class="col-lg-2 col-md-2 col-xs-6">
-			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
-			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
-			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
-			     
+			  	<p  class="formulario-subtitulo" style="" >Impulsores:</p>
+			  	<select name="id_abogado" id="id_abogado"  class="form-control">
+			     <option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultImpul as $res) {?>
+						<option value="<?php echo $res->id_abogado; ?>"<?php if($sel_id_abogado==$res->id_abogado){echo "selected";}?> ><?php echo $res->impulsores;  ?> </option>
+			            <?php } ?>
 			    </select>
 		 </div>
   							
@@ -163,7 +165,9 @@
 	        </div>
          
          
-       <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
+        		 
+		 
+		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    <div class="col-lg-12">
 	    <div class="panel panel-info">
 		<div id="canvas-holder">
