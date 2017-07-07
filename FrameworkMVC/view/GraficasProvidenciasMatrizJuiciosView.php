@@ -48,7 +48,7 @@
        	foreach($resultEstadoProcesal_grafico as $res) {
        		 
        		$data.="'";
-       		$data.=$res->modificado."',";
+       		$data.=$res->fecha_ultima_providencia."',";
        		 
        	}
        	 
