@@ -149,8 +149,8 @@
 			
 		    <div class="panel panel-default">
   			<div class="panel-body">
-  				<div id="modal_edit_cuenta"></div>
-  		 <div class="col-lg-2 col-md-2 col-xs-6">
+  			
+  		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsores:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control">
 			     <option value="0"><?php echo "--TODOS--";  ?> </option>

@@ -152,9 +152,8 @@
 			 <div class="panel panel-default">
   			<div class="panel-body">
   			
-  			<div id="modal_edit_cuenta"></div>
   			
-  		 <div class="col-lg-2 col-md-2 col-xs-6">
+  		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  

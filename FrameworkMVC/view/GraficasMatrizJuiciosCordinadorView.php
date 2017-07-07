@@ -142,7 +142,16 @@
 	</script>
     
     
-      
+     <script type="text/javascript">
+     function imprimir(){
+    	  var objeto=document.getElementById('chart-area');  //obtenemos el objeto a imprimir
+    	  var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
+    	  ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
+    	  ventana.document.close();  //cerramos el documento
+    	  ventana.print();  //imprimimos la ventana
+    	  ventana.close();  //cerramos la ventana
+    	}
+     </script>
        
        <?php
        
@@ -277,21 +286,32 @@
   		<div class="col-lg-12" style="text-align: center; margin-top: 10px">
   		    
 		 <button type="submit" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		
-	     </div>
+	  
+	   
+	   </div>
+	   
 		 
 		</div>
 		    
 		    </div>
 	        </div>
 	        </div>
+          </form> 
          
+         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      
          
         		 
 		 
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    <div class="col-lg-12">
 	    <div class="panel panel-info">
+	       <div class="row">
+			  <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center;" >
+			   <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
+	  
+			  </div>
+			</div> 
 		<div id="canvas-holder">
 		<canvas id="chart-area" width="600" height="300"></canvas>
 		</div>

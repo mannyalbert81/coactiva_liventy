@@ -83,6 +83,36 @@ public function index(){
 				
 			}
 				
+			if(isset($_POST["reporte_rpt"]))
+			{
+					
+					
+				$parametros = array();
+				$parametros['id_abogado']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+					
+				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+					
+					
+					
+				$pagina="contGraficas.aspx";
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+			
+					
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+					
+				die();
+					
+			}
 				
 				
 				
@@ -198,7 +228,36 @@ public function index(){
 	
 			}
 	
-	
+			if(isset($_POST["reporte_rpt"]))
+			{
+			
+					
+				$parametros = array();
+				$parametros['id_secretario']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+				$parametros['id_abogado']=isset($_POST['id_abogado'])?trim($_POST['id_abogado']):0;
+				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+			
+			
+				$pagina="contGraficas.aspx";
+			
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				//$conexion_rpt['port']="59584";
+			
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+			
+				die();
+			
+			}
 	
 	
 			$this->view("GraficasMatrizJuiciosSecretarios",array(
@@ -293,15 +352,10 @@ public function index(){
 		
 		
 				if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
-		
 				if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
-		
 				if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-		
 				if($id_ciudad!=0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
-		
 				if($id_secretario!=0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
-					
 				if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
 		
 			
@@ -309,6 +363,34 @@ public function index(){
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 				
 		
+			}
+			
+			if(isset($_POST["reporte_rpt"]))
+			{
+			
+			
+				$parametros = array();
+				$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
+				$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
+				$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
+				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+					
+			
+				$pagina="contGraficas.aspx";
+			
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				//$conexion_rpt['port']="59584";
+			
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+			
+				die();
+			
 			}
 		
 			$this->view("GraficasMatrizJuiciosCordinador",array(

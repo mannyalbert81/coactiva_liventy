@@ -85,7 +85,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" >
+      <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
                  <!-- comienxza busqueda  -->
                  
@@ -99,9 +99,9 @@
 			 <div class="panel panel-default">
   			<div class="panel-body">
   			
-  			<div id="modal_edit_cuenta"></div>
   			
-  		 <div class="col-lg-2 col-md-2 col-xs-6">
+  			
+  		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
@@ -161,11 +161,20 @@
 		    </div>
 	        </div>
 	        </div>
+         </form> 
          
-         
+         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      
        <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
-	    <div class="col-lg-12">
+	    <div class="col-lg-12 col-xs-12 col-md-12">
 	    <div class="panel panel-info">
+	     <div class="row">
+			  <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center;" >
+			   <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
+	  
+			  </div>
+			</div> 
+	   
 		<div id="canvas-holder">
 		<canvas id="chart-area" width="600" height="300"></canvas>
 		</div>
