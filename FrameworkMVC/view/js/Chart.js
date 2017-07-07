@@ -20,7 +20,7 @@
 	//Occupy the global variable of Chart, and create a simple base class
 	var Chart = function(context){
 		var chart = this;
-		this.canvas = context.canvas;
+		this.canvas = context.canvas; 
 
 		this.ctx = context;
 
