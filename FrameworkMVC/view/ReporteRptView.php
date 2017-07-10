@@ -62,7 +62,7 @@
    }
    $cadena_param=trim($cadena_param,'&');
    
-   //die ($cadena_param);
+  // die ($cadena_param);
    $url.=$cadena_param;
    $url;
    
