@@ -244,7 +244,6 @@ public function index(){
 				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
 				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 			
-			
 				$pagina="contGraficas.aspx";
 			
 				$conexion_rpt = array();
@@ -393,6 +392,7 @@ public function index(){
 			
 			}
 		
+			
 			$this->view("GraficasMatrizJuiciosCordinador",array(
 					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos
 	

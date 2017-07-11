@@ -285,8 +285,12 @@
   		
   		<div class="col-lg-12" style="text-align: center; margin-top: 10px">
   		    
-		 <button type="submit" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
+		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index2"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
+		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
+	    
+	    <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index2"); ?>'; this.form.target = '_blank'; this.form.submit()"  class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
 	  
+		<?php } ?>
 	   
 	   </div>
 	   
@@ -306,12 +310,7 @@
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    <div class="col-lg-12">
 	    <div class="panel panel-info">
-	       <div class="row">
-			  <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center;" >
-			   <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
-	  
-			  </div>
-			</div> 
+	       
 		<div id="canvas-holder">
 		<canvas id="chart-area" width="600" height="300"></canvas>
 		</div>
@@ -341,13 +340,6 @@
 				strokeColor : "#ffffff",
 				highlightFill: "#1864f2",
 				highlightStroke: "#ffffff",
-				data : <?php echo $data1;?>
-			},
-			{
-				fillColor : "#e9e225",
-				strokeColor : "#ffffff",
-				highlightFill : "#ee7f49",
-				highlightStroke : "#ffffff",
 				data : <?php echo $data1;?>
 			}
 		]
