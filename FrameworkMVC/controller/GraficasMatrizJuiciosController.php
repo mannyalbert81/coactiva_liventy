@@ -307,7 +307,10 @@ public function index(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-			
+		
+		
+		
+		
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuiciosCordinador";
 		$id_rol= $_SESSION['id_rol'];
@@ -323,7 +326,7 @@ public function index(){
 				$numero_titulo_credito=(isset($_POST['numero_titulo_credito']))?$_POST['numero_titulo_credito']:'';
 				$identificacion_clientes=(isset($_POST['identificacion_clientes']))?$_POST['identificacion_clientes']:'';
 				$id_secretario=(isset($_POST['id_secretario']))?$_POST['id_secretario']:0;
-				$id_impulsor=(isset($_POST['id_abogado']))?$_POST['id_abogado']:0;
+				$id_impulsor=(isset($_POST['id_impulsor']))?$_POST['id_impulsor']:0;
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 		        //$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
@@ -353,15 +356,16 @@ public function index(){
 				if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-				if($id_ciudad!=0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
-				if($id_secretario!=0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
-				if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
+				if($id_ciudad>0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
+				if($id_secretario>0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
+				if($id_impulsor>0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
 		
 			
 				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 				
-		
+				
+	
 			}
 			
 			if(isset($_POST["reporte_rpt"]))
@@ -369,9 +373,9 @@ public function index(){
 			
 			
 				$parametros = array();
-				$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
-				$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
-				$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
+				$parametros['id_ciudad']=isset($_POST['id_ciudad_1'])?trim($_POST['id_ciudad_1']):0;
+				$parametros['id_secretario']=isset($_POST['id_secretario_1'])?trim($_POST['id_secretario_1']):0;
+				$parametros['id_abogado']=isset($_POST['id_impulsor_1'])?trim($_POST['id_impulsor_1']):0;
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
@@ -395,6 +399,8 @@ public function index(){
 			
 			$this->view("GraficasMatrizJuiciosCordinador",array(
 					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos
+					
+					
 	
 	
 	
@@ -812,7 +818,7 @@ public function index2(){
 				$numero_titulo_credito=(isset($_POST['numero_titulo_credito']))?$_POST['numero_titulo_credito']:'';
 				$identificacion_clientes=(isset($_POST['identificacion_clientes']))?$_POST['identificacion_clientes']:'';
 				$id_secretario=(isset($_POST['id_secretario']))?$_POST['id_secretario']:0;
-				$id_impulsor=(isset($_POST['id_abogado']))?$_POST['id_abogado']:0;
+				$id_impulsor=(isset($_POST['id_impulsor']))?$_POST['id_impulsor']:0;
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 				//$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
@@ -858,9 +864,9 @@ public function index2(){
 					
 					
 				$parametros = array();
-				$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
-				$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
-				$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
+				$parametros['id_ciudad']=isset($_POST['id_ciudad_1'])?trim($_POST['id_ciudad_1']):0;
+				$parametros['id_secretario']=isset($_POST['id_secretario_1'])?trim($_POST['id_secretario_1']):0;
+				$parametros['id_abogado']=isset($_POST['id_impulsor_1'])?trim($_POST['id_impulsor_1']):0;
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
@@ -1255,7 +1261,7 @@ public function index3(){
 				$numero_titulo_credito=(isset($_POST['numero_titulo_credito']))?$_POST['numero_titulo_credito']:'';
 				$identificacion_clientes=(isset($_POST['identificacion_clientes']))?$_POST['identificacion_clientes']:'';
 				$id_secretario=(isset($_POST['id_secretario']))?$_POST['id_secretario']:0;
-				$id_impulsor=(isset($_POST['id_abogado']))?$_POST['id_abogado']:0;
+				$id_impulsor=(isset($_POST['id_impulsor']))?$_POST['id_impulsor']:0;
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 				//$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
@@ -1301,9 +1307,9 @@ public function index3(){
 					
 					
 				$parametros = array();
-				$parametros['id_ciudad']=isset($_POST['id_ciudad'])?trim($_POST['id_ciudad']):0;
-				$parametros['id_secretario']=isset($_POST['id_secretario'])?trim($_POST['id_secretario']):0;
-				$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
+				$parametros['id_ciudad']=isset($_POST['id_ciudad_1'])?trim($_POST['id_ciudad_1']):0;
+				$parametros['id_secretario']=isset($_POST['id_secretario_1'])?trim($_POST['id_secretario_1']):0;
+				$parametros['id_abogado']=isset($_POST['id_impulsor_1'])?trim($_POST['id_impulsor_1']):0;
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';

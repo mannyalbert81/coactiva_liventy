@@ -161,7 +161,8 @@
        $sel_identificacion_clientes="";
        $sel_id_ciudad="";
        $sel_id_estados_procesales_juicios="";
-       
+       $sel_id_impulsor="";
+       $sel_id_secretario="";
        
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -169,8 +170,10 @@
        	$sel_juicio_referido_titulo_credito = $_POST['juicio_referido_titulo_credito'];
        	$sel_numero_titulo_credito=$_POST['numero_titulo_credito'];
        	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
-       	$sel_id_ciudad=$_POST['id_ciudad'];
        
+       	$sel_id_ciudad=$_POST['id_ciudad'];
+       	$sel_id_impulsor=$_POST['id_impulsor'];
+       	$sel_id_secretario=$_POST['id_secretario'];
        	 
        }
        
@@ -243,6 +246,8 @@
 						<option value="<?php echo $res->id_ciudad; ?>"<?php if($sel_id_ciudad==$res->id_ciudad){echo "selected";}?> ><?php echo $res->nombre_ciudad;  ?> </option>
 			            <?php } ?>
 			    </select>
+			      <input type="hidden"  name="id_ciudad_1" id="id_ciudad_1" value="<?php if (!empty($sel_id_ciudad)) { echo $sel_id_ciudad;}  else  { echo 0; } ?>" class="form-control "/> 
+			  
 		 </div>
   		
   		  <div class="col-lg-2 col-md-2 col-xs-6">
@@ -250,6 +255,8 @@
 			  <select name="id_secretario" id="id_secretario"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
+			      <input type="hidden"  name="id_secretario_1" id="id_secretario_1" value="<?php if (!empty($sel_id_secretario)) { echo $sel_id_secretario;}  else  { echo 0; } ?>" class="form-control "/> 
+			   
 		 </div>
 		   	
 		  <div class="col-lg-2 col-md-2 col-xs-6">
@@ -257,6 +264,8 @@
 			  	<select name="id_impulsor" id="id_impulsor"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
+			     <input type="hidden"  name="id_impulsor_1" id="id_impulsor_1" value="<?php if (!empty($sel_id_impulsor)) { echo $sel_id_impulsor;}  else  { echo 0; } ?>" class="form-control "/> 
+			   
 		 </div>
   							
   		<div class="col-lg-2 col-md-2 col-xs-6">

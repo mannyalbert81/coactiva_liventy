@@ -245,10 +245,10 @@
 			  	<select name="id_ciudad" id="id_ciudad"  class="form-control">
 			     <option value="0"><?php echo "--TODOS--";  ?> </option>
 					<?php foreach($resultDatos as $res) {?>
-						<option value="<?php echo $res->id_ciudad; ?>"<?php if($sel_id_ciudad==$res->id_ciudad){echo "selected";}?> ><?php echo $res->nombre_ciudad;  ?> </option>
+						<option value="<?php echo $res->id_ciudad; ?>"><?php echo $res->nombre_ciudad;  ?> </option>
 			            <?php } ?>
 			    </select>
-			    <input type="text"  name="id_ciudad" id="id_ciudad" value="<?php echo $sel_id_ciudad;?>" class="form-control "/> 
+			    <input type="hidden"  name="id_ciudad_1" id="id_ciudad_1" value="<?php if (!empty($sel_id_ciudad)) { echo $sel_id_ciudad;}  else  { echo 0; } ?>" class="form-control "/> 
 			   
 		
 		 </div>
@@ -258,7 +258,7 @@
 			  <select name="id_secretario" id="id_secretario"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
-			     <input type="text"  name="id_secretario" id="id_secretario" value="<?php echo $sel_id_secretario;?>" class="form-control "/> 
+			     <input type="hidden"  name="id_secretario_1" id="id_secretario_1" value="<?php if (!empty($sel_id_secretario)) { echo $sel_id_secretario;}  else  { echo 0; } ?>" class="form-control "/> 
 			   
 		 </div>
 		   	
@@ -267,7 +267,7 @@
 			  	<select name="id_impulsor" id="id_impulsor"  class="form-control">
 			  	<option value="0">--TODOS--</option>
 			    </select>
-			     <input type="text"  name="id_impulsor" id="id_impulsor" value="<?php echo $sel_id_impulsor;?>" class="form-control "/> 
+			     <input type="hidden"  name="id_impulsor_1" id="id_impulsor_1" value="<?php if (!empty($sel_id_impulsor)) { echo $sel_id_impulsor;}  else  { echo 0; } ?>" class="form-control "/> 
 			   
 		 </div>
   							
