@@ -1168,21 +1168,7 @@ class MatrizJuiciosController extends ControladorBase{
 			
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	public function index2(){
@@ -3190,32 +3176,7 @@ class MatrizJuiciosController extends ControladorBase{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	public function index4(){
 	
