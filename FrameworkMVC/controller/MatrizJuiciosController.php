@@ -3622,7 +3622,7 @@ class MatrizJuiciosController extends ControladorBase{
 			}
 	
 	
-			$this->view("FechasJuiciosProvidenciaLevantamiento",array(
+			$this->view("ProvidenciaLevantamiento",array(
 					"datos"=>$datos
 	
 			));
@@ -3683,7 +3683,60 @@ class MatrizJuiciosController extends ControladorBase{
 		
 	}
 	
+	//---------------Para la providencia de levantamineto-----//
+	//---------------D.N--------------------------------------//
+
+	public function verProvidenciaLevantamiento()
+	{
+		session_start();
+		if(isset($_POST['visualizar']))
+		{
+			
+			$columas="j.id_juicios, j.juicio_referido_titulo_credito, c.identificacion_clientes,c.nombres_clientes,
+					  c.identificacion_garantes, c.nombre_garantes, p.nombre_provincias, t.numero_titulo_credito, 
+					  j.fecha_emision_juicios, j.cuantia_inicial, j.fecha_ultima_providencia, vs.id_abogado, 
+                      vs.impulsores, vs.id_secretario, vs.secretarios, ci.id_ciudad, ci.nombre_ciudad ,
+                      j.numero_juicios, vs.cargo_secretarios,vs.cargo_impulsores, vs.sexo_secretarios, 
+                      vs.sexo_impulsores , c.identificacion_clientes_1, c.nombre_clientes_1, c.identificacion_clientes_2,
+					  nombre_clientes_2, identificacion_clientes_3, c.nombre_clientes_3, identificacion_garantes_1, 
+                      nombre_garantes_1, c.identificacion_garantes_2, nombre_garantes_2,identificacion_garantes_3, 
+					  c.nombre_garantes_3, correo_clientes, correo_clientes_1, correo_clientes_2, c.correo_clientes_3, 
+					  c.direccion_clientes_1, c.direccion_clientes_2, c.direccion_clientes_3, c.cantidad_clientes, 
+                      c.cantidad_garantes,c.sexo_clientes, c.sexo_clientes_1,c.sexo_clientes_3,c.sexo_clientes_2,c.sexo_garantes, 
+					  c.sexo_garantes_1,c.sexo_garantes_2,c.sexo_garantes_3";
+			
+			$tablas=" public.clientes c
+					INNER JOIN public.titulo_credito t
+					ON c.id_clientes = t.id_clientes
+					INNER JOIN public.juicios j 
+					ON t.id_titulo_credito = j.id_titulo_credito
+					INNER JOIN public.asignacion_secretarios_view vs
+					ON vs.id_abogado = t.id_usuarios 
+					INNER JOIN public.estados_procesales_juicios ep
+					ON j.id_estados_procesales_juicios = ep.id_estados_procesales_juicios
+					INNER JOIN  public.provincias p
+					ON c.id_provincias = p.id_provincias
+					INNER JOIN public.ciudad ci
+					ON t.id_ciudad = ci.id_ciudad";
+			
+			$where = "1=1";
+			
+			$id_juicios= isset($_POST['id_juicios'])?$_POST['id_juicios']:0;
+			$id_clientes= isset($_POST['id_clientes'])?$_POST['id_clientes']:0;
+			$id_titulo_credito= isset($_POST['id_titulo_credito'])?$_POST['id_titulo_credito']:0;
+			$fecha_avoco= isset($_POST['fecha_levantamiento'])?$_POST['fecha_levantamiento']:0;
+			$hora_avoco= isset($_POST['hora_levantamiento'])?$_POST['hora_levantamiento']:0;
+			$razon_avoco= isset($_POST['razon_levantamiento'])?$_POST['razon_levantamiento']:0;
+			$numero_oficio= isset($_POST['numero_oficio'])?$_POST['numero_oficio']:0;
+			$dirigido_levantamiento= isset($_POST['dirigido_levantamiento'])?$_POST['dirigido_levantamiento']:0;
+			
+			//echo 'llego'; die();
+			//$this->verReporte('PLevantamiento',array());
+			
+			include_once 'view/reportes/PLevantamientoRpt.php';
+		}
 		
+	}
 	
 	
 }

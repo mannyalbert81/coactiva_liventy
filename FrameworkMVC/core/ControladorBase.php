@@ -35,9 +35,6 @@ class ControladorBase{
     	require_once 'view/reportes/'.$vista.'Report.php';
     }
     
-
-    
-    
     public function afuera($vista,$datos){
     	foreach ($datos as $id_assoc => $valor) {
     		${$id_assoc}=$valor;
@@ -56,6 +53,14 @@ class ControladorBase{
     }
     
     //Métodos para los controladores
+    
+    public function verReporte($vista,$datos){
+    	foreach ($datos as $id_assoc => $valor) {
+    		${$id_assoc}=$valor;
+    	}
+    	
+    	require_once 'view/reportes/'.$vista.'Rpt.php';
+    }
 
 }
 ?>
