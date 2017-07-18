@@ -23,6 +23,7 @@ $footer = "<table width=\"100%\"><tr>
 $template = str_replace('{detalle}', $detalle, $template);
 
 //para los parametros
+$dt_consulta= $dadatos;
 
 ob_end_clean();
 

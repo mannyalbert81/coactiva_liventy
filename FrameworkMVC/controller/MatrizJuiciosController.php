@@ -2787,7 +2787,7 @@ class MatrizJuiciosController extends ControladorBase{
 						$where_3 = "";
 						$where_4 = "";
 							
-	
+						
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
@@ -3689,7 +3689,10 @@ class MatrizJuiciosController extends ControladorBase{
 	public function verProvidenciaLevantamiento()
 	{
 		session_start();
-		if(isset($_POST['visualizar']))
+		
+		$juicios = new JuiciosModel();
+		
+		if(isset($_POST['visualizar']) || isset($_GET['visualizar']) )
 		{
 			
 			$columas="j.id_juicios, j.juicio_referido_titulo_credito, c.identificacion_clientes,c.nombres_clientes,
@@ -3721,6 +3724,8 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			$where = "1=1";
 			
+			$dtdatos=$juicios->getCondicionesPag($columnas, $tablas, $where_to, $id, $limit);
+			
 			$id_juicios= isset($_POST['id_juicios'])?$_POST['id_juicios']:0;
 			$id_clientes= isset($_POST['id_clientes'])?$_POST['id_clientes']:0;
 			$id_titulo_credito= isset($_POST['id_titulo_credito'])?$_POST['id_titulo_credito']:0;
@@ -3735,6 +3740,8 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			include_once 'view/reportes/PLevantamientoRpt.php';
 		}
+		
+		//echo 'hola';
 		
 	}
 	

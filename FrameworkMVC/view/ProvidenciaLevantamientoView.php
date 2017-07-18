@@ -1,7 +1,4 @@
-  	 
-     
-
-<!DOCTYPE HTML>
+<!DOCTYPE HTML5>
 <html lang="es">
 
       <head>
@@ -30,6 +27,8 @@
     	 <script >
 		$(document).ready(function(){
 
+			var validarForm = false;
+
 		    // cada vez que se cambia el valor del combo
 		    $("#generar").click(function() 
 			{
@@ -43,7 +42,7 @@
 		    			
 		    	if (fecha_providencias == "")
 		    	{
-			    	
+		    		validarForm = false;
 		    		$("#mensaje_fecha").text("Introduzca una Fecha");
 		    		$("#mensaje_fecha").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -51,13 +50,13 @@
 		    	else 
 		    	{
 		    		$("#mensaje_fecha").fadeOut("slow"); //Muestra mensaje de error
-		            
+		    		validarForm = true;
 				}
 
 
 		    	if (hora_providencias == "")
 		    	{
-			    	
+		    		validarForm = false;
 		    		$("#mensaje_hora").text("Introduzca una Hora");
 		    		$("#mensaje_hora").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -65,7 +64,7 @@
 		    	else 
 		    	{
 		    		$("#mensaje_hora").fadeOut("slow"); //Muestra mensaje de error
-		            
+		    		validarForm = true;
 				}
 
 
@@ -73,7 +72,7 @@
 
 		    	if (numero_oficio == "")
 		    	{
-			    	
+		    		validarForm = false;
 		    		$("#mensaje_numero_oficio").text("Introduzca # Oficio y Fecha");
 		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -81,13 +80,13 @@
 		    	else 
 		    	{
 		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
-		            
+		    		validarForm = true;
 				}
 
 
 		    	if (dirigido_levantamiento == "")
 		    	{
-			    	
+		    		validarForm = false;
 		    		$("#mensaje_dirigido").text("Introduzca a quién va Dirigido");
 		    		$("#mensaje_dirigido").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -95,11 +94,11 @@
 		    	else 
 		    	{
 		    		$("#mensaje_dirigido").fadeOut("slow"); //Muestra mensaje de error
-		            
+		    		validarForm = true;
 				}
 		    	if (razon_providencias == "")
 		    	{
-			    	
+		    		validarForm = false;
 		    		$("#mensaje_razon").text("Introduzca una Razón");
 		    		$("#mensaje_razon").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -107,7 +106,7 @@
 		    	else 
 		    	{
 		    		$("#mensaje_razon").fadeOut("slow"); //Muestra mensaje de error
-		            
+		    		validarForm = true;
 				}
 		    	
 			}); 
@@ -132,6 +131,32 @@
 				$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
     			});
+    			
+
+				$("inpurt[type=submit]").click(function() {
+					var accion = $(this).attr('dir');
+					var opcion = $(this).data('opcion');
+					//("data-opcion");
+					
+					if((validarForm==true && opcion==1)||(validarForm==false && opcion==2))
+					{
+						if(opcion==2)
+						{
+							
+							$('#plevantamineto').attr('action', accion);
+							$('#plevantamineto').attr('target','_self');
+							$('form').submit();
+						}else{
+							$('#plevantamineto').attr('action', accion);
+							$('#plevantamineto').attr('target', '_blank');
+							$('#plevantamineto').submit();
+						}
+						
+					}else
+					{
+						return false;
+					}
+			});
 					    
 		}); 
 
@@ -255,51 +280,16 @@
   		
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		    
-		 <button type="submit"  id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
-		
-		<script>
-		
-		
-		function mostrarDialog() {
-			 
-			// La ruta Ajax
-			//var url = 'index.php?controller=MatrizJuicios&action=verProvidenciaLevantamiento';
-			var url = 'http://wellnesshabitat.nexmapp.com/wp-content/uploads/2017/04/License.pdf">View PDF</a>'
-			 
-			// mostrar un imágenes de cargando a través de CSS
-			var dialog = $('<div class="loading" style="display: none;"></div>').appendTo('body');
-			 
-			// abrir el dialog
-			dialog.dialog({
-			 
-			// añadir un listener para borrar el dialog al cerrarlo
-			close: function(event, ui) {
-			 
-			// borra el div con sus eventos y datos
-			dialog.remove();
-			},
-			modal: true,
-			title: 'titulo de la ventana',
-			width:918,
-			height:450
-			});
-			 
-			// Cargar contenido con Ajax en la ventana
-			dialog.load(
-			url,
-			{visualizar:'visualizar'}, // Datos para enviar (en este caso, ninguno)
-			function (responseText, textStatus, XMLHttpRequest) {
-			// Quitar el class de “cargando”
-			dialog.removeClass('loading');
-			}
-			);
-			}
-		
-		</script>
-		 
-		 <button type="button"  id="visualizar" name="visualizar" value="" onclick="mostrarDialog()"  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Ver Providencia</button>         
+		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
+	
+<div id="somediv" title="Providencia Levantamiento" style="display:none;">
+    <iframe id="thedialog" width="850" height="500"></iframe>
+</div>
+
+<button type="submit"   data-opcion="2" formtarget="_blank" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Ver Providencia</button>  
+	    
 	  
-	     </div>
+	  </div>
 		
 	     
 		</div>
@@ -312,13 +302,9 @@
       </div>
      
   </div>
-      <!-- termina
-       busqueda  -->
-      
-      
-      
-     
-     
+
+ 
+    
    </body>  
 
     </html>   
