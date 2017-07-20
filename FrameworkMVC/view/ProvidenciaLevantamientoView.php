@@ -157,6 +157,34 @@
 						return false;
 					}
 			});
+
+				$("button[type=submit]").click(function() {
+					var accion = $(this).attr('name');
+
+					if(accion=='visualizar')
+						{
+						
+							var dialog = $('#framePL');//framePL//plpop
+							
+							dialog.dialog({
+							// añadir un listener para borrar el dialog al cerrarlo
+							close: function(event, ui) {
+							// borra el div con sus eventos y datos
+							dialog.remove();
+							},
+							modal: true,
+							title: 'Providencia de levantamiento',
+							resizable: true,
+							width:'auto',
+							height:450
+							});
+							 
+							
+						}else{
+							
+						}
+					
+			});
 					    
 		}); 
 
@@ -282,12 +310,11 @@
   		    
 		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	
-<div id="somediv" title="Providencia Levantamiento" style="display:none;">
-    <iframe id="thedialog" width="850" height="500"></iframe>
-</div>
-
-<button type="submit"   data-opcion="2" formtarget="_blank" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Ver Providencia</button>  
-	    
+		<button type="submit"   data-opcion="2" formtarget="framePL" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Ver Providencia</button>  
+	   
+	   <div id="plpop" class="popupPl" title="Providencia Levantamiento" style="display:none;">
+       <iframe id="framePL" name="framePL"  ></iframe>
+       </div> 
 	  
 	  </div>
 		
