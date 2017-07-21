@@ -6,6 +6,8 @@
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
         
+      
+        
          
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
@@ -133,56 +135,27 @@
     			});
     			
 
-				$("inpurt[type=submit]").click(function() {
-					var accion = $(this).attr('dir');
-					var opcion = $(this).data('opcion');
-					//("data-opcion");
-					
-					if((validarForm==true && opcion==1)||(validarForm==false && opcion==2))
-					{
-						if(opcion==2)
-						{
-							
-							$('#plevantamineto').attr('action', accion);
-							$('#plevantamineto').attr('target','_self');
-							$('form').submit();
-						}else{
-							$('#plevantamineto').attr('action', accion);
-							$('#plevantamineto').attr('target', '_blank');
-							$('#plevantamineto').submit();
-						}
-						
-					}else
-					{
-						return false;
-					}
-			});
 
 				$("button[type=submit]").click(function() {
 					var accion = $(this).attr('name');
+					var boton = $(this);
 
 					if(accion=='visualizar')
 						{
-						
-							var dialog = $('#framePL');//framePL//plpop
-							
-							dialog.dialog({
-							// añadir un listener para borrar el dialog al cerrarlo
-							close: function(event, ui) {
-							// borra el div con sus eventos y datos
-							dialog.remove();
-							},
-							modal: true,
-							title: 'Providencia de levantamiento',
-							resizable: true,
-							width:'auto',
-							height:450
-							});
-							 
-							
-						}else{
+							var dialogo = $('#plpop');//framePL//plpop
+							$('#closeView').css({'display':'inline-block','margin':'0px','padding':'6px,12px'});
+							dialogo.css({'display':'block'});
+							boton.css('display','none');
 							
 						}
+					if(accion=='closeView')
+					{
+						var dialogo = $('#plpop');//framePL//plpop
+						$('#closeView').css({'display':'none','margin':'0px'});
+						dialogo.css({'display':'none'});
+						$('#visualizar').css('display','inline-block');
+						return false;
+					}
 					
 			});
 					    
@@ -310,10 +283,12 @@
   		    
 		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	
-		<button type="submit"   data-opcion="2" formtarget="framePL" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Ver Providencia</button>  
+		<button type="submit"   data-opcion="2" formtarget="framePL" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-eye-open"></i> Ver Providencia</button>  
 	   
-	   <div id="plpop" class="popupPl" title="Providencia Levantamiento" style="display:none;">
-       <iframe id="framePL" name="framePL"  ></iframe>
+	   <button type="submit"   id="closeView" name="closeView" value="" style="display:none;" class="btn btn-danger" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove"></i> Cerrar Vista Previa</button>
+	    
+	   <div id="plpop" class="popupPl" title="Providencia Levantamiento" style="display:none;padding: 20px;">
+       <iframe id="framePL" name="framePL" width="100%" height="70%"  ></iframe>
        </div> 
 	  
 	  </div>
