@@ -1,13 +1,15 @@
+    
 
-   <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="es">
 
       <head>
       
         <meta charset="utf-8"/>
-        <title>InsertaOficiosManual - Coactiva 2016</title>
+        <title>Matriz Juicios - coactiva 2017</title>
         
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+         
+       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
           <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -24,334 +26,275 @@
 			webshims.polyfill('forms forms-ext');
 		</script>
 		
-           <!-- AQUI NOTIFICAIONES -->
-		<script type="text/javascript" src="view/css/lib/alertify.js"></script>
-		<link rel="stylesheet" href="view/css/themes/alertify.core.css" />
-		<link rel="stylesheet" href="view/css/themes/alertify.default.css" />
-		
-		
-		
-		<script>
-
-		function Ok(){
-				alertify.success("Has Pulsado en Guardar"); 
-				return false;
-			}
-			
-			function Borrar(){
-				alertify.success("Has Pulsado en Borrar"); 
-				return false; 
-			}
-
-			function notificacion(){
-				alertify.success("Has Pulsado en Editar"); 
-				return false; 
-			}
-		</script>
-		
-		
-		
-		<!-- TERMINA NOTIFICAIONES -->
-        
-       <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
-         
-       
-         <script >
+    	 <script >
 		$(document).ready(function(){
 
 		    // cada vez que se cambia el valor del combo
-		    $("#Guardar").click(function() 
+		    $("#generar").click(function() 
 			{
-		    	var juicios = $("#juicios").val();
-		    	var detalle_documentos = $("#detalle_documentos").val();
-		    	var observacion_documentos = $("#observacion_documentos").val();
-		    	var avoco_vistos_documentos = $("#avoco_vistos_documentos").val();
-		    	
-		   				
-		    	if (juicios == "")
+		   
+		    	var fecha_providencias = $("#fecha_levantamiento").val();
+		     	var hora_providencias = $("#hora_levantamiento").val();
+		     
+		        var numero_oficio  = $("#numero_oficio").val();
+		        var dirigido_levantamiento  = $("#dirigido_levantamiento").val();
+		    	var razon_providencias = $("#razon_levantamiento").val();
+		    			
+		    	if (fecha_providencias == "")
 		    	{
 			    	
-		    		$("#mensaje_juicio").text("Introduzca un Juicio");
-		    		$("#mensaje_juicio").fadeIn("slow"); //Muestra mensaje de error
+		    		$("#mensaje_fecha").text("Introduzca una Fecha");
+		    		$("#mensaje_fecha").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_juicio").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_fecha").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		    	
 
-				if (detalle_documentos == "")
+
+		    	if (hora_providencias == "")
 		    	{
 			    	
-		    		$("#mensaje_detalle").text("Introduzca un Detalle");
-		    		$("#mensaje_detalle").fadeIn("slow"); //Muestra mensaje de error
+		    		$("#mensaje_hora").text("Introduzca una Hora");
+		    		$("#mensaje_hora").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_detalle").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}if (observacion_documentos == "")
-		    	{
-			    	
-		    		$("#mensaje_observacion").text("Introduzca una Observacion");
-		    		$("#mensaje_observacion").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-			    }
-		    	else 
-		    	{
-		    		$("#mensaje_observacion").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}if (avoco_vistos_documentos == "")
-		    	{
-			    	
-		    		$("#mensaje_avoco").text("Introduzca un Contenido");
-		    		$("#mensaje_avoco").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-			    }
-		    	else 
-		    	{
-		    		$("#mensaje_avoco").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_hora").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+
 		    	
-		    	
 
-			
-		    					    
-
-			}); 
-
-
-		 
-				
-				$( "#juicios" ).focus(function() {
-					$("#mensaje_juicio").fadeOut("slow");
-					});
-					
-					
-						$( "#detalle_documentos" ).focus(function() {
-							$("#mensaje_detalle").fadeOut("slow");
-						});
-
-							$( "#observacion_documentos" ).focus(function() {
-								$("#mensaje_observacion").fadeOut("slow");
-							});
-								$( "#avoco_vistos_documentos" ).focus(function() {
-									$("#mensaje_avoco").fadeOut("slow"); 			});
-				
-			
-		
-				
-		
-		      
-				    
-		}); 
-
-	</script>
-	 <script >
-		$(document).ready(function(){
-
-		    // cada vez que se cambia el valor del combo
-		    $("#Validar").click(function() 
-			{
-		    	var juicios = $("#juicios").val();
-		   				
-		    	if (juicios == "")
+		    	if (numero_oficio == "")
 		    	{
 			    	
-		    		$("#mensaje_juicio").text("Introduzca un Juicio");
-		    		$("#mensaje_juicio").fadeIn("slow"); //Muestra mensaje de error
+		    		$("#mensaje_numero_oficio").text("Introduzca # Oficio y Fecha");
+		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_juicio").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	if (dirigido_levantamiento == "")
+		    	{
+			    	
+		    		$("#mensaje_dirigido").text("Introduzca a quién va Dirigido");
+		    		$("#mensaje_dirigido").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_dirigido").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	if (razon_providencias == "")
+		    	{
+			    	
+		    		$("#mensaje_razon").text("Introduzca una Razón");
+		    		$("#mensaje_razon").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_razon").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 		    	
 			}); 
+
+	
+				$( "#fecha_levantamiento" ).focus(function() {
+					$("#mensaje_fecha").fadeOut("slow");
+    			});
+
+				$( "#hora_levantamiento" ).focus(function() {
+					$("#mensaje_hora").fadeOut("slow");
+    			});
+				
+
+				$( "#numero_oficio" ).focus(function() {
+					$("#mensaje_numero_oficio").fadeOut("slow");
+    			});
+				$( "#dirigido_levantamiento" ).focus(function() {
+					$("#mensaje_dirigido").fadeOut("slow");
+    			});
+
+				$( "#razon_levantamiento" ).focus(function() {
+					$("#mensaje_razon").fadeOut("slow");
+    			});
+					    
 		}); 
 
 	</script>
 	
-	<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-	
-	  
 
     </head>
     <body style="background-color: #d9e3e4;">
     
+        <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/modal.php"); ?>
-       <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
-       
-       
        
        <?php
        
-      
+  
        $sel_cuerpo="";
        $sel_id_clientes="";
        $sel_id_juicios="";
        $sel_nombre_juicios="";
-       
-      
         
+       
+       
        if($_SERVER['REQUEST_METHOD']=='GET')
        {
-       	
+       
        	if(isset($_GET['dato']))
        	{
-       	$a=stripslashes($_GET['dato']);
-       	
-       	$_dato=urldecode($a);
-       	
-       	$_dato=unserialize($a);
-       	
-       	
-       	$sel_cuerpo=$_dato['cuerpo'];
-       	$sel_id_clientes=$_dato['idClientes'];
-       	$sel_nombre_juicios=$_dato['NombreJuicios'];
-       	$sel_id_juicios=$_dato['idJuicios'];
+       		$a=stripslashes($_GET['dato']);
+       		$_dato=urldecode($a);
+       		$_dato=unserialize($a);
        
+       
+       		$sel_cuerpo=$_dato['cuerpo'];
+       		$sel_id_clientes=$_dato['idClientes'];
+       		$sel_nombre_juicios=$_dato['NombreJuicios'];
+       		$sel_id_juicios=$_dato['idJuicios'];
+       		 
        	}
-      
+       
        }
-       
-       
-       
-		?>
-   
-			  <div class="container">
-			  
-			  <div class="row" style="background-color: #ffffff;" >
-			  
-			  <h4 ALIGN="center"></h4>
-			 <div class="" style="margin-left:50px">	
-				
-            	
-		    <h4 style="color:#ec971f;" ALIGN="center" >Generar Oficio Manual</h4>
-		    <hr>
-			 </div>
     
+       
+       
+       ?>
+ 
+ 
+  
+  <div class="container">
+  
+  <div class="row" style="background-color: #ffffff;">
+  
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("InsertaOficiosManual","index"); ?>" method="post" enctype="multipart/form-data">
-            
-        <div class="col-lg-12" style="margin-top: 10px">
+      <form  id="plevantamineto" name="plevantamiento" action="<?php echo $helper->url("MatrizJuicios","Imprimir_Oficios"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
-       	 
+                 <!-- comienxza busqueda  -->
+                 
+                 <br>         
+         <div class="col-lg-12">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Oficio</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			<div class="panel-body">
   			
-  			 <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-            
-		    
-		     <?php } } else {?>
-  			
-  			 <div class="col-xs-2 ">
-			  	<p  class="formulario-subtitulo" >Juicios:</p>
-			  	<input type="text"  name="numero_juicios" id="numero_juicios" value="<?php  if($sel_nombre_juicios==""){echo $datos['NombreJuicios'];}else{echo $sel_nombre_juicios;} ?>" class="form-control"/ readonly>
-			   <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php  if($sel_id_juicios==""){echo $datos['idJuicios'];}else{echo $sel_id_juicios;} ?>" class="form-control"/ readonly>
-			   
-			   </div>
-            
-            <div class="col-xs-4 ">
-			  	<p  class="formulario-subtitulo" >Clientes:</p>
-			  	<input type="text"  name="nombre_clientes" id="nombre_clientes" value="<?php  if($sel_id_clientes==""){echo $datos['idClientes'];}else{echo $sel_id_clientes;} ?>" class="form-control"/ readonly>
-			   </div>
-			   
-			   
-			   
-			    <div class="col-xs-4 " >
-			  	<p  class="formulario-subtitulo" >Entidad:</p>
-			  	<select name="id_entidades" id="id_entidades"  class="form-control" >
-			  	    <?php if (!empty($_dato)){ ?>
-			  		<option value="<?php echo $_dato['id_entidades']; ?>"  ><?php echo $_dato['entidades']; ?> </option>
-			  		<?php }else{ ?>
-			  	    <option value="0">--Seleccione--</option>
-					<?php foreach($resultEnt as $res) {?>
-						<option value="<?php echo $res->id_entidades; ?>" ><?php echo $res->nombre_entidades; ?> </option>
-			           
-			        <?php }} ?>
-				</select> 
-							  
-			  </div>
+  		
+		
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" ># Juicio:</p>
+			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $datos['juicio_referido_titulo_credito']; ?>" class="form-control" readonly/> 
+			    
+		 </div>
+		 
+		 <div class="col-lg-2 col-md-2 xs-6">
+				 <p class="formulario-subtitulo" ># Operación:</p>
+			  	 <input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $datos['numero_titulo_credito']; ?>" class="form-control" readonly/> 
+			     <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
+			     <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
+			     <input type="hidden"  name="id_titulo_credito" id="id_titulo_credito" value="<?php echo $datos['id_titulo_credito']; ?>" class="form-control"/ readonly>
 			  
-			  
-		    <?php } ?>
-		    
-		    </div>
-		    		
-		<div class="col-xs-12 col-md-12" style="margin-top:10px">
-		 <div class="form-group">
-		       
-	        <?php  include ("view/ckeditor/ckeditor.php");
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Cliente:</p>
+			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $datos['identificacion_clientes']; ?>" class="form-control" readonly/> 
+			    
+		 </div>
+		 
+		 <div class="col-lg-6 col-md-6 xs-6">
+         		<p class="formulario-subtitulo" >Nombre Cliente:</p>
+			  	<input type="text"  name="nombres_clientes" id="nombres_clientes" value="<?php echo $datos['nombres_clientes']; ?>" class="form-control" readonly/> 
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 1:</p>
+			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $datos['identificacion_garantes']; ?>" class="form-control" readonly/> 
+			    
+		 </div>
+		 
+		 <div class="col-lg-4 col-md-4 xs-6">
+         		<p class="formulario-subtitulo" >Nombre Garante 1:</p>
+			  	<input type="text"  name="nombre_garantes" id="nombre_garantes" value="<?php echo $datos['nombre_garantes']; ?>" class="form-control" readonly/> 
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 2:</p>
+			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $datos['identificacion_garantes_1']; ?>" class="form-control" readonly/> 
+			    
+		 </div>
+		 
+		 <div class="col-lg-4 col-md-4 xs-6">
+         		<p class="formulario-subtitulo" >Nombre Garante 2:</p>
+			  	<input type="text"  name="nombre_garantes_1" id="nombre_garantes_1" value="<?php echo $datos['nombre_garantes_1']; ?>" class="form-control" readonly/> 
+		 </div>
+		 
+		 
+		  <div class="col-lg-12 col-md-12 xs-12">
+		    <?php  include ("view/ckeditor/ckeditor.php");
 			   $valor = "$sel_cuerpo";
 			   $CKEditor = new CKEditor();
 			   $config = array();
 			   $config['toolbar'] = array(
-			   	      array( 'Source', '-', 'Bold', 'Italic', 'Underline', 'Strike','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'),
+			   	      array( 'Source', '-', 'Bold', 'Italic', 'Underline', 'Strike','-','JustifyLeft','JustifyCenter','JustifyRight'),
 			   		  array( 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'),
 			   	      array( 'TextColor','BGColor','-','NewPage','Maximize'),
 			   		  array( 'NumberedList','BulletedList','-','Outdent','Indent','/'),
 			   		  array( 'Styles','Format','Font','FontSize')
 			   	  );
 			  $CKEditor->basePatch = "./ckeditor/";
-			   $CKEditor->editor("cuerpo_oficios",$valor,$config);
+			  $CKEditor->editor("cuerpo_oficios",$valor,$config);
 			   //$CKEditor->replaceAll();
 	           ?> 
-	           
+	      </div> 
 	          
-	          <!--  
-	          <div class="col-xs-12 col-md-12" style="margin-top:10px">
-		       
-  				<label for="comment"><?php setlocale(LC_ALL,"es_ES");  echo strftime("%A %d de %B del %Y");?></label>
-  				<textarea class="form-control" rows="8" id="avoco" name="avoco"><?php echo "Vistos: ".$sel_cuerpo;?></textarea>
-  				<div id="mensaje_avoco" class="errores"></div>
-			 
-			  </div>
-  			  -->
-		    
-     
-			  
-		      <div class="col-xs-12 col-md-6" style="text-align: center; margin-top:10px"  >
-		      </div>
-		       <div class="col-xs-12 col-md-3" style="text-align: center; margin-top:10px"  >
-			  <input type="submit" id="Guardar" name="Guardar" onclick="this.form.action='<?php  echo $helper->url("InsertaOficiosManual","InsertaOficiosManual"); ?>'" value="Guardar" class="btn btn-success"/>
-			  </div>
-			   <div class="col-xs-12 col-md-3" style="text-align: center; margin-top:10px" >
-			 <input type="submit" id="Visualizar" name="Visualizar" onclick="this.form.action='<?php echo $helper->url("InsertaOficiosManual","VisualizarOficiosManual"); ?>'" value="Visualizar" class="btn btn-info"/>
-			 </div>
-			 
-			 <div class="col-xs-6 col-md-12" style="margin-top:50px">
-			 </div>
-		    
+	          
+	        
   			 
-		</div>
-		
-		
 		 
-		</div>
+		 
+		 
+	 </div>
+  		
+  		
+  		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+  		<button type="submit"  id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Oficios</button>         
+		 </div>
 		
-	   </form>
-       
-      </div>
+	     
+		</div>
+		</div>
+	    </div>
+	    </div>
+     </form>
+     
       </div>
      
-
+  </div>
      
    </body>  
- <?php include 'view/modulos/footer.php';?>
+
     </html>   
+    
+  
