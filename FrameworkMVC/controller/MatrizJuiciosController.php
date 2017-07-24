@@ -2807,7 +2807,7 @@ class MatrizJuiciosController extends ControladorBase{
 						$where_3 = "";
 						$where_4 = "";
 							
-	
+						
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
@@ -3859,10 +3859,13 @@ class MatrizJuiciosController extends ControladorBase{
 	public function verProvidenciaLevantamiento()
 	{
 		session_start();
-		if(isset($_POST['visualizar']))
+		
+		$juicios = new JuiciosModel();
+		
+		if(isset($_POST['visualizar'])  )
 		{
 			
-			$columas="j.id_juicios, j.juicio_referido_titulo_credito, c.identificacion_clientes,c.nombres_clientes,
+			$columnas="j.id_juicios, j.juicio_referido_titulo_credito, c.identificacion_clientes,c.nombres_clientes,
 					  c.identificacion_garantes, c.nombre_garantes, p.nombre_provincias, t.numero_titulo_credito, 
 					  j.fecha_emision_juicios, j.cuantia_inicial, j.fecha_ultima_providencia, vs.id_abogado, 
                       vs.impulsores, vs.id_secretario, vs.secretarios, ci.id_ciudad, ci.nombre_ciudad ,
@@ -3891,7 +3894,10 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			$where = "1=1";
 			
+			
+			
 			$id_juicios= isset($_POST['id_juicios'])?$_POST['id_juicios']:0;
+			
 			$id_clientes= isset($_POST['id_clientes'])?$_POST['id_clientes']:0;
 			$id_titulo_credito= isset($_POST['id_titulo_credito'])?$_POST['id_titulo_credito']:0;
 			$fecha_avoco= isset($_POST['fecha_levantamiento'])?$_POST['fecha_levantamiento']:0;
@@ -3900,11 +3906,20 @@ class MatrizJuiciosController extends ControladorBase{
 			$numero_oficio= isset($_POST['numero_oficio'])?$_POST['numero_oficio']:0;
 			$dirigido_levantamiento= isset($_POST['dirigido_levantamiento'])?$_POST['dirigido_levantamiento']:0;
 			
-			//echo 'llego'; die();
-			//$this->verReporte('PLevantamiento',array());
+			$where.=$id_juicios!=0?" AND j.id_juicios='$id_juicios' ":"";
 			
-			include_once 'view/reportes/PLevantamientoRpt.php';
+			//echo " ".$columnas."\r".$tablas."\t".$where;
+			
+			$dtdatos=$juicios->getCondiciones($columnas, $tablas, $where, "j.id_juicios");
+			
+			
+			//echo 'llego'; die();
+			$this->verReporte('PLevantamiento',array('dtdatos'=>$dtdatos,'razon_avoco'=>$razon_avoco));
+			
+			//include_once 'view/reportes/PLevantamientoRpt.php';
 		}
+		
+		//echo 'hola';
 		
 	}
 	

@@ -20,10 +20,33 @@ $footer = "<table width=\"100%\"><tr>
 		<td style='font-size: 10px; padding: 5px;' align=\"right\">{PAGENO}</td>
         </tr></table>";
 
-$template = str_replace('{detalle}', $detalle, $template);
+//$template = str_replace('{detalle}', $detalle, $template);
 
 //para los parametros
+$dt_consulta= $dtdatos;
 
+//sin metodos ---> falta
+$dicContenido = array(
+		'COACTIVADOPRI'=>'Providencia Levantamiento',
+		'GARANTEPRI'=>'Liventy',
+		'OPERACION'=>$dt_consulta[0]->numero_titulo_credito,
+		'NOMBRESEC'=>$dt_consulta[0]->secretarios,
+		'CARGOSEC'=>$dt_consulta[0]->cargo_secretarios,
+		'NOMBREABG'=>$dt_consulta[0]->impulsores,
+		'CARGOABG'=>$dt_consulta[0]->cargo_impulsores,
+		'NOMBRECIT'=>'',
+		'CARGOCIT'=>'',
+		'RAZON2'=>$razon_avoco
+		
+);
+
+foreach ($dicContenido as $clave=>$valor) {
+	$template = str_replace('{'.$clave.'}', $valor, $template);
+}
+
+//var_dump($dicContenido);
+
+//die();
 ob_end_clean();
 
 
