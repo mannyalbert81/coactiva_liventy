@@ -124,6 +124,7 @@
 			    	
 		    		$("#mensaje_archivo").text("Introduzca una Recaudacion ");
 		    		$("#mensaje_archivo").fadeIn("slow"); //Muestra mensaje de error
+		    		
 		            return false;
 			    }
 		    	else 
@@ -241,7 +242,6 @@
         
         	<table class="table table-hover">
 	         <tr>
-	    		
 	    		
 	    		<th style="font-size:85%;" >Id</th>
 	    		<th style="font-size:85%;">Fecha</th>

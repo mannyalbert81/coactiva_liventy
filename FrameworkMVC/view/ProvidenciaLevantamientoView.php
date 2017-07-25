@@ -256,9 +256,27 @@
 		 </div>
 		 
 		   <div class="col-lg-12 col-md-12 xs-6">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio:</p>
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 1:</p>
 			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio" class="errores"></div>
+		  </div>
+		  
+		   <div class="col-lg-12 col-md-12 xs-6">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 2:</p>
+			  	<input type="text"  name="numero_oficio1" id="numero_oficio1" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio1" class="errores"></div>
+		  </div>
+		  
+		   <div class="col-lg-12 col-md-12 xs-6">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 3:</p>
+			  	<input type="text"  name="numero_oficio2" id="numero_oficio2" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio2" class="errores"></div>
+		  </div>
+		  
+		   <div class="col-lg-12 col-md-12 xs-6">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 4:</p>
+			  	<input type="text"  name="numero_oficio3" id="numero_oficio3" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio3" class="errores"></div>
 		  </div>
 		   
 		    <div class="col-xs-12 col-md-12">
