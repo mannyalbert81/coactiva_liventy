@@ -3933,7 +3933,7 @@ class MatrizJuiciosController extends ControladorBase{
 			$id_titulo_credito= isset($_POST['id_titulo_credito'])?$_POST['id_titulo_credito']:0;
 			$fecha_avoco= isset($_POST['fecha_levantamiento'])?$_POST['fecha_levantamiento']:0;
 			$hora_avoco= isset($_POST['hora_levantamiento'])?$_POST['hora_levantamiento']:0;
-			$razon_avoco= isset($_POST['razon_levantamiento'])?$_POST['razon_levantamiento']:0;
+			$razon_avoco= isset($_POST['razon_levantamiento'])?$_POST['razon_levantamiento']:"";
 			$numero_oficio= isset($_POST['numero_oficio'])?$_POST['numero_oficio']:0;
 			$dirigido_levantamiento= isset($_POST['dirigido_levantamiento'])?$_POST['dirigido_levantamiento']:0;
 			
@@ -3943,9 +3943,35 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			$dtdatos=$juicios->getCondiciones($columnas, $tablas, $where, "j.id_juicios");
 			
+			//para los parametros
+			$fecha=""; $hora="";
+			
+			$fecha=$fecha_avoco==0?date('d-m-Y'):$fecha_avoco;
+			$hora=$hora_avoco==0?date('H:i:s'):"";
+			
+			
+			//creacion del diccionario de datos
+			$dicContenido = array(
+					'COACTIVADOPRI'=>'Providencia Levantamiento',
+					'GARANTEPRI'=>'Liventy',
+					'CIUDAD'=>$dtdatos[0]->nombre_ciudad,
+					'FECHA'=>$fecha,
+					'HORA'=>$hora,
+					'OPERACION'=>$dtdatos[0]->numero_titulo_credito,
+					'NOMBRESEC'=>$dtdatos[0]->secretarios,
+					'CARGOSEC'=>$dtdatos[0]->cargo_secretarios,
+					'NOMBREABG'=>$dtdatos[0]->impulsores,
+					'CARGOABG'=>$dtdatos[0]->cargo_impulsores,
+					'NOMBRECIT'=>'',
+					'CARGOCIT'=>'',
+					'RAZON2'=>$razon_avoco
+			
+			);
+				
+			
 			
 			//echo 'llego'; die();
-			$this->verReporte('PLevantamiento',array('dtdatos'=>$dtdatos,'razon_avoco'=>$razon_avoco));
+			$this->verReporte('PLevantamiento',array('dicContenido'=>$dicContenido,'dtdatos'=>$dtdatos,'razon_avoco'=>$razon_avoco));
 			
 			//include_once 'view/reportes/PLevantamientoRpt.php';
 		}
