@@ -3810,13 +3810,8 @@ class MatrizJuiciosController extends ControladorBase{
 		if(isset($_POST['agregar']))
 		{
 			
-			
-			$_modal_edit_orden= $_POST["modal_edit_orden"];
-			$_regional= $_POST["regional"];
-			$_juicio_referido_titulo_credito= $_POST["juicio_referido_titulo_credito"];
-			$_year_juicios= $_POST["year_juicios"];
-			
-			
+			$_cuantia_inicial=0;
+		
 			$_identificacion_clientes= $_POST["identificacion_clientes"];
 			$_nombres_clientes= $_POST["nombres_clientes"];
 			$_sexo_clientes= $_POST["sexo_clientes"];
@@ -3843,10 +3838,6 @@ class MatrizJuiciosController extends ControladorBase{
 			$_direccion_clientes_3= $_POST["direccion_clientes_3"];
 			
 		
-			
-				
-			
-			
 			$_identificacion_garantes= $_POST["identificacion_garantes"];
 			$_nombre_garantes= $_POST["nombre_garantes"];
 			$_sexo_garantes= $_POST["sexo_garantes"];
@@ -3864,13 +3855,16 @@ class MatrizJuiciosController extends ControladorBase{
 			$_nombre_garantes_3= $_POST["nombre_garantes_3"];
 			$_sexo_garantes_3= $_POST["sexo_garantes_3"];
 			
-			
-			
+			$_orden= $_POST["modal_edit_orden"];
+			$_regional= $_POST["regional"];
+			$_juicio_referido_titulo_credito= $_POST["juicio_referido_titulo_credito"];
+			$_year_juicios= $_POST["year_juicios"];
+				
+				
 			$_numero_titulo_credito= $_POST["numero_titulo_credito"];
 			$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 			$_cuantia_inicial= $_POST["cuantia_inicial"];
 			$_riesgo_actual= $_POST["riesgo_actual"];
-			
 			
 		    $_id_provincias= $_POST["id_provincias"];
 			$_id_estados_procesales_juicios= $_POST["id_estados_procesales_juicios"];
@@ -3884,32 +3878,102 @@ class MatrizJuiciosController extends ControladorBase{
 		
 			
 			
-			////////INSERTO CLIENTE
-			
 			$clientes= new ClientesModel();
 			$usuarios = new UsuariosModel();
+			$titulo_credito= new TituloCreditoModel();
+			$juicios = new JuiciosModel();
 			$_id_ciudad=0;
+			$_id_entidades=10;
+			$_id_titulo_credito=0;
+			$_id_estados_titulos_credito= $_POST["id_estados_procesales_juicios"];
+			$_id_estados_auto_pago_juicios= $_POST["id_estados_procesales_juicios"];
+			$_asignado_titulo_credito='true';
+			
+			
 			
 			$resultCiudad = $usuarios->getBy("id_usuarios='$_id_abogado'");
 			$_id_ciudad=$resultCiudad[0]->id_ciudad;
 				
-
-			$funcion = "ins_clientes_liventy";
-			$parametros = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias'";
-			$clientes->setFuncion($funcion);
-			$clientes->setParametros($parametros);
-			$resultado=$clientes->Insert();
-			
-			
+			try {
+				
+				////////INSERTO CLIENTE
+				$funcion1 = "ins_clientes_liventy";
+				$parametros1 = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias'";
+				$clientes->setFuncion($funcion1);
+				$clientes->setParametros($parametros1);
+				//$resultado1=$clientes->Insert();
+				
+				
+				die($parametros1);
+			}
+			catch(Exception $e){
+				
+				$this->view("Error",array(
+						"resultado"=>"Eror al Insertar Clientes ->". $e
+				));
+				exit();
+	    	}
 			
 			$resultClientes = $clientes->getBy("identificacion_clientes='$_identificacion_clientes' AND nombres_clientes='$_nombres_clientes' AND direccion_clientes='$_direccion_clientes' AND nombre_garantes='$_nombre_garantes' AND identificacion_garantes='$_identificacion_garantes' AND id_provincias='$_id_provincias' AND id_ciudad='$_id_ciudad'");
 			$_id_clientes=$resultClientes[0]->id_clientes;
+				
 			
 			
-			
-			
-			
-			
+			if($_id_clientes>0){
+				
+				
+				try {
+					
+					//// INSERTO TITULO DE CREDITO
+						
+					$funcion2 = "ins_titulo_credito_liventy";
+					$parametros2 = "'$_id_ciudad','$_id_entidades','$_id_abogado','$_id_estados_titulos_credito','$_fecha_emision_juicios','$_fecha_emision_juicios','$_id_clientes','$_asignado_titulo_credito','$_numero_titulo_credito','$_fecha_ultima_providencia'";
+					$titulo_credito->setFuncion($funcion2);
+					$titulo_credito->setParametros($parametros2);
+					$resultado2=$titulo_credito->Insert();
+						
+					
+					
+				}catch(Exception $e){
+						
+					$this->view("Error",array(
+							"resultado"=>"Eror al Insertar Titulo Credito ->". $e
+					));
+					exit();
+				}
+				
+				
+				$resultTituloCredito = $titulo_credito->getBy("id_ciudad='$_id_ciudad' AND id_usuarios='$_id_abogado' AND id_clientes='$_id_clientes' AND numero_titulo_credito='$_numero_titulo_credito'");
+				$_id_titulo_credito=$resultTituloCredito[0]->id_titulo_credito;
+					
+				
+				
+				if($_id_titulo_credito>0){
+					
+					try {
+						
+						//// INSERTO JUICIO
+						
+						$funcion3 = "ins_juicios_liventy";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual'";
+						$juicios->setFuncion($funcion3);
+						$juicios->setParametros($parametros3);
+						$resultado3=$juicios->Insert();
+							
+					}catch(Exception $e){
+							
+						$this->view("Error",array(
+								"resultado"=>"Eror al Insertar Juicio ->". $e
+						));
+						exit();
+					}
+					
+				}
+				
+				
+				
+				
+			}
 			
 			
 			

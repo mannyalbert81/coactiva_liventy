@@ -45,6 +45,8 @@
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
 		     	var id_provincias = $("#id_provincias").val();
 		     	var id_estados_procesales_juicios = $("#id_estados_procesales_juicios").val();
+		     
+		     	
 		     	
 		    
 		   				
@@ -549,9 +551,11 @@
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
-				        <input type='text' class='form-control' id='cuantia_inicial' name='cuantia_inicial' value=""  >
+				        <input type='number' min="0" max="1000000" class='form-control' id='cuantia_inicial' name='cuantia_inicial' value="0" readonly >
+				        <div id="mensaje_cuantia_inicial" class="errores"></div>
 				        </div>
 				        </div>	
+				        
 				        <div class = 'col-xs-6 col-md-4'>
 				        <div class='form-group'>
 				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label>
