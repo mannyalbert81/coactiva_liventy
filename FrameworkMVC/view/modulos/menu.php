@@ -191,6 +191,8 @@ $controladores=$_SESSION['controladores'];
           <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Matriz Juicios</span> </a>
           </li>	
+          
+          	
          
 </ul>
 </li>
@@ -232,6 +234,10 @@ $controladores=$_SESSION['controladores'];
           <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
           <a href="index.php?controller=GraficasMatrizJuicios&action=index3"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Gráficas Generación Providencias</span> </a>
           </li>
+          
+          <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=Juicio&action=index2"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Titulos Fomento</span> </a>
+          </li>	
 </ul>
 </li>
 

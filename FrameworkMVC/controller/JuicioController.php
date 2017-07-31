@@ -960,5 +960,40 @@ class JuicioController extends ControladorBase{
 	
 	}
 	
+	public function index2()
+	{
+		session_start();
+		$usuarioId = $_SESSION['id_usuarios'];
+		$usuariosTbl=new UsuariosModel();
+		
+		if(isset($_POST['buscar']))
+		{
+			$parametros = array();
+			$parametros['nombre_secretatio']=(isset($_POST['abogado']))?trim($_POST['abogado']):'';
+				
+			$pagina="contTitulosFomento.aspx";
+			$conexion_rpt = array();
+			$conexion_rpt['pagina']=$pagina;
+				
+				
+			$this->view("ReporteRpt", array(
+					"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			));
+			
+		}else{
+			
+			$usuariosdt = $usuariosTbl->getCondiciones_grupo("nombre_abg_secretario", "titulo_credito_fomento", " 1 = 1 ", " nombre_abg_secretario", "nombre_abg_secretario");
+			
+			$this->view("TitulosFomento",array(
+					'usuariosdt'=>$usuariosdt
+			));
+			
+		}
+		
+		
+		
+			
+	}
+	
 }
 ?>      
