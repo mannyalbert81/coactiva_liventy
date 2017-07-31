@@ -3800,6 +3800,106 @@ class MatrizJuiciosController extends ControladorBase{
 		
 	}
 	
+	
+	public function AgregarJuicio(){
+		
+		session_start();
+		$providencias= new ProvidenciasModel();
+		$asignacion_secretarios = new AsignacionSecretariosModel();
+		
+		if(isset($_POST['agregar']))
+		{
+			
+			
+			$_modal_edit_orden= $_POST["modal_edit_orden"];
+			$_regional= $_POST["regional"];
+			$_juicio_referido_titulo_credito= $_POST["juicio_referido_titulo_credito"];
+			$_year_juicios= $_POST["year_juicios"];
+			
+			
+			$_identificacion_clientes= $_POST["identificacion_clientes"];
+			$_nombres_clientes= $_POST["nombres_clientes"];
+			$_sexo_clientes= $_POST["sexo_clientes"];
+			$_correo_clientes= $_POST["correo_clientes"];
+			$_direccion_clientes= $_POST["direccion_clientes"];
+			
+			$_identificacion_clientes_1= $_POST["identificacion_clientes_1"];
+			$_nombre_clientes_1= $_POST["nombre_clientes_1"];
+			$_sexo_clientes_1= $_POST["sexo_clientes_1"];
+			$_correo_clientes_1= $_POST["correo_clientes_1"];
+			$_direccion_clientes_1= $_POST["direccion_clientes_1"];
+			
+			
+			$_identificacion_clientes_2= $_POST["identificacion_clientes_2"];
+			$_nombre_clientes_2= $_POST["nombre_clientes_2"];
+			$_sexo_clientes_2= $_POST["sexo_clientes_2"];
+			$_correo_clientes_2= $_POST["correo_clientes_2"];
+			$_direccion_clientes_2= $_POST["direccion_clientes_2"];
+			
+			$_identificacion_clientes_3= $_POST["identificacion_clientes_3"];
+			$_nombre_clientes_3= $_POST["nombre_clientes_3"];
+			$_sexo_clientes_3= $_POST["sexo_clientes_3"];
+			$_correo_clientes_3= $_POST["correo_clientes_3"];
+			$_direccion_clientes_3= $_POST["direccion_clientes_3"];
+			
+		
+			
+			
+			$_identificacion_garantes= $_POST["identificacion_garantes"];
+			$_nombre_garantes= $_POST["nombre_garantes"];
+			$_sexo_garantes= $_POST["sexo_garantes"];
+			
+			$_identificacion_garantes_1= $_POST["identificacion_garantes_1"];
+			$_nombre_garantes_1= $_POST["nombre_garantes_1"];
+			$_sexo_garantes_1= $_POST["sexo_garantes_1"];
+			
+			
+			$_identificacion_garantes_2= $_POST["identificacion_garantes_2"];
+			$_nombre_garantes_2= $_POST["nombre_garantes_2"];
+			$_sexo_garantes_2= $_POST["sexo_garantes_2"];
+			
+			$_identificacion_garantes_3= $_POST["identificacion_garantes_3"];
+			$_nombre_garantes_3= $_POST["nombre_garantes_3"];
+			$_sexo_garantes_3= $_POST["sexo_garantes_3"];
+			
+			
+			
+			$_numero_titulo_credito= $_POST["numero_titulo_credito"];
+			$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+			$_cuantia_inicial= $_POST["cuantia_inicial"];
+			$_riesgo_actual= $_POST["riesgo_actual"];
+			
+			
+		    $_id_provincias= $_POST["id_provincias"];
+			$_id_estados_procesales_juicios= $_POST["id_estados_procesales_juicios"];
+			$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+			$_id_abogado= $_POST["id_abogado"];
+			
+			$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
+			
+			$_estrategia_seguir= $_POST["estrategia_seguir"];
+			$_observaciones= $_POST["observaciones"];
+		
+			
+			
+			////////INSERTO CLIENTE
+			$funcion = "ins_usuarios";
+			$parametros = " '$_nombre_usuario' ,'$_clave_usuario' , '$_telefono_usuario', '$_celular_usuario', '$_correo_usuario' , '$_id_rol', '$_id_estado' , '$_usuario_usuario', '$_cedula_usuarios', '$_id_ciudad', '$imagen_usuarios'";
+			$usuarios->setFuncion($funcion);
+			$usuarios->setParametros($parametros);
+			$resultado=$usuarios->Insert();
+			
+			
+			
+			
+		}
+		
+		$this->redirect("MatrizJuicios", "index3");
+		
+	}
+	
+	
+	
 	public function Imprimir_ProvidenciaLevantamiento()
 	{
 		session_start();
