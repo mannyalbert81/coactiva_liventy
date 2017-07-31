@@ -3913,16 +3913,41 @@ class MatrizJuiciosController extends ControladorBase{
 			$dtdatos=$juicios->getCondiciones($columnas, $tablas, $where, "j.id_juicios");
 			
 			//para los parametros
-			$fecha=""; $hora="";
+			$fecha=""; $hora=""; $dirigidos="";$coactivadopri=""; $coactivados=""; $garantespri=""; $garantes="";
 			
 			$fecha=$fecha_avoco==0?date('d-m-Y'):$fecha_avoco;
 			$hora=$hora_avoco==0?date('H:i:s'):"";
+			$dirigidos=$dirigido_levantamiento==0?"":$dirigido_levantamiento;
+			
+			//condiciones para llenar los coactivados y garantes
+			if(!empty($dtdatos))
+			{
+				if($dtdatos[0]->cantidad_clientes>0)
+				{
+					if($dtdatos[0]->sexo_clientes=='F')
+					{
+						$coactivadopri=" de la Coactivada <b>".$dtdatos[0]->nombres_clientes." </b>";
+						$coactivados=$coactivadopri;
+					}else{
+						
+						$coactivadopri=" del Coactivado <b>".$dtdatos[0]->nombres_clientes." </b>";
+						$coactivados=$coactivadopri;
+					}
+				}
+				
+				switch ($dtdatos[0]->cantidad_clientes)
+				{
+					case 2:
+						$coactivados=" de los coactivados ".$dtdatos[0]->nombres_clientes." ";
+					break;
+				}
+			}
 			
 			
 			//creacion del diccionario de datos
 			$dicContenido = array(
-					'COACTIVADOPRI'=>'Providencia Levantamiento',
-					'GARANTEPRI'=>'Liventy',
+					'COACTIVADOPRI'=>$coactivadopri,
+					'GARANTEPRI'=>$garantespri,
 					'CIUDAD'=>$dtdatos[0]->nombre_ciudad,
 					'FECHA'=>$fecha,
 					'HORA'=>$hora,
@@ -3933,7 +3958,11 @@ class MatrizJuiciosController extends ControladorBase{
 					'CARGOABG'=>$dtdatos[0]->cargo_impulsores,
 					'NOMBRECIT'=>'',
 					'CARGOCIT'=>'',
-					'RAZON2'=>$razon_avoco
+					'RAZON2'=>$razon_avoco,
+					'COACTIVADOS'=>$coactivados,
+					'GARANTES'=>$garantes,
+					'DIRIGIDOS'=>$dirigidos,
+					'NOTIFICADOR'=>""
 			
 			);
 				
@@ -4323,10 +4352,6 @@ class MatrizJuiciosController extends ControladorBase{
 		
 		
 	}
-	
-	
-	
-	
 	
 	
 	
