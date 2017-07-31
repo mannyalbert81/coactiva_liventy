@@ -3067,11 +3067,42 @@ class MatrizJuiciosController extends ControladorBase{
 							die();
 	
 						}
-							
+						
 							
 					}
 						
+					
+					
+					if(isset($_GET["id_abogado"])){
 						
+						$usuarios= new UsuariosModel();
+						
+						$_id_abogado = $_GET["id_abogado"];
+						
+						
+						
+						$columnas_nuevo="asignacion_secretarios_view.id_secretario, 
+										  asignacion_secretarios_view.id_abogado, 
+										  asignacion_secretarios_view.impulsores, 
+										  asignacion_secretarios_view.secretarios";
+						$tablas_nuevo="public.asignacion_secretarios_view";
+						$where_nuevo="asignacion_secretarios_view.id_abogado='$_id_abogado'";
+						$id_nuevo="asignacion_secretarios_view.id_secretario";
+						$resultSecre = $usuarios->getCondiciones($columnas_nuevo ,$tablas_nuevo ,$where_nuevo, $id_nuevo);
+						
+						
+						
+						
+						$this->view("AgregarJuicios", array(
+								"resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv,
+						));
+							
+						die();
+							
+							
+					}
+					
+					
 					$resultEdit = "";
 	
 					if (isset ($_GET["id_juicios"])   )

@@ -548,7 +548,7 @@
 				        </div>
 				        </div>	
 <br>
- 						<div class="row" >
+ 						
  						<div class="col-xs-6 col-md-2">
  						 <div class='form-group'>
 			  			 <label for='id_provincias' class='control-label'>Provincia</label>
@@ -593,8 +593,8 @@
 				        <input type='text' class='form-control' id='secretarios' name='secretarios' value="<?php echo $resEdit->secretarios; ?>" readonly>
 				        </div>
 				        </div>
- 						</div>
  						
+ 						<br>
 					    <div class = 'col-xs-6 col-md-6'>
 				        <div class='form-group'>
 				        <label for='descripcion_estado_procesal' class='control-label'>Descripción Etapa Procesal</label><br>
@@ -702,7 +702,8 @@
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
+		  <a href="<?php echo $helper->url("MatrizJuicios","index3"); ?>&id_abogado=<?php echo $_SESSION['id_usuarios']; ?>" class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-plus"></i></a>
+		<button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
 	 	 	
 	 
 	     </div>
