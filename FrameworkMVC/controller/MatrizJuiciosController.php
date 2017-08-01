@@ -3897,14 +3897,13 @@ class MatrizJuiciosController extends ControladorBase{
 			try {
 				
 				////////INSERTO CLIENTE
-				$funcion1 = "ins_clientes_liventy";
-				$parametros1 = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias'";
-				$clientes->setFuncion($funcion1);
-				$clientes->setParametros($parametros1);
-				//$resultado1=$clientes->Insert();
+				$funcion = "ins_clientes_liventy";
+				$parametros = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias'";
+				$clientes->setFuncion($funcion);
+				$clientes->setParametros($parametros);
+				$resultado=$clientes->Insert();
 				
 				
-				die($parametros1);
 			}
 			catch(Exception $e){
 				
@@ -3916,7 +3915,7 @@ class MatrizJuiciosController extends ControladorBase{
 			
 			$resultClientes = $clientes->getBy("identificacion_clientes='$_identificacion_clientes' AND nombres_clientes='$_nombres_clientes' AND direccion_clientes='$_direccion_clientes' AND nombre_garantes='$_nombre_garantes' AND identificacion_garantes='$_identificacion_garantes' AND id_provincias='$_id_provincias' AND id_ciudad='$_id_ciudad'");
 			$_id_clientes=$resultClientes[0]->id_clientes;
-				
+			$_orden= $_id_clientes;
 			
 			
 			if($_id_clientes>0){

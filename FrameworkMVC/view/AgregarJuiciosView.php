@@ -25,10 +25,6 @@
  		
  		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 		
-		<script>
-		    webshims.setOptions('forms-ext', {types: 'date'});
-			webshims.polyfill('forms forms-ext');
-		</script>
 		
       
          
@@ -169,7 +165,37 @@
 	
   
    
-        
+        <script>
+
+		$(document).ready(function(){
+
+		 
+
+		    $fecha=$('#fecha_emision_juicios');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1850:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_ultima_providencia');
+		    if ($fecha[0].type!="date"){
+		    $fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1850:2017"
+	    		});
+		    }
+
+		}); 
+
+	</script> 
    
 
     </head>
@@ -276,7 +302,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_clientes' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes" id="sexo_clientes"  class="form-control">
-							<option value="" selected="selected">---</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
@@ -313,7 +339,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_clientes_1' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_1" id="sexo_clientes_1"  class="form-control">
-							<option value="" selected="selected">---</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F"  >F </option>
 					    </select>
@@ -351,7 +377,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_clientes_2' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_2" id="sexo_clientes_2"  class="form-control">
-							<option value="" selected="selected">---</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M"  >M </option>
 						            	<option value="F"  >F </option>
 					    </select>
@@ -388,7 +414,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_clientes_3' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_3" id="sexo_clientes_3"  class="form-control">
-							<option value="" selected="selected">---</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M"  >M </option>
 						            	<option value="F"  >F </option>
 					    </select>
@@ -439,7 +465,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_garantes' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes" id="sexo_garantes"  class="form-control">
-							<option value="" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">--Seleccione--</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
@@ -465,7 +491,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_garantes_1' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_1" id="sexo_garantes_1"  class="form-control">
-							<option value="" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">--Seleccione--</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
@@ -491,7 +517,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_garantes_2' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_2" id="sexo_garantes_2"  class="form-control">
-							<option value="" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">--Seleccione--</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
@@ -517,7 +543,7 @@
 				        <div class='form-group'>
 				        <label for='sexo_garantes_3' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_3" id="sexo_garantes_3"  class="form-control">
-						<option value="" selected="selected">--Seleccione--</option>
+						<option value="_" selected="selected">--Seleccione--</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
@@ -544,7 +570,7 @@
 				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='fecha_emision_juicios' class='control-label'>Fecha Auto Pago</label>
-				        <input type='date' class='form-control' id='fecha_emision_juicios' name='fecha_emision_juicios' value=""   >
+				        <input type='date' class='form-control' id='fecha_emision_juicios' format='DD/MM/YYYY' name='fecha_emision_juicios' value=""   >
 				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
 				        </div>
 				        </div>	
@@ -597,7 +623,7 @@
 					    <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Providencia</label>
-				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' value=""  >
+				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' format='DD/MM/YYYY' value=""  >
 				         <div id="mensaje_fecha_ultima_providencia" class="errores"></div>
 				        </div>
 				        </div>
