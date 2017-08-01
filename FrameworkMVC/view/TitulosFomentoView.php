@@ -29,7 +29,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Gráficas Estados Procesales</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Listado de Titulos Registrados en Fomento que no constan en matriz de Liventy.</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -39,7 +39,7 @@
   			
   		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
-			  	<select name="abogado" id="abogado"  class="form-control" readonly>
+				<select name="abogado" id="abogado"  class="form-control">
 			      <option value=""><?php echo "--TODOS--";  ?> </option>
 					<?php  foreach($usuariosdt as $res) {?>
 						<option value="<?php echo $res->nombre_abg_secretario; ?>" ><?php echo $res->nombre_abg_secretario;  ?> </option>
