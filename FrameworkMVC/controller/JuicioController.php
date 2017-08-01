@@ -964,12 +964,14 @@ class JuicioController extends ControladorBase{
 	{
 		session_start();
 		$usuarioId = $_SESSION['id_usuarios'];
+		$usuarioRol = $_SESSION['id_rol'];
 		$usuariosTbl=new UsuariosModel();
 		
 		if(isset($_POST['buscar']))
 		{
 			$parametros = array();
 			$parametros['nombre_secretatio']=(isset($_POST['abogado']))?trim($_POST['abogado']):'';
+			$parametros['rol']=$usuarioRol<>0?$usuarioRol:'';
 				
 			$pagina="contTitulosFomento.aspx";
 			$conexion_rpt = array();
