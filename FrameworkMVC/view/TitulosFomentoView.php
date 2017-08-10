@@ -39,7 +39,7 @@
   			
   		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
-			  	<select name="abogado" id="abogado"  class="form-control">
+				<select name="abogado" id="abogado"  class="form-control">
 			      <option value=""><?php echo "--TODOS--";  ?> </option>
 					<?php  foreach($usuariosdt as $res) {?>
 						<option value="<?php echo $res->nombre_abg_secretario; ?>" ><?php echo $res->nombre_abg_secretario;  ?> </option>
