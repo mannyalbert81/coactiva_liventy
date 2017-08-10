@@ -847,6 +847,7 @@ class MatrizJuiciosController extends ControladorBase{
 				
 				if ($id_rol==23){
 				
+				
 					$_id_usuarios= $_SESSION['id_usuarios'];
 					$resultSet="";
 					$registrosTotales = 0;
@@ -876,6 +877,7 @@ class MatrizJuiciosController extends ControladorBase{
 							$id_secretario=(isset($_POST['id_secretario']))?$_POST['id_secretario']:0;
 							$id_impulsor=(isset($_POST['id_impulsor']))?$_POST['id_impulsor']:0;
 							$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
+							$comprarado_fomento=(isset($_POST['comprarado_fomento']))?$_POST['comprarado_fomento']:'';
 				
 							
 							
@@ -965,7 +967,7 @@ class MatrizJuiciosController extends ControladorBase{
 							$where_3 = "";
 							$where_4 = "";
 							$where_5 = "";
-								
+							$where_6 = "";
 				
 								
 								
@@ -980,8 +982,11 @@ class MatrizJuiciosController extends ControladorBase{
 							if($id_secretario!=0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
 							
 							if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
-				
-							$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5;
+							
+							if($comprarado_fomento!=""){$where_6=" AND juicios.comprarado_fomento='$comprarado_fomento'";}
+							
+							
+							$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6;
 				
 								
 							//comienza paginacion
@@ -1115,7 +1120,10 @@ class MatrizJuiciosController extends ControladorBase{
 								$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 								$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 								$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-									
+								$parametros['comprarado_fomento']=(isset($_POST['comprarado_fomento']))?trim($_POST['comprarado_fomento']):'';
+								
+							
+								
 								
 								$pagina="contMatrizJuicios.aspx";
 				
