@@ -23,13 +23,6 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
- 		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-		
-		<script>
-		    webshims.setOptions('forms-ext', {types: 'date'});
-			webshims.polyfill('forms forms-ext');
-		</script>
-		
        <style>
             input{
                 margin-top:5px;
@@ -41,6 +34,8 @@
                 
             
         </style>
+        
+     
          
      <script >
 		$(document).ready(function(){
@@ -155,6 +150,36 @@
 		})
 	}
 	
+	</script>
+	
+	 <script>
+
+		$(document).ready(function(){
+
+		    $fechaEmision=$('#fecha_emision_juicios');
+		    if ($fechaEmision[0].type!="date"){
+		    $fechaEmision.attr('readonly','readonly');
+		    $fechaEmision.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1800:2017"
+	    		});
+		    }
+
+		    $fechaUltProv=$('#fecha_ultima_providencia');
+		    if ($fechaUltProv[0].type!="date"){
+		    $fechaUltProv.attr('readonly','readonly');
+		    $fechaUltProv.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1800:2017"
+	    		});
+		    }
+
+		}); 
+
 	</script>
 
     </head>
