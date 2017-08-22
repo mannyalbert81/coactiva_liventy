@@ -38,6 +38,7 @@
      
          
      <script >
+     /*
 		$(document).ready(function(){
 
 		    // cada vez que se cambia el valor del combo
@@ -94,7 +95,7 @@
 				
 					    
 		}); 
-
+*/
 	</script>
 	
   

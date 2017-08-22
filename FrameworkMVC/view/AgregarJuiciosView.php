@@ -34,13 +34,15 @@
 		    // cada vez que se cambia el valor del combo
 		    $("#agregar").click(function() 
 			{
-		   
+		   /*
 		    	var fecha_emision_juicios = $("#fecha_emision_juicios").val();
 		     	var fecha_ultima_providencia = $("#fecha_ultima_providencia").val();
+		     	*/
 		     	var numero_titulo_credito = $("#numero_titulo_credito").val();
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
 		     	var id_provincias = $("#id_provincias").val();
 		     	var id_estados_procesales_juicios = $("#id_estados_procesales_juicios").val();
+		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
 		     
 		     	
 		     	
@@ -70,7 +72,8 @@
 		    		$("#mensaje_numero_titulo_credito").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		     	if (fecha_emision_juicios == "")
+
+			     /*	if (fecha_emision_juicios == "")
 		    	{
 			    	
 		    		$("#mensaje_fecha_emision_juicios").text("Introduzca una Fecha");
@@ -81,7 +84,7 @@
 		    	{
 		    		$("#mensaje_fecha_emision_juicios").fadeOut("slow"); //Muestra mensaje de error
 		            
-				}
+				}*/
 				
 		    	
 		    	
@@ -113,7 +116,7 @@
 		     	
 		     
 		    	
-
+/*
 
 		    	if (fecha_ultima_providencia == "")
 		    	{
@@ -128,7 +131,7 @@
 		            
 				}
 		    	
-		    	
+		    	*/
 		    	
 		    	
 			}); 
@@ -141,9 +144,9 @@
 				$("#mensaje_numero_titulo_credito").fadeOut("slow");
 			});
 	
-				$( "#fecha_emision_juicios" ).focus(function() {
+			/*	$( "#fecha_emision_juicios" ).focus(function() {
 					$("#mensaje_fecha_emision_juicios").fadeOut("slow");
-    			});
+    			});*/
 
 				$( "#id_provincias" ).focus(function() {
 					$("#mensaje_id_provincias").fadeOut("slow");
@@ -153,11 +156,11 @@
 					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
     			});
     			
-
+/*
 				$( "#fecha_ultima_providencia" ).focus(function() {
 					$("#mensaje_fecha_ultima_providencia").fadeOut("slow");
     			});
-			
+			*/
 					    
 		}); 
 

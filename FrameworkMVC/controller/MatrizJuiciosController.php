@@ -2394,12 +2394,22 @@ class MatrizJuiciosController extends ControladorBase{
 				$_identificacion_garantes= $_POST["identificacion_garantes"];
 				//$_nombre_provincias= $_POST["nombre_provincias"];
 				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
-				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+				
 				$_cuantia_inicial= $_POST["cuantia_inicial"];
 				$_riesgo_actual= $_POST["riesgo_actual"];
 				//$_nombre_estados_procesales_juicios= $_POST["nombre_estados_procesales_juicios"];
 				$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
+				
+				
+				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+				
+				
+				
+				
+				
+				
+				
 				$_estrategia_seguir= $_POST["estrategia_seguir"];
 				$_observaciones= $_POST["observaciones"];
 				$_impulsores= $_POST["impulsores"];
@@ -2410,38 +2420,169 @@ class MatrizJuiciosController extends ControladorBase{
 				$_id_titulo_credito= $_POST["id_titulo_credito"];
 				
 				
-				$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
-				id_estados_procesales_juicios='$_id_estados_procesales_juicios',
-				fecha_emision_juicios='$_fecha_emision_juicios',
-				numero_juicios='$_juicio_referido_titulo_credito',
-				year_juicios='$_year_juicios',
-				fecha_ultima_providencia='$_fecha_ultima_providencia',
-				estrategia_seguir='$_estrategia_seguir',
-				observaciones='$_observaciones',
-				descripcion_estado_procesal='$_descripcion_estado_procesal',
-				regional='$_regional',
-				cuantia_inicial='$_cuantia_inicial',
-				riesgo_actual='$_riesgo_actual'";
+				if($_fecha_emision_juicios!=""){
+						
+					$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
+					id_estados_procesales_juicios='$_id_estados_procesales_juicios',
+					fecha_emision_juicios='$_fecha_emision_juicios',
+					numero_juicios='$_juicio_referido_titulo_credito',
+					year_juicios='$_year_juicios',
+					estrategia_seguir='$_estrategia_seguir',
+					observaciones='$_observaciones',
+					descripcion_estado_procesal='$_descripcion_estado_procesal',
+					regional='$_regional',
+					cuantia_inicial='$_cuantia_inicial',
+					riesgo_actual='$_riesgo_actual'";
+					
+					
+					$tabla1="juicios";
+					$where1="id_juicios='$_id_juicios'";
+					
+					
+					
+					try {
+					
+						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+					
+					
+					
+					
+					}catch (Exception $ex)
+					{
+					
+						die($ex);
+					
+					}
+					
+					
+					
+					
+					
+				}
 				
-			
 				
-				$tabla1="juicios";
-				$where1="id_juicios='$_id_juicios'";
-	
-				try {
+				else{
+					
+					
 						
-					$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+					$_fecha_emision_juicios="null";
+					
+					$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
+					id_estados_procesales_juicios='$_id_estados_procesales_juicios',
+					fecha_emision_juicios=$_fecha_emision_juicios,
+					numero_juicios='$_juicio_referido_titulo_credito',
+					year_juicios='$_year_juicios',
+					estrategia_seguir='$_estrategia_seguir',
+					observaciones='$_observaciones',
+					descripcion_estado_procesal='$_descripcion_estado_procesal',
+					regional='$_regional',
+					cuantia_inicial='$_cuantia_inicial',
+					riesgo_actual='$_riesgo_actual'";
+						
+						
+					
+						
+					$tabla1="juicios";
+					$where1="id_juicios='$_id_juicios'";
+						
+					
+						
+					try {
+							
+						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+							
+							
+							
+							
+					}catch (Exception $ex)
+					{
+							
+						die($ex);
+							
+					}
+					
+					
+				}
+				
+				
+				
+				
+				if($_fecha_ultima_providencia!=""){
+				
+					$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
+					id_estados_procesales_juicios='$_id_estados_procesales_juicios',
+					numero_juicios='$_juicio_referido_titulo_credito',
+					year_juicios='$_year_juicios',
+					fecha_ultima_providencia='$_fecha_ultima_providencia',
+					estrategia_seguir='$_estrategia_seguir',
+					observaciones='$_observaciones',
+					descripcion_estado_procesal='$_descripcion_estado_procesal',
+					regional='$_regional',
+					cuantia_inicial='$_cuantia_inicial',
+					riesgo_actual='$_riesgo_actual'";
+						
+						
+					
+						
+					$tabla1="juicios";
+					$where1="id_juicios='$_id_juicios'";
+						
+					
+						
+					try {
+							
+						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+							
+							
+							
+							
+					}catch (Exception $ex)
+					{
+							
+						die($ex);
+							
+					}	
+				}else{
+						
+					$_fecha_ultima_providencia="null";
+					
+					
+					$colval1="juicio_referido_titulo_credito='$_juicio_referido_titulo_credito',
+					id_estados_procesales_juicios='$_id_estados_procesales_juicios',
+					numero_juicios='$_juicio_referido_titulo_credito',
+					year_juicios='$_year_juicios',
+					fecha_ultima_providencia=$_fecha_ultima_providencia,
+					estrategia_seguir='$_estrategia_seguir',
+					observaciones='$_observaciones',
+					descripcion_estado_procesal='$_descripcion_estado_procesal',
+					regional='$_regional',
+					cuantia_inicial='$_cuantia_inicial',
+					riesgo_actual='$_riesgo_actual'";
+					
 					
 						
 					
-						
-				}catch (Exception $ex)
-				{
+					$tabla1="juicios";
+					$where1="id_juicios='$_id_juicios'";
 					
-					die($ex);
+					
+					
+					try {
+							
+						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
+							
+							
+							
+							
+					}catch (Exception $ex)
+					{
+							
+						die($ex);
+							
+					}
 						
 				}
-	
+				
 				
 			}
 			
@@ -2604,31 +2745,112 @@ class MatrizJuiciosController extends ControladorBase{
 			{
 				
 				$_numero_titulo_credito= $_POST["numero_titulo_credito"];
+				
 				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+				
 				$_id_clientes= $_POST["id_clientes"];
 				$_id_titulo_credito= $_POST["id_titulo_credito"];
 			
-					
-				$colval2="numero_titulo_credito='$_numero_titulo_credito',
-				fecha_emision='$_fecha_emision_juicios',
-				fecha_corte='$_fecha_emision_juicios',
-				fecha_ultima_providencia='$_fecha_ultima_providencia'";
-					
-				$tabla2="titulo_credito";
-				$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
-					
-				try {
+				
+				
+				
+				if($_fecha_emision_juicios!=""){
+				
+
+					$colval2="numero_titulo_credito='$_numero_titulo_credito',
+					fecha_emision='$_fecha_emision_juicios',
+					fecha_corte='$_fecha_emision_juicios'";
 						
-					$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
-			
+					$tabla2="titulo_credito";
+					$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+						
+					try {
 					
-			
-						
-				}catch (Exception $ex)
-				{
-						
+						$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
+							
+							
+							
+					
+					}catch (Exception $ex)
+					{
+					
+					}
+					
+				}else{
+				
+					$_fecha_emision_juicios="null";
+					
+					$colval2="numero_titulo_credito='$_numero_titulo_credito',
+					fecha_emision=$_fecha_emision_juicios,
+					fecha_corte=$_fecha_emision_juicios";
+					
+					$tabla2="titulo_credito";
+					$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+					
+					try {
+							
+						$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
+							
+							
+					}catch (Exception $ex)
+					{
+							
+					}
 				}
+				
+				if($_fecha_ultima_providencia!=""){
+				
+					$colval2="numero_titulo_credito='$_numero_titulo_credito',
+					fecha_ultima_providencia='$_fecha_ultima_providencia'";
+						
+					$tabla2="titulo_credito";
+					$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+						
+					try {
+							
+						$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
+							
+							
+							
+							
+					}catch (Exception $ex)
+					{
+							
+					}
+				
+				}else{
+				
+					$_fecha_ultima_providencia="null";
+					
+					
+					$colval2="numero_titulo_credito='$_numero_titulo_credito',
+					fecha_ultima_providencia=$_fecha_ultima_providencia";
+					
+					$tabla2="titulo_credito";
+					$where2="id_titulo_credito='$_id_titulo_credito' AND id_clientes='$_id_clientes'";
+					
+					try {
+							
+						$resultado=$titulo_credito->UpdateBy($colval2, $tabla2, $where2);
+							
+							
+							
+							
+					}catch (Exception $ex)
+					{
+							
+					}
+				
+				}
+				
+				
+				
+				
+				
+				
+				
+			
 					
 				
 			}
@@ -3876,7 +4098,8 @@ class MatrizJuiciosController extends ControladorBase{
 			
 		    $_id_provincias= $_POST["id_provincias"];
 			$_id_estados_procesales_juicios= $_POST["id_estados_procesales_juicios"];
-			$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+			$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+		    $_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
 			$_id_abogado= $_POST["id_abogado"];
 			
 			$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
@@ -3929,25 +4152,58 @@ class MatrizJuiciosController extends ControladorBase{
 			if($_id_clientes>0){
 				
 				
-				try {
 					
-					//// INSERTO TITULO DE CREDITO
-						
-					$funcion2 = "ins_titulo_credito_liventy";
-					$parametros2 = "'$_id_ciudad','$_id_entidades','$_id_abogado','$_id_estados_titulos_credito','$_fecha_emision_juicios','$_fecha_emision_juicios','$_id_clientes','$_asignado_titulo_credito','$_numero_titulo_credito','$_fecha_ultima_providencia'";
-					$titulo_credito->setFuncion($funcion2);
-					$titulo_credito->setParametros($parametros2);
-					$resultado2=$titulo_credito->Insert();
-						
+				if($_fecha_emision_juicios!="" && $_fecha_ultima_providencia!=""){
+					
+					try {
+							
+						//// INSERTO TITULO DE CREDITO
+					
+						$funcion2 = "ins_titulo_credito_liventy";
+						$parametros2 = "'$_id_ciudad','$_id_entidades','$_id_abogado','$_id_estados_titulos_credito','$_fecha_emision_juicios','$_fecha_emision_juicios','$_id_clientes','$_asignado_titulo_credito','$_numero_titulo_credito','$_fecha_ultima_providencia'";
+						$titulo_credito->setFuncion($funcion2);
+						$titulo_credito->setParametros($parametros2);
+						$resultado2=$titulo_credito->Insert();
+					
+							
+							
+					}catch(Exception $e){
+					
+						$this->view("Error",array(
+								"resultado"=>"Eror al Insertar Titulo Credito ->". $e
+						));
+						exit();
+					}
+					
+				}else{
+					
+					$_fecha_emision_juicios= 'null';
+					$_fecha_ultima_providencia= 'null';
+					
+					try {
+							
+						//// INSERTO TITULO DE CREDITO
+							
+						$funcion2 = "ins_titulo_credito_liventy";
+						$parametros2 = "'$_id_ciudad','$_id_entidades','$_id_abogado','$_id_estados_titulos_credito', $_fecha_emision_juicios, $_fecha_emision_juicios,'$_id_clientes','$_asignado_titulo_credito','$_numero_titulo_credito', $_fecha_ultima_providencia";
+						$titulo_credito->setFuncion($funcion2);
+						$titulo_credito->setParametros($parametros2);
+						$resultado2=$titulo_credito->Insert();
+							
+							
+							
+					}catch(Exception $e){
+							
+						$this->view("Error",array(
+								"resultado"=>"Eror al Insertar Titulo Credito ->". $e
+						));
+						exit();
+					}
 					
 					
-				}catch(Exception $e){
-						
-					$this->view("Error",array(
-							"resultado"=>"Eror al Insertar Titulo Credito ->". $e
-					));
-					exit();
 				}
+				
+				
 				
 				
 				$resultTituloCredito = $titulo_credito->getBy("id_ciudad='$_id_ciudad' AND id_usuarios='$_id_abogado' AND id_clientes='$_id_clientes' AND numero_titulo_credito='$_numero_titulo_credito'");
@@ -3957,6 +4213,12 @@ class MatrizJuiciosController extends ControladorBase{
 				
 				if($_id_titulo_credito>0){
 					
+					$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
+					$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
+						
+					
+					if($_fecha_emision_juicios!="" && $_fecha_ultima_providencia!=""){
+							
 					try {
 						
 						//// INSERTO JUICIO
@@ -3975,10 +4237,34 @@ class MatrizJuiciosController extends ControladorBase{
 						exit();
 					}
 					
+				}else{
+					
+					$_fecha_emision_juicios='null';
+					$_fecha_ultima_providencia='null';
+					
+					
+					try {
+					
+						//// INSERTO JUICIO
+					
+						$funcion3 = "ins_juicios_liventy";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual'";
+						$juicios->setFuncion($funcion3);
+						$juicios->setParametros($parametros3);
+						$resultado3=$juicios->Insert();
+							
+					}catch(Exception $e){
+							
+						$this->view("Error",array(
+								"resultado"=>"Eror al Insertar Juicio ->". $e
+						));
+						exit();
+					}
+					
 				}
 				
 				
-				
+				}
 				
 			}
 			
