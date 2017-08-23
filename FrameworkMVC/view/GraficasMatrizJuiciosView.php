@@ -93,7 +93,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Gráficas Estados Procesales</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Estados Procesales</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -197,17 +197,10 @@
 		labels : <?php echo $data;?>,
 		datasets : [
 			{
-				fillColor : "#6b9dfa",
+				fillColor : "#ee7f49",
 				strokeColor : "#ffffff",
 				highlightFill: "#1864f2",
 				highlightStroke: "#ffffff",
-				data : <?php echo $data1;?>
-			},
-			{
-				fillColor : "#e9e225",
-				strokeColor : "#ffffff",
-				highlightFill : "#ee7f49",
-				highlightStroke : "#ffffff",
 				data : <?php echo $data1;?>
 			}
 		]

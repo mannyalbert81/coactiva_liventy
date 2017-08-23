@@ -93,7 +93,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Gráficas Actualización Matriz</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Actualización Matriz</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
