@@ -185,8 +185,20 @@
 		//load_juicios(1);
 
 		$("#buscar").click(function(){
-
+			var fechadesde=$("#fcha_desde").val();
+			 var fechahasta=$("#fcha_hasta").val();
+			 var validar = true;
+			 var mensaje ="";
+			 
+		     if(fechadesde>fechahasta)
+			 {validar = false;mensaje="Fecha desde no puede ser mayor"}
+			
+			if(validar){
 			load_matriz(1);
+			}else{
+				 alert(mensaje);
+			}
+			
 			
 			});
 	});
@@ -202,6 +214,8 @@
 		 var con_id_impulsor=$("#id_impulsor").val();
 		 var con_id_ciudad=$("#id_ciudad").val();
 		 var con_comprarado_fomento=$("#comprarado_fomento").val();
+		 var con_fechadesde=$("#fcha_desde").val();
+		 var con_fechahasta=$("#fcha_hasta").val();
 
 		 
 			
@@ -215,6 +229,8 @@
 				  id_secretario:con_id_secretario,
 				  id_impulsor:con_id_impulsor,
 				  id_ciudad:con_id_ciudad,
+				  fcha_desde:con_fechadesde,
+				  fcha_hasta:con_fechahasta,
 				  comprarado_fomento:con_comprarado_fomento,
 				  action:'ajax',
 				  page:pagina
@@ -237,6 +253,35 @@
 		})
 	}
 	
+	</script>
+	<script>
+
+		$(document).ready(function(){
+
+		    $fechadesde=$('#fcha_desde');
+		    if ($fechadesde[0].type!="date"){
+		    $fechadesde.attr('readonly','readonly');
+		    $fechadesde.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1900:2017"
+	    		});
+		    }
+
+		    $fechahasta=$('#fcha_hasta');
+		    if ($fechahasta[0].type!="date"){
+		    $fechahasta.attr('readonly','readonly');
+		    $fechahasta.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1900:2017"
+	    		});
+		    }
+
+		}); 
+
 	</script>
 
     </head>
@@ -337,7 +382,7 @@
 		 </div>
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-6">
-         		<p class="formulario-subtitulo" ># Opreación:</p>
+         		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
@@ -348,6 +393,17 @@
 			    
 		 </div>
 		 
+		 <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >Fecha Desde:</p>
+			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		 <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >Fecha Hasta:</p>
+			  	<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
+			    
+		 </div>
 		
           
            </div>

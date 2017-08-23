@@ -42,16 +42,33 @@
     <script type="text/javascript">
 	$(document).ready(function(){
 		//load_juicios(1);
+		
+		function formatDate(date) {
+	    var d = new Date(date),
+	        month = '' + (d.getMonth() + 1),
+	        day = '' + d.getDate(),
+	        year = d.getFullYear();
+	
+	    if (month.length < 2) month = '0' + month;
+	    if (day.length < 2) day = '0' + day;
+	    return [day,month,year].join('/');
+		}
 
 		$("#buscar").click(function(){
 
 			 var fechadesde=$("#fcha_desde").val();
 			 var fechahasta=$("#fcha_hasta").val();
-
-			 //if()
-
-			load_matriz(1);
+			 var validar = true;
+			 var mensaje ="";
+			 
+		     if(fechadesde>fechahasta)
+			 {validar = false;mensaje="Fecha desde no puede ser mayor"}
 			
+			if(validar){
+			load_matriz(1);
+			}else{
+				 alert(mensaje);
+			}
 			});
 	});
 
