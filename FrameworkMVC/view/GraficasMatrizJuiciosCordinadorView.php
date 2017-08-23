@@ -313,17 +313,28 @@
 	        </div>
           </form> 
          
+             <?php if(!empty($html)){?>
+			<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+			<div class="col-lg-4 col-md-4 xs-4 ">
+			</div>
+			<div class="col-lg-4 col-md-4 xs-4 ">
+			<?php echo $html;?>
+			</div>
+			<div class="col-lg-4 col-md-4 xs-4 ">
+			</div>
+			</div>
+			
+		
+		<?php  }?>
+         
          <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
       
-         
-        		 
-		 
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    <div class="col-lg-12">
 	    <div class="panel panel-info">
 	       
 		<div id="canvas-holder">
-		<canvas id="chart-area" width="600" height="300"></canvas>
+		<canvas id="chart-area" width="600" height="250"></canvas>
 		</div>
 		</div>
 		</div>
@@ -337,7 +348,9 @@
       </div>
      
   </div>
-    
+     <br>
+		<br>
+		<br>
       
       <script>
 		

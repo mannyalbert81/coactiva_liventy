@@ -16,7 +16,7 @@ public function index(){
 		$resultSet="";
 		$registrosTotales = 0;
 		$arraySel = "";
-			
+		$html="";
 		$juicios = new JuiciosModel();
 			
 		
@@ -81,6 +81,47 @@ public function index(){
 				
 				
 				
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+						
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ESTADO PROCESAL</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+						
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{	
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+						
+					$html.='</tbody>';
+					$html.='</table>';
+				
+						
+						
+						
+				}else{
+						
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No hay Datos';
+					$html.='</div>';
+						
+				}
+					
+				
+				
+				
 			}
 				
 			if(isset($_POST["reporte_rpt"]))
@@ -117,7 +158,7 @@ public function index(){
 				
 				
 			$this->view("GraficasMatrizJuicios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "html"=>$html
 						
 		
 		
@@ -151,7 +192,7 @@ public function index(){
 		$resultSet="";
 		$registrosTotales = 0;
 		$arraySel = "";
-			
+		$html="";
 		$juicios = new JuiciosModel();
 			
 		$columnas = " asignacion_secretarios_view.id_abogado,
@@ -225,6 +266,44 @@ public function index(){
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 	
 	
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ESTADO PROCESAL</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No hay Datos';
+					$html.='</div>';
+				
+				}
+					
 	
 			}
 	
@@ -260,7 +339,7 @@ public function index(){
 	
 	
 			$this->view("GraficasMatrizJuiciosSecretarios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul, "html"=>$html
 	
 	
 	
@@ -308,7 +387,7 @@ public function index(){
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
 		
-		
+		$html="";
 		
 		
 		$permisos_rol = new PermisosRolesModel();
@@ -364,7 +443,43 @@ public function index(){
 				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 				
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
 				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ESTADO PROCESAL</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No hay Datos';
+					$html.='</div>';
+				
+				}
 	
 			}
 			
@@ -398,7 +513,7 @@ public function index(){
 		
 			
 			$this->view("GraficasMatrizJuiciosCordinador",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos, "html"=>$html
 					
 					
 	
