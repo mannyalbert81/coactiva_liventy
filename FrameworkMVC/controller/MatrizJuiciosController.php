@@ -4450,30 +4450,30 @@
 	    	}
 			
 			$resultClientes = $clientes->getBy("identificacion_clientes='$_identificacion_clientes' AND sexo_clientes='$_sexo_clientes' AND sexo_garantes='$_sexo_garantes' AND nombres_clientes='$_nombres_clientes' AND direccion_clientes='$_direccion_clientes' AND nombre_garantes='$_nombre_garantes' AND identificacion_garantes='$_identificacion_garantes' AND id_provincias='$_id_provincias' AND id_ciudad='$_id_ciudad' 
-			AND identificacion_clientes_1='$_identificacion_clientes_1',
-			AND nombre_clientes_1='$_nombre_clientes_1',
-			AND identificacion_clientes_2 ='$_identificacion_clientes_2',
-			AND nombre_clientes_2 ='$_nombre_clientes_2',
-			AND identificacion_clientes_3 ='$_identificacion_clientes_3',
-			AND nombre_clientes_3  ='$_nombre_clientes_3',
-			AND identificacion_garantes_1 ='$_identificacion_garantes_1',
-			AND nombre_garantes_1 ='$_nombre_garantes_1',
-			AND identificacion_garantes_2 ='$_identificacion_garantes_2',
-			AND nombre_garantes_2 ='$_nombre_garantes_2',
-			AND identificacion_garantes_3 ='$_identificacion_garantes_3',
-			AND nombre_garantes_3 ='$_nombre_garantes_3',
-			AND correo_clientes ='$_correo_clientes',
-			AND correo_clientes_1 ='$_correo_clientes_1',
-			AND correo_clientes_2 ='$_correo_clientes_2',
-			AND correo_clientes_3 ='$_correo_clientes_3',
-			AND direccion_clientes_1 ='$_direccion_clientes_1',
-			AND direccion_clientes_2 ='$_direccion_clientes_2',
-			AND direccion_clientes_3 ='$_direccion_clientes_3',
-			AND sexo_clientes_1 ='$_sexo_clientes_1',
-			AND sexo_clientes_2 ='$_sexo_clientes_2',
-			AND sexo_clientes_3 ='$_sexo_clientes_3',
-			AND sexo_garantes_1 ='$_sexo_garantes_1',
-			AND sexo_garantes_2 ='$_sexo_garantes_2',
+			AND identificacion_clientes_1='$_identificacion_clientes_1'
+			AND nombre_clientes_1='$_nombre_clientes_1'
+			AND identificacion_clientes_2 ='$_identificacion_clientes_2'
+			AND nombre_clientes_2 ='$_nombre_clientes_2'
+			AND identificacion_clientes_3 ='$_identificacion_clientes_3'
+			AND nombre_clientes_3  ='$_nombre_clientes_3'
+			AND identificacion_garantes_1 ='$_identificacion_garantes_1'
+			AND nombre_garantes_1 ='$_nombre_garantes_1'
+			AND identificacion_garantes_2 ='$_identificacion_garantes_2'
+			AND nombre_garantes_2 ='$_nombre_garantes_2'
+			AND identificacion_garantes_3 ='$_identificacion_garantes_3'
+			AND nombre_garantes_3 ='$_nombre_garantes_3'
+			AND correo_clientes ='$_correo_clientes'
+			AND correo_clientes_1 ='$_correo_clientes_1'
+			AND correo_clientes_2 ='$_correo_clientes_2'
+			AND correo_clientes_3 ='$_correo_clientes_3'
+			AND direccion_clientes_1 ='$_direccion_clientes_1'
+			AND direccion_clientes_2 ='$_direccion_clientes_2'
+			AND direccion_clientes_3 ='$_direccion_clientes_3'
+			AND sexo_clientes_1 ='$_sexo_clientes_1'
+			AND sexo_clientes_2 ='$_sexo_clientes_2'
+			AND sexo_clientes_3 ='$_sexo_clientes_3'
+			AND sexo_garantes_1 ='$_sexo_garantes_1'
+			AND sexo_garantes_2 ='$_sexo_garantes_2'
 			AND sexo_garantes_3 ='$_sexo_garantes_3'");
 			
 			$_id_clientes=$resultClientes[0]->id_clientes;
@@ -4481,8 +4481,7 @@
 			
 			
 			
-			
-			
+		
 			
 			if($_id_clientes>0){
 				
