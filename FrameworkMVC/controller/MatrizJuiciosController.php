@@ -1,8 +1,11 @@
 <?php
-class MatrizJuiciosController extends ControladorBase{
+
+    class MatrizJuiciosController extends ControladorBase{
 	public function __construct() {
 		parent::__construct();
+		
 	}
+	
 	public function index(){
 	
 		    session_start();
@@ -4275,6 +4278,13 @@ class MatrizJuiciosController extends ControladorBase{
 			$resultCiudad = $usuarios->getBy("id_usuarios='$_id_abogado'");
 			$_id_ciudad=$resultCiudad[0]->id_ciudad;
 				
+			
+			
+			//$id=$clientes->getNuevo("clientes_id_clientes_seq");
+			//print_r($id);
+			//die();
+			
+			
 			try {
 				
 				////////INSERTO CLIENTE
@@ -4294,7 +4304,7 @@ class MatrizJuiciosController extends ControladorBase{
 				exit();
 	    	}
 			
-			$resultClientes = $clientes->getBy("identificacion_clientes='$_identificacion_clientes' AND nombres_clientes='$_nombres_clientes' AND direccion_clientes='$_direccion_clientes' AND nombre_garantes='$_nombre_garantes' AND identificacion_garantes='$_identificacion_garantes' AND id_provincias='$_id_provincias' AND id_ciudad='$_id_ciudad'");
+			$resultClientes = $clientes->getBy("identificacion_clientes='$_identificacion_clientes' AND sexo_clientes='$_sexo_clientes' AND sexo_garantes='$_sexo_garantes' AND nombres_clientes='$_nombres_clientes' AND direccion_clientes='$_direccion_clientes' AND nombre_garantes='$_nombre_garantes' AND identificacion_garantes='$_identificacion_garantes' AND id_provincias='$_id_provincias' AND id_ciudad='$_id_ciudad'");
 			$_id_clientes=$resultClientes[0]->id_clientes;
 			$_orden= $_id_clientes;
 			

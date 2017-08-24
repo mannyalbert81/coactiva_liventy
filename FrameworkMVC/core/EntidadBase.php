@@ -14,9 +14,9 @@ class EntidadBase{
 
         $this->fluent=$this->getConetar()->startFluent();
         $this->con=$this->getConetar()->conexion();
-        
-    }
+     }
     
+     
     public function fluent(){
     	return $this->fluent;
     }
@@ -34,7 +34,17 @@ class EntidadBase{
         return $this->db;
     }
     
+    public function getNuevo($secuencia){
     
+    	$query=pg_query($this->con, "SELECT NEXTVAL('$secuencia')");
+    	 
+    	$resultSet = array();
+    	 
+    	while ($row = pg_fetch_object($query)) {
+    		$resultSet[]=$row;
+    	}
+    	return $resultSet;
+    }
     
     public function getAll($id){
         
