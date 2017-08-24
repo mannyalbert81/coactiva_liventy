@@ -106,9 +106,20 @@
 		//load_juicios(1);
 
 		$("#buscar").click(function(){
-
-			load_matriz(1);
+			var fechadesde=$("#fcha_desde").val();
+			 var fechahasta=$("#fcha_hasta").val();
+			 var validar = true;
+			 var mensaje ="";
+			 
+		     if(fechadesde>fechahasta)
+			 {validar = false;mensaje="Fecha desde no puede ser mayor"}
 			
+			if(validar){
+			load_matriz(1);
+			}else{
+				 alert(mensaje);
+			}
+
 			});
 	});
 
@@ -121,7 +132,8 @@
 		 var con_identificacion_clientes=$("#identificacion_clientes").val();
 		 var con_id_provincias=$("#id_provincias").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
-		 
+		 var con_fechadesde=$("#fcha_desde").val();
+		 var con_fechahasta=$("#fcha_hasta").val();
 		 
 
 		  var con_datos={
@@ -130,6 +142,8 @@
 				  identificacion_clientes:con_identificacion_clientes,
 				  id_provincias:con_id_provincias,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
+				  fcha_desde:con_fechadesde,
+				  fcha_hasta:con_fechahasta,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -153,9 +167,39 @@
 	
 	</script>
 	
+	
 	 <script>
 
 		$(document).ready(function(){
+
+			$fechad=$('#fcha_desde').val();
+		    $fechah=$('#fcha_hasta').val();
+		    
+		    if (typeof $fechad != "undefined" || $fechad != null || typeof $fechah != "undefined" || $fechah != null)
+		    {
+			    $fechadesde=$('#fcha_desde');
+			    $fechahasta=$('#fcha_hasta');
+			    if ($fechadesde[0].type!="date"){
+			    $fechadesde.attr('readonly','readonly');
+			    $fechadesde.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1900:2017"
+		    		});
+			    }
+	
+			    
+			    if ($fechahasta[0].type!="date"){
+			    $fechahasta.attr('readonly','readonly');
+			    $fechahasta.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1900:2017"
+		    		});
+			    }
+		    }
 
 		    $fechaEmision=$('#fecha_emision_juicios');
 		    if ($fechaEmision[0].type!="date"){
@@ -182,6 +226,8 @@
 		}); 
 
 	</script>
+	
+	
 
     </head>
     <body style="background-color: #d9e3e4;">
@@ -190,7 +236,6 @@
        
        <?php
        
-  
        $sel_juicio_referido_titulo_credito="";
        $sel_numero_titulo_credito="";
        $sel_identificacion_clientes="";
@@ -210,9 +255,6 @@
        
        }
        
-    
-       
-       
        ?>
  
  
@@ -223,11 +265,8 @@
   
        <!-- empieza el form --> 
        
-
-         
-
-               <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-              <form action="<?php echo $helper->url("MatrizJuicios","ActualizarMatriz"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+              <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+              	<form action="<?php echo $helper->url("MatrizJuicios","ActualizarMatriz"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
      
                        <br>         
          <div class="col-lg-12">
@@ -262,7 +301,8 @@
 				        <label for='year_juicios' class='control-label'>Año Juicio</label><br>
 				        <input type='text' class='form-control' id='year_juicios' name='year_juicios' value="<?php echo $resEdit->year_juicios; ?>"  >
 				        </div>
-				        </div>	
+				        </div>
+				         
 			 </div>
 		</div>
 			
@@ -718,7 +758,15 @@
 
          </div>
          
-          
+         <br>
+		<div class="col-lg-2 col-md-2 xs-6">
+			<p class="formulario-subtitulo" >Fecha Desde:</p>
+			<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
+		</div>
+		<div class="col-lg-2 col-md-2 xs-6">
+			<p class="formulario-subtitulo" >Fecha Hasta:</p>
+			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
+		</div> 
         
          
           

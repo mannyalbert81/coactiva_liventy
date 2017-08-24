@@ -1471,7 +1471,7 @@
 						$where_2 = "";
 						$where_3 = "";
 						$where_4 = "";
-							
+						$where_5 = "";
 	
 							
 							
@@ -1485,8 +1485,32 @@
 	
 						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 	
-	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4;
+						/*para las fechas*/
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							}
+						
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+						}
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
 	
 							
 						//comienza paginacion
@@ -1695,7 +1719,32 @@
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 	
-								
+							/*para las fechas*/
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+										
+									$fechaHasta='2018/12/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+										
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+										
+									$fechaDesde='1800/01/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+							}
 								
 	
 							$pagina="contMatrizJuicios.aspx";
@@ -3191,8 +3240,7 @@
 						$where_2 = "";
 						$where_3 = "";
 						$where_4 = "";
-							
-						
+						$where_5 = "";
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
@@ -3204,9 +3252,32 @@
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
 						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+						/*para las fechas*/
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							}
+						
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+						}
 	
-	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
 	
 							
 						//comienza paginacion
@@ -3432,7 +3503,32 @@
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 	
-								
+							/*para las fechas*/
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+										
+									$fechaHasta='2018/12/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+										
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+										
+									$fechaDesde='1800/01/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+							}	
 								
 	
 							$pagina="contMatrizJuicios.aspx";
@@ -3751,7 +3847,7 @@
 						$where_2 = "";
 						$where_3 = "";
 						$where_4 = "";
-							
+						$where_5 = "";
 	
 							
 							
@@ -3764,9 +3860,33 @@
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
 						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+						
+						/*para las fechas*/
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							}
+						
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+						}
 	
-	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
 	
 							
 						//comienza paginacion
@@ -3973,7 +4093,32 @@
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 	
-	
+							/*para las fechas*/
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+										
+									$fechaHasta='2018/12/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+										
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+										
+									$fechaDesde='1800/01/01';
+									$parametros['fecha_desde'] = $fechaDesde;
+									$parametros['fecha_hasta'] = $fechaHasta;
+								}
+							}
 	
 	
 							$pagina="contMatrizJuicios.aspx";
@@ -4794,9 +4939,8 @@
 						$where_2 = "";
 						$where_3 = "";
 						$where_4 = "";
-							
+						$where_5 = "";
 		
-							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 		
@@ -4808,8 +4952,32 @@
 		
 						if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 		
+						/*para las fechas*/
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							}
+						
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+						}
 		
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
 		
 							
 						//comienza paginacion
