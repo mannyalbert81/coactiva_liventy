@@ -32,8 +32,8 @@
       $( function() {
     	    $( "#dialog" ).dialog({
     	        resizable: false,
-    	        height: "auto",
-    	        width: 400,
+    	        height: 400,
+    	        width: 800,
     	        modal: true,
     	        buttons: {
     	          "Cerrar": function() {
@@ -43,10 +43,16 @@
     	      });
     	  } );
 	</script>
-	<div id="dialog" title="Basic dialog">
-	<h2>INFORMACION</h2>
-	<hr>
-     <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+	<div id="dialog" title="INFORMACIÓN">
+	
+     <p style="text-align: justify;">Saludos Estimados, les comunicamos que hemos procedido con la actualización del estado procesal de los juicios que estaban en un estado procesal diferente a <strong>SUSPENSIÓN O ARCHIVADO</strong>, en un estado procesal de nombre 
+     <strong> REVISAR</strong>, favor revisar y actualizar sus juicios que se encuentran en dicho estado a su estado procesal correspondiente que puede ser <strong>SUSPENSIÓN O ARCHIVADO</strong>.</p>
+   <br>
+   <p style="text-align: justify;">Si existen juicios <strong>duplicados o juicios que no pertenescan a su matriz</strong>, actualizarlos a un estado procesal de nombre <strong>S/N</strong> para proceder con su eliminación.</p>
+   
+   <br>
+    <p style="text-align: justify;"><strong>NOTA: </strong>Todo juicio que no este actualizado a un estado procesal de nombres <strong>SUSPENSIÓN O ARCHIVADO</strong> seran eliminados.</p>
+   
      </div> 
             
        <footer class="col-lg-12">
