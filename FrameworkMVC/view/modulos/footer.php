@@ -3,6 +3,6 @@
             <hr/>
           Coactivas  - AllCoercive 2016 - Copyright &copy; <?php echo  date("Y"); ?>
         </footer>
-  </div>    
+ </div>    
   
    

@@ -22,6 +22,8 @@
         <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
         <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
         
+        
+		
         <style>
 
 .sub-menu {
@@ -87,20 +89,12 @@ $(document).ready(function(){
 		  
 	 });
 
+	
 });
 	
 
 </script>  
 
-<script>
-$(document).ready(function(){
-	$("46").click(function(){
-		alert("hola");
-
-		});
-});
-
-</script>
 
 <!-- para hacer que refresque pag -->
 	

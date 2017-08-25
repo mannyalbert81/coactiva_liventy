@@ -17,10 +17,6 @@ opacity: 0.6;
 }
 </style>
 <script>
-$(document).ready(function(){
-   // alert("document0 listo");
-   
-});
 </script>
 <script>
 $(window).load(function(){
@@ -32,7 +28,7 @@ $("#cargando").hide();
 <body>
 <div id="cargando" >
 </div>
-  
+		 
 </body>
 </html>
 
