@@ -31,6 +31,7 @@
       <script>
       $( function() {
     	    $( "#dialog" ).dialog({
+    	    	title: "!!INFORMACION:!!",
     	        resizable: false,
     	        height: "auto",
     	        width: 400,
@@ -44,7 +45,7 @@
     	  } );
 	</script>
 	<div id="dialog" title="Basic dialog">
-	<h2>INFORMACION</h2>
+	<h2></h2>
 	<hr>
      <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
      </div> 
