@@ -321,7 +321,7 @@
 			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
 			    
 		 </div>
-		 
+		 <br>
 		 <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo $sel_fcha_desde;?>" class="form-control "/> 

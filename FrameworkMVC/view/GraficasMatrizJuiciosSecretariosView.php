@@ -182,7 +182,7 @@
 				</select>
 
          </div>
-         
+         <br>
           <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo $sel_fcha_desde;?>" class="form-control "/> 
