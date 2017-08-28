@@ -68,6 +68,7 @@ public function index(){
 				$where_3 = "";
 				$where_4 = "";
 				$where_5 = "";
+				$where_6 = "";
 				
 				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 				if($id_abogado!=0){$where_1=" AND juicios.id_usuarios='$id_abogado'";}
@@ -75,8 +76,32 @@ public function index(){
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
 				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+						
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
 				
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					
+				}
+				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 . $where_6;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 				
 				
@@ -137,9 +162,34 @@ public function index(){
 				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 					
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-					
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}	
 					
 					
 				$pagina="contGraficas.aspx";
@@ -254,6 +304,7 @@ public function index(){
 				$where_3 = "";
 				$where_4 = "";
 				$where_5 = "";
+				$where_6 = "";
 	
 				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 				if($id_abogado!=0){$where_1=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
@@ -261,8 +312,32 @@ public function index(){
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
 				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
-	
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+						
+				}
+				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 . $where_6;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 	
 	
@@ -320,9 +395,37 @@ public function index(){
 				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-			
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
+				
+				
 				$pagina="contGraficas.aspx";
 			
 				$conexion_rpt = array();
@@ -417,7 +520,7 @@ public function index(){
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
 				$grupo="estados_procesales_juicios.nombre_estados_procesales_juicios, estados_procesales_juicios.id_estados_procesales_juicios";
 				$id="estados_procesales_juicios.nombre_estados_procesales_juicios, id_estados_procesales_juicios";
 				
@@ -428,7 +531,7 @@ public function index(){
 				$where_3 = "";
 				$where_4 = "";
 				$where_5 = "";
-		
+				$where_6 = "";
 		
 		
 		
@@ -438,9 +541,33 @@ public function index(){
 				if($id_ciudad>0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
 				if($id_secretario>0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
 				if($id_impulsor>0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
-		
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+						
+				}
 			
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 . $where_6;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 				
 				$html="";
@@ -495,7 +622,34 @@ public function index(){
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-					
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}	
 			
 				$pagina="contGraficas.aspx";
 			
@@ -635,7 +789,7 @@ public function index2(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-
+		$html="";
 			
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuicios";
@@ -651,23 +805,21 @@ public function index2(){
 				$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 				$numero_titulo_credito=$_POST['numero_titulo_credito'];
 				$identificacion_clientes=$_POST['identificacion_clientes'];
-				$id_provincias=$_POST['id_provincias'];
 				$id_abogado=$_POST['id_abogado'];
-				$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+				
 
 
-
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.modificado,'YYYY-MM') as modificado";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
 				
-				$grupo="TO_CHAR(juicios.modificado,'YYYY-MM')";
-				$id="TO_CHAR(juicios.modificado,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 
 
 				$where_0 = "";
@@ -677,16 +829,83 @@ public function index2(){
 				$where_4 = "";
 				$where_5 = "";
 
-				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
-				if($id_abogado!=0){$where_1=" AND juicios.id_usuarios='$id_abogado'";}
+				if($id_abogado!=0){$where_1=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
 				if($juicio_referido_titulo_credito!=""){$where_2=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
-
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+					
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+					
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
+							
+					}
+				}
+				$where_to  = $where . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 
+				
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL ACTUALIZACIONES</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
 
 
 			}
@@ -700,13 +919,43 @@ public function index2(){
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
-				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
-				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-					
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-					
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}	
 					
 					
 				$pagina="contGraficasActualizacionMatrizJuicios.aspx";
@@ -725,7 +974,7 @@ public function index2(){
 
 
 			$this->view("GraficasActualizacionMatrizJuicios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "html"=>$html
 
 
 
@@ -781,7 +1030,7 @@ public function index2(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-
+		$html="";
 			
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuiciosSecretarios";
@@ -797,23 +1046,21 @@ public function index2(){
 				$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 				$numero_titulo_credito=$_POST['numero_titulo_credito'];
 				$identificacion_clientes=$_POST['identificacion_clientes'];
-				$id_provincias=$_POST['id_provincias'];
 				$id_abogado=$_POST['id_abogado'];
-				$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+				
 
 
-
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.modificado,'YYYY-MM') as modificado";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND asignacion_secretarios_view.id_secretario='$_id_usuarios'";
 				
-				$grupo="TO_CHAR(juicios.modificado,'YYYY-MM')";
-				$id="TO_CHAR(juicios.modificado,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 				
 
 				$where_0 = "";
@@ -823,17 +1070,83 @@ public function index2(){
 				$where_4 = "";
 				$where_5 = "";
 
-				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 				if($id_abogado!=0){$where_1=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
+				
 				if($juicio_referido_titulo_credito!=""){$where_2=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
 
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+						
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$where_5 = " AND DATE(juicios.modificado) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
+							
+					}
+				}
+				$where_to  = $where . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 
 
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL ACTUALIZACIONES</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
 
 			}
 
@@ -847,12 +1160,44 @@ public function index2(){
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
-				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
-				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-					
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
 					
 				$pagina="contGraficasActualizacionMatrizJuicios.aspx";
 					
@@ -870,7 +1215,8 @@ public function index2(){
 
 
 			$this->view("GraficasActualizacionMatrizJuiciosSecretarios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul,
+					"html"=>$html
 
 
 
@@ -917,7 +1263,7 @@ public function index2(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-			
+		$html="";
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuiciosCordinador";
 		$id_rol= $_SESSION['id_rol'];
@@ -937,17 +1283,17 @@ public function index2(){
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 				//$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.modificado,'YYYY-MM') as modificado";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
 				
-				$grupo="TO_CHAR(juicios.modificado,'YYYY-MM')";
-				$id="TO_CHAR(juicios.modificado,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 				
 
 				$where_0 = "";
@@ -956,7 +1302,7 @@ public function index2(){
 				$where_3 = "";
 				$where_4 = "";
 				$where_5 = "";
-
+				$where_6 = "";
 
 
 
@@ -966,11 +1312,77 @@ public function index2(){
 				if($id_ciudad!=0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
 				if($id_secretario!=0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
 				if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
-
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$where_6 = " AND DATE(juicios.modificado) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
+							
+					}
+				}
 					
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5  . $where_6;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
 
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+					$html.='<section style="height:250px;overflow-y:scroll;">';
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL ACTUALIZACIONES</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+					$html.='</section>';
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
 
 			}
 				
@@ -986,7 +1398,44 @@ public function index2(){
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
 					
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
 					
 				$pagina="contGraficasActualizacionMatrizJuicios.aspx";
 					
@@ -1003,8 +1452,8 @@ public function index2(){
 			}
 
 			$this->view("GraficasActualizacionMatrizJuiciosCordinador",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos
-
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos,
+					"html"=>$html
 
 
 			));
@@ -1078,7 +1527,7 @@ public function index3(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-
+        $html="";
 			
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuicios";
@@ -1094,23 +1543,21 @@ public function index3(){
 				$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 				$numero_titulo_credito=$_POST['numero_titulo_credito'];
 				$identificacion_clientes=$_POST['identificacion_clientes'];
-				$id_provincias=$_POST['id_provincias'];
 				$id_abogado=$_POST['id_abogado'];
-				$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+				
 
 
-
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM') as fecha_ultima_providencia";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
 
-				$grupo="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
-				$id="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 
 
 				$where_0 = "";
@@ -1120,16 +1567,82 @@ public function index3(){
 				$where_4 = "";
 				$where_5 = "";
 
-				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
-				if($id_abogado!=0){$where_1=" AND juicios.id_usuarios='$id_abogado'";}
+				if($id_abogado!=0){$where_1=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
 				if($juicio_referido_titulo_credito!=""){$where_2=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
-
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					
+					if($fechaDesde == "" && $fechaHasta == ""){
+						
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
+						
+					}
+					
+				}
+				$where_to  = $where . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
-
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL PROVIDENCIAS</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
+				
 
 
 			}
@@ -1143,12 +1656,45 @@ public function index3(){
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
-				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
-				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-					
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+						
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
 					
 					
 					
@@ -1168,7 +1714,7 @@ public function index3(){
 
 
 			$this->view("GraficasProvidenciasMatrizJuicios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "html"=>$html
 
 
 
@@ -1224,7 +1770,7 @@ public function index3(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-
+		$html="";
 			
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuiciosSecretarios";
@@ -1240,23 +1786,21 @@ public function index3(){
 				$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 				$numero_titulo_credito=$_POST['numero_titulo_credito'];
 				$identificacion_clientes=$_POST['identificacion_clientes'];
-				$id_provincias=$_POST['id_provincias'];
 				$id_abogado=$_POST['id_abogado'];
-				$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+				
 
 
-
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM') as fecha_ultima_providencia";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad  AND asignacion_secretarios_view.id_secretario = '$_id_usuarios'";
 
-				$grupo="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
-				$id="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 
 
 				$where_0 = "";
@@ -1266,16 +1810,81 @@ public function index3(){
 				$where_4 = "";
 				$where_5 = "";
 
-				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
 				if($id_abogado!=0){$where_1=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
 				if($juicio_referido_titulo_credito!=""){$where_2=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
-				if($id_provincias!=0){$where_5=" AND provincias.id_provincias='$id_provincias'";}
-
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					
+					if($fechaDesde == "" && $fechaHasta == ""){
+					
+						$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
+					
+					}
+				}
+				$where_to  = $where . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
-
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+				
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL PROVIDENCIAS</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+				
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
+				
 
 
 			}
@@ -1290,12 +1899,45 @@ public function index3(){
 				$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
-				$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
-				$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-				$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-					
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+						
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
 					
 				$pagina="contGraficasProvidenciasMatrizJuicios.aspx";
 					
@@ -1313,7 +1955,7 @@ public function index3(){
 
 
 			$this->view("GraficasProvidenciasMatrizJuiciosSecretarios",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul, "html"=>$html
 
 
 
@@ -1360,7 +2002,7 @@ public function index3(){
 			
 		$resultEstadoProcesal_grafico="";
 		$res_juicios="";
-			
+		$html="";
 		$permisos_rol = new PermisosRolesModel();
 		$nombre_controladores = "MatrizJuiciosCordinador";
 		$id_rol= $_SESSION['id_rol'];
@@ -1380,17 +2022,17 @@ public function index3(){
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 				//$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
-				$columnas="COUNT(id_juicios) as total, TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM') as fecha_ultima_providencia";
+				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
 				      public.ciudad";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND titulo_credito.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
 
-				$grupo="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
-				$id="TO_CHAR(juicios.fecha_ultima_providencia,'YYYY-MM')";
+				$grupo="asignacion_secretarios_view.impulsores";
+				$id="asignacion_secretarios_view.impulsores";
 
 
 				$where_0 = "";
@@ -1399,6 +2041,7 @@ public function index3(){
 				$where_3 = "";
 				$where_4 = "";
 				$where_5 = "";
+				$where_6 = "";
 
 
 
@@ -1409,11 +2052,77 @@ public function index3(){
 				if($id_ciudad!=0){$where_3=" AND ciudad.id_ciudad='$id_ciudad'";}
 				if($id_secretario!=0){$where_4=" AND asignacion_secretarios_view.id_secretario='$id_secretario'";}
 				if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
-
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$where_6 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$where_6 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$where_6 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+					}
+					if($fechaDesde == "" && $fechaHasta == ""){
+				
+						$where_6 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '1800/01/01' AND '2018/12/01'  ";
+							
 					
-				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 ;
+					}
+				}
+					
+				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 . $where_6 ;
 				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
-
+				$html="";
+				if (!empty($resultEstadoProcesal_grafico))
+				{
+				
+					$html.='<section style="height:250px;overflow-y:scroll;">';
+					$html.='<table class="table table-hover">';
+					$html.='<thead>';
+					$html.='<tr class="info">';
+					$html.='<th style="text-align: left;  font-size: 11px;">ABOGADO IMPULSOR</th>';
+					$html.='<th style="text-align: left;  font-size: 11px;">TOTAL PROVIDENCIAS</th>';
+					$html.='</tr>';
+					$html.='</thead>';
+					$html.='<tbody>';
+				
+					foreach ($resultEstadoProcesal_grafico as $res)
+					{
+						$html.='<tr>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->impulsores.'</td>';
+						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+						$html.='</tr>';
+				
+					}
+				
+					$html.='</tbody>';
+					$html.='</table>';
+					$html.='</section>';
+				
+				
+				
+				}else{
+				
+					$html.='<div class="alert alert-warning alert-dismissable">';
+					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='</div>';
+				
+				}
+				
 
 			}
 
@@ -1429,7 +2138,44 @@ public function index3(){
 				$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 				$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 				$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-					
+				
+				$fechaDesde="";$fechaHasta="";
+				if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+				{
+				
+					$fechaDesde=$_POST["fcha_desde"];
+					$fechaHasta=$_POST["fcha_hasta"];
+					if ($fechaDesde != "" && $fechaHasta != "")
+					{
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+					}
+				
+					if($fechaDesde != "" && $fechaHasta == ""){
+							
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+					if($fechaDesde == "" && $fechaHasta != ""){
+							
+						$fechaDesde='1800/01/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+						
+					if($fechaDesde == "" && $fechaHasta == ""){
+							
+						$fechaDesde='1800/01/01';
+						$fechaHasta='2018/12/01';
+						$parametros['fecha_desde'] = $fechaDesde;
+						$parametros['fecha_hasta'] = $fechaHasta;
+							
+					}
+				
+				}
 					
 				$pagina="contGraficasProvidenciasMatrizJuicios.aspx";
 					
@@ -1446,7 +2192,7 @@ public function index3(){
 			}
 
 			$this->view("GraficasProvidenciasMatrizJuiciosCordinador",array(
-					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos
+					"resultEstadoProcesal_grafico"=>$resultEstadoProcesal_grafico,"resultEstadoProcesal"=>"", "resultDatos"=>$resultDatos, "html"=>$html
 
 
 
@@ -1465,19 +2211,10 @@ public function index3(){
 		}
 
 
-
-
 	}
 
 
 }
-
-
-
-
-
-
-
 
 
 	

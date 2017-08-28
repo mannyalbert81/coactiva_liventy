@@ -137,7 +137,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						  clientes.id_provincias = provincias.id_provincias AND
 						  titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						  titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						  asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						  juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						  asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
@@ -614,7 +614,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_secretario='$_id_usuarios'";
 							
@@ -1059,7 +1059,7 @@
 							$where="clientes.id_clientes = titulo_credito.id_clientes AND
 							clientes.id_provincias = provincias.id_provincias AND
 							titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-							titulo_credito.id_ciudad = ciudad.id_ciudad AND
+							asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 							juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 							asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios";
 								
@@ -1460,7 +1460,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
@@ -1930,7 +1930,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_secretario='$_id_usuarios'";
 							
@@ -3229,7 +3229,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
@@ -3660,7 +3660,7 @@
 						$where_edit="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND juicios.id_juicios='$_id_juicios'";
 						$id_edit="juicios.id_juicios";
@@ -3836,7 +3836,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
@@ -4957,7 +4957,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.id_ciudad = ciudad.id_ciudad AND
+						titulo_credito.asignacion_secretarios_view = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
