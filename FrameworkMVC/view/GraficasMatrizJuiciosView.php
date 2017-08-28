@@ -179,7 +179,7 @@
 				</select>
 
          </div>
-         
+         <br>
           <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo $sel_fcha_desde;?>" class="form-control "/> 
@@ -195,9 +195,8 @@
   		
   		
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
-  		    
-		 <button type="submit" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		
+  		
+		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
 		
 		
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 

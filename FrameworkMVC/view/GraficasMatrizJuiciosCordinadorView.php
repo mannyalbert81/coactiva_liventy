@@ -339,7 +339,7 @@
   		
   		<div class="col-lg-12" style="text-align: center; margin-top: 10px">
   		    
-		 <button type="submit" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
+		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
 		
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    
