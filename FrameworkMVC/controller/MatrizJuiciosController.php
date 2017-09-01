@@ -56,9 +56,20 @@
 			
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+						
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
 						
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
@@ -150,14 +161,20 @@
 						$where_4 = "";
 						$where_5 = "";
 							
-						
+						$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 						
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 						
@@ -188,7 +205,19 @@
 							}
 						}
 						
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
+						if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+						
+						
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 						
 							
 						//comienza paginacion
@@ -536,10 +565,21 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 						$id_abogado=$_POST['id_abogado'];
+						
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
 				
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
@@ -627,7 +667,14 @@
 						$where_4 = "";
 						$where_5 = "";
 						$where_6 = "";
-							
+						
+						$where_13 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 				
 						
 							
@@ -635,7 +682,7 @@
 				
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 				
@@ -668,7 +715,18 @@
 							}
 						}
 						
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5.$where_6;
+						if($identificacion_clientes_1!=""){$where_13=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+							
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5.$where_6 . $where_13 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 						
 						//echo $where_to ; die();
 						//comienza paginacion
@@ -1383,9 +1441,21 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+						
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+						
 	
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
@@ -1473,13 +1543,20 @@
 						$where_4 = "";
 						$where_5 = "";
 	
+						$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 	
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
@@ -1510,7 +1587,17 @@
 							}
 						}
 						
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
+						if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 	
 							
 						//comienza paginacion
@@ -1852,10 +1939,22 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 						$id_abogado=$_POST['id_abogado'];
+						
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+						
 	
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
@@ -1942,7 +2041,14 @@
 						$where_3 = "";
 						$where_4 = "";
 						$where_5 = "";
-							
+						
+							$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 	
 							
 							
@@ -1950,7 +2056,7 @@
 	
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
@@ -1958,8 +2064,18 @@
 	
 						if($id_abogado!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
 	
+	                    if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+						
 	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 	
 							
 						//comienza paginacion
@@ -3148,10 +3264,21 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 	
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+						
+						
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
 								  juicios.regional,
@@ -3241,13 +3368,21 @@
 						$where_3 = "";
 						$where_4 = "";
 						$where_5 = "";
+						
+						$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 							
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 	
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
@@ -3276,8 +3411,22 @@
 									
 							}
 						}
+						
+						
+						if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+						
+						
+						
 	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 	
 							
 						//comienza paginacion
@@ -3759,9 +3908,20 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+						
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
 	
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
@@ -3848,6 +4008,14 @@
 						$where_3 = "";
 						$where_4 = "";
 						$where_5 = "";
+						
+						$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 	
 							
 							
@@ -3855,7 +4023,7 @@
 	
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 	
@@ -3886,8 +4054,21 @@
 							}
 						}
 	
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
-	
+						if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+						
+						
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+						
+						
 							
 						//comienza paginacion
 	
@@ -4880,10 +5061,21 @@
 							
 						$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
 						$numero_titulo_credito=$_POST['numero_titulo_credito'];
-						$identificacion_clientes=$_POST['identificacion_clientes'];
+						
 						$id_provincias=$_POST['id_provincias'];
 						$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 		
+						$identificacion_clientes=$_POST['identificacion_clientes'];
+						$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+						$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+						$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+						
+						
+						$identificacion_garantes=$_POST['identificacion_garantes'];
+						$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+						
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
 								  juicios.regional,
@@ -4957,7 +5149,7 @@
 						$where="clientes.id_clientes = titulo_credito.id_clientes AND
 						clientes.id_provincias = provincias.id_provincias AND
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-						titulo_credito.asignacion_secretarios_view = ciudad.id_ciudad AND
+						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
 							
@@ -4969,13 +5161,21 @@
 						$where_3 = "";
 						$where_4 = "";
 						$where_5 = "";
+						
+						$where_6 = "";
+						$where_7 = "";
+						$where_8 = "";
+						$where_9 = "";
+						$where_10 = "";
+						$where_11 = "";
+						$where_12 = "";
 		
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 		
 						if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 							
-						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes='$identificacion_clientes'";}
+						if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
 							
 						if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
 		
@@ -5005,8 +5205,19 @@
 									
 							}
 						}
+						
+						if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+						if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+						if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+						
+						
+						if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+						if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+						if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+							
 		
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
 		
 							
 						//comienza paginacion

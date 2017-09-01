@@ -74,21 +74,41 @@
 		//iniciar variables
 		 var con_juicio_referido_titulo_credito=$("#juicio_referido_titulo_credito").val();
 		 var con_numero_titulo_credito=$("#numero_titulo_credito").val();
-		 var con_identificacion_clientes=$("#identificacion_clientes").val();
+		 
 		 var con_id_provincias=$("#id_provincias").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
 		 var con_fechadesde=$("#fcha_desde").val();
 		 var con_fechahasta=$("#fcha_hasta").val();
+
+		 var con_identificacion_clientes=$("#identificacion_clientes").val();
+		 var con_identificacion_clientes_1=$("#identificacion_clientes_1").val();
+		 var con_identificacion_clientes_2=$("#identificacion_clientes_2").val();
+		 var con_identificacion_clientes_3=$("#identificacion_clientes_3").val();
+
+		 var con_identificacion_garantes=$("#identificacion_garantes").val();
+		 var con_identificacion_garantes_1=$("#identificacion_garantes_1").val();
+		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
+		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
 		 
 
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
 				  numero_titulo_credito:con_numero_titulo_credito,
-				  identificacion_clientes:con_identificacion_clientes,
 				  id_provincias:con_id_provincias,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
 				  fcha_desde:con_fechadesde,
 				  fcha_hasta:con_fechahasta,
+
+				  identificacion_clientes:con_identificacion_clientes,
+				  identificacion_clientes_1:con_identificacion_clientes_1,
+				  identificacion_clientes_2:con_identificacion_clientes_2,
+				  identificacion_clientes_3:con_identificacion_clientes_3,
+				  
+				  identificacion_garantes:con_identificacion_garantes,
+				  identificacion_garantes_1:con_identificacion_garantes_1,
+				  identificacion_garantes_2:con_identificacion_garantes_2,
+				  identificacion_garantes_3:con_identificacion_garantes_3,
+				  
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -152,20 +172,41 @@
   
        $sel_juicio_referido_titulo_credito="";
        $sel_numero_titulo_credito="";
-       $sel_identificacion_clientes="";
+      
        $sel_id_provincias="";
        $sel_id_estados_procesales_juicios="";
         $sel_id_abogado="";
+        
+        $sel_identificacion_clientes="";
+        $sel_identificacion_clientes_1="";
+        $sel_identificacion_clientes_2="";
+        $sel_identificacion_clientes_3="";
+        
+         
+        $sel_identificacion_garantes="";
+        $sel_identificacion_garantes_1="";
+        $sel_identificacion_garantes_2="";
+        $sel_identificacion_garantes_3="";
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
        	
        	$sel_juicio_referido_titulo_credito = $_POST['juicio_referido_titulo_credito'];
        	$sel_numero_titulo_credito=$_POST['numero_titulo_credito'];
-       	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
+       
        	$sel_id_provincias=$_POST['id_provincias'];
        	$sel_id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
        	$sel_id_abogado = $_POST['id_abogado'];
+       	
+       	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
+       	$sel_identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+       	$sel_identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+       	$sel_identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+       	
+       	$sel_identificacion_garantes=$_POST['identificacion_garantes'];
+       	$sel_identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+       	$sel_identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+       	$sel_identificacion_garantes_3=$_POST['identificacion_garantes_3'];
        
        }
        
@@ -218,9 +259,53 @@
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >Identificación:</p>
+		 <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
 			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Cliente 2:</p>
+			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Cliente 3:</p>
+			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Cliente 4:</p>
+			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		 
+		 
+		 <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 1:</p>
+			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 2:</p>
+			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 3:</p>
+			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6">
+         		<p class="formulario-subtitulo" >CI Garante 4:</p>
+			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
 			    
 		 </div>
 		 
@@ -234,6 +319,7 @@
 				</select>
 
          </div>
+           <br>
          <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
@@ -245,7 +331,7 @@
 
          </div>
          
-          <br>
+        
           <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
