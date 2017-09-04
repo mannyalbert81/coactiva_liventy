@@ -1110,7 +1110,9 @@
 					$ciudad = new CiudadModel();
 					$resultDatos=$ciudad->getBy("nombre_ciudad='Quito' OR nombre_ciudad='Guayaquil'");
 					
-					
+					$estado_procesal = new EstadosProcesalesModel();
+					$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+						
 							
 					$permisos_rol = new PermisosRolesModel();
 					$nombre_controladores = "MatrizJuiciosCordinador";
@@ -1452,7 +1454,7 @@
 						}
 				
 						$this->view("MatrizJuiciosCordinador",array(
-								"resultSet"=>$resultSet, "resultDatos"=>$resultDatos
+								"resultSet"=>$resultSet, "resultDatos"=>$resultDatos, "resultEstadoProcesal"=>$resultEstadoProcesal
 				
 				
 				
