@@ -1058,7 +1058,6 @@
 							$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
 						
 							$pagina="contMatrizJuicios.aspx";
-						
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
 							//$conexion_rpt['port']="59584";
