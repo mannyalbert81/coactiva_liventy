@@ -573,7 +573,7 @@
 				        <div class = 'col-xs-6 col-md-3'>
 				        <div class='form-group'>
 				        <label for='fecha_emision_juicios' class='control-label'>Fecha Auto Pago</label>
-				        <input type='date' class='form-control' id='fecha_emision_juicios' format='DD/MM/YYYY' name='fecha_emision_juicios' value=""   >
+				        <input type='date' class='form-control' id='fecha_emision_juicios' min="1800-01-01" max="<?php echo date('Y-m-d');?>"  name='fecha_emision_juicios' value=""   >
 				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
 				        </div>
 				        </div>	
@@ -626,7 +626,7 @@
 					    <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Providencia</label>
-				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' format='DD/MM/YYYY' value=""  >
+				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value=""  >
 				         <div id="mensaje_fecha_ultima_providencia" class="errores"></div>
 				        </div>
 				        </div>

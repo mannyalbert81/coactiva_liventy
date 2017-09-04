@@ -682,7 +682,7 @@
 					    <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Providencia</label><br>
-				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="2017-12-31" value="<?php echo $resEdit->fecha_ultima_providencia; ?>"  >
+				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php echo $resEdit->fecha_ultima_providencia; ?>"  >
 				         <div id="mensaje_fecha_ultima_providencia" class="errores"></div>
 				        </div>
 				        </div>
