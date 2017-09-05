@@ -2896,6 +2896,8 @@
 		$clientes = new ClientesModel();
 		$juicios = new JuiciosModel();
 		$titulo_credito = new TituloCreditoModel();
+		
+		$historial_juicios = new HistorialJuiciosModel();
 	
 		$nombre_controladores = "ActualizarMatrizJuicios";
 		$id_rol= $_SESSION['id_rol'];
@@ -3049,8 +3051,6 @@
 					riesgo_actual='$_riesgo_actual'";
 						
 						
-					
-						
 					$tabla1="juicios";
 					$where1="id_juicios='$_id_juicios'";
 						
@@ -3059,8 +3059,12 @@
 					try {
 							
 						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
-							
-							
+						
+						$funcion = "ins_historial_juicios";
+						$parametros = " '$_id_juicios', '$_id_estados_procesales_juicios', '$_fecha_ultima_providencia'";
+						$historial_juicios->setFuncion($funcion);
+						$historial_juicios->setParametros($parametros);
+						$resultado=$historial_juicios->Insert();
 							
 							
 					}catch (Exception $ex)
@@ -3098,7 +3102,11 @@
 							
 						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
 							
-							
+						$funcion = "ins_historial_juicios_dos";
+						$parametros = " '$_id_juicios', '$_id_estados_procesales_juicios'";
+						$historial_juicios->setFuncion($funcion);
+						$historial_juicios->setParametros($parametros);
+						$resultado=$historial_juicios->Insert();
 							
 							
 					}catch (Exception $ex)
