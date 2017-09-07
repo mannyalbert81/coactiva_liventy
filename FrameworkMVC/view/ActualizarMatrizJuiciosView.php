@@ -241,6 +241,20 @@
 	    		});
 		    }
 
+
+		    $fechaResProv=$('#fecha_providencia_restructuracion');
+		    if ($fechaResProv[0].type!="date"){
+		    $fechaResProv.attr('readonly','readonly');
+		    $fechaResProv.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1800:2017"
+	    		});
+		    }
+
+		    
+
 		}); 
 
 	</script>
@@ -722,6 +736,130 @@
 			
 		    </div>
 		</div>
+	
+	
+		
+	
+			<div class="panel panel-info">
+	         	<div class="panel-heading">
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Restructuración  (LLENAR SOLO SI TIENE RESTRUCTURACION DEL PROCESO)</h4>
+	         	</div>
+	        	 <div class="panel-body">
+			
+					<?php if (count($resultEdit2) > 0)   { foreach($resultEdit2 as $resEdit2) {?>
+					    
+						<div class = 'col-xs-6 col-md-2'>
+				        
+				        <div class='form-group'>
+				        <label for='fecha_emision_juicios' class='control-label'>Fecha Providencia A</label><br>
+				        <input type='date' class='form-control' id='fecha_providencia_restructuracion' name='fecha_providencia_restructuracion' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php    echo $resEdit2->fecha_providencia_restructuracion; ?>"   >
+				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
+				        </div>
+				        </div>
+				        
+				         <div class="col-xs-6 col-md-4">
+ 						 <div class='form-group'>
+			  			 <label for='tipo_restructutacion' class='control-label'>Tipo Restructuración</label>
+			  			<select name="tipo_restructutacion" id="tipo_restructutacion"  class="form-control" >
+						<option value="0"  > SELECCIONE </option>
+						<?php foreach($resultTipoRestructuracion as $res) {?>
+						<option value="<?php echo $res->id_tipo_restructuracion; ?>" <?php if ($res->id_tipo_restructuracion == $resEdit2->id_tipo_restructuracion )  echo  ' selected="selected" '  ;  ?> ><?php echo $res->nombre_tipo_restructuracion; ?> </option>
+						            
+						<?php } ?>
+						</select> 
+			  			</div>
+						</div>
+						
+						
+						<div class="col-xs-6 col-md-3">
+ 						 <div class='form-group'>
+			  			 <label for='levantamiento_medidas' class='control-label'>Levantamiento de Medidas</label>
+			  			
+			  			<select name="levantamiento_medidas" id="levantamiento_medidas"  class="form-control" >
+							<option value="0"  > SELECCIONE </option>
+							
+							<option value="TRUE"  <?php if ($resEdit2->levantamiento_medida == "t" ) { echo  ' selected="selected" '  ;}  ?> >SI </option>
+							<option value="FALSE"  <?php if ($resEdit2->levantamiento_medida == "f" ){  echo  ' selected="selected" '  ;}  ?> >NO </option>
+						
+						</select> 
+			  			</div>
+						</div>
+						
+						<div class="col-xs-6 col-md-3">
+ 						 <div class='form-group'>
+			  			 <label for='archivado_restructuracion' class='control-label'>Archivado</label>
+			  			<select name="archivado_restructuracion" id="archivado_restructuracion"  class="form-control" >
+			  					<option value="0"  > SELECCIONE </option>
+			 					<option value="TRUE"  <?php if ($resEdit2->archivado_restructuracion == "t" )  echo  ' selected="selected" '  ;  ?> >SI </option>
+			    				<option value="FALSE"  <?php if ($resEdit2->archivado_restructuracion == "f" )  echo  ' selected="selected" '  ;  ?> >NO </option>
+						
+						</select> 
+			  			</div>
+						</div>
+			
+						<?php  } ?>	
+						
+						
+					<?php   } else {?>
+						
+						<div class = 'col-xs-6 col-md-2'>
+				        
+						<div class='form-group'>
+				        <label for='fecha_providencia_restructuracion' class='control-label'>Fecha Providencia</label><br>
+				        <input type='date' class='form-control' id='fecha_providencia_restructuracion' name='fecha_providencia_restructuracion' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php    echo $resEdit->fecha_ultima_providencia; ?>"   >
+				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
+				        </div>
+				        </div>
+				        
+				         <div class="col-xs-6 col-md-4">
+ 						 <div class='form-group'>
+			  			 <label for='tipo_restructutacion' class='control-label'>Tipo Restructuración</label>
+			  			<select name="tipo_restructutacion" id="tipo_restructutacion"  class="form-control" >
+						<option value="0"  > SELECCIONE </option>
+						<?php foreach($resultTipoRestructuracion as $res) {?>
+						<option value="<?php echo $res->id_tipo_restructuracion; ?>"  > <?php echo $res->nombre_tipo_restructuracion; ?> </option>
+						            
+						<?php } ?>
+						</select> 
+			  			</div>
+						</div>
+			
+			
+					     <div class="col-xs-6 col-md-3">
+ 						 <div class='form-group'>
+			  			 <label for='levantamiento_medidas' class='control-label'>Levantamiento de Medidas</label>
+			  			<select name="levantamiento_medidas" id="levantamiento_medidas"  class="form-control" >
+						<option value="0"  > SELECCIONE </option>
+						<option value="TRUE"  > SI </option>
+						<option value="FALSE"  > NO </option>            
+						
+						</select> 
+			  			</div>
+						</div>
+			
+						
+			   	       <div class="col-xs-6 col-md-3">
+ 						 <div class='form-group'>
+			  			 <label for='archivado_restructuracion' class='control-label'>Archivado</label>
+			  			<select name="archivado_restructuracion" id="archivado_restructuracion"  class="form-control" >
+						<option value="0"  > SELECCIONE </option>
+						<option value="TRUE"  > SI </option>
+						<option value="FALSE"  > NO </option>            
+						
+						</select> 
+			  			</div>
+						</div>
+			
+						
+					<?php  } ?>
+		    	</div>
+			</div>
+	
+	
+		
+		
+		
+		
 			
 			  <div class="row">
 			  <div class="col-xs-12 col-md-12" style="text-align: center;" >
