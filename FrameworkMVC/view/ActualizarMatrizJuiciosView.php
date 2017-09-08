@@ -766,7 +766,7 @@
 		 </div>
 		 
 		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" ># Opreación:</p>
+         		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
