@@ -71,7 +71,7 @@ public function index(){
 				$where_6 = "";
 				
 				if($id_estados_procesales_juicios!=0){$where_0=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
-				if($id_abogado!=0){$where_1=" AND juicios.id_usuarios='$id_abogado'";}
+				if($id_abogado!=0){$where_1=" AND titulo_credito.id_usuarios='$id_abogado'";}
 				if($juicio_referido_titulo_credito!=""){$where_2=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 				if($numero_titulo_credito!=""){$where_3=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
 				if($identificacion_clientes!=""){$where_4=" AND clientes.identificacion_clientes='$identificacion_clientes'";}

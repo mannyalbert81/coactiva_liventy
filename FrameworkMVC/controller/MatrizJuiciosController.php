@@ -2930,17 +2930,14 @@
 				//$_nombre_estados_procesales_juicios= $_POST["nombre_estados_procesales_juicios"];
 				$_descripcion_estado_procesal= $_POST["descripcion_estado_procesal"];
 				
-				
 				$_fecha_emision_juicios= $_POST["fecha_emision_juicios"];
 				$_fecha_ultima_providencia= $_POST["fecha_ultima_providencia"];
-				
 				
 				
 				$_id_tipo_restructuracion =  $_POST["tipo_restructutacion"];  
 				$_fecha_providencia_restructuracion = $_POST["fecha_providencia_restructuracion"]; 
 				$_levantamiento_medida = $_POST["levantamiento_medidas"]; 
 				$_archivado_restructuracion = $_POST["archivado_restructuracion"];
-				
 				
 				
 				$_estrategia_seguir= $_POST["estrategia_seguir"];
