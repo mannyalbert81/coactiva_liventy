@@ -2897,6 +2897,7 @@
 		$juicios = new JuiciosModel();
 		$titulo_credito = new TituloCreditoModel();
 		
+		$juicios_restructuracion = new JuiciosRestructuracionModel();
 		$historial_juicios = new HistorialJuiciosModel();
 	
 		$nombre_controladores = "ActualizarMatrizJuicios";
@@ -2935,7 +2936,10 @@
 				
 				
 				
-				
+				$_id_tipo_restructuracion =  $_POST["tipo_restructutacion"];  
+				$_fecha_providencia_restructuracion = $_POST["fecha_providencia_restructuracion"]; 
+				$_levantamiento_medida = $_POST["levantamiento_medidas"]; 
+				$_archivado_restructuracion = $_POST["archivado_restructuracion"];
 				
 				
 				
@@ -2984,10 +2988,7 @@
 					}
 					
 					
-					
-					
-					
-				}
+									}
 				
 				
 				else{
@@ -3117,6 +3118,14 @@
 					}
 						
 				}
+				
+				
+				
+				
+				
+				
+				
+					
 				
 				
 			}
@@ -3385,6 +3394,39 @@
 				
 				
 				
+				
+				//inserto la restructuracion
+					
+				if ($_id_tipo_restructuracion > 0 && $_levantamiento_medida !="0" && $_archivado_restructuracion != "0"    )
+				{
+				
+					try {
+				
+						echo "entre";
+						//ins_juicios_restructuracion( integer,  integer,  date,  boolean,  boolean)
+						$funcion = "ins_juicios_restructuracion";
+						$parametros = "'$_id_juicios','$_id_tipo_restructuracion', '$_fecha_providencia_restructuracion','$_levantamiento_medida', '$_archivado_restructuracion'  ";
+						$juicios_restructuracion->setFuncion($funcion);
+						$juicios_restructuracion->setParametros($parametros);
+						$resultado=$juicios_restructuracion->Insert();
+				
+				
+				
+				
+					}catch (Exception $ex)
+					{
+				
+						die($ex);
+				
+					}
+				
+				}
+				else
+				{
+				
+					echo "no entre";	
+				}
+					
 			
 					
 				
@@ -3393,7 +3435,7 @@
 		
 			
 			
-			$this->redirect("MatrizJuicios", "index3");
+		$this->redirect("MatrizJuicios", "index3");
 		}
 		else
 		{
@@ -3464,8 +3506,15 @@
 					
 				$estado_procesal = new EstadosProcesalesModel();
 				$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+				
+				
+				$tipo_restructuracion = new TipoRestructuracionModel();
+				$resultTipoRestructuracion =$tipo_restructuracion->getAll("nombre_tipo_restructuracion");
+				
+				
+				$juicios_restructuracion = new JuiciosRestructuracionModel();
 					
-					
+				
 				$permisos_rol = new PermisosRolesModel();
 				$nombre_controladores = "ActualizarMatrizJuicios";
 				$id_rol= $_SESSION['id_rol'];
@@ -3989,7 +4038,7 @@
 					
 					
 					$resultEdit = "";
-	
+					$resultEdit2 = "";
 					if (isset ($_GET["id_juicios"])   )
 					{
 						$_id_juicios = $_GET["id_juicios"];
@@ -4071,12 +4120,22 @@
 						$id_edit="juicios.id_juicios";
 	
 						$resultEdit = $juicios->getCondiciones($columnas_edit ,$tablas_edit ,$where_edit, $id_edit);
-	
+
+						
+						$columnas_edit2  = "id_juicios_restructuracion, id_juicios, id_tipo_restructuracion,  fecha_providencia_restructuracion, levantamiento_medida, archivado_restructuracion ";  
+       					$tablas_edit2 = 	"juicios_restructuracion";
+       					$where_edit2  =     "id_juicios='$_id_juicios'";
+       					$id_edit2		=  " fecha_providencia_restructuracion";
+						
+						$resultEdit2 = $juicios_restructuracion ->getCondiciones($columnas_edit2 ,$tablas_edit2 ,$where_edit2, $id_edit2);
+						
+						//echo $_id_juicios;
 							
 					}
 						
 					$this->view("ActualizarMatrizJuicios",array(
-							"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultEdit"=>$resultEdit
+							"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultEdit"=>$resultEdit,
+							"resultTipoRestructuracion"=>$resultTipoRestructuracion, "resultEdit2"=>$resultEdit2
 								
 	
 	
