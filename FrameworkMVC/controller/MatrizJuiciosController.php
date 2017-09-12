@@ -2969,7 +2969,6 @@
 					$where1="id_juicios='$_id_juicios'";
 					
 					
-					
 					try {
 					
 						$resultado=$juicios->UpdateBy($colval1, $tabla1, $where1);
@@ -2985,7 +2984,7 @@
 					}
 					
 					
-									}
+				}
 				
 				
 				else{
@@ -3193,7 +3192,6 @@
 				}
 				
 				
-				
 				$_identificacion_garantes_3= $_POST["identificacion_garantes_3"];
 				$_nombre_garantes_3= $_POST["nombre_garantes_3"];
 				
@@ -3201,7 +3199,6 @@
 				{
 					$_cantidad_garantes = 4;
 				}
-				
 				
 				
 				$_correo_clientes= $_POST["correo_clientes"];
@@ -3212,7 +3209,6 @@
 				$_direccion_clientes_1= $_POST["direccion_clientes_1"];
 				$_direccion_clientes_2= $_POST["direccion_clientes_2"];
 				$_direccion_clientes_3= $_POST["direccion_clientes_3"];
-				
 				
 				
 				$_sexo_clientes = $_POST["sexo_clientes"];
@@ -3260,8 +3256,6 @@
 				sexo_garantes_1='$_sexo_garantes_1',
 				sexo_garantes_2='$_sexo_garantes_2',
 				sexo_garantes_3='$_sexo_garantes_3'";
-				
-				
 				
 				$tabla="clientes";
 				$where="id_clientes='$_id_clientes'";
