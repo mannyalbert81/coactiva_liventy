@@ -7923,6 +7923,8 @@
 				$estado_procesal = new EstadosProcesalesModel();
 				$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
 	
+				$tipo_restructuracion = new TipoRestructuracionModel();
+			    $resultRestruc =$tipo_restructuracion->getAll("nombre_tipo_restructuracion");
 					
 				$permisos_rol = new PermisosRolesModel();
 				$nombre_controladores = "MatrizJuiciosCordinador";
@@ -7943,7 +7945,11 @@
 						$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 							
 						$id_estados_procesales_juicios=(isset($_POST['id_estados_procesales_juicios']))?$_POST['id_estados_procesales_juicios']:0;
-							
+						$id_tipo_restructuracion=(isset($_POST['id_tipo_restructuracion']))?$_POST['id_tipo_restructuracion']:0;
+						
+						$levantamiento_medida=(isset($_POST['levantamiento_medida']))?$_POST['levantamiento_medida']:'';
+						$archivado_restructuracion=(isset($_POST['archivado_restructuracion']))?$_POST['archivado_restructuracion']:'';
+						
 							
 						$columnas = " titulo_credito.numero_titulo_credito,
 									  clientes.nombres_clientes,
@@ -7989,6 +7995,8 @@
 						$where_6 = "";
 						$where_7 = "";
 						$where_8= "";
+						$where_9 = "";
+						$where_10= "";
 	
 	
 	
@@ -8004,7 +8012,7 @@
 							
 						if($id_impulsor!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_impulsor'";}
 							
-						
+						if($id_tipo_restructuracion!=0){$where_6=" AND tipo_restructuracion.id_tipo_restructuracion='$id_tipo_restructuracion'";}
 							
 						/*para las fechas*/
 						$fechaDesde="";$fechaHasta="";
@@ -8032,9 +8040,11 @@
 						}
 							
 						if($id_estados_procesales_juicios!=0){$where_8=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+						if($levantamiento_medida!=""){$where_9=" AND juicios_restructuracion.levantamiento_medida='$levantamiento_medida'";}
+						if($archivado_restructuracion!=""){$where_10=" AND juicios_restructuracion.archivado_restructuracion='$archivado_restructuracion'";}
 							
 							
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6.$where_7. $where_8;
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6.$where_7. $where_8.$where_9. $where_10;
 	
 	
 						//comienza paginacion
@@ -8161,7 +8171,10 @@
 							$parametros['id_abogado']=isset($_POST['id_impulsor'])?trim($_POST['id_impulsor']):0;
 							$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
-	
+							$parametros['id_tipo_restructuracion']=(isset($_POST['id_tipo_restructuracion']))?trim($_POST['id_tipo_restructuracion']):0;
+							$parametros['levantamiento_medida']=(isset($_POST['levantamiento_medida']))?trim($_POST['levantamiento_medida']):'';
+							$parametros['archivado_restructuracion']=(isset($_POST['archivado_restructuracion']))?trim($_POST['archivado_restructuracion']):'';
+							
 							$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
 							$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
@@ -8212,7 +8225,7 @@
 					}
 	
 					$this->view("MatrizRestructuracionJuiciosCordinador",array(
-							"resultSet"=>$resultSet, "resultDatos"=>$resultDatos, "resultEstadoProcesal"=>$resultEstadoProcesal
+							"resultSet"=>$resultSet, "resultDatos"=>$resultDatos, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultRestruc"=>$resultRestruc
 	
 	
 	
