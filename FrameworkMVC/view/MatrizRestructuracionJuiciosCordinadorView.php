@@ -198,7 +198,7 @@
 		 var con_id_secretario=$("#id_secretario").val();
 		 var con_id_impulsor=$("#id_impulsor").val();
 		 var con_id_ciudad=$("#id_ciudad").val();
-		 var con_comprarado_fomento=$("#comprarado_fomento").val();
+	
 		 var con_fechadesde=$("#fcha_desde").val();
 		 var con_fechahasta=$("#fcha_hasta").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
@@ -218,7 +218,6 @@
 				  fcha_desde:con_fechadesde,
 				  fcha_hasta:con_fechahasta,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
-				  comprarado_fomento:con_comprarado_fomento,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -286,7 +285,7 @@
        $sel_identificacion_clientes="";
        $sel_id_ciudad="";
        $sel_id_estados_procesales_juicios="";
-       $sel_comprarado_fomento="";
+  
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -295,7 +294,7 @@
        	$sel_numero_titulo_credito=$_POST['numero_titulo_credito'];
        	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
        	$sel_id_ciudad=$_POST['id_ciudad'];
-       	$sel_comprarado_fomento=$_POST['comprarado_fomento'];
+
        	
        	
        
@@ -353,14 +352,7 @@
 			    </select>
 		 </div>
 		 
-		   <div class="col-lg-2 col-md-2 col-xs-6">
-			  	<p  class="formulario-subtitulo" style="" >Comparado:</p>
-			  	<select name="comprarado_fomento" id="comprarado_fomento"  class="form-control">
-			  	<option value=""  >--TODOS--</option>
-			  	<option value="TRUE"  >Si </option>
-			    <option value="FALSE"  >No </option>
-			    </select>
-		 </div>
+		
   							
   		<div class="col-lg-2 col-md-2 col-xs-6">
          		<p class="formulario-subtitulo" ># Juicio:</p>
