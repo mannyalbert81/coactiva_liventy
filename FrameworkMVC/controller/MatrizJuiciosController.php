@@ -132,11 +132,6 @@
 								  ciudad.nombre_ciudad";
 						
 						
-						
-						
-						
-			
-			
 						$tablas=" public.clientes,
 							  public.titulo_credito,
 							  public.juicios,
@@ -3115,7 +3110,11 @@
 				
 				
 				
-				
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Actualizo tabla juicios";
+				$_parametros_trazas = $_id_juicios;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
 				
 				
 					
@@ -3262,7 +3261,16 @@
 					$resultado=$clientes->UpdateBy($colval, $tabla, $where);
 						
 					
+
+					$traza=new TrazasModel();
+					$_nombre_controlador = "MATRIZ JUICIOS";
+					$_accion_trazas  = "Actualizo tabla clientes";
+					$_parametros_trazas = $_id_clientes;
+					$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+					
+					
 						
+					
 			
 				}catch (Exception $ex)
 				{
@@ -3390,7 +3398,7 @@
 				
 					try {
 				
-						echo "entre";
+						
 						//ins_juicios_restructuracion( integer,  integer,  date,  boolean,  boolean)
 						$funcion = "ins_juicios_restructuracion";
 						$parametros = "'$_id_juicios','$_id_tipo_restructuracion', '$_fecha_providencia_restructuracion','$_levantamiento_medida', '$_archivado_restructuracion'  ";
@@ -3399,14 +3407,19 @@
 						$resultado=$juicios_restructuracion->Insert();
 				
 				
-				
-				
 					}catch (Exception $ex)
 					{
 				
 						die($ex);
 				
 					}
+					
+					
+					$traza=new TrazasModel();
+					$_nombre_controlador = "MATRIZ JUICIOS";
+					$_accion_trazas  = "Inserto o Actualizo tabla Restructuracion";
+					$_parametros_trazas = $_id_juicios;
+					$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
 				
 				}
 				else
@@ -3415,8 +3428,11 @@
 					echo "no entre";	
 				}
 					
-			
-					
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Actualizo tabla titulo_credito";
+				$_parametros_trazas = $_id_titulo_credito;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
 				
 			}
 			
@@ -5112,6 +5128,13 @@
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();
+						
+						
+						$traza=new TrazasModel();
+						$_nombre_controlador = "MATRIZ JUICIOS";
+						$_accion_trazas  = "INSERTO NUEVO JUICIO";
+						$_parametros_trazas = $_id_titulo_credito;
+						$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
 							
 					}catch(Exception $e){
 							
@@ -5127,6 +5150,8 @@
 				}
 				
 			}
+			
+			
 			
 			
 			
