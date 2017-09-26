@@ -198,12 +198,14 @@
 		 var con_id_secretario=$("#id_secretario").val();
 		 var con_id_impulsor=$("#id_impulsor").val();
 		 var con_id_ciudad=$("#id_ciudad").val();
-		 var con_comprarado_fomento=$("#comprarado_fomento").val();
+	
 		 var con_fechadesde=$("#fcha_desde").val();
 		 var con_fechahasta=$("#fcha_hasta").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
+		 var con_id_tipo_restructuracion=$("#id_tipo_restructuracion").val();
 
-		 
+		 var con_levantamiento_medida=$("#levantamiento_medida").val();
+		 var con_archivado_restructuracion=$("#archivado_restructuracion").val();
 			
 		 
 		 
@@ -218,7 +220,9 @@
 				  fcha_desde:con_fechadesde,
 				  fcha_hasta:con_fechahasta,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
-				  comprarado_fomento:con_comprarado_fomento,
+				  id_tipo_restructuracion:con_id_tipo_restructuracion,
+				  levantamiento_medida:con_levantamiento_medida,
+				  archivado_restructuracion:con_archivado_restructuracion,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -286,7 +290,8 @@
        $sel_identificacion_clientes="";
        $sel_id_ciudad="";
        $sel_id_estados_procesales_juicios="";
-       $sel_comprarado_fomento="";
+       $sel_id_tipo_restructuracion="";
+  
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -295,7 +300,8 @@
        	$sel_numero_titulo_credito=$_POST['numero_titulo_credito'];
        	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
        	$sel_id_ciudad=$_POST['id_ciudad'];
-       	$sel_comprarado_fomento=$_POST['comprarado_fomento'];
+       	$sel_id_tipo_restructuracion=$_POST['id_tipo_restructuracion'];
+
        	
        	
        
@@ -353,14 +359,7 @@
 			    </select>
 		 </div>
 		 
-		   <div class="col-lg-2 col-md-2 col-xs-6">
-			  	<p  class="formulario-subtitulo" style="" >Comparado:</p>
-			  	<select name="comprarado_fomento" id="comprarado_fomento"  class="form-control">
-			  	<option value=""  >--TODOS--</option>
-			  	<option value="TRUE"  >Si </option>
-			    <option value="FALSE"  >No </option>
-			    </select>
-		 </div>
+		
   							
   		<div class="col-lg-2 col-md-2 col-xs-6">
          		<p class="formulario-subtitulo" ># Juicio:</p>
@@ -390,6 +389,36 @@
 				</select>
 
          </div>
+         
+         
+          <div class="col-lg-2 col-md-2 col-xs-6">
+			  	<p  class="formulario-subtitulo">Tipo Restructuración:</p>
+			  	<select name="id_tipo_restructuracion" id="id_tipo_restructuracion"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultRestruc as $res) {?>
+						<option value="<?php echo $res->id_tipo_restructuracion; ?>"<?php if($sel_id_tipo_restructuracion==$res->id_tipo_restructuracion){echo "selected";}?> ><?php echo $res->nombre_tipo_restructuracion;  ?> </option>
+			            <?php } ?>
+				</select>
+
+         </div>
+         
+         <div class="col-lg-2 col-md-2 col-xs-6">
+			  	<p  class="formulario-subtitulo" style="" >Levantamiento:</p>
+			  	<select name="levantamiento_medida" id="levantamiento_medida"  class="form-control">
+			  	<option value=""  >--TODOS--</option>
+			  	<option value="TRUE"  >Si </option>
+			    <option value="FALSE"  >No </option>
+			    </select>
+		 </div>
+		 
+		   <div class="col-lg-2 col-md-2 col-xs-6">
+			  	<p  class="formulario-subtitulo" style="" >Archivado:</p>
+			  	<select name="archivado_restructuracion" id="archivado_restructuracion"  class="form-control">
+			  	<option value=""  >--TODOS--</option>
+			  	<option value="TRUE"  >Si </option>
+			    <option value="FALSE"  >No </option>
+			    </select>
+		 </div>
          
 		 <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
