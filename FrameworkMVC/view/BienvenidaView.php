@@ -13,23 +13,18 @@
             .right{
                 float:right;
             }
-                
-            
         </style>
         
-      
- 	
-   </head>
-    <body>
+      </head>
+      <body>
      
-      <?php include("view/modulos/modal.php"); ?>
+       <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
        <?php include("view/modulos/slide.php"); ?>
       
-     
       <script>
-      $( function() {
+      $(function() {
     	    $( "#dialog" ).dialog({
     	        resizable: false,
     	        height: 400,
@@ -42,15 +37,10 @@
     	        }
     	      });
     	  } );
-	</script>
+	  </script>
 
-	<div id="dialog" title="INFORMACIÓN">
-	
-     <p style="text-align: justify;">Saludos Estimados, les comunicamos que hemos procedido con la actualización del estado procesal de los juicios que estaban en un estado procesal diferente a <strong>SUSPENSIÓN O ARCHIVADO</strong>, en un estado procesal de nombre 
-     <strong> REVISAR</strong>, favor revisar y actualizar sus juicios que se encuentran en dicho estado a su estado procesal correspondiente que puede ser <strong>SUSPENSIÓN O ARCHIVADO</strong>.</p>
-   
-   <br>
-    <p style="text-align: justify;"><strong>NOTA: </strong>Todo juicio que este en estado procesal de nombre <strong>REVISAR</strong> seran eliminados al terminar el proceso de revisón de la matriz de juicios.</p>
+	<div id="dialog" title="INFORMACIÓN"><br><br><br><br>
+	<p style="text-align: justify;">Estimados <strong>usuarios</strong>, les comunicamos que estamos implementando el certificado de seguridad al sistema (Allcoercive), el mismo que puede presentar inconvenientes durante el dia de hoy por la implementación, agradecemos su compresión.</p>
     </div> 
             
        <footer class="col-lg-12">

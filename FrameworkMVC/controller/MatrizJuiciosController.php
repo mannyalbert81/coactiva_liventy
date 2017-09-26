@@ -129,7 +129,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 						
 						
 						$tablas=" public.clientes,
@@ -679,7 +687,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 							
 							
 							
@@ -1188,7 +1204,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+									clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 								
 								
 								
@@ -1605,7 +1629,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 							
 							
 							
@@ -2146,7 +2178,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								  clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 							
 							
 							
@@ -3216,6 +3256,17 @@
 				$_sexo_garantes_2 = $_POST["sexo_garantes_2"];
 				$_sexo_garantes_3 = $_POST["sexo_garantes_3"];
 				
+				
+				
+				$_correo_garantes_1= $_POST["correo_garantes_1"];
+				$_correo_garantes_2= $_POST["correo_garantes_2"];
+				$_correo_garantes_3= $_POST["correo_garantes_3"];
+				$_correo_garantes_4= $_POST["correo_garantes_4"];
+				
+				$_direccion_garantes_1= $_POST["direccion_garantes_1"];
+				$_direccion_garantes_2= $_POST["direccion_garantes_2"];
+				$_direccion_garantes_3= $_POST["direccion_garantes_3"];
+				$_direccion_garantes_4= $_POST["direccion_garantes_4"];
 			
 				$colval="identificacion_clientes='$_identificacion_clientes',
 				nombres_clientes='$_nombres_clientes',
@@ -3251,7 +3302,17 @@
 				sexo_garantes='$_sexo_garantes',
 				sexo_garantes_1='$_sexo_garantes_1',
 				sexo_garantes_2='$_sexo_garantes_2',
-				sexo_garantes_3='$_sexo_garantes_3'";
+				sexo_garantes_3='$_sexo_garantes_3',
+				correo_garantes_1='$_correo_garantes_1',
+				correo_garantes_2='$_correo_garantes_2',
+				correo_garantes_3='$_correo_garantes_3',
+				correo_garantes_4='$_correo_garantes_4',
+				direccion_garantes_1='$_direccion_garantes_1',
+				direccion_garantes_2='$_direccion_garantes_2',
+				direccion_garantes_3='$_direccion_garantes_3',
+				direccion_garantes_4='$_direccion_garantes_4'";
+				
+				
 				
 				$tabla="clientes";
 				$where="id_clientes='$_id_clientes'";
@@ -3605,7 +3666,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 	
 	
 	
@@ -4105,7 +4174,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 	
 						$tablas_edit=" public.clientes,
 							  public.titulo_credito,
@@ -4300,7 +4377,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 							
 							
 							
@@ -4949,6 +5034,18 @@
 		
 			
 			
+			$_correo_garantes_1= $_POST["correo_garantes_1"];
+			$_correo_garantes_2= $_POST["correo_garantes_2"];
+			$_correo_garantes_3= $_POST["correo_garantes_3"];
+			$_correo_garantes_4= $_POST["correo_garantes_4"];
+			
+			$_direccion_garantes_1= $_POST["direccion_garantes_1"];
+			$_direccion_garantes_2= $_POST["direccion_garantes_2"];
+			$_direccion_garantes_3= $_POST["direccion_garantes_3"];
+			$_direccion_garantes_4= $_POST["direccion_garantes_4"];
+			
+			
+			
 			$clientes= new ClientesModel();
 			$usuarios = new UsuariosModel();
 			$titulo_credito= new TituloCreditoModel();
@@ -4976,7 +5073,7 @@
 				
 				////////INSERTO CLIENTE
 				$funcion = "ins_clientes_liventy";
-				$parametros = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias'";
+				$parametros = "'$_identificacion_clientes','$_nombres_clientes','$_direccion_clientes','$_correo_clientes','$_sexo_clientes','$_identificacion_clientes_1','$_nombre_clientes_1','$_direccion_clientes_1','$_correo_clientes_1','$_sexo_clientes_1','$_identificacion_clientes_2','$_nombre_clientes_2','$_direccion_clientes_2','$_correo_clientes_2','$_sexo_clientes_2','$_identificacion_clientes_3','$_nombre_clientes_3','$_direccion_clientes_3','$_correo_clientes_3','$_sexo_clientes_3','$_identificacion_garantes','$_nombre_garantes','$_sexo_garantes','$_identificacion_garantes_1','$_nombre_garantes_1','$_sexo_garantes_1','$_identificacion_garantes_2','$_nombre_garantes_2','$_sexo_garantes_2','$_identificacion_garantes_3','$_nombre_garantes_3','$_sexo_garantes_3','$_id_ciudad','$_id_provincias','$_correo_garantes_1','$_correo_garantes_2','$_correo_garantes_3','$_correo_garantes_4','$_direccion_garantes_1','$_direccion_garantes_2', '$_direccion_garantes_3','$_direccion_garantes_4'";
 				$clientes->setFuncion($funcion);
 				$clientes->setParametros($parametros);
 				$resultado=$clientes->Insert();
@@ -5016,7 +5113,15 @@
 			AND sexo_clientes_3 ='$_sexo_clientes_3'
 			AND sexo_garantes_1 ='$_sexo_garantes_1'
 			AND sexo_garantes_2 ='$_sexo_garantes_2'
-			AND sexo_garantes_3 ='$_sexo_garantes_3'");
+			AND sexo_garantes_3 ='$_sexo_garantes_3'
+			AND  correo_garantes_1='$_correo_garantes_1'
+			AND correo_garantes_2='$_correo_garantes_2'
+			AND correo_garantes_3='$_correo_garantes_3'
+			AND correo_garantes_4='$_correo_garantes_4'
+			AND direccion_garantes_1='$_direccion_garantes_1'
+			AND direccion_garantes_2='$_direccion_garantes_2'
+			AND direccion_garantes_3='$_direccion_garantes_3'
+			AND direccion_garantes_4='$_direccion_garantes_4'");
 			
 			$_id_clientes=$resultClientes[0]->id_clientes;
 			$_orden= $_id_clientes;
@@ -5504,7 +5609,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+							  clientes.correo_garantes_2, 
+							  clientes.correo_garantes_3, 
+							  clientes.correo_garantes_4, 
+							  clientes.direccion_garantes_1, 
+							  clientes.direccion_garantes_2, 
+							  clientes.direccion_garantes_3, 
+							  clientes.direccion_garantes_4";
 							
 							
 							
@@ -5930,7 +6043,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 							
 							
 							
@@ -6398,7 +6519,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+							  clientes.correo_garantes_2, 
+							  clientes.correo_garantes_3, 
+							  clientes.correo_garantes_4, 
+							  clientes.direccion_garantes_1, 
+							  clientes.direccion_garantes_2, 
+							  clientes.direccion_garantes_3, 
+							  clientes.direccion_garantes_4";
 							
 							
 							
@@ -6854,7 +6983,15 @@
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
-								  ciudad.nombre_ciudad";
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_2, 
+								  clientes.correo_garantes_3, 
+								  clientes.correo_garantes_4, 
+								  clientes.direccion_garantes_1, 
+								  clientes.direccion_garantes_2, 
+								  clientes.direccion_garantes_3, 
+								  clientes.direccion_garantes_4";
 				
 				
 				

@@ -464,15 +464,29 @@
 				        </div>
 				        </div>	
 
-						<div class = 'col-xs-6 col-md-2'>
+						<div class = 'col-xs-6 col-md-1'>
 				        <div class='form-group'>
 				        <label for='sexo_garantes' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes" id="sexo_garantes"  class="form-control">
-							<option value="_" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
   						</div>
+				        </div>
+				        
+				         <div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='correo_garantes_1' class='control-label'>Correo Garante 1</label><br>
+				        <input type='email' class='form-control' id='correo_garantes_1' name='correo_garantes_1' value="" >
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-6 col-md-3'>
+				        <div class='form-group'>
+				        <label for='direccion_garantes_1' class='control-label'>Dirección Garante 1</label><br>
+				        <input type='text' class='form-control' id='direccion_garantes_1' name='direccion_garantes_1' value=""  >
+				        </div>
 				        </div>
 				        </div>	
 				        
@@ -490,15 +504,29 @@
 				        </div>
 				        </div>	
 
-						<div class = 'col-xs-6 col-md-2'>
+						<div class = 'col-xs-6 col-md-1'>
 				        <div class='form-group'>
 				        <label for='sexo_garantes_1' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_1" id="sexo_garantes_1"  class="form-control">
-							<option value="_" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
   						</div>
+				        </div>
+				        
+				        <div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='correo_garantes_2' class='control-label'>Correo Garante 2</label><br>
+				        <input type='email' class='form-control' id='correo_garantes_2' name='correo_garantes_2' value="" >
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-6 col-md-3'>
+				        <div class='form-group'>
+				        <label for='direccion_garantes_2' class='control-label'>Dirección Garante 2</label><br>
+				        <input type='text' class='form-control' id='direccion_garantes_2' name='direccion_garantes_2' value=""  >
+				        </div>
 				        </div>
 				        </div>
 				         
@@ -516,19 +544,33 @@
 				        </div>
 				        </div>	
 
-						<div class = 'col-xs-6 col-md-2'>
+						<div class = 'col-xs-6 col-md-1'>
 				        <div class='form-group'>
 				        <label for='sexo_garantes_2' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_2" id="sexo_garantes_2"  class="form-control">
-							<option value="_" selected="selected">--Seleccione--</option>
+							<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
   						</div>
 				        </div>
+				        
+				          <div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='correo_garantes_3' class='control-label'>Correo Garante 3</label><br>
+				        <input type='email' class='form-control' id='correo_garantes_3' name='correo_garantes_3' value="" >
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-6 col-md-3'>
+				        <div class='form-group'>
+				        <label for='direccion_garantes_3' class='control-label'>Dirección Garante 3</label><br>
+				        <input type='text' class='form-control' id='direccion_garantes_3' name='direccion_garantes_3' value=""  >
+				        </div>
+				        </div>
 				        </div>
 				        
-				      
+				        <div class = 'row'>
 				        <div class = 'col-xs-6 col-md-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>
@@ -542,17 +584,31 @@
 				        </div>
 				        </div>	
 				        
-				        <div class = 'col-xs-6 col-md-2'>
+				        <div class = 'col-xs-6 col-md-1'>
 				        <div class='form-group'>
 				        <label for='sexo_garantes_3' class='control-label'>Sexo</label><br>
 						<select name="sexo_garantes_3" id="sexo_garantes_3"  class="form-control">
-						<option value="_" selected="selected">--Seleccione--</option>
+						<option value="_" selected="selected">---</option>
 										<option value="M" >M </option>
 						            	<option value="F" >F </option>
 					    </select>
   						</div>
 				        </div>
-				       
+				        
+				          <div class = 'col-xs-6 col-md-2'>
+				        <div class='form-group'>
+				        <label for='correo_garantes_4' class='control-label'>Correo Garante 4</label><br>
+				        <input type='email' class='form-control' id='correo_garantes_4' name='correo_garantes_4' value="" >
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-6 col-md-3'>
+				        <div class='form-group'>
+				        <label for='direccion_garantes_4' class='control-label'>Dirección Garante 4</label><br>
+				        <input type='text' class='form-control' id='direccion_garantes_4' name='direccion_garantes_4' value=""  >
+				        </div>
+				        </div>
+				        </div>
 				        
 		    </div>
 		</div>
