@@ -1,7 +1,7 @@
 <?php
 return array(
     "driver"    =>"pgsql",
-    "host"      =>"192.168.100.2",
+    "host"      =>"186.4.203.42",
     "user"      =>"",
     "pass"      =>"",
     "database"  =>"",
