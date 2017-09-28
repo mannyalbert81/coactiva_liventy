@@ -145,7 +145,7 @@
     </head>
     <body style="background-color: #d9e3e4;">
     
-       <?php include("view/modulos/modal.php"); ?>
+     
        <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
        
@@ -239,7 +239,7 @@
         <section class="col-lg-12 actividades" style="height:400px;overflow-y:scroll;">
         <table class="table table-hover ">
 	         <tr >
-	    		<th style="color:#456789;font-size:80%;"><b>Id</b></th>
+	    		<th style="color:#456789;font-size:80%;">#</th>
 	    		<th style="color:#456789;font-size:80%;">Usuario</th>
 	    		<th style="color:#456789;font-size:80%;">Nombre del Controlador</th>
 	    		<th style="color:#456789;font-size:80%;">Acción</th>
@@ -250,10 +250,12 @@
 	    		<th></th>
 	  		</tr>
             
+            <?php $i=0;?>
 	            <?php if (!empty($resultActi)) {  foreach($resultActi as $res) {?>
+	            
 	        		<tr>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->id_trazas; ?></td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->usuario_usuarios; ?></td> 
+	                   <td style="color:#000000;font-size:80%;"> <?php echo $i++; ?></td>
+		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_usuarios; ?></td> 
 		                <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_controlador; ?></td> 
 		                 <td style="color:#000000;font-size:80%;"> <?php echo $res->accion_trazas; ?></td> 
 		                  <td style="color:#000000;font-size:80%;"> <?php echo $res->parametros_trazas; ?></td> 

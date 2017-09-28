@@ -17,7 +17,7 @@ class TrazasController extends ControladorBase{
 		//Conseguimos todos los usuarios
 		$resultSet=$trazas->getAll("id_trazas");
 	
-		$columnas = "trazas.id_trazas, usuarios.usuario_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
+		$columnas = "trazas.id_trazas, usuarios.usuario_usuarios, usuarios.nombre_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
 		$tablas="public.trazas, public.usuarios";
 		$where="usuarios.id_usuarios = trazas.id_usuarios";
 		$id="creado";
@@ -60,7 +60,7 @@ class TrazasController extends ControladorBase{
 					{
 							
 						$_id_trazas = $_GET["id_trazas"];
-						$columnas = " trazas.id_trazas, usuarios.usuario_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
+						$columnas = " trazas.id_trazas, usuarios.usuario_usuarios, usuarios.nombre_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
 						$tablas   = "public.trazas, public.usuarios";
 						$where    = " usuarios.id_usuarios = trazas.id_usuarios AND id_trazas = '$_id_trazas' ";
 						$id       = "nombre_etapas";
@@ -92,7 +92,7 @@ class TrazasController extends ControladorBase{
 					$hasta=$_POST["fecha_hasta"];
 						
 					
-					$columnas = "trazas.id_trazas, usuarios.usuario_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
+					$columnas = "trazas.id_trazas, usuarios.usuario_usuarios, usuarios.nombre_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
 					$tablas="public.trazas, public.usuarios";
 					$where="usuarios.id_usuarios = trazas.id_usuarios AND trazas.creado BETWEEN '$desde' AND '$hasta' ";
 					$id="creado";
@@ -128,7 +128,7 @@ class TrazasController extends ControladorBase{
 								break;
 							case 1:
 								//USUARIO
-								$where_1 = " AND  usuarios.usuario_usuarios LIKE '$contenido'  ";
+								$where_1 = " AND  usuarios.nombre_usuarios LIKE '$contenido'  ";
 								break;
 							case 2:
 								//Controladores
