@@ -24,32 +24,6 @@
 		</script>
 		
 		
-		    <!-- AQUI NOTIFICAIONES -->
-		<script type="text/javascript" src="view/css/lib/alertify.js"></script>
-		<link rel="stylesheet" href="view/css/themes/alertify.core.css" />
-		<link rel="stylesheet" href="view/css/themes/alertify.default.css" />
-		
-		
-		
-		<script>
-
-		function Ok(){
-				alertify.success("Has Pulsado en Guardar"); 
-				return false;
-			}
-			
-			function Borrar(){
-				alertify.success("Has Pulsado en Borrar"); 
-				return false; 
-			}
-
-			function notificacion(){
-				alertify.success("Has Pulsado en Buscar"); 
-				return false; 
-			}
-		</script>
-		
-		
 		
 		<!-- TERMINA NOTIFICAIONES -->  
         	
@@ -129,17 +103,7 @@
 		
 		
         
-       <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
+     
        
           
     </head>
@@ -154,7 +118,6 @@
        <?php
        
        $acciones=array(0=>"INSERTO NUEVO JUICIO",1=>"Actualizo tabla juicios",2=>"Actualizo tabla clientes", 3=>"Actualizo tabla titulo_credito", 4=>"Inserto o Actualizo tabla Restructuracion");
-      // $resultActi=array(id_trazas=>"");
        
 		   
 		?>
@@ -164,66 +127,80 @@
   
   <div class="row" style="background-color: #ffffff;">
   
-   <div class="col-lg-6">
-            <h4 style="color:#ec971f;">Lista de Actividades</h4>
-            
-        </div>
-    <!-- empieza formulario de busqueda -->
-     
            
-     <div class="col-lg-12" style="margin-bottom: 10px;"> 
-     <div class="row">  
+  
       
            <form action="<?php echo $helper->url("Trazas","Index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
      
-      		<div class="col-lg-3" id="div_desde">
-      		<span>Desde:</span>
-           <input type="date"  name="fecha_desde" id="fecha_desde" value="" class="form-control"/>
-           <div id="mensaje_desde" class="errores"></div>
-           </div>
-           <div class="col-lg-3" id="div_hasta">
-           <span>Hasta:</span>
-           <input type="date"  name="fecha_hasta" id="fecha_hasta" value="" class="form-control"/>
-           <div id="mensaje_hasta" class="errores"></div>
-           </div>
-           <div class="col-lg-2" id="div_contenido">
-           <span>Contenido de busqueda:</span>
-           <input type="text"  name="contenido" id="contenido" value="" class="form-control"/>
-           <div id="mensaje_contenido" class="errores"></div>
-            </div>
-            
-           <div class="col-lg-2" id="div_ddl_accion">
-           <span>Accion:</span>
-           <select name="ddl_accion" id="ddl_accion"  class="form-control">
+     
+                <br>         
+             <div class="col-lg-12">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Lista de Actividades</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			<div class="panel-body">
+     
+      		
+           
+           
+           <div class="col-lg-3 col-md-3 xs-6" id="div_desde">
+         		<p class="formulario-subtitulo" >Desde:</p>
+			  	<input type="date"  name="fecha_desde" id="fecha_desde" value="" class="form-control "/> 
+			   <div id="mensaje_desde" class="errores"></div>
+		 </div>
+		 
+		  <div class="col-lg-3 col-md-3 xs-6" id="div_hasta">
+         		<p class="formulario-subtitulo" >Hasta:</p>
+			  	<input type="date"  name="fecha_hasta" id="fecha_hasta" value="" class="form-control "/> 
+			   <div id="mensaje_hasta" class="errores"></div>
+		 </div>
+           
+            <div class="col-lg-4 col-md-4 xs-6" id="div_contenido">
+         		<p class="formulario-subtitulo" >Contenido Busqueda:</p>
+			  	<input type="text"  name="contenido" id="contenido" value="" class="form-control "/> 
+			   <div id="mensaje_contenido" class="errores"></div>
+		 </div>
+          
+           
+          <div class="col-lg-4 col-md-4 xs-6" id="div_ddl_accion">
+         		<p class="formulario-subtitulo" >Accion:</p>
+			  	 <select name="ddl_accion" id="ddl_accion"  class="form-control">
                                     <?php foreach($acciones as $val=>$desc) {?>
                                          <option value="<?php echo $val ?>"><?php echo $desc ?> </option>
                                     <?php } ?>
                                         
            </select>
-           <div id="mensaje_ddl_accion" class="errores"></div>
-           </div>
+			   <div id="mensaje_ddl_accion" class="errores"></div>
+		 </div>
             
-           <div class="col-lg-2" id="div_ddl_criterio">
-           <span>Criterio:</span>
-           <select name="ddl_criterio" id="ddl_criterio"  class="form-control">
+          
+          
+            <div class="col-lg-2 col-md-2 xs-6" id="div_ddl_criterio">
+         		<p class="formulario-subtitulo" >Criterio:</p>
+			  	 <select name="ddl_criterio" id="ddl_criterio"  class="form-control">
                                     <?php foreach($resulMenu as $val=>$desc) {?>
                                          <option value="<?php echo $val ?>"><?php echo $desc ?> </option>
                                     <?php } ?>
                                         
            </select>
-           <div id="mensaje_criterio" class="errores"></div>
-           </div>
+			   <div id="mensaje_criterio" class="errores"></div>
+		 </div>
+            
           
-           
-          
-           <div class="col-lg-1">
-           <span style="color:#ffffff;">Buscar:</span>
-           <input type="submit" id="Buscar" name="Buscar" value="Buscar" onClick="notificacion()" class="btn btn-default"/>
+         
+         </div></div>
+         
+          <div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+  		   <button type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
            </div>
+         </div></div></div>
+         
          
           </form>
-          </div>
-        </div>
+        
        <!-- termina formulario de busqueda -->
        
        <div class="col-lg-12">
@@ -286,8 +263,17 @@
       </section>
       </div>
 		 </div>
+		 <br>
+		 <br>
+		 <br>
       </div>
       </div>
+    <br>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
    
      </body>  
     </html>   
