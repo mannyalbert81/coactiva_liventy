@@ -269,6 +269,12 @@ $controladores=$_SESSION['controladores'];
            <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index7"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Restructuración Juicios</span> </a>
           </li>	
+          
+          
+          
+           <li style="<?php echo getcontrolador("Trazas",$controladores) ?>">
+          <a href="index.php?controller=Trazas&action=index"><span class="glyphicon glyphicon-save-file" aria-hidden="true"> Auditoria del Sistema</span> </a>
+          </li>
 </ul>
 </li>
 
