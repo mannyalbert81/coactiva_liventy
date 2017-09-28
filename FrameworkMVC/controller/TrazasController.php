@@ -87,14 +87,12 @@ class TrazasController extends ControladorBase{
 				
 				if(isset($_POST["Buscar"]) )
 				{
-					//isset($_POST["ddl_criterio"])&&((isset($_POST["fecha_desde"])&&isset($_POST["fecha_desde"]))||isset($_POST["ddl_accion"])||isset($_POST["contenido"]))
-					$desde=$_POST["fecha_desde"];
-					$hasta=$_POST["fecha_hasta"];
+					
 						
 					
 					$columnas = "trazas.id_trazas, usuarios.usuario_usuarios, usuarios.nombre_usuarios, trazas.nombre_controlador, trazas.accion_trazas, trazas.parametros_trazas, trazas.creado";
 					$tablas="public.trazas, public.usuarios";
-					$where="usuarios.id_usuarios = trazas.id_usuarios AND trazas.creado BETWEEN '$desde' AND '$hasta' ";
+					$where="usuarios.id_usuarios = trazas.id_usuarios";
 					$id="creado";
 					
 					$accion="";	
@@ -103,14 +101,20 @@ class TrazasController extends ControladorBase{
 					
 					switch ($id_accion){
 						case 0: 
-						$accion = "Guardar";
+						$accion = "INSERTO NUEVO JUICIO";
 						break; 
 						case 1: 
-						$accion = "Editar";
+						$accion = "Actualizo tabla juicios";
 						break; 
 						case 2: 
-						$accion = "Borrar";
+						$accion = "Actualizo tabla clientes";
 						break;
+						case 3:
+							$accion = "Actualizo tabla titulo_credito";
+							break;
+						case 4:
+							$accion = "Inserto o Actualizo tabla Restructuracion";
+							break;
 					}
 					
 					$criterio = $_POST["ddl_criterio"];
@@ -121,6 +125,8 @@ class TrazasController extends ControladorBase{
 						$where_1 = "";
 						$where_2 = "";
 						$where_3 = "";
+						$where_4="";
+								
 						switch ($criterio) 
 						{
 							case 0:
@@ -141,19 +147,40 @@ class TrazasController extends ControladorBase{
 							
 							
 						}
+						
+						
+						
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fecha_desde"])&&isset($_POST["fecha_hasta"]))
+						{
+							$fechaDesde=$_POST["fecha_desde"];
+							$fechaHasta=$_POST["fecha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$where_4 = " AND DATE(trazas.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							}
+						
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$where_4 = " AND DATE(trazas.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$where_4 = " AND DATE(trazas.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									
+							}
+						}
 							
 							
 							
-						$where_to  = $where .  $where_0 . $where_1 . $where_2 . $where_3;
+						$where_to  = $where .  $where_0 . $where_1 . $where_2 . $where_3 . $where_4 ;
 							
 							
 						$resul = $accion;
 						
-						/*$this->view("Error",array(
-								"resultado"=>$where_to
-									
-						));
-						exit();*/
 					
 						$resultActi=$trazas->getCondiciones($columnas ,$tablas , $where_to, $id);
 					

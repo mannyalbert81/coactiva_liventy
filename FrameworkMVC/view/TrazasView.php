@@ -80,7 +80,7 @@
 		</script>
 		
 		<script>
-		$(document).ready(function(){
+		/*$(document).ready(function(){
 			$("#Buscar").click(function(){
 				//alert("hola");
 				 var startDate = new Date($('#fecha_desde').val());
@@ -97,7 +97,7 @@
                  }
                  
                  });
-			});
+			});*/
 		</script>
         
 		
@@ -153,7 +153,7 @@
        
        <?php
        
-       $acciones=array(0=>"GUARDAR",1=>"EDITAR",2=>"ELIMINAR");
+       $acciones=array(0=>"INSERTO NUEVO JUICIO",1=>"Actualizo tabla juicios",2=>"Actualizo tabla clientes", 3=>"Actualizo tabla titulo_credito", 4=>"Inserto o Actualizo tabla Restructuracion");
       // $resultActi=array(id_trazas=>"");
        
 		   
@@ -238,28 +238,28 @@
        
         <section class="col-lg-12 actividades" style="height:400px;overflow-y:scroll;">
         <table class="table table-hover ">
-	         <tr >
-	    		<th style="color:#456789;font-size:80%;">#</th>
-	    		<th style="color:#456789;font-size:80%;">Usuario</th>
-	    		<th style="color:#456789;font-size:80%;">Nombre del Controlador</th>
-	    		<th style="color:#456789;font-size:80%;">Acción</th>
-	    		<th style="color:#456789;font-size:80%;">Parámetros</th>
-	    		<th style="color:#456789;font-size:80%;">Fecha</th>
+	         <tr class="info">
+	    		<th style="text-align: left;  font-size: 12px;">#</th>
+	    		<th style="text-align: left;  font-size: 12px;">Usuario</th>
+	    		<th style="text-align: left;  font-size: 12px;">Nombre del Controlador</th>
+	    		<th style="text-align: left;  font-size: 12px;">Acción</th>
+	    		<th style="text-align: left;  font-size: 12px;">Identificador (Id)</th>
+	    		<th style="text-align: left;  font-size: 12px;">Fecha</th>
 	    		
 	    		<th></th>
 	    		<th></th>
 	  		</tr>
             
-            <?php $i=0;?>
+            <?php $i=1;?>
 	            <?php if (!empty($resultActi)) {  foreach($resultActi as $res) {?>
 	            
 	        		<tr>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $i++; ?></td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_usuarios; ?></td> 
-		                <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_controlador; ?></td> 
-		                 <td style="color:#000000;font-size:80%;"> <?php echo $res->accion_trazas; ?></td> 
-		                  <td style="color:#000000;font-size:80%;"> <?php echo $res->parametros_trazas; ?></td> 
-		                  <td style="color:#000000;font-size:80%;"> <?php echo $res->creado; ?></td> 
+	                   <td style="font-size: 11px;"> <?php echo $i++; ?></td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_usuarios; ?></td> 
+		                <td style="font-size: 11px;"> <?php echo $res->nombre_controlador; ?></td> 
+		                 <td style="font-size: 11px;"> <?php echo $res->accion_trazas; ?></td> 
+		                  <td style="font-size: 11px;"> <?php echo $res->parametros_trazas; ?></td> 
+		                  <td style="font-size: 11px;"> <?php echo date($res->creado); ?></td> 
 		              
 		           	  
 		    		</tr>
@@ -267,13 +267,18 @@
                 <tr>
 	                  	<td></td>
             			<td></td>
-	                    <td colspan="4" style="color:#ec971f;font-size:8;"> <?php echo '<span id="snResult">No existen resultados</span>' ?></td>
+            			<td></td>
+            			
+	                    <td colspan="1" style="color:#ec971f;font-size:12;"> <?php echo '<span id="snResult">No existen resultados</span>' ?></td>
+	       				<td></td>
+	       				<td></td>
+	       				<td></td>
 	       				<td></td>
 		    	</tr>
             
             <?php 
 		}
-            //echo "<script type='text/javascript'> alert('Hola')  ;</script>";
+           
             
             ?>
             
