@@ -4476,8 +4476,8 @@
 								$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 								$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 								$html.='</div></div>';
-								$html.='<section style="height:425px; overflow-y:scroll;">';
 								$html.='<div class="col-lg-12 col-md-12 col-xs-12">';
+								$html.='<section style="height:425px; overflow-y:scroll;">';
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';
 								$html.='<tr class="info">';

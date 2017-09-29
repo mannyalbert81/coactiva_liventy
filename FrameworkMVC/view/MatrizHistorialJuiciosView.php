@@ -237,7 +237,7 @@
   			<div class="panel-body">
   			
   		
-  			
+  		<div class="row">
   		 <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
@@ -275,7 +275,8 @@
 			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
 			    
 		 </div>
-		 
+		 </div>
+		 <div class="row">
 		  <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >CI Cliente 4:</p>
 			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
@@ -318,7 +319,9 @@
 				</select>
 
          </div>
-           <br>
+         </div>
+		 
+		 <div class="row">
          <div class="col-lg-2 col-md-2 xs-6">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
@@ -341,7 +344,7 @@
 			  	<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
 			    
 		 </div>
-          
+          </div>
            </div>
   		
   		

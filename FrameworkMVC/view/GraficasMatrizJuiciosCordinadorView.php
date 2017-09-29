@@ -262,7 +262,7 @@
                  <!-- comienxza busqueda  -->
                  
                  <br>         
- <div class="col-lg-12">
+ <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
 	         <h4><i class='glyphicon glyphicon-edit'></i> Estados Procesales</h4>
@@ -272,7 +272,7 @@
 		    <div class="panel panel-default">
   			<div class="panel-body">
   		
-  		<div class="col-lg-2 col-md-2 col-xs-6">
+  		<div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" >Juzgado:</p>
 			  	<select name="id_ciudad" id="id_ciudad"  class="form-control">
 			     <option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -285,7 +285,7 @@
 		
 		 </div>
   		
-  		  <div class="col-lg-2 col-md-2 col-xs-6">
+  		  <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" >Secretarios:</p>
 			  <select name="id_secretario" id="id_secretario"  class="form-control">
 			  	<option value="0">--TODOS--</option>
@@ -294,7 +294,7 @@
 			   
 		 </div>
 		   	
-		  <div class="col-lg-2 col-md-2 col-xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" >Impulsores:</p>
 			  	<select name="id_impulsor" id="id_impulsor"  class="form-control">
 			  	<option value="0">--TODOS--</option>
@@ -303,31 +303,31 @@
 			   
 		 </div>
   							
-  		<div class="col-lg-2 col-md-2 col-xs-6">
+  		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $sel_juicio_referido_titulo_credito;?>" class="form-control "/> 
 			   
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Opreación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Identificación:</p>
 			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
 			    
 		 </div>
 		 <br>
-		 <div class="col-lg-2 col-md-2 xs-6">
+		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo $sel_fcha_desde;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		 <div class="col-lg-2 col-md-2 xs-6">
+		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Hasta:</p>
 			  	<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo $sel_fcha_hasta;?>" class="form-control "/> 
 			    
@@ -336,7 +336,7 @@
            </div>
   		
   		
-  		<div class="col-lg-12" style="text-align: center; margin-top: 10px">
+  		<div class="col-lg-12 col-md-12 col-xs-12" style="text-align: center; margin-top: 10px">
   		    
 		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
 		
@@ -357,23 +357,23 @@
           </form> 
          
              <?php if(!empty($html)){?>
-			<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
-			<div class="col-lg-4 col-md-4 xs-4 ">
+			<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
+			<div class="col-lg-4 col-md-4 col-xs-12 ">
 			</div>
-			<div class="col-lg-4 col-md-4 xs-4 ">
+			<div class="col-lg-4 col-md-4 col-xs-12">
 			<?php echo $html;?>
 			</div>
-			<div class="col-lg-4 col-md-4 xs-4 ">
+			<div class="col-lg-4 col-md-4 col-xs-12 ">
 			</div>
 			</div>
 			
 		
 		<?php  }?>
          
-         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12 col-md-12 col-xs-12" target="_blank">
       
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
-	    <div class="col-lg-12">
+	    <div class="col-lg-12 col-md-12 col-xs-12">
 	    <div class="panel panel-info">
 	       
 		<div id="canvas-holder">
