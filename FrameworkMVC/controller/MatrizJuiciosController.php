@@ -1318,11 +1318,13 @@
 								if ($cantidadResult>0)
 								{
 				
-										
+									$html.='<div class="col-lg-12 col-md-12 col-xs-12">';
 									$html.='<div class="pull-left">';
 									$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 									$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
-									$html.='</div><br>';
+									$html.='</div>';
+									$html.='</div>';
+									$html.='<div class="col-lg-12 col-md-12 col-xs-12">';
 									$html.='<section style="height:425px; overflow-y:scroll;">';
 									$html.='<table class="table table-hover">';
 									$html.='<thead>';
@@ -1387,10 +1389,11 @@
 									$html.='</tbody>';
 									$html.='</table>';
 									$html.='</section>';
+									$html.='</div>';
 									$html.='<div class="table-pagination pull-right">';
 									$html.=''. $this->paginate("index.php", $page, $total_pages, $adjacents).'';
 									$html.='</div>';
-									$html.='</section>';
+									
 				
 										
 								}else{
