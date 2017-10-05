@@ -28,18 +28,8 @@
 		    webshims.setOptions('forms-ext', {types: 'date'});
 			webshims.polyfill('forms forms-ext');
 		</script>
-		
-       <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
+	 
+       
          
    
 
@@ -163,7 +153,93 @@
 		}); 
 
 	</script>
-		
+	<script >
+
+	
+		    $(document).ready(function(){
+		    
+		    $("#reporte_rpt").click(function() 
+			{
+				
+		    	var fecha_providencias = $("#fecha_providencias").val();
+		    	var hora_providencias = $("#hora_providencias").val();
+		    	var numero_oficio = $("#numero_oficio").val();
+		    	var razon_providencias = $("#razon_providencias").val();
+		    
+		    	if (fecha_providencias == "")
+		    	{
+			    	
+		    		$("#mensaje_fecha_providencias").text("Introduzca una Fecha");
+		    		$("#mensaje_fecha_providencias").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_fecha_providencias").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}    
+				
+		    	if (hora_providencias == "")
+		    	{
+			    	
+		    		$("#mensaje_hora_providencias").text("Introduzca una Hora");
+		    		$("#mensaje_hora_providencias").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_hora_providencias").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	
+		    	if (numero_oficio == "")
+		    	{
+			    	
+		    		$("#mensaje_numero_oficio").text("Introduzca una número de oficio");
+		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}   
+						    	
+				
+		    	if (razon_providencias == "")
+		    	{
+		    		
+		    		$("#mensaje_razon_providencias").text("Introduzca una razón");
+		    		$("#mensaje_razon_providencias").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_razon_providencias").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+	}); 
+
+
+		        $( "#fecha_providencias" ).focus(function() {
+				  $("#mensaje_fecha_providencias").fadeOut("slow");
+			    });
+				
+				$( "#hora_providencias" ).focus(function() {
+					$("#mensaje_hora_providencias").fadeOut("slow");
+    			});
+				$( "#numero_oficio" ).focus(function() {
+					$("#mensaje_numero_oficio").fadeOut("slow");
+    			});
+    			
+				$( "#razon_providencias" ).focus(function() {
+					$("#mensaje_razon_providencias").fadeOut("slow");
+    			});
+						    
+		}); 
+
+	</script>
 
     </head>
     <body style="background-color: #d9e3e4;">
@@ -369,25 +445,37 @@
 	     </div>
 		 
 		 <div class="col-lg-12 col-md-12 xs-12" style="text-align: center; margin-top: 10px">
-  		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
-  		 			
-		 		</div>
-		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
-		 			<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="dd/MM/aaaa"/>
-		 			<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="HH:mm"/>
-		 			<input type="text"  name="numero_oficio" id="numero_oficio" value="<?php echo $sel_numero_oficio;?>" class="form-control" placeholder="BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/>
-		 			<textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value="<?php echo $sel_razon_providencias;?>"  placeholder="Ingrese Razón"></textarea>
-                    
-		 			<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
+  		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
+  		 		</div>
+		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
+		 		<div class="col-xs-12 col-md-12">
+			  		  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="dd/MM/aaaa"/>
+		 		   <div id="mensaje_fecha_providencias" class="errores"></div>
+			  	</div>
+			  	<div class="col-xs-12 col-md-12">
+			  			<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="HH:mm"/>
+		 		   <div id="mensaje_hora_providencias" class="errores"></div>
+			  	</div>
+			  	<div class="col-xs-12 col-md-12">
+			  			<input type="text"  name="numero_oficio" id="numero_oficio" value="<?php echo $sel_numero_oficio;?>" class="form-control" placeholder="BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/>
+		 		   <div id="mensaje_numero_oficio" class="errores"></div>
+			  	</div>
+			  	<div class="col-xs-12 col-md-12">
+			  			<textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value="<?php echo $sel_razon_providencias;?>"  placeholder="Ingrese Razón"></textarea>
+                   <div id="mensaje_razon_providencias" class="errores"></div>
+			  	</div>
+			  		<div class="col-xs-12 col-md-12">
+			  
+   					<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
 					<?php foreach($resultEstadoProcesal as $res) {?>
 						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios_actualizar==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
 			            <?php } ?>
 				    </select>
-				                           
-		 			<button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte Providencia"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Providencias</button>
+				    </div>
+					<button type="submit" id="reporte_rpt" name="reporte_rpt" value="reporte_rpt" class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Providencias</button>
 		 		</div>
-		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
+		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
 		 		</div>	         
 	     </div>
 	     </div>
