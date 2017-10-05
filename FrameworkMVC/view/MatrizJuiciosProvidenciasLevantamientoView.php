@@ -74,6 +74,7 @@
 		
 		 var con_id_provincias=$("#id_provincias").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
+		 var con_id_estados_procesales_juicios_actualizar=$("#id_estados_procesales_juicios_actualizar").val();
 		 var con_fechadesde=$("#fcha_desde").val();
 		 var con_fechahasta=$("#fcha_hasta").val();
 		 var con_identificacion_clientes=$("#identificacion_clientes").val();
@@ -81,11 +82,14 @@
 		 var con_identificacion_clientes_2=$("#identificacion_clientes_2").val();
 		 var con_identificacion_clientes_3=$("#identificacion_clientes_3").val();
 
+		 var con_razon_providencias=$("#razon_providencias").val();
+		 
 
 		 var con_identificacion_garantes=$("#identificacion_garantes").val();
 		 var con_identificacion_garantes_1=$("#identificacion_garantes_1").val();
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val(); 
+		 var con_numero_oficio=$("#numero_oficio").val(); 
 
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
@@ -93,9 +97,10 @@
 				  
 				  id_provincias:con_id_provincias,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
+				  id_estados_procesales_juicios_actualizar:con_id_estados_procesales_juicios_actualizar,
 				  fcha_desde:con_fechadesde,
 				  fcha_hasta:con_fechahasta,
-
+				  razon_providencias:con_razon_providencias,
 				  identificacion_clientes:con_identificacion_clientes,
 				  identificacion_clientes_1:con_identificacion_clientes_1,
 				  identificacion_clientes_2:con_identificacion_clientes_2,
@@ -105,6 +110,7 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
+				  numero_oficio:con_numero_oficio,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -173,7 +179,7 @@
        $sel_id_provincias="";
        $sel_id_estados_procesales_juicios="";
         $sel_id_abogado="";
-        
+        $sel_id_estados_procesales_juicios_actualizar="";
         $sel_identificacion_clientes="";
         $sel_identificacion_clientes_1="";
         $sel_identificacion_clientes_2="";
@@ -184,6 +190,9 @@
         $sel_identificacion_garantes_1="";
         $sel_identificacion_garantes_2="";
         $sel_identificacion_garantes_3="";
+        $sel_numero_oficio="";
+        
+        $sel_razon_providencias="";
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -193,7 +202,7 @@
        	$sel_id_provincias=$_POST['id_provincias'];
        	$sel_id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
        	$sel_id_abogado = $_POST['id_abogado'];
-       	
+       	$sel_id_estados_procesales_juicios_actualizar=$_POST['id_estados_procesales_juicios_actualizar'];
        	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
        	$sel_identificacion_clientes_1=$_POST['identificacion_clientes_1'];
        	$sel_identificacion_clientes_2=$_POST['identificacion_clientes_2'];
@@ -204,6 +213,9 @@
        	$sel_identificacion_garantes_2=$_POST['identificacion_garantes_2'];
        	$sel_identificacion_garantes_3=$_POST['identificacion_garantes_3'];
        
+       	$sel_numero_oficio=$_POST['numero_oficio'];
+       	
+       	$sel_razon_providencias=$_POST['razon_providencias'];
        }
        
     
@@ -363,13 +375,22 @@
 		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
 		 			<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="dd/MM/aaaa"/>
 		 			<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="HH:mm"/>
+		 			<input type="text"  name="numero_oficio" id="numero_oficio" value="<?php echo $sel_numero_oficio;?>" class="form-control" placeholder="BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/>
+		 			<textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value="<?php echo $sel_razon_providencias;?>"  placeholder="Ingrese Razón"></textarea>
+                    
+		 			<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultEstadoProcesal as $res) {?>
+						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios_actualizar==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
+			            <?php } ?>
+				    </select>
+				                           
 		 			<button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte Providencia"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Providencias</button>
 		 		</div>
 		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
 		 		</div>	         
 	     </div>
-	     
-		</div>
+	     </div>
 		    
 		    </div>
 	        </div>
@@ -379,11 +400,8 @@
         		 
 		 
 		 <div class="col-lg-12">
-		 
-	     <div class="col-lg-12">
-	     
+		 <div class="col-lg-12">
 	     <div style="height: 200px; display: block;">
-		
 		 <h4 style="color:#ec971f;"></h4>
 			  <div>					
 					<div id="matriz" style="position: absolute;	text-align: center;	top: 10px;	width: 100%;display:none;"></div><!-- Carga gif animado -->

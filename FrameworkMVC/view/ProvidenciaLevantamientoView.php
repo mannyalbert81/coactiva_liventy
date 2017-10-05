@@ -37,10 +37,8 @@
 		   
 		    	var fecha_providencias = $("#fecha_levantamiento").val();
 		     	var hora_providencias = $("#hora_levantamiento").val();
-		     
-		        var numero_oficio  = $("#numero_oficio").val();
-		        var dirigido_levantamiento  = $("#dirigido_levantamiento").val();
-		    	var razon_providencias = $("#razon_levantamiento").val();
+		     	  var numero_oficio  = $("#numero_oficio").val();
+		     	var razon_providencias = $("#razon_levantamiento").val();
 		    			
 		    	if (fecha_providencias == "")
 		    	{
@@ -69,12 +67,9 @@
 		    		validarForm = true;
 				}
 
-
-		    	
-
 		    	if (numero_oficio == "")
 		    	{
-		    		validarForm = false;
+			    	
 		    		$("#mensaje_numero_oficio").text("Introduzca # Oficio y Fecha");
 		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -82,22 +77,10 @@
 		    	else 
 		    	{
 		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
-		    		validarForm = true;
+		            
 				}
-
-
-		    	if (dirigido_levantamiento == "")
-		    	{
-		    		validarForm = false;
-		    		$("#mensaje_dirigido").text("Introduzca a quién va Dirigido");
-		    		$("#mensaje_dirigido").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-			    }
-		    	else 
-		    	{
-		    		$("#mensaje_dirigido").fadeOut("slow"); //Muestra mensaje de error
-		    		validarForm = true;
-				}
+				
+	
 		    	if (razon_providencias == "")
 		    	{
 		    		validarForm = false;
@@ -121,22 +104,16 @@
 				$( "#hora_levantamiento" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
-				
-
 				$( "#numero_oficio" ).focus(function() {
 					$("#mensaje_numero_oficio").fadeOut("slow");
     			});
-				$( "#dirigido_levantamiento" ).focus(function() {
-					$("#mensaje_dirigido").fadeOut("slow");
-    			});
-
-				$( "#razon_levantamiento" ).focus(function() {
+    			
+					$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
     			});
-    			
 
 
-				$("button[type=submit]").click(function() {
+		    		/*	$("button[type=submit]").click(function() {
 					var accion = $(this).attr('name');
 					var boton = $(this);
 
@@ -157,7 +134,7 @@
 						return false;
 					}
 					
-			});
+			});*/
 					    
 		}); 
 
@@ -255,36 +232,24 @@
 			    
 		 </div>
 		 
-		   <div class="col-lg-12 col-md-12 xs-6">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 1:</p>
+		  <div class="col-lg-3 col-md-3 xs-6">
+			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
+			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultEstadoProcesal as $res) {?>
+						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
+			            <?php } ?>
+				</select>
+
+         </div>
+         
+		   <div class="col-lg-12 col-md-12 xs-6" style="margin-top:10px;">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio:</p>
 			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio" class="errores"></div>
 		  </div>
 		  
-		   <div class="col-lg-12 col-md-12 xs-6">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 2:</p>
-			  	<input type="text"  name="numero_oficio1" id="numero_oficio1" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
-			    <div id="mensaje_numero_oficio1" class="errores"></div>
-		  </div>
-		  
-		   <div class="col-lg-12 col-md-12 xs-6">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 3:</p>
-			  	<input type="text"  name="numero_oficio2" id="numero_oficio2" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
-			    <div id="mensaje_numero_oficio2" class="errores"></div>
-		  </div>
-		  
-		   <div class="col-lg-12 col-md-12 xs-6">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 4:</p>
-			  	<input type="text"  name="numero_oficio3" id="numero_oficio3" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
-			    <div id="mensaje_numero_oficio3" class="errores"></div>
-		  </div>
-		   
-		    <div class="col-xs-12 col-md-12">
-		                          
-		                          <p class="formulario-subtitulo" >Dirigido A:</p>
-                                  <textarea type="text"  class="form-control" id="dirigido_levantamiento" name="dirigido_levantamiento" value=""  placeholder="Ingrese a quién va Dirigido"></textarea>
-                                 <div id="mensaje_dirigido" class="errores"></div>
-             </div>
+		     
              <div class="col-xs-12 col-md-12">
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
@@ -292,6 +257,7 @@
                                  <div id="mensaje_razon" class="errores"></div>
              </div>
 		
+         
          
           
            </div>
@@ -301,13 +267,7 @@
   		    
 		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	
-		<button type="submit"   data-opcion="2" formtarget="framePL" formaction="<?php echo $helper->url("MatrizJuicios","verProvidenciaLevantamiento");?>"   id="visualizar" name="visualizar" value=""  class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-eye-open"></i> Ver Providencia</button>  
-	   
-	   <button type="submit"   id="closeView" name="closeView" value="" style="display:none;" class="btn btn-danger" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove"></i> Cerrar Vista Previa</button>
-	    
-	   <div id="plpop" class="popupPl" title="Providencia Levantamiento" style="display:none;padding: 20px;">
-       <iframe id="framePL" name="framePL" width="100%" height="70%"  ></iframe>
-       </div> 
+		
 	  
 	  </div>
 		
@@ -317,6 +277,35 @@
 		    </div>
 	        </div>
 	        </div>
+	        
+	        
+	        
+	        <!-- oculto -->
+	          <div class="col-lg-12 col-md-12 xs-6" style="visibility:hidden">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 2:</p>
+			  	<input type="hidden"  name="numero_oficio1" id="numero_oficio1" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio1" class="errores"></div>
+		  </div>
+		  
+		   <div class="col-lg-12 col-md-12 xs-6" style="visibility:hidden">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 3:</p>
+			  	<input type="hidden"  name="numero_oficio2" id="numero_oficio2" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio2" class="errores"></div>
+		  </div>
+		  
+		   <div class="col-lg-12 col-md-12 xs-6" style="visibility:hidden">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio 4:</p>
+			  	<input type="hidden"  name="numero_oficio3" id="numero_oficio3" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio3" class="errores"></div>
+		  </div>
+		   
+		    <div class="col-xs-12 col-md-12" style="visibility:hidden">
+		                          
+		                          <p class="formulario-subtitulo" >Dirigido A:</p>
+                                  <textarea type="hidden"  class="form-control" id="dirigido_levantamiento" name="dirigido_levantamiento" value=""  placeholder="Ingrese a quién va Dirigido"></textarea>
+                                 
+             </div>
+             <!-- oculto -->
      </form>
      
       </div>
@@ -328,7 +317,4 @@
    </body>  
 
     </html>   
-    
-  
-
-    
+        
