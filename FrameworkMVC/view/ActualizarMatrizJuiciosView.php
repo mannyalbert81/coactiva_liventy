@@ -798,11 +798,11 @@
 	
 		
 	
-			<div class="panel panel-info">
+			    <div class="panel panel-info">
 	         	<div class="panel-heading">
 	         		<h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Restructuración  (LLENAR SOLO SI TIENE RESTRUCTURACION DEL PROCESO)</h4>
 	         	</div>
-	        	 <div class="panel-body">
+	        	<div class="panel-body">
 			
 					<?php if (count($resultEdit2) > 0)   { foreach($resultEdit2 as $resEdit2) {?>
 					    

@@ -80,7 +80,7 @@
 		            
 				}
 				
-	
+	/*
 		    	if (razon_providencias == "")
 		    	{
 		    		validarForm = false;
@@ -93,7 +93,7 @@
 		    		$("#mensaje_razon").fadeOut("slow"); //Muestra mensaje de error
 		    		validarForm = true;
 				}
-		    	
+		    	*/
 			}); 
 
 	
@@ -107,11 +107,12 @@
 				$( "#numero_oficio" ).focus(function() {
 					$("#mensaje_numero_oficio").fadeOut("slow");
     			});
-    			
+
+    			/*
 					$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
     			});
-
+*/
 
 		    		/*	$("button[type=submit]").click(function() {
 					var accion = $(this).attr('name');
@@ -187,8 +188,14 @@
          
                  <!-- comienxza busqueda  -->
                  
-                 <br>         
-         <div class="col-lg-12">
+                 <br> 
+                 
+                 
+                 <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
+            	 <p align="justify"><b><font face="univers" size=3>***Estimados usuarios al generar un documento en el sistema, automáticamente se actualizara la fecha de última providencia del juicio***</font></b></p>
+				</div>
+                 <br>        
+         <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
 	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Levantamiento</h4>
@@ -232,7 +239,59 @@
 			    
 		 </div>
 		 
-		  <div class="col-lg-3 col-md-3 xs-6">
+		
+         
+		   <div class="col-lg-12 col-md-12 xs-6" style="margin-top:10px;">
+         		<p class="formulario-subtitulo" >Número y Fecha de Oficio:</p>
+			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
+			    <div id="mensaje_numero_oficio" class="errores"></div>
+		  </div>
+		  
+		    
+		     
+		    
+		        <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal, que no se notifica con este auto a los coactivados, por cuanto aún no han sido citados.- "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
+				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b>CERTIFICO.-</b>)</FONT>
+				
+				</div>
+		     
+             <div class="col-xs-12 col-md-12" style="margin-top: 10px;">
+		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
+                                  <textarea type="text"  class="form-control" id="razon_levantamiento" name="razon_levantamiento" value=""  placeholder="Ingrese Razón"></textarea>
+                                 <div id="mensaje_razon" class="errores"></div>
+             </div>
+		     </div>
+             </div>
+		     </div>
+	         </div>
+	         </div>
+	        
+	        
+	        
+	            <div class="col-lg-12 col-md-12 col-xs-12 ">
+	            <div class="col-lg-6 col-md-6 col-xs-12 ">
+	            <div class="panel panel-info">
+	         	<div class="panel-heading">
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Abogado Anterior <br><FONT FACE="arial" SIZE=2 COLOR=red>(Llenar solo si usted esta remplazando a un abogado anterior)</FONT></h4>
+	         	</div>
+	        	<div class="panel-body">
+	        	<div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombre Abogado Anterior:</p>
+			  	<input type="text"  name="nombre_usuario_saliente" id="nombre_usuario_saliente" value="" class="form-control" placeholder="Ej1. la Abogada xxxxxx xxxxxx           Ej2. el Abogado xxxxxx xxxxxx"/> 
+	            </div>
+	        	
+	        	</div>
+	        	</div>
+	          </div>
+	         <div class="col-lg-6 col-md-6 col-xs-12 ">
+	         <div class="panel panel-info">
+	         	<div class="panel-heading">
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Nombre Estado Procesal <br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del juicio)</FONT></h4>
+	         	</div>
+	        	<div class="panel-body">
+	        	
+	        	<div class="col-lg-6 col-md-6 col-xs-12">
 			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -241,42 +300,22 @@
 			            <?php } ?>
 				</select>
 
-         </div>
-         
-		   <div class="col-lg-12 col-md-12 xs-6" style="margin-top:10px;">
-         		<p class="formulario-subtitulo" >Número y Fecha de Oficio:</p>
-			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
-			    <div id="mensaje_numero_oficio" class="errores"></div>
-		  </div>
-		  
-		     
-             <div class="col-xs-12 col-md-12">
-		                          
-		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
-                                  <textarea type="text"  class="form-control" id="razon_levantamiento" name="razon_levantamiento" value=""  placeholder="Ingrese Razón"></textarea>
-                                 <div id="mensaje_razon" class="errores"></div>
-             </div>
-		
-         
-         
-          
-           </div>
-  		
-  		
-  		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+                 </div>
+	        	
+	        	</div>
+	        	</div>
+	          </div>
+	          </div>
+	          
+	        
+	        
+	        <div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	
 		
 	  
 	  </div>
-		
-	     
-		</div>
-		    
-		    </div>
-	        </div>
-	        </div>
 	        
 	        
 	        

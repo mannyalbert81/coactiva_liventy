@@ -216,6 +216,10 @@
            </div>
   		
   		
+  		
+  		        
+  		
+  		
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         

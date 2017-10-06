@@ -4902,8 +4902,10 @@
 							$parametros['hora_levantamiento']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 	                        $parametros['numero_oficio']=(isset($_POST['numero_oficio']))?trim($_POST['numero_oficio']):'';
 	                        $parametros['razon_levantamiento']=(isset($_POST['razon_providencias']))?trim($_POST['razon_providencias']):'';
-	                        	
+	                        $parametros['nombre_usuario_saliente']=(isset($_POST['nombre_usuario_saliente']))?trim($_POST['nombre_usuario_saliente']):'';
 	                        
+	                        $parametros['ruta_providencias']=$ruta_providencias;
+	                        $parametros['nombre_archivo_providencias']=$nombre_archivo_providencias;
 	                      
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -5583,7 +5585,7 @@
 			$numero_oficio3= $_POST['numero_oficio3'];
 			$dirigido_levantamiento= $_POST['dirigido_levantamiento'];
 			
-			
+			$nombre_usuario_saliente= $_POST['nombre_usuario_saliente'];
 			
 			
 			$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
@@ -5652,6 +5654,7 @@
 			$parametros['numero_oficio1']=isset($numero_oficio1)?trim($numero_oficio1):'';
 			$parametros['numero_oficio2']=isset($numero_oficio2)?trim($numero_oficio2):'';
 			$parametros['numero_oficio3']=isset($numero_oficio3)?trim($numero_oficio3):'';
+			$parametros['nombre_usuario_saliente']=isset($nombre_usuario_saliente)?trim($nombre_usuario_saliente):'';
 			
 			$parametros['dirigido_levantamiento']=isset($dirigido_levantamiento)?trim($dirigido_levantamiento):'';
 			$parametros['ruta_providencias']=$ruta_providencias;
