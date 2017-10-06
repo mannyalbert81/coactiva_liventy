@@ -4828,17 +4828,17 @@
 							
 							if($id_estados_procesales_juicios_actualizar > 0){
 							
-								$colval = " juicios.id_estados_procesales_juicios = '$id_estados_procesales_juicios_actualizar'";
+								$colval = "id_estados_procesales_juicios = '$id_estados_procesales_juicios_actualizar'";
 								$tabla = "juicios";
-								$where = "juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
+								$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
 								$resultado=$juicios->UpdateBy($colval, $tabla, $where);
 								
 								
 								
-								$columnas1="juicios.id_juicios";
+								$columnas1="id_juicios";
 								$tablas="juicios";
-								$where="juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
-								$id="juicios.id_juicios";
+								$where="id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
+								$id="id_juicios";
 								
 								$resultjuicios=$juicios->getCondiciones($columnas, $tablas, $where, $id);
 								
@@ -4884,10 +4884,10 @@
 							}
 							
 							if($fecha_providencias != ""){
-									
-								$colval = "juicios.fecha_ultima_providencia = '$fecha_providencias' ";
+								$juicios = new JuiciosModel();
+								$colval = "fecha_ultima_providencia = '$fecha_providencias' ";
 								$tabla = "juicios";
-								$where = "juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
+								$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
 								$resultado=$juicios->UpdateBy($colval, $tabla, $where);
 							}
 	
