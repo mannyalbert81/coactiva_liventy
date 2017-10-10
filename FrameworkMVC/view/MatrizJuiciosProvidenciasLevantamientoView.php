@@ -274,7 +274,17 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 				$("#boton_opciones").click(function(){
 							
 					$('#div_generar_masivo').toggle("slow");
-				
+					$('#boton_opciones').fadeOut("slow");
+					$('#boton_opciones1').fadeIn("slow");
+					
+				});
+
+				$("#boton_opciones1").click(function(){
+					
+					$('#div_generar_masivo').fadeOut("slow");
+					$('#boton_opciones').fadeIn("slow");
+					$('#boton_opciones1').fadeOut("slow");
+					
 				});
 			});
 			</script>
@@ -282,7 +292,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 			$(document).ready(function(){
 			
 				$("#div_generar_masivo").fadeOut("slow");
-				
+				$('#boton_opciones1').fadeOut("slow");
 			});
 			</script>
 
@@ -491,7 +501,8 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
 	 	 <br>
 	     <button type="button" id="boton_opciones" name="boton_opciones" value="Reporte Matriz Juicios"   class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencias Masivas</button>         
-	  
+          <button type="button" id="boton_opciones1" name="boton_opciones1" style="display: none; margin-top: 10px;" value="Reporte Matriz Juicios"   class="btn btn-danger" ><i class="glyphicon glyphicon-print"></i> Cerrar Providencias Masivas</button>         
+	  	  
 	 
 	     </div>
 	     
