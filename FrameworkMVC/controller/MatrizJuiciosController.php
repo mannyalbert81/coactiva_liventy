@@ -4828,17 +4828,17 @@
 							
 							if($id_estados_procesales_juicios_actualizar > 0){
 							
-								$colval = " juicios.id_estados_procesales_juicios = '$id_estados_procesales_juicios_actualizar'";
+								$colval = "id_estados_procesales_juicios = '$id_estados_procesales_juicios_actualizar'";
 								$tabla = "juicios";
-								$where = "juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
+								$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
 								$resultado=$juicios->UpdateBy($colval, $tabla, $where);
 								
 								
 								
-								$columnas1="juicios.id_juicios";
+								$columnas1="id_juicios";
 								$tablas="juicios";
-								$where="juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
-								$id="juicios.id_juicios";
+								$where="id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
+								$id="id_juicios";
 								
 								$resultjuicios=$juicios->getCondiciones($columnas, $tablas, $where, $id);
 								
@@ -4884,10 +4884,10 @@
 							}
 							
 							if($fecha_providencias != ""){
-									
-								$colval = "juicios.fecha_ultima_providencia = '$fecha_providencias' ";
+								$juicios = new JuiciosModel();
+								$colval = "fecha_ultima_providencia = '$fecha_providencias' ";
 								$tabla = "juicios";
-								$where = "juicios.id_usuarios = '$id_abogado' AND juicios.id_estados_procesales_juicios !='8'";
+								$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
 								$resultado=$juicios->UpdateBy($colval, $tabla, $where);
 							}
 	
@@ -4902,8 +4902,10 @@
 							$parametros['hora_levantamiento']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 	                        $parametros['numero_oficio']=(isset($_POST['numero_oficio']))?trim($_POST['numero_oficio']):'';
 	                        $parametros['razon_levantamiento']=(isset($_POST['razon_providencias']))?trim($_POST['razon_providencias']):'';
-	                        	
+	                        $parametros['nombre_usuario_saliente']=(isset($_POST['nombre_usuario_saliente']))?trim($_POST['nombre_usuario_saliente']):'';
 	                        
+	                        $parametros['ruta_providencias']=$ruta_providencias;
+	                        $parametros['nombre_archivo_providencias']=$nombre_archivo_providencias;
 	                      
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -5583,7 +5585,7 @@
 			$numero_oficio3= $_POST['numero_oficio3'];
 			$dirigido_levantamiento= $_POST['dirigido_levantamiento'];
 			
-			
+			$nombre_usuario_saliente= $_POST['nombre_usuario_saliente'];
 			
 			
 			$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
@@ -5652,6 +5654,7 @@
 			$parametros['numero_oficio1']=isset($numero_oficio1)?trim($numero_oficio1):'';
 			$parametros['numero_oficio2']=isset($numero_oficio2)?trim($numero_oficio2):'';
 			$parametros['numero_oficio3']=isset($numero_oficio3)?trim($numero_oficio3):'';
+			$parametros['nombre_usuario_saliente']=isset($nombre_usuario_saliente)?trim($nombre_usuario_saliente):'';
 			
 			$parametros['dirigido_levantamiento']=isset($dirigido_levantamiento)?trim($dirigido_levantamiento):'';
 			$parametros['ruta_providencias']=$ruta_providencias;
