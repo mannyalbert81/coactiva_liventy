@@ -192,9 +192,19 @@
 			    
 		 </div>
 		 
+		   <div class="col-lg-3 col-md-3 xs-6">
+			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
+			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultEstadoProcesal as $res) {?>
+						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
+			            <?php } ?>
+				</select>
+
+         </div>
 		  
 		   
-             <div class="col-xs-12 col-md-12">
+             <div class="col-xs-12 col-md-12" style="margin-top:10px">
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
                                   <textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value=""  placeholder="Ingrese Razón"></textarea>
@@ -204,6 +214,10 @@
          
           
            </div>
+  		
+  		
+  		
+  		        
   		
   		
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
