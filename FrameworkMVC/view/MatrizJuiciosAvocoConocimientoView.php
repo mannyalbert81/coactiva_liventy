@@ -84,6 +84,19 @@
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
 		 
 
+
+		 var con_fecha_avoco=$("#fecha_providencias").val();
+		 var con_hora_avoco=$("#hora_providencias").val();
+		 var con_nombre_impulsor_anterior= $("#nombre_impulsor_anterior").val();
+		 var con_nombre_secretario_anterior= $("#nombre_secretario_anterior").val();
+		 var con_tipo_avoco= $("#tipo_avoco").val();
+		 var con_id_estados_procesales_juicios_actualizar= $("#id_estados_procesales_juicios_actualizar").val();
+		 var con_numero_liquidacion= $("#numero_liquidacion").val();
+		 var con_fecha_auto_pago=$("#fecha_auto_pago").val();
+		 var con_razon_avoco= $("#razon_avoco").val();
+
+
+		 
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
 				  numero_titulo_credito:con_numero_titulo_credito,
@@ -101,7 +114,18 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
-				  
+
+
+				  fecha_avoco:con_fecha_avoco,
+				  hora_avoco:con_hora_avoco,
+				  nombre_impulsor_anterior:con_nombre_impulsor_anterior,
+				  nombre_secretario_anterior:con_nombre_secretario_anterior,
+				  tipo_avoco:con_tipo_avoco,
+				  id_estados_procesales_juicios_actualizar:con_id_estados_procesales_juicios_actualizar,
+				  numero_liquidacion:con_numero_liquidacion,
+				  fecha_auto_pago:con_fecha_auto_pago,
+				  razon_avoco:con_razon_avoco,
+
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -266,11 +290,11 @@
 			}); 
 
 	
-				$( "#fecha_avoco" ).focus(function() {
+				$( "#fecha_providencias" ).focus(function() {
 					$("#mensaje_fecha").fadeOut("slow");
     			});
 
-				$( "#hora_avoco" ).focus(function() {
+				$( "#hora_providencias" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
 				$( "#nombre_impulsor_anterior" ).focus(function() {
@@ -392,13 +416,16 @@
         $sel_identificacion_garantes_2="";
         $sel_identificacion_garantes_3="";
         
-        
+        $sel_fecha_avoco="";
+        $sel_hora_avoco="";
         $sel_nombre_impulsor_anterior="";
         $sel_nombre_secretario_anterior="";
         $sel_tipo_avoco="";
         $sel_id_estados_procesales_juicios_actualizar="";
         $sel_numero_liquidacion="";
         $sel_fecha_auto_pago="";
+        $sel_razon_avoco="";
+        
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -420,14 +447,15 @@
        	$sel_identificacion_garantes_2=$_POST['identificacion_garantes_2'];
        	$sel_identificacion_garantes_3=$_POST['identificacion_garantes_3'];
        
-       	
+       	$sel_fecha_avoco=$_POST['fecha_providencias'];
+       	$sel_hora_avoco=$_POST['hora_providencias'];
        	$sel_nombre_impulsor_anterior= $_POST['nombre_impulsor_anterior'];
        	$sel_nombre_secretario_anterior= $_POST['nombre_secretario_anterior'];
        	$sel_tipo_avoco= $_POST['tipo_avoco'];
        	$sel_id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
        	$sel_numero_liquidacion= $_POST['numero_liquidacion'];
        	$sel_fecha_auto_pago= $_POST['fecha_auto_pago'];
-       	
+       	$sel_razon_avoco= $_POST['razon_avoco'];
        }
        
     
@@ -613,14 +641,14 @@
   							
   		<div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Avoco:</p>
-			  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_fecha_avoco;?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			   
 		 </div>
 		 
 		  <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Hora Avoco:</p>
-			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="" class="form-control "/> 
+			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_hora_avoco;?>" class="form-control "/> 
 			  	<div id="mensaje_hora" class="errores"></div>
 			    
 		 </div>
