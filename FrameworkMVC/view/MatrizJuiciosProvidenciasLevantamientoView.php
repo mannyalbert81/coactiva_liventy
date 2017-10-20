@@ -289,6 +289,15 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 					
 				});
 			});
+
+
+
+
+
+
+
+
+			
 			</script>
 			<script >
 			$(document).ready(function(){

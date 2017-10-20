@@ -2853,6 +2853,20 @@
 	
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
+			
+			$juicios = new JuiciosModel();
+			$_id_usuarios=$_SESSION['id_usuarios'];
+			
+			$columnas = " asignacion_secretarios_view.id_secretario,
+					  asignacion_secretarios_view.secretarios";
+			$tablas   = "public.asignacion_secretarios_view";
+			$where    = "public.asignacion_secretarios_view.id_abogado = '$_id_usuarios'";
+			$id       = "asignacion_secretarios_view.id_secretario";
+			$resultSecre=$juicios->getCondiciones($columnas ,$tablas ,$where, $id);
+			
+			$estado_procesal = new EstadosProcesalesModel();
+			$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+			
 			$datos=array();
 				
 	
@@ -2872,7 +2886,7 @@
 				
 				
 			$this->view("FechasJuiciosAvocoConocimiento",array(
-					"datos"=>$datos
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
 	
 			));
 				
@@ -2890,6 +2904,11 @@
 	public function Imprimir_AvocoConocimiento()
 	{
 		session_start();
+		$providencias= new ProvidenciasModel();
+		$asignacion_secretarios = new AsignacionSecretariosModel();
+		$juicios = new JuiciosModel();
+		$usuarios = new UsuariosModel();
+		
 		if(isset($_POST['generar']))
 		{
 		
@@ -2900,7 +2919,70 @@
 			$fecha_avoco= $_POST['fecha_avoco'];
 			$hora_avoco= $_POST['hora_avoco'];
 			$razon_avoco= $_POST['razon_avoco'];
-		
+			
+			$nombre_impulsor_anterior= $_POST['nombre_impulsor_anterior'];
+			$nombre_secretario_anterior= $_POST['nombre_secretario_anterior'];
+			$tipo_avoco= $_POST['tipo_avoco'];
+			$id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
+			$numero_liquidacion= $_POST['numero_liquidacion'];
+			$fecha_auto_pago= $_POST['fecha_auto_pago'];
+			 
+			
+			
+			
+
+			$consecutivo= new ConsecutivosModel();
+			$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
+			$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+			$ruta_providencias="Avoco_Conocimiento";
+			
+			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
+				
+			$id_impulsor=$_SESSION['id_usuarios'];
+			$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+			$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+			
+			
+			$resultUsu = $usuarios->getBy("id_usuarios ='$id_impulsor'");
+			$id_ciudad=$resultUsu[0]->id_ciudad;
+				
+			
+				
+			
+			
+			$funcion = "ins_avoco_conocimiento_liventy";
+			$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito'";
+			$providencias->setFuncion($funcion);
+			$providencias->setParametros($parametros);
+			$resultado=$providencias->Insert();
+			
+			$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
+			
+			if($id_estados_procesales_juicios_actualizar>0){
+					
+				$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
+					
+				$historial_juicios= new HistorialJuiciosModel();
+			
+				$funcion = "ins_historial_juicios";
+				$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
+				$historial_juicios->setFuncion($funcion);
+				$historial_juicios->setParametros($parametros);
+				$resultado=$historial_juicios->Insert();
+			}
+				
+			$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
+				
+				
+			$traza=new TrazasModel();
+			$_nombre_controlador = "MATRIZ JUICIOS";
+			$_accion_trazas  = "Genero Avoco Conocimiento";
+			$_parametros_trazas = $id_juicios;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+				
+			
+			
 			$parametros = array();
 				
 			$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
@@ -2910,6 +2992,15 @@
 			$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
 			$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
 			$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+			
+			$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+			$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+			$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+			$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+			$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+			$parametros['ruta_avoco']=$ruta_providencias;
+			$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				
 			
 			$pagina="contAvocoConocimiento.aspx";
 				
