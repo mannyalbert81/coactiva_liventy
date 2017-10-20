@@ -1541,6 +1541,18 @@
 				$provincias = new ProvinciasModel();
 				$resultProv =$provincias->getAll("nombre_provincias");
 					
+				
+			
+				
+					
+				$columnas = " asignacion_secretarios_view.id_secretario,
+					  asignacion_secretarios_view.secretarios";
+				$tablas   = "public.asignacion_secretarios_view";
+				$where    = "public.asignacion_secretarios_view.id_abogado = '$_id_usuarios'";
+				$id       = "asignacion_secretarios_view.id_secretario";
+				$resultSecre=$juicios->getCondiciones($columnas ,$tablas ,$where, $id);
+					
+				
 				$estado_procesal = new EstadosProcesalesModel();
 				$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
 					
@@ -2025,7 +2037,7 @@
 					}
 						
 					$this->view("MatrizJuiciosAvocoConocimiento",array(
-							"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+							"resultSecre"=>$resultSecre, "resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
 								
 	
 	
