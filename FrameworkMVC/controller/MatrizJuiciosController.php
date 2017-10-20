@@ -5740,8 +5740,8 @@
 			$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 			$parametros['fecha_levantamiento']=isset($fecha_avoco)?trim($fecha_avoco):0;
 			$parametros['hora_levantamiento']=isset($hora_avoco)?trim($hora_avoco):0;
-			$parametros['razon_levantamiento']=isset($razon_avoco)?trim($razon_avoco):'';
-			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			$parametros['razon_levantamiento']=isset($razon_avoco)?trim($razon_avoco):0;
+			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):0;
 			$parametros['numero_oficio1']=isset($numero_oficio1)?trim($numero_oficio1):'';
 			$parametros['numero_oficio2']=isset($numero_oficio2)?trim($numero_oficio2):'';
 			$parametros['numero_oficio3']=isset($numero_oficio3)?trim($numero_oficio3):'';
