@@ -26,55 +26,6 @@
 		
 		
 		<!-- TERMINA NOTIFICAIONES -->  
-        	
-        	
-	<script>
-	$(document).ready(function(){
-
-		//alert("hola");
-		$("#div_ddl_accion").hide();
-
-		$("#ddl_criterio").change(function(){
-
-			var ddl_criterio=$(this).val();
-
-			if(ddl_criterio==3){
-				//alert("hola");
-				$("#div_ddl_accion").show();
-				$("#div_contenido").hide();
-				}else{
-					$("#div_ddl_accion").hide();
-					$("#div_contenido").show();
-					}
-
-			});
-		
-		});
-
-		</script>
-		
-		<script>
-		/*$(document).ready(function(){
-			$("#Buscar").click(function(){
-				//alert("hola");
-				 var startDate = new Date($('#fecha_desde').val());
-
-                 var endDate = new Date($('#fecha_hasta').val());
-
-                 var inicio = $('#fecha_desde').val();
-
-                 var fin = $('#fecha_hasta').val();
-
-                 if(inicio=="" || fin==""){
-                     alert("ingrese fechas de busqueda");
-                	 return false;
-                 }
-                 
-                 });
-			});*/
-		</script>
-        
-		
 		<script>
 		$(document).ready(function(){
 
@@ -100,13 +51,65 @@
 
         });
 		</script>
+
+	 <script type="text/javascript">
+	$(document).ready(function(){
 		
+		$("#Buscar").click(function(){
+			
+			
+        	load_trazas(1);
+			});
+	});
+
+	
+	function load_trazas(pagina){
+
 		
+		//iniciar variables
+		 var tra_fecha_desde=$("#fecha_desde").val();
+		 var tra_fecha_hasta=$("#fecha_hasta").val();
+		 var tra_contenido=$("#contenido").val();
+		 var tra_ddl_accion=$("#ddl_accion").val();
+		 var tra_ddl_criterio=$("#ddl_criterio").val();
+
+				  var con_datos={
+				  fecha_desde:tra_fecha_desde,
+				  fecha_hasta:tra_fecha_hasta,
+				  contenido:tra_contenido,
+				  ddl_accion:tra_ddl_accion,
+				  ddl_criterio:tra_ddl_criterio,			
+				
+				  action:'ajax',
+				  page:pagina
+				  };
+
+
+		$("#trazas").fadeIn('slow');
+		$.ajax({
+			url:"<?php echo $helper->url("Trazas","index");?>",
+            type : "POST",
+            async: true,			
+			data: con_datos,
+			 beforeSend: function(objeto){
+			$("#trazas").html('<img src="view/images/ajax-loader.gif"> Cargando...');
+			},
+			success:function(data){
+
+				
+				$(".div_trazas").html(data).fadeIn('slow');
+				$("#trazas").html("");
+
+			}
+		})
+	}
+	
+	</script>
+		
+	
         
-     
-       
-          
-    </head>
+	
+		  </head>
     <body style="background-color: #d9e3e4;">
     
      
@@ -191,78 +194,47 @@
             
           
          
-         </div></div>
+         </div>
          
           <div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
-  		   <button type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
-           </div>
-         </div></div></div>
+  			   <button type="button" id="Buscar" name="Buscar" value="Buscar" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+          
+        </div>
+		    </div>
+		   </div>
+		    
+		    </div>
+	        </div>
+	        </div>
          
          
+         <div class="col-lg-12">
+		 
+	     <div class="col-lg-12">
+	     
+	     <div style="height: 200px; display: block;">
+		
+		 <h4 style="color:#ec971f;"></h4>
+			  <div>	
+		  
+			  <div id="trazas" style="position: absolute;	text-align: center;	top: 10px;	width: 100%;display:none;"></div><!-- Carga gif animado -->
+					<div class="div_trazas" ></div><!-- Datos ajax Final -->
+		      </div>
+		       <br>
+				  
+		 </div>
+		 
+		 </div>
+		 
+		
+		 
+		 </div>
+		 
           </form>
         
        <!-- termina formulario de busqueda -->
+     
        
-       <div class="col-lg-12">
-		 
-	      <div class="col-lg-12">
-		 <div class="col-lg-10"></div>
-		 <div class="col-lg-2">
-       <span class="form-control" style="margin-bottom:0px;"><strong>Registros:</strong><?php if(!empty($resultActi)) echo "  ".count($resultActi);?></span>
-		 </div>
-		 </div>
-		 <div class="col-lg-12">
-       
-        <section class="col-lg-12 actividades" style="height:400px;overflow-y:scroll;">
-        <table class="table table-hover ">
-	         <tr class="info">
-	    		<th style="text-align: left;  font-size: 12px;">#</th>
-	    		<th style="text-align: left;  font-size: 12px;">Usuario</th>
-	    		<th style="text-align: left;  font-size: 12px;">Nombre del Controlador</th>
-	    		<th style="text-align: left;  font-size: 12px;">Acción</th>
-	    		<th style="text-align: left;  font-size: 12px;">Identificador (Id)</th>
-	    		<th style="text-align: left;  font-size: 12px;">Fecha</th>
-	    		
-	    		<th></th>
-	    		<th></th>
-	  		</tr>
-            
-            <?php $i=1;?>
-	            <?php if (!empty($resultActi)) {  foreach($resultActi as $res) {?>
-	            
-	        		<tr>
-	                   <td style="font-size: 11px;"> <?php echo $i++; ?></td>
-		               <td style="font-size: 11px;"> <?php echo $res->nombre_usuarios; ?></td> 
-		                <td style="font-size: 11px;"> <?php echo $res->nombre_controlador; ?></td> 
-		                 <td style="font-size: 11px;"> <?php echo $res->accion_trazas; ?></td> 
-		                  <td style="font-size: 11px;"> <?php echo $res->parametros_trazas; ?></td> 
-		                  <td style="font-size: 11px;"> <?php echo date($res->creado); ?></td> 
-		              
-		           	  
-		    		</tr>
-		        <?php } }else{ ?>
-                <tr>
-	                  	<td></td>
-            			<td></td>
-            			<td></td>
-            			
-	                    <td colspan="1" style="color:#ec971f;font-size:12;"> <?php echo '<span id="snResult">No existen resultados</span>' ?></td>
-	       				<td></td>
-	       				<td></td>
-	       				<td></td>
-	       				<td></td>
-		    	</tr>
-            
-            <?php 
-		}
-           
-            
-            ?>
-            
-       	</table>     
-      </section>
-      </div>
-		 </div>
 		 <br>
 		 <br>
 		 <br>
@@ -271,7 +243,7 @@
 		 <br>
 		 <br>
       </div>
-      </div>
+     
     <br>
 		 <br>
 		 <br>

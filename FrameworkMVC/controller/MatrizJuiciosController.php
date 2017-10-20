@@ -2043,8 +2043,8 @@
 								if(!empty($resultSet)){
 							
 							
-									$fecha_providencias=$_POST['fecha_avoco'];
-									$hora_providencias=$_POST['hora_avoco'];
+									$fecha_providencias=$_POST['fecha_providencias'];
+									$hora_providencias=$_POST['hora_providencias'];
 									$razon_providencias=$_POST['razon_avoco'];
 							
 									$nombre_impulsor_anterior= $_POST['nombre_impulsor_anterior'];
@@ -2105,7 +2105,7 @@
 								
 							$id_estados_procesales_juicios_actualizar=$_POST['id_estados_procesales_juicios_actualizar'];
 							$id_abogado=$_SESSION['id_usuarios'];
-							$fecha_providencias=$_POST['fecha_avoco'];
+							$fecha_providencias=$_POST['fecha_providencias'];
 								
 							
 								
@@ -2183,8 +2183,8 @@
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-							$parametros['fecha_providencias']=(isset($_POST['fecha_avoco']))?trim($_POST['fecha_avoco']):0;
-							$parametros['hora_providencias']=(isset($_POST['hora_avoco']))?trim($_POST['hora_avoco']):0;
+							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 							
 							
 							$parametros['razon_avoco']=isset($razon_providencias)?trim($razon_providencias):'';
