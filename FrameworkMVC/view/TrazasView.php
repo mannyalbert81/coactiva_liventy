@@ -26,31 +26,8 @@
 		
 		
 		<!-- TERMINA NOTIFICAIONES -->  
-		<script>
-		$(document).ready(function(){
-
-	       $("#fecha_hasta").change(function() {
-
-                var startDate = new Date($('#fecha_desde').val());
-
-                 var endDate = new Date($('#fecha_hasta').val());
-
-                 if (startDate > endDate){
- 
-                    $("#mensaje_hasta").text("Fecha desde no debe ser mayor ");
-		    		$("#mensaje_hasta").fadeIn("slow"); //Muestra mensaje de error  
-		    		$("#fecha_hasta").val("");
-
-                        }
-
-               });
-
-	       $( "#fecha_hasta" ).focus(function() {
-				  $("#mensaje_hasta").fadeOut("slow");
-			   });
-
-        });
-		</script>
+		
+		
 
 	 <script type="text/javascript">
 	$(document).ready(function(){
@@ -105,10 +82,57 @@
 	}
 	
 	</script>
+	<script>
+	$(document).ready(function(){
+
+		//alert("hola");
+		$("#div_ddl_accion").hide();
+
+		$("#ddl_criterio").change(function(){
+
+			var ddl_criterio=$(this).val();
+
+			if(ddl_criterio==3){
+				//alert("hola");
+				$("#div_ddl_accion").show();
+				$("#div_contenido").hide();
+				}else{
+					$("#div_ddl_accion").hide();
+					$("#div_contenido").show();
+					}
+
+			});
+		
+		});
+
+		</script>
 		
 	
-        
-	
+       <script> 
+	$(document).ready(function(){
+
+	       $("#fecha_hasta").change(function() {
+
+                var startDate = new Date($('#fecha_desde').val());
+
+                 var endDate = new Date($('#fecha_hasta').val());
+
+                 if (startDate > endDate){
+ 
+                    $("#mensaje_hasta").text("Fecha desde no debe ser mayor ");
+		    		$("#mensaje_hasta").fadeIn("slow"); //Muestra mensaje de error  
+		    		$("#fecha_hasta").val("");
+
+                        }
+
+               });
+
+	       $( "#fecha_hasta" ).focus(function() {
+				  $("#mensaje_hasta").fadeOut("slow");
+			   });
+
+        });
+		</script>
 		  </head>
     <body style="background-color: #d9e3e4;">
     
@@ -120,7 +144,7 @@
        
        <?php
        
-       $acciones=array(0=>"INSERTO NUEVO JUICIO",1=>"Actualizo tabla juicios",2=>"Actualizo tabla clientes", 3=>"Actualizo tabla titulo_credito", 4=>"Inserto o Actualizo tabla Restructuracion");
+       $acciones=array(0=>"INSERTO NUEVO JUICIO",1=>"Actualizo tabla juicios",2=>"Actualizo tabla clientes", 3=>"Actualizo tabla titulo_credito", 4=>"Inserto o Actualizo tabla Restructuracion", 5=>"Genero Avoco Conocimiento");
        
 		   
 		?>
@@ -205,7 +229,7 @@
 		    
 		    </div>
 	        </div>
-	        </div>
+	       
          
          
          <div class="col-lg-12">
@@ -231,7 +255,7 @@
 		 </div>
 		 
           </form>
-        
+         </div>
        <!-- termina formulario de busqueda -->
      
        
