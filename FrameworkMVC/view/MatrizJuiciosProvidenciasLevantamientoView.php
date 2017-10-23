@@ -289,6 +289,15 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 					
 				});
 			});
+
+
+
+
+
+
+
+
+			
 			</script>
 			<script >
 			$(document).ready(function(){
@@ -599,7 +608,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 	         	</div>
 	        	<div class="panel-body">
 	        	
-	        	<div class="col-lg-6 col-md-6 col-xs-12">
+	        	<div class="col-lg-12 col-md-12 col-xs-12">
 			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
