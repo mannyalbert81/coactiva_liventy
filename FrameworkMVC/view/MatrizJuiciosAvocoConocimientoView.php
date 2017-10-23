@@ -610,24 +610,7 @@
 	  	  
 	     </div>
 		 
-<<<<<<< HEAD
-		 <div class="col-lg-12 col-md-12 xs-12" style="text-align: center; margin-top: 10px">
-  		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
-  		 			
-		 		</div>
-		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
-		 			<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="dd/MM/aaaa"/>
-		 			<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control" placeholder="HH:mm"/>
-		 			<button type="submit" id="reporte_rpt" name="reporte_rpt" value="Reporte Providencia"   class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Avoco Conocimiento Masivo</button>
-		 		</div>
-		 		<div class="col-lg-4 col-md-4 xs-4" style="text-align: center; margin-top: 10px">
-		 		</div>	         
-	     </div>
-=======
-		
-	     
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
-		</div>
+     	</div>
 		    </div>
 	        </div>
 	        </div>
