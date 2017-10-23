@@ -338,11 +338,7 @@
 			  	<option value="PR"> Providencias </option>
 			    </select>
 		 </div>
-		 <div id="div_tipo_documento" class="col-lg-2 col-md-2 col-xs-12" style="display:none;" >
-			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
-			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
-			    </select>
-		 </div>
+		 
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
@@ -438,7 +434,12 @@
 		<div class="col-lg-2 col-md-2 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Hasta:</p>
 			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
-		</div> 
+		</div>
+		<div id="div_tipo_documento" class="col-lg-2 col-md-2 col-xs-12" style="display:none;" >
+			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
+			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
+			    </select>
+		 </div> 
         
          </div>
           
