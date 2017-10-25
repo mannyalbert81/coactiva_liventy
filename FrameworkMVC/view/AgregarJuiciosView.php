@@ -636,7 +636,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
-				        <input type='number' min="0" max="1000000" class='form-control' id='cuantia_inicial' name='cuantia_inicial' value="0" readonly >
+				        <input type='text' class='form-control' id='cuantia_inicial' name='cuantia_inicial' value="0.00" >
 				        <div id="mensaje_cuantia_inicial" class="errores"></div>
 				        </div>
 				        </div>	
@@ -681,7 +681,7 @@
 						
 					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
-				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Providencia</label>
+				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Ult Providencia</label>
 				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value=""  >
 				         <div id="mensaje_fecha_ultima_providencia" class="errores"></div>
 				        </div>

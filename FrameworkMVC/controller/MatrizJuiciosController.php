@@ -2183,8 +2183,8 @@
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
-							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+							$parametros['fecha_avoco']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+							$parametros['hora_avoco']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
 							
 							
 							$parametros['razon_avoco']=isset($razon_providencias)?trim($razon_providencias):'';
@@ -2233,7 +2233,7 @@
 							$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
 							$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
 							
-							$pagina="contAvocoConocimiento.aspx";
+							$pagina="contAvocoConocimientoSeleccion.aspx";
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
 							//$conexion_rpt['port']="59584";
@@ -3294,7 +3294,7 @@
 			$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
 				
 			
-			$pagina="contAvocoConocimiento.aspx";
+			$pagina="contAvocoConocimientoSeleccion.aspx";
 				
 			$conexion_rpt = array();
 			$conexion_rpt['pagina']=$pagina;

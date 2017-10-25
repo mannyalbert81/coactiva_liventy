@@ -385,7 +385,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
          <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Providencias Levantamiento</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Providencias Levantamiento de Suspensión</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -509,8 +509,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
   		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		 <button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
-	 	 <br>
+		 <br>
 	     <button type="button" id="boton_opciones" name="boton_opciones" value="Reporte Matriz Juicios"   class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencias Masivas</button>         
           <button type="button" id="boton_opciones1" name="boton_opciones1" style="display: none; margin-top: 10px;" value="Reporte Matriz Juicios"   class="btn btn-danger" ><i class="glyphicon glyphicon-print"></i> Cerrar Providencias Masivas</button>         
 	  	  

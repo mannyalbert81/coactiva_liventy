@@ -198,7 +198,7 @@
          <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Levantamiento</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Levantamiento de Suspensión</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
