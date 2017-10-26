@@ -154,7 +154,7 @@
 				}
 
 
-				if(tipo_avoco == 1 || tipo_avoco== 2 && numero_liquidacion == ""){
+				if(tipo_avoco == 1  && numero_liquidacion == ""){
 					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
 		    		$("#mensaje_numero_liquidacion").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -165,7 +165,29 @@
 		            
 				}
 
-				if(tipo_avoco == 1 || tipo_avoco== 2 && fecha_auto_pago == ""){
+				if(tipo_avoco== 2 && numero_liquidacion == ""){
+					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
+		    		$("#mensaje_numero_liquidacion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_liquidacion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+				
+				if(tipo_avoco == 1  && fecha_auto_pago == ""){
+					$("#mensaje_fecha_auto_pago").text("Ingrese Fecha Auto Pago");
+		    		$("#mensaje_fecha_auto_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco== 2 && fecha_auto_pago == ""){
 					$("#mensaje_fecha_auto_pago").text("Ingrese Fecha Auto Pago");
 		    		$("#mensaje_fecha_auto_pago").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
