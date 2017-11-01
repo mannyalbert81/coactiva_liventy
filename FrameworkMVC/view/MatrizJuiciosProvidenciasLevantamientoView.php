@@ -63,7 +63,9 @@
 		//iniciar variables
 		 var con_juicio_referido_titulo_credito=$("#juicio_referido_titulo_credito").val();
 		 var con_numero_titulo_credito=$("#numero_titulo_credito").val();
-		
+
+		 var con_lote_juicios=$("#lote_juicios").val();
+		 	
 		 var con_id_provincias=$("#id_provincias").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
 		 var con_id_estados_procesales_juicios_actualizar=$("#id_estados_procesales_juicios_actualizar").val();
@@ -86,7 +88,8 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
 				  numero_titulo_credito:con_numero_titulo_credito,
-				  
+
+				  lote_juicios:con_lote_juicios,
 				  id_provincias:con_id_provincias,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
 				  id_estados_procesales_juicios_actualizar:con_id_estados_procesales_juicios_actualizar,
@@ -340,6 +343,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
         $sel_nombre_usuario_saliente="";
         $sel_razon_providencias="";
         
+        $sel_lote_juicios="";
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
        	
@@ -362,6 +366,9 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
        	$sel_numero_oficio=$_POST['numero_oficio'];
        	
        	$sel_razon_providencias=$_POST['razon_providencias'];
+       	
+       	
+       	$sel_lote_juicios=$_POST['lote_juicios'];
        }
        
     
@@ -503,6 +510,18 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 			    
 		 </div>
 		 
+		 <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Lote:</p>
+			  	<select name="lote_juicios" id="lote_juicios"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultLote as $res) {?>
+						<option value="<?php echo $res->lote_juicios; ?>"<?php if($sel_lote_juicios==$res->lote_juicios){echo "selected";}?> ><?php echo $res->lote_juicios;  ?> </option>
+			            <?php } ?>
+				</select>
+
+         </div>
+		 
+		 
            </div>
   		</div>
   		
@@ -511,7 +530,7 @@ var con_nombre_usuario_saliente=$("#nombre_usuario_saliente").val();
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
 		 <br>
 	     <button type="button" id="boton_opciones" name="boton_opciones" value="Reporte Matriz Juicios"   class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencias Masivas</button>         
-          <button type="button" id="boton_opciones1" name="boton_opciones1" style="display: none; margin-top: 10px;" value="Reporte Matriz Juicios"   class="btn btn-danger" ><i class="glyphicon glyphicon-print"></i> Cerrar Providencias Masivas</button>         
+         <button type="button" id="boton_opciones1" name="boton_opciones1" style="display: none; margin-top: 10px;" value="Reporte Matriz Juicios"   class="btn btn-danger" ><i class="glyphicon glyphicon-print"></i> Cerrar Providencias Masivas</button>         
 	  	  
 	 
 	     </div>

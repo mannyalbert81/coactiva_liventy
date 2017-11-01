@@ -4665,7 +4665,18 @@
 				$estado_procesal = new EstadosProcesalesModel();
 				$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
 					
-					
+				
+				
+				//lote
+			
+				$columnasL = "lote_juicios";
+				$tablasL = "juicios";
+				$whereL = "id_usuarios = '$_id_usuarios' GROUP BY lote_juicios";
+				$idL = "lote_juicios";
+				
+				$resultLote=$juicios->getCondiciones($columnasL ,$tablasL ,$whereL, $idL);
+				
+				
 				$permisos_rol = new PermisosRolesModel();
 				$nombre_controladores = "MatrizJuicios";
 				$id_rol= $_SESSION['id_rol'];
@@ -4694,6 +4705,8 @@
 						$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
 						$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
 	
+						$lote_juicios = $_POST['lote_juicios'];
+						
 						$columnas = " juicios.id_juicios,
 								  juicios.orden,
 								  juicios.regional,
@@ -4777,7 +4790,8 @@
 						titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
 						asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 						juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
-						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
+						asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios' 
+						AND juicios.id_estados_procesales_juicios !='8' ";
 							
 						$id="juicios.orden";
 							
@@ -4796,7 +4810,7 @@
 						$where_11 = "";
 						$where_12 = "";
 	
-							
+						$where_13 = "";	
 							
 						if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
 	
@@ -4844,8 +4858,10 @@
 						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
 						
 						
+						if($lote_juicios!=0){$where_13=" AND juicios.lote_juicios = '$lote_juicios'";}
 						
-						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+						
+						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12.$where_13;
 						
 						
 							
@@ -5036,6 +5052,8 @@
 							$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
 							$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
 							
+							$lote_juicios=$_POST['lote_juicios'];
+								
 							
 							$id_impulsor=$_SESSION['id_usuarios'];
 							
@@ -5058,7 +5076,8 @@
 							titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
 							asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 							juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
-							asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$id_impulsor'";
+							asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$id_impulsor'
+							AND AND juicios.id_estados_procesales_juicios !='8'  ";
 								
 							$id="juicios.orden";
 								
@@ -5076,7 +5095,7 @@
 							$where_10 = "";
 							$where_11 = "";
 							$where_12 = "";
-							
+							$where_13 = "";	
 								
 								
 							if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
@@ -5124,9 +5143,10 @@
 							if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
 							if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
 							
+							if($lote_juicios!=0){$where_13=" AND juicios.lote_juicios = '$lote_juicios'";}
 							
 							
-							$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+							$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12.$where_13;
 							
 							
 							$resultSet=$juicios->getCondiciones($columnas, $tablas, $where_to, $id);
@@ -5324,7 +5344,7 @@
 							$parametros['identificacion_garantes_1']=(isset($_POST['identificacion_garantes_1']))?trim($_POST['identificacion_garantes_1']):'';
 							$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
 							$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
-							
+							$parametros['lote_juicios']=(isset($_POST['lote_juicios']))?trim($_POST['lote_juicios']):'';
 							$pagina="contProvidenciaLevantamiento.aspx";
 							$conexion_rpt = array();
 							$conexion_rpt['pagina']=$pagina;
@@ -5405,7 +5425,7 @@
 					}
 	
 					$this->view("MatrizJuiciosProvidenciasLevantamiento",array(
-							"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+							"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultLote"=>$resultLote
 	
 	
 	

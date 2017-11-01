@@ -728,8 +728,6 @@
 	        	</div>
 	        	</div>
 	           </div>
-  		
-  		
   		        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
@@ -741,10 +739,10 @@
 			  	<p  class="formulario-subtitulo">Tipo Avoco:</p>
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
-					<option value="1">PAGO TOTAL</option>
-					<option value="2">PROCESO COACTIVO</option>
+					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
+					<option value="2">AVOCO CONOCIMIENTO SIMPLE</option>
 					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
-			           
+			        
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
