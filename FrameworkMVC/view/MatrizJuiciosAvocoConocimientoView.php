@@ -740,9 +740,9 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
-					<option value="2">AVOCO CONOCIMIENTO SIMPLE</option>
+					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
 					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
-			        
+			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
