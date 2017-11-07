@@ -4182,6 +4182,7 @@
 								$html.='<thead>';
 								$html.='<tr class="info">';
 								$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Portada</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
@@ -4244,6 +4245,7 @@
 	
 									$html.='<tr>';
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=index3&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.' "><i class="glyphicon glyphicon-edit"></i></a></span></td>';
+									$html.='<td style="font-size: 15px;"><span class="pull-center"><a target="_blank" href="index.php?controller=MatrizJuicios&action=juicioPortada&id_juicios='. $res->id_juicios .' "><i class="glyphicon glyphicon-book"></i></a></span></td>';
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
@@ -9152,7 +9154,50 @@
 			
 	
 	}
+
+public  function juicioPortada($param=null) {
 	
+        session_start();
+	
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+			$datos=array();
+	
+	
+			if(isset($_GET['id_juicios']))
+			{
+				$id_juicios=$_GET['id_juicios'];
+				
+				$parametros = array();
+		
+			    $parametros['id_juicios']=$id_juicios!=""?trim($id_juicios):0;
+			    $parametros['id_rol']=$_SESSION['id_rol']!=""?trim($_SESSION['id_rol']):0;
+				
+			    $pagina="contPortadaJuicio.aspx";
+			    
+			    $conexion_rpt = array();
+			    $conexion_rpt['pagina']=$pagina;
+			    
+			    $this->view("ReporteRpt", array(
+			    		"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			    ));
+			}else {
+				
+			}
+	
+			
+	
+		}
+		else
+		{
+			$this->view("Error",array(
+					"resultado"=>"Debe Iniciar Sesion"
+	
+			));
+		}
+		
+		
+}
 	
 }
 ?>
