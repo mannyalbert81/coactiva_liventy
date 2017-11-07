@@ -291,7 +291,7 @@
 						<div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_clientes' class='control-label'>Cedula Cliente 1</label><br>
-				        <input type='text' class='form-control' id='identificacion_clientes' name='identificacion_clientes' value=""  >
+				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes' name='identificacion_clientes' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -328,7 +328,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>
-				        <input type='text' class='form-control' id='identificacion_clientes_1' name='identificacion_clientes_1' value="" >
+				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_1' name='identificacion_clientes_1' value="" >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -366,7 +366,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>
-				        <input type='text' class='form-control' id='identificacion_clientes_2' name='identificacion_clientes_2' value=""  >
+				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_2' name='identificacion_clientes_2' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -403,7 +403,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>
-				        <input type='text' class='form-control' id='identificacion_clientes_3' name='identificacion_clientes_3' value="" >
+				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_3' name='identificacion_clientes_3' value="" >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -418,8 +418,8 @@
 				        <label for='sexo_clientes_3' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_3" id="sexo_clientes_3"  class="form-control">
 							<option value="_" selected="selected">---</option>
-										<option value="M"  >M </option>
-						            	<option value="F"  >F </option>
+							<option value="M"  >M </option>
+						    <option value="F"  >F </option>
 					    </select>
   						</div>
 				        </div>
@@ -438,9 +438,6 @@
 				        </div>
 			
 			
-			
-			
-			
 		    </div>
 		</div>
 			
@@ -454,7 +451,7 @@
 						<div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes' class='control-label'>Cedula Garante 1</label><br>
-				        <input type='text' class='form-control' id='identificacion_garantes' name='identificacion_garantes' value=""  >
+				        <input type='text' maxlength="13" class='form-control' id='identificacion_garantes' name='identificacion_garantes' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -494,7 +491,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_1' class='control-label'>Cedula Garante 2</label><br>
-				        <input type='text' class='form-control' id='identificacion_garantes_1' name='identificacion_garantes_1' value=""  >
+				        <input type='text' maxlength='13' class='form-control' id='identificacion_garantes_1' name='identificacion_garantes_1' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -534,7 +531,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_2' class='control-label'>Cedula Garante 3</label><br>
-				        <input type='text' class='form-control' id='identificacion_garantes_2' name='identificacion_garantes_2' value=""  >
+				        <input type='text' maxlength="13" class='form-control' id='identificacion_garantes_2' name='identificacion_garantes_2' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
@@ -574,7 +571,7 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='identificacion_garantes_3' class='control-label'>Cedula Garante 4</label><br>
-				        <input type='text' class='form-control' id='identificacion_garantes_3' name='identificacion_garantes_3' value=""  >
+				        <input type='text' maxlength="13" class='form-control' id='identificacion_garantes_3' name='identificacion_garantes_3' value=""  >
 				        </div>
 				        </div>	
 				        <div class = 'col-xs-12 col-md-4 col-lg-4'>

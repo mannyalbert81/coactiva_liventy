@@ -1,5 +1,4 @@
-		<?php include("view/modulos/head.php"); ?>
-		
+	   <?php include("view/modulos/head.php"); ?>		
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
 
@@ -339,6 +338,11 @@
 			    </select>
 		 </div>
 		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display:none;" id="div_tipo_documento">
+			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
+			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
+			   </select>
+		 </div>
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>

@@ -339,7 +339,7 @@ session_start();
 			$i++;
 
 			$html.='<tr>';
-			$html.='<td style="font-size: 15px;"><span class="pull-right"><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><i class="glyphicon glyphicon-picture"></i></a></span></td>';
+			$html.='<td style="font-size: 15px;"><span class="pull-right"><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><i class="glyphicon glyphicon-save-file"></i></a></span></td>';
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
@@ -457,11 +457,21 @@ session_start();
 			//$mi_pdf = 'F:/coactiva/Documentos/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
 		
 		//para pruebas			
-			$mi_pdf = 'C:/Users/M/Desktop/paraservidor/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
+			//$mi_pdf = 'C:/Users/M/Desktop/paraservidor/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
+		//prueba con ruta arbitraria
+	    $mi_pdf = 'C:/Users/M/Desktop/paraservidor/Providencias_Levantamiento/Providencias_Levantamiento1012.pdf';
 			
-			header('Content-type: application/pdf');
-			header('Content-Disposition: inline; filename="'.$mi_pdf.'"');
-			readfile($mi_pdf);
+			if(file_exists($mi_pdf))
+			{
+				header('Content-type: application/pdf');
+				header('Content-Disposition: inline; filename="'.$mi_pdf.'"');
+				readfile($mi_pdf);
+			}else 
+			{
+				echo 'error al cargar el archivo';
+			}
+			
+			
 		}
 	}
 	
