@@ -1591,7 +1591,7 @@
 								  juicios.regional,
 								  juicios.juicio_referido_titulo_credito,
 								  juicios.year_juicios,
-								  clientes.id_clientes,
+								clientes.id_clientes,
 								  clientes.identificacion_clientes,
 								  clientes.nombres_clientes,
 								  clientes.nombre_garantes,
@@ -5077,7 +5077,7 @@
 							asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
 							juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
 							asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$id_impulsor'
-							AND AND juicios.id_estados_procesales_juicios !='8'  ";
+							AND juicios.id_estados_procesales_juicios !='8'  ";
 								
 							$id="juicios.orden";
 								
