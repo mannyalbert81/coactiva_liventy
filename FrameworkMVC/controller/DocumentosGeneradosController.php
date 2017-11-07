@@ -200,7 +200,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 							
-						$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+						$where=" 1=0 AND asv.id_abogado='$_id_usuarios'";
 						
 						break;
 					}
@@ -454,12 +454,12 @@ session_start();
 			$arraydoc = explode('-', $documento);
 			
 		//para produccion
-			//$mi_pdf = 'F:/coactiva/Documentos/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
+		$mi_pdf = 'F:/coactiva/Documentos/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
 		
 		//para pruebas			
 			//$mi_pdf = 'C:/Users/M/Desktop/paraservidor/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
 		//prueba con ruta arbitraria
-	    $mi_pdf = 'C:/Users/M/Desktop/paraservidor/Providencias_Levantamiento/Providencias_Levantamiento1012.pdf';
+	    //$mi_pdf = 'C:/Users/M/Desktop/paraservidor/Providencias_Levantamiento/Providencias_Levantamiento1012.pdf';
 			
 			if(file_exists($mi_pdf))
 			{
