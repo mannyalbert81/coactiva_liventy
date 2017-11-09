@@ -742,6 +742,7 @@
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
 					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
+					<option value="5">AVOCO CONOCIMIENTO CON MANDAMIENTO DE JUEZA</option>
 			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
