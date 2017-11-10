@@ -3373,6 +3373,8 @@
 				$_id_clientes= $_POST["id_clientes"];
 				$_id_titulo_credito= $_POST["id_titulo_credito"];
 				
+				$_credito_hipotecario = $_POST['credito_hipotecario'];
+				
 				
 				if($_fecha_emision_juicios!=""){
 						
@@ -3386,7 +3388,8 @@
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
-					riesgo_actual='$_riesgo_actual'";
+					riesgo_actual='$_riesgo_actual',
+					credito_hipotecario='$_credito_hipotecario'";
 					
 					
 					$tabla1="juicios";
@@ -3427,7 +3430,8 @@
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
-					riesgo_actual='$_riesgo_actual'";
+					riesgo_actual='$_riesgo_actual',
+					credito_hipotecario='$_credito_hipotecario'";
 						
 						
 					
@@ -3469,7 +3473,8 @@
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
-					riesgo_actual='$_riesgo_actual'";
+					riesgo_actual='$_riesgo_actual',
+					credito_hipotecario='$_credito_hipotecario'";
 						
 						
 					$tabla1="juicios";
@@ -3509,7 +3514,8 @@
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
-					riesgo_actual='$_riesgo_actual'";
+					riesgo_actual='$_riesgo_actual',
+					credito_hipotecario='$_credito_hipotecario'";
 					
 					
 						
@@ -5708,7 +5714,7 @@
 			$_direccion_garantes_3= $_POST["direccion_garantes_3"];
 			$_direccion_garantes_4= $_POST["direccion_garantes_4"];
 			
-			
+			$_credito_hipotecario = $_POST['credito_hipotecario'];
 			
 			$clientes= new ClientesModel();
 			$usuarios = new UsuariosModel();
@@ -5722,11 +5728,8 @@
 			$_asignado_titulo_credito='true';
 			
 			
-			
 			$resultCiudad = $usuarios->getBy("id_usuarios='$_id_abogado'");
 			$_id_ciudad=$resultCiudad[0]->id_ciudad;
-				
-			
 			
 			//$id=$clientes->getNuevo("clientes_id_clientes_seq");
 			//print_r($id);
@@ -5869,7 +5872,7 @@
 						//// INSERTO JUICIO
 						
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual','$_credito_hipotecario'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();
@@ -5914,7 +5917,7 @@
 						//// INSERTO JUICIO
 					
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_credito_hipotecario'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();

@@ -244,7 +244,7 @@
 
          
 
-               <form action="<?php echo $helper->url("MatrizJuicios","AgregarJuicio"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+<form action="<?php echo $helper->url("MatrizJuicios","AgregarJuicio"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
      
                        <br>         
          <div class="col-lg-12">
@@ -638,10 +638,20 @@
 				        </div>
 				        </div>	
 				        
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label>
 				        <input type='text' class='form-control' id='riesgo_actual' name='riesgo_actual' value="">
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class='form-group'>
+				        <label for='credito_hipotecario' class='control-label'>Credito Hipotecario</label>
+				        <select  class='form-control' id='credito_hipotecario' name='credito_hipotecario'>
+				        	<option value='0'>NO</option>
+				        	<option value='1'>SI</option>
+				        </select>
 				        </div>
 				        </div>	
    
