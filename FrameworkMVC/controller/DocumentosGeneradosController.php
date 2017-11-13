@@ -268,7 +268,7 @@ session_start();
 		}
 		else 
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 		
 			));

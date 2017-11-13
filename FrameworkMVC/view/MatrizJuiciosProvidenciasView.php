@@ -438,11 +438,49 @@
 	 
 	     </div>
 		 
+		</div>
+		    
+		    </div>
+	        </div>
+	        </div>
+	     
+	     
+	     
+	    
+	     
+	     
 		
+         
+         
+        		 
+		 
+		 <div class="col-lg-12 col-md-12 col-xs-12">
+		 
+	     <div class="col-lg-12 col-md-12 col-xs-12">
 	     
-	     
-	     
-	      <div class="col-lg-12 col-md-12 xs-12" style="text-align: center; margin-top: 10px">
+	     <div style="height: 200px; display: block;">
+		
+		 <h4 style="color:#ec971f;"></h4>
+			  <div>					
+					<div id="matriz" style="position: absolute;	text-align: center;	top: 10px;	width: 100%;display:none;"></div><!-- Carga gif animado -->
+					<div class="div_matriz" ></div><!-- Datos ajax Final -->
+		      </div>
+		       <br>
+				  
+		 </div>
+		 
+		 </div>
+		 
+		
+		 
+		 </div>
+		 
+	
+	
+	
+	
+	
+	  <div class="col-lg-12 col-md-12 xs-12" style="text-align: center; margin-top: 10px; visibility:hidden">
   		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
   		 		</div>
 		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
@@ -473,38 +511,6 @@
 		 		<div class="col-lg-4 col-md-4 col-xs-12" style="text-align: center; margin-top: 10px">
 		 		</div>	         
 	      </div>
-	     
-	     
-		</div>
-		    
-		    </div>
-	        </div>
-	        </div>
-         
-         
-        		 
-		 
-		 <div class="col-lg-12 col-md-12 col-xs-12">
-		 
-	     <div class="col-lg-12 col-md-12 col-xs-12">
-	     
-	     <div style="height: 200px; display: block;">
-		
-		 <h4 style="color:#ec971f;"></h4>
-			  <div>					
-					<div id="matriz" style="position: absolute;	text-align: center;	top: 10px;	width: 100%;display:none;"></div><!-- Carga gif animado -->
-					<div class="div_matriz" ></div><!-- Datos ajax Final -->
-		      </div>
-		       <br>
-				  
-		 </div>
-		 
-		 </div>
-		 
-		
-		 
-		 </div>
-		 
 	
       
        </form>

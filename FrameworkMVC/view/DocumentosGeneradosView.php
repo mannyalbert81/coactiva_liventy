@@ -22,17 +22,7 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
-       <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
+      
         
      
     <script type="text/javascript">
