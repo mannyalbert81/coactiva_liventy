@@ -1495,7 +1495,7 @@
 			}
 			else
 			{
-				$this->view("ErrorSesion",array(
+				$this->view("Login",array(
 						"resultSet"=>""
 			
 				));
@@ -2868,7 +2868,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 		
 			));
@@ -4624,7 +4624,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 		
 			));
@@ -5460,7 +5460,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 	
 			));
@@ -5506,7 +5506,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 	
 			));
@@ -5553,7 +5553,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 	
 			));
@@ -6632,7 +6632,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 		
 			));
@@ -8008,7 +8008,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 	
 			));
@@ -9148,7 +9148,7 @@
 		}
 		else
 		{
-			$this->view("ErrorSesion",array(
+			$this->view("Login",array(
 					"resultSet"=>""
 	
 			));
@@ -9193,7 +9193,7 @@ public  function juicioPortada($param=null) {
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 	
 			));

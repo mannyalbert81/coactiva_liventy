@@ -22,17 +22,7 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
-       <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
+      
         
      
     <script type="text/javascript">
@@ -61,7 +51,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","1": "Pago Total", "2": "Proceso Coactivo","3": "Avoco Conocimiento"};
+				var items = {"ALL":"Todos","1": "Pago Total", "2": "Proceso Coactivo","3": "Avoco Conocimiento y Suspensión"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')
@@ -85,7 +75,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspencion", "PL": "Providencia Levantamiento"};
+				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')

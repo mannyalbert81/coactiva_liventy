@@ -446,7 +446,7 @@
 	          </div> 
 	          
 	          <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> No se notificó con la providencia que antecede a los señores coactivados por no haber señalado domicilio legal.- "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal y para los fines legales consiguientes que no notificó a los coactivados con el auto que antecede por cuanto no han señalado domicilio legal para el efecto. "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
 				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b>CERTIFICO.-</b>)</FONT>
 			  </div>
 				   
