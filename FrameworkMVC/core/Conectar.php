@@ -19,14 +19,9 @@ class Conectar{
         if($this->driver=="pgsql" || $this->driver==null){
        
 
-<<<<<<< HEAD
-        $con = pg_connect("host=186.4.203.42 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
-        //$con = pg_connect("host=18.221.171.210 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
-=======
+
         //$con = pg_connect("host=192.168.10.10 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
-        $con = pg_connect("host=18.221.171.210 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
-        //$con = pg_connect("host=186.4.203.42 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
+         $con = pg_connect("host=186.4.203.42 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
 
         	if(!$con){
         		echo "No se puedo Conectar a la Base";
@@ -48,14 +43,9 @@ class Conectar{
         	try
         	{
 	
-<<<<<<< HEAD
-            	//$pdo = new PDO('pgsql:host=18.221.171.210;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
-        		$pdo = new PDO('pgsql:host=186.4.203.42;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
-=======
-            	$pdo = new PDO('pgsql:host=18.221.171.210;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
-        		//$pdo = new PDO('pgsql:host=192.168.10.10;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
-        		//$pdo = new PDO('pgsql:host=186.4.203.42;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
+
+           	//$pdo = new PDO('pgsql:host=192.168.10.10;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
+       		$pdo = new PDO('pgsql:host=186.4.203.42;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
         		
 
             	$fpdo = new FluentPDO($pdo);
