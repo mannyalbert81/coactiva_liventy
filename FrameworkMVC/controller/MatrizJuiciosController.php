@@ -5714,7 +5714,7 @@
 			$_direccion_garantes_3= $_POST["direccion_garantes_3"];
 			$_direccion_garantes_4= $_POST["direccion_garantes_4"];
 			
-			$_credito_hipotecario = $_POST['credito_hipotecario'];
+			//$_credito_hipotecario = $_POST['credito_hipotecario'];
 			
 			$clientes= new ClientesModel();
 			$usuarios = new UsuariosModel();
@@ -5872,7 +5872,7 @@
 						//// INSERTO JUICIO
 						
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual','$_credito_hipotecario'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();

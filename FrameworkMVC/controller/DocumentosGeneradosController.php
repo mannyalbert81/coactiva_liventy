@@ -146,7 +146,7 @@ session_start();
 							if($tipo_documento=="ALL")
 							{
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
@@ -158,7 +158,7 @@ session_start();
 							}else if($tipo_documento=="PL")
 							{
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
@@ -171,7 +171,7 @@ session_start();
 							}else if($tipo_documento=="PS")
 							{
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
@@ -468,7 +468,7 @@ session_start();
 				readfile($mi_pdf);
 			}else 
 			{
-				echo 'error al cargar el archivo';
+				echo 'ESTIMADO USUARIO SE PRESENTAN INCONVENIENTES PARA ABRIR SU PDF, INTENTELO MAS TARDE.';
 			}
 			
 			

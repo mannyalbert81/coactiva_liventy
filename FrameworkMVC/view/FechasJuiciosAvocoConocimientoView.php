@@ -409,10 +409,12 @@
 			  	<p  class="formulario-subtitulo">Tipo Avoco:</p>
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="6">AVOCO CONOCIMIENTO</option>  
+			  		<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
-					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
-			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>   
+					<option value="5">AVOCO CONOCIMIENTO CON NOMBRAMIENTO DE JUEZA</option>
+					<option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>   
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
@@ -445,7 +447,7 @@
 	          </div> 
 	          
 	          <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal y para los fines legales consiguientes que no notificó a los coactivados con el auto que antecede por cuanto no han señalado domicilio legal para el efecto. "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal y para los fines legales consiguientes que no notificó a los coactivados con la providencia que antecede por cuanto no han señalado domicilio legal para el efecto. "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
 				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b>CERTIFICO.-</b>)</FONT>
 			  </div>
 				   

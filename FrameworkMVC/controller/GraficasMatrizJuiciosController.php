@@ -1547,14 +1547,14 @@ public function index3(){
 				
 
 
-				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
+				$columnas="COUNT(id_providencias) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
-				      public.ciudad";
+				      public.ciudad, public.providencias";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND providencias.id_titulo_credito= titulo_credito.id_titulo_credito";
 
 				$grupo="asignacion_secretarios_view.impulsores";
 				$id="asignacion_secretarios_view.impulsores";
@@ -1638,7 +1638,7 @@ public function index3(){
 				
 					$html.='<div class="alert alert-warning alert-dismissable">';
 					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='<h4>Aviso!!!</h4> No a generado providencias en la fecha seleccionada.';
 					$html.='</div>';
 				
 				}
@@ -1790,14 +1790,14 @@ public function index3(){
 				
 
 
-				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
+				$columnas="COUNT(id_providencias) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
-				      public.ciudad";
+				      public.ciudad, public.providencias";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad  AND asignacion_secretarios_view.id_secretario = '$_id_usuarios'";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad  AND providencias.id_titulo_credito= titulo_credito.id_titulo_credito AND asignacion_secretarios_view.id_secretario = '$_id_usuarios'";
 
 				$grupo="asignacion_secretarios_view.impulsores";
 				$id="asignacion_secretarios_view.impulsores";
@@ -1880,7 +1880,7 @@ public function index3(){
 				
 					$html.='<div class="alert alert-warning alert-dismissable">';
 					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='<h4>Aviso!!!</h4> No a generado providencias en la fecha seleccionada.';
 					$html.='</div>';
 				
 				}
@@ -2022,14 +2022,14 @@ public function index3(){
 				$id_ciudad=(isset($_POST['id_ciudad']))?$_POST['id_ciudad']:0;
 				//$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
 					
-				$columnas="COUNT(id_juicios) as total, asignacion_secretarios_view.impulsores";
+				$columnas="COUNT(id_providencias) as total, asignacion_secretarios_view.impulsores";
 				$tablas="public.juicios,
  				      public.estados_procesales_juicios, public.clientes, public.provincias, public.titulo_credito, public.asignacion_secretarios_view,
-				      public.ciudad";
+				      public.ciudad, public.providencias";
 				$where="estados_procesales_juicios.id_estados_procesales_juicios = juicios.id_estados_procesales_juicios AND clientes.id_clientes = titulo_credito.id_clientes AND
 				clientes.id_provincias = provincias.id_provincias AND
 				titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
-				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad";
+				asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND providencias.id_titulo_credito= titulo_credito.id_titulo_credito";
 
 				$grupo="asignacion_secretarios_view.impulsores";
 				$id="asignacion_secretarios_view.impulsores";
@@ -2118,7 +2118,7 @@ public function index3(){
 				
 					$html.='<div class="alert alert-warning alert-dismissable">';
 					$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-					$html.='<h4>Aviso!!!</h4> No existe actualizaciones de su matriz en la fecha seleccionada.';
+					$html.='<h4>Aviso!!!</h4> No a generado providencias en la fecha seleccionada.';
 					$html.='</div>';
 				
 				}

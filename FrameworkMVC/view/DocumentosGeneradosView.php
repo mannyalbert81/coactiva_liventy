@@ -357,8 +357,8 @@
 			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
 			    
 		 </div>
-		 </div>
-		 <div class="row">
+		
+		
 		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >CI Cliente 3:</p>
 			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
@@ -396,9 +396,7 @@
 			    
 		 </div>
 		 
-		 </div>
-         
-		 <div class="row">
+		 
 		 <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
