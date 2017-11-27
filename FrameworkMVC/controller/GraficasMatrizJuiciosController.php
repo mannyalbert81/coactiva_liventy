@@ -1001,7 +1001,6 @@ public function index2(){
 
 
 
-
 	if ($id_rol==5){
 
 		$_id_usuarios= $_SESSION['id_usuarios'];

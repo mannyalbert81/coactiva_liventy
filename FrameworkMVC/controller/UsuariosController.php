@@ -24,7 +24,7 @@ public function index(){
 			
 			//creacion menu busqueda
 			//$resultMenu=array("1"=>Nombre,"2"=>Usuario,"3"=>Correo,"4"=>Rol);
-			$resultMenu=array(0=>'--Seleccione--',1=>'Nombre', 2=>'Usuario', 3=>'Correo', 4=>'Rol', 5=>'Ciudad');
+			$resultMenu=array(0=>'--TODOS--',1=>'Nombre', 2=>'Usuario', 3=>'Correo', 4=>'Rol', 5=>'Ciudad');
 			
 			
 				//Creamos el objeto usuario
@@ -87,8 +87,6 @@ public function index(){
 			}
 			
 			
-			///si tiene permiso de ver
-			//$resultPerVer = $usuarios->getPermisosEditar("   controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
 			
 			$resultPerVer= $usuarios->getPermisosVer("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
 			
@@ -98,13 +96,7 @@ public function index(){
 				{
 						
 					
-					/*	
-					$columnas = "documentos_legal.id_documentos_legal,  documentos_legal.fecha_documentos_legal, categorias.nombre_categorias, subcategorias.nombre_subcategorias, tipo_documentos.nombre_tipo_documentos, cliente_proveedor.nombre_cliente_proveedor, carton_documentos.numero_carton_documentos, documentos_legal.paginas_documentos_legal, documentos_legal.fecha_desde_documentos_legal, documentos_legal.fecha_hasta_documentos_legal, documentos_legal.ramo_documentos_legal, documentos_legal.numero_poliza_documentos_legal, documentos_legal.ciudad_emision_documentos_legal, soat.cierre_ventas_soat,   documentos_legal.creado  ";
-					$tablas   = "public.documentos_legal, public.categorias, public.subcategorias, public.tipo_documentos, public.carton_documentos, public.cliente_proveedor, public.soat";
-					$where    = "categorias.id_categorias = subcategorias.id_categorias AND subcategorias.id_subcategorias = documentos_legal.id_subcategorias AND tipo_documentos.id_tipo_documentos = documentos_legal.id_tipo_documentos AND carton_documentos.id_carton_documentos = documentos_legal.id_carton_documentos AND cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor   AND documentos_legal.id_soat = soat.id_soat ";
-					$id       = "documentos_legal.fecha_documentos_legal, carton_documentos.numero_carton_documentos";
-					*/	
-					
+				
 					
 					
 					$columnas = " usuarios.id_usuarios,  usuarios.nombre_usuarios, usuarios.usuario_usuarios ,  usuarios.telefono_usuarios, usuarios.celular_usuarios, usuarios.correo_usuarios, rol.nombre_rol, estado.nombre_estado, rol.id_rol, estado.id_estado, usuarios.cedula_usuarios, ciudad.id_ciudad, ciudad.nombre_ciudad";
@@ -131,27 +123,27 @@ public function index(){
 							
 						switch ($criterio) {
 							case 0:
-								$where_0 = "OR  usuarios.nombre_usuarios LIKE '$contenido'   OR usuarios.usuario_usuarios LIKE '$contenido'  OR  usuarios.correo_usuarios LIKE '$contenido'  OR rol.nombre_rol LIKE '$contenido' OR ciudad.nombre_ciudad LIKE '$contenido'";
+								$where_0 = "";
 								break;
 							case 1:
 								//Ruc Cliente/Proveedor
-								$where_1 = " AND  usuarios.nombre_usuarios LIKE '$contenido'  ";
+								$where_1 = " AND  usuarios.nombre_usuarios LIKE '%$contenido%'  ";
 								break;
 							case 2:
 								//Nombre Cliente/Proveedor
-								$where_2 = " AND usuarios.usuario_usuarios LIKE '$contenido'  ";
+								$where_2 = " AND usuarios.usuario_usuarios LIKE '%$contenido%'  ";
 								break;
 							case 3:
 								//Número Carton
-								$where_3 = " AND usuarios.correo_usuarios LIKE '$contenido' ";
+								$where_3 = " AND usuarios.correo_usuarios LIKE '%$contenido%' ";
 								break;
 							case 4:
 								//Número Poliza
-								$where_4 = " AND rol.nombre_rol LIKE '$contenido' ";
+								$where_4 = " AND rol.nombre_rol LIKE '%$contenido%' ";
 								break;
 							case 5:
 									//Número Poliza
-									$where_5 = " AND ciudad.nombre_ciudad LIKE '$contenido' ";
+									$where_5 = " AND ciudad.nombre_ciudad LIKE '%$contenido%' ";
 									break;
 						}
 							
@@ -171,18 +163,7 @@ public function index(){
 					}
 				}
 				
-				if (isset ($_POST["Imprimir"])   )
-     			{
-     					
-     				 
-     				
-     				//ContUsuariosReport.php
-				   $this->ireport("ContUsuarios", "");
-				   
-				   exit();
-				   
-					
-				}	
+				
 				
 			}
 			
@@ -242,7 +223,7 @@ public function index(){
 		    
 		    	//para la foto
 		    	 
-		    	$directorio = $_SERVER['DOCUMENT_ROOT'].'/coactiva_liventy/fotos/';
+		    	$directorio = $_SERVER['DOCUMENT_ROOT'].'/fotos/';
 		    	 
 		    	$nombre = $_FILES['imagen_usuarios']['name'];
 		    	$tipo = $_FILES['imagen_usuarios']['type'];
@@ -490,7 +471,7 @@ public function index(){
 					
 						//para la foto
 					
-						$directorio = $_SERVER['DOCUMENT_ROOT'].'/coactiva_liventy/fotos/';
+						$directorio = $_SERVER['DOCUMENT_ROOT'].'/fotos/';
 					
 						$nombre = $_FILES['imagen_usuarios']['name'];
 						$tipo = $_FILES['imagen_usuarios']['type'];

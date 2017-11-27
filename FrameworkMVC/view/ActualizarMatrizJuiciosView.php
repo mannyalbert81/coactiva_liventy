@@ -36,21 +36,65 @@
         </style>
         
      
-         
-     <script >
-     /*
+          <script >
 		$(document).ready(function(){
 
 		    // cada vez que se cambia el valor del combo
 		    $("#actualizar").click(function() 
 			{
-		   
+		   /*
 		    	var fecha_emision_juicios = $("#fecha_emision_juicios").val();
 		     	var fecha_ultima_providencia = $("#fecha_ultima_providencia").val();
+		     	*/
+		     	var numero_titulo_credito = $("#numero_titulo_credito").val();
+		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
+		     	var id_provincias = $("#id_provincias").val();
+		     	var id_estados_procesales_juicios = $("#id_estados_procesales_juicios").val();
+		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
+
+		     	var id_origen_juicio = $("#id_origen_juicio").val();
+		     
 		     	
+		    	if (id_origen_juicio == "")
+		    	{
+			    	
+		    		$("#mensaje_id_origen_juicio").text("Seleccione Origen");
+		    		$("#mensaje_id_origen_juicio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_id_origen_juicio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 		    
 		   				
-		    	if (fecha_emision_juicios == "")
+		     	if (juicio_referido_titulo_credito == "")
+		    	{
+			    	
+		    		$("#mensaje_juicio_referido_titulo_credito").text("Introduzca un Número Juicio");
+		    		$("#mensaje_juicio_referido_titulo_credito").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_juicio_referido_titulo_credito").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		     	if (numero_titulo_credito == "")
+		    	{
+			    	
+		    		$("#mensaje_numero_titulo_credito").text("Introduzca un Número Operación");
+		    		$("#mensaje_numero_titulo_credito").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_numero_titulo_credito").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+			     /*	if (fecha_emision_juicios == "")
 		    	{
 			    	
 		    		$("#mensaje_fecha_emision_juicios").text("Introduzca una Fecha");
@@ -61,8 +105,40 @@
 		    	{
 		    		$("#mensaje_fecha_emision_juicios").fadeOut("slow"); //Muestra mensaje de error
 		            
+				}*/
+				
+		    	
+		    	
+
+		    	if (id_provincias == "")
+		    	{
+			    	
+		    		$("#mensaje_id_provincias").text("Seleccione Una Provincia");
+		    		$("#mensaje_id_provincias").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_id_provincias").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	if (id_estados_procesales_juicios == "")
+		    	{
+			    	
+		    		$("#mensaje_id_estados_procesales_juicios").text("Seleccione Un Estado Procesal");
+		    		$("#mensaje_id_estados_procesales_juicios").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_id_estados_procesales_juicios").fadeOut("slow"); //Muestra mensaje de error
+		            
 				}
 
+		    
+		     
+		    	
+/*
 
 		    	if (fecha_ultima_providencia == "")
 		    	{
@@ -76,28 +152,53 @@
 		    		$("#mensaje_fecha_ultima_providencia").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
-
 		    	
+		    	*/
 		    	
 		    	
 			}); 
 
+			$( "#id_origen_juicio" ).focus(function() {
+				$("#mensaje_id_origen_juicio").fadeOut("slow");
+			});
+
+		    $( "#juicio_referido_titulo_credito" ).focus(function() {
+				$("#mensaje_juicio_referido_titulo_credito").fadeOut("slow");
+			});
+
+			$( "#numero_titulo_credito" ).focus(function() {
+				$("#mensaje_numero_titulo_credito").fadeOut("slow");
+			});
 	
-				$( "#fecha_emision_juicios" ).focus(function() {
+			/*	$( "#fecha_emision_juicios" ).focus(function() {
 					$("#mensaje_fecha_emision_juicios").fadeOut("slow");
+    			});*/
+
+				$( "#id_provincias" ).focus(function() {
+					$("#mensaje_id_provincias").fadeOut("slow");
     			});
 
+				$( "#id_estados_procesales_juicios" ).focus(function() {
+					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
+    			});
+
+			
+    			
+/*
 				$( "#fecha_ultima_providencia" ).focus(function() {
 					$("#mensaje_fecha_ultima_providencia").fadeOut("slow");
     			});
-				
-				
+			*/
 					    
 		}); 
-*/
+
 	</script>
 	
+  
+     
+     
+         
+    
   
    
         
@@ -143,7 +244,7 @@
 		 var con_identificacion_garantes_1=$("#identificacion_garantes_1").val();
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
-		 
+		 var con_id_origen_juicio=$("#id_origen_juicio").val();
 
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
@@ -162,6 +263,7 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
+				  id_origen_juicio:con_id_origen_juicio,
 				  
 				  action:'ajax',
 				  page:pagina
@@ -336,7 +438,7 @@
 				        <input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value="<?php echo $resEdit->id_juicios; ?>" readonly >
 				        </div>
 					    </div>
-					    <div class = 'col-xs-12 col-md-3 col-lg-3'>
+					    <div class = 'col-xs-12 col-md-1 col-lg-1'>
 				        <div class='form-group'>
 				        <label for='regional' class='control-label'>Regional</label><br>
 				        <input type='text' class='form-control' id='regional' name='regional' value="<?php echo $resEdit->regional; ?>" >
@@ -345,6 +447,23 @@
 				        <input type='hidden' class='form-control'  id='id_titulo_credito' name='id_titulo_credito' value="<?php echo $resEdit->id_titulo_credito; ?>"  >
 						</div>
 				        </div>	
+				        
+				         <div class="col-xs-12 col-md-2 col-lg-2">
+ 						 <div class='form-group'>
+			  			 <label for='id_origen_juicio' class='control-label'>Origen Juicio</label>
+			  			<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  			 <option value="" selected="selected">--Seleccione--</option>
+						<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>" <?php if ($res->id_origen_juicio == $resEdit->id_origen_juicio )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_origen_juicio; ?></option>
+						            
+						<?php } ?>
+						</select> 
+						  <div id="mensaje_id_origen_juicio" class="errores"></div>
+			  			</div>
+						</div>
+						
+						
+						
 				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='juicio_referido_titulo_credito' class='control-label'># Juicio</label><br>
@@ -1054,6 +1173,18 @@
 
          </div>
          
+           <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Origen Juicio:</p>
+			  	<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>"><?php echo $res->nombre_origen_juicio;  ?> </option>
+			            <?php } ?>
+				</select>
+
+          </div>
+         
+       
         
 		<div class="col-lg-2 col-md-2 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Desde:</p>

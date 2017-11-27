@@ -427,21 +427,56 @@
          
 
          </script>
+         
+         <script type="text/javascript">
+		function mensaje(){
+			
+		  var respuesta = confirm('Seguro Desea Eliminar')
+		   return respuesta;
+		}
+		
+		</script>
+	
+	
+	
+	     <script >
+			$(document).ready(function(){
+					
+				$("#nuevo_usuario").click(function(){
+							
+					$('#div_nuevo_usuario').toggle("slow");
+					$('#nuevo_usuario').fadeOut("slow");
+					$('#cerrar_nuevo_usuario').fadeIn("slow");
+					
+				});
+
+				$("#cerrar_nuevo_usuario").click(function(){
+					
+					$('#div_nuevo_usuario').fadeOut("slow");
+					$('#nuevo_usuario').fadeIn("slow");
+					$('#cerrar_nuevo_usuario').fadeOut("slow");
+					
+				});
+			});
+		</script>
+
+			<script >
+			$(document).ready(function(){
+			
+				$("#div_nuevo_usuario").fadeOut("slow");
+				$('#cerrar_nuevo_usuario').fadeOut("slow");
+			});
+			</script>
+	
+	
 	
     </head>
     <body style="background-color: #d9e3e4;">
     
-       <?php include("view/modulos/modal.php"); ?>
+     
        <?php include("view/modulos/head.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
-       
-       
-       
-       <?php
-       
      
-		?>
- 
   
   <div class="container">
   
@@ -449,98 +484,96 @@
       
       <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("Usuarios","InsertaUsuarios"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-6">
+      <form action="<?php echo $helper->url("Usuarios","InsertaUsuarios"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
             
-         
-        	    <h4 style="color:#ec971f;">Insertar Usuarios</h4>
-            	<hr/>
-            	
-		   		
+         <br>
             
           <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
             
             
-            
-            <div class="row">
-		    <div class="col-xs-6 col-md-6">
+		     <div class="col-lg-12 col-md-12 col-xs-12" >
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos del Usuario</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+  			
+  			  <div class="row">
+		    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Cedula</p>
-			  	<input type="text"  name="cedula_usuarios" id="cedula_usuarios" value="<?php echo $resEdit->cedula_usuarios; ?>" class="form-control" readonly/> 
+			  	<input type="text"  name="cedula_usuarios" id="cedula_usuarios" value="<?php echo $resEdit->cedula_usuarios; ?>" class="form-control"/> 
 			    <div id="mensaje_cedula" class="errores"></div>
 			  </div>
-			   </div>
-			   
-			   <div class="row">
-		       <div class="col-xs-6 col-md-6">
+			  
+		       <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Nombres Usuario</p>
 			  	<input type="text"  name="nombre_usuarios" id="nombre_usuarios" value="<?php echo $resEdit->nombre_usuarios; ?>" class="form-control"/> 
 			    <div id="mensaje_nombres" class="errores"></div>
 			  </div>
-			  <div class="col-xs-6 col-md-6">
+			  
+			  <div class="col-xs-12 col-md-3">
+			  	<p  class="formulario-subtitulo" >Correo </p>
+			  	<input type="email"  name="correo_usuarios" id="correo_usuarios" value="<?php echo $resEdit->correo_usuarios; ?>" class="form-control" />
+			    <div id="mensaje_correo" class="errores"></div>
+			  </div>
+			  
+			  <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Usuario</p>
 			  	<input type="text"  name="usuario_usuarios" id="usuario_usuarios" value="<?php echo $resEdit->usuario_usuarios; ?>" class="form-control"/> 
 			    <div id="mensaje_usuario" class="errores"></div>
 			  </div>
 			   </div>
 		    
-		    <div class="row">
-			  <div class="col-xs-6 col-md-6">
+		        <div class="row">
+			    <div class="col-xs-12 col-md-3">
 			  	<p class="formulario-subtitulo" >Clave Usuario </p>
 			  	<input type="password" name="clave_usuarios" id="clave_usuarios" value="" class="form-control"/>
 			 	<div id="mensaje_clave" class="errores"></div>
 			 	</div>
-			  <div class="col-xs-6 col-md-6">
+			    
+			    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Confirme Clave </p>
 			  	<input type="password" name="cclave_usuarios" id="cclave_usuarios" value="" class="form-control"/>
-			  	 <div id="mensaje_cclave" class="errores"></div>
-			  	 </div>
-			  </div>
-		    
-		    <div class="row">
-		    <div class="col-xs-6 col-md-6">
+			    <div id="mensaje_cclave" class="errores"></div>
+			  	</div>
+			  	 
+			  	<div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Teléfono Usuario </p>
 			  	<input type="text" name="telefono_usuarios" id="telefono_usuarios" value="<?php echo $resEdit->telefono_usuarios; ?>" class="form-control"/>
-			  
-			  </div>
-			  <div class="col-xs-6 col-md-6">
+			    </div>
+			    
+			    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Celular  Usuario</p>
 			  	<input type="text" name="celular_usuarios" id="celular_usuarios" value="<?php echo $resEdit->celular_usuarios; ?>" class="form-control"/> 
-			  <div id="mensaje_celular" class="errores"></div>
-			  </div>
-		    </div>
+			    <div id="mensaje_celular" class="errores"></div>
+			    </div>
+			    </div>
 		    
 		    
 		    <div class="row">
-			  <div class="col-xs-6 col-md-6">
-			  	<p  class="formulario-subtitulo" >Correo </p>
-			  	<input type="email"  name="correo_usuarios" id="correo_usuarios" value="<?php echo $resEdit->correo_usuarios; ?>" class="form-control" />
-				
-				<div id="mensaje_correo" class="errores"></div>
-			  </div>
-			  
-			  <div class="col-xs-6 col-md-6">
+		       <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Roles</p>
 			  	<select name="id_rol" id="id_rol"  class="form-control" >
 					<?php foreach($resultRol as $resRol) {?>
-					<option value="<?php echo $resRol->id_rol; ?>" <?php if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $resRol->nombre_rol; ?> </option>
-						            
-						<?php } ?>
+						<option value="<?php echo $resRol->id_rol; ?>" <?php if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $resRol->nombre_rol; ?> </option>
+			        <?php } ?>
 				</select> 
 			  </div>
-		      </div>
+		     
 		      
-		      <div class="row">
-			    
-			  <div class="col-xs-6 col-md-6">
+		      
+			  <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Estados</p>
 			  	<select name="estados" id="estados"  class="form-control" >
 					<?php foreach($resultEst as $resEst) {?>
 						<option value="<?php echo $resEst->id_estado; ?>" <?php if ($resEst->id_estado == $resEdit->id_estado )  echo  ' selected="selected" '  ;  ?> ><?php echo $resEst->nombre_estado; ?> </option>
-						           
 			        <?php } ?>
 				</select> 			  
 			  </div>
-		
-		<div class="col-xs-6 col-md-6">
+			  
+			   <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Juzgado</p>
 			  	<select name="id_ciudad" id="id_ciudad"  class="form-control" >
 					<?php foreach($resultCiu as $resCiu) {?>
@@ -548,76 +581,177 @@
 			        <?php } ?>
 				</select> 			  
 			  </div>
+		
+  			
+  			
+			   <div class="col-xs-12 col-md-3">
+			  	<p  class="formulario-subtitulo" >Foto</p>
+			  	<input type="file" name="imagen_usuarios" id="imagen_usuarios" value="" class="form-control"/> 
+			  </div>
+			    
+			    
+		    </div>
+		    	</div>
+		    
+		    	</div>
+			 
+			
+  			
+  			
+  			
+  			
+  			 <div class="col-lg-6 col-md-6 col-xs-12">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Cargo a Desempeñar</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+			
+			 <div class="row">
+			  <div class="col-xs-6 col-md-6">
+			  	<p  class="formulario-subtitulo" >Sexo</p>
+			  	<select name="sexo" id="sexo"  class="form-control" >
+						<option value="">--Seleccione--</option>
+						<option value="M">Masculino</option>
+						<option value="F">Femenino</option>
+			    </select> 			  
 			  </div>
 			  
-			  <div class="row">
-               <div class="col-xs-6 col-md-6">
-			  	<p  class="formulario-subtitulo" >Foto</p>
-			  	<input type="file" name="imagen_usuarios" id="imagen_usuarios" value="" class="form-control" /> 
-			  
+			   <div class="col-xs-6 col-md-6">
+			  	<p  class="formulario-subtitulo" >Cargo</p>
+			  	<select name="cargo" id="cargo"  class="form-control" >
+					    <option value="">--Seleccione--</option>
+						<option value="SECRETARIO ABOGADO">SECRETARIO ABOGADO</option>
+						<option value="SECRETARIA ABOGADA">SECRETARIA ABOGADA</option>
+						<option value="ABOGADO IMPULSOR">ABOGADO IMPULSOR</option>
+						<option value="ABOGADA IMPULSORA">ABOGADA IMPULSORA</option>
+				</select> 			  
 			  </div>
 			  
 			</div>
-		 <hr>
-            
+			
+			
+			
+			</div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
+			
+		    
+		     <div class="col-lg-6 col-md-6 col-xs-12" >
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         	<h4><i class='glyphicon glyphicon-edit'></i> Asignación Secretario<br><FONT FACE="arial" SIZE=2 COLOR=red>(Selecionar solo si el nuevo usuario es impulsor.)</FONT></h4>
+	         	
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+			
+			 <div class="row">
+			  <div class="col-xs-6 col-md-12">
+			  	<p  class="formulario-subtitulo" >Secretario</p>
+			  	<select name="sexo" id="sexo"  class="form-control" >
+						<option value="">--Seleccione--</option>
+						<option value="M">Masculino</option>
+						<option value="F">Femenino</option>
+			    </select> 			  
+			  </div>
+			  
+			   
+			  
+		    </div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
+		   
+  			  <div class="row">
+			  <div class="col-xs-12 col-md-12" style="text-align: center;" >
+			  	<input type="submit" id="Guardar" name="Guardar" value="Guardar"  class="btn btn-success"/>
+			  </div>
+			  </div>   
+  			
+  			
+  		
+  			
+  			</div>
+  			</div>
+  			</div>
+		     
+		     
+   
             
 		     <?php } } else {?>
-		    
-		    <div class="row">
-		    <div class="col-xs-6 col-md-6">
+		     
+		     
+		     <div class="col-lg-12 col-md-12 col-xs-12" id="div_nuevo_usuario" style="display: none;">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Datos del Usuario</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+  			
+  			  <div class="row">
+		    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Cedula</p>
 			  	<input type="text"  name="cedula_usuarios" id="cedula_usuarios" value="" class="form-control"/> 
 			    <div id="mensaje_cedula" class="errores"></div>
 			  </div>
-			   </div>
-			   
-			   <div class="row">
-		       <div class="col-xs-6 col-md-6">
+			  
+		       <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Nombres Usuario</p>
 			  	<input type="text"  name="nombre_usuarios" id="nombre_usuarios" value="" class="form-control"/> 
 			    <div id="mensaje_nombres" class="errores"></div>
 			  </div>
-			  <div class="col-xs-6 col-md-6">
+			  
+			  <div class="col-xs-12 col-md-3">
+			  	<p  class="formulario-subtitulo" >Correo </p>
+			  	<input type="email"  name="correo_usuarios" id="correo_usuarios" value="" class="form-control" />
+			    <div id="mensaje_correo" class="errores"></div>
+			  </div>
+			  
+			  <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Usuario</p>
 			  	<input type="text"  name="usuario_usuarios" id="usuario_usuarios" value="" class="form-control"/> 
 			    <div id="mensaje_usuario" class="errores"></div>
 			  </div>
 			   </div>
 		    
-		    <div class="row">
-			  <div class="col-xs-6 col-md-6">
+		        <div class="row">
+			    <div class="col-xs-12 col-md-3">
 			  	<p class="formulario-subtitulo" >Clave Usuario </p>
 			  	<input type="password" name="clave_usuarios" id="clave_usuarios" value="" class="form-control"/>
 			 	<div id="mensaje_clave" class="errores"></div>
 			 	</div>
-			  <div class="col-xs-6 col-md-6">
+			    
+			    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Confirme Clave </p>
 			  	<input type="password" name="cclave_usuarios" id="cclave_usuarios" value="" class="form-control"/>
-			  	 <div id="mensaje_cclave" class="errores"></div>
-			  	 </div>
-			  </div>
-		    
-		    <div class="row">
-		    <div class="col-xs-6 col-md-6">
+			    <div id="mensaje_cclave" class="errores"></div>
+			  	</div>
+			  	 
+			  	<div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Teléfono Usuario </p>
 			  	<input type="text" name="telefono_usuarios" id="telefono_usuarios" value="" class="form-control"/>
-			  
-			  </div>
-			  <div class="col-xs-6 col-md-6">
+			    </div>
+			    
+			    <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Celular  Usuario</p>
 			  	<input type="text" name="celular_usuarios" id="celular_usuarios" value="" class="form-control"/> 
-			  <div id="mensaje_celular" class="errores"></div>
-			  </div>
-		    </div>
+			    <div id="mensaje_celular" class="errores"></div>
+			    </div>
+			    </div>
 		    
 		    
 		    <div class="row">
-			  <div class="col-xs-6 col-md-6">
-			  	<p  class="formulario-subtitulo" >Correo </p>
-			  	<input type="email"  name="correo_usuarios" id="correo_usuarios" value="" class="form-control" />
-			    <div id="mensaje_correo" class="errores"></div>
-			  </div>
-			  <div class="col-xs-6 col-md-6">
+		       <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Roles</p>
 			  	<select name="id_rol" id="id_rol"  class="form-control" >
 					<?php foreach($resultRol as $resRol) {?>
@@ -625,11 +759,10 @@
 			        <?php } ?>
 				</select> 
 			  </div>
-		      </div>
+		     
 		      
-		      <div class="row">
-			    
-			  <div class="col-xs-6 col-md-6">
+		      
+			  <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Estados</p>
 			  	<select name="estados" id="estados"  class="form-control" >
 					<?php foreach($resultEst as $resEst) {?>
@@ -638,7 +771,7 @@
 				</select> 			  
 			  </div>
 			  
-			   <div class="col-xs-6 col-md-6">
+			   <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Juzgado</p>
 			  	<select name="id_ciudad" id="id_ciudad"  class="form-control" >
 					<?php foreach($resultCiu as $resCiu) {?>
@@ -646,133 +779,209 @@
 			        <?php } ?>
 				</select> 			  
 			  </div>
-			  
-			  
-			</div>
-			
-			<div class="row">
-			
-               <div class="col-xs-6 col-md-6">
+		
+  			
+  			
+			   <div class="col-xs-12 col-md-3">
 			  	<p  class="formulario-subtitulo" >Foto</p>
-			  	
 			  	<input type="file" name="imagen_usuarios" id="imagen_usuarios" value="" class="form-control"/> 
 			  </div>
+			    
+			    
+		    </div>
+		    	</div>
+		    
+		    	</div>
+			 
+			
+  			
+  			
+  			
+  			
+  			 <div class="col-lg-6 col-md-6 col-xs-12">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Cargo a Desempeñar</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+			
+			 <div class="row">
+			  <div class="col-xs-6 col-md-6">
+			  	<p  class="formulario-subtitulo" >Sexo</p>
+			  	<select name="sexo" id="sexo"  class="form-control" >
+						<option value="">--Seleccione--</option>
+						<option value="M">Masculino</option>
+						<option value="F">Femenino</option>
+			    </select> 			  
+			  </div>
+			  
+			   <div class="col-xs-6 col-md-6">
+			  	<p  class="formulario-subtitulo" >Cargo</p>
+			  	<select name="cargo" id="cargo"  class="form-control" >
+					    <option value="">--Seleccione--</option>
+						<option value="SECRETARIO ABOGADO">SECRETARIO ABOGADO</option>
+						<option value="SECRETARIA ABOGADA">SECRETARIA ABOGADA</option>
+						<option value="ABOGADO IMPULSOR">ABOGADO IMPULSOR</option>
+						<option value="ABOGADA IMPULSORA">ABOGADA IMPULSORA</option>
+				</select> 			  
+			  </div>
 			  
 			</div>
-		    <hr>
+			
+			
+			
+			</div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
+			
 		    
+		     <div class="col-lg-6 col-md-6 col-xs-12" >
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         	<h4><i class='glyphicon glyphicon-edit'></i> Asignación Secretario<br><FONT FACE="arial" SIZE=2 COLOR=red>(Selecionar solo si el nuevo usuario es impulsor.)</FONT></h4>
+	         	
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
+			
+			 <div class="row">
+			  <div class="col-xs-6 col-md-12">
+			  	<p  class="formulario-subtitulo" >Secretario</p>
+			  	<select name="sexo" id="sexo"  class="form-control" >
+						<option value="">--Seleccione--</option>
+						<option value="M">Masculino</option>
+						<option value="F">Femenino</option>
+			    </select> 			  
+			  </div>
+			  
+			   
+			  
+		    </div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
+  			</div>
 		   
+  			  <div class="row">
+			  <div class="col-xs-12 col-md-12" style="text-align: center;" >
+			  	<input type="submit" id="Guardar" name="Guardar" value="Guardar"  class="btn btn-success"/>
+			  </div>
+			  </div>   
+  			
+  			
+  		
+  			
+  			</div>
+  			</div>
+  			</div>
+		     
+		     
+		    
+		  
+			
+			
                	
 		     <?php } ?>
-		       <div class="row">
-			  <div class="col-xs-12 col-md-12" style="text-align: center;" >
-			  	<input type="submit" id="Guardar" name="Guardar" value="Guardar" onClick="Ok()" class="btn btn-success"/>
-			  </div>
-			</div>     
+		    
                
 		
-		 <hr>
+		
           
           </form>
        
-         <!-- termina el form -->
-       
-        <div class="col-lg-6">
-            <h4 style="color:#ec971f;">Lista de Usuarios</h4>
+      
+           <form action="<?php echo $helper->url("Usuarios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
            
-     <!-- empieza formulario de busqueda -->
-     
-            <hr>
-        <div class="row">
-           <form action="<?php echo $helper->url("Usuarios","Index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+           <div class="col-lg-12 col-md-12 col-xs-12">
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Buscar Usuarios Registrados</h4>
+	         </div>
+	         <div class="panel-body">
+			 <div class="panel panel-default">
+  			 <div class="panel-body">
            
            <div class="col-lg-4">
            <input type="text"  name="contenido" id="contenido" value="" class="form-control"/>
            <div id="mensaje_contenido" class="errores"></div>
-            </div>
+           </div>
             
            <div class="col-lg-4">
            <select name="criterio" id="criterio"  class="form-control">
                                     <?php foreach($resultMenu as $val=>$desc) {?>
                                          <option value="<?php echo $val ?>" <?php //if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $desc ?> </option>
                                     <?php } ?>
-                                        
            </select>
            <div id="mensaje_criterio" class="errores"></div>
            </div>
           
-           
-          
-           <div class="col-lg-2">
-           <input type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-default"/>
-           </div>
-           
+           <div class="col-lg-4">
+           <button  type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+           <button  type="button" id="nuevo_usuario" name="nuevo_usuario" value="Nuevo Usuario"   class="btn btn-success" ><i class="glyphicon glyphicon-plus"></i> Nuevo Usuario</button>         
+           <button  type="button" id="cerrar_nuevo_usuario" name="cerrar_nuevo_usuario" style="display: none;" value="Cerrar Nuevo Usuario"   class="btn btn-danger" ><i class="glyphicon glyphicon-remove"></i> Cancelar Nuevo Usuario</button>         
+	  	   </div>
+    
+          </div></div> 
+     
          
-          </form>
-          
-       <!-- termina formulario de busqueda -->
-        <hr/>
-         
-       <section class="col-lg-12  usuario" style="height:450px;overflow-y:scroll;">
-        <table class="table table-hover ">
-	         <tr >
-	            <th style="color:#456789;font-size:80%;"></th>
-	    		<th style="color:#456789;font-size:80%;">Id</th>
-	    		<th style="color:#456789;font-size:80%;">Nombre</th>
-	    		<th style="color:#456789;font-size:80%;">Usuario</th>
-	    		<th style="color:#456789;font-size:80%;">Correo</th>
-	    		<th style="color:#456789;font-size:80%;">Rol</th>
-	    		<th style="color:#456789;font-size:80%;">Estado</th>
+           <section class="col-lg-12" style="height:550px;overflow-y:auto;">
+           <table class="table table-hover ">
+	         <tr class="info">
+	            <th></th>
 	    		<th></th>
-	    		<th></th>
+	            <th style="text-align: left;  font-size: 12px;"></th>
+	    		<th style="text-align: left;  font-size: 12px;">Id</th>
+	    		<th style="text-align: left;  font-size: 12px;">Nombre</th>
+	    		<th style="text-align: left;  font-size: 12px;">Usuario</th>
+	    		<th style="text-align: left;  font-size: 12px;">Correo</th>
+	    		<th style="text-align: left;  font-size: 12px;">Rol</th>
+	    		<th style="text-align: left;  font-size: 12px;">Estado</th>
+	    		
 	  		</tr>
             
 	            <?php if (!empty($resultSet)) {  foreach($resultSet as $res) {?>
-	        		<tr>
-	        		   <td> <input type="image" name="image" src="view/DevuelveImagen.php?id_valor=<?php echo $res->id_usuarios; ?>&id_nombre=id_usuarios&tabla=usuarios&campo=imagen_usuarios"  alt="<?php echo $res->id_usuarios; ?>" width="80" height="60" >      </td>
-		              <td style="color:#000000;font-size:80%;"> <?php echo $res->id_usuarios; ?></td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_usuarios; ?>     </td> 
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->usuario_usuarios; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->correo_usuarios; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_rol; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_estado; ?>  </td>
-		           	   <td>
-			           		<div class="right">
-			                    <a href="<?php echo $helper->url("Usuarios","index"); ?>&id_usuarios=<?php echo $res->id_usuarios; ?>" class="btn btn-warning" onClick="notificacion()" style="font-size:65%;">Editar</a>
-			                </div>
-			            
-			             </td>
-			             <td>   
-			                	<div class="right">
-			                    <a href="<?php echo $helper->url("Usuarios","borrarId"); ?>&id_usuarios=<?php echo $res->id_usuarios; ?>" class="btn btn-danger" onClick="Borrar()" style="font-size:65%;">Borrar</a>
-			                </div>
+	        		<tr >
+	        		  <td>
+	        		  <a href="<?php echo $helper->url("Usuarios","index"); ?>&id_usuarios=<?php echo $res->id_usuarios; ?>" class="btn btn-warning"  style="font-size:65%;"><i class="glyphicon glyphicon-edit"></i></a>
+			          </td>
+			          
+			          <td>   
+		               <a href="<?php echo $helper->url("Usuarios","borrarId"); ?>&id_usuarios=<?php echo $res->id_usuarios; ?>" class="btn btn-danger" onClick="return mensaje();" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a>
 			           </td>
-		               
+	        
+	        		   <td> <input type="image" name="image" src="view/DevuelveImagen.php?id_valor=<?php echo $res->id_usuarios; ?>&id_nombre=id_usuarios&tabla=usuarios&campo=imagen_usuarios"  alt="<?php echo $res->id_usuarios; ?>" width="80" height="60" >      </td>
+		               <td style="font-size: 12px;"> <?php echo $res->id_usuarios; ?></td>
+		               <td style="font-size: 12px;"> <?php echo $res->nombre_usuarios; ?>     </td> 
+		               <td style="font-size: 12px;"> <?php echo $res->usuario_usuarios; ?>  </td>
+		               <td style="font-size: 12px;"> <?php echo $res->correo_usuarios; ?>  </td>
+		               <td style="font-size: 12px;"> <?php echo $res->nombre_rol; ?>  </td>
+		               <td style="font-size: 12px;"> <?php echo $res->nombre_estado; ?>  </td>
+		           	   
 		    		</tr>
 		        <?php } }else{ ?>
-            <tr>
-            <td></td>
-            <td></td>
-	                   <td colspan="5" style="color:#ec971f;font-size:8;"> <?php echo '<span id="snResult">No existen resultados</span>' ?></td>
-	        <td></td>
-		               
-		    		</tr>
-            <?php 
-		}
-            //echo "<script type='text/javascript'> alert('Hola')  ;</script>";
-            
-            ?>
-            
-       	</table>     
-		     
-      </section>
+                    <tr>
+            			<td></td>
+            			<td></td>
+	                    <td colspan="5" style="color:#ec971f;font-size:8;"> <?php echo '<span id="snResult">No existen resultados</span>' ?></td>
+	        			<td></td>
+		            </tr>
+                <?php }?>
+          
+          </table>    
+          
+           </div></div></div>
+		  </section>
+              </form>
+        <br><br><br><br><br><br>
         
         </div>
+        </div>
        
-       
-      
-      </div>
-      </div>
-   </div>
      </body>  
     </html>   

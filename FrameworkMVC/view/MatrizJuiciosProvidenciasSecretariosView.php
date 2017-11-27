@@ -94,7 +94,7 @@
 		 var con_identificacion_garantes_1=$("#identificacion_garantes_1").val();
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
-		 
+		 var con_id_origen_juicio=$("#id_origen_juicio").val();
 		 
 
 		  var con_datos={
@@ -116,7 +116,7 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
-				  
+				  id_origen_juicio:con_id_origen_juicio,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -344,7 +344,16 @@
 
          </div>
          
-       
+         <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Origen Juicio:</p>
+			  	<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>"><?php echo $res->nombre_origen_juicio;  ?> </option>
+			            <?php } ?>
+				</select>
+
+          </div>
           
         <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>

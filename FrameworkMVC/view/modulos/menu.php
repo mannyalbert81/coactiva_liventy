@@ -66,6 +66,9 @@ $controladores=$_SESSION['controladores'];
 			<a href="index.php?controller=Repositorio&action=index"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Gestion Repositorios</span> </a>
 			</li>
 			 -->
+			 <li style="<?php echo getcontrolador("Controladores",$controladores) ?>">
+			 <a href="index.php?controller=CrearQr&action=index"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Crea Qr</span> </a>
+			 </li>
 			
 </ul>
 </li>

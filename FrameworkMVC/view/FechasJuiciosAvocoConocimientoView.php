@@ -68,6 +68,80 @@
 	   
       </script>
       
+      
+      
+      
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#reemplazar").click(function() {
+			
+          var reemplazar = $(this).val();
+			
+          if(reemplazar == 3)
+          {
+       	   $("#div_datos_impulsor").fadeIn("slow");
+       	   $("#div_datos_secretario").fadeIn("slow");
+          }
+       	
+          else if (reemplazar == 2)
+          {
+        	  $("#div_datos_impulsor").fadeIn("slow");
+        	  
+       	  
+          }
+          else if (reemplazar == 1)
+          {
+        	  $("#div_datos_secretario").fadeIn("slow");
+        	  
+       	  
+          }
+          else{
+        	  $("#div_datos_impulsor").fadeOut("slow");
+        	  $("#div_datos_secretario").fadeOut("slow");
+        	  
+              }
+         
+	    });
+	    
+	    $("#reemplazar").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(reemplazar == 3)
+              {
+           	   $("#div_datos_impulsor").fadeIn("slow");
+           	   $("#div_datos_secretario").fadeIn("slow");
+              }
+           	
+              else if (reemplazar == 2)
+              {
+            	  $("#div_datos_impulsor").fadeIn("slow");
+            	  
+           	  
+              }
+              else if (reemplazar == 1)
+              {
+            	  $("#div_datos_secretario").fadeIn("slow");
+            	  
+           	  
+              }
+              else{
+            	  $("#div_datos_impulsor").fadeOut("slow");
+            	  $("#div_datos_secretario").fadeOut("slow");
+            	  
+                  }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
            <script >
 		$(document).ready(function(){
 
@@ -83,6 +157,9 @@
 			    var numero_liquidacion = $("#numero_liquidacion").val();
 			    var fecha_auto_pago = $("#fecha_auto_pago").val();
 
+
+			    var tipo_credito = $("#tipo_credito").val();
+			    var reemplazar = $("#reemplazar").val();
 
 		
 	   				
@@ -113,32 +190,81 @@
 		            
 				}
 
+		    	
 
-		    	if (nombre_impulsor_anterior == "")
+		    	if (reemplazar == 0)
 		    	{
 			    	
-		    		$("#mensaje_nombre_impulsor_anterior").text("Introduzca Impulsor Saliente");
-		    		$("#mensaje_nombre_impulsor_anterior").fadeIn("slow"); //Muestra mensaje de error
+		    		$("#mensaje_reemplazar").text("Seleccione a quien va reemplazar");
+		    		$("#mensaje_reemplazar").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_nombre_impulsor_anterior").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_reemplazar").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
-		    	if (nombre_secretario_anterior == "")
-		    	{
-			    	
-		    		$("#mensaje_nombre_secretario_anterior").text("Introduzca Secretario Saliente");
-		    		$("#mensaje_nombre_secretario_anterior").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-			    }
-		    	else 
-		    	{
-		    		$("#mensaje_nombre_secretario_anterior").fadeOut("slow"); //Muestra mensaje de error
-		            
+
+		    	if(reemplazar == 3){
+
+		    		if (nombre_impulsor_anterior == "")
+			    	{
+				    	
+			    		$("#mensaje_nombre_impulsor_anterior").text("Introduzca Impulsor Saliente");
+			    		$("#mensaje_nombre_impulsor_anterior").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+				    }
+			    	else 
+			    	{
+			    		$("#mensaje_nombre_impulsor_anterior").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+			    	if (nombre_secretario_anterior == "")
+			    	{
+				    	
+			    		$("#mensaje_nombre_secretario_anterior").text("Introduzca Secretario Saliente");
+			    		$("#mensaje_nombre_secretario_anterior").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+				    }
+			    	else 
+			    	{
+			    		$("#mensaje_nombre_secretario_anterior").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
 				}
+		    	else if (reemplazar == 2){
+			    	
+		    		if (nombre_impulsor_anterior == "")
+			    	{
+				    	
+			    		$("#mensaje_nombre_impulsor_anterior").text("Introduzca Impulsor Saliente");
+			    		$("#mensaje_nombre_impulsor_anterior").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+				    }
+			    	else 
+			    	{
+			    		$("#mensaje_nombre_impulsor_anterior").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+			    }
+                  else if (reemplazar == 1){
+			    	
+                	  if (nombre_secretario_anterior == "")
+  			    	{
+  				    	
+  			    		$("#mensaje_nombre_secretario_anterior").text("Introduzca Secretario Saliente");
+  			    		$("#mensaje_nombre_secretario_anterior").fadeIn("slow"); //Muestra mensaje de error
+  			            return false;
+  				    }
+  			    	else 
+  			    	{
+  			    		$("#mensaje_nombre_secretario_anterior").fadeOut("slow"); //Muestra mensaje de error
+  			            
+  					}
+			    }
+		    	
 
 		    	if (tipo_avoco == 0)
 		    	{
@@ -197,6 +323,22 @@
 		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+
+				if (tipo_credito == 0)
+		    	{
+			    	
+		    		$("#mensaje_tipo_credito").text("Seleccione Tipo Crédito");
+		    		$("#mensaje_tipo_credito").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_tipo_credito").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				
 		    	
 			}); 
 
@@ -208,6 +350,13 @@
 				$( "#hora_avoco" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
+
+				$( "#reemplazar" ).focus(function() {
+					$("#mensaje_reemplazar").fadeOut("slow");
+    			});
+				
+				
+    			
 				$( "#nombre_impulsor_anterior" ).focus(function() {
 					$("#mensaje_nombre_impulsor_anterior").fadeOut("slow");
     			});
@@ -224,7 +373,12 @@
 				$( "#fecha_auto_pago" ).focus(function() {
 					$("#mensaje_fecha_auto_pago").fadeOut("slow");
     			});
-					    
+				$( "#tipo_credito" ).focus(function() {
+					$("#mensaje_tipo_credito").fadeOut("slow");
+    			});
+
+
+				
 		}); 
 
 	</script>
@@ -345,9 +499,30 @@
   		
   		
   		
+  		        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
+	            <div class="panel panel-info">
+	         	<div class="panel-heading">
+	         		<h4><i class='glyphicon glyphicon-edit'></i> A quien desea reemplazar
+	         	</div>
+	        	<div class="panel-body">
+  		
+  		<div class="row">
+  		       <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p  class="formulario-subtitulo">Reemplazar A:</p>
+			  	<select name="reemplazar" id="reemplazar"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="1">Solo Secretario</option>
+						<option value="2">Solo Impulsor</option>
+						<option value="3">Secretario y Impulsor</option>
+			    </select>
+				<div id="mensaje_reemplazar" class="errores"></div>
+			    </div>
+  		</div>
+  		<br>
   		
   		
-                <div class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 20px;">
+  		
+  		 <div class="col-lg-6 col-md-6 col-xs-12" id="div_datos_impulsor" style="display: none; margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
 	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Abogado Impulsor <br><FONT FACE="arial" SIZE=2 COLOR=red>(Llenar solo si usted esta remplazando a un abogado anterior)</FONT></h4>
@@ -371,7 +546,7 @@
 	        	</div>
 	           </div>
 	          
-	            <div class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 20px;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" id="div_datos_secretario" style="display: none; margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
 	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Abogado Secretario<br><FONT FACE="arial" SIZE=2 COLOR=red>(Llenar solo si usted esta remplazando a un abogado anterior)</FONT></h4>
@@ -396,6 +571,18 @@
 	        	</div>
 	        	</div>
 	           </div>
+  		
+  		
+  		
+  		
+  		       </div>
+  		       </div>
+  		       </div>
+  	
+  		
+  		
+  		
+               
   		
   		
   		        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
@@ -430,7 +617,16 @@
                  <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del jucio.)</FONT>
                  </div>
               
-	           
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p  class="formulario-subtitulo">Tipo de Crédito:</p>
+			  	<select name="tipo_credito" id="tipo_credito"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Hipotecario">Hipotecario</option>
+						<option value="Personal">Personal</option>
+						<option value="Ninguno">Ninguno</option>
+			    </select>
+				<div id="mensaje_tipo_credito" class="errores"></div>
+			    </div>
 	                   
               <div id="div_datos_pago_total" style="display: none;">
 	            <div class="col-lg-6 col-md-6 col-xs-12">
@@ -447,7 +643,7 @@
 	          </div> 
 	          
 	          <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal y para los fines legales consiguientes que no notificó a los coactivados con la providencia que antecede por cuanto no han señalado domicilio legal para el efecto. "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal y para los fines legales consiguientes que no se notificó a los coactivados con la providencia que antecede por cuanto no han señalado domicilio legal para el efecto. "Ciudad" xxxx, "Fecha" xx xx xxxx xx xxx.- <b>CERTIFICO.-</b></font></p>
 				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b>CERTIFICO.-</b>)</FONT>
 			  </div>
 				   

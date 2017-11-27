@@ -43,9 +43,22 @@
 		     	var id_provincias = $("#id_provincias").val();
 		     	var id_estados_procesales_juicios = $("#id_estados_procesales_juicios").val();
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
+
+		     	var id_origen_juicio = $("#id_origen_juicio").val();
 		     
 		     	
-		     	
+		    	if (id_origen_juicio == "")
+		    	{
+			    	
+		    		$("#mensaje_id_origen_juicio").text("Seleccione Origen");
+		    		$("#mensaje_id_origen_juicio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_id_origen_juicio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 		    
 		   				
 		     	if (juicio_referido_titulo_credito == "")
@@ -113,7 +126,8 @@
 		    		$("#mensaje_id_estados_procesales_juicios").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		     	
+
+		    
 		     
 		    	
 /*
@@ -136,6 +150,10 @@
 		    	
 			}); 
 
+			$( "#id_origen_juicio" ).focus(function() {
+				$("#mensaje_id_origen_juicio").fadeOut("slow");
+			});
+
 		    $( "#juicio_referido_titulo_credito" ).focus(function() {
 				$("#mensaje_juicio_referido_titulo_credito").fadeOut("slow");
 			});
@@ -155,6 +173,8 @@
 				$( "#id_estados_procesales_juicios" ).focus(function() {
 					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
     			});
+
+			
     			
 /*
 				$( "#fecha_ultima_providencia" ).focus(function() {
@@ -259,12 +279,27 @@
 				        <input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value="" readonly >
 				        </div>
 					    </div>
-					    <div class = 'col-xs-12 col-md-3 col-lg-3'>
+					    <div class = 'col-xs-12 col-md-1 col-lg-1'>
 				        <div class='form-group'>
 				        <label for='regional' class='control-label'>Regional</label><br>
 				        <input type='text' class='form-control' id='regional' name='regional' value="" >
 				       </div>
 				        </div>	
+				        
+				        <div class="col-xs-12 col-md-2 col-lg-2">
+ 						 <div class='form-group'>
+			  			 <label for='id_origen_juicio' class='control-label'>Origen Juicio</label>
+			  			<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  			 <option value="" selected="selected">--Seleccione--</option>
+						<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>" ><?php echo $res->nombre_origen_juicio; ?></option>
+						            
+						<?php } ?>
+						</select> 
+						  <div id="mensaje_id_origen_juicio" class="errores"></div>
+			  			</div>
+						</div>
+						
 				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='juicio_referido_titulo_credito' class='control-label'># Juicio</label><br>

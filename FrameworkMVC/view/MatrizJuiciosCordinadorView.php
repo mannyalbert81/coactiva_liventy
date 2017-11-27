@@ -202,7 +202,7 @@
 		 var con_fechadesde=$("#fcha_desde").val();
 		 var con_fechahasta=$("#fcha_hasta").val();
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
-
+		 var con_id_origen_juicio=$("#id_origen_juicio").val();
 		 
 			
 		 
@@ -218,7 +218,7 @@
 				  fcha_desde:con_fechadesde,
 				  fcha_hasta:con_fechahasta,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
-				 
+				  id_origen_juicio:con_id_origen_juicio,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -383,7 +383,16 @@
 				</select>
 
          </div>
-         
+          <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Origen Juicio:</p>
+			  	<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>"><?php echo $res->nombre_origen_juicio;  ?> </option>
+			            <?php } ?>
+				</select>
+
+          </div>
 		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
