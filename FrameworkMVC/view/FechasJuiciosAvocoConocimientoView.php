@@ -597,6 +597,7 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="6">AVOCO CONOCIMIENTO</option>  
+			  		<option value="7">AVOCO CONOCIMIENTO (NUEVOS PROCESOS)</option> 
 			  		<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>

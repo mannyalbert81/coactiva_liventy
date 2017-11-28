@@ -425,6 +425,20 @@ $controladores=$_SESSION['controladores'];
 </ul>
 </li>
 
+
+<li class="dropdown"  style="<?php echo getcontrolador("GestionDocumental",$controladores) ?>">
+        
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" ><?php echo " Gestión Documental" ;?> </span> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+          <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=MatrizJuicios&action=index8"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Organizar Matriz Juicios</span> </a>
+          </li>	
+        
+			
+		  </ul>
+</li>
+
 <li class="dropdown" style="<?php echo getcontrolador("MenuSoporte",$controladores) ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-refresh" ><?php echo " Soporte" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">

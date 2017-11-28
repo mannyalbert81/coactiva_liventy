@@ -95,7 +95,7 @@
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
 		 var con_id_origen_juicio=$("#id_origen_juicio").val();
-		 
+		 var con_numero_carton_jucios=$("#numero_carton_jucios").val();
 
 		  var con_datos={
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
@@ -117,6 +117,7 @@
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
 				  id_origen_juicio:con_id_origen_juicio,
+				  numero_carton_jucios:con_numero_carton_jucios,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -197,6 +198,7 @@
        $sel_identificacion_garantes_1="";
        $sel_identificacion_garantes_2="";
        $sel_identificacion_garantes_3="";
+       $sel_numero_carton_jucios="";
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -218,6 +220,7 @@
        	$sel_identificacion_garantes_1=$_POST['identificacion_garantes_1'];
        	$sel_identificacion_garantes_2=$_POST['identificacion_garantes_2'];
        	$sel_identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+       	$sel_numero_carton_jucios=$_POST['numero_carton_jucios'];
        }
        
     
@@ -355,6 +358,11 @@
 
           </div>
           
+           <div class="col-lg-2 col-md-2 col-xs-12">
+         		<p class="formulario-subtitulo" >Número Cartón:</p>
+			  	<input type="text"  name="numero_carton_jucios" id="numero_carton_jucios" value="<?php echo $sel_numero_carton_jucios;?>" class="form-control "/> 
+		 </div>
+		 
         <div class="col-lg-2 col-md-2 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 

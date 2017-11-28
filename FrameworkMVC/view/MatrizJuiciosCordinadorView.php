@@ -204,7 +204,7 @@
 		 var con_id_estados_procesales_juicios=$("#id_estados_procesales_juicios").val();
 		 var con_id_origen_juicio=$("#id_origen_juicio").val();
 		 
-			
+		 var con_numero_carton_jucios=$("#numero_carton_jucios").val();
 		 
 		 
 
@@ -219,6 +219,7 @@
 				  fcha_hasta:con_fechahasta,
 				  id_estados_procesales_juicios:con_id_estados_procesales_juicios,
 				  id_origen_juicio:con_id_origen_juicio,
+				  numero_carton_jucios:con_numero_carton_jucios,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -286,7 +287,7 @@
        $sel_identificacion_clientes="";
        $sel_id_ciudad="";
        $sel_id_estados_procesales_juicios="";
-    
+       $sel_numero_carton_jucios="";
         
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -296,7 +297,7 @@
        	$sel_identificacion_clientes=$_POST['identificacion_clientes'];
        	$sel_id_ciudad=$_POST['id_ciudad'];
        
-       	
+       	$sel_numero_carton_jucios=$_POST['numero_carton_jucios'];
        	
        
        }
@@ -393,6 +394,12 @@
 				</select>
 
           </div>
+          
+             <div class="col-lg-2 col-md-2 col-xs-12">
+         		<p class="formulario-subtitulo" >Número Cartón:</p>
+			  	<input type="text"  name="numero_carton_jucios" id="numero_carton_jucios" value="<?php echo $sel_numero_carton_jucios;?>" class="form-control "/> 
+		 </div>
+          
 		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
