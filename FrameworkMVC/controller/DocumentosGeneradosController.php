@@ -112,6 +112,17 @@ session_start();
 								AND ac.tipo_avoco = 3";
 								
 							}
+							else if($tipo_documento==6)
+							{
+								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								AND ac.tipo_avoco = 6";
+							
+							}
 							
 							break;
 							
