@@ -221,7 +221,7 @@
 			    var numero_oficio = $("#numero_oficio").val();
 			    var fecha_oficio = $("#fecha_oficio").val();
 
-
+                var tipo_acto= $("#tipo_acto").val();
 			   
 
 			    var reemplazar = $("#reemplazar").val();
@@ -272,7 +272,20 @@
 		            
 				}
 
+		    	if (tipo_acto == 0)
+		    	{
+			    	
+		    		$("#mensaje_tipo_acto").text("Seleccione Tipo");
+		    		$("#mensaje_tipo_acto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_tipo_acto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
+		    	
 		       	
 		      
 		       	if(tipo_avoco == 1  && numero_oficio == ""){
@@ -411,6 +424,11 @@
 				$( "#tipo_avoco" ).focus(function() {
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
+
+				$( "#tipo_acto" ).focus(function() {
+					$("#mensaje_tipo_acto").fadeOut("slow");
+    			});
+				
 
 				$( "#numero_oficio" ).focus(function() {
 					$("#mensaje_numero_oficio").fadeOut("slow");
@@ -586,7 +604,7 @@
 	         	</div>
 	        	<div class="panel-body">
 	        	
-  		         <div class="col-lg-6 col-md-6 col-xs-12" >
+  		         <div class="col-lg-4 col-md-4 col-xs-12" >
 			  	<p  class="formulario-subtitulo">Tipo Avoco:</p>
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
@@ -602,7 +620,18 @@
 	            </div>
 	            
 	            
-	              <div class="col-lg-6 col-md-6 col-xs-12">
+	            <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Seleccione:</p>
+			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="CÚMPLASE Y NOTIFÍQUESE">CÚMPLASE Y NOTIFÍQUESE</option> 
+			  		<option value="CÚMPLASE Y CÍTESE">CÚMPLASE Y CÍTESE</option> 
+			  	
+				</select>
+				<div id="mensaje_tipo_acto" class="errores"></div>
+	            </div>
+	            
+	              <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>

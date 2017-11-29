@@ -3326,7 +3326,7 @@
 			$fecha_oficio= $_POST['fecha_oficio'];
 			$numero_solicitud= $_POST['numero_solicitud'];
 			$fecha_solicitud= $_POST['fecha_solicitud'];
-				
+			$tipo_acto= $_POST['tipo_acto'];
 			
 			
 
@@ -3406,7 +3406,7 @@
 			$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
 			$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
 			$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
-				
+			$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
 			
 
 			
