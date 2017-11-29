@@ -521,7 +521,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_AvocoConocimiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Cancelacion_Proceso"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
                  <br> 
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
@@ -532,7 +532,7 @@
          <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Avoco Conocimiento</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Cancelación de Proceso</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -540,7 +540,7 @@
   			
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >Fecha Avoco:</p>
+         		<p class="formulario-subtitulo" >Fecha:</p>
 			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
@@ -550,7 +550,7 @@
 		 </div>
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >Hora Avoco:</p>
+         		<p class="formulario-subtitulo" >Hora:</p>
 			  	<input type="time"  name="hora_avoco" id="hora_avoco" value="" class="form-control "/> 
 			  	<div id="mensaje_hora" class="errores"></div>
 			    
@@ -582,18 +582,18 @@
   		       <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
-	         		<h4><i class='glyphicon glyphicon-edit'></i> Tipo de Avoco Conocimiento<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Tipo de Proceso<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
 	         	</div>
 	        	<div class="panel-body">
 	        	
   		         <div class="col-lg-6 col-md-6 col-xs-12" >
-			  	<p  class="formulario-subtitulo">Tipo Avoco:</p>
+			  	<p  class="formulario-subtitulo">Tipo Proceso:</p>
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<!-- <option value="6">AVOCO CONOCIMIENTO</option>   -->
-			  		<option value="7">AVOCO CONOCIMIENTO (NUEVOS PROCESOS)</option> 
+			  		
 			  		<!-- <option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option> -->
-					<!--<option value="1">AVOCO CONOCIMIENTO (PAGO TOTAL)</option>-->
+					<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
 					<!-- <option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option> -->
 					<!-- <option value="5">AVOCO CONOCIMIENTO CON NOMBRAMIENTO DE JUEZA</option> -->
 					<!-- <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>    -->
@@ -630,7 +630,7 @@
   		        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
-	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Para el Avoco<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Para la Providencia<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
 	         	</div>
 	        	<div class="panel-body">
 	        	
@@ -743,14 +743,14 @@
 			  </div>
 				   
              <div class="col-xs-12 col-md-12 col-lg-12" >
-		                          <p class="formulario-subtitulo" >Razón Avoco:</p>
+		                          <p class="formulario-subtitulo" >Razón Proceso:</p>
                                   <textarea type="text"  class="form-control" id="razon_avoco" name="razon_avoco" value=""  placeholder="Ingrese Razón"></textarea>
                                   
              </div>
   		
   		
 	  		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
-	  		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Avoco</button>         
+	  		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 		    </div>
   		
   		        </div>

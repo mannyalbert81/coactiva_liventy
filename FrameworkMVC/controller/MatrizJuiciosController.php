@@ -3183,8 +3183,62 @@
 	}
 	
 
-	
-	
+	public function Imprimir_Cancelacion_Proceso_Datos()
+	{
+		
+
+		session_start();
+		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+				
+			$juicios = new JuiciosModel();
+			$_id_usuarios=$_SESSION['id_usuarios'];
+				
+			$columnas = " asignacion_secretarios_view.id_secretario,
+					  asignacion_secretarios_view.secretarios";
+			$tablas   = "public.asignacion_secretarios_view";
+			$where    = "public.asignacion_secretarios_view.id_abogado = '$_id_usuarios'";
+			$id       = "asignacion_secretarios_view.id_secretario";
+			$resultSecre=$juicios->getCondiciones($columnas ,$tablas ,$where, $id);
+				
+			$estado_procesal = new EstadosProcesalesModel();
+			$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+				
+			$datos=array();
+		
+		
+			if(isset($_GET["id_juicios"]) && isset($_GET["id_clientes"])&& isset($_GET["id_titulo_credito"]))
+			{
+				$id_juicios= $_GET['id_juicios'];
+				$id_clientes= $_GET['id_clientes'];
+				$id_titulo_credito= $_GET['id_titulo_credito'];
+				$juicio_referido_titulo_credito= $_GET['juicio_referido_titulo_credito'];
+				$numero_titulo_credito= $_GET['numero_titulo_credito'];
+				$nombres_clientes= $_GET['nombres_clientes'];
+		
+		
+				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
+					
+			}
+		
+		
+			$this->view("FechasJuiciosProvidenciaCancelacionProceso",array(
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
+		
+			));
+		
+		}
+		else
+		{
+			$this->view("Error",array(
+					"resultado"=>"Debe Iniciar Sesion"
+		
+			));
+		}
+		
+		
+	}
 	public function Imprimir_AvocoConocimiento_Datos()
 	{
 		session_start();
@@ -3265,10 +3319,13 @@
 			$numero_liquidacion= $_POST['numero_liquidacion'];
 			$fecha_auto_pago= $_POST['fecha_auto_pago'];
 			 
-			$tipo_credito= $_POST['tipo_credito'];
+			
 			$reemplazar= $_POST['reemplazar'];
 			
-			
+			$numero_oficio= $_POST['numero_oficio'];
+			$fecha_oficio= $_POST['fecha_oficio'];
+			$numero_solicitud= $_POST['numero_solicitud'];
+			$fecha_solicitud= $_POST['fecha_solicitud'];
 				
 			
 			
@@ -3342,10 +3399,17 @@
 			$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
 			$parametros['ruta_avoco']=$ruta_providencias;
 			$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-			$parametros['tipo_credito']=$tipo_credito;
 				
 			$parametros['reemplazar']=$reemplazar;
 				
+			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+			$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+			$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+				
+			
+
+			
 			
 			$pagina="contAvocoConocimientoSeleccion.aspx";
 				
@@ -6054,6 +6118,157 @@
 		$this->redirect("MatrizJuicios", "index3");
 		
 	}
+	
+	
+	
+	
+	public function Imprimir_Providencia_Cancelacion_Proceso()
+	{
+		session_start();
+		$providencias= new ProvidenciasModel();
+		$asignacion_secretarios = new AsignacionSecretariosModel();
+		$juicios = new JuiciosModel();
+	
+	
+		if(isset($_POST['generar']))
+		{
+	
+			
+			
+			$id_juicios= $_POST['id_juicios'];
+			$id_clientes= $_POST['id_clientes'];
+			$id_titulo_credito= $_POST['id_titulo_credito'];
+			$fecha_avoco= $_POST['fecha_avoco'];
+			$hora_avoco= $_POST['hora_avoco'];
+			$razon_avoco= $_POST['razon_avoco'];
+				
+			$nombre_impulsor_anterior= $_POST['nombre_impulsor_anterior'];
+			$nombre_secretario_anterior= $_POST['nombre_secretario_anterior'];
+			$tipo_avoco= $_POST['tipo_avoco'];
+			$id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
+			$numero_liquidacion= $_POST['numero_liquidacion'];
+			$fecha_auto_pago= $_POST['fecha_auto_pago'];
+			
+				
+			$reemplazar= $_POST['reemplazar'];
+				
+			$numero_oficio= $_POST['numero_oficio'];
+			$fecha_oficio= $_POST['fecha_oficio'];
+			$numero_solicitud= $_POST['numero_solicitud'];
+			$fecha_solicitud= $_POST['fecha_solicitud'];
+			
+				
+			
+			
+		
+			$numero_oficio1= "";
+			$numero_oficio2= "";
+			$numero_oficio3= "";
+			$dirigido_levantamiento= "";
+				
+			$nombre_usuario_saliente= "";
+				
+				
+		
+				
+				
+				
+				
+			$id_tipo_providencias=3;
+			$consecutivo= new ConsecutivosModel();
+			$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='PROVIDENCIAS_CANCELACION_PROCESO'");
+			$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+			$ruta_providencias="Providencias_Cancelacion_Proceso";
+	
+			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
+				
+			$id_impulsor=$_SESSION['id_usuarios'];
+			$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+			$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+				
+	
+				
+	
+	
+			$funcion = "ins_providencias_levantamiento";
+			$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario'";
+			$providencias->setFuncion($funcion);
+			$providencias->setParametros($parametros);
+			$resultado=$providencias->Insert();
+	
+			$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_CANCELACION_PROCESO'");
+	
+			if($id_estados_procesales_juicios_actualizar>0){
+					
+				$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
+					
+				$historial_juicios= new HistorialJuiciosModel();
+	
+				$funcion = "ins_historial_juicios";
+				$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
+				$historial_juicios->setFuncion($funcion);
+				$historial_juicios->setParametros($parametros);
+				$resultado=$historial_juicios->Insert();
+			}
+				
+			$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
+				
+				
+			$traza=new TrazasModel();
+			$_nombre_controlador = "MATRIZ JUICIOS";
+			$_accion_trazas  = "Genero Providencia de Cancelación Proceso";
+			$_parametros_trazas = $id_juicios;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+				
+	
+
+			$parametros = array();
+			
+			$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+			$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+			$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+			$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+			$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+			$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+			$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+				
+			$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+			$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+			$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+			$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+			$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+			$parametros['ruta_avoco']=$ruta_providencias;
+			$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+			
+			$parametros['reemplazar']=$reemplazar;
+			
+			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+			$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+			$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+			
+				
+			
+				
+				
+			$pagina="contAvocoConocimientoSeleccion.aspx";
+	
+			$conexion_rpt = array();
+			$conexion_rpt['pagina']=$pagina;
+	
+			$this->view("ReporteRpt", array(
+					"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			));
+	
+	
+			die();
+	
+	
+		}
+	
+	}
+	
 	
 	
 	
@@ -9839,6 +10054,1406 @@ public function index8(){
 		
 		
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function index9(){
+
+	session_start();
+		
+	if (isset(  $_SESSION['usuario_usuarios']) )
+	{
+
+		$id_rol= $_SESSION['id_rol'];
+
+		if ($id_rol==3){
+
+			$_id_usuarios= $_SESSION['id_usuarios'];
+			$resultSet="";
+			$registrosTotales = 0;
+			$arraySel = "";
+				
+			$juicios = new JuiciosModel();
+				
+			$ciudad = new CiudadModel();
+			$columnas = " usuarios.id_ciudad,
+					  ciudad.nombre_ciudad,
+					  usuarios.nombre_usuarios";
+
+			$tablas   = "public.usuarios,
+                     public.ciudad";
+
+			$where    = "ciudad.id_ciudad = usuarios.id_ciudad AND usuarios.id_usuarios = '$_id_usuarios'";
+			$id       = "usuarios.id_ciudad";
+			$resultDatos=$ciudad->getCondiciones($columnas ,$tablas ,$where, $id);
+				
+			$provincias = new ProvinciasModel();
+			$resultProv =$provincias->getAll("nombre_provincias");
+				
+
+				
+
+				
+			$columnas = " asignacion_secretarios_view.id_secretario,
+					  asignacion_secretarios_view.secretarios";
+			$tablas   = "public.asignacion_secretarios_view";
+			$where    = "public.asignacion_secretarios_view.id_abogado = '$_id_usuarios'";
+			$id       = "asignacion_secretarios_view.id_secretario";
+			$resultSecre=$juicios->getCondiciones($columnas ,$tablas ,$where, $id);
+				
+
+			$estado_procesal = new EstadosProcesalesModel();
+			$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+				
+				
+			$permisos_rol = new PermisosRolesModel();
+			$nombre_controladores = "MatrizJuicios";
+			$id_rol= $_SESSION['id_rol'];
+			$resultPer = $juicios->getPermisosVer("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
+				
+			if (!empty($resultPer))
+			{
+
+				if(isset($_POST["juicio_referido_titulo_credito"]))
+				{
+						
+					$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
+					$numero_titulo_credito=$_POST['numero_titulo_credito'];
+
+					$id_provincias=$_POST['id_provincias'];
+					$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+
+					$identificacion_clientes=$_POST['identificacion_clientes'];
+					$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+					$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+					$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+
+
+					$identificacion_garantes=$_POST['identificacion_garantes'];
+					$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+					$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+					$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+
+
+					$columnas = " juicios.id_juicios,
+								  juicios.orden,
+								  juicios.regional,
+								  juicios.juicio_referido_titulo_credito,
+								  juicios.year_juicios,
+								clientes.id_clientes,
+								  clientes.identificacion_clientes,
+								  clientes.nombres_clientes,
+								  clientes.nombre_garantes,
+								  clientes.identificacion_garantes,
+								clientes.identificacion_clientes_1,
+								clientes.nombre_clientes_1,
+								clientes.identificacion_clientes_2,
+								clientes.nombre_clientes_2,
+								clientes.identificacion_clientes_3,
+								clientes.nombre_clientes_3,
+								clientes.identificacion_garantes_1,
+								clientes.nombre_garantes_1,
+								clientes.identificacion_garantes_2,
+								clientes.nombre_garantes_2,
+								clientes.identificacion_garantes_3,
+								clientes.nombre_garantes_3,
+								clientes.correo_clientes,
+								clientes.correo_clientes_1,
+								clientes.correo_clientes_2,
+								clientes.correo_clientes_3,
+								clientes.direccion_clientes,
+								clientes.direccion_clientes_1,
+								clientes.direccion_clientes_2,
+								clientes.direccion_clientes_3,
+								clientes.cantidad_clientes,
+								  clientes.cantidad_garantes,
+								  clientes.sexo_clientes,
+								  clientes.sexo_clientes_1,
+								  clientes.sexo_clientes_2,
+								  clientes.sexo_clientes_3,
+								  clientes.sexo_garantes,
+								  clientes.sexo_garantes_1,
+								  clientes.sexo_garantes_2,
+								  clientes.sexo_garantes_3,
+								  provincias.id_provincias,
+								  provincias.nombre_provincias,
+								  titulo_credito.id_titulo_credito,
+								  titulo_credito.numero_titulo_credito,
+								  juicios.fecha_emision_juicios,
+								  juicios.cuantia_inicial,
+								  juicios.riesgo_actual,
+								  estados_procesales_juicios.id_estados_procesales_juicios,
+								  estados_procesales_juicios.nombre_estados_procesales_juicios,
+								  juicios.descripcion_estado_procesal,
+								  juicios.fecha_ultima_providencia,
+								  juicios.estrategia_seguir,
+								  juicios.observaciones,
+								  asignacion_secretarios_view.id_abogado,
+								  asignacion_secretarios_view.impulsores,
+								  asignacion_secretarios_view.id_secretario,
+								  asignacion_secretarios_view.secretarios,
+								  ciudad.id_ciudad,
+								  ciudad.nombre_ciudad,
+								clientes.correo_garantes_1,
+								  clientes.correo_garantes_2,
+								  clientes.correo_garantes_3,
+								  clientes.correo_garantes_4,
+								  clientes.direccion_garantes_1,
+								  clientes.direccion_garantes_2,
+								  clientes.direccion_garantes_3,
+								  clientes.direccion_garantes_4";
+						
+						
+						
+					$tablas=" public.clientes,
+							  public.titulo_credito,
+							  public.juicios,
+							  public.asignacion_secretarios_view,
+							  public.estados_procesales_juicios,
+							  public.provincias,
+							  public.ciudad";
+						
+					$where="clientes.id_clientes = titulo_credito.id_clientes AND
+					clientes.id_provincias = provincias.id_provincias AND
+					titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
+					asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
+					juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
+					asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$_id_usuarios'";
+						
+					$id="juicios.orden";
+						
+					$where_0 = "";
+					$where_1 = "";
+					$where_2 = "";
+					$where_3 = "";
+					$where_4 = "";
+					$where_5 = "";
+
+					$where_6 = "";
+					$where_7 = "";
+					$where_8 = "";
+					$where_9 = "";
+					$where_10 = "";
+					$where_11 = "";
+					$where_12 = "";
+						
+						
+					if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
+
+					if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
+						
+					if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
+						
+					if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
+
+					if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+
+					/*para las fechas*/
+					$fechaDesde="";$fechaHasta="";
+					if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+					{
+						$fechaDesde=$_POST["fcha_desde"];
+						$fechaHasta=$_POST["fcha_hasta"];
+						if ($fechaDesde != "" && $fechaHasta != "")
+						{
+							$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						}
+
+						if($fechaDesde != "" && $fechaHasta == ""){
+								
+							$fechaHasta='2018/12/01';
+							$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								
+						}
+						if($fechaDesde == "" && $fechaHasta != ""){
+								
+							$fechaDesde='1800/01/01';
+							$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								
+						}
+					}
+
+					if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+					if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+					if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+
+
+					if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+					if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+					if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+					if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+
+					$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+
+						
+					//comienza paginacion
+
+					$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
+
+					if($action == 'ajax')
+					{
+
+						$html="";
+						$resultSet=$juicios->getCantidad("*", $tablas, $where_to);
+						$cantidadResult=(int)$resultSet[0]->total;
+
+						$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
+
+						$per_page = 50; //la cantidad de registros que desea mostrar
+						$adjacents  = 9; //brecha entre páginas después de varios adyacentes
+						$offset = ($page - 1) * $per_page;
+
+						$limit = " LIMIT   '$per_page' OFFSET '$offset'";
+
+
+						$resultSet=$juicios->getCondicionesPag($columnas, $tablas, $where_to, $id, $limit);
+
+						$count_query   = $cantidadResult;
+
+						$total_pages = ceil($cantidadResult/$per_page);
+
+						if ($cantidadResult>0)
+						{
+
+							$html.='<div class="col-lg-12 col-md-12 col-xs-12">';
+							$html.='<div class="pull-left">';
+							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
+							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
+							$html.='</div>';
+							$html.='</div>';
+							$html.='<div class="col-lg-12 col-md-12 col-xs-12">';
+							$html.='<section style="height:425px; overflow-y:scroll;">';
+							$html.='<table class="table table-hover">';
+							$html.='<thead>';
+							$html.='<tr class="info">';
+							$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+
+							$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Riesgo Actual</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Estrategia a Seguir</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
+							$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+							$html.='</tr>';
+							$html.='</thead>';
+							$html.='<tbody>';
+
+								
+
+							$i=0;
+								
+							foreach ($resultSet as $res)
+							{
+								$i++;
+									
+								$html.='<tr>';
+								$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Cancelacion_Proceso_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+
+								$html.='<td style="font-size: 9px;">'.$i.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->riesgo_actual.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->estrategia_seguir.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
+								$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
+								//$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
+								$html.='</tr>';
+
+							}
+
+							$html.='</tbody>';
+							$html.='</table>';
+							$html.='</section>';
+							$html.='</div>';
+							$html.='<div class="table-pagination pull-right">';
+							$html.=''. $this->paginate("index.php", $page, $total_pages, $adjacents).'';
+							$html.='</div>';
+
+
+								
+						}else{
+								
+							$html.='<div class="alert alert-warning alert-dismissable">';
+							$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							$html.='<h4>Aviso!!!</h4> No hay datos para mostrar';
+							$html.='</div>';
+								
+						}
+
+						echo $html;
+						die();
+
+					}
+
+						
+					if(isset($_POST["reporte_rpt"]))
+					{
+
+							
+							
+						$juicios = new JuiciosModel();
+
+						if(isset($_POST["juicio_referido_titulo_credito"]))
+						{
+								
+								
+							$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
+							$numero_titulo_credito=$_POST['numero_titulo_credito'];
+								
+							$id_provincias=$_POST['id_provincias'];
+							$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+								
+							$identificacion_clientes=$_POST['identificacion_clientes'];
+							$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+							$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+							$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+								
+								
+							$identificacion_garantes=$_POST['identificacion_garantes'];
+							$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+							$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+							$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+								
+								
+							$id_impulsor=$_SESSION['id_usuarios'];
+								
+							$columnas = " juicios.id_juicios,
+								 		  clientes.id_clientes,
+								          titulo_credito.id_titulo_credito";
+								
+							$tablas=" public.clientes,
+							  public.titulo_credito,
+							  public.juicios,
+							  public.asignacion_secretarios_view,
+							  public.estados_procesales_juicios,
+							  public.provincias,
+							  public.ciudad";
+								
+							$where="clientes.id_clientes = titulo_credito.id_clientes AND
+							clientes.id_provincias = provincias.id_provincias AND
+							titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
+							asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
+							juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
+							asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_abogado='$id_impulsor'";
+								
+							$id="juicios.orden";
+								
+							$where_0 = "";
+							$where_1 = "";
+							$where_2 = "";
+							$where_3 = "";
+							$where_4 = "";
+							$where_5 = "";
+								
+							$where_6 = "";
+							$where_7 = "";
+							$where_8 = "";
+							$where_9 = "";
+							$where_10 = "";
+							$where_11 = "";
+							$where_12 = "";
+								
+								
+								
+							if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
+								
+							if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
+								
+							if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
+								
+							if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
+								
+							if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+								
+							/*para las fechas*/
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+
+								if($fechaDesde != "" && $fechaHasta == ""){
+										
+									$fechaHasta='2018/12/01';
+									$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+										
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+										
+									$fechaDesde='1800/01/01';
+									$where_5 = " AND DATE(juicios.fecha_ultima_providencia) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+										
+								}
+							}
+								
+							if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+							if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+							if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+								
+								
+							if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+							if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+							if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+							if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+								
+								
+								
+							$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+								
+								
+							$resultSet=$juicios->getCondiciones($columnas, $tablas, $where_to, $id);
+								
+								
+								
+							$providencias= new ProvidenciasModel();
+							$asignacion_secretarios = new AsignacionSecretariosModel();
+							$juicios = new JuiciosModel();
+								
+								
+								
+							$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+							$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+
+							$usuarios = new UsuariosModel();
+							$resultUsu = $usuarios->getBy("id_usuarios ='$id_impulsor'");
+							$id_ciudad=$resultUsu[0]->id_ciudad;
+
+							if(!empty($resultSet)){
+									
+									
+								$fecha_providencias=$_POST['fecha_providencias'];
+								$hora_providencias=$_POST['hora_providencias'];
+								$razon_providencias=$_POST['razon_avoco'];
+									
+								$nombre_impulsor_anterior= $_POST['nombre_impulsor_anterior'];
+								$nombre_secretario_anterior= $_POST['nombre_secretario_anterior'];
+								$tipo_avoco= $_POST['tipo_avoco'];
+								$id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
+								$numero_liquidacion= $_POST['numero_liquidacion'];
+								$fecha_auto_pago= $_POST['fecha_auto_pago'];
+									
+									
+									
+									
+									
+								$consecutivo= new ConsecutivosModel();
+								$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
+								$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+								$ruta_providencias="Avoco_Conocimiento";
+									
+								$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
+									
+								foreach($resultSet as $res)
+								{
+										
+									$_id_juicios=$res->id_juicios;
+									$id_clientes =$res->id_clientes;
+									$id_titulo_credito=$res->id_titulo_credito;
+										
+										
+										
+									$funcion = "ins_avoco_conocimiento_liventy";
+									$parametros = "'$_id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_providencias', '$id_clientes', '$id_titulo_credito'";
+									$providencias->setFuncion($funcion);
+									$providencias->setParametros($parametros);
+									$resultado=$providencias->Insert();
+										
+										
+										
+									$traza=new TrazasModel();
+									$_nombre_controlador = "MATRIZ JUICIOS";
+									$_accion_trazas  = "Genero Avoco Conocimiento";
+									$_parametros_trazas = $_id_juicios;
+									$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+										
+										
+								}
+									
+								$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
+
+									
+							}
+								
+								
+						}
+
+
+
+
+
+						$id_estados_procesales_juicios_actualizar=$_POST['id_estados_procesales_juicios_actualizar'];
+						$id_abogado=$_SESSION['id_usuarios'];
+						$fecha_providencias=$_POST['fecha_providencias'];
+
+							
+
+						if($id_estados_procesales_juicios_actualizar > 0){
+								
+							$colval = "id_estados_procesales_juicios = '$id_estados_procesales_juicios_actualizar'";
+							$tabla = "juicios";
+							$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
+							$resultado=$juicios->UpdateBy($colval, $tabla, $where);
+								
+								
+								
+							$columnas1="id_juicios";
+							$tablas="juicios";
+							$where="id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
+							$id="id_juicios";
+								
+							$resultjuicios=$juicios->getCondiciones($columnas, $tablas, $where, $id);
+								
+								
+							if(!empty($resultjuicios)){
+
+								foreach($resultjuicios as $res)
+								{
+										
+									$_id_juicios=$res->id_juicios;
+										
+									if($fecha_providencias!=""){
+
+										$historial_juicios= new HistorialJuiciosModel();
+											
+										$funcion = "ins_historial_juicios";
+										$parametros = " '$_id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_providencias'";
+										$historial_juicios->setFuncion($funcion);
+										$historial_juicios->setParametros($parametros);
+										$resultado=$historial_juicios->Insert();
+
+
+
+
+
+									}else{
+
+										$historial_juicios= new HistorialJuiciosModel();
+
+										$funcion = "ins_historial_juicios_dos";
+										$parametros = " '$_id_juicios', '$id_estados_procesales_juicios_actualizar'";
+										$historial_juicios->setFuncion($funcion);
+										$historial_juicios->setParametros($parametros);
+										$resultado=$historial_juicios->Insert();
+									}
+										
+										
+								}
+							}
+								
+								
+								
+						}
+
+						if($fecha_providencias != ""){
+							$juicios = new JuiciosModel();
+							$colval = "fecha_ultima_providencia = '$fecha_providencias' ";
+							$tabla = "juicios";
+							$where = "id_usuarios = '$id_abogado' AND id_estados_procesales_juicios !='8'";
+							$resultado=$juicios->UpdateBy($colval, $tabla, $where);
+						}
+							
+							
+
+						$parametros = array();
+						$parametros['id_abogado']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+						$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+						$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+						$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+						$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+						$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						$parametros['fecha_avoco']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
+						$parametros['hora_avoco']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
+							
+							
+						$parametros['razon_avoco']=isset($razon_providencias)?trim($razon_providencias):'';
+
+						$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+						$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+						$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+						$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+						$parametros['ruta_avoco']=$ruta_providencias;
+						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+
+							
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+							}
+								
+							if($fechaDesde != "" && $fechaHasta == ""){
+									
+								$fechaHasta='2018/12/01';
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+									
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+									
+								$fechaDesde='1800/01/01';
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+							}
+						}
+						$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+						$parametros['identificacion_clientes_1']=(isset($_POST['identificacion_clientes_1']))?trim($_POST['identificacion_clientes_1']):'';
+						$parametros['identificacion_clientes_2']=(isset($_POST['identificacion_clientes_2']))?trim($_POST['identificacion_clientes_2']):'';
+						$parametros['identificacion_clientes_3']=(isset($_POST['identificacion_clientes_3']))?trim($_POST['identificacion_clientes_3']):'';
+							
+						$parametros['identificacion_garantes']=(isset($_POST['identificacion_garantes']))?trim($_POST['identificacion_garantes']):'';
+						$parametros['identificacion_garantes_1']=(isset($_POST['identificacion_garantes_1']))?trim($_POST['identificacion_garantes_1']):'';
+						$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
+						$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
+							
+						$pagina="contAvocoConocimientoSeleccion.aspx";
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+						//$conexion_rpt['port']="59584";
+
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+
+						die();
+
+					}
+
+					if(isset($_POST["reporte_rpt_matriz"]))
+					{
+
+
+						$parametros = array();
+						$parametros['id_abogado']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+						$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+						$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+						$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+						$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+						$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+
+						/*para las fechas*/
+						$fechaDesde="";$fechaHasta="";
+						if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+						{
+							$fechaDesde=$_POST["fcha_desde"];
+							$fechaHasta=$_POST["fcha_hasta"];
+							if ($fechaDesde != "" && $fechaHasta != "")
+							{
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+							}
+								
+							if($fechaDesde != "" && $fechaHasta == ""){
+
+								$fechaHasta='2018/12/01';
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+
+							}
+							if($fechaDesde == "" && $fechaHasta != ""){
+
+								$fechaDesde='1800/01/01';
+								$parametros['fecha_desde'] = $fechaDesde;
+								$parametros['fecha_hasta'] = $fechaHasta;
+							}
+						}
+
+
+						$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+						$parametros['identificacion_clientes_1']=(isset($_POST['identificacion_clientes_1']))?trim($_POST['identificacion_clientes_1']):'';
+						$parametros['identificacion_clientes_2']=(isset($_POST['identificacion_clientes_2']))?trim($_POST['identificacion_clientes_2']):'';
+						$parametros['identificacion_clientes_3']=(isset($_POST['identificacion_clientes_3']))?trim($_POST['identificacion_clientes_3']):'';
+							
+						$parametros['identificacion_garantes']=(isset($_POST['identificacion_garantes']))?trim($_POST['identificacion_garantes']):'';
+						$parametros['identificacion_garantes_1']=(isset($_POST['identificacion_garantes_1']))?trim($_POST['identificacion_garantes_1']):'';
+						$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
+						$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
+
+						$pagina="contMatrizJuicios.aspx";
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+
+
+
+
+						//$conexion_rpt['port']="59584";
+
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+
+						die();
+
+					}
+						
+						
+				}
+
+				$this->view("MatrizJuiciosProvidenciaCancelacionProceso",array(
+						"resultSecre"=>$resultSecre, "resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv
+
+
+
+				));
+
+
+			}
+			else
+			{
+				$this->view("Error",array(
+						"resultado"=>"No tiene Permisos de Acceso a Matriz Juicios"
+
+				));
+
+				exit();
+			}
+				
+		}
+
+
+
+
+
+
+
+
+		//rol secretario
+
+		/*
+
+
+		if ($id_rol==5){
+
+		$_id_usuarios= $_SESSION['id_usuarios'];
+		$resultSet="";
+		$registrosTotales = 0;
+		$arraySel = "";
+			
+		$juicios = new JuiciosModel();
+			
+		$ciudad = new CiudadModel();
+		$columnas = " usuarios.id_ciudad,
+		ciudad.nombre_ciudad,
+		usuarios.nombre_usuarios";
+
+		$tablas   = "public.usuarios,
+		public.ciudad";
+
+		$where    = "ciudad.id_ciudad = usuarios.id_ciudad AND usuarios.id_usuarios = '$_id_usuarios'";
+		$id       = "usuarios.id_ciudad";
+		$resultDatos=$ciudad->getCondiciones($columnas ,$tablas ,$where, $id);
+
+		$columnas = " asignacion_secretarios_view.id_abogado,
+		asignacion_secretarios_view.impulsores";
+			
+		$tablas   = "public.asignacion_secretarios_view";
+			
+		$where    = "public.asignacion_secretarios_view.id_secretario = '$_id_usuarios'";
+			
+		$id       = "asignacion_secretarios_view.id_abogado";
+		$resultImpul=$juicios->getCondiciones($columnas ,$tablas ,$where, $id);
+
+
+		$provincias = new ProvinciasModel();
+		$resultProv =$provincias->getAll("nombre_provincias");
+			
+		$estado_procesal = new EstadosProcesalesModel();
+		$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
+			
+			
+		$permisos_rol = new PermisosRolesModel();
+		$nombre_controladores = "MatrizJuicios";
+		$id_rol= $_SESSION['id_rol'];
+		$resultPer = $juicios->getPermisosVer("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
+			
+		if (!empty($resultPer))
+		{
+
+		if(isset($_POST["juicio_referido_titulo_credito"]))
+		{
+			
+		$juicio_referido_titulo_credito=$_POST['juicio_referido_titulo_credito'];
+		$numero_titulo_credito=$_POST['numero_titulo_credito'];
+
+		$id_provincias=$_POST['id_provincias'];
+		$id_estados_procesales_juicios=$_POST['id_estados_procesales_juicios'];
+		$id_abogado=$_POST['id_abogado'];
+
+		$identificacion_clientes=$_POST['identificacion_clientes'];
+		$identificacion_clientes_1=$_POST['identificacion_clientes_1'];
+		$identificacion_clientes_2=$_POST['identificacion_clientes_2'];
+		$identificacion_clientes_3=$_POST['identificacion_clientes_3'];
+
+
+		$identificacion_garantes=$_POST['identificacion_garantes'];
+		$identificacion_garantes_1=$_POST['identificacion_garantes_1'];
+		$identificacion_garantes_2=$_POST['identificacion_garantes_2'];
+		$identificacion_garantes_3=$_POST['identificacion_garantes_3'];
+
+
+		$columnas = " juicios.id_juicios,
+		juicios.orden,
+		juicios.regional,
+		juicios.juicio_referido_titulo_credito,
+		juicios.year_juicios,
+		clientes.id_clientes,
+		clientes.identificacion_clientes,
+		clientes.nombres_clientes,
+		clientes.nombre_garantes,
+		clientes.identificacion_garantes,
+		clientes.identificacion_clientes_1,
+		clientes.nombre_clientes_1,
+		clientes.identificacion_clientes_2,
+		clientes.nombre_clientes_2,
+		clientes.identificacion_clientes_3,
+		clientes.nombre_clientes_3,
+		clientes.identificacion_garantes_1,
+		clientes.nombre_garantes_1,
+		clientes.identificacion_garantes_2,
+		clientes.nombre_garantes_2,
+		clientes.identificacion_garantes_3,
+		clientes.nombre_garantes_3,
+		clientes.correo_clientes,
+		clientes.correo_clientes_1,
+		clientes.correo_clientes_2,
+		clientes.correo_clientes_3,
+		clientes.direccion_clientes,
+		clientes.direccion_clientes_1,
+		clientes.direccion_clientes_2,
+		clientes.direccion_clientes_3,
+		clientes.cantidad_clientes,
+		clientes.cantidad_garantes,
+		clientes.sexo_clientes,
+		clientes.sexo_clientes_1,
+		clientes.sexo_clientes_2,
+		clientes.sexo_clientes_3,
+		clientes.sexo_garantes,
+		clientes.sexo_garantes_1,
+		clientes.sexo_garantes_2,
+		clientes.sexo_garantes_3,
+		provincias.id_provincias,
+		provincias.nombre_provincias,
+		titulo_credito.id_titulo_credito,
+		titulo_credito.numero_titulo_credito,
+		juicios.fecha_emision_juicios,
+		juicios.cuantia_inicial,
+		juicios.riesgo_actual,
+		estados_procesales_juicios.id_estados_procesales_juicios,
+		estados_procesales_juicios.nombre_estados_procesales_juicios,
+		juicios.descripcion_estado_procesal,
+		juicios.fecha_ultima_providencia,
+		juicios.estrategia_seguir,
+		juicios.observaciones,
+		asignacion_secretarios_view.id_abogado,
+		asignacion_secretarios_view.impulsores,
+		asignacion_secretarios_view.id_secretario,
+		asignacion_secretarios_view.secretarios,
+		ciudad.id_ciudad,
+		ciudad.nombre_ciudad,
+		clientes.correo_garantes_1,
+		clientes.correo_garantes_2,
+		clientes.correo_garantes_3,
+		clientes.correo_garantes_4,
+		clientes.direccion_garantes_1,
+		clientes.direccion_garantes_2,
+		clientes.direccion_garantes_3,
+		clientes.direccion_garantes_4";
+			
+			
+			
+		$tablas=" public.clientes,
+		public.titulo_credito,
+		public.juicios,
+		public.asignacion_secretarios_view,
+		public.estados_procesales_juicios,
+		public.provincias,
+		public.ciudad";
+			
+		$where="clientes.id_clientes = titulo_credito.id_clientes AND
+		clientes.id_provincias = provincias.id_provincias AND
+		titulo_credito.id_titulo_credito = juicios.id_titulo_credito AND
+		asignacion_secretarios_view.id_ciudad = ciudad.id_ciudad AND
+		juicios.id_estados_procesales_juicios = estados_procesales_juicios.id_estados_procesales_juicios AND
+		asignacion_secretarios_view.id_abogado = titulo_credito.id_usuarios AND asignacion_secretarios_view.id_secretario='$_id_usuarios'";
+			
+		$id="juicios.orden";
+			
+		$where_0 = "";
+		$where_1 = "";
+		$where_2 = "";
+		$where_3 = "";
+		$where_4 = "";
+		$where_5 = "";
+
+		$where_6 = "";
+		$where_7 = "";
+		$where_8 = "";
+		$where_9 = "";
+		$where_10 = "";
+		$where_11 = "";
+		$where_12 = "";
+
+			
+			
+		if($juicio_referido_titulo_credito!=""){$where_0=" AND juicios.juicio_referido_titulo_credito='$juicio_referido_titulo_credito'";}
+
+		if($numero_titulo_credito!=""){$where_1=" AND titulo_credito.numero_titulo_credito='$numero_titulo_credito'";}
+			
+		if($identificacion_clientes!=""){$where_2=" AND clientes.identificacion_clientes like '$identificacion_clientes'";}
+			
+		if($id_provincias!=0){$where_3=" AND provincias.id_provincias='$id_provincias'";}
+
+		if($id_estados_procesales_juicios!=0){$where_4=" AND estados_procesales_juicios.id_estados_procesales_juicios='$id_estados_procesales_juicios'";}
+
+		if($id_abogado!=0){$where_5=" AND asignacion_secretarios_view.id_abogado='$id_abogado'";}
+
+		if($identificacion_clientes_1!=""){$where_6=" AND clientes.identificacion_clientes_1 like'$identificacion_clientes_1'";}
+		if($identificacion_clientes_2!=""){$where_7=" AND clientes.identificacion_clientes_2 like '$identificacion_clientes_2'";}
+		if($identificacion_clientes_3!=""){$where_8=" AND clientes.identificacion_clientes_3 like '$identificacion_clientes_3'";}
+
+
+		if($identificacion_garantes!=""){$where_9=" AND clientes.identificacion_garantes like '$identificacion_garantes'";}
+		if($identificacion_garantes_1!=""){$where_10=" AND clientes.identificacion_garantes_1 like '$identificacion_garantes_1'";}
+		if($identificacion_garantes_2!=""){$where_11=" AND clientes.identificacion_garantes_2 like '$identificacion_garantes_2'";}
+		if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
+
+
+		$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12;
+
+			
+		//comienza paginacion
+
+		$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
+
+		if($action == 'ajax')
+		{
+
+		$html="";
+		$resultSet=$juicios->getCantidad("*", $tablas, $where_to);
+		$cantidadResult=(int)$resultSet[0]->total;
+
+		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
+
+		$per_page = 50; //la cantidad de registros que desea mostrar
+		$adjacents  = 9; //brecha entre páginas después de varios adyacentes
+		$offset = ($page - 1) * $per_page;
+
+		$limit = " LIMIT   '$per_page' OFFSET '$offset'";
+
+
+		$resultSet=$juicios->getCondicionesPag($columnas, $tablas, $where_to, $id, $limit);
+
+		$count_query   = $cantidadResult;
+
+		$total_pages = ceil($cantidadResult/$per_page);
+
+		if ($cantidadResult>0)
+		{
+
+			
+		$html.='<div class="pull-left">';
+		$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
+		$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
+		$html.='</div><br>';
+		$html.='<section style="height:425px; overflow-y:scroll;">';
+		$html.='<table class="table table-hover">';
+		$html.='<thead>';
+		$html.='<tr class="info">';
+		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Correo Cliente 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Dirección Cliente 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 1</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 2</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 3</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Garante 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Garante 4</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Provincia</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Riesgo Actual</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Estrategia a Seguir</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+		$html.='<th style="text-align: left;  font-size: 10px;"></th>';
+		$html.='</tr>';
+		$html.='</thead>';
+		$html.='<tbody>';
+
+			
+
+		$i=0;
+			
+		foreach ($resultSet as $res)
+		{
+		$i++;
+
+			
+		$html.='<tr>';
+		$html.='<td style="font-size: 9px;">'.$i.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->year_juicios.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->correo_clientes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->direccion_clientes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->correo_clientes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->correo_clientes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_clientes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->correo_clientes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->direccion_clientes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_garantes.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_1.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_2.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->identificacion_garantes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_garantes_3.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_provincias.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->fecha_emision_juicios.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->riesgo_actual.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->estrategia_seguir.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
+		$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
+		//	$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+
+		$html.='</tr>';
+
+
+
+		}
+
+		$html.='</tbody>';
+		$html.='</table>';
+		$html.='</section>';
+		$html.='<div class="table-pagination pull-right">';
+		$html.=''. $this->paginate("index.php", $page, $total_pages, $adjacents).'';
+		$html.='</div>';
+		$html.='</section>';
+
+			
+		}else{
+			
+		$html.='<div class="alert alert-warning alert-dismissable">';
+		$html.='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+		$html.='<h4>Aviso!!!</h4> No hay datos para mostrar';
+		$html.='</div>';
+			
+		}
+
+		echo $html;
+		die();
+
+		}
+
+			
+		if(isset($_POST["reporte_rpt"]))
+		{
+
+
+		$parametros = array();
+		$parametros['id_secretario']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+		$parametros['id_abogado']=isset($_POST['id_abogado'])?trim($_POST['id_abogado']):0;
+		$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+		$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+		$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+		$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+		$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+
+		$fechaDesde="";$fechaHasta="";
+		if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+		{
+		$fechaDesde=$_POST["fcha_desde"];
+		$fechaHasta=$_POST["fcha_hasta"];
+		if ($fechaDesde != "" && $fechaHasta != "")
+		{
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+		}
+			
+		if($fechaDesde != "" && $fechaHasta == ""){
+
+		$fechaHasta='2018/12/01';
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+
+		}
+		if($fechaDesde == "" && $fechaHasta != ""){
+
+		$fechaDesde='1800/01/01';
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+		}
+		}
+		$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+		$parametros['identificacion_clientes_1']=(isset($_POST['identificacion_clientes_1']))?trim($_POST['identificacion_clientes_1']):'';
+		$parametros['identificacion_clientes_2']=(isset($_POST['identificacion_clientes_2']))?trim($_POST['identificacion_clientes_2']):'';
+		$parametros['identificacion_clientes_3']=(isset($_POST['identificacion_clientes_3']))?trim($_POST['identificacion_clientes_3']):'';
+
+		$parametros['identificacion_garantes']=(isset($_POST['identificacion_garantes']))?trim($_POST['identificacion_garantes']):'';
+		$parametros['identificacion_garantes_1']=(isset($_POST['identificacion_garantes_1']))?trim($_POST['identificacion_garantes_1']):'';
+		$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
+		$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
+
+		$pagina="contAvocoConocimiento.aspx";
+
+		$conexion_rpt = array();
+		$conexion_rpt['pagina']=$pagina;
+		//$conexion_rpt['port']="59584";
+
+		$this->view("ReporteRpt", array(
+		"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+		));
+
+		die();
+
+		}
+
+		if(isset($_POST["reporte_rpt_matriz"]))
+		{
+
+
+		$parametros = array();
+		$parametros['id_secretario']=$_SESSION['id_usuarios']?trim($_SESSION['id_usuarios']):0;
+		$parametros['id_abogado']=isset($_POST['id_abogado'])?trim($_POST['id_abogado']):0;
+		$parametros['juicio_referido_titulo_credito']=(isset($_POST['juicio_referido_titulo_credito']))?trim($_POST['juicio_referido_titulo_credito']):'';
+		$parametros['numero_titulo_credito']=(isset($_POST['numero_titulo_credito']))?trim($_POST['numero_titulo_credito']):'';
+		$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
+		$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
+		$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+
+		$fechaDesde="";$fechaHasta="";
+		if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+		{
+		$fechaDesde=$_POST["fcha_desde"];
+		$fechaHasta=$_POST["fcha_hasta"];
+		if ($fechaDesde != "" && $fechaHasta != "")
+		{
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+		}
+			
+		if($fechaDesde != "" && $fechaHasta == ""){
+
+		$fechaHasta='2018/12/01';
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+
+		}
+		if($fechaDesde == "" && $fechaHasta != ""){
+
+		$fechaDesde='1800/01/01';
+		$parametros['fecha_desde'] = $fechaDesde;
+		$parametros['fecha_hasta'] = $fechaHasta;
+		}
+		}
+			
+		$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
+		$parametros['identificacion_clientes_1']=(isset($_POST['identificacion_clientes_1']))?trim($_POST['identificacion_clientes_1']):'';
+		$parametros['identificacion_clientes_2']=(isset($_POST['identificacion_clientes_2']))?trim($_POST['identificacion_clientes_2']):'';
+		$parametros['identificacion_clientes_3']=(isset($_POST['identificacion_clientes_3']))?trim($_POST['identificacion_clientes_3']):'';
+
+		$parametros['identificacion_garantes']=(isset($_POST['identificacion_garantes']))?trim($_POST['identificacion_garantes']):'';
+		$parametros['identificacion_garantes_1']=(isset($_POST['identificacion_garantes_1']))?trim($_POST['identificacion_garantes_1']):'';
+		$parametros['identificacion_garantes_2']=(isset($_POST['identificacion_garantes_2']))?trim($_POST['identificacion_garantes_2']):'';
+		$parametros['identificacion_garantes_3']=(isset($_POST['identificacion_garantes_3']))?trim($_POST['identificacion_garantes_3']):'';
+			
+		$pagina="contMatrizJuicios.aspx";
+
+		$conexion_rpt = array();
+		$conexion_rpt['pagina']=$pagina;
+		//$conexion_rpt['port']="59584";
+
+		$this->view("ReporteRpt", array(
+		"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+		));
+
+		die();
+
+		}
+			
+			
+		}
+
+		$this->view("MatrizJuiciosAvocoConocimientoSecretarios",array(
+		"resultSet"=>$resultSet, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultProv"=>$resultProv, "resultImpul"=>$resultImpul
+
+
+
+		));
+
+
+		}
+		else
+		{
+		$this->view("Error",array(
+		"resultado"=>"No tiene Permisos de Acceso a Matriz Juicios"
+
+		));
+
+		exit();
+		}
+			
+		}
+
+		*/
+
+	}
+	else
+	{
+		$this->view("Login",array(
+				"resultSet"=>""
+
+		));
+
+	}
+		
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,5 @@
-	   <?php include("view/modulos/head.php"); ?>		
+		<?php include("view/modulos/head.php"); ?>
+		
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
 
@@ -22,9 +23,28 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
-      
+       <style>
+            input{
+                margin-top:5px;
+                margin-bottom:5px;
+            }
+            .right{
+                float:right;
+            }
+                
+            
+        </style>
         
      
+         
+  
+     
+     
+         
+    
+  
+   
+        
     <script type="text/javascript">
 	$(document).ready(function(){
 		//load_juicios(1);
@@ -39,61 +59,16 @@
 			 {validar = false;mensaje="Fecha desde no puede ser mayor"}
 			
 			if(validar){
-			load_Documentos(1);
+			load_matriz(1);
 			}else{
 				 alert(mensaje);
 			}
 
 			});
-
-		$('#documento').change(function(){
-			if (this.value == "AC")
-			{
-				$('#tipo_documento').empty();
-				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","7": "Nuevos Procesos"};
-				//var items = {"ALL":"Todos","1": "Pago Total", "2": "Proceso Coactivo","3": "Avoco Conocimiento y Suspensión","6": "Avoco Conocimiento","7": "Nuevos Procesos"};
-				
-				$.each(items, function(key, value) {   
-				     $('#tipo_documento')
-				          .append($('<option>', { value : key })
-				          .text(value)); 
-				});
-			}
-			if (this.value == "OF")
-			{
-				$('#tipo_documento').empty();
-				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","OF1": "Oficio"};
-				
-				$.each(items, function(key, value) {   
-				     $('#tipo_documento')
-				          .append($('<option>', { value : key })
-				          .text(value)); 
-				});
-			}
-			if (this.value == "PR")
-			{
-				$('#tipo_documento').empty();
-				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Cancelación Proceso"};
-				
-				$.each(items, function(key, value) {   
-				     $('#tipo_documento')
-				          .append($('<option>', { value : key })
-				          .text(value)); 
-				});
-			}
-			if (this.value == "ALL")
-			{
-				$('#tipo_documento').empty();
-				$('#div_tipo_documento').css({"display":"none"});
-			}
-		});
 	});
 
 	
-	function load_Documentos(pagina){
+	function load_matriz(pagina){
 		
 		//iniciar variables
 		 var con_juicio_referido_titulo_credito=$("#juicio_referido_titulo_credito").val();
@@ -112,12 +87,12 @@
 		 var con_identificacion_garantes_1=$("#identificacion_garantes_1").val();
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
+		 var con_id_origen_juicio=$("#id_origen_juicio").val();
+
+		 var con_numero_carton_jucios=$("#numero_carton_jucios").val();
 		 
 
 		  var con_datos={
-				  buscar : 'buscar',
-				  documento: $('#documento').val(),
-				  tipo_documento: $('#tipo_documento').val(),
 				  juicio_referido_titulo_credito:con_juicio_referido_titulo_credito,
 				  numero_titulo_credito:con_numero_titulo_credito,
 				  id_provincias:con_id_provincias,
@@ -134,6 +109,8 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
+				  id_origen_juicio:con_id_origen_juicio,
+				  numero_carton_jucios:con_numero_carton_jucios,
 				  
 				  action:'ajax',
 				  page:pagina
@@ -142,7 +119,7 @@
 
 		$("#matriz").fadeIn('slow');
 		$.ajax({
-			url:"<?php echo $helper->url("DocumentosGenerados","index");?>",
+			url:"<?php echo $helper->url("MatrizJuicios","index8");?>",
             type : "POST",
             async: true,			
 			data: con_datos,
@@ -159,79 +136,7 @@
 	</script>
 	
 	
-	 <script>
-
-		$(document).ready(function(){
-
-			$fechad=$('#fcha_desde').val();
-		    $fechah=$('#fcha_hasta').val();
-		    
-		    if (typeof $fechad != "undefined" || $fechad != null || typeof $fechah != "undefined" || $fechah != null)
-		    {
-			    $fechadesde=$('#fcha_desde');
-			    $fechahasta=$('#fcha_hasta');
-			    if ($fechadesde[0].type!="date"){
-			    $fechadesde.attr('readonly','readonly');
-			    $fechadesde.datepicker({
-		    		changeMonth: true,
-		    		changeYear: true,
-		    		dateFormat: "yy-mm-dd",
-		    		yearRange: "1900:2017"
-		    		});
-			    }
-	
-			    
-			    if ($fechahasta[0].type!="date"){
-			    $fechahasta.attr('readonly','readonly');
-			    $fechahasta.datepicker({
-		    		changeMonth: true,
-		    		changeYear: true,
-		    		dateFormat: "yy-mm-dd",
-		    		yearRange: "1900:2017"
-		    		});
-			    }
-		    }
-
-		    $fechaEmision=$('#fecha_emision_juicios');
-		    if ($fechaEmision[0].type!="date"){
-		    $fechaEmision.attr('readonly','readonly');
-		    $fechaEmision.datepicker({
-	    		changeMonth: true,
-	    		changeYear: true,
-	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
-	    		});
-		    }
-
-		    $fechaUltProv=$('#fecha_ultima_providencia');
-		    if ($fechaUltProv[0].type!="date"){
-		    $fechaUltProv.attr('readonly','readonly');
-		    $fechaUltProv.datepicker({
-	    		changeMonth: true,
-	    		changeYear: true,
-	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
-	    		});
-		    }
-
-
-		    $fechaResProv=$('#fecha_providencia_restructuracion');
-		    if ($fechaResProv[0].type!="date"){
-		    $fechaResProv.attr('readonly','readonly');
-		    $fechaResProv.datepicker({
-	    		changeMonth: true,
-	    		changeYear: true,
-	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
-	    		});
-		    }
-
-		    
-
-		}); 
-
-	</script>
-	
+	 
 	
 
     </head>
@@ -258,6 +163,8 @@
        $sel_identificacion_garantes_1="";
        $sel_identificacion_garantes_2="";
        $sel_identificacion_garantes_3="";
+       $sel_numero_carton_jucios="";
+       
        
        if($_SERVER['REQUEST_METHOD']=='POST' )
        {
@@ -279,6 +186,8 @@
        	$sel_identificacion_garantes_2=$_POST['identificacion_garantes_2'];
        	$sel_identificacion_garantes_3=$_POST['identificacion_garantes_3'];
        	
+       	$sel_numero_carton_jucios=$_POST['numero_carton_jucios'];
+       	
        
        }
        
@@ -290,21 +199,14 @@
   
   <div class="row" style="background-color: #ffffff;">
   
-       <!-- empieza el form --> 
-<?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-          <form action="<?php echo $helper->url("",""); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
-     
-            </form>
-            
- <?php } } else {?>
- 
- <form action="<?php echo $helper->url("DocumentosGenerados","index3"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      
+               <form action="<?php echo $helper->url("MatrizJuicios","index8"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <br>         
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Documentos Generados</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Gestión Documental Juicios</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -317,22 +219,6 @@
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
 			     
 			    </select>
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-			  	<p  class="formulario-subtitulo" style="" > Documento:</p>
-			  	<select name="documento" id="documento"  class="form-control" >
-			  	<option value="ALL"> Todos </option>
-			  	<option value="AC"> Avoco Conocimiento </option>
-			  	<option value="OF"> Oficios </option>
-			  	<option value="PR"> Providencias </option>
-			    </select>
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12" style="display:none;" id="div_tipo_documento">
-			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
-			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
-			   </select>
 		 </div>
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
@@ -358,13 +244,14 @@
 			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
 			    
 		 </div>
-		
-		
-		 <div class="col-lg-2 col-md-2 col-xs-12">
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >CI Cliente 3:</p>
 			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
 			    
 		 </div>
+		 </div>
+		 <div class="row">
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >CI Cliente 4:</p>
 			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
@@ -398,6 +285,7 @@
 		 </div>
 		 
 		 
+		 
 		 <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
@@ -408,6 +296,9 @@
 				</select>
 
          </div>
+		 </div>
+         
+		 <div class="row">
          <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
@@ -419,6 +310,21 @@
 
          </div>
          
+           <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Origen Juicio:</p>
+			  	<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
+			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
+					<?php foreach($resultOrigen as $res) {?>
+						<option value="<?php echo $res->id_origen_juicio; ?>"><?php echo $res->nombre_origen_juicio;  ?> </option>
+			            <?php } ?>
+				</select>
+
+          </div>
+         
+         <div class="col-lg-2 col-md-2 col-xs-12">
+         		<p class="formulario-subtitulo" >Número Cartón:</p>
+			  	<input type="text"  name="numero_carton_jucios" id="numero_carton_jucios" value="<?php echo $sel_numero_carton_jucios;?>" class="form-control "/> 
+		 </div>
         
 		<div class="col-lg-2 col-md-2 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Desde:</p>
@@ -427,12 +333,7 @@
 		<div class="col-lg-2 col-md-2 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Hasta:</p>
 			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
-		</div>
-		<div id="div_tipo_documento" class="col-lg-2 col-md-2 col-xs-12" style="display:none;" >
-			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
-			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
-			    </select>
-		 </div> 
+		</div> 
         
          </div>
           
@@ -442,7 +343,10 @@
   		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		
+		  <a href="<?php echo $helper->url("MatrizJuicios","index8"); ?>&id_abogado=<?php echo $_SESSION['id_usuarios']; ?>" class="btn btn-warning" style="margin-top: 10px;"><i class="glyphicon glyphicon-plus"></i></a>
+		<button type="submit" id="reporte_rpt_matriz" name="reporte_rpt_matriz" value="Reporte Matriz Juicios"   class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Matriz Juicios</button>         
+	 	 	
+	 
 	     </div>
 		 
 		
@@ -477,7 +381,7 @@
 		 
 		 </div>
 		 
-	 <?php } ?>
+	
       
        </form>
      <br>
