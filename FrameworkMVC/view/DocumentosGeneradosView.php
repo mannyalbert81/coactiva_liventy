@@ -76,7 +76,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Cancelación Proceso"};
+				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')
