@@ -124,6 +124,57 @@
       
       
       
+         
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 8)
+          {
+       	   $("#div_datos_reestructuracion").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+       	   $("#div_datos_reestructuracion").fadeOut("slow");
+       	  $("#div_datos_impulsor").fadeOut("slow");
+    	  $("#div_datos_secretario").fadeOut("slow");
+    	
+          }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 8)
+              {
+           	   $("#div_datos_reestructuracion").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_datos_reestructuracion").fadeOut("slow");
+           	  $("#div_datos_impulsor").fadeOut("slow");
+        	  $("#div_datos_secretario").fadeOut("slow");
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
       
       
       
@@ -222,7 +273,15 @@
 			    var fecha_oficio = $("#fecha_oficio").val();
 
 
-			   
+			    var numero_oficio_restructuracion = $("#numero_oficio_restructuracion").val();
+			    var fecha_oficio_restructuracion = $("#fecha_oficio_restructuracion").val();
+			    
+                 
+			    var numero_solicitud_restructuracion = $("#numero_solicitud_restructuracion").val();
+			    var fecha_solicitud_restructuracion = $("#fecha_solicitud_restructuracion").val();
+
+                var acta_validacion_restructuracion= $("#acta_validacion_restructuracion").val();
+			    
 
 			    var reemplazar = $("#reemplazar").val();
 
@@ -262,7 +321,7 @@
 		    	if (tipo_avoco == 0)
 		    	{
 			    	
-		    		$("#mensaje_tipo_avoco").text("Seleccione Tipo Avoco");
+		    		$("#mensaje_tipo_avoco").text("Seleccione Tipo Proceso");
 		    		$("#mensaje_tipo_avoco").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
@@ -273,6 +332,69 @@
 				}
 
 
+
+
+
+		    	if(tipo_avoco == 8  && numero_oficio_restructuracion == ""){
+					$("#mensaje_numero_oficio_restructuracion").text("Ingrese # Oficio");
+		    		$("#mensaje_numero_oficio_restructuracion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficio_restructuracion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 8  && fecha_oficio_restructuracion == ""){
+					$("#mensaje_fecha_oficio_restructuracion").text("Ingrese Fecha de Oficio");
+		    		$("#mensaje_fecha_oficio_restructuracion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_oficio_restructuracion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+				if(tipo_avoco == 8  && numero_solicitud_restructuracion == ""){
+					$("#mensaje_numero_solicitud_restructuracion").text("Ingrese # Restructuración");
+		    		$("#mensaje_numero_solicitud_restructuracion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_solicitud_restructuracion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 8  && fecha_solicitud_restructuracion == ""){
+					$("#mensaje_fecha_solicitud_restructuracion").text("Ingrese Fecha de Restructuración");
+		    		$("#mensaje_fecha_solicitud_restructuracion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_solicitud_restructuracion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+		    	
+				if(tipo_avoco == 8  && acta_validacion_restructuracion == ""){
+					$("#mensaje_acta_validacion_restructuracion").text("Ingrese # Restructuración");
+		    		$("#mensaje_acta_validacion_restructuracion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_acta_validacion_restructuracion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				
 		       	
 		      
 		       	if(tipo_avoco == 1  && numero_oficio == ""){
@@ -412,6 +534,27 @@
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
 
+
+				$( "#numero_oficio_restructuracion" ).focus(function() {
+					$("#mensaje_numero_oficio_restructuracion").fadeOut("slow");
+    			});
+				$( "#fecha_oficio_restructuracion" ).focus(function() {
+					$("#mensaje_fecha_oficio_restructuracion").fadeOut("slow");
+    			});
+
+
+				$( "#numero_solicitud_restructuracion" ).focus(function() {
+					$("#mensaje_numero_solicitud_restructuracion").fadeOut("slow");
+    			});
+				$( "#fecha_solicitud_restructuracion" ).focus(function() {
+					$("#mensaje_fecha_solicitud_restructuracion").fadeOut("slow");
+    			});
+
+				$( "#acta_validacion_restructuracion" ).focus(function() {
+					$("#mensaje_acta_validacion_restructuracion").fadeOut("slow");
+    			});
+				
+				
 				$( "#numero_oficio" ).focus(function() {
 					$("#mensaje_numero_oficio").fadeOut("slow");
     			});
@@ -582,7 +725,7 @@
   		       <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
-	         		<h4><i class='glyphicon glyphicon-edit'></i> Tipo de Proceso<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Tipo de Proceso<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de proceso obligatoriamente.)</FONT></h4>
 	         	</div>
 	        	<div class="panel-body">
 	        	
@@ -590,13 +733,9 @@
 			  	<p  class="formulario-subtitulo">Tipo Proceso:</p>
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
-			  		<!-- <option value="6">AVOCO CONOCIMIENTO</option>   -->
-			  		
-			  		<!-- <option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option> -->
-					<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
-					<!-- <option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option> -->
-					<!-- <option value="5">AVOCO CONOCIMIENTO CON NOMBRAMIENTO DE JUEZA</option> -->
-					<!-- <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>    -->
+			  		<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
+					<option value="8">PROVIDENCIA (RESTRUCTURACIÓN)</option>
+					
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
@@ -620,17 +759,11 @@
   		
   		
   		
-  		
-  		
-  		
-  		
-  		
-  		
   			
   		        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 	            <div class="panel panel-info">
 	         	<div class="panel-heading">
-	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Para la Providencia<br><FONT FACE="arial" SIZE=2 COLOR=red>(Seleccionar el tipo de avoco obligatoriamente.)</FONT></h4>
+	         		<h4><i class='glyphicon glyphicon-edit'></i> Datos Para la Providencia<br><FONT FACE="arial" SIZE=2 COLOR=red>(Ingresar los datos requeridos.)</FONT></h4>
 	         	</div>
 	        	<div class="panel-body">
 	        	
@@ -737,8 +870,50 @@
 			    </div>
 	          </div> 
 	          
+	          
+	          
+	          
+	          
+	          
+	           <div id="div_datos_reestructuracion" style="display: none;">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
+			  	<input type="text"  name="numero_oficio_restructuracion" id="numero_oficio_restructuracion" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_restructuracion" class="errores"></div>
+	            </div>
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
+			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_restructuracion" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Restructuración:</p>
+			  	<input type="text"  name="numero_solicitud_restructuracion" id="numero_solicitud_restructuracion" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_solicitud_restructuracion" class="errores"></div>
+	            </div>
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Restructuración:</p>
+			  	<input type="date"  name="fecha_solicitud_restructuracion" id="fecha_solicitud_restructuracion" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_solicitud_restructuracion" class="errores"></div>
+			    </div>
+			    
+	             <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Acta de Validación de Restructuración:</p>
+			  	<input type="text"  name="acta_validacion_restructuracion" id="acta_validacion_restructuracion" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_acta_validacion_restructuracion" class="errores"></div>
+	            </div>
+	            
+	          </div> 
+	          
+	          
+	          
+	          
+	          
 	          <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal, que no se notifica con este auto a los coactivados, por no haber señalado domicilio judicial o correo electrónico para el efecto, en la ciudad de xxxx, "Fecha" xx xx xxxx xx xxx.- <b>LO CERTIFICO.-</b></font></p>
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal, que no se notifica con esta providencia a los coactivados, por no haber señalado domicilio judicial o correo electrónico para el efecto, en la ciudad de xxxx, "Fecha" xx xx xxxx xx xxx.- <b>LO CERTIFICO.-</b></font></p>
 				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b> LO CERTIFICO.-</b>)</FONT>
 			  </div>
 				   

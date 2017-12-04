@@ -743,12 +743,7 @@
 			  		<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
-<<<<<<< HEAD
-					<option value="5">AVOCO CONOCIMIENTO CON MANDAMIENTO DE JUEZA</option>
-=======
-					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
-					<option value="5">AVOCO CONOCIMIENTO CON NOMBRAMIENTO DE JUEZA</option>
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
+
 			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>
 			        
 				</select>

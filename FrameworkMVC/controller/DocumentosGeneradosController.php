@@ -216,7 +216,33 @@ session_start();
 							
 								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
 							}
+							else if($tipo_documento=="PRES")
+							{
+								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 4";
+									
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+							}
 							
+							else if($tipo_documento=="PEMCUBAN")
+							{
+								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 5";
+									
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+							}
 							
 							
 							

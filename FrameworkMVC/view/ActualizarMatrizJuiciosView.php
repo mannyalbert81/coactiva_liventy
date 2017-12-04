@@ -53,7 +53,8 @@
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
 
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
-		     
+		     	 var numero_carton = $("#numero_carton").val();
+			     	
 		     	
 		    	if (id_origen_juicio == "")
 		    	{
@@ -68,6 +69,18 @@
 		            
 				}
 		    
+		    	if (numero_carton == "")
+		    	{
+			    	
+		    		$("#mensaje_numero_carton").text("Ingrese # Cartón");
+		    		$("#mensaje_numero_carton").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_numero_carton").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 		   				
 		     	if (juicio_referido_titulo_credito == "")
 		    	{
@@ -161,7 +174,9 @@
 			$( "#id_origen_juicio" ).focus(function() {
 				$("#mensaje_id_origen_juicio").fadeOut("slow");
 			});
-
+			$( "#numero_carton" ).focus(function() {
+				$("#mensaje_numero_carton").fadeOut("slow");
+			});
 		    $( "#juicio_referido_titulo_credito" ).focus(function() {
 				$("#mensaje_juicio_referido_titulo_credito").fadeOut("slow");
 			});
@@ -440,13 +455,13 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Juicios</h4>
 	         </div>
 	         <div class="panel-body">
-			            <div class = 'col-xs-12 col-md-3 col-lg-3'>
+			            <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='modal_edit_orden' class='control-label'>Orden</label><br>
 				        <input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value="<?php echo $resEdit->id_juicios; ?>" readonly >
 				        </div>
 					    </div>
-					    <div class = 'col-xs-12 col-md-1 col-lg-1'>
+					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='regional' class='control-label'>Regional</label><br>
 				        <input type='text' class='form-control' id='regional' name='regional' value="<?php echo $resEdit->regional; ?>" >
@@ -470,15 +485,21 @@
 			  			</div>
 						</div>
 						
+						<div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class='form-group'>
+				        <label for='numero_carton' class='control-label'># Cartón</label><br>
+				        <input type='text' class='form-control' id='numero_carton' name='numero_carton' value="<?php echo $resEdit->numero_carton_jucios; ?>">
+				        <div id="mensaje_numero_carton" class="errores"></div>
+				        </div>
+				        </div>	
 						
-						
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='juicio_referido_titulo_credito' class='control-label'># Juicio</label><br>
 				        <input type='text' class='form-control' id='juicio_referido_titulo_credito' name='juicio_referido_titulo_credito' value="<?php echo $resEdit->juicio_referido_titulo_credito; ?>">
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='year_juicios' class='control-label'>Año Juicio</label><br>
 				        <input type='text' class='form-control' id='year_juicios' name='year_juicios' value="<?php echo $resEdit->year_juicios; ?>"  >
