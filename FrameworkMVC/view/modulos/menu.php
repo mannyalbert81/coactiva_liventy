@@ -209,6 +209,10 @@ $controladores=$_SESSION['controladores'];
           </li>	
           
            <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=MatrizJuicios&action=index11"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Providencia de Levantamiento Medidas Cautelares</span> </a>
+          </li>	
+          
+           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index5"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Oficios</span> </a>
           </li>	
           
@@ -422,14 +426,14 @@ $controladores=$_SESSION['controladores'];
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" ><?php echo " Documentos Generados" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
           
-        	<li style="<?php echo getcontrolador("DocumentosGenerados",$controladores) ?>">
-        	<a href="index.php?controller=DocumentosGenerados&action=index"><span class="glyphicon glyphicon-user" aria-hidden="true"> Documentos Generados</span> </a>
-		    </li>			
-			<!-- 
-			<li style="<?php echo getcontrolador("Repositorio",$controladores) ?>">
-			<a href="index.php?controller=Repositorio&action=index"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Gestion Repositorios</span> </a>
-			</li>
-			 -->
+        
+			
+		  <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=DocumentosGenerados&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Documentos Generados</span> </a>
+          </li>	
+          <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
+          <a href="index.php?controller=DocumentosGenerados&action=index2"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Documentos Generados</span> </a>
+          </li>
 			
 </ul>
 </li>

@@ -6,7 +6,9 @@
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
         
-      
+      <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
         
          
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -192,8 +194,9 @@
                  
                  
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <p align="justify"><b><font face="univers" size=3>***Estimados usuarios al generar un documento en el sistema, automáticamente se actualizara la fecha de última providencia del juicio***</font></b></p>
-				</div>
+            	 <p align="justify"><b><font face="univers" size=3>***Estimados usuarios al generar un documento en el sistema se actualizara la fecha de última providencia y el estado procesal del juicio cuando su abogado SECRETARIO lo apruebe.***</font></b></p>
+				
+            	</div>
                  <br>        
          <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">

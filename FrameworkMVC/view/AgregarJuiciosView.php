@@ -9,7 +9,9 @@
       
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
-        
+         <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
           <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -26,7 +28,15 @@
  		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 		
 		
+		<script src="view/js/jquery.inputmask.bundle.js"></script>
+		
+       <script>
+      $(document).ready(function(){
+      $(".cantidades").inputmask();
+      });
+
       
+    </script>
          
      <script >
 		$(document).ready(function(){
@@ -43,7 +53,7 @@
 		     	var id_provincias = $("#id_provincias").val();
 		     	var id_estados_procesales_juicios = $("#id_estados_procesales_juicios").val();
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
-
+                var cuantia_inicial = $("#cuantia_inicial").val();
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
 		        var numero_carton = $("#numero_carton").val();
 		     	
@@ -101,6 +111,8 @@
 		            
 				}
 
+		      	
+		     	
 			     /*	if (fecha_emision_juicios == "")
 		    	{
 			    	
@@ -181,9 +193,7 @@
 				$("#mensaje_numero_titulo_credito").fadeOut("slow");
 			});
 	
-			/*	$( "#fecha_emision_juicios" ).focus(function() {
-					$("#mensaje_fecha_emision_juicios").fadeOut("slow");
-    			});*/
+				
 
 				$( "#id_provincias" ).focus(function() {
 					$("#mensaje_id_provincias").fadeOut("slow");
@@ -695,7 +705,8 @@
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
 				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
-				        <input type='text' class='form-control' id='cuantia_inicial' name='cuantia_inicial' value="0.00" >
+				        <input type='text' class='form-control cantidades' id='cuantia_inicial' name='cuantia_inicial' value="0"  
+				        data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
 				        <div id="mensaje_cuantia_inicial" class="errores"></div>
 				        </div>
 				        </div>	
@@ -707,6 +718,8 @@
 				        </div>
 				        </div>	
 				        
+				        
+				  
 				        	
    
 <br>

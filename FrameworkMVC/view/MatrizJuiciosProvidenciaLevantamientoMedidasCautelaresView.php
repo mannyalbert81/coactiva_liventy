@@ -10,7 +10,9 @@
       
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
-        
+        <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
            
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
@@ -18,10 +20,10 @@
 	      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		
+		
 		<link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
 		 <script src="view/js/pace.js"></script>
-		
-				<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+		<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
         <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
         <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
  		
@@ -133,7 +135,7 @@
 
 		$("#matriz").fadeIn('slow');
 		$.ajax({
-			url:"<?php echo $helper->url("MatrizJuicios","index2");?>",
+			url:"<?php echo $helper->url("MatrizJuicios","index11");?>",
             type : "POST",
             async: true,			
 			data: con_datos,
@@ -493,7 +495,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","index2"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      <form action="<?php echo $helper->url("MatrizJuicios","index11"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <!-- comienxza busqueda  -->
                  
@@ -501,7 +503,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Avoco Conocimiento</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Matriz Juicios Providencia Levantamiento Medidas Cautelares</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -743,12 +745,7 @@
 			  		<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
-<<<<<<< HEAD
-					<option value="5">AVOCO CONOCIMIENTO CON MANDAMIENTO DE JUEZA</option>
-=======
-					<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
-					<option value="5">AVOCO CONOCIMIENTO CON NOMBRAMIENTO DE JUEZA</option>
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
+
 			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>
 			        
 				</select>

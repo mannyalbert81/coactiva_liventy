@@ -10,6 +10,9 @@
       
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
+         <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
           <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -22,6 +25,16 @@
         
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
+         
+   	<script src="view/js/jquery.inputmask.bundle.js"></script>
+		
+       <script>
+      $(document).ready(function(){
+      $(".cantidades").inputmask();
+      });
+
+      
+    </script>
  		
        <style>
             input{
@@ -861,28 +874,26 @@
 				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
 				        </div>
 				        </div>	
+				       	
+				        
+				        
 				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
 				        <div class='form-group'>
-				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label><br>
-				        <input type='text' class='form-control' id='cuantia_inicial' name='cuantia_inicial' value="<?php echo $resEdit->cuantia_inicial; ?>"  >
+				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
+				        <input type='text' class='form-control cantidades' id='cuantia_inicial' name='cuantia_inicial' value="<?php echo $resEdit->cuantia_inicial; ?>"  
+				        data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
+				         </div>
 				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        
+				        
+				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
 				        <div class='form-group'>
 				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label><br>
 				        <input type='text' class='form-control' id='riesgo_actual' name='riesgo_actual' value="<?php echo $resEdit->riesgo_actual; ?>">
 				        </div>
 				        </div>	
 				        
-				         <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='credito_hipotecario' class='control-label'>Credito Hipotecario</label>
-				        <select  class='form-control' id='credito_hipotecario' name='credito_hipotecario'>
-				        	<option value='0'>NO</option>
-				        	<option value='1'>SI</option>
-				        </select>
-				        </div>
-				        </div>
+				        
 <br>
  						
  						<div class="col-xs-12 col-md-2 col-lg-2">

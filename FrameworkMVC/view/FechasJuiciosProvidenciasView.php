@@ -8,7 +8,9 @@
       
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
-        
+        <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
          
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  			   
@@ -67,7 +69,7 @@
 				}
 
 
-		    	if (razon_providencias == "")
+		    	/*if (razon_providencias == "")
 		    	{
 			    	
 		    		$("#mensaje_razon").text("Introduzca una Razón");
@@ -78,7 +80,7 @@
 		    	{
 		    		$("#mensaje_razon").fadeOut("slow"); //Muestra mensaje de error
 		            
-				}
+				}*/
 		    	
 		    	
 			}); 
@@ -91,9 +93,10 @@
 				$( "#hora_providencias" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
+    			/*
 				$( "#razon_providencias" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
-    			});
+    			});*/
 				
 					    
 		}); 
@@ -145,9 +148,13 @@
        
       <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
-                 <!-- comienxza busqueda  -->
-                 
-                 <br>         
+                 <br> 
+                 <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
+            	 <p align="justify"><b><font face="univers" size=3>***Estimados usuarios al generar un documento en el sistema se actualizara la fecha de última providencia y el estado procesal del juicio cuando su abogado SECRETARIO lo apruebe.***</font></b></p>
+				
+            	  </div>
+                 <br> 
+                        
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
@@ -168,31 +175,31 @@
 			  
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Hora Providencia:</p>
 			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="" class="form-control "/> 
 			    <div id="mensaje_hora" class="errores"></div>
 		 </div>
 		 
-		  <div class="col-lg-4 col-md-4 xs-6">
+		  <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Cliente:</p>
 			  	<input type="text"  name="nombres_clientes" id="nombres_clientes" value="<?php echo $datos['nombres_clientes']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $datos['juicio_referido_titulo_credito']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		   <div class="col-lg-2 col-md-2 xs-6">
+		   <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $datos['numero_titulo_credito']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		   <div class="col-lg-3 col-md-3 xs-6">
+		   <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -200,11 +207,17 @@
 						<option value="<?php echo $res->id_estados_procesales_juicios; ?>"<?php if($sel_id_estados_procesales_juicios==$res->id_estados_procesales_juicios){echo "selected";}?> ><?php echo $res->nombre_estados_procesales_juicios;  ?> </option>
 			            <?php } ?>
 				</select>
-
+           <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del juicio.)</FONT>
+               
          </div>
+         
 		  
-		   
-             <div class="col-xs-12 col-md-12" style="margin-top:10px">
+		   <div class="col-lg-12 col-md-12 col-xs-12" style="text-aling: justify; margin-top:10px;" >
+            	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal, que no se notifica con esta providencia a los coactivados, por no haber señalado domicilio judicial o correo electrónico para el efecto, en la ciudad de xxxx, "Fecha" xx xx xxxx xx xxx.- <b>LO CERTIFICO.-</b></font></p>
+				 <FONT FACE="arial" SIZE=2 COLOR=red>(Si necesita cambiar el texto de la razón ingreselo en el siguiente campo, sin incluir las palabras <b>RAZÓN.- </b> y <b> LO CERTIFICO.-</b>)</FONT>
+			  </div>
+			  
+             <div class="col-xs-12 col-md-12 col-lg-12" >
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
                                   <textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value=""  placeholder="Ingrese Razón"></textarea>
@@ -220,7 +233,7 @@
   		        
   		
   		
-  		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+  		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	  
@@ -236,21 +249,18 @@
 	        </div>
          
          
-        		 
-		 
-		
-		 
-	
       
        </form>
+     
+     
      
       </div>
      
   </div>
-      <!-- termina
-       busqueda  -->
+     
       
-      
+      <br><br>
+     
       
      
      

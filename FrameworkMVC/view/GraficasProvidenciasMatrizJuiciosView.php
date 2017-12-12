@@ -10,7 +10,9 @@
       
         <meta charset="utf-8"/>
         <title>Matriz Juicios - coactiva 2017</title>
-        
+        <link rel="stylesheet" href="view/css/pace-theme-center-atom.css" />
+		 <script src="view/js/pace.js"></script>
+		
   <script src="view/js/Chart.js"></script>
 
      <script>

@@ -309,7 +309,7 @@ class EntidadBase{
 			    </head>
 				     <body style="background-color:#d9e3e4">
 				   <div style="background-color:#d93e1b">
-				<rigth><img src="http://186.4.241.148:80/coactiva_liventy/FrameworkMVC/view/images/logo-coctiva.png" WIDTH="200" HEIGHT="80" /></rigth>
+				<rigth><img src="http://18.221.171.210:80/coactiva_liventy/FrameworkMVC/view/images/logo-coctiva.png" WIDTH="200" HEIGHT="80" /></rigth>
 	             </div>
     			<h2><center><b>INCIDENCIAS</b></center></h2>
     
@@ -383,7 +383,7 @@ class EntidadBase{
     	 
     	foreach($lista as $res)
     	{
-    	$mensaje_detalle1 .=  '<td><center><input type="image" name="image" src="http://186.4.241.148:80/coactiva_liventy/FrameworkMVC/view/DevuelveImagen.php?id_valor='.$res->id_incidencia.'&id_nombre=id_incidencia&tabla=incidencia&campo=imagen_incidencia" alt="'.$res->id_incidencia.'" width="600" height="550"></td>' ;
+    	$mensaje_detalle1 .=  '<td><center><input type="image" name="image" src="http://18.221.171.210:80/coactiva_liventy/FrameworkMVC/view/DevuelveImagen.php?id_valor='.$res->id_incidencia.'&id_nombre=id_incidencia&tabla=incidencia&campo=imagen_incidencia" alt="'.$res->id_incidencia.'" width="600" height="550"></td>' ;
     	
     	}
     	 
@@ -444,7 +444,7 @@ class EntidadBase{
 			    </head>
 				     <body style="background-color:#d9e3e4">
 				   <div style="background-color:#d93e1b">
-				<rigth><img src="http://186.4.241.148:80/coactiva_liventy/FrameworkMVC/view/images/logo-coctiva.png" WIDTH="200" HEIGHT="80" /></rigth>
+				<rigth><img src="http://18.221.171.210:80/coactiva_liventy/FrameworkMVC/view/images/logo-coctiva.png" WIDTH="200" HEIGHT="80" /></rigth>
 	             </div>
     			<h2><center><b>RESPUESTA INCIDENCIAS</b></center></h2>
     
@@ -513,7 +513,7 @@ class EntidadBase{
     
     	foreach($lista as $res)
     	{
-    		$mensaje_detalle1 .=  '<td><center><input type="image" name="image" src="http://186.4.241.148:80/coactiva_liventy/FrameworkMVC/view/DevuelveImagen.php?id_valor='.$res->id_respuesta_incidencia.'&id_nombre=id_respuesta_incidencia&tabla=respuesta_incidencia&campo=image_respuesta" alt="'.$res->id_respuesta_incidencia.'" width="600" height="550"></td>' ;
+    		$mensaje_detalle1 .=  '<td><center><input type="image" name="image" src="http://18.221.171.210:80/coactiva_liventy/FrameworkMVC/view/DevuelveImagen.php?id_valor='.$res->id_respuesta_incidencia.'&id_nombre=id_respuesta_incidencia&tabla=respuesta_incidencia&campo=image_respuesta" alt="'.$res->id_respuesta_incidencia.'" width="600" height="550"></td>' ;
     		 
     	}
     
@@ -595,6 +595,31 @@ class EntidadBase{
     	$resultadoT=$traza->Insert();
     
     }
+    
+    
+    public function  Inser_Tipo_Notificaciones($descripcion_notificacion, $id_impulsor, $id_secretario){
+    	 
+    	$cantidad_notificacion=1;
+    	$tipo_notificaciones = new TipoNotificacionModel();
+    	$funcion = "ins_tipo_notificaciones_liventy";
+    	$parametros = "'$descripcion_notificacion', '$cantidad_notificacion', '$id_impulsor', '$id_secretario'  ";
+    	$tipo_notificaciones->setFuncion($funcion);
+    	$tipo_notificaciones->setParametros($parametros);
+    	$resultadoT=$tipo_notificaciones->Insert();
+    	 
+    }
+    
+    public function  Inser_Notificaciones($id_juicios, $id_tipo_notificaciones, $nombre_documentos){
+    	
+    	$notificaciones = new NotificacionesModel();
+    	$funcion = "ins_notificaciones_liventy";
+    	$parametros = "'$id_juicios', '$id_tipo_notificaciones', '$nombre_documentos'";
+    	$notificaciones->setFuncion($funcion);
+    	$notificaciones->setParametros($parametros);
+    	$resultadoT=$notificaciones->Insert();
+    }
+    
+    
     
     public function InsertaJuicio($id_entidades,$id_juzgado,$juicio_referido_titulo_credito,$id_usuarios,$id_titulo_credito,$id_clientes,$id_etapas_juicios,$id_tipo_juicios,$descipcion_auto_pago_juicios,$id_estados_procesales_juicios,$id_estados_auto_pago_juicios,$nombre_archivado_juicios)
     {
