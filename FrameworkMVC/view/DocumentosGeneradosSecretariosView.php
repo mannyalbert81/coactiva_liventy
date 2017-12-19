@@ -22,14 +22,67 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
-      
-        
+ 		
+ 		
+    
+    
+       <script type="text/javascript">
+	   $(document).ready(function(){
+		$("#reporte_documentos").click(function(){
+
+
+			var documento = $("#documento").val();
+	     	
+	    	if (documento == "ALL")
+	    	{	
+	    		$("#mensaje_documento").text("Seleccione");
+	    		$("#mensaje_documento").fadeIn("slow"); //Muestra mensaje de error
+	            return false;
+		    }
+	    	else 
+	    	{
+	    		$("#mensaje_documento").fadeOut("slow"); //Muestra mensaje de error
+	    		
+			}
+
+
+
+		});
+
+
+
+
+		$( "#documento" ).focus(function() {
+			$("#mensaje_documento").fadeOut("slow");
+		});
+			
+	});
+
+	</script>
      
     <script type="text/javascript">
 	$(document).ready(function(){
 		//load_juicios(1);
 
 		$("#buscar").click(function(){
+
+
+			var documento = $("#documento").val();
+	     	
+	    	if (documento == "ALL")
+	    	{
+		    	
+	    		$("#mensaje_documento").text("Seleccione");
+	    		$("#mensaje_documento").fadeIn("slow"); //Muestra mensaje de error
+	            return false;
+		    }
+	    	else 
+	    	{
+	    		$("#mensaje_documento").fadeOut("slow"); //Muestra mensaje de error
+	    		load_Documentos(1);
+			}
+
+	
 			var fechadesde=$("#fcha_desde").val();
 			 var fechahasta=$("#fcha_hasta").val();
 			 var validar = true;
@@ -45,6 +98,15 @@
 			}
 
 			});
+
+
+
+
+		$( "#documento" ).focus(function() {
+			$("#mensaje_documento").fadeOut("slow");
+		});
+
+		
 
 		$('#documento').change(function(){
 			if (this.value == "AC")
@@ -113,7 +175,9 @@
 		 var con_identificacion_garantes_2=$("#identificacion_garantes_2").val();
 		 var con_identificacion_garantes_3=$("#identificacion_garantes_3").val();
 		 
+		var con_firma=$("#firma").val();
 
+		 
 		  var con_datos={
 				  buscar : 'buscar',
 				  documento: $('#documento').val(),
@@ -134,7 +198,7 @@
 				  identificacion_garantes_1:con_identificacion_garantes_1,
 				  identificacion_garantes_2:con_identificacion_garantes_2,
 				  identificacion_garantes_3:con_identificacion_garantes_3,
-				  
+				  firma:con_firma,
 				  action:'ajax',
 				  page:pagina
 				  };
@@ -292,7 +356,7 @@
   
        <!-- empieza el form --> 
 <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-          <form action="<?php echo $helper->url("",""); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+          <form action="<?php echo $helper->url("",""); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" >
      
             </form>
             
@@ -324,17 +388,30 @@
 		  <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" > Documento:</p>
 			  	<select name="documento" id="documento"  class="form-control" >
-			  	<option value="ALL"> Todos </option>
-			  	<option value="AC"> Avoco Conocimiento </option>
-			  	<option value="OF"> Oficios </option>
-			  	<option value="PR"> Providencias </option>
+			  	<option value="ALL">--Seleccione--</option>
+			  	<option value="AC">Avoco Conocimiento</option>
+			  	<option value="OF">Oficios</option>
+			  	<option value="PR">Providencias</option>
 			    </select>
+			     <div id="mensaje_documento" class="errores"></div>
+				 
 		 </div>
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12" style="display:none;" id="div_tipo_documento">
 			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
 			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
 			   </select>
+		 </div>
+		 
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo" style="" > Firmado / Aprobado:</p>
+			  	<select name="firma" id="firma"  class="form-control" >
+			  	<option value="">--Todos--</option>
+			  	<option value="TRUE">Si</option>
+			  	<option value="FALSE">No</option>
+			  	 </select>
+			     
 		 </div>
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
@@ -423,11 +500,11 @@
          
         
 		<div class="col-lg-2 col-md-2 col-xs-12">
-			<p class="formulario-subtitulo" >Fecha Desde:</p>
+			<p class="formulario-subtitulo" >Fecha Creación Desde:</p>
 			<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-12">
-			<p class="formulario-subtitulo" >Fecha Hasta:</p>
+			<p class="formulario-subtitulo" >Fecha Creación Hasta:</p>
 			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
 		</div>
 		<div id="div_tipo_documento" class="col-lg-2 col-md-2 col-xs-12" style="display:none;" >
@@ -444,7 +521,8 @@
   		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		
+		 <button type="submit" id="reporte_documentos" name="reporte_documentos" value="Reporte"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i></button>         
+	  
 	     </div>
 		 
 		

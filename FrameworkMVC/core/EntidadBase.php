@@ -1002,7 +1002,7 @@ class EntidadBase{
     public function MostrarNotificaciones($id_usuario)
     {
     	//session_start();
-    	 
+    	 /*
     	$notificaciones= new NotificacionesModel();
     	 
     	$columnas=" notificaciones.id_notificaciones,
@@ -1070,6 +1070,7 @@ class EntidadBase{
     	$_SESSION['cantidad']=$cantidad_notificaciones;
     	$_SESSION["resultNotificaciones"]=$result;
     	$_SESSION["cantidad_fila_notificaciones"]=$contar;
+    	*/
     }
     
     

@@ -455,8 +455,8 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="9">PROVIDENCIA EMBARGO (CUENTA BANCARIA)</option>
-					
-				</select>
+			  		<option value="12">PROVIDENCIA EMBARGO (BIENES)</option>
+			 	</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
 	            
@@ -560,6 +560,39 @@
 	            </div>
 	            
 	          </div> 
+	          
+	          
+	          
+	           <div id="div_datos_embargo_bienes" style="display: none;">
+	            <div class="col-lg-8 col-md-8 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
+			  	<input type="text"  name="numero_oficio_embargo_bienes" id="numero_oficio_embargo_bienes" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_embargo_bienes" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
+			  	<input type="date"  name="fecha_oficio_embargo_bienes" id="fecha_oficio_embargo_bienes" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_embargo_bienes" class="errores"></div>
+			    </div>
+	           
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Liquidación:</p>
+			  	<input type="text"  name="numero_liquidacion_bienes" id="numero_liquidacion_bienes" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_liquidacion_bienes" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
+			  	<input type="date"  name="fecha_liquidacion_bienes" id="fecha_liquidacion_bienes" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_liquidacion_bienes" class="errores"></div>
+			    </div>
+	           
+	           
+	           
+	           
+               </div>
+	          
 	          
 	          
 	          

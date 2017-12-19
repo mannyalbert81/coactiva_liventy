@@ -179,6 +179,53 @@
       
       
       
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 13)
+          {
+       	   $("#div_datos_reestructuracion_referencia_entidades").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+       	   $("#div_datos_reestructuracion_referencia_entidades").fadeOut("slow");
+       	  $("#div_datos_impulsor").fadeOut("slow");
+    	  $("#div_datos_secretario").fadeOut("slow");
+    	
+          }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 13)
+              {
+           	   $("#div_datos_reestructuracion_referencia_entidades").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_datos_reestructuracion_referencia_entidades").fadeOut("slow");
+           	  $("#div_datos_impulsor").fadeOut("slow");
+        	  $("#div_datos_secretario").fadeOut("slow");
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
       
       
       
@@ -277,13 +324,21 @@
 
 			    var numero_oficio_restructuracion = $("#numero_oficio_restructuracion").val();
 			    var fecha_oficio_restructuracion = $("#fecha_oficio_restructuracion").val();
-			    
-                 
 			    var numero_solicitud_restructuracion = $("#numero_solicitud_restructuracion").val();
 			    var fecha_solicitud_restructuracion = $("#fecha_solicitud_restructuracion").val();
-
                 var acta_validacion_restructuracion= $("#acta_validacion_restructuracion").val();
-			    
+			    var tipo_lev= $("#tipo_lev").val();
+
+
+
+
+			    var numero_oficio_restructuracion_ref = $("#numero_oficio_restructuracion_ref").val();
+			    var fecha_oficio_restructuracion_ref = $("#fecha_oficio_restructuracion_ref").val();
+			    var numero_solicitud_restructuracion_ref = $("#numero_solicitud_restructuracion_ref").val();
+			    var fecha_solicitud_restructuracion_ref = $("#fecha_solicitud_restructuracion_ref").val();
+                var acta_validacion_restructuracion_ref = $("#acta_validacion_restructuracion_ref").val();
+			    var tipo_lev_ref= $("#tipo_lev_ref").val();
+                var referencia= $("#referencia").val();
 
 			    var reemplazar = $("#reemplazar").val();
 
@@ -334,8 +389,7 @@
 				}
 
 
-
-
+		    
 
 		    	if(tipo_avoco == 8  && numero_oficio_restructuracion == ""){
 					$("#mensaje_numero_oficio_restructuracion").text("Ingrese # Oficio");
@@ -360,7 +414,7 @@
 				}
 
 
-
+/*
 				if(tipo_avoco == 8  && numero_solicitud_restructuracion == ""){
 					$("#mensaje_numero_solicitud_restructuracion").text("Ingrese # Restructuración");
 		    		$("#mensaje_numero_solicitud_restructuracion").fadeIn("slow"); //Muestra mensaje de error
@@ -382,7 +436,7 @@
 		    		$("#mensaje_fecha_solicitud_restructuracion").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+*/
 		    	
 				if(tipo_avoco == 8  && acta_validacion_restructuracion == ""){
 					$("#mensaje_acta_validacion_restructuracion").text("Ingrese # Restructuración");
@@ -396,6 +450,80 @@
 				}
 
 
+				if(tipo_avoco == 8  && tipo_lev == 0){
+					$("#mensaje_tipo_lev").text("Seleccione");
+		    		$("#mensaje_tipo_lev").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_tipo_lev").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+				
+
+
+
+
+				if(tipo_avoco == 13  && numero_oficio_restructuracion_ref == ""){
+					$("#mensaje_numero_oficio_restructuracion_ref").text("Ingrese # Oficio");
+		    		$("#mensaje_numero_oficio_restructuracion_ref").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficio_restructuracion_ref").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 13  && fecha_oficio_restructuracion_ref == ""){
+					$("#mensaje_fecha_oficio_restructuracion_ref").text("Ingrese Fecha de Oficio");
+		    		$("#mensaje_fecha_oficio_restructuracion_ref").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_oficio_restructuracion_ref").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+		    	
+				if(tipo_avoco == 13  && acta_validacion_restructuracion_ref == ""){
+					$("#mensaje_acta_validacion_restructuracion_ref").text("Ingrese # Restructuración");
+		    		$("#mensaje_acta_validacion_restructuracion_ref").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_acta_validacion_restructuracion_ref").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				if(tipo_avoco == 13  && tipo_lev_ref == 0){
+					$("#mensaje_tipo_lev_ref").text("Seleccione");
+		    		$("#mensaje_tipo_lev_ref").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_tipo_lev_ref").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				if(tipo_avoco == 13  && referencia == ""){
+					$("#mensaje_referencia").text("Ingrese la refencia a entidades");
+		    		$("#mensaje_referencia").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_referencia").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 				
 		       	
 		      
@@ -535,8 +663,8 @@
 				$( "#tipo_avoco" ).focus(function() {
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
-
-
+				
+				
 				$( "#numero_oficio_restructuracion" ).focus(function() {
 					$("#mensaje_numero_oficio_restructuracion").fadeOut("slow");
     			});
@@ -545,16 +673,35 @@
     			});
 
 
-				$( "#numero_solicitud_restructuracion" ).focus(function() {
-					$("#mensaje_numero_solicitud_restructuracion").fadeOut("slow");
-    			});
-				$( "#fecha_solicitud_restructuracion" ).focus(function() {
-					$("#mensaje_fecha_solicitud_restructuracion").fadeOut("slow");
-    			});
-
 				$( "#acta_validacion_restructuracion" ).focus(function() {
 					$("#mensaje_acta_validacion_restructuracion").fadeOut("slow");
     			});
+				$( "#tipo_lev" ).focus(function() {
+					$("#mensaje_tipo_lev").fadeOut("slow");
+    			});
+
+
+
+				$( "#numero_oficio_restructuracion_ref" ).focus(function() {
+					$("#mensaje_numero_oficio_restructuracion_ref").fadeOut("slow");
+    			});
+				$( "#fecha_oficio_restructuracion_ref" ).focus(function() {
+					$("#mensaje_fecha_oficio_restructuracion_ref").fadeOut("slow");
+    			});
+
+
+				$( "#acta_validacion_restructuracion_ref" ).focus(function() {
+					$("#mensaje_acta_validacion_restructuracion_ref").fadeOut("slow");
+    			});
+				$( "#tipo_lev_ref" ).focus(function() {
+					$("#mensaje_tipo_lev_ref").fadeOut("slow");
+    			});
+
+
+				$( "#referencia" ).focus(function() {
+					$("#mensaje_referencia").fadeOut("slow");
+    			});
+				
 				
 				
 				$( "#numero_oficio" ).focus(function() {
@@ -738,6 +885,7 @@
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
 					<option value="8">PROVIDENCIA (RESTRUCTURACIÓN)</option>
+					<option value="13">PROVIDENCIA (RESTRUCTURACIÓN REFERENCIA A ENTIDADES)</option>
 					
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
@@ -871,6 +1019,51 @@
 			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" value="<?php echo $sel_fecha_auto_pago; ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_auto_pago" class="errores"></div>
 			    </div>
+			    
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 1 (Opcional):</p>
+			  	<input type="text"  name="nombre_numero_documento_1" id="nombre_numero_documento_1" value="" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
+	            <div id="mensaje_nombre_numero_documento_1" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
+			  	<input type="date"  name="fecha_documento_1" id="fecha_documento_1" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_documento_1" class="errores"></div>
+			    </div>
+			    
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 2 (Opcional):</p>
+			  	<input type="text"  name="nombre_numero_documento_2" id="nombre_numero_documento_2" value="" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
+	            <div id="mensaje_nombre_numero_documento_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
+			  	<input type="date"  name="fecha_documento_2" id="fecha_documento_2" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_documento_2" class="errores"></div>
+			    </div>
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 3 (Opcional):</p>
+			  	<input type="text"  name="nombre_numero_documento_3" id="nombre_numero_documento_3" value="" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
+	            <div id="mensaje_nombre_numero_documento_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
+			  	<input type="date"  name="fecha_documento_3" id="fecha_documento_3" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_documento_3" class="errores"></div>
+			    </div>
+			    
+			    
+			    
+			    
 	          </div> 
 	          
 	          
@@ -879,13 +1072,16 @@
 	          
 	          
 	           <div id="div_datos_reestructuracion" style="display: none;">
-                <div class="col-lg-6 col-md-6 col-xs-12">
+	           
+	           
+	           
+                <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
 			  	<input type="text"  name="numero_oficio_restructuracion" id="numero_oficio_restructuracion" value="" class="form-control" placeholder="#"/> 
 	            <div id="mensaje_numero_oficio_restructuracion" class="errores"></div>
 	            </div>
 	            
-	           <div class="col-lg-4 col-md-4 col-xs-12">
+	           <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
 			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_restructuracion" class="errores"></div>
@@ -909,8 +1105,172 @@
 	            <div id="mensaje_acta_validacion_restructuracion" class="errores"></div>
 	            </div>
 	            
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo">Tipo Levantamiento:</p>
+			  	<select name="tipo_lev" id="tipo_lev"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="con_levantamiento">Con levantamiento de Suspensión</option>
+						<option value="sin_levantamiento">Sin levantamiento de Suspensión</option>
+						
+			    </select>
+				<div id="mensaje_tipo_lev" class="errores"></div>
+			    </div>
+	            
+	            
+	            
+	            <br>
+	            
+	            
+	            
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 1 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_1" id="res_nombre_numero_documento_1" value="" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_1" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_1" id="res_fecha_documento_1" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_1" class="errores"></div>
+			    </div>
+			    
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 2 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_2" id="res_nombre_numero_documento_2" value="" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_2" id="res_fecha_documento_2" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_2" class="errores"></div>
+			    </div>
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 3 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_3" id="res_nombre_numero_documento_3" value="" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_3" id="res_fecha_documento_3" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_3" class="errores"></div>
+			    </div>
+			    
+	            
+	            
+	            
 	          </div> 
 	          
+	          
+	          
+	          
+	          
+	           <div id="div_datos_reestructuracion_referencia_entidades" style="display: none;">
+	           
+	           
+	           
+                <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
+			  	<input type="text"  name="numero_oficio_restructuracion_ref" id="numero_oficio_restructuracion_ref" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_restructuracion_ref" class="errores"></div>
+	            </div>
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
+			  	<input type="date"  name="fecha_oficio_restructuracion_ref" id="fecha_oficio_restructuracion_ref" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_restructuracion_ref" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Restructuración:</p>
+			  	<input type="text"  name="numero_solicitud_restructuracion_ref" id="numero_solicitud_restructuracion_ref" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_solicitud_restructuracion_ref" class="errores"></div>
+	            </div>
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Restructuración:</p>
+			  	<input type="date"  name="fecha_solicitud_restructuracion_ref" id="fecha_solicitud_restructuracion_ref" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_solicitud_restructuracion_ref" class="errores"></div>
+			    </div>
+			    
+	             <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Acta de Validación de Restructuración:</p>
+			  	<input type="text"  name="acta_validacion_restructuracion_ref" id="acta_validacion_restructuracion_ref" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_acta_validacion_restructuracion_ref" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo">Tipo Levantamiento:</p>
+			  	<select name="tipo_lev_ref" id="tipo_lev_ref"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="con_levantamiento">Con levantamiento de Suspensión</option>
+						<option value="sin_levantamiento">Sin levantamiento de Suspensión</option>
+						
+			    </select>
+				<div id="mensaje_tipo_lev_ref" class="errores"></div>
+			    </div>
+	            
+	            
+	            
+	            <br>
+	            
+	            <div class="col-xs-12 col-md-10 col-lg-10" >
+		                          <p class="formulario-subtitulo" >Referencia de Entidades:</p>
+                                  <textarea type="text"  class="form-control" id="referencia" name="referencia" value=""  placeholder="Sin Levantamiento empieze con el numeral 1.1.-          Con Levantamiento empieze con el numeral 2.1.-"></textarea>
+                                   <div id="mensaje_referencia" class="errores"></div>
+	            </div>
+	            
+	            
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 1 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_1_ref" id="res_nombre_numero_documento_1_ref" value="" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_1_ref" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_1_ref" id="res_fecha_documento_1_ref" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_1_ref" class="errores"></div>
+			    </div>
+			    
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 2 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_2_ref" id="res_nombre_numero_documento_2_ref" value="" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_2_ref" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_2_ref" id="res_fecha_documento_2_ref" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_2_ref" class="errores"></div>
+			    </div>
+			    
+			    
+			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo">Nombre y Número de Documento 3 (Opcional):</p>
+			  	<input type="text"  name="res_nombre_numero_documento_3_ref" id="res_nombre_numero_documento_3_ref" value="" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
+	            <div id="mensaje_res_nombre_numero_documento_3_ref" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
+         		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
+			  	<input type="date"  name="res_fecha_documento_3_ref" id="res_fecha_documento_3_ref" value="" class="form-control "/> 
+			  	<div id="mensaje_res_fecha_documento_3_ref" class="errores"></div>
+			    </div>
+			    
+	            
+	            
+	            
+	          </div> 
 	          
 	          
 	          
