@@ -143,11 +143,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-<<<<<<< HEAD
 				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PRES": "Providencia Restructuración", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento"};
-=======
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total"};
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')

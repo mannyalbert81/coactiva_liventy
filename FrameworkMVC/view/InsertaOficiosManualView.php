@@ -126,9 +126,7 @@
   			
   		
 		
-		 <div class="row">
 		 
-<<<<<<< HEAD
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $datos['juicio_referido_titulo_credito']; ?>" class="form-control" readonly/> 
@@ -189,115 +187,15 @@
 		 </div>
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
-=======
-			 <div class="col-lg-2 col-md-2 xs-6">
-	         		<p class="formulario-subtitulo" >Juicio:</p>
-				  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $datos['juicio_referido_titulo_credito']; ?>" class="form-control" readonly/> 
-				    
-			 </div>
-			 
-			 <div class="col-lg-2 col-md-2 xs-6">
-					 <p class="formulario-subtitulo" >Operación:</p>
-				  	 <input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $datos['numero_titulo_credito']; ?>" class="form-control" readonly/> 
-				     <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
-				     <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
-				     <input type="hidden"  name="id_titulo_credito" id="id_titulo_credito" value="<?php echo $datos['id_titulo_credito']; ?>" class="form-control"/ readonly>
-				  
-			 </div>
-			 
-			 <div class="col-lg-3 col-md-3 xs-6">
-	         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
-				  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $datos['identificacion_clientes']; ?>" class="form-control" readonly/> 
-				    
-			 </div>
-			 
-			 
-			 <div class="col-lg-5 col-md-5 xs-6">
-	         		<p class="formulario-subtitulo" >Nombre Cliente 1:</p>
-				  	<input type="text"  name="nombres_clientes" id="nombres_clientes" value="<?php echo $datos['nombres_clientes']; ?>" class="form-control" readonly/> 
-			 </div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 xs-12">
-				 <div class="col-lg-4 col-md-4 xs-6">
-		         		<p class="formulario-subtitulo" >Cliente 2:</p>
-					  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $datos['identificacion_clientes_1']; ?>" class="form-control" readonly/> 
-					    
-				 </div>
-				 
-				 
-				 <div class="col-lg-8 col-md-8 xs-6">
-		         		<p class="formulario-subtitulo" >Nombre Cliente 2</p>
-					  	<input type="text"  name="nombre_clientes_1" id="nombre_clientes_1" value="<?php echo $datos['nombre_clientes_1']; ?>" class="form-control" readonly/> 
-				 </div>
-			
-			</div>
-			
-			<div class="col-lg-4 col-md-4 xs-12">
-				 <div class="col-lg-4 col-md-4 xs-6">
-		         		<p class="formulario-subtitulo" >Cliente 3:</p>
-					  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $datos['identificacion_clientes_2']; ?>" class="form-control" readonly/> 
-					    
-				 </div>
-				 
-				 
-				 <div class="col-lg-8 col-md-8 xs-6">
-		         		<p class="formulario-subtitulo" >Nombre Cliente 3</p>
-					  	<input type="text"  name="nombre_clientes_2" id="nombre_clientes_2" value="<?php echo $datos['nombre_clientes_2']; ?>" class="form-control" readonly/> 
-				 </div>
-			
-			</div>
-			
-			
-			<div class="col-lg-4 col-md-4 xs-12">
-				 <div class="col-lg-4 col-md-4 xs-6">
-		         		<p class="formulario-subtitulo" >Cliente 4:</p>
-					  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $datos['identificacion_clientes_3']; ?>" class="form-control" readonly/> 
-					    
-				 </div>
-				 
-				 
-				 <div class="col-lg-8 col-md-8 xs-6">
-		         		<p class="formulario-subtitulo" >Nombre Cliente 4</p>
-					  	<input type="text"  name="nombre_clientes_3" id="nombre_clientes_3" value="<?php echo $datos['nombre_clientes_3']; ?>" class="form-control" readonly/> 
-				 </div>
-			
-			</div>
-		
-		</div>
-		 <div class="row">
-		 	 <div class="col-lg-2 col-md-2 xs-6">
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
          		<p class="formulario-subtitulo" >CI Garante 1:</p>
 			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $datos['identificacion_garantes']; ?>" class="form-control" readonly/> 
 			    
-				 </div>
-				 
-				 <div class="col-lg-4 col-md-4 xs-6">
-		         		<p class="formulario-subtitulo" >Nombre Garante 1:</p>
-					  	<input type="text"  name="nombre_garantes" id="nombre_garantes" value="<?php echo $datos['nombre_garantes']; ?>" class="form-control" readonly/> 
-				 </div>
-				 
-				  <div class="col-lg-2 col-md-2 xs-6">
-		         		<p class="formulario-subtitulo" >CI Garante 2:</p>
-					  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $datos['identificacion_garantes_1']; ?>" class="form-control" readonly/> 
-					    
-				 </div>
-				 
-				 <div class="col-lg-4 col-md-4 xs-6">
-		         		<p class="formulario-subtitulo" >Nombre Garante 2:</p>
-					  	<input type="text"  name="nombre_garantes_1" id="nombre_garantes_1" value="<?php echo $datos['nombre_garantes_1']; ?>" class="form-control" readonly/> 
-				 </div>
-				
+		 </div>
 		 
-<<<<<<< HEAD
 		 <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Nombre Garante 1:</p>
 			  	<input type="text"  name="nombre_garantes" id="nombre_garantes" value="<?php echo $datos['nombre_garantes']; ?>" class="form-control" readonly/> 
-=======
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 		 </div>
-<<<<<<< HEAD
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >CI Garante 2:</p>
@@ -315,11 +213,7 @@
 			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $datos['identificacion_garantes_2']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
-=======
-		  
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 		 
-<<<<<<< HEAD
 		 <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Nombre Garante 3:</p>
 			  	<input type="text"  name="nombre_garantes_2" id="nombre_garantes_2" value="<?php echo $datos['nombre_garantes_2']; ?>" class="form-control" readonly/> 
@@ -351,12 +245,6 @@
 		 
 		  <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 20px;">
 		    <?php  include ("ckeditor/ckeditor.php");
-=======
-		  <div class="col-lg-12 col-md-12 xs-12">
-		    <?php  
-		       
-		       include ("view/ckeditor/ckeditor.php");
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 			   $valor = "$sel_cuerpo";
 			   $CKEditor = new CKEditor();
 			   $config = array();

@@ -885,11 +885,8 @@
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
 					<option value="8">PROVIDENCIA (RESTRUCTURACIÓN)</option>
-<<<<<<< HEAD
 					<option value="13">PROVIDENCIA (RESTRUCTURACIÓN REFERENCIA A ENTIDADES)</option>
 					
-=======
->>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>
