@@ -5830,6 +5830,7 @@
 				$numero_titulo_credito= $_GET['numero_titulo_credito'];
 				$nombres_clientes= $_GET['nombres_clientes'];
 				$identificacion_clientes= $_GET['identificacion_clientes'];
+<<<<<<< HEAD
 				
 				$nombre_clientes_1= $_GET['nombre_clientes_1'];
 				$identificacion_clientes_1= $_GET['identificacion_clientes_1'];
@@ -5841,11 +5842,24 @@
 				$identificacion_clientes_3= $_GET['identificacion_clientes_3'];
 				
 				
+=======
+				$nombre_clientes_1= $_GET['nombre_clientes_1'];
+				$identificacion_clientes_1= $_GET['identificacion_clientes_1'];
+				$nombre_clientes_2= $_GET['nombre_clientes_2'];
+				$identificacion_clientes_2= $_GET['identificacion_clientes_2'];
+				$nombre_clientes_3= $_GET['nombre_clientes_3'];
+				$identificacion_clientes_3= $_GET['identificacion_clientes_3'];
+>>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 				$nombre_garantes= $_GET['nombre_garantes'];
 				$identificacion_garantes= $_GET['identificacion_garantes'];
 				
 				$identificacion_garantes_1= $_GET['identificacion_garantes_1'];
 				$nombre_garantes_1= $_GET['nombre_garantes_1'];
+				$identificacion_garantes_2= $_GET['identificacion_garantes_2'];
+				$nombre_garantes_2= $_GET['nombre_garantes_2'];
+				$identificacion_garantes_3= $_GET['identificacion_garantes_3'];
+				$nombre_garantes_3= $_GET['nombre_garantes_3'];
+				
 				
 				$identificacion_garantes_2= $_GET['identificacion_garantes_2'];
 				$nombre_garantes_2= $_GET['nombre_garantes_2'];
@@ -5858,7 +5872,20 @@
 				
 				
 	
+<<<<<<< HEAD
 				$datos=array("impulsores"=>$impulsores,"secretarios"=>$secretarios,"id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes,"identificacion_clientes"=>$identificacion_clientes,"nombre_garantes"=>$nombre_garantes,"identificacion_garantes"=>$identificacion_garantes,"identificacion_garantes_1"=>$identificacion_garantes_1,"nombre_garantes_1"=>$nombre_garantes_1,"nombre_clientes_1"=>$nombre_clientes_1,"nombre_clientes_2"=>$nombre_clientes_2,"nombre_clientes_3"=>$nombre_clientes_3,"nombre_garantes_2"=>$nombre_garantes_2,"nombre_garantes_3"=>$nombre_garantes_3,"identificacion_clientes_1"=>$identificacion_clientes_1,"identificacion_clientes_2"=>$identificacion_clientes_2,"identificacion_clientes_3"=>$identificacion_clientes_3,"identificacion_garantes_2"=>$identificacion_garantes_2,"identificacion_garantes_3"=>$identificacion_garantes_3);
+=======
+	
+				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,
+						"nombres_clientes"=>$nombres_clientes,"identificacion_clientes"=>$identificacion_clientes,
+						"nombre_clientes_1"=>$nombre_clientes_1,"identificacion_clientes_1"=>$identificacion_clientes_1,
+						"nombre_clientes_2"=>$nombre_clientes_2,"identificacion_clientes_2"=>$identificacion_clientes_2,
+						"nombre_clientes_3"=>$nombre_clientes_3,"identificacion_clientes_3"=>$identificacion_clientes_3,
+						"nombre_garantes"=>$nombre_garantes,"identificacion_garantes"=>$identificacion_garantes,
+						"identificacion_garantes_1"=>$identificacion_garantes_1,"nombre_garantes_1"=>$nombre_garantes_1,
+						"identificacion_garantes_2"=>$identificacion_garantes_2,"nombre_garantes_2"=>$nombre_garantes_2,
+						"identificacion_garantes_3"=>$identificacion_garantes_3,"nombre_garantes_3"=>$nombre_garantes_3);
+>>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 					
 				
 				
@@ -7982,7 +8009,19 @@
 									$i++;
 		
 									$html.='<tr>';
+<<<<<<< HEAD
 									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Oficios_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'&identificacion_clientes='. $res->identificacion_clientes.'&nombre_garantes='. $res->nombre_garantes.'&identificacion_garantes='. $res->identificacion_garantes.'&nombre_garantes_1='. $res->nombre_garantes_1.'&identificacion_garantes_1='. $res->identificacion_garantes_1.'&identificacion_clientes_1='. $res->identificacion_clientes_1.'&nombre_clientes_1='. $res->nombre_clientes_1.'&identificacion_clientes_2='. $res->identificacion_clientes_2.'&nombre_clientes_2='. $res->nombre_clientes_2.'&identificacion_clientes_3='. $res->identificacion_clientes_3.'&nombre_clientes_3='. $res->nombre_clientes_3.'&identificacion_garantes_2='. $res->identificacion_garantes_2.'&nombre_garantes_2='. $res->nombre_garantes_2.'&identificacion_garantes_3='. $res->identificacion_garantes_3.'&nombre_garantes_3='. $res->nombre_garantes_3.'&impulsores='. $res->impulsores.'&secretarios='. $res->secretarios.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+=======
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Oficios_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'&identificacion_clientes='. $res->identificacion_clientes. 
+									'&nombre_clientes_1='. $res->nombre_clientes_1.'&identificacion_clientes_1='. $res->identificacion_clientes_1.
+									'&nombre_clientes_2='. $res->nombre_clientes_2.'&identificacion_clientes_2='. $res->identificacion_clientes_2.
+									'&nombre_clientes_3='. $res->nombre_clientes_3.'&identificacion_clientes_3='. $res->identificacion_clientes_3.
+									'&nombre_garantes='. $res->nombre_garantes.'&identificacion_garantes='. $res->identificacion_garantes.
+									'&nombre_garantes_1='. $res->nombre_garantes_1.'&identificacion_garantes_1='. $res->identificacion_garantes_1.
+									'&nombre_garantes_2='. $res->nombre_garantes_2.'&identificacion_garantes_2='. $res->identificacion_garantes_2.
+									'&nombre_garantes_3='. $res->nombre_garantes_3.'&identificacion_garantes_3='. $res->identificacion_garantes_3.
+									'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+>>>>>>> branch 'master' of https://github.com/mannyalbert81/coactiva_liventy.git
 										
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
