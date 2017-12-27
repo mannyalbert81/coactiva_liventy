@@ -434,6 +434,9 @@
 				}
 
 
+
+
+		    	
 		    
 
 		    	if(tipo_avoco == 8  && numero_oficio_restructuracion == ""){

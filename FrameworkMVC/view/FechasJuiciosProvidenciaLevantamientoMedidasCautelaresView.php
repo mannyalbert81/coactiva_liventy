@@ -93,6 +93,104 @@
       
       
       
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio_discapacidad").click(function() {
+			
+          var generar_oficio_discapacidad = $(this).val();
+			
+          if(generar_oficio_discapacidad == "Si")
+          {
+       	   $("#div_datos_generar_oficio_discapacidad").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio_discapacidad").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio_discapacidad").change(function() {
+			
+              
+              var generar_oficio_discapacidad = $(this).val();
+				
+              
+              if(generar_oficio_discapacidad == "Si")
+              {
+           	   $("#div_datos_generar_oficio_discapacidad").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio_discapacidad").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio_fallecimiento").click(function() {
+			
+          var generar_oficio_fallecimiento = $(this).val();
+			
+          if(generar_oficio_fallecimiento == "Si")
+          {
+       	   $("#div_datos_generar_oficio_fallecimiento").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio_fallecimiento").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio_fallecimiento").change(function() {
+			
+              
+              var generar_oficio_fallecimiento = $(this).val();
+				
+              
+              if(generar_oficio_fallecimiento == "Si")
+              {
+           	   $("#div_datos_generar_oficio_fallecimiento").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio_fallecimiento").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
+      
       
       
       
@@ -134,6 +232,22 @@
 			    var fecha_solicitud_fallecimiento = $("#fecha_solicitud_fallecimiento").val();
 			    var nombre_conyuge_sobreviviente = $("#nombre_conyuge_sobreviviente").val();
 			    var correo_conyuge_sobreviviente = $("#correo_conyuge_sobreviviente").val();
+
+
+
+
+			    var generar_oficio_discapacidad= $("#generar_oficio_discapacidad").val();
+                var entidad_va_oficio_discapacidad= $("#entidad_va_oficio_discapacidad").val();
+                var asunto_discapacidad= $("#asunto_discapacidad").val();
+
+			   
+
+			    var generar_oficio_fallecimiento= $("#generar_oficio_fallecimiento").val();
+                var entidad_va_oficio_fallecimiento= $("#entidad_va_oficio_fallecimiento").val();
+                var asunto_fallecimiento= $("#asunto_fallecimiento").val();
+
+
+                
 			    			    	   				
 		    	if (fecha_avoco == "")
 		    	{
@@ -178,7 +292,7 @@
 		            
 				}
 
-
+		    	
 
 
 
@@ -261,6 +375,52 @@
 		    		$("#mensaje_nombre_discapacitado").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+
+		    	if(tipo_avoco == 10  && generar_oficio_discapacidad == 0){
+					$("#mensaje_generar_oficio_discapacidad").text("Seleccione");
+		    		$("#mensaje_generar_oficio_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 10  && generar_oficio_discapacidad == "Si" && entidad_va_oficio_discapacidad == "" ){
+					$("#mensaje_entidad_va_oficio_discapacidad").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 10  && generar_oficio_discapacidad == "Si" && asunto_discapacidad == "" ){
+					$("#mensaje_asunto_discapacidad").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+				
+
+
+
+
+		    	
+
+
+
+
+
+
 		    	
 
 		    	if(tipo_avoco == 11  && numero_oficio_medida_cuatelar_fallecimiento == ""){
@@ -359,7 +519,38 @@
 		    		$("#mensaje_correo_conyuge_sobreviviente").fadeIn("slow"); //Muestra mensaje de error
 		            return false;	
 			    }
-		    			    	
+		    	if(tipo_avoco == 11  && generar_oficio_fallecimiento == 0){
+					$("#mensaje_generar_oficio_fallecimiento").text("Seleccione");
+		    		$("#mensaje_generar_oficio_fallecimiento").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio_fallecimiento").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 11  && generar_oficio_fallecimiento == "Si" && entidad_va_oficio_fallecimiento == "" ){
+					$("#mensaje_entidad_va_oficio_fallecimiento").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_fallecimiento").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio_fallecimiento").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 11  && generar_oficio_fallecimiento == "Si" && asunto_fallecimiento == "" ){
+					$("#mensaje_asunto_fallecimiento").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_fallecimiento").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto_fallecimiento").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}		    	
 		    	
 			}); 
 
@@ -376,6 +567,32 @@
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
 
+				$( "#generar_oficio_discapacidad" ).focus(function() {
+					$("#mensaje_generar_oficio_discapacidad").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio_discapacidad" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_discapacidad").fadeOut("slow");
+    			});
+				$( "#asunto_discapacidad" ).focus(function() {
+					$("#mensaje_asunto_discapacidad").fadeOut("slow");
+    			});
+
+
+
+
+
+				$( "#generar_oficio_fallecimiento" ).focus(function() {
+					$("#mensaje_generar_oficio_fallecimiento").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio_fallecimiento" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_fallecimiento").fadeOut("slow");
+    			});
+				$( "#asunto_fallecimiento" ).focus(function() {
+					$("#mensaje_asunto_fallecimiento").fadeOut("slow");
+    			});
+
+    			
+				
 				$( "#numero_oficio_medida_cuatelar_discapacidad" ).focus(function() {
 					$("#mensaje_numero_oficio_medida_cuatelar_discapacidad").fadeOut("slow");
     			});
@@ -650,6 +867,35 @@
 	            </div>
 	            
 	            
+	             <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio_discapacidad" id="generar_oficio_discapacidad"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio_discapacidad" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio_discapacidad" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio_discapacidad" id="entidad_va_oficio_discapacidad" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_discapacidad" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto_discapacidad" id="asunto_discapacidad" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto_discapacidad" class="errores"></div>
+	            </div>
+	            
+	            </div>
+	            
+	            
 	          </div> 
 	          
 	          
@@ -707,6 +953,36 @@
 	            <div id="mensaje_correo_conyuge_sobreviviente" class="errores"></div>
 	            </div>
 			  
+	            
+	            
+	             <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio_fallecimiento" id="generar_oficio_fallecimiento"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio_fallecimiento" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio_fallecimiento" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio_fallecimiento" id="entidad_va_oficio_fallecimiento" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_fallecimiento" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto_fallecimiento" id="asunto_fallecimiento" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto_fallecimiento" class="errores"></div>
+	            </div>
+	            
+	            </div>
+	            
 	            
 	          </div> 
 	          

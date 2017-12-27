@@ -6847,7 +6847,7 @@
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
-		
+		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
 		if(isset($_POST['generar']))
 		{
@@ -6873,37 +6873,130 @@
 			$identificacion_depositario_judicial= $_POST['identificacion_depositario_judicial'];
 			
 			$tipo_avoco= $_POST['tipo_avoco'];
+			
+			
+			$generar_oficio= $_POST['generar_oficio'];
+			$entidad_va_oficio= $_POST['entidad_va_oficio'];
+			$asunto= $_POST['asunto'];
+			
 				
 				
 				
 			if($tipo_avoco==9){
 		
-		
+				
+				$juicios = new JuiciosModel();
+				if($id_estados_procesales_juicios_actualizar>0){
+				
+					$id_estados_procesales_juicios_actualizar = $_POST['id_estados_procesales_juicios_actualizar'];
+				}else{
+				
+					$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
+					$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
+				}
+				
 				$id_tipo_providencias=5;
 				$consecutivo= new ConsecutivosModel();
 				$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
 				$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
 				$ruta_providencias="Providencias_Embargo_Cuenta_Bancaria";
-		
+				
 				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
-		
+				
+				
+				
+				
+		    if($generar_oficio=="Si"){
+			
+			
+		    	$id_impulsor=$_SESSION['id_usuarios'];
+		    	$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+		    	$id_secretario=$resultSecre[0]->id_secretario;
+		    	$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+		    	
+		    	$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+		    	$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+		    	
+		    	$genero_oficio="TRUE";
+		    	$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+		    	
+		    	
+		    	
+		    	
+		    	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+		    	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_embargo_cuenta', '$numero_cuenta', '$nombre_banco', '$tipo_cuenta', '$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
+		    	$providencias->setFuncion($funcion);
+		    	$providencias->setParametros($parametros);
+		    	$resultado=$providencias->Insert();
+		    	
+		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
+		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+		    	 
+		    	
+		    	
+		    	$traza=new TrazasModel();
+		    	$_nombre_controlador = "MATRIZ JUICIOS";
+		    	$_accion_trazas  = "Genero Providencia de Embargo Cuenta Bancaria con Oficio";
+		    	$_parametros_trazas = $id_juicios;
+		    	$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+		    	
+		    	
+		    	
+		    	
+		    	$parametros = array();
+		    		
+		    	$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+		    	$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+		    	$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+		    	$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+		    	$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+		    	$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+		    	$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+		    	$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+		    	
+		    	
+		    	$parametros['numero_oficio_embargo_cuenta']=isset($numero_oficio_embargo_cuenta)?trim($numero_oficio_embargo_cuenta):'';
+		    	$parametros['fecha_oficio_embargo_cuenta']=isset($fecha_oficio_embargo_cuenta)?trim($fecha_oficio_embargo_cuenta):'';
+		    	$parametros['tipo_cuenta']=isset($tipo_cuenta)?trim($tipo_cuenta):'';
+		    	$parametros['numero_cuenta']=isset($numero_cuenta)?trim($numero_cuenta):'';
+		    	
+		    	$parametros['nombre_banco']=isset($nombre_banco)?trim($nombre_banco):'';
+		    	$parametros['monto_retenido']=isset($monto_retenido)?trim($monto_retenido):'';
+		    	$parametros['nombre_titular_cuenta']=isset($nombre_titular_cuenta)?trim($nombre_titular_cuenta):'';
+		    	$parametros['identificacion_titular_cuenta']=isset($identificacion_titular_cuenta)?trim($identificacion_titular_cuenta):'';
+		    	$parametros['depositario_judicial']=isset($depositario_judicial)?trim($depositario_judicial):'';
+		    	$parametros['identificacion_depositario_judicial']=isset($identificacion_depositario_judicial)?trim($identificacion_depositario_judicial):'';
+		    	
+		    	$parametros['ruta_avoco']=$ruta_providencias;
+		    	$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+		    	$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+		    	$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+		    	$parametros['asunto']=isset($asunto)?trim($asunto):'';
+		    	$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+		    	
+		    	
+		    	$pagina="contAvocoConocimientoSeleccion.aspx";
+		    	
+		    	$conexion_rpt = array();
+		    	$conexion_rpt['pagina']=$pagina;
+		    	
+		    	$this->view("ReporteRpt", array(
+		    			"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+		    	));
+		    	
+		    	
+		    	die();
+		    	
+		    	
+		    	
+			
+		    }else{
+				
+				
+				
 				$id_impulsor=$_SESSION['id_usuarios'];
 				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
 				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
-		
-		
-				$juicios = new JuiciosModel();
-				if($id_estados_procesales_juicios_actualizar>0){
-						
-					$id_estados_procesales_juicios_actualizar = $_POST['id_estados_procesales_juicios_actualizar'];
-				}else{
-						
-					$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
-					$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
-						
-						
-				}
-		
 		
 				$funcion = "ins_providencias_levantamiento";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_embargo_cuenta', '$numero_cuenta', '$nombre_banco', '$tipo_cuenta', '$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
@@ -6912,23 +7005,7 @@
 				$resultado=$providencias->Insert();
 		
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
-		/*
-				if($id_estados_procesales_juicios_actualizar>0){
 		
-					$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
-		
-					$historial_juicios= new HistorialJuiciosModel();
-		
-					$funcion = "ins_historial_juicios";
-					$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
-					$historial_juicios->setFuncion($funcion);
-					$historial_juicios->setParametros($parametros);
-					$resultado=$historial_juicios->Insert();
-				}
-		
-				$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-		
-		*/
 				$traza=new TrazasModel();
 				$_nombre_controlador = "MATRIZ JUICIOS";
 				$_accion_trazas  = "Genero Providencia de Embargo Cuenta Bancaria";
@@ -6981,7 +7058,7 @@
 		
 		
 				
-				
+			}
 		
 		}
 		

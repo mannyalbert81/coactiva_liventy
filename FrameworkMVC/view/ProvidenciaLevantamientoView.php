@@ -186,7 +186,7 @@
   
        <!-- empieza el form --> 
        
-      <form  id="plevantamineto" name="plevantamiento" action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form  id="plevantamineto" name="plevantamiento" action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <!-- comienxza busqueda  -->
                  
