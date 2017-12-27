@@ -3420,7 +3420,7 @@
 			$asunto_avoco_nuevos_procesos= $_POST['asunto_avoco_nuevos_procesos'];
 			
 			
-
+			$id_impulsor=$_SESSION['id_usuarios'];
 				
 			$resultUsu = $usuarios->getBy("id_usuarios ='$id_impulsor'");
 			$id_ciudad=$resultUsu[0]->id_ciudad;
@@ -3452,7 +3452,7 @@
 			
 			if ($generar_oficio_avoco_nuevos_procesos=="Si"){
 				
-				$id_impulsor=$_SESSION['id_usuarios'];
+				
 				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
 				$id_secretario=$resultSecre[0]->id_secretario;
 				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
