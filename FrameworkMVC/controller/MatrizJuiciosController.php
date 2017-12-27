@@ -3096,6 +3096,7 @@
 		session_start();
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
+		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
 		
 		
@@ -3109,7 +3110,30 @@
 			$hora_providencias= $_POST['hora_providencias'];
 			$razon_providencias= $_POST['razon_providencias'];
 			
+			$generar_oficio= $_POST['generar_oficio'];
+			$entidad_va_oficio= $_POST['entidad_va_oficio'];
+			$asunto= $_POST['asunto'];
+			
+			
+			$numero_oficio="";
+					$numero_oficio1="";
+							$numero_oficio2="";
+							$numero_oficio3="";
+							$dirigido_levantamiento="";
+			
+			
 			$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
+			
+			$juicios = new JuiciosModel();
+			if($id_estados_procesales_juicios>0){
+			
+				$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
+			}else{
+			
+				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
+				$id_estados_procesales_juicios=$resultJuicios[0]->id_estados_procesales_juicios;
+			}
+			
 			
 			$id_tipo_providencias=1;
 			$consecutivo= new ConsecutivosModel();
@@ -3119,22 +3143,78 @@
 			
 			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
+			
+			
+			if($generar_oficio=="Si"){
+				
+				
+				$id_impulsor=$_SESSION['id_usuarios'];
+				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+				$id_secretario=$resultSecre[0]->id_secretario;
+				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+					
+				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+					
+				$genero_oficio="TRUE";
+				$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					
+					
+				$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_providencias', '$hora_providencias', '$razon_providencias', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_oficio1', '$numero_oficio2', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario', '$id_estados_procesales_juicios', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
+				$providencias->setFuncion($funcion);
+				$providencias->setParametros($parametros);
+				$resultado=$providencias->Insert();
+					
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_SUSPENSION'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				
+					
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Genero Providencia de Suspensión con Oficio";
+				$_parametros_trazas = $id_juicios;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+					
+					
+				$parametros = array();
+					
+				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				$parametros['fecha_providencias']=isset($fecha_providencias)?trim($fecha_providencias):0;
+				$parametros['hora_providencias']=isset($hora_providencias)?trim($hora_providencias):0;
+				$parametros['razon_providencias']=isset($razon_providencias)?trim($razon_providencias):'';
+				$parametros['ruta_providencias']=$ruta_providencias;
+				$parametros['nombre_archivo_providencias']=$nombre_archivo_providencias;
+				$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+				$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+				$parametros['asunto']=isset($asunto)?trim($asunto):'';
+				$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+				
+				$pagina="contProvidenciaSuspension.aspx";
+					
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+					
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+					
+					
+				die();
+					
+				
+			}else{
+				
+				
+				
+			
+			
 			$id_impulsor=$_SESSION['id_usuarios'];
 			$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
 			$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
-			
-			$juicios = new JuiciosModel();
-			if($id_estados_procesales_juicios>0){
-				
-				$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
-			}else{
-				
-				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
-				$id_estados_procesales_juicios=$resultJuicios[0]->id_estados_procesales_juicios;
-				
-				
-			}
-			
 			
 			
 			$funcion = "ins_providencias_suspension";
@@ -3146,22 +3226,6 @@
 			$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_SUSPENSION'");
 			
 			
-			/*
-			if($id_estados_procesales_juicios>0){
-					
-				$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios'", "juicios", "id_juicios='$id_juicios'");
-					
-				$historial_juicios= new HistorialJuiciosModel();
-				
-				$funcion = "ins_historial_juicios";
-				$parametros = " '$id_juicios', '$id_estados_procesales_juicios', '$fecha_providencias'";
-				$historial_juicios->setFuncion($funcion);
-				$historial_juicios->setParametros($parametros);
-				$resultado=$historial_juicios->Insert();
-			}
-				
-			$juicios->UpdateBy("fecha_ultima_providencia='$fecha_providencias'", "juicios", "id_juicios='$id_juicios'");
-			*/
 			$traza=new TrazasModel();
 			$_nombre_controlador = "MATRIZ JUICIOS";
 			$_accion_trazas  = "Genero Providencia de Suspensión";
@@ -3193,7 +3257,7 @@
 			
 			die();
 			
-			
+			}
 		}
 		
 	}

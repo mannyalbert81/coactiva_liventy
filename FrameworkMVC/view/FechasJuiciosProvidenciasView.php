@@ -29,6 +29,56 @@
 			webshims.polyfill('forms forms-ext');
 		</script>
 		
+		
+		
+		 <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio").click(function() {
+			
+          var generar_oficio = $(this).val();
+			
+          if(generar_oficio == "Si")
+          {
+       	   $("#div_datos_generar_oficio").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio").change(function() {
+			
+              
+              var generar_oficio = $(this).val();
+				
+              
+              if(generar_oficio == "Si")
+              {
+           	   $("#div_datos_generar_oficio").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+		
+		
+		
     	 <script >
 		$(document).ready(function(){
 
@@ -39,7 +89,9 @@
 		    	var fecha_providencias = $("#fecha_providencias").val();
 		     	var hora_providencias = $("#hora_providencias").val();
 		     	var razon_providencias = $("#razon_providencias").val();
-		    
+		     	  var generar_oficio= $("#generar_oficio").val();
+	                var entidad_va_oficio= $("#entidad_va_oficio").val();
+	                var asunto= $("#asunto").val();
 		   				
 		    	if (fecha_providencias == "")
 		    	{
@@ -69,18 +121,39 @@
 				}
 
 
-		    	/*if (razon_providencias == "")
-		    	{
-			    	
-		    		$("#mensaje_razon").text("Introduzca una Razón");
-		    		$("#mensaje_razon").fadeIn("slow"); //Muestra mensaje de error
+		    	if(generar_oficio == 0){
+					$("#mensaje_generar_oficio").text("Seleccione");
+		    		$("#mensaje_generar_oficio").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
-			    }
-		    	else 
+				}
+				else 
 		    	{
-		    		$("#mensaje_razon").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_generar_oficio").fadeOut("slow"); //Muestra mensaje de error
 		            
-				}*/
+				}
+
+				if(generar_oficio == "Si" && entidad_va_oficio == "" ){
+					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(generar_oficio == "Si" && asunto == "" ){
+					$("#mensaje_asunto").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	
 		    	
 		    	
 			}); 
@@ -93,10 +166,17 @@
 				$( "#hora_providencias" ).focus(function() {
 					$("#mensaje_hora").fadeOut("slow");
     			});
-    			/*
-				$( "#razon_providencias" ).focus(function() {
-					$("#mensaje_razon").fadeOut("slow");
-    			});*/
+    			
+
+				$( "#generar_oficio" ).focus(function() {
+					$("#mensaje_generar_oficio").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio" ).focus(function() {
+					$("#mensaje_entidad_va_oficio").fadeOut("slow");
+    			});
+				$( "#asunto" ).focus(function() {
+					$("#mensaje_asunto").fadeOut("slow");
+    			});	
 				
 					    
 		}); 
@@ -210,6 +290,41 @@
            <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del juicio.)</FONT>
                
          </div>
+         
+         
+         
+          
+		     <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio" id="generar_oficio"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto" id="asunto" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto" class="errores"></div>
+	            </div>
+	            
+	            </div>
+         
+         
+         
+         
          
 		  
 		   <div class="col-lg-12 col-md-12 col-xs-12" style="text-aling: justify; margin-top:10px;" >
