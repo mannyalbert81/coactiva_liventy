@@ -28,6 +28,55 @@
 			webshims.polyfill('forms forms-ext');
 		</script>
 		
+		
+		
+		 <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio").click(function() {
+			
+          var generar_oficio = $(this).val();
+			
+          if(generar_oficio == "Si")
+          {
+       	   $("#div_datos_generar_oficio").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio").change(function() {
+			
+              
+              var generar_oficio = $(this).val();
+				
+              
+              if(generar_oficio == "Si")
+              {
+           	   $("#div_datos_generar_oficio").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+		
+		
     	 <script >
 		$(document).ready(function(){
 
@@ -41,6 +90,12 @@
 		     	var hora_providencias = $("#hora_levantamiento").val();
 		     	  var numero_oficio  = $("#numero_oficio").val();
 		     	var razon_providencias = $("#razon_levantamiento").val();
+		     	  var generar_oficio= $("#generar_oficio").val();
+	                var entidad_va_oficio= $("#entidad_va_oficio").val();
+	                var asunto= $("#asunto").val();
+				    
+
+
 		    			
 		    	if (fecha_providencias == "")
 		    	{
@@ -81,6 +136,42 @@
 		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+
+		    	if(generar_oficio == 0){
+					$("#mensaje_generar_oficio").text("Seleccione");
+		    		$("#mensaje_generar_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(generar_oficio == "Si" && entidad_va_oficio == "" ){
+					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(generar_oficio == "Si" && asunto == "" ){
+					$("#mensaje_asunto").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
 				
 	/*
 		    	if (razon_providencias == "")
@@ -110,6 +201,18 @@
 					$("#mensaje_numero_oficio").fadeOut("slow");
     			});
 
+
+				$( "#generar_oficio" ).focus(function() {
+					$("#mensaje_generar_oficio").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio" ).focus(function() {
+					$("#mensaje_entidad_va_oficio").fadeOut("slow");
+    			});
+				$( "#asunto" ).focus(function() {
+					$("#mensaje_asunto").fadeOut("slow");
+    			});	
+				
+				
     			/*
 					$( "#razon_levantamiento" ).focus(function() {
 					$("#mensaje_razon").fadeOut("slow");
@@ -186,7 +289,7 @@
   
        <!-- empieza el form --> 
        
-      <form  id="plevantamineto" name="plevantamiento" action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      <form  action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <!-- comienxza busqueda  -->
                  
@@ -251,6 +354,37 @@
 		  </div>
 		  
 		    
+		     <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio" id="generar_oficio"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto" id="asunto" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto" class="errores"></div>
+	            </div>
+	            
+	            </div>
+		    
+		    
+		    
+		    
 		     
 		    
 		        <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
@@ -314,12 +448,10 @@
 	        
 	        
 	        <div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
-  		    
-		 <button type="submit" formtarget="_self" formaction="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" data-opcion="1"   id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
-	
-		
-	  
-	  </div>
+	  		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
+		    </div>
+	        
+	       
 	        
 	        
 	        

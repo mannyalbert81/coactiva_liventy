@@ -7828,6 +7828,7 @@
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
+		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
 		
 		if(isset($_POST['generar']))
@@ -7851,6 +7852,23 @@
 			
 			$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
 			
+			$generar_oficio= $_POST['generar_oficio'];
+			$entidad_va_oficio= $_POST['entidad_va_oficio'];
+			$asunto= $_POST['asunto'];
+				
+			
+
+
+			$juicios = new JuiciosModel();
+			if($id_estados_procesales_juicios>0){
+					
+				$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
+			}else{
+					
+				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
+				$id_estados_procesales_juicios=$resultJuicios[0]->id_estados_procesales_juicios;
+			}
+				
 			
 			
 			
@@ -7862,26 +7880,86 @@
 				
 			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 			
+			
+			
+			
+			if($generar_oficio=="Si"){
+				
+
+				$id_impulsor=$_SESSION['id_usuarios'];
+				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+				$id_secretario=$resultSecre[0]->id_secretario;
+				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+				 
+				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+				 
+				$genero_oficio="TRUE";
+				$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+				 
+				 
+				$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_oficio1', '$numero_oficio2', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
+				$providencias->setFuncion($funcion);
+				$providencias->setParametros($parametros);
+				$resultado=$providencias->Insert();
+				
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				
+					
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Genero Providencia de Levantamiento con Oficio";
+				$_parametros_trazas = $id_juicios;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+					
+					
+				
+				$parametros = array();
+				
+				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				$parametros['fecha_levantamiento']=isset($fecha_avoco)?trim($fecha_avoco):0;
+				$parametros['hora_levantamiento']=isset($hora_avoco)?trim($hora_avoco):0;
+				$parametros['razon_levantamiento']=isset($razon_avoco)?trim($razon_avoco):0;
+				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):0;
+				$parametros['numero_oficio1']=isset($numero_oficio1)?trim($numero_oficio1):'';
+				$parametros['numero_oficio2']=isset($numero_oficio2)?trim($numero_oficio2):'';
+				$parametros['numero_oficio3']=isset($numero_oficio3)?trim($numero_oficio3):'';
+				$parametros['nombre_usuario_saliente']=isset($nombre_usuario_saliente)?trim($nombre_usuario_saliente):'';
+					
+				$parametros['dirigido_levantamiento']=isset($dirigido_levantamiento)?trim($dirigido_levantamiento):'';
+				$parametros['ruta_providencias']=$ruta_providencias;
+				$parametros['nombre_archivo_providencias']=$nombre_archivo_providencias;
+				$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+				$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+				$parametros['asunto']=isset($asunto)?trim($asunto):'';
+				$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+				 
+				
+				
+				$pagina="contProvidenciaLevantamiento.aspx";
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+				
+				
+				die();
+				
+				
+			}else{
+				
+			
 			$id_impulsor=$_SESSION['id_usuarios'];
 			$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
 			$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 			
-				
-			
-
-			$juicios = new JuiciosModel();
-			if($id_estados_procesales_juicios>0){
-					
-				$id_estados_procesales_juicios = $_POST['id_estados_procesales_juicios'];
-			}else{
-					
-				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
-				$id_estados_procesales_juicios=$resultJuicios[0]->id_estados_procesales_juicios;
-					
-					
-			}
-			
-				
 				
 			$funcion = "ins_providencias_levantamiento";
 			$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_oficio1', '$numero_oficio2', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios'";
@@ -7890,22 +7968,7 @@
 			$resultado=$providencias->Insert();
 				
 			$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
-				/*
-			if($id_estados_procesales_juicios>0){
 			
-				$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios'", "juicios", "id_juicios='$id_juicios'");
-					
-				$historial_juicios= new HistorialJuiciosModel();
-				
-				$funcion = "ins_historial_juicios";
-				$parametros = " '$id_juicios', '$id_estados_procesales_juicios', '$fecha_avoco'";
-				$historial_juicios->setFuncion($funcion);
-				$historial_juicios->setParametros($parametros);
-				$resultado=$historial_juicios->Insert();
-			}
-			
-			$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-			*/
 			
 			$traza=new TrazasModel();
 			$_nombre_controlador = "MATRIZ JUICIOS";
@@ -7944,15 +8007,14 @@
 	
 	
 			die();
-	
+				
+			}
 	
 		}
 		
 	}
 	
-	//---------------Para la providencia de levantamineto-----//
-	//---------------D.N--------------------------------------//
-
+	
 	public function verProvidenciaLevantamiento()
 	{
 		session_start();
