@@ -384,7 +384,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Embargo"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Embargo"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <br> 
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
@@ -455,7 +455,7 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="9">PROVIDENCIA EMBARGO (CUENTA BANCARIA)</option>
-			  		<option value="12">PROVIDENCIA EMBARGO (BIENES)</option>
+			  		<!-- <option value="12">PROVIDENCIA EMBARGO (BIENES)</option> -->
 			 	</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>

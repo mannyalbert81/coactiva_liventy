@@ -6973,6 +6973,8 @@
 		session_start();
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
+		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
+		
 		$juicios = new JuiciosModel();
 	
 	
@@ -6994,7 +6996,7 @@
 			$id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
 			$numero_liquidacion= $_POST['numero_liquidacion'];
 			$fecha_auto_pago= $_POST['fecha_auto_pago'];
-			
+			$referencia_pago_total= $_POST['referencia_pago_total'];
 				
 			$reemplazar= $_POST['reemplazar'];
 				
@@ -7028,23 +7030,12 @@
 			$tipo_lev= $_POST['tipo_lev'];
 			
 			
-			
-			$numero_oficio_restructuracion_ref= $_POST['numero_oficio_restructuracion_ref'];
-			$fecha_oficio_restructuracion_ref= $_POST['fecha_oficio_restructuracion_ref'];
-			$numero_solicitud_restructuracion_ref= $_POST['numero_solicitud_restructuracion_ref'];
-			$fecha_solicitud_restructuracion_ref= $_POST['fecha_solicitud_restructuracion_ref'];
-			$acta_validacion_restructuracion_ref= $_POST['acta_validacion_restructuracion_ref'];
-			$tipo_lev_ref= $_POST['tipo_lev_ref'];
-			
-			$res_nombre_numero_documento_1_ref= $_POST['res_nombre_numero_documento_1_ref'];
-			$res_fecha_documento_1_ref= $_POST['res_fecha_documento_1_ref'];
-			$res_nombre_numero_documento_2_ref= $_POST['res_nombre_numero_documento_2_ref'];
-			$res_fecha_documento_2_ref= $_POST['res_fecha_documento_2_ref'];
-			$res_nombre_numero_documento_3_ref= $_POST['res_nombre_numero_documento_3_ref'];
-			$res_fecha_documento_3_ref= $_POST['res_fecha_documento_3_ref'];
+		
 			
 			$referencia = $_POST['referencia'];
-			
+			$generar_oficio= $_POST['generar_oficio'];
+			$entidad_va_oficio= $_POST['entidad_va_oficio'];
+			$asunto= $_POST['asunto'];
 			
 			
 			$numero_oficio1= "";
@@ -7145,7 +7136,7 @@
 				$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
 				$parametros['ruta_avoco']=$ruta_providencias;
 				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-					
+				$parametros['referencia']=isset($referencia_pago_total)?trim($referencia_pago_total):'';
 				$parametros['reemplazar']=$reemplazar;
 					
 				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
@@ -7195,210 +7186,199 @@
 			
 				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 			
-				$id_impulsor=$_SESSION['id_usuarios'];
-				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
-				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
-			
-			
-			
-			
-			
-				$funcion = "ins_providencias_levantamiento";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
-				$providencias->setFuncion($funcion);
-				$providencias->setParametros($parametros);
-				$resultado=$providencias->Insert();
-			
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-			/*
-				if($id_estados_procesales_juicios_actualizar>0){
-			
-					$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
-			
-					$historial_juicios= new HistorialJuiciosModel();
-			
-					$funcion = "ins_historial_juicios";
-					$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
-					$historial_juicios->setFuncion($funcion);
-					$historial_juicios->setParametros($parametros);
-					$resultado=$historial_juicios->Insert();
-				}
-			
-				$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-			
-			*/
-				$traza=new TrazasModel();
-				$_nombre_controlador = "MATRIZ JUICIOS";
-				$_accion_trazas  = "Genero Providencia de Restructuracion";
-				$_parametros_trazas = $id_juicios;
-				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
-			
-			
-			
-			
-				$parametros = array();
-					
-				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
-				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
-				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
-				$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
-				$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
-			
-				$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
-				$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
-				$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
-				$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
-				$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
-				$parametros['ruta_avoco']=$ruta_providencias;
-				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-					
-				$parametros['reemplazar']=$reemplazar;
-					
-				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
-				$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
-				$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
-				$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
-					
 				
-				
-				$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion)?trim($numero_oficio_restructuracion):'';
-				$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion)?trim($fecha_oficio_restructuracion):'';
-				$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion)?trim($numero_solicitud_restructuracion):'';
-				$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion)?trim($fecha_solicitud_restructuracion):'';
-				
-			    $parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
-			    $parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
-			    
+			
+			   if($generar_oficio=="Si"){
+			   	
+			   	$id_impulsor=$_SESSION['id_usuarios'];
+			   	$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+			   	$id_secretario=$resultSecre[0]->id_secretario;
+			   	$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+			   	
+			   	
+			   	
+			   	$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+			   	$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+			   	
+			   	
+			   	$genero_oficio="TRUE";
+			   	$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+			   	
+			   	
+			   	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
+			   	$providencias->setFuncion($funcion);
+			   	$providencias->setParametros($parametros);
+			   	$resultado=$providencias->Insert();
+			   		
+			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
+			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+			   	
+			   	$traza=new TrazasModel();
+			   	$_nombre_controlador = "MATRIZ JUICIOS";
+			   	$_accion_trazas  = "Genero Providencia de Restructuracion con Oficio";
+			   	$_parametros_trazas = $id_juicios;
+			   	$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+			   	
+			   	
+			   	$parametros = array();
+			   		
+			   	$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+			   	$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+			   	$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+			   	$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+			   	$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+			   	$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+			   	$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+			   		
+			   	$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+			   	$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+			   	$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+			   	$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+			   	$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+			   	$parametros['ruta_avoco']=$ruta_providencias;
+			   	$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+			   		
+			   	$parametros['reemplazar']=$reemplazar;
+			   		
+			   	$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			   	$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+			   	$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+			   	$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+			   		
+			   	
+			   	
+			   	$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion)?trim($numero_oficio_restructuracion):'';
+			   	$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion)?trim($fecha_oficio_restructuracion):'';
+			   	$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion)?trim($numero_solicitud_restructuracion):'';
+			   	$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion)?trim($fecha_solicitud_restructuracion):'';
+			   	
+			   	$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
+			   	$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+			   	 
+			   	
+			   	$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
+			   	$parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
+			   	$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
+			   	$parametros['fecha_documento_2']=isset($res_fecha_documento_2)?trim($res_fecha_documento_2):'';
+			   	$parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3)?trim($res_nombre_numero_documento_3):'';
+			   	$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
+			   	 
+			   	$parametros['referencia']=isset($referencia)?trim($referencia):'';
+			   	$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+			   	$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+			   	$parametros['asunto']=isset($asunto)?trim($asunto):'';
+			   	$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+			   	 
+			   	
+			   		
+			   	$pagina="contAvocoConocimientoSeleccion.aspx";
+			   		
+			   	$conexion_rpt = array();
+			   	$conexion_rpt['pagina']=$pagina;
+			   		
+			   	$this->view("ReporteRpt", array(
+			   			"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			   	));
+			   		
+			   		
+			   	die();
+			   	
+			   	
+			   	
+			   }else{
+			   	
 
-			    $parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
-			    $parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
-			    $parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
-			    $parametros['fecha_documento_2']=isset($res_fecha_documento_2)?trim($res_fecha_documento_2):'';
-			    $parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3)?trim($res_nombre_numero_documento_3):'';
-			    $parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
-			    
-			    
+			   	$id_impulsor=$_SESSION['id_usuarios'];
+			   	$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+			   	$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+			   	
+			   	
+			   	$funcion = "ins_providencias_levantamiento";
+			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
+			   	$providencias->setFuncion($funcion);
+			   	$providencias->setParametros($parametros);
+			   	$resultado=$providencias->Insert();
+			   		
+			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
+			   		
+			   	$traza=new TrazasModel();
+			   	$_nombre_controlador = "MATRIZ JUICIOS";
+			   	$_accion_trazas  = "Genero Providencia de Restructuracion";
+			   	$_parametros_trazas = $id_juicios;
+			   	$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+			   	
+			   	
+			   	
+
+
+			   	$parametros = array();
+			   		
+			   	$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+			   	$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+			   	$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+			   	$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+			   	$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+			   	$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+			   	$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+			   		
+			   	$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+			   	$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+			   	$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+			   	$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+			   	$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+			   	$parametros['ruta_avoco']=$ruta_providencias;
+			   	$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+			   		
+			   	$parametros['reemplazar']=$reemplazar;
+			   		
+			   	$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+			   	$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+			   	$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+			   	$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+			   		
+			   	
+			   	
+			   	$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion)?trim($numero_oficio_restructuracion):'';
+			   	$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion)?trim($fecha_oficio_restructuracion):'';
+			   	$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion)?trim($numero_solicitud_restructuracion):'';
+			   	$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion)?trim($fecha_solicitud_restructuracion):'';
+			   	
+			   	$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
+			   	$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+			   	 
+			   	
+			   	$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
+			   	$parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
+			   	$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
+			   	$parametros['fecha_documento_2']=isset($res_fecha_documento_2)?trim($res_fecha_documento_2):'';
+			   	$parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3)?trim($res_nombre_numero_documento_3):'';
+			   	$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
+			   	 
+			   	$parametros['referencia']=isset($referencia)?trim($referencia):'';
+			   	 
+			   		
+			   	$pagina="contAvocoConocimientoSeleccion.aspx";
+			   		
+			   	$conexion_rpt = array();
+			   	$conexion_rpt['pagina']=$pagina;
+			   		
+			   	$this->view("ReporteRpt", array(
+			   			"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+			   	));
+			   		
+			   		
+			   	die();
+			   	
+			   	
+			   }
 			
-				$pagina="contAvocoConocimientoSeleccion.aspx";
-			
-				$conexion_rpt = array();
-				$conexion_rpt['pagina']=$pagina;
-			
-				$this->view("ReporteRpt", array(
-						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
-				));
 			
 			
-				die();
+			
+			
 			}
 			
-			
-			
-			
-
-
-			if($tipo_avoco==13){
-					
-					
-				$id_tipo_providencias=4;
-				$consecutivo= new ConsecutivosModel();
-				$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='RESTRUCTURACION'");
-				$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
-				$ruta_providencias="Providencias_Restructuracion";
-					
-				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
-					
-				$id_impulsor=$_SESSION['id_usuarios'];
-				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
-				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
-					
-					
-					
-					
-					
-				$funcion = "ins_providencias_levantamiento";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion_ref', '$numero_solicitud_restructuracion_ref', '$acta_validacion_restructuracion_ref', '$tipo_lev_ref', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
-				$providencias->setFuncion($funcion);
-				$providencias->setParametros($parametros);
-				$resultado=$providencias->Insert();
-					
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-				/*
-				 if($id_estados_procesales_juicios_actualizar>0){
-				 	
-				 $juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
-				 	
-				 $historial_juicios= new HistorialJuiciosModel();
-				 	
-				 $funcion = "ins_historial_juicios";
-				 $parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
-				 $historial_juicios->setFuncion($funcion);
-				 $historial_juicios->setParametros($parametros);
-				 $resultado=$historial_juicios->Insert();
-				 }
-				 	
-				 $juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-				 	
-				 */
-				$traza=new TrazasModel();
-				$_nombre_controlador = "MATRIZ JUICIOS";
-				$_accion_trazas  = "Genero Providencia de Restructuracion";
-				$_parametros_trazas = $id_juicios;
-				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
-					
-					
-					
-					
-				$parametros = array();
-					
-				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
-				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
-				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
-				$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
-				$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
-				$parametros['ruta_avoco']=$ruta_providencias;
-				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-				$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
-				
-				$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion_ref)?trim($numero_oficio_restructuracion_ref):'';
-				$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion_ref)?trim($fecha_oficio_restructuracion_ref):'';
-				$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion_ref)?trim($numero_solicitud_restructuracion_ref):'';
-				$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion_ref)?trim($fecha_solicitud_restructuracion_ref):'';
-			
-				$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion_ref)?trim($acta_validacion_restructuracion_ref):'';
-				$parametros['tipo_lev']=isset($tipo_lev_ref)?trim($tipo_lev_ref):'';
-				 
-			
-				$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1_ref)?trim($res_nombre_numero_documento_1_ref):'';
-				$parametros['fecha_documento_1']=isset($res_fecha_documento_1_ref)?trim($res_fecha_documento_1_ref):'';
-				$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2_ref)?trim($res_nombre_numero_documento_2_ref):'';
-				$parametros['fecha_documento_2']=isset($res_fecha_documento_2_ref)?trim($res_fecha_documento_2_ref):'';
-				$parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3_ref)?trim($res_nombre_numero_documento_3_ref):'';
-				$parametros['fecha_documento_3']=isset($res_fecha_documento_3_ref)?trim($res_fecha_documento_3_ref):'';
-				 
-				$parametros['referencia']=isset($referencia)?trim($referencia):'';
-				
-				
-				 
-					
-				$pagina="contAvocoConocimientoSeleccion.aspx";
-					
-				$conexion_rpt = array();
-				$conexion_rpt['pagina']=$pagina;
-					
-				$this->view("ReporteRpt", array(
-						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
-				));
-					
-					
-				die();
-			}
-				
-				
 			
 			
 			

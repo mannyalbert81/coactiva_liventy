@@ -497,7 +497,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Levantamiento_Medidas_Cautelares"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Levantamiento_Medidas_Cautelares"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
          
                  <br> 
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
