@@ -29,46 +29,7 @@
 		</script>
 		
       
-      <script type="text/javascript">
-      $(document).ready(function(){
-          
-      $("#tipo_avoco").click(function() {
-			
-          var tipo_avoco = $(this).val();
-			
-          if(tipo_avoco == 1 || tipo_avoco== 2 )
-          {
-       	   $("#div_datos_pago_total").fadeIn("slow");
-          }
-       	
-          else
-          {
-       	   $("#div_datos_pago_total").fadeOut("slow");
-          }
-         
-	    });
-	    
-	    $("#tipo_avoco").change(function() {
-			
-              
-              var tipo_avoco = $(this).val();
-				
-              
-              if(tipo_avoco == 1 || tipo_avoco== 2)
-              {
-           	   $("#div_datos_pago_total").fadeIn("slow");
-              }
-           	
-              else
-              {
-           	   $("#div_datos_pago_total").fadeOut("slow");
-              }
-              
-              
-		    });
-	}); 	
-	   
-      </script>
+     
       
       
       
@@ -127,6 +88,53 @@
       
       
       
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio_avoco_nuevos_procesos").click(function() {
+			
+          var generar_oficio_avoco_nuevos_procesos = $(this).val();
+			
+          if(generar_oficio_avoco_nuevos_procesos == "Si")
+          {
+       	   $("#div_datos_generar_oficio_avoco_nuevos_procesos").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio_avoco_nuevos_procesos").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio_avoco_nuevos_procesos").change(function() {
+			
+              
+              var generar_oficio_avoco_nuevos_procesos = $(this).val();
+				
+              
+              if(generar_oficio_avoco_nuevos_procesos == "Si")
+              {
+           	   $("#div_datos_generar_oficio_avoco_nuevos_procesos").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio_avoco_nuevos_procesos").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
       
       
       
@@ -170,7 +178,7 @@
 	    $("#reemplazar").change(function() {
 			
               
-              var tipo_avoco = $(this).val();
+              var reemplazar = $(this).val();
 				
               
               if(reemplazar == 3)
@@ -227,7 +235,10 @@
 			   
 
 			    var reemplazar = $("#reemplazar").val();
-
+			    var generar_oficio_avoco_nuevos_procesos= $("#generar_oficio_avoco_nuevos_procesos").val();
+                var entidad_va_oficio_avoco_nuevos_procesos= $("#entidad_va_oficio_avoco_nuevos_procesos").val();
+                var asunto_avoco_nuevos_procesos= $("#asunto_avoco_nuevos_procesos").val();
+			   
 		
 	   				
 		    	if (fecha_avoco == "")
@@ -287,54 +298,43 @@
 		            
 				}
 
+
+
+		    	if(tipo_avoco == 7  && generar_oficio_avoco_nuevos_procesos == 0){
+					$("#mensaje_generar_oficio_avoco_nuevos_procesos").text("Seleccione");
+		    		$("#mensaje_generar_oficio_avoco_nuevos_procesos").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio_avoco_nuevos_procesos").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 7  && generar_oficio_avoco_nuevos_procesos == "Si" && entidad_va_oficio_avoco_nuevos_procesos == "" ){
+					$("#mensaje_entidad_va_oficio_avoco_nuevos_procesos").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_avoco_nuevos_procesos").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio_avoco_nuevos_procesos").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 7  && generar_oficio_avoco_nuevos_procesos == "Si" && asunto_avoco_nuevos_procesos == "" ){
+					$("#mensaje_asunto_avoco_nuevos_procesos").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_avoco_nuevos_procesos").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto_avoco_nuevos_procesos").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
 		    	
-		       	
-		      
-		       	if(tipo_avoco == 1  && numero_oficio == ""){
-					$("#mensaje_numero_oficio").text("Ingrese # Oficio");
-		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-				}
-				else 
-		    	{
-		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}
-
-				if(tipo_avoco == 1  && fecha_oficio == ""){
-					$("#mensaje_fecha_oficio").text("Ingrese Fecha de Oficio");
-		    		$("#mensaje_fecha_oficio").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-				}
-				else 
-		    	{
-		    		$("#mensaje_fecha_oficio").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}
-		       	
-
-				if(tipo_avoco == 1  && numero_liquidacion == ""){
-					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
-		    		$("#mensaje_numero_liquidacion").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-				}
-				else 
-		    	{
-		    		$("#mensaje_numero_liquidacion").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}
-
-				if(tipo_avoco == 1  && fecha_auto_pago == ""){
-					$("#mensaje_fecha_auto_pago").text("Ingrese Fecha Auto Pago");
-		    		$("#mensaje_fecha_auto_pago").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-				}
-				else 
-		    	{
-		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
-		            
-				}
-
 				
 				if (tipo_avoco == 7 && reemplazar == 0)
 		    	{
@@ -449,6 +449,20 @@
 				$( "#reemplazar" ).focus(function() {
 					$("#mensaje_reemplazar").fadeOut("slow");
     			});
+
+
+				$( "#generar_oficio_avoco_nuevos_procesos" ).focus(function() {
+					$("#mensaje_generar_oficio_avoco_nuevos_procesos").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio_avoco_nuevos_procesos" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_avoco_nuevos_procesos").fadeOut("slow");
+    			});
+				$( "#asunto_avoco_nuevos_procesos" ).focus(function() {
+					$("#mensaje_asunto_avoco_nuevos_procesos").fadeOut("slow");
+    			});
+
+
+
 				
 				
 				$( "#nombre_impulsor_anterior" ).focus(function() {
@@ -623,7 +637,7 @@
 	            </div>
 	            
 	            
-	            <div class="col-lg-4 col-md-4 col-xs-12" >
+	            <div class="col-lg-3 col-md-3 col-xs-12" >
 			  	<p  class="formulario-subtitulo">Seleccione:</p>
 			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
@@ -634,7 +648,7 @@
 				<div id="mensaje_tipo_acto" class="errores"></div>
 	            </div>
 	            
-	              <div class="col-lg-4 col-md-4 col-xs-12">
+	              <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Actualizar Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios_actualizar" id="id_estados_procesales_juicios_actualizar"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -644,6 +658,34 @@
 				</select>
                  <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del juicio.)</FONT>
                  </div>
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio_avoco_nuevos_procesos" id="generar_oficio_avoco_nuevos_procesos"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio_avoco_nuevos_procesos" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio_avoco_nuevos_procesos" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio_avoco_nuevos_procesos" id="entidad_va_oficio_avoco_nuevos_procesos" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_avoco_nuevos_procesos" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto_avoco_nuevos_procesos" id="asunto_avoco_nuevos_procesos" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto_avoco_nuevos_procesos" class="errores"></div>
+	            </div>
+	            
+	            </div>
 	            
 	            
 	            </div>

@@ -226,6 +226,54 @@
       
       
       
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#generar_oficio_pago_total").click(function() {
+			
+          var generar_oficio_pago_total = $(this).val();
+			
+          if(generar_oficio_pago_total == "Si")
+          {
+       	   $("#div_datos_generar_oficio_pago_total").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_datos_generar_oficio_pago_total").fadeOut("slow");
+         
+    	
+          }
+         
+	    });
+	    
+	    $("#generar_oficio_pago_total").change(function() {
+			
+              
+              var generar_oficio_pago_total = $(this).val();
+				
+              
+              if(generar_oficio_pago_total == "Si")
+              {
+           	   $("#div_datos_generar_oficio_pago_total").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_datos_generar_oficio_pago_total").fadeOut("slow");
+            
+     
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
       
       
       
@@ -334,6 +382,11 @@
 
 			    var reemplazar = $("#reemplazar").val();
 
+
+			    var generar_oficio_pago_total= $("#generar_oficio_pago_total").val();
+                var entidad_va_oficio_pago_total= $("#entidad_va_oficio_pago_total").val();
+                var asunto_pago_total= $("#asunto_pago_total").val();
+			    
 		
 	   				
 		    	if (fecha_avoco == "")
@@ -511,81 +564,41 @@
 		            
 				}
 
-				
-				if (tipo_avoco == 7 && reemplazar == 0)
-		    	{
-			    	
-		    		$("#mensaje_reemplazar").text("Seleccione a quien va reemplazar");
-		    		$("#mensaje_reemplazar").fadeIn("slow"); //Muestra mensaje de error
+
+				if(tipo_avoco == 1  && generar_oficio_pago_total == 0){
+					$("#mensaje_generar_oficio_pago_total").text("Seleccione");
+		    		$("#mensaje_generar_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
-			    }
-		    	else 
+				}
+				else 
 		    	{
-		    		$("#mensaje_reemplazar").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_generar_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
-
-
-				if(tipo_avoco == 7 && reemplazar == 3){
-
-		    		if (nombre_impulsor_anterior == "")
-			    	{
-				    	
-			    		$("#mensaje_nombre_impulsor_anterior").text("Introduzca Impulsor Saliente");
-			    		$("#mensaje_nombre_impulsor_anterior").fadeIn("slow"); //Muestra mensaje de error
-			            return false;
-				    }
-			    	else 
-			    	{
-			    		$("#mensaje_nombre_impulsor_anterior").fadeOut("slow"); //Muestra mensaje de error
-			            
-					}
-
-			    	if (nombre_secretario_anterior == "")
-			    	{
-				    	
-			    		$("#mensaje_nombre_secretario_anterior").text("Introduzca Secretario Saliente");
-			    		$("#mensaje_nombre_secretario_anterior").fadeIn("slow"); //Muestra mensaje de error
-			            return false;
-				    }
-			    	else 
-			    	{
-			    		$("#mensaje_nombre_secretario_anterior").fadeOut("slow"); //Muestra mensaje de error
-			            
-					}
+				if(tipo_avoco == 1  && generar_oficio_pago_total == "Si" && entidad_va_oficio_pago_total == "" ){
+					$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
 				}
-		    	else if (tipo_avoco == 7 && reemplazar == 2){
-			    	
-		    		if (nombre_impulsor_anterior == "")
-			    	{
-				    	
-			    		$("#mensaje_nombre_impulsor_anterior").text("Introduzca Impulsor Saliente");
-			    		$("#mensaje_nombre_impulsor_anterior").fadeIn("slow"); //Muestra mensaje de error
-			            return false;
-				    }
-			    	else 
-			    	{
-			    		$("#mensaje_nombre_impulsor_anterior").fadeOut("slow"); //Muestra mensaje de error
-			            
-					}
-			    }
-                  else if (tipo_avoco == 7 && reemplazar == 1){
-			    	
-                	  if (nombre_secretario_anterior == "")
-  			    	{
-  				    	
-  			    		$("#mensaje_nombre_secretario_anterior").text("Introduzca Secretario Saliente");
-  			    		$("#mensaje_nombre_secretario_anterior").fadeIn("slow"); //Muestra mensaje de error
-  			            return false;
-  				    }
-  			    	else 
-  			    	{
-  			    		$("#mensaje_nombre_secretario_anterior").fadeOut("slow"); //Muestra mensaje de error
-  			            
-  					}
-			    }
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
+				if(tipo_avoco == 1  && generar_oficio_pago_total == "Si" && asunto_pago_total == "" ){
+					$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+			
 				
 		    	
 			}); 
@@ -643,6 +656,19 @@
 				$( "#fecha_auto_pago" ).focus(function() {
 					$("#mensaje_fecha_auto_pago").fadeOut("slow");
     			});
+
+
+				$( "#generar_oficio_pago_total" ).focus(function() {
+					$("#mensaje_generar_oficio_pago_total").fadeOut("slow");
+    			});
+				$( "#entidad_va_oficio_pago_total" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow");
+    			});
+				$( "#asunto_pago_total" ).focus(function() {
+					$("#mensaje_asunto_pago_total").fadeOut("slow");
+    			});
+
+
     			
 				$( "#reemplazar" ).focus(function() {
 					$("#mensaje_reemplazar").fadeOut("slow");
@@ -939,12 +965,43 @@
 	            <div id="mensaje_numero_liquidacion" class="errores"></div>
 	            </div>
 	            
-	           <div class="col-lg-4 col-md-4 col-xs-12">
+	           <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
 			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" value="<?php echo $sel_fecha_auto_pago; ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_auto_pago" class="errores"></div>
 			    </div>
 			    
+			           
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
+			  	<select name="generar_oficio_pago_total" id="generar_oficio_pago_total"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+						
+			    </select>
+				<div id="mensaje_generar_oficio_pago_total" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	           
+	            <div id="div_datos_generar_oficio_pago_total" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<input type="text"  name="entidad_va_oficio_pago_total" id="entidad_va_oficio_pago_total" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_pago_total" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto:</p>
+			  	<input type="text"  name="asunto_pago_total" id="asunto_pago_total" value="" class="form-control" placeholder="Asunto"/> 
+	            <div id="mensaje_asunto_pago_total" class="errores"></div>
+	            </div>
+	            
+	            </div>
+	            
+	            
+	            
 			     <div class="col-xs-12 col-md-10 col-lg-10" style='margin-top: 10px;'>
 		                          <p class="formulario-subtitulo" >Referencia de Entidades (Opcional: Si desea nombrar a alguna entidad Ingresela empezando con el numeral 1.1.- ):</p>
                                   <textarea type="text"  class="form-control" id="referencia_pago_total" name="referencia_pago_total" value=""  placeholder="Empieze con el numeral 1.1.-"></textarea>

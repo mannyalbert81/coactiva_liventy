@@ -3374,6 +3374,7 @@
 	}
 	
 	
+	
 	public function Imprimir_AvocoConocimiento()
 	{
 		session_start();
@@ -3381,6 +3382,10 @@
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
 		$usuarios = new UsuariosModel();
+		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
+		
+		
+		
 		
 		if(isset($_POST['generar']))
 		{
@@ -3410,22 +3415,16 @@
 			$tipo_acto= $_POST['tipo_acto'];
 			
 			
+			$generar_oficio_avoco_nuevos_procesos= $_POST['generar_oficio_avoco_nuevos_procesos'];
+			$entidad_va_oficio_avoco_nuevos_procesos= $_POST['entidad_va_oficio_avoco_nuevos_procesos'];
+			$asunto_avoco_nuevos_procesos= $_POST['asunto_avoco_nuevos_procesos'];
+			
+			
 
-			$consecutivo= new ConsecutivosModel();
-			$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
-			$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
-			$ruta_providencias="Avoco_Conocimiento";
-			
-			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
-			$id_impulsor=$_SESSION['id_usuarios'];
-			$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
-			$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
-			
-			
 			$resultUsu = $usuarios->getBy("id_usuarios ='$id_impulsor'");
 			$id_ciudad=$resultUsu[0]->id_ciudad;
-				
+			
 			
 			$juicios = new JuiciosModel();
 			if($id_estados_procesales_juicios_actualizar>0){
@@ -3440,78 +3439,170 @@
 			}
 			
 			
-			$funcion = "ins_avoco_conocimiento_liventy";
-			$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco'";
-			$providencias->setFuncion($funcion);
-			$providencias->setParametros($parametros);
-			$resultado=$providencias->Insert();
 			
-			$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
-			/*
-			if($id_estados_procesales_juicios_actualizar>0){
-					
-				$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
-					
-				$historial_juicios= new HistorialJuiciosModel();
-			
-				$funcion = "ins_historial_juicios";
-				$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
-				$historial_juicios->setFuncion($funcion);
-				$historial_juicios->setParametros($parametros);
-				$resultado=$historial_juicios->Insert();
-			}
+			$consecutivo= new ConsecutivosModel();
+			$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
+			$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+			$ruta_providencias="Avoco_Conocimiento";
 				
-			$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-				*/
-				
-			$traza=new TrazasModel();
-			$_nombre_controlador = "MATRIZ JUICIOS";
-			$_accion_trazas  = "Genero Avoco Conocimiento";
-			$_parametros_trazas = $id_juicios;
-			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
-				
+			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
 			
 			
-			$parametros = array();
-				
-			$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
-			$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
-			$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-			$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-			$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
-			$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
-			$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
 			
-			$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
-			$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
-			$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
-			$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
-			$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
-			$parametros['ruta_avoco']=$ruta_providencias;
-			$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+			if ($generar_oficio_avoco_nuevos_procesos=="Si"){
 				
-			$parametros['reemplazar']=$reemplazar;
+				$id_impulsor=$_SESSION['id_usuarios'];
+				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+				$id_secretario=$resultSecre[0]->id_secretario;
+				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
 				
-			$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
-			$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
-			$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
-			$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
-			$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
-			
+				
+				
+				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+				
+				$genero_oficio="TRUE";
+				$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+				
+				
 
+
+				$funcion = "ins_avoco_conocimiento_con_oficio_liventy";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio_avoco_nuevos_procesos', '$asunto_avoco_nuevos_procesos'";
+				$providencias->setFuncion($funcion);
+				$providencias->setParametros($parametros);
+				$resultado=$providencias->Insert();
+					
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				
+				
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Genero Avoco Conocimiento con Oficio";
+				$_parametros_trazas = $id_juicios;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+				
+					
+					
+				$parametros = array();
+				
+				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+				$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+				$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+					
+				$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+				$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+				$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+				$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+				$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+				$parametros['ruta_avoco']=$ruta_providencias;
+				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				
+				$parametros['reemplazar']=$reemplazar;
+				
+				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+				$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+				$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+				$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+				$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
+				$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+				$parametros['entidad_va_oficio']=isset($entidad_va_oficio_avoco_nuevos_procesos)?trim($entidad_va_oficio_avoco_nuevos_procesos):'';
+				$parametros['asunto']=isset($asunto_avoco_nuevos_procesos)?trim($asunto_avoco_nuevos_procesos):'';
+				$parametros['generar_oficio']=isset($generar_oficio_avoco_nuevos_procesos)?trim($generar_oficio_avoco_nuevos_procesos):'';
+					
+				
+					
+					
+				$pagina="contAvocoConocimientoSeleccion.aspx";
+				
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+				
+				
+				die();
+				
+				
+				
+				
+			}else{
+				
+				$id_impulsor=$_SESSION['id_usuarios'];
+				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+					
+					
+					
+				$funcion = "ins_avoco_conocimiento_liventy";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco'";
+				$providencias->setFuncion($funcion);
+				$providencias->setParametros($parametros);
+				$resultado=$providencias->Insert();
+					
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
+					
+				
+				$traza=new TrazasModel();
+				$_nombre_controlador = "MATRIZ JUICIOS";
+				$_accion_trazas  = "Genero Avoco Conocimiento";
+				$_parametros_trazas = $id_juicios;
+				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+				
+					
+					
+				$parametros = array();
+				
+				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+				$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+				$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+				$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+					
+				$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+				$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+				$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+				$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+				$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+				$parametros['ruta_avoco']=$ruta_providencias;
+				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				
+				$parametros['reemplazar']=$reemplazar;
+				
+				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+				$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+				$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+				$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+				$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
+					
+				
+					
+					
+				$pagina="contAvocoConocimientoSeleccion.aspx";
+				
+				$conexion_rpt = array();
+				$conexion_rpt['pagina']=$pagina;
+				$this->view("ReporteRpt", array(
+						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+				));
+				
+				
+				die();
+				
+			}
 			
 			
-			$pagina="contAvocoConocimientoSeleccion.aspx";
-				
-			$conexion_rpt = array();
-			$conexion_rpt['pagina']=$pagina;
-			$this->view("ReporteRpt", array(
-					"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
-			));
-				
-				
-			die();
 				
 				
 		}
@@ -7037,6 +7128,9 @@
 			$entidad_va_oficio= $_POST['entidad_va_oficio'];
 			$asunto= $_POST['asunto'];
 			
+			$generar_oficio_pago_total= $_POST['generar_oficio_pago_total'];
+			$entidad_va_oficio_pago_total= $_POST['entidad_va_oficio_pago_total'];
+			$asunto_pago_total= $_POST['asunto_pago_total'];
 			
 			$numero_oficio1= "";
 			$numero_oficio2= "";
@@ -7056,15 +7150,10 @@
 			
 				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
 				$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
-			
-			
 			}
 			
 			
-			
-		
 			$tipo_avoco= $_POST['tipo_avoco'];
-			
 			
 			
 			if($tipo_avoco==1){
@@ -7078,96 +7167,177 @@
 				
 				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
-				$id_impulsor=$_SESSION['id_usuarios'];
-				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
-				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 				
 				
-				
-				
-				
-				$funcion = "ins_providencias_levantamiento";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
-				$providencias->setFuncion($funcion);
-				$providencias->setParametros($parametros);
-				$resultado=$providencias->Insert();
-				
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-				/*
-				if($id_estados_procesales_juicios_actualizar>0){
+				if($generar_oficio_pago_total=="Si"){
+					
+					$id_impulsor=$_SESSION['id_usuarios'];
+					$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+					$id_secretario=$resultSecre[0]->id_secretario;
+					$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+					 
+					 
+					 
+					$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+					 
+					$genero_oficio="TRUE";
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					 
+					
+					
+					$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total'";
 						
-					$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios_actualizar'", "juicios", "id_juicios='$id_juicios'");
+					$providencias->setFuncion($funcion);
+					$providencias->setParametros($parametros);
+					$resultado=$providencias->Insert();
+					
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					 
+					$traza=new TrazasModel();
+					$_nombre_controlador = "MATRIZ JUICIOS";
+					$_accion_trazas  = "Genero Providencia de Pago Total con Oficio";
+					$_parametros_trazas = $id_juicios;
+					$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+					 
+					 
+
+
+					$parametros = array();
+					
+					$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+					$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+					$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+					$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+					$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+					$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+					$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
 						
-					$historial_juicios= new HistorialJuiciosModel();
-				
-					$funcion = "ins_historial_juicios";
-					$parametros = " '$id_juicios', '$id_estados_procesales_juicios_actualizar', '$fecha_avoco'";
-					$historial_juicios->setFuncion($funcion);
-					$historial_juicios->setParametros($parametros);
-					$resultado=$historial_juicios->Insert();
+					$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+					$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+					$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+					$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+					$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+					$parametros['ruta_avoco']=$ruta_providencias;
+					$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+					$parametros['referencia']=isset($referencia_pago_total)?trim($referencia_pago_total):'';
+					$parametros['reemplazar']=$reemplazar;
+					
+					$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+					$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+					$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+					$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+					
+						
+					$parametros['nombre_numero_documento_1']=isset($nombre_numero_documento_1)?trim($nombre_numero_documento_1):'';
+					$parametros['fecha_documento_1']=isset($fecha_documento_1)?trim($fecha_documento_1):'';
+					$parametros['nombre_numero_documento_2']=isset($nombre_numero_documento_2)?trim($nombre_numero_documento_2):'';
+					$parametros['fecha_documento_2']=isset($fecha_documento_2)?trim($fecha_documento_2):'';
+					$parametros['nombre_numero_documento_3']=isset($nombre_numero_documento_3)?trim($nombre_numero_documento_3):'';
+					$parametros['fecha_documento_3']=isset($fecha_documento_3)?trim($fecha_documento_3):'';
+					$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+					$parametros['entidad_va_oficio']=isset($entidad_va_oficio_pago_total)?trim($entidad_va_oficio_pago_total):'';
+					$parametros['asunto']=isset($asunto_pago_total)?trim($asunto_pago_total):'';
+					$parametros['generar_oficio']=isset($generar_oficio_pago_total)?trim($generar_oficio_pago_total):'';
+					 
+						
+						
+					$pagina="contAvocoConocimientoSeleccion.aspx";
+						
+					$conexion_rpt = array();
+					$conexion_rpt['pagina']=$pagina;
+						
+					$this->view("ReporteRpt", array(
+							"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+					));
+						
+						
+					die();
+						
+					
+					
+					
+				}else{
+					
+					$id_impulsor=$_SESSION['id_usuarios'];
+					$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+					$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+					
+					
+					$funcion = "ins_providencias_levantamiento";
+					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
+					$providencias->setFuncion($funcion);
+					$providencias->setParametros($parametros);
+					$resultado=$providencias->Insert();
+					
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
+					
+					
+					$traza=new TrazasModel();
+					$_nombre_controlador = "MATRIZ JUICIOS";
+					$_accion_trazas  = "Genero Providencia de Pago Total";
+					$_parametros_trazas = $id_juicios;
+					$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+					
+					
+					
+					
+					$parametros = array();
+						
+					$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+					$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+					$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+					$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+					$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+					$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+					$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+					
+					$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+					$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+					$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+					$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+					$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+					$parametros['ruta_avoco']=$ruta_providencias;
+					$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+					$parametros['referencia']=isset($referencia_pago_total)?trim($referencia_pago_total):'';
+					$parametros['reemplazar']=$reemplazar;
+						
+					$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+					$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+					$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+					$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+						
+					
+					$parametros['nombre_numero_documento_1']=isset($nombre_numero_documento_1)?trim($nombre_numero_documento_1):'';
+					$parametros['fecha_documento_1']=isset($fecha_documento_1)?trim($fecha_documento_1):'';
+					$parametros['nombre_numero_documento_2']=isset($nombre_numero_documento_2)?trim($nombre_numero_documento_2):'';
+					$parametros['fecha_documento_2']=isset($fecha_documento_2)?trim($fecha_documento_2):'';
+					$parametros['nombre_numero_documento_3']=isset($nombre_numero_documento_3)?trim($nombre_numero_documento_3):'';
+					$parametros['fecha_documento_3']=isset($fecha_documento_3)?trim($fecha_documento_3):'';
+					
+					
+						
+						
+					
+					
+					$pagina="contAvocoConocimientoSeleccion.aspx";
+					
+					$conexion_rpt = array();
+					$conexion_rpt['pagina']=$pagina;
+					
+					$this->view("ReporteRpt", array(
+							"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+					));
+					
+					
+					die();
+					
+					
 				}
 				
-				$juicios->UpdateBy("fecha_ultima_providencia='$fecha_avoco'", "juicios", "id_juicios='$id_juicios'");
-				*/
 				
-				$traza=new TrazasModel();
-				$_nombre_controlador = "MATRIZ JUICIOS";
-				$_accion_trazas  = "Genero Providencia de Pago Total";
-				$_parametros_trazas = $id_juicios;
-				$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
-				
-				
-				
-				
-				$parametros = array();
-					
-				$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
-				$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
-				$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
-				$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-				$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
-				$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
-				$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
-				
-				$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
-				$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
-				$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
-				$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
-				$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
-				$parametros['ruta_avoco']=$ruta_providencias;
-				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-				$parametros['referencia']=isset($referencia_pago_total)?trim($referencia_pago_total):'';
-				$parametros['reemplazar']=$reemplazar;
-					
-				$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
-				$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
-				$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
-				$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
-					
-				
-				$parametros['nombre_numero_documento_1']=isset($nombre_numero_documento_1)?trim($nombre_numero_documento_1):'';
-				$parametros['fecha_documento_1']=isset($fecha_documento_1)?trim($fecha_documento_1):'';
-				$parametros['nombre_numero_documento_2']=isset($nombre_numero_documento_2)?trim($nombre_numero_documento_2):'';
-				$parametros['fecha_documento_2']=isset($fecha_documento_2)?trim($fecha_documento_2):'';
-				$parametros['nombre_numero_documento_3']=isset($nombre_numero_documento_3)?trim($nombre_numero_documento_3):'';
-				$parametros['fecha_documento_3']=isset($fecha_documento_3)?trim($fecha_documento_3):'';
-				
-				
-					
-					
-				
-				
-				$pagina="contAvocoConocimientoSeleccion.aspx";
-				
-				$conexion_rpt = array();
-				$conexion_rpt['pagina']=$pagina;
-				
-				$this->view("ReporteRpt", array(
-						"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
-				));
-				
-				
-				die();
 			}
 				
 				
