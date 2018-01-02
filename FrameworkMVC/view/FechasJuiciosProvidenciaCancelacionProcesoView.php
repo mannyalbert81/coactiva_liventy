@@ -997,7 +997,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  	 <textarea type="text"  class="form-control" id="asunto_pago_total" name="asunto_pago_total" value=""  placeholder="Asunto"></textarea>
+			  	 <textarea type="text"  class="form-control" id="asunto_pago_total" name="asunto_pago_total" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
                 <div id="mensaje_asunto_pago_total" class="errores"></div>
 	            </div>
 	            
@@ -1135,7 +1135,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  	 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Asunto"></textarea>
+			  	 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
                  <div id="mensaje_asunto" class="errores"></div>
 	            </div>
 	            

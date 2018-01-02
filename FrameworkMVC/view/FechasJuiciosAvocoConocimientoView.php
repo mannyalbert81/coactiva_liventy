@@ -685,7 +685,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  	 <textarea type="text"  class="form-control" id="asunto_avoco_nuevos_procesos" name="asunto_avoco_nuevos_procesos" value=""  placeholder="Asunto"></textarea>
+			  	 <textarea type="text"  class="form-control" id="asunto_avoco_nuevos_procesos" name="asunto_avoco_nuevos_procesos" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
                  <div id="mensaje_asunto_avoco_nuevos_procesos" class="errores"></div>
 	            </div>
 	            
