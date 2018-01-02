@@ -881,16 +881,16 @@
 	            <br>
 	           
 	            <div id="div_datos_generar_oficio_discapacidad" style="display: none;">
-	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A:</p>
 			  	<input type="text"  name="entidad_va_oficio_discapacidad" id="entidad_va_oficio_discapacidad" value="" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_discapacidad" class="errores"></div>
 	            </div>
 	            
-	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  	<input type="text"  name="asunto_discapacidad" id="asunto_discapacidad" value="" class="form-control" placeholder="Asunto"/> 
-	            <div id="mensaje_asunto_discapacidad" class="errores"></div>
+			  		 <textarea type="text"  class="form-control" id="asunto_discapacidad" name="asunto_discapacidad" value=""  placeholder="Asunto"></textarea>
+               <div id="mensaje_asunto_discapacidad" class="errores"></div>
 	            </div>
 	            
 	            </div>
@@ -969,16 +969,16 @@
 	            <br>
 	           
 	            <div id="div_datos_generar_oficio_fallecimiento" style="display: none;">
-	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A:</p>
 			  	<input type="text"  name="entidad_va_oficio_fallecimiento" id="entidad_va_oficio_fallecimiento" value="" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_fallecimiento" class="errores"></div>
 	            </div>
 	            
-	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  	<input type="text"  name="asunto_fallecimiento" id="asunto_fallecimiento" value="" class="form-control" placeholder="Asunto"/> 
-	            <div id="mensaje_asunto_fallecimiento" class="errores"></div>
+			  	  		 <textarea type="text"  class="form-control" id="asunto_fallecimiento" name="asunto_fallecimiento" value=""  placeholder="Asunto"></textarea>
+                <div id="mensaje_asunto_fallecimiento" class="errores"></div>
 	            </div>
 	            
 	            </div>
