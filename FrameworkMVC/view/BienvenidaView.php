@@ -40,8 +40,9 @@
 	  </script>
 
 	<div id="dialog" title="INFORMACIÓN"><br><br><br><br>
-	<p style="text-align: justify;">Estimados <strong>usuarios</strong>, les comunicamos que estamos implementando el certificado de seguridad al sistema (Allcoercive), el mismo que puede presentar inconvenientes durante el dia de hoy por la implementación, agradecemos su compresión.</p>
-    </div> 
+	<p style="text-align: justify;">Estimados <strong>usuarios</strong>, les comunicamos que hemos implementado la generación automática de oficios al sistema (Allcoercive), el mismo que se puede seleccionar si desea o no generar el oficio en cualquiera de los documentos cargados en el sistema.</p>
+    
+	 </div> 
             
        <footer class="col-lg-12">
            <?php include("view/modulos/footer.php"); ?>

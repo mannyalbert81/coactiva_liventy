@@ -714,7 +714,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Levantamiento_Medidas_Cautelares"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_Providencia_Levantamiento_Medidas_Cautelares"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12 col-md-12 col-xs-12" target="_blank">
          
                  <br> 
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
@@ -955,7 +955,7 @@
 			  
 	            
 	            
-	             <div class="col-lg-2 col-md-2 col-xs-12">
+	             <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio_fallecimiento" id="generar_oficio_fallecimiento"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -985,12 +985,6 @@
 	            
 	            
 	          </div> 
-	          
-	          
-	          
-	          
-	          
-	          
 	          
 	          
 	          

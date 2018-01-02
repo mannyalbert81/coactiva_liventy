@@ -3115,6 +3115,20 @@
 			$asunto= $_POST['asunto'];
 			
 			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio!=""){
+				
+				$result=$entidades->InsertaEntidades($entidad_va_oficio);
+					
+			}else{
+				
+				
+			}
+			
+			
+			
+			
+			
 			$numero_oficio="";
 					$numero_oficio1="";
 							$numero_oficio2="";
@@ -3482,6 +3496,16 @@
 			$generar_oficio_avoco_nuevos_procesos= $_POST['generar_oficio_avoco_nuevos_procesos'];
 			$entidad_va_oficio_avoco_nuevos_procesos= $_POST['entidad_va_oficio_avoco_nuevos_procesos'];
 			$asunto_avoco_nuevos_procesos= $_POST['asunto_avoco_nuevos_procesos'];
+			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio_avoco_nuevos_procesos!=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_avoco_nuevos_procesos);
+					
+			}else{
+					
+					
+			}
 			
 			
 			$id_impulsor=$_SESSION['id_usuarios'];
@@ -6711,10 +6735,34 @@
 			$asunto_discapacidad= $_POST['asunto_discapacidad'];
 			
 			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio_discapacidad!=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad);
+					
+			}else{
+					
+					
+			}
+			
+			
 			$generar_oficio_fallecimiento= $_POST['generar_oficio_fallecimiento'];
 			$entidad_va_oficio_fallecimiento= $_POST['entidad_va_oficio_fallecimiento'];
 			$asunto_fallecimiento= $_POST['asunto_fallecimiento'];
 				
+			
+			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio_fallecimiento!=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento);
+					
+			}else{
+					
+					
+			}
+			
+			
 			$tipo_avoco= $_POST['tipo_avoco'];
 		
 		
@@ -7128,7 +7176,15 @@
 			$entidad_va_oficio= $_POST['entidad_va_oficio'];
 			$asunto= $_POST['asunto'];
 			
-				
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio!=""){
+			
+				$result=$entidades->InsertaEntidades($entidad_va_oficio);
+					
+			}else{
+			
+			
+			}
 				
 				
 			if($tipo_avoco==9){
@@ -7454,9 +7510,33 @@
 			$entidad_va_oficio= $_POST['entidad_va_oficio'];
 			$asunto= $_POST['asunto'];
 			
+			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio!=""){
+			
+				$result=$entidades->InsertaEntidades($entidad_va_oficio);
+					
+			}else{
+			
+			
+			}
+			
+			
 			$generar_oficio_pago_total= $_POST['generar_oficio_pago_total'];
 			$entidad_va_oficio_pago_total= $_POST['entidad_va_oficio_pago_total'];
 			$asunto_pago_total= $_POST['asunto_pago_total'];
+			
+			
+			
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio_pago_total!=""){
+			
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_pago_total);
+					
+			}else{
+			
+			
+			}
 			
 			$numero_oficio1= "";
 			$numero_oficio2= "";
@@ -7921,7 +8001,15 @@
 			$asunto= $_POST['asunto'];
 				
 			
-
+			$entidades = New EntidadesModel();
+			if($entidad_va_oficio!=""){
+			
+				$result=$entidades->InsertaEntidades($entidad_va_oficio);
+					
+			}else{
+			
+			
+			}
 
 			$juicios = new JuiciosModel();
 			if($id_estados_procesales_juicios>0){

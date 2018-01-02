@@ -575,9 +575,7 @@ class EntidadBase{
     
     
     	$traza=new TrazasModel();
-    		
     	$funcion = "ins_trazas";
-    	
     	$_id_usuarios="";
     
     	if(is_null($id_usario)){
@@ -587,13 +585,22 @@ class EntidadBase{
     	}
     	
     	$parametros = "'$_id_usuarios', '$_accion_trazas', '$_parametros_trazas', '$_nombre_controlador'  ";
-    
     	$traza->setFuncion($funcion);
-    		
     	$traza->setParametros($parametros);
-    		
     	$resultadoT=$traza->Insert();
     
+    }
+    
+    
+    public function  InsertaEntidades($nombre_entidades){
+    	
+    	$entidades = New EntidadesModel();
+    	
+    	$funcion = "ins_entidades_liventy";
+    	$parametros = "'$nombre_entidades'";
+    	$entidades->setFuncion($funcion);
+    	$entidades->setParametros($parametros);
+    	$resultadoT=$entidades->Insert();
     }
     
     

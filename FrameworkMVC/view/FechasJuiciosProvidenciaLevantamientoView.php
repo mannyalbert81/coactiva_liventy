@@ -182,12 +182,12 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("MatrizJuicios","Imprimir_ProvidenciaLevantamiento"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12 col-md-12 col-xs-12">
          
                  <!-- comienxza busqueda  -->
                  
                  <br>         
-         <div class="col-lg-12">
+         <div class="col-lg-12 col-md-12 col-xs-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
 	         <h4><i class='glyphicon glyphicon-edit'></i> Datos Providencia Levantamiento</h4>
@@ -197,7 +197,7 @@
   			<div class="panel-body">
   			
   							
-  		<div class="col-lg-2 col-md-2 xs-6">
+  		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Providencia:</p>
 			  	<input type="date"  name="fecha_levantamiento" id="fecha_levantamiento" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
@@ -207,77 +207,73 @@
 			  
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Hora Providencia:</p>
 			  	<input type="time"  name="hora_levantamiento" id="hora_levantamiento" value="" class="form-control "/> 
 			    <div id="mensaje_hora" class="errores"></div>
 		 </div>
 		 
-		  <div class="col-lg-4 col-md-4 xs-6">
+		  <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Cliente:</p>
 			  	<input type="text"  name="nombres_clientes" id="nombres_clientes" value="<?php echo $datos['nombres_clientes']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $datos['juicio_referido_titulo_credito']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		 <div class="col-lg-2 col-md-2 xs-6">
+		 <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $datos['numero_titulo_credito']; ?>" class="form-control" readonly/> 
 			    
 		 </div>
 		 
-		   <div class="col-lg-12 col-md-12 xs-6">
+		   <div class="col-lg-12 col-md-12 col-xs-12">
          		<p class="formulario-subtitulo" >Número y Fecha de Oficio 1:</p>
 			  	<input type="text"  name="numero_oficio" id="numero_oficio" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio" class="errores"></div>
 		  </div>
 		  
-		   <div class="col-lg-12 col-md-12 xs-6">
+		   <div class="col-lg-12 col-md-12 col-xs-12">
          		<p class="formulario-subtitulo" >Número y Fecha de Oficio 2:</p>
 			  	<input type="text"  name="numero_oficio1" id="numero_oficio1" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio1" class="errores"></div>
 		  </div>
 		  
-		   <div class="col-lg-12 col-md-12 xs-6">
+		   <div class="col-lg-12 col-md-12 col-xs-12">
          		<p class="formulario-subtitulo" >Número y Fecha de Oficio 3:</p>
 			  	<input type="text"  name="numero_oficio2" id="numero_oficio2" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio2" class="errores"></div>
 		  </div>
 		  
-		   <div class="col-lg-12 col-md-12 xs-6">
+		   <div class="col-lg-12 col-md-12 col-xs-12">
          		<p class="formulario-subtitulo" >Número y Fecha de Oficio 4:</p>
 			  	<input type="text"  name="numero_oficio3" id="numero_oficio3" value="" class="form-control" placeholder="Ej. BNF-LIQ-DCC-2017-0700 del 21 de abril del 2017"/> 
 			    <div id="mensaje_numero_oficio3" class="errores"></div>
 		  </div>
 		   
-		    <div class="col-xs-12 col-md-12">
-		                          
+		   
+		   
+		    <div class="col-xs-12 col-md-12 col-lg-12">                    
 		                          <p class="formulario-subtitulo" >Dirigido A:</p>
                                   <textarea type="text"  class="form-control" id="dirigido_levantamiento" name="dirigido_levantamiento" value=""  placeholder="Ingrese a quién va Dirigido"></textarea>
                                  <div id="mensaje_dirigido" class="errores"></div>
              </div>
-             <div class="col-xs-12 col-md-12">
+             <div class="col-xs-12 col-md-12 col-lg-12">
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
                                   <textarea type="text"  class="form-control" id="razon_levantamiento" name="razon_levantamiento" value=""  placeholder="Ingrese Razón"></textarea>
                                  <div id="mensaje_razon" class="errores"></div>
              </div>
 		
-         
-          
-           </div>
+            </div>
   		
   		
   		
-  		
-  		
-  		
-  		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
+  		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="submit" id="generar" name="generar" value=""   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i> Generar Providencia</button>         
 	  
@@ -298,12 +294,7 @@
       </div>
      
   </div>
-      <!-- termina
-       busqueda  -->
-      
-      
-      
-     
+    
      
    </body>  
 
