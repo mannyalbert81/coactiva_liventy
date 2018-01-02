@@ -158,13 +158,15 @@
           else if (reemplazar == 2)
           {
         	  $("#div_datos_impulsor").fadeIn("slow");
-        	  
+        	  $("#div_datos_secretario").fadeOut("slow");
+          	
        	  
           }
           else if (reemplazar == 1)
           {
         	  $("#div_datos_secretario").fadeIn("slow");
-        	  
+        	  $("#div_datos_impulsor").fadeOut("slow");
+          	
        	  
           }
           else{
@@ -190,14 +192,16 @@
               else if (reemplazar == 2)
               {
             	  $("#div_datos_impulsor").fadeIn("slow");
-            	  
+            	  $("#div_datos_secretario").fadeOut("slow");
+             	 
            	  
               }
               else if (reemplazar == 1)
               {
             	  $("#div_datos_secretario").fadeIn("slow");
             	  
-           	  
+            	  $("#div_datos_impulsor").fadeOut("slow");
+             	 
               }
               else{
             	  $("#div_datos_impulsor").fadeOut("slow");
