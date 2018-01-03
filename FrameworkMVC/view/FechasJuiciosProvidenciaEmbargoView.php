@@ -608,6 +608,9 @@
 	        	
   		       
 	            <div id="div_datos_embargo_cuenta" style="display: none;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
                 <div class="col-lg-8 col-md-8 col-xs-12">
 			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
 			  	<input type="text"  name="numero_oficio_embargo_cuenta" id="numero_oficio_embargo_cuenta" value="" class="form-control" placeholder="#"/> 
@@ -677,10 +680,379 @@
 			  	<input type="text"  name="identificacion_depositario_judicial" id="identificacion_depositario_judicial" value="" class="form-control" placeholder="CI Depositario"/> 
 	            <div id="mensaje_identificacion_depositario_judicial" class="errores"></div>
 	            </div>
-	            
-	            
+	            </div>
+	           </div> 
 	            
 	              
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	           <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
+	          <div class="col-lg-8 col-md-8 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio (Opcional 2):</p>
+			  	<input type="text"  name="numero_oficio_embargo_cuenta_2" id="numero_oficio_embargo_cuenta_2" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_embargo_cuenta_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 2):</p>
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_2" id="fecha_oficio_embargo_cuenta_2" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_embargo_cuenta_2" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Tipo Cuenta (Opcional 2):</p>
+			  	<select name="tipo_cuenta_2" id="tipo_cuenta_2"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="ahorros">AHORROS</option>
+			  		<option value="corriente">CORRIENTE</option>
+					
+				</select>
+				<div id="mensaje_tipo_cuenta_2" class="errores"></div>
+	            </div>
+			    
+			    
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Cuenta (Opcional 2):</p>
+			  	<input type="text"  name="numero_cuenta_2" id="numero_cuenta_2" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_cuenta_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Entidad Bancaria (Opcional 2):</p>
+			  	<input type="text"  name="nombre_banco_2" id="nombre_banco_2" value="" class="form-control" placeholder="Banco o Cooperativa"/> 
+	            <div id="mensaje_nombre_banco_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Valor Retenido (Opcional 2):</p>
+			  	<input type="text"  name="monto_retenido_2" id="monto_retenido_2" value="" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
+	            <div id="mensaje_monto_retenido_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombres Titular Cuenta (Opcional 2):</p>
+			  	<input type="text"  name="nombre_titular_cuenta_2" id="nombre_titular_cuenta_2" value="" class="form-control" placeholder="Nombre Titular"/> 
+	            <div id="mensaje_nombre_titular_cuenta_2" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Titular(2):</p>
+			  	<input type="text"  name="identificacion_titular_cuenta_2" id="identificacion_titular_cuenta_2" value="" class="form-control" placeholder="CI Titular"/> 
+	            <div id="mensaje_identificacion_titular_cuenta_2" class="errores"></div>
+	            </div>
+	            
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Depositario Judicial(2):</p>
+			  	<input type="text"  name="depositario_judicial_2" id="depositario_judicial_2" value="" class="form-control" placeholder="Nombre Depositario"/> 
+	            <div id="mensaje_depositario_judicial_2" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Depositario(2):</p>
+			  	<input type="text"  name="identificacion_depositario_judicial_2" id="identificacion_depositario_judicial_2" value="" class="form-control" placeholder="CI Depositario"/> 
+	            <div id="mensaje_identificacion_depositario_judicial_2" class="errores"></div>
+	            </div>
+	          </div>
+	          </div>
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	           <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
+	          <div class="col-lg-8 col-md-8 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio (Opcional 3):</p>
+			  	<input type="text"  name="numero_oficio_embargo_cuenta_3" id="numero_oficio_embargo_cuenta_3" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_embargo_cuenta_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 3):</p>
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_3" id="fecha_oficio_embargo_cuenta_3" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_embargo_cuenta_3" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Tipo Cuenta (Opcional 3):</p>
+			  	<select name="tipo_cuenta_3" id="tipo_cuenta_3"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="ahorros">AHORROS</option>
+			  		<option value="corriente">CORRIENTE</option>
+					
+				</select>
+				<div id="mensaje_tipo_cuenta_3" class="errores"></div>
+	            </div>
+			    
+			    
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Cuenta (Opcional 3):</p>
+			  	<input type="text"  name="numero_cuenta_3" id="numero_cuenta_3" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_cuenta_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Entidad Bancaria (Opcional 3):</p>
+			  	<input type="text"  name="nombre_banco_3" id="nombre_banco_3" value="" class="form-control" placeholder="Banco o Cooperativa"/> 
+	            <div id="mensaje_nombre_banco_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Valor Retenido (Opcional 3):</p>
+			  	<input type="text"  name="monto_retenido_3" id="monto_retenido_3" value="" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
+	            <div id="mensaje_monto_retenido_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombres Titular Cuenta (Opcional 3):</p>
+			  	<input type="text"  name="nombre_titular_cuenta_3" id="nombre_titular_cuenta_3" value="" class="form-control" placeholder="Nombre Titular"/> 
+	            <div id="mensaje_nombre_titular_cuenta_3" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Titular(3):</p>
+			  	<input type="text"  name="identificacion_titular_cuenta_3" id="identificacion_titular_cuenta_3" value="" class="form-control" placeholder="CI Titular"/> 
+	            <div id="mensaje_identificacion_titular_cuenta_3" class="errores"></div>
+	            </div>
+	            
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Depositario Judicial(3):</p>
+			  	<input type="text"  name="depositario_judicial_3" id="depositario_judicial_3" value="" class="form-control" placeholder="Nombre Depositario"/> 
+	            <div id="mensaje_depositario_judicial_3" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Depositario(3):</p>
+			  	<input type="text"  name="identificacion_depositario_judicial_3" id="identificacion_depositario_judicial_3" value="" class="form-control" placeholder="CI Depositario"/> 
+	            <div id="mensaje_identificacion_depositario_judicial_3" class="errores"></div>
+	            </div>
+	          </div>
+	          </div>
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	           <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
+	          <div class="col-lg-8 col-md-8 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio (Opcional 4):</p>
+			  	<input type="text"  name="numero_oficio_embargo_cuenta_4" id="numero_oficio_embargo_cuenta_4" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_embargo_cuenta_4" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 4):</p>
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_4" id="fecha_oficio_embargo_cuenta_4" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_embargo_cuenta_4" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Tipo Cuenta (Opcional 4):</p>
+			  	<select name="tipo_cuenta_4" id="tipo_cuenta_4"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="ahorros">AHORROS</option>
+			  		<option value="corriente">CORRIENTE</option>
+					
+				</select>
+				<div id="mensaje_tipo_cuenta_4" class="errores"></div>
+	            </div>
+			    
+			    
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Cuenta (Opcional 4):</p>
+			  	<input type="text"  name="numero_cuenta_4" id="numero_cuenta_4" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_cuenta_4" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Entidad Bancaria (Opcional 4):</p>
+			  	<input type="text"  name="nombre_banco_4" id="nombre_banco_4" value="" class="form-control" placeholder="Banco o Cooperativa"/> 
+	            <div id="mensaje_nombre_banco_4" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Valor Retenido (Opcional 4):</p>
+			  	<input type="text"  name="monto_retenido_4" id="monto_retenido_4" value="" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
+	            <div id="mensaje_monto_retenido_4" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombres Titular Cuenta (Opcional 4):</p>
+			  	<input type="text"  name="nombre_titular_cuenta_4" id="nombre_titular_cuenta_4" value="" class="form-control" placeholder="Nombre Titular"/> 
+	            <div id="mensaje_nombre_titular_cuenta_4" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Titular(4):</p>
+			  	<input type="text"  name="identificacion_titular_cuenta_4" id="identificacion_titular_cuenta_4" value="" class="form-control" placeholder="CI Titular"/> 
+	            <div id="mensaje_identificacion_titular_cuenta_4" class="errores"></div>
+	            </div>
+	            
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Depositario Judicial(4):</p>
+			  	<input type="text"  name="depositario_judicial_4" id="depositario_judicial_4" value="" class="form-control" placeholder="Nombre Depositario"/> 
+	            <div id="mensaje_depositario_judicial_4" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Depositario(4):</p>
+			  	<input type="text"  name="identificacion_depositario_judicial_4" id="identificacion_depositario_judicial_4" value="" class="form-control" placeholder="CI Depositario"/> 
+	            <div id="mensaje_identificacion_depositario_judicial_4" class="errores"></div>
+	            </div>
+	          </div>
+	          </div>
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	           <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
+	          <div class="col-lg-8 col-md-8 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Oficio (Opcional 5):</p>
+			  	<input type="text"  name="numero_oficio_embargo_cuenta_5" id="numero_oficio_embargo_cuenta_5" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_oficio_embargo_cuenta_5" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 5):</p>
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_5" id="fecha_oficio_embargo_cuenta_5" value="" class="form-control "/> 
+			  	<div id="mensaje_fecha_oficio_embargo_cuenta_5" class="errores"></div>
+			    </div>
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Tipo Cuenta (Opcional 5):</p>
+			  	<select name="tipo_cuenta_5" id="tipo_cuenta_5"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="ahorros">AHORROS</option>
+			  		<option value="corriente">CORRIENTE</option>
+					
+				</select>
+				<div id="mensaje_tipo_cuenta_5" class="errores"></div>
+	            </div>
+			    
+			    
+			    
+			    <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Cuenta (Opcional 5):</p>
+			  	<input type="text"  name="numero_cuenta_5" id="numero_cuenta_5" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_cuenta_5" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Entidad Bancaria (Opcional 5):</p>
+			  	<input type="text"  name="nombre_banco_5" id="nombre_banco_5" value="" class="form-control" placeholder="Banco o Cooperativa"/> 
+	            <div id="mensaje_nombre_banco_5" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Valor Retenido (Opcional 5):</p>
+			  	<input type="text"  name="monto_retenido_5" id="monto_retenido_5" value="" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
+	            <div id="mensaje_monto_retenido_5" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombres Titular Cuenta (Opcional 5):</p>
+			  	<input type="text"  name="nombre_titular_cuenta_5" id="nombre_titular_cuenta_5" value="" class="form-control" placeholder="Nombre Titular"/> 
+	            <div id="mensaje_nombre_titular_cuenta_5" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Titular(5):</p>
+			  	<input type="text"  name="identificacion_titular_cuenta_5" id="identificacion_titular_cuenta_5" value="" class="form-control" placeholder="CI Titular"/> 
+	            <div id="mensaje_identificacion_titular_cuenta_5" class="errores"></div>
+	            </div>
+	            
+	            
+	           <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Depositario Judicial(5):</p>
+			  	<input type="text"  name="depositario_judicial_5" id="depositario_judicial_5" value="" class="form-control" placeholder="Nombre Depositario"/> 
+	            <div id="mensaje_depositario_judicial_5" class="errores"></div>
+	            </div>
+	            
+	            
+	            <div class="col-lg-2 col-md-2 col-xs-12">
+			  	<p class="formulario-subtitulo" >CI Depositario(5):</p>
+			  	<input type="text"  name="identificacion_depositario_judicial_5" id="identificacion_depositario_judicial_5" value="" class="form-control" placeholder="CI Depositario"/> 
+	            <div id="mensaje_identificacion_depositario_judicial_5" class="errores"></div>
+	            </div>
+	          </div>
+	          </div>
+	          
+	          
+	          
+	          
+	          
+	          
+	          
 	          
 	            
 	          </div> 

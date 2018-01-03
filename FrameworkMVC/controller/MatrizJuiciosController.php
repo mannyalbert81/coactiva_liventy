@@ -3497,16 +3497,38 @@
 			$entidad_va_oficio_avoco_nuevos_procesos= $_POST['entidad_va_oficio_avoco_nuevos_procesos'];
 			$asunto_avoco_nuevos_procesos= $_POST['asunto_avoco_nuevos_procesos'];
 			
+			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
+			$entidad_va_oficio_avoco_nuevos_procesos_1= $_POST['entidad_va_oficio_avoco_nuevos_procesos_1'];
+			$asunto_avoco_nuevos_procesos_1= $_POST['asunto_avoco_nuevos_procesos_1'];
+			$entidad_va_oficio_avoco_nuevos_procesos_2= $_POST['entidad_va_oficio_avoco_nuevos_procesos_2'];
+			$asunto_avoco_nuevos_procesos_2= $_POST['asunto_avoco_nuevos_procesos_2'];
+			$entidad_va_oficio_avoco_nuevos_procesos_3= $_POST['entidad_va_oficio_avoco_nuevos_procesos_3'];
+			$asunto_avoco_nuevos_procesos_3= $_POST['asunto_avoco_nuevos_procesos_3'];
+				
+			
+			
 			$entidades = New EntidadesModel();
-			if($entidad_va_oficio_avoco_nuevos_procesos!=""){
+			if($entidad_va_oficio_avoco_nuevos_procesos !=""){
 					
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_avoco_nuevos_procesos);
 					
-			}else{
+			}
+			
+			if($entidad_va_oficio_avoco_nuevos_procesos_1 !=""){
 					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_avoco_nuevos_procesos_1);
+					
+			}
+			if($entidad_va_oficio_avoco_nuevos_procesos_2 !=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_avoco_nuevos_procesos_2);
 					
 			}
 			
+			if($entidad_va_oficio_avoco_nuevos_procesos_3 !=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_avoco_nuevos_procesos_3);
+			}
 			
 			$id_impulsor=$_SESSION['id_usuarios'];
 				
@@ -3523,22 +3545,18 @@
 				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
 				$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
 			
-			
 			}
 			
 			
 			
-			$consecutivo= new ConsecutivosModel();
-			$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
-			$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
-			$ruta_providencias="Avoco_Conocimiento";
-				
-			$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
-				
-			
-			
 			
 			if ($generar_oficio_avoco_nuevos_procesos=="Si"){
+				
+				$consecutivo= new ConsecutivosModel();
+				$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
+				$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+				$ruta_providencias="Avoco_Conocimiento";
+				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
 				
 				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
@@ -3546,15 +3564,47 @@
 				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
 				
 				
-				
 				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
 				
 				$genero_oficio="TRUE";
-				$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
 				
 				
-
+				if($cantidad_oficios_generar=="1"){
+					
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					
+				}
+				
+				if($cantidad_oficios_generar=="2"){
+					
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					
+				}
+				
+				if($cantidad_oficios_generar=="3"){
+						
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					$ident_2=$ident_1+1;
+					$identificador_oficio_2=$identificador_secretaria.$ident_2;
+				}
+					
+				if($cantidad_oficios_generar=="4"){
+				
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					$ident_2=$ident_1+1;
+					$identificador_oficio_2=$identificador_secretaria.$ident_2;
+					$ident_3=$ident_2+1;
+					$identificador_oficio_3=$identificador_secretaria.$ident_3;
+				}
+				
+				
 
 				$funcion = "ins_avoco_conocimiento_con_oficio_liventy";
 				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio_avoco_nuevos_procesos', '$asunto_avoco_nuevos_procesos'";
@@ -3563,7 +3613,7 @@
 				$resultado=$providencias->Insert();
 					
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 				
 				
 				$traza=new TrazasModel();
@@ -3603,6 +3653,23 @@
 				$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
 				$parametros['entidad_va_oficio']=isset($entidad_va_oficio_avoco_nuevos_procesos)?trim($entidad_va_oficio_avoco_nuevos_procesos):'';
 				$parametros['asunto']=isset($asunto_avoco_nuevos_procesos)?trim($asunto_avoco_nuevos_procesos):'';
+				
+				
+				
+				$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+				$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_avoco_nuevos_procesos_1)?trim($entidad_va_oficio_avoco_nuevos_procesos_1):'';
+				$parametros['asunto_2']=isset($asunto_avoco_nuevos_procesos_1)?trim($asunto_avoco_nuevos_procesos_1):'';
+				
+				$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+				$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_avoco_nuevos_procesos_2)?trim($entidad_va_oficio_avoco_nuevos_procesos_2):'';
+				$parametros['asunto_3']=isset($asunto_avoco_nuevos_procesos_2)?trim($asunto_avoco_nuevos_procesos_2):'';
+				
+				
+				$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+				$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_avoco_nuevos_procesos_3)?trim($entidad_va_oficio_avoco_nuevos_procesos_3):'';
+				$parametros['asunto_4']=isset($asunto_avoco_nuevos_procesos_3)?trim($asunto_avoco_nuevos_procesos_3):'';
+				
+				
 				$parametros['generar_oficio']=isset($generar_oficio_avoco_nuevos_procesos)?trim($generar_oficio_avoco_nuevos_procesos):'';
 					
 				
@@ -3623,6 +3690,14 @@
 				
 				
 			}else{
+				
+				
+				$consecutivo= new ConsecutivosModel();
+				$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='AVOCO_CONOCIMIENTO'");
+				$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+				$ruta_providencias="Avoco_Conocimiento";
+				
+				$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
 				$id_impulsor=$_SESSION['id_usuarios'];
 				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
@@ -7169,6 +7244,60 @@
 			$depositario_judicial= $_POST['depositario_judicial'];
 			$identificacion_depositario_judicial= $_POST['identificacion_depositario_judicial'];
 			
+			
+			
+			$numero_oficio_embargo_cuenta_2= $_POST['numero_oficio_embargo_cuenta_2'];
+			$fecha_oficio_embargo_cuenta_2= $_POST['fecha_oficio_embargo_cuenta_2'];
+			$tipo_cuenta_2= $_POST['tipo_cuenta_2'];
+			$numero_cuenta_2= $_POST['numero_cuenta_2'];
+			$nombre_banco_2= $_POST['nombre_banco_2'];
+			$monto_retenido_2= $_POST['monto_retenido_2'];
+			$nombre_titular_cuenta_2= $_POST['nombre_titular_cuenta_2'];
+			$identificacion_titular_cuenta_2= $_POST['identificacion_titular_cuenta_2'];
+			$depositario_judicial_2= $_POST['depositario_judicial_2'];
+			$identificacion_depositario_judicial_2= $_POST['identificacion_depositario_judicial_2'];
+				
+				
+			$numero_oficio_embargo_cuenta_3= $_POST['numero_oficio_embargo_cuenta_3'];
+			$fecha_oficio_embargo_cuenta_3= $_POST['fecha_oficio_embargo_cuenta_3'];
+			$tipo_cuenta_3= $_POST['tipo_cuenta_3'];
+			$numero_cuenta_3= $_POST['numero_cuenta_3'];
+			$nombre_banco_3= $_POST['nombre_banco_3'];
+			$monto_retenido_3= $_POST['monto_retenido_3'];
+			$nombre_titular_cuenta_3= $_POST['nombre_titular_cuenta_3'];
+			$identificacion_titular_cuenta_3= $_POST['identificacion_titular_cuenta_3'];
+			$depositario_judicial_3= $_POST['depositario_judicial_3'];
+			$identificacion_depositario_judicial_3= $_POST['identificacion_depositario_judicial_3'];
+			
+			
+			
+			$numero_oficio_embargo_cuenta_4= $_POST['numero_oficio_embargo_cuenta_4'];
+			$fecha_oficio_embargo_cuenta_4= $_POST['fecha_oficio_embargo_cuenta_4'];
+			$tipo_cuenta_4= $_POST['tipo_cuenta_4'];
+			$numero_cuenta_4= $_POST['numero_cuenta_4'];
+			$nombre_banco_4= $_POST['nombre_banco_4'];
+			$monto_retenido_4= $_POST['monto_retenido_4'];
+			$nombre_titular_cuenta_4= $_POST['nombre_titular_cuenta_4'];
+			$identificacion_titular_cuenta_4= $_POST['identificacion_titular_cuenta_4'];
+			$depositario_judicial_4= $_POST['depositario_judicial_4'];
+			$identificacion_depositario_judicial_4= $_POST['identificacion_depositario_judicial_4'];
+				
+				
+			
+			$numero_oficio_embargo_cuenta_5= $_POST['numero_oficio_embargo_cuenta_5'];
+			$fecha_oficio_embargo_cuenta_5= $_POST['fecha_oficio_embargo_cuenta_5'];
+			$tipo_cuenta_5= $_POST['tipo_cuenta_5'];
+			$numero_cuenta_5= $_POST['numero_cuenta_5'];
+			$nombre_banco_5= $_POST['nombre_banco_5'];
+			$monto_retenido_5= $_POST['monto_retenido_5'];
+			$nombre_titular_cuenta_5= $_POST['nombre_titular_cuenta_5'];
+			$identificacion_titular_cuenta_5= $_POST['identificacion_titular_cuenta_5'];
+			$depositario_judicial_5= $_POST['depositario_judicial_5'];
+			$identificacion_depositario_judicial_5= $_POST['identificacion_depositario_judicial_5'];
+				
+			
+			
+			
 			$tipo_avoco= $_POST['tipo_avoco'];
 			
 			
@@ -7264,13 +7393,69 @@
 		    	$parametros['fecha_oficio_embargo_cuenta']=isset($fecha_oficio_embargo_cuenta)?trim($fecha_oficio_embargo_cuenta):'';
 		    	$parametros['tipo_cuenta']=isset($tipo_cuenta)?trim($tipo_cuenta):'';
 		    	$parametros['numero_cuenta']=isset($numero_cuenta)?trim($numero_cuenta):'';
-		    	
 		    	$parametros['nombre_banco']=isset($nombre_banco)?trim($nombre_banco):'';
 		    	$parametros['monto_retenido']=isset($monto_retenido)?trim($monto_retenido):'';
 		    	$parametros['nombre_titular_cuenta']=isset($nombre_titular_cuenta)?trim($nombre_titular_cuenta):'';
 		    	$parametros['identificacion_titular_cuenta']=isset($identificacion_titular_cuenta)?trim($identificacion_titular_cuenta):'';
 		    	$parametros['depositario_judicial']=isset($depositario_judicial)?trim($depositario_judicial):'';
 		    	$parametros['identificacion_depositario_judicial']=isset($identificacion_depositario_judicial)?trim($identificacion_depositario_judicial):'';
+		    	
+		    	
+		    	$parametros['numero_oficio_embargo_cuenta_2']=isset($numero_oficio_embargo_cuenta_2)?trim($numero_oficio_embargo_cuenta_2):'';
+		    	$parametros['fecha_oficio_embargo_cuenta_2']=isset($fecha_oficio_embargo_cuenta_2)?trim($fecha_oficio_embargo_cuenta_2):'';
+		    	$parametros['tipo_cuenta_2']=isset($tipo_cuenta_2)?trim($tipo_cuenta_2):'';
+		    	$parametros['numero_cuenta_2']=isset($numero_cuenta_2)?trim($numero_cuenta_2):'';
+		    	$parametros['nombre_banco_2']=isset($nombre_banco_2)?trim($nombre_banco_2):'';
+		    	$parametros['monto_retenido_2']=isset($monto_retenido_2)?trim($monto_retenido_2):'';
+		    	$parametros['nombre_titular_cuenta_2']=isset($nombre_titular_cuenta_2)?trim($nombre_titular_cuenta_2):'';
+		    	$parametros['identificacion_titular_cuenta_2']=isset($identificacion_titular_cuenta_2)?trim($identificacion_titular_cuenta_2):'';
+		    	$parametros['depositario_judicial_2']=isset($depositario_judicial_2)?trim($depositario_judicial_2):'';
+		    	$parametros['identificacion_depositario_judicial_2']=isset($identificacion_depositario_judicial_2)?trim($identificacion_depositario_judicial_2):'';
+		    	 
+		    	
+		    	
+		    	$parametros['numero_oficio_embargo_cuenta_3']=isset($numero_oficio_embargo_cuenta_3)?trim($numero_oficio_embargo_cuenta_3):'';
+		    	$parametros['fecha_oficio_embargo_cuenta_3']=isset($fecha_oficio_embargo_cuenta_3)?trim($fecha_oficio_embargo_cuenta_3):'';
+		    	$parametros['tipo_cuenta_3']=isset($tipo_cuenta_3)?trim($tipo_cuenta_3):'';
+		    	$parametros['numero_cuenta_3']=isset($numero_cuenta_3)?trim($numero_cuenta_3):'';
+		    	$parametros['nombre_banco_3']=isset($nombre_banco_3)?trim($nombre_banco_3):'';
+		    	$parametros['monto_retenido_3']=isset($monto_retenido_3)?trim($monto_retenido_3):'';
+		    	$parametros['nombre_titular_cuenta_3']=isset($nombre_titular_cuenta_3)?trim($nombre_titular_cuenta_3):'';
+		    	$parametros['identificacion_titular_cuenta_3']=isset($identificacion_titular_cuenta_3)?trim($identificacion_titular_cuenta_3):'';
+		    	$parametros['depositario_judicial_3']=isset($depositario_judicial_3)?trim($depositario_judicial_3):'';
+		    	$parametros['identificacion_depositario_judicial_3']=isset($identificacion_depositario_judicial_3)?trim($identificacion_depositario_judicial_3):'';
+		    	 
+		    	
+		    	
+		    	
+		    	
+		    	$parametros['numero_oficio_embargo_cuenta_4']=isset($numero_oficio_embargo_cuenta_4)?trim($numero_oficio_embargo_cuenta_4):'';
+		    	$parametros['fecha_oficio_embargo_cuenta_4']=isset($fecha_oficio_embargo_cuenta_4)?trim($fecha_oficio_embargo_cuenta_4):'';
+		    	$parametros['tipo_cuenta_4']=isset($tipo_cuenta_4)?trim($tipo_cuenta_4):'';
+		    	$parametros['numero_cuenta_4']=isset($numero_cuenta_4)?trim($numero_cuenta_4):'';
+		    	$parametros['nombre_banco_4']=isset($nombre_banco_4)?trim($nombre_banco_4):'';
+		    	$parametros['monto_retenido_4']=isset($monto_retenido_4)?trim($monto_retenido_4):'';
+		    	$parametros['nombre_titular_cuenta_4']=isset($nombre_titular_cuenta_4)?trim($nombre_titular_cuenta_4):'';
+		    	$parametros['identificacion_titular_cuenta_4']=isset($identificacion_titular_cuenta_4)?trim($identificacion_titular_cuenta_4):'';
+		    	$parametros['depositario_judicial_4']=isset($depositario_judicial_4)?trim($depositario_judicial_4):'';
+		    	$parametros['identificacion_depositario_judicial_4']=isset($identificacion_depositario_judicial_4)?trim($identificacion_depositario_judicial_4):'';
+		    	 
+		    	
+		    	
+		    	
+		    	$parametros['numero_oficio_embargo_cuenta_5']=isset($numero_oficio_embargo_cuenta_5)?trim($numero_oficio_embargo_cuenta_5):'';
+		    	$parametros['fecha_oficio_embargo_cuenta_5']=isset($fecha_oficio_embargo_cuenta_5)?trim($fecha_oficio_embargo_cuenta_5):'';
+		    	$parametros['tipo_cuenta_5']=isset($tipo_cuenta_5)?trim($tipo_cuenta_5):'';
+		    	$parametros['numero_cuenta_5']=isset($numero_cuenta_5)?trim($numero_cuenta_5):'';
+		    	$parametros['nombre_banco_5']=isset($nombre_banco_5)?trim($nombre_banco_5):'';
+		    	$parametros['monto_retenido_5']=isset($monto_retenido_5)?trim($monto_retenido_5):'';
+		    	$parametros['nombre_titular_cuenta_5']=isset($nombre_titular_cuenta_5)?trim($nombre_titular_cuenta_5):'';
+		    	$parametros['identificacion_titular_cuenta_5']=isset($identificacion_titular_cuenta_5)?trim($identificacion_titular_cuenta_5):'';
+		    	$parametros['depositario_judicial_5']=isset($depositario_judicial_5)?trim($depositario_judicial_5):'';
+		    	$parametros['identificacion_depositario_judicial_5']=isset($identificacion_depositario_judicial_5)?trim($identificacion_depositario_judicial_5):'';
+		    	 
+		    	
+		    	
 		    	
 		    	$parametros['ruta_avoco']=$ruta_providencias;
 		    	$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
@@ -7336,13 +7521,72 @@
 				$parametros['fecha_oficio_embargo_cuenta']=isset($fecha_oficio_embargo_cuenta)?trim($fecha_oficio_embargo_cuenta):'';
 				$parametros['tipo_cuenta']=isset($tipo_cuenta)?trim($tipo_cuenta):'';
 				$parametros['numero_cuenta']=isset($numero_cuenta)?trim($numero_cuenta):'';
-				
 				$parametros['nombre_banco']=isset($nombre_banco)?trim($nombre_banco):'';
 				$parametros['monto_retenido']=isset($monto_retenido)?trim($monto_retenido):'';
 				$parametros['nombre_titular_cuenta']=isset($nombre_titular_cuenta)?trim($nombre_titular_cuenta):'';
 				$parametros['identificacion_titular_cuenta']=isset($identificacion_titular_cuenta)?trim($identificacion_titular_cuenta):'';
 				$parametros['depositario_judicial']=isset($depositario_judicial)?trim($depositario_judicial):'';
 				$parametros['identificacion_depositario_judicial']=isset($identificacion_depositario_judicial)?trim($identificacion_depositario_judicial):'';
+				
+				
+				
+				$parametros['numero_oficio_embargo_cuenta_2']=isset($numero_oficio_embargo_cuenta_2)?trim($numero_oficio_embargo_cuenta_2):'';
+				$parametros['fecha_oficio_embargo_cuenta_2']=isset($fecha_oficio_embargo_cuenta_2)?trim($fecha_oficio_embargo_cuenta_2):'';
+				$parametros['tipo_cuenta_2']=isset($tipo_cuenta_2)?trim($tipo_cuenta_2):'';
+				$parametros['numero_cuenta_2']=isset($numero_cuenta_2)?trim($numero_cuenta_2):'';
+				$parametros['nombre_banco_2']=isset($nombre_banco_2)?trim($nombre_banco_2):'';
+				$parametros['monto_retenido_2']=isset($monto_retenido_2)?trim($monto_retenido_2):'';
+				$parametros['nombre_titular_cuenta_2']=isset($nombre_titular_cuenta_2)?trim($nombre_titular_cuenta_2):'';
+				$parametros['identificacion_titular_cuenta_2']=isset($identificacion_titular_cuenta_2)?trim($identificacion_titular_cuenta_2):'';
+				$parametros['depositario_judicial_2']=isset($depositario_judicial_2)?trim($depositario_judicial_2):'';
+				$parametros['identificacion_depositario_judicial_2']=isset($identificacion_depositario_judicial_2)?trim($identificacion_depositario_judicial_2):'';
+				
+				 
+				 
+				$parametros['numero_oficio_embargo_cuenta_3']=isset($numero_oficio_embargo_cuenta_3)?trim($numero_oficio_embargo_cuenta_3):'';
+				$parametros['fecha_oficio_embargo_cuenta_3']=isset($fecha_oficio_embargo_cuenta_3)?trim($fecha_oficio_embargo_cuenta_3):'';
+				$parametros['tipo_cuenta_3']=isset($tipo_cuenta_3)?trim($tipo_cuenta_3):'';
+				$parametros['numero_cuenta_3']=isset($numero_cuenta_3)?trim($numero_cuenta_3):'';
+				$parametros['nombre_banco_3']=isset($nombre_banco_3)?trim($nombre_banco_3):'';
+				$parametros['monto_retenido_3']=isset($monto_retenido_3)?trim($monto_retenido_3):'';
+				$parametros['nombre_titular_cuenta_3']=isset($nombre_titular_cuenta_3)?trim($nombre_titular_cuenta_3):'';
+				$parametros['identificacion_titular_cuenta_3']=isset($identificacion_titular_cuenta_3)?trim($identificacion_titular_cuenta_3):'';
+				$parametros['depositario_judicial_3']=isset($depositario_judicial_3)?trim($depositario_judicial_3):'';
+				$parametros['identificacion_depositario_judicial_3']=isset($identificacion_depositario_judicial_3)?trim($identificacion_depositario_judicial_3):'';
+				
+				 
+				 
+				 
+				 
+				$parametros['numero_oficio_embargo_cuenta_4']=isset($numero_oficio_embargo_cuenta_4)?trim($numero_oficio_embargo_cuenta_4):'';
+				$parametros['fecha_oficio_embargo_cuenta_4']=isset($fecha_oficio_embargo_cuenta_4)?trim($fecha_oficio_embargo_cuenta_4):'';
+				$parametros['tipo_cuenta_4']=isset($tipo_cuenta_4)?trim($tipo_cuenta_4):'';
+				$parametros['numero_cuenta_4']=isset($numero_cuenta_4)?trim($numero_cuenta_4):'';
+				$parametros['nombre_banco_4']=isset($nombre_banco_4)?trim($nombre_banco_4):'';
+				$parametros['monto_retenido_4']=isset($monto_retenido_4)?trim($monto_retenido_4):'';
+				$parametros['nombre_titular_cuenta_4']=isset($nombre_titular_cuenta_4)?trim($nombre_titular_cuenta_4):'';
+				$parametros['identificacion_titular_cuenta_4']=isset($identificacion_titular_cuenta_4)?trim($identificacion_titular_cuenta_4):'';
+				$parametros['depositario_judicial_4']=isset($depositario_judicial_4)?trim($depositario_judicial_4):'';
+				$parametros['identificacion_depositario_judicial_4']=isset($identificacion_depositario_judicial_4)?trim($identificacion_depositario_judicial_4):'';
+				
+				 
+				 
+				 
+				$parametros['numero_oficio_embargo_cuenta_5']=isset($numero_oficio_embargo_cuenta_5)?trim($numero_oficio_embargo_cuenta_5):'';
+				$parametros['fecha_oficio_embargo_cuenta_5']=isset($fecha_oficio_embargo_cuenta_5)?trim($fecha_oficio_embargo_cuenta_5):'';
+				$parametros['tipo_cuenta_5']=isset($tipo_cuenta_5)?trim($tipo_cuenta_5):'';
+				$parametros['numero_cuenta_5']=isset($numero_cuenta_5)?trim($numero_cuenta_5):'';
+				$parametros['nombre_banco_5']=isset($nombre_banco_5)?trim($nombre_banco_5):'';
+				$parametros['monto_retenido_5']=isset($monto_retenido_5)?trim($monto_retenido_5):'';
+				$parametros['nombre_titular_cuenta_5']=isset($nombre_titular_cuenta_5)?trim($nombre_titular_cuenta_5):'';
+				$parametros['identificacion_titular_cuenta_5']=isset($identificacion_titular_cuenta_5)?trim($identificacion_titular_cuenta_5):'';
+				$parametros['depositario_judicial_5']=isset($depositario_judicial_5)?trim($depositario_judicial_5):'';
+				$parametros['identificacion_depositario_judicial_5']=isset($identificacion_depositario_judicial_5)?trim($identificacion_depositario_judicial_5):'';
+				
+				 
+				 
+				
+				
 				
 				$parametros['ruta_avoco']=$ruta_providencias;
 				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
@@ -7511,32 +7755,60 @@
 			$asunto= $_POST['asunto'];
 			
 			
+			
+			$cantidad_oficios_generar_1= $_POST['cantidad_oficios_generar_1'];
+			$entidad_va_oficio_1= $_POST['entidad_va_oficio_1'];
+			$asunto_1= $_POST['asunto_1'];
+			$entidad_va_oficio_2= $_POST['entidad_va_oficio_2'];
+			$asunto_2= $_POST['asunto_2'];	
+			$entidad_va_oficio_3= $_POST['entidad_va_oficio_3'];
+			$asunto_3= $_POST['asunto_3'];
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio!=""){
-			
 				$result=$entidades->InsertaEntidades($entidad_va_oficio);
-					
-			}else{
-			
-			
 			}
+			if($entidad_va_oficio_1 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_1);
+			}
+			if($entidad_va_oficio_2 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_2);
+			}
+			if($entidad_va_oficio_3 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_3);
+			}
+			
+			
 			
 			
 			$generar_oficio_pago_total= $_POST['generar_oficio_pago_total'];
 			$entidad_va_oficio_pago_total= $_POST['entidad_va_oficio_pago_total'];
 			$asunto_pago_total= $_POST['asunto_pago_total'];
 			
-			
+			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
+			$entidad_va_oficio_pago_total_1= $_POST['entidad_va_oficio_pago_total_1'];
+			$asunto_pago_total_1= $_POST['asunto_pago_total_1'];
+			$entidad_va_oficio_pago_total_2= $_POST['entidad_va_oficio_pago_total_2'];
+			$asunto_pago_total_2= $_POST['asunto_pago_total_2'];
+			$entidad_va_oficio_pago_total_3= $_POST['entidad_va_oficio_pago_total_3'];
+			$asunto_pago_total_3= $_POST['asunto_pago_total_3'];
+				
+				
 			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_pago_total!=""){
-			
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_pago_total);
-					
-			}else{
-			
-			
 			}
+			if($entidad_va_oficio_pago_total_1 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_pago_total_1);
+			}
+			if($entidad_va_oficio_pago_total_2 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_pago_total_2);
+			}
+			if($entidad_va_oficio_pago_total_3 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_pago_total_3);
+			}
+			
 			
 			$numero_oficio1= "";
 			$numero_oficio2= "";
@@ -7588,8 +7860,43 @@
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
 					 
 					$genero_oficio="TRUE";
-					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
 					 
+					
+					
+
+					if($cantidad_oficios_generar=="1"){
+					
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					
+					}
+					
+					if($cantidad_oficios_generar=="2"){
+					
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					
+					}
+					
+					if($cantidad_oficios_generar=="3"){
+					
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+					}
+						
+					if($cantidad_oficios_generar=="4"){
+					
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+					}
 					
 					
 					$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
@@ -7600,7 +7907,7 @@
 					$resultado=$providencias->Insert();
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 					 
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -7648,6 +7955,17 @@
 					$parametros['asunto']=isset($asunto_pago_total)?trim($asunto_pago_total):'';
 					$parametros['generar_oficio']=isset($generar_oficio_pago_total)?trim($generar_oficio_pago_total):'';
 					 
+					$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+					$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_pago_total_1)?trim($entidad_va_oficio_pago_total_1):'';
+					$parametros['asunto_2']=isset($asunto_pago_total_1)?trim($asunto_pago_total_1):'';
+					
+					$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+					$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_pago_total_2)?trim($entidad_va_oficio_pago_total_2):'';
+					$parametros['asunto_3']=isset($asunto_pago_total_2)?trim($asunto_pago_total_2):'';
+						
+					$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+					$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_pago_total_3)?trim($entidad_va_oficio_pago_total_3):'';
+					$parametros['asunto_4']=isset($asunto_pago_total_3)?trim($asunto_pago_total_3):'';
 						
 						
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -7778,8 +8096,41 @@
 			   	
 			   	
 			   	$genero_oficio="TRUE";
-			   	$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
 			   	
+
+			   	if($cantidad_oficios_generar_1=="1"){
+			   			
+			   		$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+			   			
+			   	}
+			   		
+			   	if($cantidad_oficios_generar_1=="2"){
+			   			
+			   		$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+			   		$ident_1=$identificador_ofi_x_secretaria+1;
+			   		$identificador_oficio_1=$identificador_secretaria.$ident_1;
+			   			
+			   	}
+			   		
+			   	if($cantidad_oficios_generar_1=="3"){
+			   			
+			   		$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+			   		$ident_1=$identificador_ofi_x_secretaria+1;
+			   		$identificador_oficio_1=$identificador_secretaria.$ident_1;
+			   		$ident_2=$ident_1+1;
+			   		$identificador_oficio_2=$identificador_secretaria.$ident_2;
+			   	}
+			   	
+			   	if($cantidad_oficios_generar_1=="4"){
+			   			
+			   		$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+			   		$ident_1=$identificador_ofi_x_secretaria+1;
+			   		$identificador_oficio_1=$identificador_secretaria.$ident_1;
+			   		$ident_2=$ident_1+1;
+			   		$identificador_oficio_2=$identificador_secretaria.$ident_2;
+			   		$ident_3=$ident_2+1;
+			   		$identificador_oficio_3=$identificador_secretaria.$ident_3;
+			   	}
 			   	
 			   	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
@@ -7788,7 +8139,7 @@
 			   	$resultado=$providencias->Insert();
 			   		
 			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 			   	
 			   	$traza=new TrazasModel();
 			   	$_nombre_controlador = "MATRIZ JUICIOS";
@@ -7846,8 +8197,18 @@
 			   	$parametros['asunto']=isset($asunto)?trim($asunto):'';
 			   	$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
 			   	 
-			   	
+			   	$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+			   	$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_1)?trim($entidad_va_oficio_1):'';
+			   	$parametros['asunto_2']=isset($asunto_1)?trim($asunto_1):'';
 			   		
+			   	$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+			   	$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_2)?trim($entidad_va_oficio_2):'';
+			   	$parametros['asunto_3']=isset($asunto_2)?trim($asunto_2):'';
+			   	
+			   	$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+			   	$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_3)?trim($entidad_va_oficio_3):'';
+			   	$parametros['asunto_4']=isset($asunto_3)?trim($asunto_3):'';
+			   	 
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
 			   		
 			   	$conexion_rpt = array();
@@ -8001,14 +8362,37 @@
 			$asunto= $_POST['asunto'];
 				
 			
+			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
+			$entidad_va_oficio_1= $_POST['entidad_va_oficio_1'];
+			$asunto_1= $_POST['asunto_1'];
+			$entidad_va_oficio_2= $_POST['entidad_va_oficio_2'];
+			$asunto_2= $_POST['asunto_2'];
+			$entidad_va_oficio_3= $_POST['entidad_va_oficio_3'];
+			$asunto_3= $_POST['asunto_3'];
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio!=""){
 			
 				$result=$entidades->InsertaEntidades($entidad_va_oficio);
 					
-			}else{
+			}
 			
+			if($entidad_va_oficio_1 !=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_1);
+					
+			}
 			
+			if($entidad_va_oficio_2 !=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_2);
+					
+			}
+			
+			if($entidad_va_oficio_3 !=""){
+					
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_3);
+					
 			}
 
 			$juicios = new JuiciosModel();
@@ -8037,18 +8421,53 @@
 			
 			if($generar_oficio=="Si"){
 				
-
 				$id_impulsor=$_SESSION['id_usuarios'];
 				$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
 				$id_secretario=$resultSecre[0]->id_secretario;
 				$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
-				 
+					
 				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-				 
+					
 				$genero_oficio="TRUE";
-				$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
-				 
+					
+				
+				
+				if($cantidad_oficios_generar=="1"){
+						
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						
+				}
+				
+				if($cantidad_oficios_generar=="2"){
+						
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						
+				}
+				
+				if($cantidad_oficios_generar=="3"){
+				
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					$ident_2=$ident_1+1;
+					$identificador_oficio_2=$identificador_secretaria.$ident_2;
+				}
+					
+				if($cantidad_oficios_generar=="4"){
+				
+					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+					$ident_1=$identificador_ofi_x_secretaria+1;
+					$identificador_oficio_1=$identificador_secretaria.$ident_1;
+					$ident_2=$ident_1+1;
+					$identificador_oficio_2=$identificador_secretaria.$ident_2;
+					$ident_3=$ident_2+1;
+					$identificador_oficio_3=$identificador_secretaria.$ident_3;
+				}
+				
+				
 				 
 				$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_oficio1', '$numero_oficio2', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios', '$genero_oficio', '$identificador_oficio', '$entidad_va_oficio', '$asunto'";
@@ -8057,7 +8476,7 @@
 				$resultado=$providencias->Insert();
 				
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 				
 					
 				$traza=new TrazasModel();
@@ -8090,7 +8509,18 @@
 				$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
 				$parametros['asunto']=isset($asunto)?trim($asunto):'';
 				$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
-				 
+				
+				$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+				$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_1)?trim($entidad_va_oficio_1):'';
+				$parametros['asunto_2']=isset($asunto_1)?trim($asunto_1):'';
+				
+				$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+				$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_2)?trim($entidad_va_oficio_2):'';
+				$parametros['asunto_3']=isset($asunto_2)?trim($asunto_2):'';
+				
+				$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+				$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_3)?trim($entidad_va_oficio_3):'';
+				$parametros['asunto_4']=isset($asunto_3)?trim($asunto_3):'';
 				
 				
 				$pagina="contProvidenciaLevantamiento.aspx";
