@@ -6810,15 +6810,31 @@
 			$asunto_discapacidad= $_POST['asunto_discapacidad'];
 			
 			
+			
+			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
+			$entidad_va_oficio_discapacidad_1= $_POST['entidad_va_oficio_discapacidad_1'];
+			$asunto_discapacidad_1= $_POST['asunto_discapacidad_1'];
+			$entidad_va_oficio_discapacidad_2= $_POST['entidad_va_oficio_discapacidad_2'];
+			$asunto_discapacidad_2= $_POST['asunto_discapacidad_2'];
+			$entidad_va_oficio_discapacidad_3= $_POST['entidad_va_oficio_discapacidad_3'];
+			$asunto_discapacidad_3= $_POST['asunto_discapacidad_3'];
+				
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_discapacidad!=""){
-					
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad);
-					
-			}else{
-					
-					
 			}
+			if($entidad_va_oficio_discapacidad_1 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_1);
+			}
+			if($entidad_va_oficio_discapacidad_2 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_2);
+			}
+			if($entidad_va_oficio_discapacidad_3 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_3);
+			}
+			
+			
 			
 			
 			$generar_oficio_fallecimiento= $_POST['generar_oficio_fallecimiento'];
@@ -6826,15 +6842,40 @@
 			$asunto_fallecimiento= $_POST['asunto_fallecimiento'];
 				
 			
+			$cantidad_oficios_generar_1= $_POST['cantidad_oficios_generar_1'];
+			$entidad_va_oficio_fallecimiento_1= $_POST['entidad_va_oficio_fallecimiento_1'];
+			$asunto_fallecimiento_1= $_POST['asunto_fallecimiento_1'];
+			$entidad_va_oficio_fallecimiento_2= $_POST['entidad_va_oficio_fallecimiento_2'];
+			$asunto_fallecimiento_2= $_POST['asunto_fallecimiento_2'];
+			$entidad_va_oficio_fallecimiento_3= $_POST['entidad_va_oficio_fallecimiento_3'];
+			$asunto_fallecimiento_3= $_POST['asunto_fallecimiento_3'];
+			
 			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_fallecimiento!=""){
-					
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento);
-					
+			}
+			if($entidad_va_oficio_fallecimiento_1 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_1);
+			}
+			if($entidad_va_oficio_fallecimiento_2 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_2);
+			}
+			if($entidad_va_oficio_fallecimiento_3 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_3);
+			}
+			
+			
+			$juicios = new JuiciosModel();
+			if($id_estados_procesales_juicios_actualizar>0){
+			
+				$id_estados_procesales_juicios_actualizar = $_POST['id_estados_procesales_juicios_actualizar'];
 			}else{
-					
-					
+			
+				$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
+				$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
+			
+			
 			}
 			
 			
@@ -6844,19 +6885,6 @@
 		
 			if($tipo_avoco==10){
 		
-				
-				$juicios = new JuiciosModel();
-				if($id_estados_procesales_juicios_actualizar>0){
-				
-					$id_estados_procesales_juicios_actualizar = $_POST['id_estados_procesales_juicios_actualizar'];
-				}else{
-				
-					$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
-					$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
-				
-				
-				}
-				
 				
 				$id_tipo_providencias=6;
 				$consecutivo= new ConsecutivosModel();
@@ -6882,8 +6910,41 @@
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
 					 
 					$genero_oficio="TRUE";
-					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
 					 
+					
+					if($cantidad_oficios_generar=="1"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							
+					}
+						
+					if($cantidad_oficios_generar=="2"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							
+					}
+						
+					if($cantidad_oficios_generar=="3"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+					}
+					
+					if($cantidad_oficios_generar=="4"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+					}
 					 
 					
 					
@@ -6894,7 +6955,7 @@
 					$resultado=$providencias->Insert();
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_DISCAPACIDAD'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 						
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -6932,7 +6993,17 @@
 					$parametros['entidad_va_oficio']=isset($entidad_va_oficio_discapacidad)?trim($entidad_va_oficio_discapacidad):'';
 					$parametros['asunto']=isset($asunto_discapacidad)?trim($asunto_discapacidad):'';
 					$parametros['generar_oficio']=isset($generar_oficio_discapacidad)?trim($generar_oficio_discapacidad):'';
-					 
+					
+					$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+					$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_discapacidad_1)?trim($entidad_va_oficio_discapacidad_1):'';
+					$parametros['asunto_2']=isset($asunto_discapacidad_1)?trim($asunto_discapacidad_1):'';
+					$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+					$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_discapacidad_2)?trim($entidad_va_oficio_discapacidad_2):'';
+					$parametros['asunto_3']=isset($asunto_discapacidad_2)?trim($asunto_discapacidad_2):'';
+					$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+					$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_discapacidad_3)?trim($entidad_va_oficio_discapacidad_3):'';
+					$parametros['asunto_4']=isset($asunto_discapacidad_3)?trim($asunto_discapacidad_3):'';
+						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
 					
@@ -7026,16 +7097,6 @@
 				
 				
 
-				$juicios = new JuiciosModel();
-				if($id_estados_procesales_juicios_actualizar>0){
-				
-					$id_estados_procesales_juicios_actualizar = $_POST['id_estados_procesales_juicios_actualizar'];
-				}else{
-				
-					$resultJuicios = $juicios->getBy("id_juicios ='$id_juicios'");
-					$id_estados_procesales_juicios_actualizar=$resultJuicios[0]->id_estados_procesales_juicios;
-				}
-
 				
 				$id_tipo_providencias=7;
 				$consecutivo= new ConsecutivosModel();
@@ -7059,9 +7120,40 @@
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
 					
 					$genero_oficio="TRUE";
-					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
 					
+					if($cantidad_oficios_generar_1=="1"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						 
+					}
 					
+					if($cantidad_oficios_generar_1=="2"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						 
+					}
+					
+					if($cantidad_oficios_generar_1=="3"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+					}
+					 
+					if($cantidad_oficios_generar_1=="4"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+					}
 						
 					
 					
@@ -7076,7 +7168,7 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_FALLECIMIENTO'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
 						
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -7114,6 +7206,18 @@
 					$parametros['asunto']=isset($asunto_fallecimiento)?trim($asunto_fallecimiento):'';
 					$parametros['generar_oficio']=isset($generar_oficio_fallecimiento)?trim($generar_oficio_fallecimiento):'';
 						
+					
+					$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+					$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_fallecimiento_1)?trim($entidad_va_oficio_fallecimiento_1):'';
+					$parametros['asunto_2']=isset($asunto_fallecimiento_1)?trim($asunto_fallecimiento_1):'';
+					$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+					$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_fallecimiento_2)?trim($entidad_va_oficio_fallecimiento_2):'';
+					$parametros['asunto_3']=isset($asunto_fallecimiento_2)?trim($asunto_fallecimiento_2):'';
+					$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+					$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_fallecimiento_3)?trim($entidad_va_oficio_fallecimiento_3):'';
+					$parametros['asunto_4']=isset($asunto_fallecimiento_3)?trim($asunto_fallecimiento_3):'';
+						
+					
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
 					
