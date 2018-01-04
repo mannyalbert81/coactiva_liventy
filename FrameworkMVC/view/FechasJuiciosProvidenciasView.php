@@ -47,7 +47,11 @@
           else
           {
            $("#div_datos_generar_oficio").fadeOut("slow");
-         
+           $("#div_datos_cantidad_oficios").fadeOut("slow");
+     	  $("#div_datos_cantidad_oficios_1").fadeOut("slow");
+     	  $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+     	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+           
     	
           }
          
@@ -67,7 +71,11 @@
               else
               {
               $("#div_datos_generar_oficio").fadeOut("slow");
-            
+              $("#div_datos_cantidad_oficios").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_1").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+              
      
               }
               
@@ -76,6 +84,118 @@
 	}); 	
 	   
       </script>
+		
+		
+		
+		
+		<script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#cantidad_oficios_generar").click(function() {
+			
+          var cantidad_oficios_generar = $(this).val();
+			
+          if(cantidad_oficios_generar == "1")
+          {
+       	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+       	 
+          }
+       	
+          else  if(cantidad_oficios_generar == "2")
+              
+          {
+        	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+              	
+          }
+
+          else  if(cantidad_oficios_generar == "3")
+              
+          {
+        	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_2").fadeIn("slow");
+               
+          }
+          else  if(cantidad_oficios_generar == "4")
+              
+          {
+        	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_2").fadeIn("slow");
+        	   $("#div_datos_cantidad_oficios_3").fadeIn("slow");
+               
+          }else{
+
+        	  $("#div_datos_cantidad_oficios").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_1").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+              
+
+          }
+         
+	    });
+	    
+	    $("#cantidad_oficios_generar").change(function() {
+			
+              
+              var cantidad_oficios_generar = $(this).val();
+				
+              if(cantidad_oficios_generar == "1")
+              {
+           	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+           	  $("#div_datos_cantidad_oficios_1").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+        	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+           
+           	 
+              }
+           	
+              else  if(cantidad_oficios_generar == "2")
+                  
+              {
+            	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+             	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+                
+              }
+
+              else  if(cantidad_oficios_generar == "3")
+                  
+              {
+            	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_2").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+                   
+                   
+              }
+              else  if(cantidad_oficios_generar == "4")
+                  
+              {
+            	   $("#div_datos_cantidad_oficios").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_1").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_2").fadeIn("slow");
+            	   $("#div_datos_cantidad_oficios_3").fadeIn("slow");
+                   
+              }else{
+
+            	  $("#div_datos_cantidad_oficios").fadeOut("slow");
+            	  $("#div_datos_cantidad_oficios_1").fadeOut("slow");
+            	  $("#div_datos_cantidad_oficios_2").fadeOut("slow");
+            	  $("#div_datos_cantidad_oficios_3").fadeOut("slow");
+                  
+
+              }
+              
+		    });
+	}); 	
+	   
+      </script>
+		
+		
 		
 		
 		
@@ -92,7 +212,17 @@
 		     	  var generar_oficio= $("#generar_oficio").val();
 	                var entidad_va_oficio= $("#entidad_va_oficio").val();
 	                var asunto= $("#asunto").val();
-		   				
+	                var cantidad_oficios_generar= $("#cantidad_oficios_generar").val();
+	                var entidad_va_oficio_1= $("#entidad_va_oficio_1").val();
+	                var asunto_1= $("#asunto_1").val();
+	                var entidad_va_oficio_2= $("#entidad_va_oficio_2").val();
+	                var asunto_2= $("#asunto_2").val();
+	                var entidad_va_oficio_3= $("#entidad_va_oficio_3").val();
+	                var asunto_3= $("#asunto_3").val();
+
+				   
+
+	   				
 		    	if (fecha_providencias == "")
 		    	{
 			    	
@@ -132,7 +262,21 @@
 		            
 				}
 
-				if(generar_oficio == "Si" && entidad_va_oficio == "" ){
+
+
+		    	if(cantidad_oficios_generar == 0 && generar_oficio=="Si"){
+					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
+		    		$("#mensaje_cantidad_oficios_generar").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_cantidad_oficios_generar").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				
+				if(cantidad_oficios_generar == 1 && generar_oficio == "Si" && entidad_va_oficio == "" ){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -143,7 +287,7 @@
 		            
 				}
 
-				if(generar_oficio == "Si" && asunto == "" ){
+				if(cantidad_oficios_generar == 1 && generar_oficio == "Si" && asunto == "" ){
 					$("#mensaje_asunto").text("Ingrese el Asunto");
 		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -153,7 +297,260 @@
 		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+
+
+				if(cantidad_oficios_generar == 2 && generar_oficio == "Si"){
+
+			    if(entidad_va_oficio == ""){
+						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+				}else{
+				    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+			    }
+                if(asunto == ""){
+					$("#mensaje_asunto").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+                if(entidad_va_oficio_1 == ""){
+					$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}else{
+			    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+		   		 }
+           		 if(asunto_1 == ""){
+				$("#mensaje_asunto_1").text("Ingrese el Asunto");
+	    		$("#mensaje_asunto_1").fadeIn("slow"); //Muestra mensaje de error
+	            return false;
+				}
+				else 
+	    		{
+	    		$("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+	            
+				}  
+					
+				}
+				else 
+		    	{
+				    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+				    $("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+			             
+		            
+				}
+
+				
+
+
+
+
+
+
+				if(cantidad_oficios_generar == 3 && generar_oficio == "Si"){
+
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	                if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}
+					else 
+			    	{
+			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		 if(asunto_1 == ""){
+					$("#mensaje_asunto_1").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_1").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+					}
+					else 
+		    		{
+		    		$("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+		            
+					}  
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		 if(asunto_2 == ""){
+						$("#mensaje_asunto_2").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+						}
+						else 
+			    		{
+			    		$("#mensaje_asunto_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+						} 
+
+
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto_2").fadeOut("slow"); //Muestra mensaje de error
+				             
+			            
+					}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				if(cantidad_oficios_generar == 4 && generar_oficio == "Si"){
+
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	                if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}
+					else 
+			    	{
+			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		 if(asunto_1 == ""){
+					$("#mensaje_asunto_1").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_1").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+					}
+					else 
+		    		{
+		    		$("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+		            
+					}  
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		 if(asunto_2 == ""){
+						$("#mensaje_asunto_2").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+						}
+						else 
+			    		{
+			    		$("#mensaje_asunto_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+						} 
+
+
+
+
+
+
+
+
+		           		 if(entidad_va_oficio_3 == ""){
+								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+							}else{
+						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   		 }
+			           		 if(asunto_3 == ""){
+							$("#mensaje_asunto_3").text("Ingrese el Asunto");
+				    		$("#mensaje_asunto_3").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+							}
+							else 
+				    		{
+				    		$("#mensaje_asunto_3").fadeOut("slow"); //Muestra mensaje de error
+				            
+							} 
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto_3").fadeOut("slow"); //Muestra mensaje de error
+				             
+			            
+					}
+				
+
+
+
+
+
 		    	
+				
 		    	
 		    	
 			}); 
@@ -171,13 +568,38 @@
 				$( "#generar_oficio" ).focus(function() {
 					$("#mensaje_generar_oficio").fadeOut("slow");
     			});
+				$( "#cantidad_oficios_generar" ).focus(function() {
+					$("#mensaje_cantidad_oficios_generar").fadeOut("slow");
+    			});
 				$( "#entidad_va_oficio" ).focus(function() {
 					$("#mensaje_entidad_va_oficio").fadeOut("slow");
     			});
 				$( "#asunto" ).focus(function() {
 					$("#mensaje_asunto").fadeOut("slow");
     			});	
-				
+				$( "#entidad_va_oficio_1" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_1").fadeOut("slow");
+    			});
+
+				$( "#asunto_1" ).focus(function() {
+					$("#mensaje_asunto_1").fadeOut("slow");
+    			});	
+    			
+				$( "#entidad_va_oficio_2" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_2").fadeOut("slow");
+    			});
+
+				$( "#asunto_2" ).focus(function() {
+					$("#mensaje_asunto_2").fadeOut("slow");
+    			});
+
+				$( "#entidad_va_oficio_3" ).focus(function() {
+					$("#mensaje_entidad_va_oficio_3").fadeOut("slow");
+    			});
+
+				$( "#asunto_3" ).focus(function() {
+					$("#mensaje_asunto_3").fadeOut("slow");
+    			});
 					    
 		}); 
 
@@ -305,22 +727,112 @@
 				<div id="mensaje_generar_oficio" class="errores"></div>
 			    </div>
 	            
+	            
+	             <div id="div_datos_generar_oficio" style="display: none;">
+	             
+	             <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
+			  	<select name="cantidad_oficios_generar" id="cantidad_oficios_generar"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						
+			    </select>
+				<div id="mensaje_cantidad_oficios_generar" class="errores"></div>
+			    </div>
+	            </div>
+	            
+	            
 	            <br>
 	           
-	            <div id="div_datos_generar_oficio" style="display: none;">
+	           <div id="div_datos_cantidad_oficios" style="display: none; margin-top: 20px;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
-			  	<p class="formulario-subtitulo" >Dirigido A:</p>
+			  	<p class="formulario-subtitulo" >Dirigido A #1:</p>
 			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
-			  	<p class="formulario-subtitulo" >Asunto:</p>
-			  		  		 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
-                <div id="mensaje_asunto" class="errores"></div>
+			  	<p class="formulario-subtitulo" >Asunto #1:</p>
+			  			  		 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
+               <div id="mensaje_asunto" class="errores"></div>
 	            </div>
 	            
+	           </div>
+	           </div>
+	           </div>
+		    
+		         
+		          <div id="div_datos_cantidad_oficios_1" style="display: none; margin-top: 20px;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	          
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A #2:</p>
+			  	<input type="text"  name="entidad_va_oficio_1" id="entidad_va_oficio_1" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_1" class="errores"></div>
 	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto #2:</p>
+			  			  		 <textarea type="text"  class="form-control" id="asunto_1" name="asunto_1" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
+               <div id="mensaje_asunto_1" class="errores"></div>
+	            </div>
+	            
+	           </div>
+	           </div>
+	           </div>
+		    
+		    
+		    
+		        <div id="div_datos_cantidad_oficios_2" style="display: none; margin-top: 20px;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	          
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A #3:</p>
+			  	<input type="text"  name="entidad_va_oficio_2" id="entidad_va_oficio_2" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_2" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto #3:</p>
+			  			  		 <textarea type="text"  class="form-control" id="asunto_2" name="asunto_2" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
+               <div id="mensaje_asunto_2" class="errores"></div>
+	            </div>
+	            
+	           </div>
+	           </div>
+	           </div>
+	           
+	           
+	           
+	            <div id="div_datos_cantidad_oficios_3" style="display: none; margin-top: 20px;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	          
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Dirigido A #4:</p>
+			  	<input type="text"  name="entidad_va_oficio_3" id="entidad_va_oficio_3" value="" class="form-control" placeholder="Nombre Entidad"/> 
+	            <div id="mensaje_entidad_va_oficio_3" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Asunto #4:</p>
+			  			  		 <textarea type="text"  class="form-control" id="asunto_3" name="asunto_3" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
+               <div id="mensaje_asunto_3" class="errores"></div>
+	            </div>
+	            
+	           </div>
+	           </div>
+	           </div>
+	            
+	           
          
          
          
