@@ -738,7 +738,7 @@
 				}
 
 
-
+/*
 		    	
 				if(tipo_avoco == 8  && acta_validacion_restructuracion == ""){
 					$("#mensaje_acta_validacion_restructuracion").text("Ingrese # Restructuración");
@@ -751,7 +751,7 @@
 		            
 				}
 
-
+*/
 				if(tipo_avoco == 8  && tipo_lev == 0){
 					$("#mensaje_tipo_lev").text("Seleccione");
 		    		$("#mensaje_tipo_lev").fadeIn("slow"); //Muestra mensaje de error
@@ -1403,10 +1403,11 @@
 					$("#mensaje_fecha_oficio_restructuracion").fadeOut("slow");
     			});
 
-
+/*
 				$( "#acta_validacion_restructuracion" ).focus(function() {
 					$("#mensaje_acta_validacion_restructuracion").fadeOut("slow");
     			});
+*/
 				$( "#tipo_lev" ).focus(function() {
 					$("#mensaje_tipo_lev").fadeOut("slow");
     			});

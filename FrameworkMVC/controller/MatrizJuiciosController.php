@@ -249,6 +249,9 @@
 								
 							$total_pages = ceil($cantidadResult/$per_page);
 								
+							
+							$providencias = new ProvidenciasModel();
+							
 							if ($cantidadResult>0)
 							{
 						
@@ -310,14 +313,47 @@
 									
 								
 								$i=0;
-									
+								
+								$resultSet_prov="";
 								foreach ($resultSet as $res)
 								{
 									$i++;
-						
+						            $id_juicios=$res->id_juicios;
+						            
+						            $columnas_prov = "firmado_secretario";
+						            $tablas_prov="providencias";
+						            $where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=1";
+						            $id_prov="id_juicios";
+						            $resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+						            
+						            
+						            if(!empty($resultSet_prov)){
+						            	
+						            	foreach ($resultSet_prov as $res_prov)
+						            	{
+						            		$firmado_secretario=$res_prov->firmado_secretario;
+						            	}
+						            }else{
+						            	
+						            	$firmado_secretario="";
+						            }
+						            
+						           	
+						            
+						            
+						            
+						            
 									$html.='<tr>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									if($firmado_secretario=='f'){
+										$html.='<td style="font-size: 15px;"><img src="view/images/esperar.png" class="img-responsive zoom" width="100" height="100"></td>';
 										
+									}else{
+										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Providencia_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									
+									}	
+									
+									
+									
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
@@ -5488,7 +5524,7 @@
 						if($identificacion_garantes_3!=""){$where_12=" AND clientes.identificacion_garantes_3 like '$identificacion_garantes_3'";}
 						
 						
-						if($lote_juicios!=0){$where_13=" AND juicios.lote_juicios = '$lote_juicios'";}
+						//if($lote_juicios!=0){$where_13=" AND juicios.lote_juicios = '$lote_juicios'";}
 						
 						
 						$where_to  = $where . $where_0 . $where_1 . $where_2 . $where_3 . $where_4.$where_5. $where_6 . $where_7 . $where_8 . $where_9.$where_10. $where_11.$where_12.$where_13;
@@ -5519,6 +5555,8 @@
 	
 							$total_pages = ceil($cantidadResult/$per_page);
 	
+							$providencias= new ProvidenciasModel();
+							
 							if ($cantidadResult>0)
 							{
 	
@@ -5580,13 +5618,45 @@
 									
 	
 								$i=0;
-									
+								$resultSet_prov="";
 								foreach ($resultSet as $res)
 								{
 									$i++;
-										
+									
+									$id_juicios=$res->id_juicios;
+									
+									$columnas_prov = "firmado_secretario";
+									$tablas_prov="providencias";
+									$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=2";
+									$id_prov="id_juicios";
+									$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+									
+									
+									if(!empty($resultSet_prov)){
+										 
+										foreach ($resultSet_prov as $res_prov)
+										{
+											$firmado_secretario=$res_prov->firmado_secretario;
+										}
+									}else{
+										 
+										$firmado_secretario="";
+									}
+									
+									
+									
+									
+									
+									
 									$html.='<tr>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_ProvidenciaLevantamiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									if($firmado_secretario=='f'){
+										$html.='<td style="font-size: 15px;"><img src="view/images/esperar.png" class="img-responsive zoom" width="100" height="100"></td>';
+									
+									}else{
+										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_ProvidenciaLevantamiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+											
+									}
+									
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
