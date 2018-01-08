@@ -323,7 +323,7 @@
 						            $columnas_prov = "firmado_secretario";
 						            $tablas_prov="providencias";
 						            $where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=1";
-						            $id_prov="id_juicios";
+						            $id_prov="id_providencias";
 						            $resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
 						            
 						            
@@ -1844,7 +1844,10 @@
 							$count_query   = $cantidadResult;
 	
 							$total_pages = ceil($cantidadResult/$per_page);
-	
+							
+							$avoco_conocimiento = new AvocoConocimientoModel();
+							
+							
 							if ($cantidadResult>0)
 							{
 	
@@ -1908,13 +1911,44 @@
 									
 								
 								$i=0;
-									
+								$resultSet_prov="";
+								$firmado_secretario="";
+								
 								foreach ($resultSet as $res)
 								{
 									$i++;
+									$id_juicios=$res->id_juicios;
+									
+									
+									
+									$columnas_prov = "firmado_secretario";
+									$tablas_prov="avoco_conocimiento";
+									$where_prov ="id_juicios ='$id_juicios' AND tipo_avoco=7";
+									$id_prov="id_avoco_conocimiento";
+									$resultSet_prov=$avoco_conocimiento->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+										
+										
+									if(!empty($resultSet_prov)){
+											
+										foreach ($resultSet_prov as $res_prov)
+										{
+											$firmado_secretario=$res_prov->firmado_secretario;
+										}
+									}else{
+											
+										$firmado_secretario="";
+									}
 									
 									$html.='<tr>';
-									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+									if($firmado_secretario=='f'){
+										$html.='<td style="font-size: 15px;"><img src="view/images/esperar.png" class="img-responsive zoom" width="100" height="100"></td>';
+									
+									}else{
+										$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_AvocoConocimiento_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+											
+									}
+									
+									
 										
 									$html.='<td style="font-size: 9px;">'.$i.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
@@ -3158,6 +3192,48 @@
 			$entidad_va_oficio_3= $_POST['entidad_va_oficio_3'];
 			$asunto_3= $_POST['asunto_3'];
 				
+			
+			
+			
+			
+			$resultSet_prov="";
+			$firmado_secretario="";
+			$columnas_prov = "firmado_secretario";
+			$tablas_prov="providencias";
+			$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=1";
+			$id_prov="id_providencias";
+			$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+			if(!empty($resultSet_prov)){
+					
+				foreach ($resultSet_prov as $res_prov)
+				{
+					$firmado_secretario=$res_prov->firmado_secretario;
+				}
+			}else{
+					
+				$firmado_secretario="";
+			}
+				
+				
+				
+				
+			if($firmado_secretario=='f'){
+			
+				$existe="Ya existe generada una providencia de suspensión de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+					
+				$this->view("NoPuedeGenerarDocumentos",array(
+						"existe"=>$existe
+				));
+			
+				exit();
+			
+			}else{
+			
+			
+			
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio!=""){
 					
@@ -3378,6 +3454,7 @@
 			die();
 			
 			}
+			}
 		}
 		
 	}
@@ -3567,7 +3644,7 @@
 		$juicios = new JuiciosModel();
 		$usuarios = new UsuariosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
-		
+		$avoco_conocimiento = new AvocoConocimientoModel();
 		
 		
 		
@@ -3612,6 +3689,42 @@
 			$asunto_avoco_nuevos_procesos_3= $_POST['asunto_avoco_nuevos_procesos_3'];
 				
 			
+			$resultSet_prov="";
+			$firmado_secretario="";
+			$columnas_prov = "firmado_secretario";
+			$tablas_prov="avoco_conocimiento";
+			$where_prov ="id_juicios ='$id_juicios' AND tipo_avoco=7";
+			$id_prov="id_avoco_conocimiento";
+			$resultSet_prov=$avoco_conocimiento->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+			
+			
+			if(!empty($resultSet_prov)){
+				 
+				foreach ($resultSet_prov as $res_prov)
+				{
+					$firmado_secretario=$res_prov->firmado_secretario;
+				}
+			}else{
+				 
+				$firmado_secretario="";
+			}
+			
+			
+			
+			
+			if($firmado_secretario=='f'){
+				
+				$existe="Ya existe generado un avoco conocimiento de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+			
+				$this->view("NoPuedeGenerarDocumentos",array(
+						"existe"=>$existe
+				));
+				
+				exit();
+				
+			}else{
+				
+				
 			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_avoco_nuevos_procesos !=""){
@@ -3871,7 +3984,7 @@
 				
 			}
 			
-			
+			}
 				
 				
 		}
@@ -5628,7 +5741,7 @@
 									$columnas_prov = "firmado_secretario";
 									$tablas_prov="providencias";
 									$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=2";
-									$id_prov="id_juicios";
+									$id_prov="id_providencias";
 									$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
 									
 									
@@ -8678,6 +8791,47 @@
 			$entidad_va_oficio_3= $_POST['entidad_va_oficio_3'];
 			$asunto_3= $_POST['asunto_3'];
 			
+			
+			
+
+
+			$resultSet_prov="";
+			$firmado_secretario="";
+			$columnas_prov = "firmado_secretario";
+			$tablas_prov="providencias";
+			$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=2";
+			$id_prov="id_providencias";
+			$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+			
+			
+			if(!empty($resultSet_prov)){
+					
+				foreach ($resultSet_prov as $res_prov)
+				{
+					$firmado_secretario=$res_prov->firmado_secretario;
+				}
+			}else{
+					
+				$firmado_secretario="";
+			}
+			
+			
+			
+			
+			if($firmado_secretario=='f'){
+					
+				$existe="Ya existe generada una providencia de levantamiento de suspensión de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+					
+				$this->view("NoPuedeGenerarDocumentos",array(
+						"existe"=>$existe
+				));
+					
+				exit();
+					
+			}else{
+			
+			
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio!=""){
 			
@@ -8899,7 +9053,7 @@
 			die();
 				
 			}
-	
+			}
 		}
 		
 	}

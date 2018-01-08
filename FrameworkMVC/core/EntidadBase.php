@@ -136,6 +136,8 @@ class EntidadBase{
     	return $resultSet;
     }
     
+   
+    
     public function getCondiciones_grupo($columnas ,$tablas , $where, $grupo, $id){
     	 
     	$query=pg_query($this->con, "SELECT $columnas FROM $tablas WHERE $where GROUP BY $grupo ORDER BY $id  ASC");
