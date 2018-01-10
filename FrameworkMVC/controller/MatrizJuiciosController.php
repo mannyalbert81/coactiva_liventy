@@ -7139,6 +7139,44 @@
 			if($tipo_avoco==10){
 		
 				
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=6";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+				
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+				
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+				
+					$existe="Ya existe generada una providencia de levantamiento medida cautelar discapacidad de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+				
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+				
+					exit();
+				
+				}else{
+				
+				
+				
+				
 				$id_tipo_providencias=6;
 				$consecutivo= new ConsecutivosModel();
 				$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_DISCAPACIDAD'");
@@ -7338,7 +7376,7 @@
 		
 				die();
 			}
-		
+				}
 			}
 			
 			
@@ -7346,6 +7384,42 @@
 			
 			
 			if($tipo_avoco==11){
+				
+				
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=7";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+				
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+				
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+				
+					$existe="Ya existe generada una providencia de levantamiento medida cautelar fallecimiento de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+				
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+				
+					exit();
+				
+				}else{
 				
 				
 				
@@ -7552,7 +7626,7 @@
 				die();
 					
 			}
-		
+				}
 			}
 		
 		}
@@ -7672,6 +7746,43 @@
 			$asunto_3= $_POST['asunto_3'];
 			
 			
+			
+
+
+			$resultSet_prov="";
+			$firmado_secretario="";
+			$columnas_prov = "firmado_secretario";
+			$tablas_prov="providencias";
+			$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=5";
+			$id_prov="id_providencias";
+			$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+			if(!empty($resultSet_prov)){
+					
+				foreach ($resultSet_prov as $res_prov)
+				{
+					$firmado_secretario=$res_prov->firmado_secretario;
+				}
+			}else{
+					
+				$firmado_secretario="";
+			}
+				
+				
+				
+				
+			if($firmado_secretario=='f'){
+					
+				$existe="Ya existe generada una providencia de embargo cuenta bancaria de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+					
+				$this->view("NoPuedeGenerarDocumentos",array(
+						"existe"=>$existe
+				));
+					
+				exit();
+					
+			}else{
 			
 			
 			
@@ -8026,7 +8137,7 @@
 				die();
 			}
 		
-		
+			}
 				
 			}
 		
@@ -8257,6 +8368,48 @@
 			
 			if($tipo_avoco==1){
 				
+				
+				
+				
+				
+				
+
+
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=3";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+						
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+						
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+						
+					$existe="Ya existe generada una providencia de pago total de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+						
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+						
+					exit();
+						
+				}else{
+				
 
 				$id_tipo_providencias=3;
 				$consecutivo= new ConsecutivosModel();
@@ -8482,6 +8635,7 @@
 					
 				}
 				
+				}
 				
 			}
 				
@@ -8492,6 +8646,44 @@
 
 			if($tipo_avoco==8){
 			
+				
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=4";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+				
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+				
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+				
+					$existe="Ya existe generada una providencia de restructuración de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+				
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+				
+					exit();
+				
+				}else{
+				
+				
+				
 			
 				$id_tipo_providencias=4;
 				$consecutivo= new ConsecutivosModel();
@@ -8732,7 +8924,7 @@
 			   }
 			
 			
-			
+				}
 			
 			
 			}
@@ -14369,7 +14561,10 @@ public function index10(){
 						$count_query   = $cantidadResult;
 	
 						$total_pages = ceil($cantidadResult/$per_page);
-	
+						$providencias = new ProvidenciasModel();
+						
+						
+						
 						if ($cantidadResult>0)
 						{
 	
@@ -14433,14 +14628,44 @@ public function index10(){
 	
 	
 							$i=0;
+							$resultSet_prov="";
 	
 							foreach ($resultSet as $res)
 							{
 								$i++;
-									
+								$id_juicios=$res->id_juicios;
+								
+								$columnas_prov = "firmado_secretario";
+								$tablas_prov="providencias";
+								$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=5";
+								$id_prov="id_providencias";
+								$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+								
+								
+								if(!empty($resultSet_prov)){
+									 
+									foreach ($resultSet_prov as $res_prov)
+									{
+										$firmado_secretario=$res_prov->firmado_secretario;
+									}
+								}else{
+									 
+									$firmado_secretario="";
+								}
+								
+								
+								
 								$html.='<tr>';
-								$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Embargo_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
-	
+								if($firmado_secretario=='f'){
+									$html.='<td style="font-size: 15px;"><img src="view/images/esperar.png" class="img-responsive zoom" width="100" height="100"></td>';
+								
+								}else{
+									$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Embargo_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
+		
+								}	
+								
+								
+								
 								$html.='<td style="font-size: 9px;">'.$i.'</td>';
 								$html.='<td style="font-size: 9px;">'.$res->regional.'</td>';
 								$html.='<td style="font-size: 9px;">'.$res->juicio_referido_titulo_credito.'</td>';
@@ -15820,11 +16045,12 @@ public function index11(){
 	
 	
 							$i=0;
-	
+						
 							foreach ($resultSet as $res)
 							{
 								$i++;
-									
+								
+								
 								$html.='<tr>';
 								$html.='<td style="font-size: 15px;"><span class="pull-right"><a href="index.php?controller=MatrizJuicios&action=Imprimir_Levantamiento_Medidas_Cautelares_Datos&id_juicios='. $res->id_juicios .'&id_clientes='. $res->id_clientes.'&id_titulo_credito='. $res->id_titulo_credito.'&juicio_referido_titulo_credito='. $res->juicio_referido_titulo_credito.'&numero_titulo_credito='. $res->numero_titulo_credito.'&nombres_clientes='. $res->nombres_clientes.'" target="_blank"><i class="glyphicon glyphicon-print"></i></a></span></td>';
 	
