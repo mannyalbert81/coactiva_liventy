@@ -14,7 +14,22 @@
   <script src="view/js/bootstrapValidator.min.js"></script>
   <script src="view/js/noty.js"></script>
   <script src="view/js/ValidarLogin.js"></script>
-	
+  <script src="view/push.js-master/push.min.js"></script>
+ 
+  <script>
+ // 			Push.create("Hola", 
+	//	  {
+		//	body: "Este es tu mensaje nuevo",
+			//icon: "view/images/fondo_hd.jpg",
+		//	timeout: 5000,
+			//onClick: function (){
+		//	window.location="https://www.google.com";
+			//this.close();
+	//		}
+  		 // });
+  </script>
+ 
+  
 	<script>
    function verificar(){
 	   usuario = $('#usuarios').val();
