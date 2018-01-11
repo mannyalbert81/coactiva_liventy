@@ -118,7 +118,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","7": "Nuevos Procesos"};
+				var items = {"ALL":"Todos","7": "Nuevos Procesos","1": "Pago Total","3": "Avoco Conocimiento y Suspensión","6": "Avoco Conocimiento"};
 				//var items = {"ALL":"Todos","1": "Pago Total", "2": "Proceso Coactivo","3": "Avoco Conocimiento y Suspensión","6": "Avoco Conocimiento","7": "Nuevos Procesos"};
 				
 				$.each(items, function(key, value) {   
