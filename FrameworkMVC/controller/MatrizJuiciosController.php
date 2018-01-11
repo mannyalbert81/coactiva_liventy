@@ -3374,6 +3374,7 @@
 					$ident_4=$ident_3+1;
 					$identificador_oficio_4=$identificador_secretaria.$ident_4;
 				}
+				
 				if($cantidad_oficios_generar=="6"){
 				
 					$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
