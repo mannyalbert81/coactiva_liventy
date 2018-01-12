@@ -1165,7 +1165,7 @@
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Providencia:</p>
-			  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_providencias" id="fecha_providencias" value="<?php echo $datos_exist['fecha_providencias']; ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
@@ -1175,7 +1175,7 @@
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Hora Providencia:</p>
-			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="" class="form-control "/> 
+			  	<input type="time"  name="hora_providencias" id="hora_providencias" value="<?php echo  $datos_exist['hora_providencias']; ?>" class="form-control "/> 
 			    <div id="mensaje_hora" class="errores"></div>
 		 </div>
 		 
@@ -1222,6 +1222,7 @@
 			    </select>
 				<div id="mensaje_generar_oficio" class="errores"></div>
 			    </div>
+	            
 	            
 	            
 	             <div id="div_datos_generar_oficio" style="display: none;">
@@ -1450,7 +1451,7 @@
              <div class="col-xs-12 col-md-12 col-lg-12" >
 		                          
 		                          <p class="formulario-subtitulo" >Razón Providencias:</p>
-                                  <textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value=""  placeholder="Ingrese Razón"></textarea>
+                                  <textarea type="text"  class="form-control" id="razon_providencias" name="razon_providencias" value=""  placeholder="Ingrese Razón"><?php echo $datos_exist['razon_providencias'];?></textarea>
                                  <div id="mensaje_razon" class="errores"></div>
              </div>
 		

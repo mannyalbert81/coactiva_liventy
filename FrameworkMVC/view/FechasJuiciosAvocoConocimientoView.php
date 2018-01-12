@@ -1668,9 +1668,7 @@
 	            <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio_avoco_nuevos_procesos" id="generar_oficio_avoco_nuevos_procesos"  class="form-control" >
-			  		<option value="0">--Seleccione--</option>
-						<option value="Si">Si</option>
-						<option value="No">No</option>
+			  			<option value="No">No</option>
 						
 			    </select>
 				<div id="mensaje_generar_oficio_avoco_nuevos_procesos" class="errores"></div>
