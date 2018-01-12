@@ -7274,11 +7274,23 @@
 			
 			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
 			$entidad_va_oficio_discapacidad_1= $_POST['entidad_va_oficio_discapacidad_1'];
-			$asunto_discapacidad_1= $_POST['asunto_discapacidad_1'];
 			$entidad_va_oficio_discapacidad_2= $_POST['entidad_va_oficio_discapacidad_2'];
-			$asunto_discapacidad_2= $_POST['asunto_discapacidad_2'];
 			$entidad_va_oficio_discapacidad_3= $_POST['entidad_va_oficio_discapacidad_3'];
-			$asunto_discapacidad_3= $_POST['asunto_discapacidad_3'];
+			$entidad_va_oficio_discapacidad_4= $_POST['entidad_va_oficio_discapacidad_4'];
+			$entidad_va_oficio_discapacidad_5= $_POST['entidad_va_oficio_discapacidad_5'];
+			$entidad_va_oficio_discapacidad_6= $_POST['entidad_va_oficio_discapacidad_6'];
+			$entidad_va_oficio_discapacidad_7= $_POST['entidad_va_oficio_discapacidad_7'];
+				
+			
+			
+			$referencia_oficios_tipo_lev_discapacidad = $_POST['referencia_oficios_tipo_lev_discapacidad'];
+			$referencia_oficios_tipo_lev_discapacidad_1 = $_POST['referencia_oficios_tipo_lev_discapacidad_1'];
+			$referencia_oficios_tipo_lev_discapacidad_2 = $_POST['referencia_oficios_tipo_lev_discapacidad_2'];
+			$referencia_oficios_tipo_lev_discapacidad_3 = $_POST['referencia_oficios_tipo_lev_discapacidad_3'];
+			$referencia_oficios_tipo_lev_discapacidad_4 = $_POST['referencia_oficios_tipo_lev_discapacidad_4'];
+			$referencia_oficios_tipo_lev_discapacidad_5 = $_POST['referencia_oficios_tipo_lev_discapacidad_5'];
+			$referencia_oficios_tipo_lev_discapacidad_6 = $_POST['referencia_oficios_tipo_lev_discapacidad_6'];
+			$referencia_oficios_tipo_lev_discapacidad_7 = $_POST['referencia_oficios_tipo_lev_discapacidad_7'];
 				
 			
 			$entidades = New EntidadesModel();
@@ -7294,7 +7306,18 @@
 			if($entidad_va_oficio_discapacidad_3 !=""){
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_3);
 			}
-			
+			if($entidad_va_oficio_discapacidad_4 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_4);
+			}
+			if($entidad_va_oficio_discapacidad_5 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_5);
+			}
+			if($entidad_va_oficio_discapacidad_6 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_6);
+			}
+			if($entidad_va_oficio_discapacidad_7 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_discapacidad_7);
+			}
 			
 			
 			
@@ -7305,11 +7328,25 @@
 			
 			$cantidad_oficios_generar_1= $_POST['cantidad_oficios_generar_1'];
 			$entidad_va_oficio_fallecimiento_1= $_POST['entidad_va_oficio_fallecimiento_1'];
-			$asunto_fallecimiento_1= $_POST['asunto_fallecimiento_1'];
 			$entidad_va_oficio_fallecimiento_2= $_POST['entidad_va_oficio_fallecimiento_2'];
-			$asunto_fallecimiento_2= $_POST['asunto_fallecimiento_2'];
 			$entidad_va_oficio_fallecimiento_3= $_POST['entidad_va_oficio_fallecimiento_3'];
-			$asunto_fallecimiento_3= $_POST['asunto_fallecimiento_3'];
+			$entidad_va_oficio_fallecimiento_4= $_POST['entidad_va_oficio_fallecimiento_4'];
+			$entidad_va_oficio_fallecimiento_5= $_POST['entidad_va_oficio_fallecimiento_5'];
+			$entidad_va_oficio_fallecimiento_6= $_POST['entidad_va_oficio_fallecimiento_6'];
+			$entidad_va_oficio_fallecimiento_7= $_POST['entidad_va_oficio_fallecimiento_7'];
+				
+			
+			$referencia_oficios_tipo_lev = $_POST['referencia_oficios_tipo_lev'];
+			$referencia_oficios_tipo_lev_1 = $_POST['referencia_oficios_tipo_lev_1'];
+			$referencia_oficios_tipo_lev_2 = $_POST['referencia_oficios_tipo_lev_2'];
+			$referencia_oficios_tipo_lev_3 = $_POST['referencia_oficios_tipo_lev_3'];
+			$referencia_oficios_tipo_lev_4 = $_POST['referencia_oficios_tipo_lev_4'];
+			$referencia_oficios_tipo_lev_5 = $_POST['referencia_oficios_tipo_lev_5'];
+			$referencia_oficios_tipo_lev_6 = $_POST['referencia_oficios_tipo_lev_6'];
+			$referencia_oficios_tipo_lev_7 = $_POST['referencia_oficios_tipo_lev_7'];
+			
+			
+			
 			
 			
 			$entidades = New EntidadesModel();
@@ -7324,6 +7361,18 @@
 			}
 			if($entidad_va_oficio_fallecimiento_3 !=""){
 				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_3);
+			}
+			if($entidad_va_oficio_fallecimiento_4 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_4);
+			}
+			if($entidad_va_oficio_fallecimiento_5 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_5);
+			}
+			if($entidad_va_oficio_fallecimiento_6 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_6);
+			}
+			if($entidad_va_oficio_fallecimiento_7 !=""){
+				$result=$entidades->InsertaEntidades($entidad_va_oficio_fallecimiento_7);
 			}
 			
 			
@@ -7444,6 +7493,69 @@
 						$ident_3=$ident_2+1;
 						$identificador_oficio_3=$identificador_secretaria.$ident_3;
 					}
+					
+					if($cantidad_oficios_generar=="5"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+					}
+					if($cantidad_oficios_generar=="6"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+					}
+						
+					if($cantidad_oficios_generar=="7"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+						$ident_6=$ident_5+1;
+						$identificador_oficio_6=$identificador_secretaria.$ident_6;
+					}
+						
+					if($cantidad_oficios_generar=="8"){
+							
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+						$ident_6=$ident_5+1;
+						$identificador_oficio_6=$identificador_secretaria.$ident_6;
+						$ident_7=$ident_6+1;
+						$identificador_oficio_7=$identificador_secretaria.$ident_7;
+					}
 					 
 					
 					
@@ -7495,13 +7607,30 @@
 					
 					$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
 					$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_discapacidad_1)?trim($entidad_va_oficio_discapacidad_1):'';
-					$parametros['asunto_2']=isset($asunto_discapacidad_1)?trim($asunto_discapacidad_1):'';
 					$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
 					$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_discapacidad_2)?trim($entidad_va_oficio_discapacidad_2):'';
-					$parametros['asunto_3']=isset($asunto_discapacidad_2)?trim($asunto_discapacidad_2):'';
 					$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
 					$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_discapacidad_3)?trim($entidad_va_oficio_discapacidad_3):'';
-					$parametros['asunto_4']=isset($asunto_discapacidad_3)?trim($asunto_discapacidad_3):'';
+					$parametros['identificador_oficio_5']=isset($identificador_oficio_4)?trim($identificador_oficio_4):'';
+					$parametros['entidad_va_oficio_5']=isset($entidad_va_oficio_discapacidad_4)?trim($entidad_va_oficio_discapacidad_4):'';
+					$parametros['identificador_oficio_6']=isset($identificador_oficio_5)?trim($identificador_oficio_5):'';
+					$parametros['entidad_va_oficio_6']=isset($entidad_va_oficio_discapacidad_5)?trim($entidad_va_oficio_discapacidad_5):'';
+					$parametros['identificador_oficio_7']=isset($identificador_oficio_6)?trim($identificador_oficio_6):'';
+					$parametros['entidad_va_oficio_7']=isset($entidad_va_oficio_discapacidad_6)?trim($entidad_va_oficio_discapacidad_6):'';
+					$parametros['identificador_oficio_8']=isset($identificador_oficio_7)?trim($identificador_oficio_7):'';
+					$parametros['entidad_va_oficio_8']=isset($entidad_va_oficio_discapacidad_7)?trim($entidad_va_oficio_discapacidad_7):'';
+						
+					
+					
+					$parametros['referencia_oficios_tipo_lev']=isset($referencia_oficios_tipo_lev_discapacidad)?trim($referencia_oficios_tipo_lev_discapacidad):'';
+					$parametros['referencia_oficios_tipo_lev_2']=isset($referencia_oficios_tipo_lev_discapacidad_1)?trim($referencia_oficios_tipo_lev_discapacidad_1):'';
+					$parametros['referencia_oficios_tipo_lev_3']=isset($referencia_oficios_tipo_lev_discapacidad_2)?trim($referencia_oficios_tipo_lev_discapacidad_2):'';
+					$parametros['referencia_oficios_tipo_lev_4']=isset($referencia_oficios_tipo_lev_discapacidad_3)?trim($referencia_oficios_tipo_lev_discapacidad_3):'';
+					$parametros['referencia_oficios_tipo_lev_5']=isset($referencia_oficios_tipo_lev_discapacidad_4)?trim($referencia_oficios_tipo_lev_discapacidad_4):'';
+					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_discapacidad_5)?trim($referencia_oficios_tipo_lev_discapacidad_5):'';
+					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_discapacidad_6)?trim($referencia_oficios_tipo_lev_discapacidad_6):'';
+					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_discapacidad_7)?trim($referencia_oficios_tipo_lev_discapacidad_7):'';
+					 
 						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -7689,7 +7818,68 @@
 						$ident_3=$ident_2+1;
 						$identificador_oficio_3=$identificador_secretaria.$ident_3;
 					}
-						
+					if($cantidad_oficios_generar_1=="5"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+					}
+					if($cantidad_oficios_generar_1=="6"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+					}
+					 
+					if($cantidad_oficios_generar_1=="7"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+						$ident_6=$ident_5+1;
+						$identificador_oficio_6=$identificador_secretaria.$ident_6;
+					}
+					 
+					if($cantidad_oficios_generar_1=="8"){
+						 
+						$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						$ident_1=$identificador_ofi_x_secretaria+1;
+						$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						$ident_2=$ident_1+1;
+						$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						$ident_3=$ident_2+1;
+						$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						$ident_4=$ident_3+1;
+						$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						$ident_5=$ident_4+1;
+						$identificador_oficio_5=$identificador_secretaria.$ident_5;
+						$ident_6=$ident_5+1;
+						$identificador_oficio_6=$identificador_secretaria.$ident_6;
+						$ident_7=$ident_6+1;
+						$identificador_oficio_7=$identificador_secretaria.$ident_7;
+					}	
 					
 					
 					
@@ -7744,15 +7934,29 @@
 					
 					$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
 					$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_fallecimiento_1)?trim($entidad_va_oficio_fallecimiento_1):'';
-					$parametros['asunto_2']=isset($asunto_fallecimiento_1)?trim($asunto_fallecimiento_1):'';
 					$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
 					$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_fallecimiento_2)?trim($entidad_va_oficio_fallecimiento_2):'';
-					$parametros['asunto_3']=isset($asunto_fallecimiento_2)?trim($asunto_fallecimiento_2):'';
 					$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
 					$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_fallecimiento_3)?trim($entidad_va_oficio_fallecimiento_3):'';
-					$parametros['asunto_4']=isset($asunto_fallecimiento_3)?trim($asunto_fallecimiento_3):'';
+					$parametros['identificador_oficio_5']=isset($identificador_oficio_4)?trim($identificador_oficio_4):'';
+					$parametros['entidad_va_oficio_5']=isset($entidad_va_oficio_fallecimiento_4)?trim($entidad_va_oficio_fallecimiento_4):'';
+					$parametros['identificador_oficio_6']=isset($identificador_oficio_5)?trim($identificador_oficio_5):'';
+					$parametros['entidad_va_oficio_6']=isset($entidad_va_oficio_fallecimiento_5)?trim($entidad_va_oficio_fallecimiento_5):'';
+					$parametros['identificador_oficio_7']=isset($identificador_oficio_6)?trim($identificador_oficio_6):'';
+					$parametros['entidad_va_oficio_7']=isset($entidad_va_oficio_fallecimiento_6)?trim($entidad_va_oficio_fallecimiento_6):'';
+					$parametros['identificador_oficio_8']=isset($identificador_oficio_7)?trim($identificador_oficio_7):'';
+					$parametros['entidad_va_oficio_8']=isset($entidad_va_oficio_fallecimiento_7)?trim($entidad_va_oficio_fallecimiento_7):'';
 						
-					
+					$parametros['referencia_oficios_tipo_lev']=isset($referencia_oficios_tipo_lev)?trim($referencia_oficios_tipo_lev):'';
+					$parametros['referencia_oficios_tipo_lev_2']=isset($referencia_oficios_tipo_lev_1)?trim($referencia_oficios_tipo_lev_1):'';
+					$parametros['referencia_oficios_tipo_lev_3']=isset($referencia_oficios_tipo_lev_2)?trim($referencia_oficios_tipo_lev_2):'';
+					$parametros['referencia_oficios_tipo_lev_4']=isset($referencia_oficios_tipo_lev_3)?trim($referencia_oficios_tipo_lev_3):'';
+					$parametros['referencia_oficios_tipo_lev_5']=isset($referencia_oficios_tipo_lev_4)?trim($referencia_oficios_tipo_lev_4):'';
+					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
+					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
+					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+					 
+						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
 					
