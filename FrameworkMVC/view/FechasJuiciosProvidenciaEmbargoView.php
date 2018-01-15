@@ -1417,7 +1417,7 @@
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha:</p>
-			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_providencias;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
@@ -1427,7 +1427,7 @@
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Hora:</p>
-			  	<input type="time"  name="hora_avoco" id="hora_avoco" value="" class="form-control "/> 
+			  	<input type="time"  name="hora_avoco" id="hora_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->hora_providencias;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_hora" class="errores"></div>
 			    
 		 </div>
@@ -1488,8 +1488,9 @@
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio" id="generar_oficio"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
-						<option value="Si">Si</option>
-						<option value="No">No</option>
+						<option value="Si" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->genero_oficio == 't'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Si</option>
+						<option value="No" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->genero_oficio == 'f'){echo ' selected="selected" ' ;}else{}}}else{} ?>>No</option>
+						
 						
 			    </select>
 				<div id="mensaje_generar_oficio" class="errores"></div>
@@ -1502,14 +1503,15 @@
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar" id="cantidad_oficios_generar"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
+						<option value="1" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '1'){echo ' selected="selected" ' ;}else{}}}else{} ?>>1</option>
+						<option value="2" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '2'){echo ' selected="selected" ' ;}else{}}}else{} ?>>2</option>
+						<option value="3" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '3'){echo ' selected="selected" ' ;}else{}}}else{} ?>>3</option>
+						<option value="4" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '4'){echo ' selected="selected" ' ;}else{}}}else{} ?>>4</option>
+						<option value="5" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '5'){echo ' selected="selected" ' ;}else{}}}else{} ?>>5</option>
+						<option value="6" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '6'){echo ' selected="selected" ' ;}else{}}}else{} ?>>6</option>
+						<option value="7" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '7'){echo ' selected="selected" ' ;}else{}}}else{} ?>>7</option>
+						<option value="8" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->cantidad_oficios_generados == '8'){echo ' selected="selected" ' ;}else{}}}else{} ?>>8</option>
+						
 						
 			    </select>
 				<div id="mensaje_cantidad_oficios_generar" class="errores"></div>
@@ -1524,7 +1526,7 @@
 	             <div class="panel-body">
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto Oficios:</p>
-			  			  		 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "></textarea>
+			  			  		 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->asunto_oficio;}}else{} ?></textarea>
                 <div id="mensaje_asunto" class="errores"></div>
 	            </div>
 	           </div>
@@ -1535,7 +1537,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #1:</p>
-			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio" class="errores"></div>
 	            </div>
 	            
@@ -1543,7 +1545,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #1 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev" id="referencia_oficios_tipo_lev" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev" id="referencia_oficios_tipo_lev" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1559,7 +1561,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #2:</p>
-			  	<input type="text"  name="entidad_va_oficio_1" id="entidad_va_oficio_1" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_1" id="entidad_va_oficio_1" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_2;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_1" class="errores"></div>
 	            </div>
 	            
@@ -1567,7 +1569,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #2 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_1" id="referencia_oficios_tipo_lev_1" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_1" id="referencia_oficios_tipo_lev_1" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_2;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1582,7 +1584,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #3:</p>
-			  	<input type="text"  name="entidad_va_oficio_2" id="entidad_va_oficio_2" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_2" id="entidad_va_oficio_2" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_3;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_2" class="errores"></div>
 	            </div>
 	            
@@ -1590,7 +1592,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #3 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_2" id="referencia_oficios_tipo_lev_2" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_2" id="referencia_oficios_tipo_lev_2" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_3;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1605,7 +1607,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #4:</p>
-			  	<input type="text"  name="entidad_va_oficio_3" id="entidad_va_oficio_3" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_3" id="entidad_va_oficio_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_4;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_3" class="errores"></div>
 	            </div>
 	            
@@ -1613,7 +1615,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #4 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_3" id="referencia_oficios_tipo_lev_3" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_3" id="referencia_oficios_tipo_lev_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_4;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1629,7 +1631,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #5:</p>
-			  	<input type="text"  name="entidad_va_oficio_4" id="entidad_va_oficio_4" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_4" id="entidad_va_oficio_4" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_5;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_4" class="errores"></div>
 	            </div>
 	            
@@ -1637,7 +1639,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #5 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_4" id="referencia_oficios_tipo_lev_4" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_4" id="referencia_oficios_tipo_lev_4" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_5;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1651,7 +1653,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #6:</p>
-			  	<input type="text"  name="entidad_va_oficio_5" id="entidad_va_oficio_5" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_5" id="entidad_va_oficio_5" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_6;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_5" class="errores"></div>
 	            </div>
 	            
@@ -1659,7 +1661,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #6 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_5" id="referencia_oficios_tipo_lev_5" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_5" id="referencia_oficios_tipo_lev_5" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_6;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1674,7 +1676,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #7:</p>
-			  	<input type="text"  name="entidad_va_oficio_6" id="entidad_va_oficio_6" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_6" id="entidad_va_oficio_6" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_7;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_6" class="errores"></div>
 	            </div>
 	            
@@ -1682,7 +1684,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #7 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_6" id="referencia_oficios_tipo_lev_6" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_6" id="referencia_oficios_tipo_lev_6" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_7;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1696,7 +1698,7 @@
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #8:</p>
-			  	<input type="text"  name="entidad_va_oficio_7" id="entidad_va_oficio_7" value="" class="form-control" placeholder="Nombre Entidad"/> 
+			  	<input type="text"  name="entidad_va_oficio_7" id="entidad_va_oficio_7" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_8;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
 	            <div id="mensaje_entidad_va_oficio_7" class="errores"></div>
 	            </div>
 	            
@@ -1704,7 +1706,7 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Referencia #8 (Opcional):</p>
-			 	<input type="text"  name="referencia_oficios_tipo_lev_7" id="referencia_oficios_tipo_lev_7" value="" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
+			 	<input type="text"  name="referencia_oficios_tipo_lev_7" id="referencia_oficios_tipo_lev_7" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_oficios_tipo_lev_8;}}else{} ?>" class="form-control" placeholder="Ejem: Levantamiento de Retención de Valores en el Sistema Financiero."/> 
 	            </div>
 	            
 	           </div>
@@ -1733,7 +1735,7 @@
 	        	
                 <div class="col-lg-8 col-md-8 col-xs-12">
 			  	<p class="formulario-subtitulo" >Número de Oficio:</p>
-			  	<input type="text"  name="numero_oficio_embargo_cuenta" id="numero_oficio_embargo_cuenta" value="" class="form-control" placeholder="#"/> 
+			  	<input type="text"  name="numero_oficio_embargo_cuenta" id="numero_oficio_embargo_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="#"/> 
 	            <div id="mensaje_numero_oficio_embargo_cuenta" class="errores"></div>
 	            </div>
 	            
@@ -1747,8 +1749,8 @@
 			  	<p  class="formulario-subtitulo">Tipo Cuenta:</p>
 			  	<select name="tipo_cuenta" id="tipo_cuenta"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
-			  		<option value="ahorros">AHORROS</option>
-			  		<option value="corriente">CORRIENTE</option>
+			  		<option value="ahorros"   <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'ahorros'){echo ' selected="selected" ' ;}else{}}}else{} ?>>AHORROS</option>
+			  		<option value="corriente" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'corriente'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CORRIENTE</option>
 					
 				</select>
 				<div id="mensaje_tipo_cuenta" class="errores"></div>
@@ -1758,13 +1760,13 @@
 			    
 			    <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p class="formulario-subtitulo" >Número de Cuenta:</p>
-			  	<input type="text"  name="numero_cuenta" id="numero_cuenta" value="" class="form-control" placeholder="#"/> 
+			  	<input type="text"  name="numero_cuenta" id="numero_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_1_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="#"/> 
 	            <div id="mensaje_numero_cuenta" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p class="formulario-subtitulo" >Entidad Bancaria:</p>
-			  	<input type="text"  name="nombre_banco" id="nombre_banco" value="" class="form-control" placeholder="Banco o Cooperativa"/> 
+			  	<input type="text"  name="nombre_banco" id="nombre_banco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_2_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="Banco o Cooperativa"/> 
 	            <div id="mensaje_nombre_banco" class="errores"></div>
 	            </div>
 	            
@@ -1790,7 +1792,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p class="formulario-subtitulo" >Depositario Judicial:</p>
-			  	<input type="text"  name="depositario_judicial" id="depositario_judicial" value="" class="form-control" placeholder="Nombre Depositario"/> 
+			  	<input type="text"  name="depositario_judicial" id="depositario_judicial" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="Nombre Depositario"/> 
 	            <div id="mensaje_depositario_judicial" class="errores"></div>
 	            </div>
 	            
@@ -2187,7 +2189,7 @@
 				   
              <div class="col-xs-12 col-md-12 col-lg-12" >
 		                          <p class="formulario-subtitulo" >Razón:</p>
-                                  <textarea type="text"  class="form-control" id="razon_avoco" name="razon_avoco" value=""  placeholder="Ingrese Razón"></textarea>
+                                  <textarea type="text"  class="form-control" id="razon_avoco" name="razon_avoco" value=""  placeholder="Ingrese Razón"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->razon_providencias;}}else{}?></textarea>
                                   
              </div>
   		

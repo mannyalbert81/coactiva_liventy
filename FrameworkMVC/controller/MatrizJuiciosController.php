@@ -3127,14 +3127,16 @@
 		$providencias = new ProvidenciasModel();
 		
 		$resultSet_edit="";
-		$fecha_providencias="";
-		$hora_providencias="";
-		$razon_providencias="";
+		$resultSet_id="";
+		
+		
+		
+		
 		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 			$datos=array();
-			$datos_exist =array();
+			
 
 			if(isset($_GET["id_juicios"]) && isset($_GET["id_clientes"])&& isset($_GET["id_titulo_credito"]))
 			{
@@ -3147,41 +3149,55 @@
 				
 				
 				
-				$firmado_secretario="";
-				$columnas_prov = "fecha_providencias, 
-								  hora_providencias,
-								  razon_providencias,
-								  genero_oficio";
-				$tablas_prov="providencias";
-				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=1";
-				$id_prov="id_providencias";
-				$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
-					
-			
 				
-				if(!empty($resultSet_edit)){
+				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id="providencias";
+				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=1 GROUP BY id_juicios";
+				$id_id="id_providencias";
+				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				$id_providencias=0;
+				if(!empty($resultSet_id)){
+					$id_providencias=$resultSet_id[0]->id_providencias;
+					
+				if($id_providencias > 0){
 					
 					
-					foreach ($resultSet_edit as $res){
-						
-					$fecha_providencias = $res->fecha_providencias;
-					$hora_providencias = $res->hora_providencias;
-					$razon_providencias = $res->razon_providencias;
-						
-					}
+					$columnas_prov = "providencias.fecha_providencias, 
+									  providencias.hora_providencias, 
+									  providencias.razon_providencias, 
+									  providencias.genero_oficio, 
+									  providencias.identificador_oficio, 
+									  providencias.dirigido_a_entidad, 
+									  providencias.asunto_oficio, 
+									  providencias.dirigido_a_entidad_2, 
+									  providencias.dirigido_a_entidad_3, 
+									  providencias.dirigido_a_entidad_4, 
+									  providencias.dirigido_a_entidad_5, 
+									  providencias.dirigido_a_entidad_6, 
+									  providencias.dirigido_a_entidad_7, 
+									  providencias.dirigido_a_entidad_8, 
+									  providencias.referencia_oficios_tipo_lev, 
+									  providencias.referencia_oficios_tipo_lev_2, 
+									  providencias.referencia_oficios_tipo_lev_3, 
+									  providencias.referencia_oficios_tipo_lev_4, 
+									  providencias.referencia_oficios_tipo_lev_5, 
+									  providencias.referencia_oficios_tipo_lev_6, 
+									  providencias.referencia_oficios_tipo_lev_7, 
+									  providencias.referencia_oficios_tipo_lev_8, 
+									  providencias.cantidad_oficios_generados";
+					$tablas_prov="public.providencias";
+					$where_prov ="id_providencias ='$id_providencias'";
+					$id_prov="id_providencias";
+					$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
 					
-					
-					$datos_exist=array("fecha_providencias"=>$fecha_providencias,"hora_providencias"=>$hora_providencias,"razon_providencias"=>$razon_providencias);
 					
 					
 				}else{
 					
-					$datos_exist=array("fecha_providencias"=>$fecha_providencias,"hora_providencias"=>$hora_providencias,"razon_providencias"=>$razon_providencias);
-						
-					
+					$resultSet_edit="";;
 				}
-				
-				
+				}
 				
 				
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
@@ -3190,7 +3206,7 @@
 			
 			
 			$this->view("FechasJuiciosProvidencias",array(
-					"datos"=>$datos, "resultEstadoProcesal"=>$resultEstadoProcesal, "datos_exist"=>$datos_exist
+					"datos"=>$datos, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit"=>$resultSet_edit
 						
 			));
 			
@@ -3213,7 +3229,14 @@
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
 		
-		
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
 		
 		if(isset($_POST['generar']))
 		{
@@ -3641,14 +3664,17 @@
 	
 	
 		session_start();
-	
+		$resultSet_id="";
+		$resultSet_edit="";
+		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 	
 			$juicios = new JuiciosModel();
 			$clientes = new ClientesModel();
 			$_id_usuarios=$_SESSION['id_usuarios'];
-	
+			$providencias = new ProvidenciasModel();
+			 
 			$columnas = " asignacion_secretarios_view.id_secretario,
 					  asignacion_secretarios_view.secretarios";
 			$tablas   = "public.asignacion_secretarios_view";
@@ -3672,6 +3698,66 @@
 				$numero_titulo_credito= $_GET['numero_titulo_credito'];
 				$nombres_clientes= $_GET['nombres_clientes'];
 	
+				
+				
+
+				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id="providencias";
+				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=5 GROUP BY id_juicios";
+				$id_id="id_providencias";
+				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				$id_providencias=0;
+				if(!empty($resultSet_id)){
+					$id_providencias=$resultSet_id[0]->id_providencias;
+						
+					if($id_providencias > 0){
+							
+						
+						
+						$columnas_prov = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+									  providencias.numero_oficio_levantamiento_providencias,
+									  providencias.numero_oficio_1_levantamiento_providencias,
+									  providencias.numero_oficio_2_levantamiento_providencias,
+									  providencias.numero_oficio_3_levantamiento_providencias,
+									  providencias.dirigido_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+						$tablas_prov="public.providencias";
+						$where_prov ="id_providencias ='$id_providencias'";
+						$id_prov="id_providencias";
+						$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit="";
+					}
+				}
+				
+				
+				
 	
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
 					
@@ -3683,7 +3769,7 @@
 	
 	
 			$this->view("FechasJuiciosProvidenciaEmbargo",array(
-					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit"=>$resultSet_edit
 	
 			));
 	
@@ -3706,13 +3792,20 @@
 		
 
 		session_start();
+		$resultSet_id="";
+		$resultSet_edit="";
+		$resultSet_id_2="";
+		$resultSet_edit_2="";
+		
+		
 		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 				
 			$juicios = new JuiciosModel();
 			$_id_usuarios=$_SESSION['id_usuarios'];
-				
+			$providencias = new ProvidenciasModel();
+			
 			$columnas = " asignacion_secretarios_view.id_secretario,
 					  asignacion_secretarios_view.secretarios";
 			$tablas   = "public.asignacion_secretarios_view";
@@ -3736,13 +3829,138 @@
 				$nombres_clientes= $_GET['nombres_clientes'];
 		
 		
+				/////////////////////////////////////// PAGO TOTAL ///////////////////////////////////////
+				
+				
+				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id="providencias";
+				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=3 GROUP BY id_juicios";
+				$id_id="id_providencias";
+				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				$id_providencias=0;
+				if(!empty($resultSet_id)){
+					$id_providencias=$resultSet_id[0]->id_providencias;
+				
+					if($id_providencias > 0){
+							
+				
+				
+						$columnas_prov = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+									  providencias.numero_oficio_levantamiento_providencias,
+									  providencias.numero_oficio_1_levantamiento_providencias,
+									  providencias.numero_oficio_2_levantamiento_providencias,
+									  providencias.numero_oficio_3_levantamiento_providencias,
+									  providencias.dirigido_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+						$tablas_prov="public.providencias";
+						$where_prov ="id_providencias ='$id_providencias'";
+						$id_prov="id_providencias";
+						$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit="";
+					}
+				}
+				
+				
+				
+				
+				
+				
+				//////////////////////RESTRUCTURACION////////////////////////////////
+
+				$columnas_id_2 = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id_2="providencias";
+				$where_id_2 ="id_juicios ='$id_juicios' AND id_tipo_providencias=4 GROUP BY id_juicios";
+				$id_id_2="id_providencias";
+				$resultSet_id_2=$providencias->getCondiciones($columnas_id_2, $tablas_id_2, $where_id_2, $id_id_2);
+					
+				$id_providencias_2=0;
+				if(!empty($resultSet_id_2)){
+					$id_providencias_2=$resultSet_id_2[0]->id_providencias;
+				
+					if($id_providencias_2 > 0){
+							
+						
+				
+						$columnas_prov_2 = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+									  providencias.numero_oficio_levantamiento_providencias,
+									  providencias.numero_oficio_1_levantamiento_providencias,
+									  providencias.numero_oficio_2_levantamiento_providencias,
+									  providencias.numero_oficio_3_levantamiento_providencias,
+									  providencias.dirigido_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+						$tablas_prov_2="public.providencias";
+						$where_prov_2 ="id_providencias ='$id_providencias_2'";
+						$id_prov_2="id_providencias";
+						$resultSet_edit_2=$providencias->getCondiciones($columnas_prov_2, $tablas_prov_2, $where_prov_2, $id_prov_2);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit_2="";
+					}
+				}
+				
+				
+				
+				
+				
+				
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
 					
 			}
 		
 		
 			$this->view("FechasJuiciosProvidenciaCancelacionProceso",array(
-					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit_2"=>$resultSet_edit_2, "resultSet_edit"=>$resultSet_edit
 		
 			));
 		
@@ -3822,7 +4040,15 @@
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		$avoco_conocimiento = new AvocoConocimientoModel();
 		
-		
+
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
 		
 		if(isset($_POST['generar']))
 		{
@@ -6564,7 +6790,12 @@
 		session_start();
 		$estado_procesal = new EstadosProcesalesModel();
 		$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
-	
+		$providencias = new ProvidenciasModel();
+		
+		
+		$resultSet_id="";
+		$resultSet_edit="";
+		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 			$datos=array();
@@ -6579,6 +6810,60 @@
 				$numero_titulo_credito= $_GET['numero_titulo_credito'];
 				$nombres_clientes= $_GET['nombres_clientes'];
 	
+				
+				
+
+
+				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id="providencias";
+				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=2 GROUP BY id_juicios";
+				$id_id="id_providencias";
+				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				$id_providencias=0;
+				if(!empty($resultSet_id)){
+				$id_providencias=$resultSet_id[0]->id_providencias;
+				
+				if($id_providencias > 0){
+						
+						
+					$columnas_prov = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+							          providencias.numero_oficio_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+					$tablas_prov="public.providencias";
+					$where_prov ="id_providencias ='$id_providencias'";
+					$id_prov="id_providencias";
+					$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+						
+						
+						
+				}else{
+						
+					$resultSet_edit="";
+				}
+				}
+				
 	
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
 					
@@ -6586,7 +6871,7 @@
 	
 	
 			$this->view("ProvidenciaLevantamiento",array(
-					"datos"=>$datos, "resultEstadoProcesal"=>$resultEstadoProcesal
+					"datos"=>$datos, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit"=>$resultSet_edit
 	
 			));
 	
@@ -7305,6 +7590,15 @@
 		$juicios = new JuiciosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
+
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
 		
 		if(isset($_POST['generar']))
 		{
@@ -8200,6 +8494,17 @@
 		$juicios = new JuiciosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
+		
+
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
+		
 		if(isset($_POST['generar']))
 		{
 		
@@ -8824,13 +9129,18 @@
 
 
 		session_start();
+		$resultSet_id="";
+		$resultSet_edit="";
+		$resultSet_id_2="";
+		$resultSet_edit_2="";
 		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 		
 			$juicios = new JuiciosModel();
 			$_id_usuarios=$_SESSION['id_usuarios'];
-		
+			$providencias = new ProvidenciasModel();
+				
 			$columnas = " asignacion_secretarios_view.id_secretario,
 					  asignacion_secretarios_view.secretarios";
 			$tablas   = "public.asignacion_secretarios_view";
@@ -8854,13 +9164,137 @@
 				$nombres_clientes= $_GET['nombres_clientes'];
 		
 		
+				
+				/////////////////////////////////////// DISCAPACIDAD ///////////////////////////////////////
+				
+				
+				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id="providencias";
+				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=6 GROUP BY id_juicios";
+				$id_id="id_providencias";
+				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				$id_providencias=0;
+				if(!empty($resultSet_id)){
+					$id_providencias=$resultSet_id[0]->id_providencias;
+				
+					if($id_providencias > 0){
+							
+				
+				
+						$columnas_prov = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+									  providencias.numero_oficio_levantamiento_providencias,
+									  providencias.numero_oficio_1_levantamiento_providencias,
+									  providencias.numero_oficio_2_levantamiento_providencias,
+									  providencias.numero_oficio_3_levantamiento_providencias,
+									  providencias.dirigido_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+						$tablas_prov="public.providencias";
+						$where_prov ="id_providencias ='$id_providencias'";
+						$id_prov="id_providencias";
+						$resultSet_edit=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit="";
+					}
+				}
+				
+				
+				
+				
+				
+				//////////////////////FALLECIMIENTO////////////////////////////////
+				
+				$columnas_id_2 = "MAX(id_providencias) as id_providencias, id_juicios";
+				$tablas_id_2="providencias";
+				$where_id_2 ="id_juicios ='$id_juicios' AND id_tipo_providencias=7 GROUP BY id_juicios";
+				$id_id_2="id_providencias";
+				$resultSet_id_2=$providencias->getCondiciones($columnas_id_2, $tablas_id_2, $where_id_2, $id_id_2);
+					
+				$id_providencias_2=0;
+				if(!empty($resultSet_id_2)){
+					$id_providencias_2=$resultSet_id_2[0]->id_providencias;
+				
+					if($id_providencias_2 > 0){
+							
+				
+				
+						$columnas_prov_2 = "providencias.fecha_providencias,
+									  providencias.hora_providencias,
+									  providencias.razon_providencias,
+									  providencias.numero_oficio_levantamiento_providencias,
+									  providencias.numero_oficio_1_levantamiento_providencias,
+									  providencias.numero_oficio_2_levantamiento_providencias,
+									  providencias.numero_oficio_3_levantamiento_providencias,
+									  providencias.dirigido_levantamiento_providencias,
+									  providencias.genero_oficio,
+									  providencias.identificador_oficio,
+									  providencias.dirigido_a_entidad,
+									  providencias.asunto_oficio,
+									  providencias.dirigido_a_entidad_2,
+									  providencias.dirigido_a_entidad_3,
+									  providencias.dirigido_a_entidad_4,
+									  providencias.dirigido_a_entidad_5,
+									  providencias.dirigido_a_entidad_6,
+									  providencias.dirigido_a_entidad_7,
+									  providencias.dirigido_a_entidad_8,
+									  providencias.referencia_oficios_tipo_lev,
+									  providencias.referencia_oficios_tipo_lev_2,
+									  providencias.referencia_oficios_tipo_lev_3,
+									  providencias.referencia_oficios_tipo_lev_4,
+									  providencias.referencia_oficios_tipo_lev_5,
+									  providencias.referencia_oficios_tipo_lev_6,
+									  providencias.referencia_oficios_tipo_lev_7,
+									  providencias.referencia_oficios_tipo_lev_8,
+									  providencias.cantidad_oficios_generados";
+						$tablas_prov_2="public.providencias";
+						$where_prov_2 ="id_providencias ='$id_providencias_2'";
+						$id_prov_2="id_providencias";
+						$resultSet_edit_2=$providencias->getCondiciones($columnas_prov_2, $tablas_prov_2, $where_prov_2, $id_prov_2);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit_2="";
+					}
+				}
+				
+				
+				
+				
+				
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
 					
 			}
 		
 		
 			$this->view("FechasJuiciosProvidenciaLevantamientoMedidasCautelares",array(
-					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit_2"=>$resultSet_edit_2, "resultSet_edit"=>$resultSet_edit
 		
 			));
 		
@@ -8895,6 +9329,15 @@
 		
 		$juicios = new JuiciosModel();
 	
+
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
 	
 		if(isset($_POST['generar']))
 		{
@@ -9869,6 +10312,16 @@
 		$juicios = new JuiciosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
 		
+		
+
+		$identificador_oficio="";
+		$identificador_oficio_1="";
+		$identificador_oficio_2="";
+		$identificador_oficio_3="";
+		$identificador_oficio_4="";
+		$identificador_oficio_5="";
+		$identificador_oficio_6="";
+		$identificador_oficio_7="";
 		
 		if(isset($_POST['generar']))
 		{
