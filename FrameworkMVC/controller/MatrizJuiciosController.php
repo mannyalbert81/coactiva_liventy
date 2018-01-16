@@ -3495,7 +3495,7 @@
 				
 				
 					
-				$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+				$funcion = "ins_providencias_suspension_con_oficio_liventy";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', 
 				'$nombre_archivo_providencias','$ruta_providencias', '$fecha_providencias',
 				'$hora_providencias', '$razon_providencias', '$id_juicios', '$id_clientes', '$id_titulo_credito',
@@ -3978,7 +3978,11 @@
 	public function Imprimir_AvocoConocimiento_Datos()
 	{
 		session_start();
-	
+		$avoco_conocimiento = new AvocoConocimientoModel();
+		
+		$resultSet_edit="";
+		$resultSet_id="";
+		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
 			
@@ -4007,6 +4011,45 @@
 				$numero_titulo_credito= $_GET['numero_titulo_credito'];
 				$nombres_clientes= $_GET['nombres_clientes'];
 	
+				
+				
+
+				$columnas_id = "MAX(id_avoco_conocimiento) as id_avoco_conocimiento, id_juicios";
+				$tablas_id="avoco_conocimiento";
+				$where_id ="id_juicios ='$id_juicios' AND tipo_avoco=7 GROUP BY id_juicios";
+				$id_id="id_avoco_conocimiento";
+				$resultSet_id=$avoco_conocimiento->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
+					
+				
+				$id_avoco_conocimiento=0;
+				if(!empty($resultSet_id)){
+					$id_avoco_conocimiento=$resultSet_id[0]->id_avoco_conocimiento;
+						
+					if($id_avoco_conocimiento > 0){
+							
+							
+						$columnas_prov = "razon_avoco_conocimiento,
+								          secretario_reemplazo,
+								          impulsor_reemplazo,
+										  fecha_avoco_conocimiento,
+								          hora_avoco,
+										  tipo_notificacion_avoco,
+									      tipo_reemplazo_avoco";
+						
+						$tablas_prov="avoco_conocimiento";
+						$where_prov ="id_avoco_conocimiento ='$id_avoco_conocimiento'";
+						$id_prov="id_avoco_conocimiento";
+						$resultSet_edit=$avoco_conocimiento->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+							
+							
+							
+					}else{
+							
+						$resultSet_edit="";;
+					}
+				}
+				
+				
 	
 				$datos=array("id_juicios"=>$id_juicios,"id_clientes"=>$id_clientes,"id_titulo_credito"=>$id_titulo_credito,"juicio_referido_titulo_credito"=>$juicio_referido_titulo_credito,"numero_titulo_credito"=>$numero_titulo_credito,"nombres_clientes"=>$nombres_clientes);
 					
@@ -4014,7 +4057,7 @@
 				
 				
 			$this->view("FechasJuiciosAvocoConocimiento",array(
-					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal
+					"datos"=>$datos, "resultSecre"=>$resultSecre, "resultEstadoProcesal"=>$resultEstadoProcesal, "resultSet_edit"=>$resultSet_edit
 	
 			));
 				
@@ -4433,7 +4476,7 @@
 					
 					
 				$funcion = "ins_avoco_conocimiento_liventy";
-				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco'";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -7927,7 +7970,7 @@
 					 
 					
 					
-					$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+					$funcion = "ins_providencias_discapacidad_con_oficio_liventy";
 		    	    $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 		    	    '$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 		    	    '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
@@ -8060,7 +8103,7 @@
 				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 		
 		
-				$funcion = "ins_providencias_levantamiento";
+				$funcion = "ins_providencias_discapacidad";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad', '$numero_liquidacion_medida_cuatelar_discapacidad', '$numero_solicitud_discapacidad', '$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
@@ -8285,7 +8328,7 @@
 					
 					
 					
-					$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+					$funcion = "ins_providencias_fallecimiento_con_oficio_liventy";
 					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios',
 					'$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_fallecimiento',
@@ -8409,7 +8452,7 @@
 				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 				
 				
-				$funcion = "ins_providencias_levantamiento";
+				$funcion = "ins_providencias_fallecimiento";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_fallecimiento', '$numero_liquidacion_medida_cuatelar_fallecimiento', '$numero_solicitud_fallecimiento', '$nombre_conyuge_sobreviviente', '$correo_conyuge_sobreviviente', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
@@ -8813,7 +8856,7 @@
 		    	
 		    	
 		    	
-		    	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+		    	$funcion = "ins_providencias_embargo_con_oficio_liventy";
 		    	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 		    	'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios',
 		    	'$id_clientes', '$id_titulo_credito', '$numero_oficio_embargo_cuenta', '$numero_cuenta', 
@@ -8842,7 +8885,12 @@
 				'$referencia_oficios_tipo_lev_5',
 				'$referencia_oficios_tipo_lev_6',
 				'$referencia_oficios_tipo_lev_7',
-				'$cantidad_oficios_generar'";
+				'$cantidad_oficios_generar',
+		    	'$fecha_oficio_embargo_cuenta',
+		    	'$monto_retenido',
+		    	'$nombre_titular_cuenta',
+		    	'$identificacion_titular_cuenta',
+		    	'$identificacion_depositario_judicial'";
 		    	$providencias->setFuncion($funcion);
 		    	$providencias->setParametros($parametros);
 		    	$resultado=$providencias->Insert();
@@ -8994,8 +9042,16 @@
 				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
 				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 		
-				$funcion = "ins_providencias_levantamiento";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_embargo_cuenta', '$numero_cuenta', '$nombre_banco', '$tipo_cuenta', '$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
+				$funcion = "ins_providencias_embargo";
+				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', 
+				'$id_titulo_credito', '$numero_oficio_embargo_cuenta', '$numero_cuenta', '$nombre_banco', '$tipo_cuenta',
+				'$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
+				'$fecha_oficio_embargo_cuenta',
+		    	'$monto_retenido',
+		    	'$nombre_titular_cuenta',
+		    	'$identificacion_titular_cuenta',
+		    	'$identificacion_depositario_judicial'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -9689,7 +9745,7 @@
 					}
 					
 					
-					$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+					$funcion = "ins_providencias_pago_total_con_oficio_liventy";
 					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 					'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
@@ -9822,7 +9878,7 @@
 					$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 					
 					
-					$funcion = "ins_providencias_levantamiento";
+					$funcion = "ins_providencias_pago_total";
 					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 					$providencias->setFuncion($funcion);
 					$providencias->setParametros($parametros);
@@ -10208,7 +10264,7 @@
 			   	$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 			   	
 			   	
-			   	$funcion = "ins_providencias_levantamiento";
+			   	$funcion = "ins_providencias_restructuracion";
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 			   	$providencias->setFuncion($funcion);
 			   	$providencias->setParametros($parametros);
@@ -10579,7 +10635,7 @@
 				}
 				
 				 
-				$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+				$funcion = "ins_providencias_levantamiento_con_oficio_liventy";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', 
 				'$id_titulo_credito', '$numero_oficio', '$numero_oficio1', '$numero_oficio2', '$numero_oficio3', 

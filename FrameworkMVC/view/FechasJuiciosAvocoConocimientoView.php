@@ -1582,7 +1582,7 @@
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Avoco:</p>
-			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_avoco_conocimiento;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
@@ -1592,7 +1592,7 @@
 		 
 		  <div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Hora Avoco:</p>
-			  	<input type="time"  name="hora_avoco" id="hora_avoco" value="" class="form-control "/> 
+			  	<input type="time"  name="hora_avoco" id="hora_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->hora_avoco;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_hora" class="errores"></div>
 			    
 		 </div>
@@ -1647,8 +1647,8 @@
 			  	<p  class="formulario-subtitulo">Seleccione:</p>
 			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
-			  		<option value="CÚMPLASE Y NOTIFÍQUESE">CÚMPLASE Y NOTIFÍQUESE</option> 
-			  		<option value="CÚMPLASE Y CÍTESE">CÚMPLASE Y CÍTESE</option> 
+			  		<option value="CÚMPLASE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_notificacion_avoco == 'CÚMPLASE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE Y NOTIFÍQUESE</option> 
+			  		<option value="CÚMPLASE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_notificacion_avoco == 'CÚMPLASE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE Y CÍTESE</option> 
 			  	
 				</select>
 				<div id="mensaje_tipo_acto" class="errores"></div>
@@ -1879,9 +1879,9 @@
 			  	<p  class="formulario-subtitulo">Reemplazar A:</p>
 			  	<select name="reemplazar" id="reemplazar"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
-						<option value="1">Solo Secretario</option>
-						<option value="2">Solo Impulsor</option>
-						<option value="3">Secretario y Impulsor</option>
+						<option value="1" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_reemplazo_avoco == '1'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Solo Secretario</option>
+						<option value="2" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_reemplazo_avoco == '2'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Solo Impulsor</option>
+						<option value="3" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_reemplazo_avoco == '3'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Secretario y Impulsor</option>
 			    </select>
 				<div id="mensaje_reemplazar" class="errores"></div>
 			    </div>
@@ -1897,7 +1897,7 @@
 	        	
 	        	<div class="col-lg-12 col-md-12 col-xs-12">
 			  	<p class="formulario-subtitulo" >Impuslor Saliente:</p>
-			  	<input type="text"  name="nombre_impulsor_anterior" id="nombre_impulsor_anterior" value="<?php echo $sel_nombre_impulsor_anterior; ?>" class="form-control" placeholder="Ejm. Abg. xxxx xxxx xxxx xxxx"/> 
+			  	<input type="text"  name="nombre_impulsor_anterior" id="nombre_impulsor_anterior" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->impulsor_reemplazo;}}else{} ?>" class="form-control" placeholder="Ejm. Abg. xxxx xxxx xxxx xxxx"/> 
 	            <div id="mensaje_nombre_impulsor_anterior" class="errores"></div>
 	            </div>
 	        	
@@ -1921,7 +1921,7 @@
 	        	
 	        	<div class="col-lg-12 col-md-12 col-xs-12">
 			  	<p class="formulario-subtitulo" >Secretario Saliente:</p>
-			  	<input type="text"  name="nombre_secretario_anterior" id="nombre_secretario_anterior" value="<?php echo $sel_nombre_secretario_anterior; ?>" class="form-control" placeholder="Ejm. Abg. xxxx xxxx xxxx xxxx"/> 
+			  	<input type="text"  name="nombre_secretario_anterior" id="nombre_secretario_anterior" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->secretario_reemplazo;}}else{} ?>" class="form-control" placeholder="Ejm. Abg. xxxx xxxx xxxx xxxx"/> 
 	            <div id="mensaje_nombre_secretario_anterior" class="errores"></div>
 	            </div>
 	        	
@@ -1984,7 +1984,7 @@
 				   
              <div class="col-xs-12 col-md-12 col-lg-12" >
 		                          <p class="formulario-subtitulo" >Razón Avoco:</p>
-                                  <textarea type="text"  class="form-control" id="razon_avoco" name="razon_avoco" value=""  placeholder="Ingrese Razón"></textarea>
+                                  <textarea type="text"  class="form-control" id="razon_avoco" name="razon_avoco" value=""  placeholder="Ingrese Razón"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->razon_avoco_conocimiento;}}else{} ?></textarea>
                                   
              </div>
   		
