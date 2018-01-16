@@ -9784,11 +9784,16 @@
 					
 					
 					
-					if($fecha_solicitud !=""){
+					$fecha_remplazo_solicitud = $fecha_solicitud;
+					$fecha_documento_1_reemplazo= $fecha_documento_1;
+					$fecha_documento_2_reemplazo= $fecha_documento_2;
+					$fecha_documento_3_reemplazo= $fecha_documento_3;
+					
+					if($fecha_remplazo_solicitud !=""){
 						
-				    $fecha_documento_1= 'null';
-				    $fecha_documento_2= 'null';
-				    $fecha_documento_3= 'null';
+				    $fecha_documento_1_reemplazo= 'null';
+				    $fecha_documento_2_reemplazo= 'null';
+				    $fecha_documento_3_reemplazo= 'null';
 							
 						
 						
@@ -9822,25 +9827,25 @@
 					'$referencia_oficios_tipo_lev_pago_total_7',
 					'$cantidad_oficios_generar',
 					'$fecha_oficio',
-					'$fecha_solicitud',	
+					'$fecha_remplazo_solicitud',	
 					'$fecha_auto_pago',
 					'$referencia_pago_total',
 					'$nombre_numero_documento_1',	
-					 $fecha_documento_1,
+					 $fecha_documento_1_reemplazo,
 					'$nombre_numero_documento_2',
-					 $fecha_documento_2,	
+					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
-					 $fecha_documento_3";
+					 $fecha_documento_3_reemplazo";
 						
 					
 					
 					}else{
 						
 						
-						$fecha_solicitud= 'null';
-						$fecha_documento_1= 'null';
-						$fecha_documento_2= 'null';
-						$fecha_documento_3= 'null';
+						$fecha_remplazo_solicitud= 'null';
+						 $fecha_documento_1_reemplazo= 'null';
+					    $fecha_documento_2_reemplazo= 'null';
+					    $fecha_documento_3_reemplazo= 'null';
 							
 						
 						
@@ -9874,15 +9879,15 @@
 						'$referencia_oficios_tipo_lev_pago_total_7',
 						'$cantidad_oficios_generar',
 						'$fecha_oficio',
-						$fecha_solicitud,
+						$fecha_remplazo_solicitud,
 						'$fecha_auto_pago',
 						'$referencia_pago_total',
 						'$nombre_numero_documento_1',
-						$fecha_documento_1,
+						$fecha_documento_1_reemplazo,
 						'$nombre_numero_documento_2',
-						$fecha_documento_2,
+						$fecha_documento_2_reemplazo,
 						'$nombre_numero_documento_3',
-						$fecha_documento_3";
+						$fecha_documento_3_reemplazo";
 						
 						
 					}
@@ -9990,11 +9995,18 @@
 					$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 					
 					
-					if($fecha_solicitud !=""){
 					
-						$fecha_documento_1= 'null';
-						$fecha_documento_2= 'null';
-						$fecha_documento_3= 'null';
+					
+					$fecha_remplazo_solicitud = $fecha_solicitud;
+					$fecha_documento_1_reemplazo= $fecha_documento_1;
+					$fecha_documento_2_reemplazo= $fecha_documento_2;
+					$fecha_documento_3_reemplazo= $fecha_documento_3;
+					
+					if($fecha_remplazo_solicitud !=""){
+					
+						$fecha_documento_1_reemplazo= 'null';
+						$fecha_documento_2_reemplazo= 'null';
+						$fecha_documento_3_reemplazo= 'null';
 					
 					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', 
@@ -10003,22 +10015,22 @@
 					'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
 					'$id_estados_procesales_juicios_actualizar',
 					'$fecha_oficio',
-					'$fecha_solicitud',	
+					'$fecha_remplazo_solicitud',	
 					'$fecha_auto_pago',
 					'$referencia_pago_total',
 					'$nombre_numero_documento_1',	
-					 $fecha_documento_1,
+					 $fecha_documento_1_reemplazo,
 					'$nombre_numero_documento_2',
-					 $fecha_documento_2,	
+					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
-					 $fecha_documento_3";
+					 $fecha_documento_3_reemplazo";
 					
 					}else{
 						
-						$fecha_solicitud= 'null';
-						$fecha_documento_1= 'null';
-						$fecha_documento_2= 'null';
-						$fecha_documento_3= 'null';
+						$fecha_remplazo_solicitud= 'null';
+						$fecha_documento_1_reemplazo= 'null';
+						$fecha_documento_2_reemplazo= 'null';
+						$fecha_documento_3_reemplazo= 'null';
 							
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
@@ -10027,15 +10039,15 @@
 						'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
 						'$id_estados_procesales_juicios_actualizar',
 						'$fecha_oficio',
-						 $fecha_solicitud,
+						$fecha_remplazo_solicitud,
 						'$fecha_auto_pago',
 						'$referencia_pago_total',
 						'$nombre_numero_documento_1',
-						$fecha_documento_1,
+						$fecha_documento_1_reemplazo,
 						'$nombre_numero_documento_2',
-						$fecha_documento_2,
+						$fecha_documento_2_reemplazo,
 						'$nombre_numero_documento_3',
-						$fecha_documento_3";
+						$fecha_documento_3_reemplazo";
 						
 					}
 					
@@ -10283,13 +10295,16 @@
 			   	
 			   	
 			   	
+			   	$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
+			   	$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
+			   	$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
+			   	$res_fecha_documento_3_reemplazar = $res_fecha_documento_3;
 			   	
-			   
-			   	if($fecha_solicitud_restructuracion !=""){
+			   	if($fecha_solicitud_restructuracion_reemplazar !=""){
 			   			
-			   		$res_fecha_documento_1= 'null';
-			   		$res_fecha_documento_2= 'null';
-			   		$res_fecha_documento_3= 'null';
+			   		$res_fecha_documento_1_reemplazar= 'null';
+			   		$res_fecha_documento_2_reemplazar= 'null';
+			   		$res_fecha_documento_3_reemplazar= 'null';
 			   	
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 			   	'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', 
@@ -10321,22 +10336,22 @@
 				'$referencia_oficios_tipo_lev_7',
 				'$cantidad_oficios_generar_1',
 			   	'$fecha_oficio_restructuracion',
-			   	'$fecha_solicitud_restructuracion',
+			   	'$fecha_solicitud_restructuracion_reemplazar',
 			   	'$referencia',
 			   	'$res_nombre_numero_documento_1',
-			   	$res_fecha_documento_1,
+			   	$res_fecha_documento_1_reemplazar,
 			   	'$res_nombre_numero_documento_2',
-			   	$res_fecha_documento_2,
+			   	$res_fecha_documento_2_reemplazar,
 			   	'$res_nombre_numero_documento_3',
-			   	$res_fecha_documento_3";
+			   	$res_fecha_documento_3_reemplazar";
 			   	
 			   	}else {
 			   		
 			   		
-			   		$fecha_solicitud_restructuracion= 'null';
-			   		$res_fecha_documento_1= 'null';
-			   		$res_fecha_documento_2= 'null';
-			   		$res_fecha_documento_3= 'null';
+			   		$fecha_solicitud_restructuracion_reemplazar= 'null';
+			   		$res_fecha_documento_1_reemplazar= 'null';
+			   		$res_fecha_documento_2_reemplazar= 'null';
+			   		$res_fecha_documento_3_reemplazar= 'null';
 			   		 
 			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 			   		'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
@@ -10368,14 +10383,14 @@
 			   		'$referencia_oficios_tipo_lev_7',
 			   		'$cantidad_oficios_generar_1',
 			   		'$fecha_oficio_restructuracion',
-			   		$fecha_solicitud_restructuracion,
+			   		$fecha_solicitud_restructuracion_reemplazar,
 			   		'$referencia',
 			   		'$res_nombre_numero_documento_1',
-			   		$res_fecha_documento_1,
+			   		$res_fecha_documento_1_reemplazar,
 			   		'$res_nombre_numero_documento_2',
-			   		$res_fecha_documento_2,
+			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
-			   		$res_fecha_documento_3";
+			   		$res_fecha_documento_3_reemplazar";
 			   		
 			   		
 			   		
@@ -10493,46 +10508,52 @@
 			   	$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 			   	
 			   	
-			   	if($fecha_solicitud_restructuracion !=""){
+			   	
+			   	$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
+			   	$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
+			   	$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
+			   	$res_fecha_documento_3_reemplazar = $res_fecha_documento_3;
+			   	
+			   	if($fecha_solicitud_restructuracion_reemplazar !=""){
 			   		 
-			   		$res_fecha_documento_1= 'null';
-			   		$res_fecha_documento_2= 'null';
-			   		$res_fecha_documento_3= 'null';
+			   		$res_fecha_documento_1_reemplazar= 'null';
+			   		$res_fecha_documento_2_reemplazar= 'null';
+			   		$res_fecha_documento_3_reemplazar= 'null';
 			   		
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 			   	'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
 			   	'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
 			   	'$id_secretario','$id_estados_procesales_juicios_actualizar',
 			   	'$fecha_oficio_restructuracion',
-			   	'$fecha_solicitud_restructuracion',
+			   	'$fecha_solicitud_restructuracion_reemplazar',
 			   	'$referencia',
 			   	'$res_nombre_numero_documento_1',
-			   	$res_fecha_documento_1,
+			   	$res_fecha_documento_1_reemplazar,
 			   	'$res_nombre_numero_documento_2',
-			   	$res_fecha_documento_2,
+			   	$res_fecha_documento_2_reemplazar,
 			   	'$res_nombre_numero_documento_3',
-			   	$res_fecha_documento_3";
+			   	$res_fecha_documento_3_reemplazar";
 			   	
 			   	}else{
 			   		
-			   		$fecha_solicitud_restructuracion= 'null';
-			   		$res_fecha_documento_1= 'null';
-			   		$res_fecha_documento_2= 'null';
-			   		$res_fecha_documento_3= 'null';
+			   		$fecha_solicitud_restructuracion_reemplazar= 'null';
+			   		$res_fecha_documento_1_reemplazar= 'null';
+			   		$res_fecha_documento_2_reemplazar= 'null';
+			   		$res_fecha_documento_3_reemplazar= 'null';
 			   		
 			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 			   		'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
 			   		'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
 			   		'$id_secretario','$id_estados_procesales_juicios_actualizar',
 			   		'$fecha_oficio_restructuracion',
-			   		$fecha_solicitud_restructuracion,
+			   		$fecha_solicitud_restructuracion_reemplazar,
 			   		'$referencia',
 			   		'$res_nombre_numero_documento_1',
-			   		$res_fecha_documento_1,
+			   		$res_fecha_documento_1_reemplazar,
 			   		'$res_nombre_numero_documento_2',
-			   		$res_fecha_documento_2,
+			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
-			   		$res_fecha_documento_3";
+			   		$res_fecha_documento_3_reemplazar";
 			   		
 			   		
 			   		
