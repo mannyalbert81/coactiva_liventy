@@ -2713,7 +2713,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio" id="fecha_oficio" value="<?php echo $sel_fecha_oficio; ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio" id="fecha_oficio" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio" class="errores"></div>
 			    </div>
 			    
@@ -2725,7 +2725,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Solicitud::</p>
-			  	<input type="date"  name="fecha_solicitud" id="fecha_solicitud" value="<?php echo $sel_fecha_solicitud; ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud" id="fecha_solicitud" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_solicitud_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud" class="errores"></div>
 			    </div>
 			    
@@ -2737,7 +2737,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
-			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" value="<?php echo $sel_fecha_auto_pago; ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_auto_pago" class="errores"></div>
 			    </div>
 			    
@@ -2938,20 +2938,20 @@
 	            
 			     <div class="col-xs-12 col-md-10 col-lg-10" style='margin-top: 17px;'>
 		                          <p class="formulario-subtitulo" >Referencia de Entidades (Opcional: Si desea nombrar a alguna entidad Ingresela empezando con el numeral 1.1.- ):</p>
-                                  <textarea type="text"  class="form-control" id="referencia_pago_total" name="referencia_pago_total" value=""  placeholder="Empieze con el numeral 1.1.-"></textarea>
+                                  <textarea type="text"  class="form-control" id="referencia_pago_total" name="referencia_pago_total" value=""  placeholder="Empieze con el numeral 1.1.-"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->referencia_entidades_pago_total;}}else{} ?></textarea>
                                    <div id="mensaje_referencia_pago_total" class="errores"></div>
 	            </div>
 	            
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 20px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 1 (Opcional):</p>
-			  	<input type="text"  name="nombre_numero_documento_1" id="nombre_numero_documento_1" value="" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
+			  	<input type="text"  name="nombre_numero_documento_1" id="nombre_numero_documento_1" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->nombre_numero_documento_opcional_1_pago_total;}}else{} ?>" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
 	            <div id="mensaje_nombre_numero_documento_1" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_1" id="fecha_documento_1" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_1" id="fecha_documento_1" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_1_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_1" class="errores"></div>
 			    </div>
 			    
@@ -2959,26 +2959,26 @@
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 2 (Opcional):</p>
-			  	<input type="text"  name="nombre_numero_documento_2" id="nombre_numero_documento_2" value="" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
+			  	<input type="text"  name="nombre_numero_documento_2" id="nombre_numero_documento_2" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->nombre_numero_documento_opcional_2_pago_total;}}else{} ?>" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
 	            <div id="mensaje_nombre_numero_documento_2" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_2" id="fecha_documento_2" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_2" id="fecha_documento_2" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_2_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_2" class="errores"></div>
 			    </div>
 			    
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 3 (Opcional):</p>
-			  	<input type="text"  name="nombre_numero_documento_3" id="nombre_numero_documento_3" value="" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
+			  	<input type="text"  name="nombre_numero_documento_3" id="nombre_numero_documento_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->nombre_numero_documento_opcional_3_pago_total;}}else{} ?>" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
 	            <div id="mensaje_nombre_numero_documento_3" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_3" id="fecha_documento_3" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_3" id="fecha_documento_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_3_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_3" class="errores"></div>
 			    </div>
 			    
@@ -3004,7 +3004,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_oficio_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_restructuracion" class="errores"></div>
 			    </div>
 			    
@@ -3016,7 +3016,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Restructuración:</p>
-			  	<input type="date"  name="fecha_solicitud_restructuracion" id="fecha_solicitud_restructuracion" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud_restructuracion" id="fecha_solicitud_restructuracion" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud_restructuracion" class="errores"></div>
 			    </div>
 			    
@@ -3235,19 +3235,19 @@
 	            
 	            <div class="col-xs-12 col-md-10 col-lg-10" style="margin-top: 17px;">
 		                          <p class="formulario-subtitulo" >Referencia de Entidades (Opcional: Si desea nombrar a alguna entidad Ingresela):</p>
-                                  <textarea type="text"  class="form-control" id="referencia" name="referencia" value=""  placeholder="Sin Levantamiento empieze con el numeral 1.1.-          Con Levantamiento empieze con el numeral 2.1.-"></textarea>
+                                  <textarea type="text"  class="form-control" id="referencia" name="referencia" value=""  placeholder="Sin Levantamiento empieze con el numeral 1.1.-          Con Levantamiento empieze con el numeral 2.1.-"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->referencia_entidades_restructuracion;}}else{} ?></textarea>
                                    <div id="mensaje_referencia" class="errores"></div>
 	            </div>
 	            
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 20px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 1 (Opcional):</p>
-			  	<input type="text"  name="res_nombre_numero_documento_1" id="res_nombre_numero_documento_1" value="" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
+			  	<input type="text"  name="res_nombre_numero_documento_1" id="res_nombre_numero_documento_1" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->nombre_numero_documento_opcional_1_restructuracion;}}else{} ?>" class="form-control" placeholder="Ejemplo: oficio No. BNF-01-001"/> 
 	            <div id="mensaje_res_nombre_numero_documento_1" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_1" id="res_fecha_documento_1" value="" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_1" id="res_fecha_documento_1" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_1_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_1" class="errores"></div>
 			    </div>
 			    
@@ -3255,26 +3255,26 @@
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 2 (Opcional):</p>
-			  	<input type="text"  name="res_nombre_numero_documento_2" id="res_nombre_numero_documento_2" value="" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
+			  	<input type="text"  name="res_nombre_numero_documento_2" id="res_nombre_numero_documento_2" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->nombre_numero_documento_opcional_2_restructuracion;}}else{} ?>" class="form-control" placeholder="Ejemplo: memorando No. BNF-01-001"/> 
 	            <div id="mensaje_res_nombre_numero_documento_2" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_2" id="res_fecha_documento_2" value="" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_2" id="res_fecha_documento_2" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_2_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_2" class="errores"></div>
 			    </div>
 			    
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo">Nombre y Número de Documento 3 (Opcional):</p>
-			  	<input type="text"  name="res_nombre_numero_documento_3" id="res_nombre_numero_documento_3" value="" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
+			  	<input type="text"  name="res_nombre_numero_documento_3" id="res_nombre_numero_documento_3" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->nombre_numero_documento_opcional_3_restructuracion;}}else{} ?>" class="form-control" placeholder="Ejemplo: solicitud No. BNF-01-001"/> 
 	            <div id="mensaje_res_nombre_numero_documento_3" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_3" id="res_fecha_documento_3" value="" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_3" id="res_fecha_documento_3" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_3_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_3" class="errores"></div>
 			    </div>
 			      

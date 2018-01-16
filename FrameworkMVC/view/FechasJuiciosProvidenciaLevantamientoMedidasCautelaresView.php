@@ -2638,7 +2638,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_medida_cuatelar_discapacidad" id="fecha_oficio_medida_cuatelar_discapacidad" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_medida_cuatelar_discapacidad" id="fecha_oficio_medida_cuatelar_discapacidad" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_discapacidad;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_medida_cuatelar_discapacidad" class="errores"></div>
 			    </div>
 			    
@@ -2650,7 +2650,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
-			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_discapacidad" id="fecha_liquidacion_medida_cuatelar_discapacidad" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_discapacidad" id="fecha_liquidacion_medida_cuatelar_discapacidad" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_discapacidad;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>
 			    </div>
 			    
@@ -2663,7 +2663,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Solicitud de Discapacidad:</p>
-			  	<input type="date"  name="fecha_solicitud_discapacidad" id="fecha_solicitud_discapacidad" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud_discapacidad" id="fecha_solicitud_discapacidad" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_solicitud_discapacidad;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud_discapacidad" class="errores"></div>
 			    </div>
 			    
@@ -2901,7 +2901,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_medida_cuatelar_fallecimiento" id="fecha_oficio_medida_cuatelar_fallecimiento" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_medida_cuatelar_fallecimiento" id="fecha_oficio_medida_cuatelar_fallecimiento" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_oficio_fallecimiento;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_medida_cuatelar_fallecimiento" class="errores"></div>
 			    </div>
 			    
@@ -2913,7 +2913,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
-			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_fallecimiento" id="fecha_liquidacion_medida_cuatelar_fallecimiento" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_fallecimiento" id="fecha_liquidacion_medida_cuatelar_fallecimiento" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_liquidacion_fallecimiento;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_liquidacion_medida_cuatelar_fallecimiento" class="errores"></div>
 			    </div>
 			    
@@ -2926,7 +2926,7 @@
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha Solicitud de Fallecimiento:</p>
-			  	<input type="date"  name="fecha_solicitud_fallecimiento" id="fecha_solicitud_fallecimiento" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud_fallecimiento" id="fecha_solicitud_fallecimiento" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_solicitud_fallecimiento;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud_fallecimiento" class="errores"></div>
 			    </div>
 			    

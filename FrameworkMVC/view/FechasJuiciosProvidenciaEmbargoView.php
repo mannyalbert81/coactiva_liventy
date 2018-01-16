@@ -1741,7 +1741,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta" id="fecha_oficio_embargo_cuenta" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta" id="fecha_oficio_embargo_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_embargo;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta" class="errores"></div>
 			    </div>
 			    
@@ -1772,20 +1772,20 @@
 	            
 	            <div class="col-lg-12 col-md-12 col-xs-12">
 			  	<p class="formulario-subtitulo" >Valor Retenido:</p>
-			  	<input type="text"  name="monto_retenido" id="monto_retenido" value="" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
+			  	<input type="text"  name="monto_retenido" id="monto_retenido" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->valor_retenido_embargo;}}else{} ?>" class="form-control" placeholder="10000,00 (diez mil dólares de los Estados Unidos de América)"/> 
 	            <div id="mensaje_monto_retenido" class="errores"></div>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p class="formulario-subtitulo" >Nombres Titular Cuenta:</p>
-			  	<input type="text"  name="nombre_titular_cuenta" id="nombre_titular_cuenta" value="" class="form-control" placeholder="Nombre Titular"/> 
+			  	<input type="text"  name="nombre_titular_cuenta" id="nombre_titular_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->nombre_titular_cuenta_embargo;}}else{} ?>" class="form-control" placeholder="Nombre Titular"/> 
 	            <div id="mensaje_nombre_titular_cuenta" class="errores"></div>
 	            </div>
 	            
 	            
 	            <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p class="formulario-subtitulo" >CI Titular:</p>
-			  	<input type="text"  name="identificacion_titular_cuenta" id="identificacion_titular_cuenta" value="" class="form-control" placeholder="CI Titular"/> 
+			  	<input type="text"  name="identificacion_titular_cuenta" id="identificacion_titular_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->identificacion_titular_cuenta_embargo;}}else{} ?>" class="form-control" placeholder="CI Titular"/> 
 	            <div id="mensaje_identificacion_titular_cuenta" class="errores"></div>
 	            </div>
 	            
@@ -1799,7 +1799,7 @@
 	            
 	            <div class="col-lg-2 col-md-2 col-xs-12">
 			  	<p class="formulario-subtitulo" >CI Depositario:</p>
-			  	<input type="text"  name="identificacion_depositario_judicial" id="identificacion_depositario_judicial" value="" class="form-control" placeholder="CI Depositario"/> 
+			  	<input type="text"  name="identificacion_depositario_judicial" id="identificacion_depositario_judicial" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->identificacion_depositario_embargo;}}else{} ?>" class="form-control" placeholder="CI Depositario"/> 
 	            <div id="mensaje_identificacion_depositario_judicial" class="errores"></div>
 	            </div>
 	            </div>

@@ -3723,6 +3723,11 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+									  providencias.fecha_oficio_embargo,
+									  providencias.valor_retenido_embargo,
+									  providencias.nombre_titular_cuenta_embargo,
+									  providencias.identificacion_titular_cuenta_embargo,
+									  providencias.identificacion_depositario_embargo,
 									  providencias.genero_oficio,
 									  providencias.identificador_oficio,
 									  providencias.dirigido_a_entidad,
@@ -3854,6 +3859,16 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+									  providencias.fecha_oficio_pago_total,
+									  providencias.fecha_solicitud_pago_total,
+									  providencias.fecha_liquidacion_pago_total,
+									  providencias.referencia_entidades_pago_total,
+									  providencias.nombre_numero_documento_opcional_1_pago_total,
+									  providencias.fecha_documento_opcional_1_pago_total,
+									  providencias.nombre_numero_documento_opcional_2_pago_total,
+									  providencias.fecha_documento_opcional_2_pago_total,
+									  providencias.nombre_numero_documento_opcional_3_pago_total,
+									  providencias.fecha_documento_opcional_3_pago_total, 
 									  providencias.genero_oficio,
 									  providencias.identificador_oficio,
 									  providencias.dirigido_a_entidad,
@@ -3916,6 +3931,15 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+									  providencias.fecha_oficio_restructuracion,
+									  providencias.fecha_restructuracion,
+									  providencias.referencia_entidades_restructuracion,
+									  providencias.nombre_numero_documento_opcional_1_restructuracion,
+									  providencias.fecha_documento_opcional_1_restructuracion,
+									  providencias.nombre_numero_documento_opcional_2_restructuracion,
+									  providencias.fecha_documento_opcional_2_restructuracion,
+									  providencias.nombre_numero_documento_opcional_3_restructuracion,
+									  providencias.fecha_documento_opcional_3_restructuracion,
 									  providencias.genero_oficio,
 									  providencias.identificador_oficio,
 									  providencias.dirigido_a_entidad,
@@ -7971,6 +7995,8 @@
 					
 					
 					$funcion = "ins_providencias_discapacidad_con_oficio_liventy";
+					
+							
 		    	    $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 		    	    '$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 		    	    '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
@@ -7978,29 +8004,10 @@
 		    	    '$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
 		    	    '$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
 		    	    '$entidad_va_oficio_discapacidad', '$asunto_discapacidad',
-		    	 '$identificador_oficio_1',
-				'$identificador_oficio_2',
-				'$identificador_oficio_3',
-				'$identificador_oficio_4',
-				'$identificador_oficio_5',
-				'$identificador_oficio_6',
-				'$identificador_oficio_7',
-				'$entidad_va_oficio_discapacidad_1',
-				'$entidad_va_oficio_discapacidad_2',
-				'$entidad_va_oficio_discapacidad_3',
-				'$entidad_va_oficio_discapacidad_4',
-				'$entidad_va_oficio_discapacidad_5',
-				'$entidad_va_oficio_discapacidad_6',
-				'$entidad_va_oficio_discapacidad_7',
-				'$referencia_oficios_tipo_lev_discapacidad',
-				'$referencia_oficios_tipo_lev_discapacidad_1',
-				'$referencia_oficios_tipo_lev_discapacidad_2',
-				'$referencia_oficios_tipo_lev_discapacidad_3',
-				'$referencia_oficios_tipo_lev_discapacidad_4',
-				'$referencia_oficios_tipo_lev_discapacidad_5',
-				'$referencia_oficios_tipo_lev_discapacidad_6',
-				'$referencia_oficios_tipo_lev_discapacidad_7',
-				'$cantidad_oficios_generar'";
+			    	'$identificador_oficio_1', '$identificador_oficio_2', '$identificador_oficio_3', '$identificador_oficio_4', '$identificador_oficio_5', '$identificador_oficio_6',
+					'$identificador_oficio_7', '$entidad_va_oficio_discapacidad_1','$entidad_va_oficio_discapacidad_2',
+					'$entidad_va_oficio_discapacidad_3', '$entidad_va_oficio_discapacidad_4',
+					'$entidad_va_oficio_discapacidad_5','$entidad_va_oficio_discapacidad_6', '$entidad_va_oficio_discapacidad_7', '$referencia_oficios_tipo_lev_discapacidad', '$referencia_oficios_tipo_lev_discapacidad_1', '$referencia_oficios_tipo_lev_discapacidad_2', '$referencia_oficios_tipo_lev_discapacidad_3', '$referencia_oficios_tipo_lev_discapacidad_4', '$referencia_oficios_tipo_lev_discapacidad_5', '$referencia_oficios_tipo_lev_discapacidad_6', '$referencia_oficios_tipo_lev_discapacidad_7', '$cantidad_oficios_generar', '$fecha_oficio_medida_cuatelar_discapacidad', '$fecha_liquidacion_medida_cuatelar_discapacidad', '$fecha_solicitud_discapacidad'";
 		    	    
 		    	    
 		    	    
@@ -8104,7 +8111,16 @@
 		
 		
 				$funcion = "ins_providencias_discapacidad";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad', '$numero_liquidacion_medida_cuatelar_discapacidad', '$numero_solicitud_discapacidad', '$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
+				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
+				'$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
+				'$numero_liquidacion_medida_cuatelar_discapacidad', '$numero_solicitud_discapacidad',
+				'$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
+				'$id_estados_procesales_juicios_actualizar',
+		    	'$fecha_oficio_medida_cuatelar_discapacidad',
+		        '$fecha_liquidacion_medida_cuatelar_discapacidad',
+		    	'$fecha_solicitud_discapacidad'";
+				
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -8358,7 +8374,10 @@
 				'$referencia_oficios_tipo_lev_5',
 				'$referencia_oficios_tipo_lev_6',
 				'$referencia_oficios_tipo_lev_7',
-				'$cantidad_oficios_generar_1'";
+				'$cantidad_oficios_generar_1',
+				'$fecha_oficio_medida_cuatelar_fallecimiento',
+			    '$fecha_liquidacion_medida_cuatelar_fallecimiento',
+				'$fecha_solicitud_fallecimiento'";
 					$providencias->setFuncion($funcion);
 					$providencias->setParametros($parametros);
 					$resultado=$providencias->Insert();
@@ -8453,7 +8472,20 @@
 				
 				
 				$funcion = "ins_providencias_fallecimiento";
-				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_fallecimiento', '$numero_liquidacion_medida_cuatelar_fallecimiento', '$numero_solicitud_fallecimiento', '$nombre_conyuge_sobreviviente', '$correo_conyuge_sobreviviente', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
+				
+				
+				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
+				'$id_titulo_credito', '$numero_oficio_medida_cuatelar_fallecimiento', 
+				'$numero_liquidacion_medida_cuatelar_fallecimiento', '$numero_solicitud_fallecimiento', 
+				'$nombre_conyuge_sobreviviente', '$correo_conyuge_sobreviviente', '$id_impulsor',
+				'$id_secretario','$id_estados_procesales_juicios_actualizar',
+				'$fecha_oficio_medida_cuatelar_fallecimiento',
+			    '$fecha_liquidacion_medida_cuatelar_fallecimiento',
+				'$fecha_solicitud_fallecimiento'";
+				
+				
+				
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -9239,33 +9271,36 @@
 				
 				
 						$columnas_prov = "providencias.fecha_providencias,
-									  providencias.hora_providencias,
-									  providencias.razon_providencias,
-									  providencias.numero_oficio_levantamiento_providencias,
-									  providencias.numero_oficio_1_levantamiento_providencias,
-									  providencias.numero_oficio_2_levantamiento_providencias,
-									  providencias.numero_oficio_3_levantamiento_providencias,
-									  providencias.dirigido_levantamiento_providencias,
-									  providencias.genero_oficio,
-									  providencias.identificador_oficio,
-									  providencias.dirigido_a_entidad,
-									  providencias.asunto_oficio,
-									  providencias.dirigido_a_entidad_2,
-									  providencias.dirigido_a_entidad_3,
-									  providencias.dirigido_a_entidad_4,
-									  providencias.dirigido_a_entidad_5,
-									  providencias.dirigido_a_entidad_6,
-									  providencias.dirigido_a_entidad_7,
-									  providencias.dirigido_a_entidad_8,
-									  providencias.referencia_oficios_tipo_lev,
-									  providencias.referencia_oficios_tipo_lev_2,
-									  providencias.referencia_oficios_tipo_lev_3,
-									  providencias.referencia_oficios_tipo_lev_4,
-									  providencias.referencia_oficios_tipo_lev_5,
-									  providencias.referencia_oficios_tipo_lev_6,
-									  providencias.referencia_oficios_tipo_lev_7,
-									  providencias.referencia_oficios_tipo_lev_8,
-									  providencias.cantidad_oficios_generados";
+										  providencias.hora_providencias,
+										  providencias.razon_providencias,
+										  providencias.numero_oficio_levantamiento_providencias,
+										  providencias.numero_oficio_1_levantamiento_providencias,
+										  providencias.numero_oficio_2_levantamiento_providencias,
+										  providencias.numero_oficio_3_levantamiento_providencias,
+										  providencias.dirigido_levantamiento_providencias,
+										  providencias.fecha_oficio_discapacidad,
+										  providencias.fecha_liquidacion_discapacidad,
+										  providencias.fecha_solicitud_discapacidad,
+										  providencias.genero_oficio,
+										  providencias.identificador_oficio,
+										  providencias.dirigido_a_entidad,
+										  providencias.asunto_oficio,
+										  providencias.dirigido_a_entidad_2,
+										  providencias.dirigido_a_entidad_3,
+										  providencias.dirigido_a_entidad_4,
+										  providencias.dirigido_a_entidad_5,
+										  providencias.dirigido_a_entidad_6,
+										  providencias.dirigido_a_entidad_7,
+										  providencias.dirigido_a_entidad_8,
+										  providencias.referencia_oficios_tipo_lev,
+										  providencias.referencia_oficios_tipo_lev_2,
+										  providencias.referencia_oficios_tipo_lev_3,
+										  providencias.referencia_oficios_tipo_lev_4,
+										  providencias.referencia_oficios_tipo_lev_5,
+										  providencias.referencia_oficios_tipo_lev_6,
+										  providencias.referencia_oficios_tipo_lev_7,
+										  providencias.referencia_oficios_tipo_lev_8,
+										  providencias.cantidad_oficios_generados";
 						$tablas_prov="public.providencias";
 						$where_prov ="id_providencias ='$id_providencias'";
 						$id_prov="id_providencias";
@@ -9307,6 +9342,9 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+								      providencias.fecha_oficio_fallecimiento,
+									  providencias.fecha_liquidacion_fallecimiento,
+									  providencias.fecha_solicitud_fallecimiento,
 									  providencias.genero_oficio,
 									  providencias.identificador_oficio,
 									  providencias.dirigido_a_entidad,
@@ -9745,41 +9783,115 @@
 					}
 					
 					
-					$funcion = "ins_providencias_pago_total_con_oficio_liventy";
-					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+					
+					if($fecha_solicitud !=""){
+						
+				    $fecha_documento_1= 'null';
+				    $fecha_documento_2= 'null';
+				    $fecha_documento_3= 'null';
+							
+						
+						
+					 $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 					'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
 					'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', 
 					'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
 					'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
-					
-				'$identificador_oficio_1',
-				'$identificador_oficio_2',
-				'$identificador_oficio_3',
-				'$identificador_oficio_4',
-				'$identificador_oficio_5',
-				'$identificador_oficio_6',
-				'$identificador_oficio_7',
-				'$entidad_va_oficio_pago_total_1',
-				'$entidad_va_oficio_pago_total_2',
-				'$entidad_va_oficio_pago_total_3',
-				'$entidad_va_oficio_pago_total_4',
-				'$entidad_va_oficio_pago_total_5',
-				'$entidad_va_oficio_pago_total_6',
-				'$entidad_va_oficio_pago_total_7',
-				'$referencia_oficios_tipo_lev_pago_total',
-				'$referencia_oficios_tipo_lev_pago_total_1',
-				'$referencia_oficios_tipo_lev_pago_total_2',
-				'$referencia_oficios_tipo_lev_pago_total_3',
-				'$referencia_oficios_tipo_lev_pago_total_4',
-				'$referencia_oficios_tipo_lev_pago_total_5',
-				'$referencia_oficios_tipo_lev_pago_total_6',
-				'$referencia_oficios_tipo_lev_pago_total_7',
-				'$cantidad_oficios_generar'";
+					'$identificador_oficio_1',
+					'$identificador_oficio_2',
+					'$identificador_oficio_3',
+					'$identificador_oficio_4',
+					'$identificador_oficio_5',
+					'$identificador_oficio_6',
+					'$identificador_oficio_7',
+					'$entidad_va_oficio_pago_total_1',
+					'$entidad_va_oficio_pago_total_2',
+					'$entidad_va_oficio_pago_total_3',
+					'$entidad_va_oficio_pago_total_4',
+					'$entidad_va_oficio_pago_total_5',
+					'$entidad_va_oficio_pago_total_6',
+					'$entidad_va_oficio_pago_total_7',
+					'$referencia_oficios_tipo_lev_pago_total',
+					'$referencia_oficios_tipo_lev_pago_total_1',
+					'$referencia_oficios_tipo_lev_pago_total_2',
+					'$referencia_oficios_tipo_lev_pago_total_3',
+					'$referencia_oficios_tipo_lev_pago_total_4',
+					'$referencia_oficios_tipo_lev_pago_total_5',
+					'$referencia_oficios_tipo_lev_pago_total_6',
+					'$referencia_oficios_tipo_lev_pago_total_7',
+					'$cantidad_oficios_generar',
+					'$fecha_oficio',
+					'$fecha_solicitud',	
+					'$fecha_auto_pago',
+					'$referencia_pago_total',
+					'$nombre_numero_documento_1',	
+					 $fecha_documento_1,
+					'$nombre_numero_documento_2',
+					 $fecha_documento_2,	
+					'$nombre_numero_documento_3',
+					 $fecha_documento_3";
 						
+					
+					
+					}else{
+						
+						
+						$fecha_solicitud= 'null';
+						$fecha_documento_1= 'null';
+						$fecha_documento_2= 'null';
+						$fecha_documento_3= 'null';
+							
+						
+						
+						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
+						'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
+						'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento',
+						'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
+						'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
+						'$identificador_oficio_1',
+						'$identificador_oficio_2',
+						'$identificador_oficio_3',
+						'$identificador_oficio_4',
+						'$identificador_oficio_5',
+						'$identificador_oficio_6',
+						'$identificador_oficio_7',
+						'$entidad_va_oficio_pago_total_1',
+						'$entidad_va_oficio_pago_total_2',
+						'$entidad_va_oficio_pago_total_3',
+						'$entidad_va_oficio_pago_total_4',
+						'$entidad_va_oficio_pago_total_5',
+						'$entidad_va_oficio_pago_total_6',
+						'$entidad_va_oficio_pago_total_7',
+						'$referencia_oficios_tipo_lev_pago_total',
+						'$referencia_oficios_tipo_lev_pago_total_1',
+						'$referencia_oficios_tipo_lev_pago_total_2',
+						'$referencia_oficios_tipo_lev_pago_total_3',
+						'$referencia_oficios_tipo_lev_pago_total_4',
+						'$referencia_oficios_tipo_lev_pago_total_5',
+						'$referencia_oficios_tipo_lev_pago_total_6',
+						'$referencia_oficios_tipo_lev_pago_total_7',
+						'$cantidad_oficios_generar',
+						'$fecha_oficio',
+						$fecha_solicitud,
+						'$fecha_auto_pago',
+						'$referencia_pago_total',
+						'$nombre_numero_documento_1',
+						$fecha_documento_1,
+						'$nombre_numero_documento_2',
+						$fecha_documento_2,
+						'$nombre_numero_documento_3',
+						$fecha_documento_3";
+						
+						
+					}
+					
+					$funcion = "ins_providencias_pago_total_con_oficio_liventy";
 					$providencias->setFuncion($funcion);
 					$providencias->setParametros($parametros);
 					$resultado=$providencias->Insert();
+					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
@@ -9878,8 +9990,56 @@
 					$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 					
 					
+					if($fecha_solicitud !=""){
+					
+						$fecha_documento_1= 'null';
+						$fecha_documento_2= 'null';
+						$fecha_documento_3= 'null';
+					
+					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', 
+					'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', 
+					'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', 
+					'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+					'$id_estados_procesales_juicios_actualizar',
+					'$fecha_oficio',
+					'$fecha_solicitud',	
+					'$fecha_auto_pago',
+					'$referencia_pago_total',
+					'$nombre_numero_documento_1',	
+					 $fecha_documento_1,
+					'$nombre_numero_documento_2',
+					 $fecha_documento_2,	
+					'$nombre_numero_documento_3',
+					 $fecha_documento_3";
+					
+					}else{
+						
+						$fecha_solicitud= 'null';
+						$fecha_documento_1= 'null';
+						$fecha_documento_2= 'null';
+						$fecha_documento_3= 'null';
+							
+						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
+						'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
+						'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3',
+						'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+						'$id_estados_procesales_juicios_actualizar',
+						'$fecha_oficio',
+						 $fecha_solicitud,
+						'$fecha_auto_pago',
+						'$referencia_pago_total',
+						'$nombre_numero_documento_1',
+						$fecha_documento_1,
+						'$nombre_numero_documento_2',
+						$fecha_documento_2,
+						'$nombre_numero_documento_3',
+						$fecha_documento_3";
+						
+					}
+					
 					$funcion = "ins_providencias_pago_total";
-					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', '$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 					$providencias->setFuncion($funcion);
 					$providencias->setParametros($parametros);
 					$resultado=$providencias->Insert();
@@ -10124,7 +10284,13 @@
 			   	
 			   	
 			   	
-			   	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+			   
+			   	if($fecha_solicitud_restructuracion !=""){
+			   			
+			   		$res_fecha_documento_1= 'null';
+			   		$res_fecha_documento_2= 'null';
+			   		$res_fecha_documento_3= 'null';
+			   	
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 			   	'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', 
 			   	'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
@@ -10153,7 +10319,70 @@
 				'$referencia_oficios_tipo_lev_5',
 				'$referencia_oficios_tipo_lev_6',
 				'$referencia_oficios_tipo_lev_7',
-				'$cantidad_oficios_generar_1'";
+				'$cantidad_oficios_generar_1',
+			   	'$fecha_oficio_restructuracion',
+			   	'$fecha_solicitud_restructuracion',
+			   	'$referencia',
+			   	'$res_nombre_numero_documento_1',
+			   	$res_fecha_documento_1,
+			   	'$res_nombre_numero_documento_2',
+			   	$res_fecha_documento_2,
+			   	'$res_nombre_numero_documento_3',
+			   	$res_fecha_documento_3";
+			   	
+			   	}else {
+			   		
+			   		
+			   		$fecha_solicitud_restructuracion= 'null';
+			   		$res_fecha_documento_1= 'null';
+			   		$res_fecha_documento_2= 'null';
+			   		$res_fecha_documento_3= 'null';
+			   		 
+			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+			   		'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
+			   		'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+			   		'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   		'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
+			   		'$entidad_va_oficio', '$asunto',
+			   		'$identificador_oficio_1',
+			   		'$identificador_oficio_2',
+			   		'$identificador_oficio_3',
+			   		'$identificador_oficio_4',
+			   		'$identificador_oficio_5',
+			   		'$identificador_oficio_6',
+			   		'$identificador_oficio_7',
+			   		'$entidad_va_oficio_1',
+			   		'$entidad_va_oficio_2',
+			   		'$entidad_va_oficio_3',
+			   		'$entidad_va_oficio_4',
+			   		'$entidad_va_oficio_5',
+			   		'$entidad_va_oficio_6',
+			   		'$entidad_va_oficio_7',
+			   		'$referencia_oficios_tipo_lev',
+			   		'$referencia_oficios_tipo_lev_1',
+			   		'$referencia_oficios_tipo_lev_2',
+			   		'$referencia_oficios_tipo_lev_3',
+			   		'$referencia_oficios_tipo_lev_4',
+			   		'$referencia_oficios_tipo_lev_5',
+			   		'$referencia_oficios_tipo_lev_6',
+			   		'$referencia_oficios_tipo_lev_7',
+			   		'$cantidad_oficios_generar_1',
+			   		'$fecha_oficio_restructuracion',
+			   		$fecha_solicitud_restructuracion,
+			   		'$referencia',
+			   		'$res_nombre_numero_documento_1',
+			   		$res_fecha_documento_1,
+			   		'$res_nombre_numero_documento_2',
+			   		$res_fecha_documento_2,
+			   		'$res_nombre_numero_documento_3',
+			   		$res_fecha_documento_3";
+			   		
+			   		
+			   		
+			   	}
+			   	
+			   	
+			   	$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
 			   	$providencias->setFuncion($funcion);
 			   	$providencias->setParametros($parametros);
 			   	$resultado=$providencias->Insert();
@@ -10264,8 +10493,52 @@
 			   	$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
 			   	
 			   	
+			   	if($fecha_solicitud_restructuracion !=""){
+			   		 
+			   		$res_fecha_documento_1= 'null';
+			   		$res_fecha_documento_2= 'null';
+			   		$res_fecha_documento_3= 'null';
+			   		
+			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
+			   	'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+			   	'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   	'$id_secretario','$id_estados_procesales_juicios_actualizar',
+			   	'$fecha_oficio_restructuracion',
+			   	'$fecha_solicitud_restructuracion',
+			   	'$referencia',
+			   	'$res_nombre_numero_documento_1',
+			   	$res_fecha_documento_1,
+			   	'$res_nombre_numero_documento_2',
+			   	$res_fecha_documento_2,
+			   	'$res_nombre_numero_documento_3',
+			   	$res_fecha_documento_3";
+			   	
+			   	}else{
+			   		
+			   		$fecha_solicitud_restructuracion= 'null';
+			   		$res_fecha_documento_1= 'null';
+			   		$res_fecha_documento_2= 'null';
+			   		$res_fecha_documento_3= 'null';
+			   		
+			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
+			   		'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+			   		'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   		'$id_secretario','$id_estados_procesales_juicios_actualizar',
+			   		'$fecha_oficio_restructuracion',
+			   		$fecha_solicitud_restructuracion,
+			   		'$referencia',
+			   		'$res_nombre_numero_documento_1',
+			   		$res_fecha_documento_1,
+			   		'$res_nombre_numero_documento_2',
+			   		$res_fecha_documento_2,
+			   		'$res_nombre_numero_documento_3',
+			   		$res_fecha_documento_3";
+			   		
+			   		
+			   		
+			   	}
+			   	
 			   	$funcion = "ins_providencias_restructuracion";
-			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion', '$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar'";
 			   	$providencias->setFuncion($funcion);
 			   	$providencias->setParametros($parametros);
 			   	$resultado=$providencias->Insert();
