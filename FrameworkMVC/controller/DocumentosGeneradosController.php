@@ -1408,7 +1408,7 @@ public function firmar()
 				$id_impulsor = $resultDocumento[0]->id_impulsor;
 				$id_secretario = $resultDocumento[0]->id_secretario;
 				$nombre_documento = $resultDocumento[0]->nombre_documento;
-					
+		
 					
 				if($tipo_avoco > 0 && $id_juicios>0){
 			
@@ -1472,6 +1472,11 @@ public function firmar()
 		
 		$providencias=new ProvidenciasModel();
 			
+		$id_tipo_restructuracion = 2;
+		$insertarRestructuracion = false;
+		
+		$levantamiento_medida = true;
+		$archivado_restructuracion = false;
 		
 		$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
 		
@@ -1481,8 +1486,14 @@ public function firmar()
 			$id_impulsor = $resultDocumento[0]->id_impulsor;
 			$id_secretario = $resultDocumento[0]->id_secretario;
 			$nombre_archivo_providencias = $resultDocumento[0]->nombre_archivo_providencias;
-				
-				
+			
+			$fecha_providencia_restructuracion  = $resultDocumento[0]->fecha_providencias;
+			$id_estados_procesales_juicios = $resultDocumento[0]->id_estados_procesales_juicios;
+			
+			if ($id_estados_procesales_juicios == 8)
+			{
+				$archivado_restructuracion = true;
+			}
 				
 			if($tipo_providencias > 0 && $id_juicios>0){
 					
@@ -1534,7 +1545,9 @@ public function firmar()
 				}
 				if($tipo_providencias==3){
 						
-						
+								
+					$insertarRestructuracion = true;
+					$id_tipo_restructuracion = 5; 
 					$tipo_notificaciones = new TipoNotificacionModel();
 					$descripcion_tipo_notificacion="Firmo Providencia de Pago Total";
 					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
@@ -1556,8 +1569,9 @@ public function firmar()
 						
 				}
 				if($tipo_providencias==4){
-						
-						
+					
+					$insertarRestructuracion = true;
+					$id_tipo_restructuracion = 2; 
 					$tipo_notificaciones = new TipoNotificacionModel();
 					$descripcion_tipo_notificacion="Firmo Providencia de Reestructuración";
 					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
@@ -1648,7 +1662,43 @@ public function firmar()
 						
 						
 				}
+				
+				
+				
+			
+				
+				
+				////aqui insertamos la restructuracion
+				if ($insertarRestructuracion)
+				{
+					
+					try {
+					
+						$juicios_restructuracion = new JuiciosRestructuracionModel();
+						
+						//ins_juicios_restructuracion( integer,  integer,  date,  boolean,  boolean)
+						$funcion = "ins_juicios_restructuracion";
+						$parametros = "'$id_juicios','$id_tipo_restructuracion', '$fecha_providencia_restructuracion','$levantamiento_medida', '$archivado_restructuracion'  ";
+						$juicios_restructuracion->setFuncion($funcion);
+						$juicios_restructuracion->setParametros($parametros);
+						$resultado=$juicios_restructuracion->Insert();
+					
+					
+					}catch (Exception $ex)
+					{
+					
+						die($ex);
+					
+					}
+						
+					
+				}
+				
+				
 			}
+			
+			
+			
 				
 		}
 			
