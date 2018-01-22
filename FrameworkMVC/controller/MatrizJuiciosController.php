@@ -11244,7 +11244,7 @@
 							$res_fecha_documento_2_reemplazar= 'null';
 							$res_fecha_documento_3_reemplazar= 'null';
 							 
-							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+							$parametros1 = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 							'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
 							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
@@ -11291,12 +11291,28 @@
 							$res_fecha_documento_2_reemplazar= 'null';
 							$res_fecha_documento_3_reemplazar= 'null';
 							 
-							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
-							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
-							'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
-							'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
-							'$entidad_va_oficio', '$asunto',
+							$parametros1 = "'$id_tipo_providencias',
+							'$identificador_providencias',
+							'$nombre_archivo_providencias',
+							'$ruta_providencias',
+							'$fecha_avoco',
+							'$hora_avoco',
+							'$razon_avoco',
+							'$id_juicios', 
+							'$id_clientes',
+							'$id_titulo_credito',
+							'$numero_oficio_restructuracion',
+							'$numero_solicitud_restructuracion',
+							'$acta_validacion_restructuracion',
+							'$tipo_lev',
+							'$dirigido_levantamiento',
+							'$id_impulsor',
+							'$id_secretario',
+							'$id_estados_procesales_juicios_actualizar',
+							'$genero_oficio',
+							'$identificador_oficio',
+							'$entidad_va_oficio',
+							'$asunto',
 							'$identificador_oficio_1',
 							'$identificador_oficio_2',
 							'$identificador_oficio_3',
@@ -11331,13 +11347,19 @@
 							$res_fecha_documento_3_reemplazar";
 				
 				
+						
 				
 						}
 						 
-						 
+						
+						
+						
+						
 						$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
 						$providencias->setFuncion($funcion);
-						$providencias->setParametros($parametros);
+						$providencias->setParametros($parametros1);
+					
+						
 						$resultado=$providencias->Insert();
 				
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
