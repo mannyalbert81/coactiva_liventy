@@ -1467,7 +1467,7 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="9">PROVIDENCIA EMBARGO (CUENTA BANCARIA)</option>
-			  		<!-- <option value="12">PROVIDENCIA EMBARGO (BIENES)</option> -->
+			  		<!-- <option value="13">PROVIDENCIA EMBARGO (BIENES)</option> -->
 			 	</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>

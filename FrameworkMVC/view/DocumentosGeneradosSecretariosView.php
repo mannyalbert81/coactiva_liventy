@@ -113,7 +113,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","7": "Nuevos Procesos"};
+				var items = {"ALL":"Todos","7": "Nuevos Procesos","12": "Cambio Liquidador"};
 				//var items = {"ALL":"Todos","1": "Pago Total", "2": "Proceso Coactivo","3": "Avoco Conocimiento y Suspensión","6": "Avoco Conocimiento","7": "Nuevos Procesos"};
 				
 				$.each(items, function(key, value) {   
@@ -138,7 +138,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PRES": "Providencia Restructuración", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento"};
+				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')

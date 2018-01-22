@@ -76,6 +76,51 @@
       
       
       
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 12)
+          {
+       	   $("#div_datos_cambio_liquidador").fadeIn("slow");
+          }
+       	
+          else
+          {
+        	  $("#div_datos_cambio_liquidador").fadeOut("slow");
+       	
+          }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 12)
+              {
+           	   $("#div_datos_cambio_liquidador").fadeIn("slow");
+              }
+           	
+              else
+              {
+            	  $("#div_datos_cambio_liquidador").fadeOut("slow");
+           	 
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
       
       
         <script type="text/javascript">
@@ -515,6 +560,11 @@
 
 
 
+				var escrito_presentado_por= $("#escrito_presentado_por").val();
+				var dispone_1= $("#dispone_1").val();
+				//var dispone_2= $("#dispone_2").val();
+
+                
 
 	   				
 		    	if (fecha_avoco == "")
@@ -1398,6 +1448,55 @@
   					}
 			    }
 
+
+
+
+
+
+				if (tipo_avoco == 12 && escrito_presentado_por == "")
+		    	{
+			    	
+		    		$("#mensaje_escrito_presentado_por").text("Ingrese nombre");
+		    		$("#mensaje_escrito_presentado_por").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_escrito_presentado_por").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+
+				if (tipo_avoco == 12 && dispone_1 == "")
+		    	{
+			    	
+		    		$("#mensaje_dispone_1").text("Ingrese Dispone 1");
+		    		$("#mensaje_dispone_1").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_dispone_1").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+/*
+				if (tipo_avoco == 12 && dispone_2 == "")
+		    	{
+			    	
+		    		$("#mensaje_dispone_2").text("Ingrese Dispone 2");
+		    		$("#mensaje_dispone_2").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_dispone_2").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				*/
 				
 		    	
 			}); 
@@ -1483,6 +1582,20 @@
 					$("#mensaje_nombre_secretario_anterior").fadeOut("slow");
     			});
 
+
+
+
+				$( "#escrito_presentado_por" ).focus(function() {
+					$("#mensaje_escrito_presentado_por").fadeOut("slow");
+    			});
+				$( "#dispone_1" ).focus(function() {
+					$("#mensaje_dispone_1").fadeOut("slow");
+    			});
+			/*	
+				$( "#dispone_2" ).focus(function() {
+					$("#mensaje_dispone_2").fadeOut("slow");
+    			});
+				*/
 								
 		}); 
 
@@ -1633,6 +1746,7 @@
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<!-- <option value="6">AVOCO CONOCIMIENTO</option>   -->
 			  		<option value="7">AVOCO CONOCIMIENTO (NUEVOS PROCESOS)</option> 
+			  		<option value="12">AVOCO CONOCIMIENTO (CAMBIO LIQUIDADOR)</option> 
 			  		<!-- <option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option> -->
 					<!--<option value="1">AVOCO CONOCIMIENTO (PAGO TOTAL)</option>-->
 					<!-- <option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option> -->
@@ -1976,6 +2090,36 @@
 			  	<div id="mensaje_fecha_auto_pago" class="errores"></div>
 			    </div>
 	          </div> 
+	          
+	          
+	          <div id="div_datos_cambio_liquidador" style="display: none;">
+	          <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Escrito presentado por:</p>
+			  	<input type="text"  name="escrito_presentado_por" id="escrito_presentado_por" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->escrito_presentado_por;}}else{} ?>" class="form-control" placeholder="Nombre"/> 
+	            <div id="mensaje_escrito_presentado_por" class="errores"></div>
+	            </div>
+	            
+	            <br>
+	            
+	            <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 1.-:</p>	 
+                                  <textarea type="text"  class="form-control" id="dispone_1" name="dispone_1" value=""  placeholder="Ejem.  Déjese sin efecto el nombramiento."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_1;}}else{} ?></textarea>
+                                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>1.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                <div id="mensaje_dispone_1" class="errores"></div>               
+                </div>
+	            
+	             <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 2.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_2" name="dispone_2" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_2;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>2.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_2" class="errores"></div>
+                 </div>
+	            
+	          </div>
+	          
+	          
 	          
 	          <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
             	 <br><p align="justify"><font face="arial" size=2><b>NOTA:</b> Estimados usuarios el sistema automáticamente llena en la razón el siguiente texto.<br><b>RAZÓN.- </b> Siento por tal, que no se notifica con esta providencia a los coactivados, por no haber señalado domicilio judicial o correo electrónico para el efecto, en la ciudad de xxxx, "Fecha" xx xx xxxx xx xxx.- <b>LO CERTIFICO.-</b></font></p>
