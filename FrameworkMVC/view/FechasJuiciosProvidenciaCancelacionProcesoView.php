@@ -36,7 +36,7 @@
 			
           var tipo_avoco = $(this).val();
 			
-          if(tipo_avoco == 1 || tipo_avoco== 2 )
+          if(tipo_avoco == 1 || tipo_avoco== 14 )
           {
        	   $("#div_datos_pago_total").fadeIn("slow");
           }
@@ -54,7 +54,7 @@
               var tipo_avoco = $(this).val();
 				
               
-              if(tipo_avoco == 1 || tipo_avoco== 2)
+              if(tipo_avoco == 1 || tipo_avoco== 14)
               {
            	   $("#div_datos_pago_total").fadeIn("slow");
               }
@@ -2998,6 +2998,666 @@
 					$("#mensaje_entidad_va_oficio_pago_total_7").fadeOut("slow"); //Muestra mensaje de error
 					
 				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				////// COMIENZA PAGO TOTAL CON AVOCO CONOCIMIENTO
+
+
+
+
+
+		       	
+			      
+		       	if(tipo_avoco == 14  && numero_oficio == ""){
+					$("#mensaje_numero_oficio").text("Ingrese # Oficio");
+		    		$("#mensaje_numero_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 14  && fecha_oficio == ""){
+					$("#mensaje_fecha_oficio").text("Ingrese Fecha de Oficio");
+		    		$("#mensaje_fecha_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		       	
+
+				if(tipo_avoco == 14  && numero_liquidacion == ""){
+					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
+		    		$("#mensaje_numero_liquidacion").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_liquidacion").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 14  && fecha_auto_pago == ""){
+					$("#mensaje_fecha_auto_pago").text("Ingrese Fecha Auto Pago");
+		    		$("#mensaje_fecha_auto_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				if(tipo_avoco == 14  && generar_oficio_pago_total == 0){
+					$("#mensaje_generar_oficio_pago_total").text("Seleccione");
+		    		$("#mensaje_generar_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 0 && generar_oficio_pago_total=="Si"){
+					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
+		    		$("#mensaje_cantidad_oficios_generar").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_cantidad_oficios_generar").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 1 && generar_oficio_pago_total == "Si" && asunto_pago_total == "" ){
+					$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+				
+				if(tipo_avoco == 14 && cantidad_oficios_generar == 1 && generar_oficio_pago_total == "Si" && entidad_va_oficio_pago_total == "" ){
+					$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				
+
+
+				///aqui 2
+
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 2 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+			
+
+
+
+				//// aqui 3
+
+
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 3 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+
+
+
+
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+
+
+
+				/// aqui 4 
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 4 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_3 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+
+
+
+
+
+
+				/// aqui 5 
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 5 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_3 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_4 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_4").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_4").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+
+
+
+
+				/// aqui 6
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 6 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_3 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_4 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_4").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_4").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_pago_total_5 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_5").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_5").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+
+
+				/// aqui 7
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 7 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_3 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_4 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_4").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_4").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_pago_total_5 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_5").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_5").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_6 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_6").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_6").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_6").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_6").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
+
+
+
+				/// aqui 8
+
+				if(tipo_avoco == 14  && cantidad_oficios_generar == 8 && generar_oficio_pago_total == "Si"){
+
+					if(asunto_pago_total == ""){
+						$("#mensaje_asunto_pago_total").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					if(entidad_va_oficio_pago_total == ""){
+						$("#mensaje_entidad_va_oficio_pago_total").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_1 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_2 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					
+					if(entidad_va_oficio_pago_total_3 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_4 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_4").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_4").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_pago_total_5 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_5").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_5").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+					if(entidad_va_oficio_pago_total_6 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_6").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_6").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_6").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_pago_total_7 == ""){
+						$("#mensaje_entidad_va_oficio_pago_total_7").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_pago_total_7").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_pago_total_7").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+
+				}else{
+
+					$("#mensaje_entidad_va_oficio_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto_pago_total").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_2").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_3").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_4").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_5").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_6").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_pago_total_7").fadeOut("slow"); //Muestra mensaje de error
+					
+				}
 				
 
 		    	
@@ -3298,6 +3958,7 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="1">PROVIDENCIA (PAGO TOTAL)</option>
+			  		<option value="14">PROVIDENCIA (PAGO TOTAL CON AVOCO CONOCIMIENTO)</option>
 					<option value="8">PROVIDENCIA (RESTRUCTURACIÓN)</option>
 					<option value="13">PROVIDENCIA (RESTRUCTURACIÓN CON AVOCO CONOCIMIENTO)</option>
 				</select>
