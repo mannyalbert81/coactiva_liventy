@@ -90,7 +90,7 @@ public function index2(){
 								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios,ju.fecha_ultima_providencia ,ju.descripcion_estado_procesal
 								,ac.modificado, ac.creado AS \"fecha_creado\" ";
 							
-						$where = " 1=1 AND asv.id_secretario='$_id_usuarios' ";
+						$where = " 1=1 AND asv.id_secretario='$_id_usuarios' AND ac.eliminado_documento='false'";
 						
 							
 						if($tipo_documento=="ALL")
@@ -101,6 +101,8 @@ public function index2(){
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios ";
+							
+							
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
@@ -404,7 +406,7 @@ public function index2(){
 							,ju.fecha_emision_juicios,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios,ju.descripcion_estado_procesal
 							,pr.modificado, ju.fecha_ultima_providencia, pr.creado AS \"fecha_creado\"";
 							
-						$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+						$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 						
 						if($tipo_documento=="ALL")
 						{
@@ -1232,7 +1234,9 @@ public function eliminar()
 			try {
 			
 				$eliminado=unlink($directorio);
-				$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
+				$avoco_conocimiento->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
+				
+				//$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
 					
 			
 			} catch (Exception $e)
@@ -1489,7 +1493,9 @@ public function eliminar()
 			try {
 					
 				$eliminado=unlink($directorio);
-				$providencias->deleteBy("id_providencias",$id_documento);
+				$providencias->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "providencias", "id_providencias='$id_documento'");
+				
+				//$providencias->deleteBy("id_providencias",$id_documento);
 					
 					
 			} catch (Exception $e)
@@ -2077,7 +2083,7 @@ session_start();
 								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios,ju.fecha_ultima_providencia ,ju.descripcion_estado_procesal
 								,ac.modificado, ac.creado AS \"fecha_creado\" ";
 							
-							$where = " 1=1 AND asv.id_abogado='$_id_usuarios' ";
+							$where = " 1=1 AND asv.id_abogado='$_id_usuarios' AND ac.eliminado_documento='false'";
 							
 							if($tipo_documento=="ALL")
 							{
@@ -2388,7 +2394,7 @@ session_start();
 							,ju.fecha_emision_juicios,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios,ju.descripcion_estado_procesal
 							,pr.modificado, ju.fecha_ultima_providencia, pr.creado AS \"fecha_creado\"";
 							
-							$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 							
 							if($tipo_documento=="ALL")
 							{

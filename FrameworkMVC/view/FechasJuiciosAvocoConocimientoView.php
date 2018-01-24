@@ -1451,7 +1451,7 @@
 
 
 
-
+/*
 
 				if (tipo_avoco == 12 && escrito_presentado_por == "")
 		    	{
@@ -1482,7 +1482,6 @@
 		            
 				}
 
-/*
 				if (tipo_avoco == 12 && dispone_2 == "")
 		    	{
 			    	
@@ -1583,7 +1582,7 @@
     			});
 
 
-
+				/*
 
 				$( "#escrito_presentado_por" ).focus(function() {
 					$("#mensaje_escrito_presentado_por").fadeOut("slow");
@@ -1591,7 +1590,7 @@
 				$( "#dispone_1" ).focus(function() {
 					$("#mensaje_dispone_1").fadeOut("slow");
     			});
-			/*	
+				
 				$( "#dispone_2" ).focus(function() {
 					$("#mensaje_dispone_2").fadeOut("slow");
     			});
