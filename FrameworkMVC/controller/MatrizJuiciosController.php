@@ -3224,6 +3224,9 @@
 	{
 		
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
@@ -3656,6 +3659,15 @@
 			}
 		}
 		
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
+		
+			));
+				
+		}
+		
 	}
 	
 	
@@ -3781,7 +3793,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 	
 			));
@@ -3991,7 +4003,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 		
 			));
@@ -4091,7 +4103,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 	
 			));
@@ -4103,6 +4115,9 @@
 	public function Imprimir_AvocoConocimiento()
 	{
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
@@ -4979,6 +4994,15 @@
 			
 		}
 		
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
+		
+			));
+				
+		}
+		
 	}
 	
 	
@@ -4987,6 +5011,9 @@
 	{
 		$respuesta='';
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$permisos_rol=new PermisosRolesModel();
 		$clientes = new ClientesModel();
 		$juicios = new JuiciosModel();
@@ -5638,6 +5665,18 @@
 			exit();
 		}
 	
+		}
+		
+		else
+		{
+			$this->view("Login",array(
+					"resultado"=>"Debe Iniciar Sesión"
+		
+			));
+				
+			exit();
+		}
+		
 		
 	
 	}
@@ -7443,6 +7482,8 @@
 		
 
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
 		$oficios= new OficiosModel();
 		
 		if(isset($_POST['generar']))
@@ -7499,7 +7540,13 @@
 		
 		
 		}
-		
+		}else
+		{
+			$this->view("Login",array(
+					"resultado"=>"Debe Iniciar Sesion"
+	
+			));
+		}
 		
 	}
 	
@@ -7507,6 +7554,8 @@
 	public function AgregarJuicio(){
 		
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		
@@ -8060,6 +8109,19 @@
 		
 		$this->redirect("MatrizJuicios", "index3");
 		
+		}
+		
+		else
+		{
+			$this->view("Login",array(
+					"resultado"=>"Debe Iniciar Sesión"
+		
+			));
+		
+			exit();
+		}
+		
+		
 	}
 	
 	
@@ -8067,6 +8129,9 @@
 
 
 		session_start();
+		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
@@ -8963,6 +9028,15 @@
 		
 		}
 		
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
+		
+			));
+				
+		}
+		
 		
 		
 		
@@ -8979,6 +9053,9 @@
 	{
 
 		session_start();
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
@@ -9619,7 +9696,14 @@
 			}
 		
 		}
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
 		
+			));
+				
+		}
 		
 	}
 	
@@ -9810,7 +9894,7 @@
 		}
 		else
 		{
-			$this->view("Error",array(
+			$this->view("Login",array(
 					"resultado"=>"Debe Iniciar Sesion"
 		
 			));
@@ -9832,6 +9916,10 @@
 	public function Imprimir_Providencia_Cancelacion_Proceso()
 	{
 		session_start();
+		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
@@ -9848,6 +9936,9 @@
 		$identificador_oficio_6="";
 		$identificador_oficio_7="";
 	
+		
+		
+		
 		if(isset($_POST['generar']))
 		{
 	
@@ -11920,7 +12011,6 @@
 						$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
 						$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
 				
-						 
 						$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
 						$parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
 						$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
@@ -11934,6 +12024,8 @@
 						$parametros['asunto']=isset($asunto)?trim($asunto):'';
 						$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
 				
+						
+
 						$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
 						$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_1)?trim($entidad_va_oficio_1):'';
 						$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
@@ -11956,8 +12048,8 @@
 						$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
-						 
-						 
+							
+						
 						 
 						$pagina="contAvocoConocimientoSeleccion.aspx";
 				
@@ -12123,6 +12215,15 @@
 			
 	
 		}
+		
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
+		
+			));
+				
+		}
 	
 	}
 	
@@ -12132,6 +12233,10 @@
 	public function Imprimir_ProvidenciaLevantamiento()
 	{
 		session_start();
+		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+		
 		$providencias= new ProvidenciasModel();
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
@@ -12566,6 +12671,15 @@
 				
 			}
 			}
+		}
+		
+		}else
+		{
+			$this->view("Login",array(
+					"resultSet"=>""
+		
+			));
+				
 		}
 		
 	}
