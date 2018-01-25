@@ -2998,7 +2998,7 @@ session_start();
 			
 			}
 			if($firmado=='f'){
-					
+				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
 				$html.='<td colspan="2" style="font-size: 18px; text-aling:center;"><a href="#" class="btn btn-primary" style="font-size:65%;"><i class="glyphicon glyphicon-alert"> Revisando</i></a></td>';
 			
 			}
