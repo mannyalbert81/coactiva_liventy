@@ -456,7 +456,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 2";
 	
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -493,7 +493,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 	
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -531,7 +531,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 3";
 								
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -570,7 +570,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 9";
 						
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -610,7 +610,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 4";
 								
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -651,7 +651,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 8";
 						
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -690,7 +690,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 5";
 								
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -728,7 +728,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 6";
 						
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -767,7 +767,7 @@ public function index2(){
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
 								
-							$where=" 1=1 AND asv.id_secretario='$_id_usuarios'";
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -1001,6 +1001,8 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
+		//$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
+		
 		$html.='</tr>';
 		$html.='</thead>';
 		$html.='<tbody>';
@@ -1044,7 +1046,8 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 			$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-
+			//$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
+				
 
 			$html.='</tr>';
 
@@ -1233,7 +1236,7 @@ public function eliminar()
 			
 			try {
 			
-				$eliminado=unlink($directorio);
+			//	$eliminado=unlink($directorio);
 				$avoco_conocimiento->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
 				
 				//$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
@@ -1492,7 +1495,7 @@ public function eliminar()
 			
 			try {
 					
-				$eliminado=unlink($directorio);
+				//$eliminado=unlink($directorio);
 				$providencias->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "providencias", "id_providencias='$id_documento'");
 				
 				//$providencias->deleteBy("id_providencias",$id_documento);
@@ -2443,7 +2446,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 2";
 								
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2480,7 +2483,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 								
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2517,7 +2520,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 3";
 							
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2555,7 +2558,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 9";
 									
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2593,7 +2596,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 4";
 									
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2633,7 +2636,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 8";
 									
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2672,7 +2675,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 5";
 									
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2711,7 +2714,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 6";
 							
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2749,7 +2752,7 @@ session_start();
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
 									
-								$where=" 1=1 AND asv.id_abogado='$_id_usuarios'";
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
 								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -2960,6 +2963,7 @@ session_start();
 		$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
+		//$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
@@ -3004,6 +3008,8 @@ session_start();
 			
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
+			//$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
+				
 			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';

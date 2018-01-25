@@ -12213,6 +12213,558 @@
 			
 			
 			
+			
+			
+			
+			
+			if($tipo_avoco==15){
+				
+
+
+
+
+
+
+
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND id_tipo_providencias=8";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+				
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+				
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+				
+					$existe="Ya existe generada una providencia de restructuración con avoco conocimiento de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+				
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+				
+					exit();
+				
+				}else{
+				
+				
+				
+				
+					$id_tipo_providencias=8;
+					$consecutivo= new ConsecutivosModel();
+					$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='RESTRUCTURACION'");
+					$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+					$ruta_providencias="Providencias_Restructuracion";
+				
+					$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
+				
+				
+				
+					if($generar_oficio=="Si"){
+							
+						$id_impulsor=$_SESSION['id_usuarios'];
+						$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+						$id_secretario=$resultSecre[0]->id_secretario;
+						$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+							
+							
+							
+						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+							
+							
+						$genero_oficio="TRUE";
+							
+				
+						if($cantidad_oficios_generar_1=="1"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+				
+						}
+				
+						if($cantidad_oficios_generar_1=="2"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+				
+						}
+				
+						if($cantidad_oficios_generar_1=="3"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+						}
+							
+						if($cantidad_oficios_generar_1=="4"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							$ident_3=$ident_2+1;
+							$identificador_oficio_3=$identificador_secretaria.$ident_3;
+						}
+						if($cantidad_oficios_generar_1=="5"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							$ident_3=$ident_2+1;
+							$identificador_oficio_3=$identificador_secretaria.$ident_3;
+							$ident_4=$ident_3+1;
+							$identificador_oficio_4=$identificador_secretaria.$ident_4;
+						}
+						if($cantidad_oficios_generar_1=="6"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							$ident_3=$ident_2+1;
+							$identificador_oficio_3=$identificador_secretaria.$ident_3;
+							$ident_4=$ident_3+1;
+							$identificador_oficio_4=$identificador_secretaria.$ident_4;
+							$ident_5=$ident_4+1;
+							$identificador_oficio_5=$identificador_secretaria.$ident_5;
+						}
+							
+						if($cantidad_oficios_generar_1=="7"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							$ident_3=$ident_2+1;
+							$identificador_oficio_3=$identificador_secretaria.$ident_3;
+							$ident_4=$ident_3+1;
+							$identificador_oficio_4=$identificador_secretaria.$ident_4;
+							$ident_5=$ident_4+1;
+							$identificador_oficio_5=$identificador_secretaria.$ident_5;
+							$ident_6=$ident_5+1;
+							$identificador_oficio_6=$identificador_secretaria.$ident_6;
+						}
+							
+						if($cantidad_oficios_generar_1=="8"){
+				
+							$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+							$ident_1=$identificador_ofi_x_secretaria+1;
+							$identificador_oficio_1=$identificador_secretaria.$ident_1;
+							$ident_2=$ident_1+1;
+							$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							$ident_3=$ident_2+1;
+							$identificador_oficio_3=$identificador_secretaria.$ident_3;
+							$ident_4=$ident_3+1;
+							$identificador_oficio_4=$identificador_secretaria.$ident_4;
+							$ident_5=$ident_4+1;
+							$identificador_oficio_5=$identificador_secretaria.$ident_5;
+							$ident_6=$ident_5+1;
+							$identificador_oficio_6=$identificador_secretaria.$ident_6;
+							$ident_7=$ident_6+1;
+							$identificador_oficio_7=$identificador_secretaria.$ident_7;
+						}
+							
+							
+							
+						$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
+						$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
+						$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
+						$res_fecha_documento_3_reemplazar = $res_fecha_documento_3;
+							
+						if($fecha_solicitud_restructuracion_reemplazar !=""){
+				
+							$res_fecha_documento_1_reemplazar= 'null';
+							$res_fecha_documento_2_reemplazar= 'null';
+							$res_fecha_documento_3_reemplazar= 'null';
+				
+							$parametros1 = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
+							'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
+							'$entidad_va_oficio', '$asunto',
+							'$identificador_oficio_1',
+							'$identificador_oficio_2',
+							'$identificador_oficio_3',
+							'$identificador_oficio_4',
+							'$identificador_oficio_5',
+							'$identificador_oficio_6',
+							'$identificador_oficio_7',
+							'$entidad_va_oficio_1',
+							'$entidad_va_oficio_2',
+							'$entidad_va_oficio_3',
+							'$entidad_va_oficio_4',
+							'$entidad_va_oficio_5',
+							'$entidad_va_oficio_6',
+							'$entidad_va_oficio_7',
+							'$referencia_oficios_tipo_lev',
+							'$referencia_oficios_tipo_lev_1',
+							'$referencia_oficios_tipo_lev_2',
+							'$referencia_oficios_tipo_lev_3',
+							'$referencia_oficios_tipo_lev_4',
+							'$referencia_oficios_tipo_lev_5',
+							'$referencia_oficios_tipo_lev_6',
+							'$referencia_oficios_tipo_lev_7',
+							'$cantidad_oficios_generar_1',
+							'$fecha_oficio_restructuracion',
+							'$fecha_solicitud_restructuracion_reemplazar',
+							'$referencia',
+							'$res_nombre_numero_documento_1',
+							$res_fecha_documento_1_reemplazar,
+							'$res_nombre_numero_documento_2',
+							$res_fecha_documento_2_reemplazar,
+							'$res_nombre_numero_documento_3',
+							$res_fecha_documento_3_reemplazar";
+				
+						}else {
+				
+				
+							$fecha_solicitud_restructuracion_reemplazar= 'null';
+							$res_fecha_documento_1_reemplazar= 'null';
+							$res_fecha_documento_2_reemplazar= 'null';
+							$res_fecha_documento_3_reemplazar= 'null';
+				
+							$parametros1 = "'$id_tipo_providencias',
+							'$identificador_providencias',
+							'$nombre_archivo_providencias',
+							'$ruta_providencias',
+							'$fecha_avoco',
+							'$hora_avoco',
+							'$razon_avoco',
+							'$id_juicios',
+							'$id_clientes',
+							'$id_titulo_credito',
+							'$numero_oficio_restructuracion',
+							'$numero_solicitud_restructuracion',
+							'$acta_validacion_restructuracion',
+							'$tipo_lev',
+							'$dirigido_levantamiento',
+							'$id_impulsor',
+							'$id_secretario',
+							'$id_estados_procesales_juicios_actualizar',
+							'$genero_oficio',
+							'$identificador_oficio',
+							'$entidad_va_oficio',
+							'$asunto',
+							'$identificador_oficio_1',
+							'$identificador_oficio_2',
+							'$identificador_oficio_3',
+							'$identificador_oficio_4',
+							'$identificador_oficio_5',
+							'$identificador_oficio_6',
+							'$identificador_oficio_7',
+							'$entidad_va_oficio_1',
+							'$entidad_va_oficio_2',
+							'$entidad_va_oficio_3',
+							'$entidad_va_oficio_4',
+							'$entidad_va_oficio_5',
+							'$entidad_va_oficio_6',
+							'$entidad_va_oficio_7',
+							'$referencia_oficios_tipo_lev',
+							'$referencia_oficios_tipo_lev_1',
+							'$referencia_oficios_tipo_lev_2',
+							'$referencia_oficios_tipo_lev_3',
+							'$referencia_oficios_tipo_lev_4',
+							'$referencia_oficios_tipo_lev_5',
+							'$referencia_oficios_tipo_lev_6',
+							'$referencia_oficios_tipo_lev_7',
+							'$cantidad_oficios_generar_1',
+							'$fecha_oficio_restructuracion',
+							$fecha_solicitud_restructuracion_reemplazar,
+							'$referencia',
+							'$res_nombre_numero_documento_1',
+							$res_fecha_documento_1_reemplazar,
+							'$res_nombre_numero_documento_2',
+							$res_fecha_documento_2_reemplazar,
+							'$res_nombre_numero_documento_3',
+							$res_fecha_documento_3_reemplazar";
+				
+				
+				
+				
+						}
+							
+				
+				
+				
+				
+						$funcion = "ins_providencias_reestructuracion_con_oficio_liventy";
+						$providencias->setFuncion($funcion);
+						$providencias->setParametros($parametros1);
+							
+				
+						$resultado=$providencias->Insert();
+				
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+							
+						$traza=new TrazasModel();
+						$_nombre_controlador = "MATRIZ JUICIOS";
+						$_accion_trazas  = "Genero Providencia de Restructuración y Avoco Conocimiento con Oficio";
+						$_parametros_trazas = $id_juicios;
+						$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+							
+							
+						$parametros = array();
+				
+						$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+						$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+						$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+						$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+						$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+						$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+				
+						$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+						$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+						$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+						$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+						$parametros['ruta_avoco']=$ruta_providencias;
+						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				
+						$parametros['reemplazar']=$reemplazar;
+				
+						$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+						$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+						$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+						$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+				
+							
+							
+						$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion)?trim($numero_oficio_restructuracion):'';
+						$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion)?trim($fecha_oficio_restructuracion):'';
+						$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion)?trim($numero_solicitud_restructuracion):'';
+						$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion)?trim($fecha_solicitud_restructuracion):'';
+							
+						$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
+						$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+				
+						$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
+						$parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
+						$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
+						$parametros['fecha_documento_2']=isset($res_fecha_documento_2)?trim($res_fecha_documento_2):'';
+						$parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3)?trim($res_nombre_numero_documento_3):'';
+						$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
+				
+						$parametros['referencia']=isset($referencia)?trim($referencia):'';
+						$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+						$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+						$parametros['asunto']=isset($asunto)?trim($asunto):'';
+						$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+				
+				
+				
+						$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+						$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_1)?trim($entidad_va_oficio_1):'';
+						$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+						$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_2)?trim($entidad_va_oficio_2):'';
+						$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+						$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_3)?trim($entidad_va_oficio_3):'';
+						$parametros['identificador_oficio_5']=isset($identificador_oficio_4)?trim($identificador_oficio_4):'';
+						$parametros['entidad_va_oficio_5']=isset($entidad_va_oficio_4)?trim($entidad_va_oficio_4):'';
+						$parametros['identificador_oficio_6']=isset($identificador_oficio_5)?trim($identificador_oficio_5):'';
+						$parametros['entidad_va_oficio_6']=isset($entidad_va_oficio_5)?trim($entidad_va_oficio_5):'';
+						$parametros['identificador_oficio_7']=isset($identificador_oficio_6)?trim($identificador_oficio_6):'';
+						$parametros['entidad_va_oficio_7']=isset($entidad_va_oficio_6)?trim($entidad_va_oficio_6):'';
+						$parametros['identificador_oficio_8']=isset($identificador_oficio_7)?trim($identificador_oficio_7):'';
+						$parametros['entidad_va_oficio_8']=isset($entidad_va_oficio_7)?trim($entidad_va_oficio_7):'';
+						$parametros['referencia_oficios_tipo_lev']=isset($referencia_oficios_tipo_lev)?trim($referencia_oficios_tipo_lev):'';
+						$parametros['referencia_oficios_tipo_lev_2']=isset($referencia_oficios_tipo_lev_1)?trim($referencia_oficios_tipo_lev_1):'';
+						$parametros['referencia_oficios_tipo_lev_3']=isset($referencia_oficios_tipo_lev_2)?trim($referencia_oficios_tipo_lev_2):'';
+						$parametros['referencia_oficios_tipo_lev_4']=isset($referencia_oficios_tipo_lev_3)?trim($referencia_oficios_tipo_lev_3):'';
+						$parametros['referencia_oficios_tipo_lev_5']=isset($referencia_oficios_tipo_lev_4)?trim($referencia_oficios_tipo_lev_4):'';
+						$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
+						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
+						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+							
+				
+							
+						$pagina="contAvocoConocimientoSeleccion.aspx";
+				
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+				
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+				
+				
+						die();
+							
+							
+							
+					}else{
+							
+				
+						$id_impulsor=$_SESSION['id_usuarios'];
+						$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+						$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+							
+							
+							
+						$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
+						$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
+						$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
+						$res_fecha_documento_3_reemplazar = $res_fecha_documento_3;
+							
+						if($fecha_solicitud_restructuracion_reemplazar !=""){
+				
+							$res_fecha_documento_1_reemplazar= 'null';
+							$res_fecha_documento_2_reemplazar= 'null';
+							$res_fecha_documento_3_reemplazar= 'null';
+				
+							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
+							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$id_secretario','$id_estados_procesales_juicios_actualizar',
+							'$fecha_oficio_restructuracion',
+							'$fecha_solicitud_restructuracion_reemplazar',
+							'$referencia',
+							'$res_nombre_numero_documento_1',
+							$res_fecha_documento_1_reemplazar,
+							'$res_nombre_numero_documento_2',
+							$res_fecha_documento_2_reemplazar,
+							'$res_nombre_numero_documento_3',
+							$res_fecha_documento_3_reemplazar";
+				
+						}else{
+				
+							$fecha_solicitud_restructuracion_reemplazar= 'null';
+							$res_fecha_documento_1_reemplazar= 'null';
+							$res_fecha_documento_2_reemplazar= 'null';
+							$res_fecha_documento_3_reemplazar= 'null';
+				
+							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
+							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$id_secretario','$id_estados_procesales_juicios_actualizar',
+							'$fecha_oficio_restructuracion',
+							$fecha_solicitud_restructuracion_reemplazar,
+							'$referencia',
+							'$res_nombre_numero_documento_1',
+							$res_fecha_documento_1_reemplazar,
+							'$res_nombre_numero_documento_2',
+							$res_fecha_documento_2_reemplazar,
+							'$res_nombre_numero_documento_3',
+							$res_fecha_documento_3_reemplazar";
+				
+				
+				
+						}
+							
+						$funcion = "ins_providencias_restructuracion";
+						$providencias->setFuncion($funcion);
+						$providencias->setParametros($parametros);
+						$resultado=$providencias->Insert();
+				
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
+				
+						$traza=new TrazasModel();
+						$_nombre_controlador = "MATRIZ JUICIOS";
+						$_accion_trazas  = "Genero Providencia de Restructuración y Avoco Conocimiento";
+						$_parametros_trazas = $id_juicios;
+						$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+							
+							
+							
+				
+				
+						$parametros = array();
+				
+						$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+						$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+						$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+						$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+						$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+						$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+				
+						$parametros['nombre_impulsor_anterior']=isset($nombre_impulsor_anterior)?trim($nombre_impulsor_anterior):'';
+						$parametros['nombre_secretario_anterior']=isset($nombre_secretario_anterior)?trim($nombre_secretario_anterior):'';
+						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+						$parametros['numero_liquidacion']=isset($numero_liquidacion)?trim($numero_liquidacion):'';
+						$parametros['fecha_auto_pago']=isset($fecha_auto_pago)?trim($fecha_auto_pago):'';
+						$parametros['ruta_avoco']=$ruta_providencias;
+						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				
+						$parametros['reemplazar']=$reemplazar;
+				
+						$parametros['numero_oficio']=isset($numero_oficio)?trim($numero_oficio):'';
+						$parametros['fecha_oficio']=isset($fecha_oficio)?trim($fecha_oficio):'';
+						$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
+						$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
+				
+							
+							
+						$parametros['numero_oficio_restructuracion']=isset($numero_oficio_restructuracion)?trim($numero_oficio_restructuracion):'';
+						$parametros['fecha_oficio_restructuracion']=isset($fecha_oficio_restructuracion)?trim($fecha_oficio_restructuracion):'';
+						$parametros['numero_solicitud_restructuracion']=isset($numero_solicitud_restructuracion)?trim($numero_solicitud_restructuracion):'';
+						$parametros['fecha_solicitud_restructuracion']=isset($fecha_solicitud_restructuracion)?trim($fecha_solicitud_restructuracion):'';
+							
+						$parametros['acta_validacion_restructuracion']=isset($acta_validacion_restructuracion)?trim($acta_validacion_restructuracion):'';
+						$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+				
+							
+						$parametros['nombre_numero_documento_1']=isset($res_nombre_numero_documento_1)?trim($res_nombre_numero_documento_1):'';
+						$parametros['fecha_documento_1']=isset($res_fecha_documento_1)?trim($res_fecha_documento_1):'';
+						$parametros['nombre_numero_documento_2']=isset($res_nombre_numero_documento_2)?trim($res_nombre_numero_documento_2):'';
+						$parametros['fecha_documento_2']=isset($res_fecha_documento_2)?trim($res_fecha_documento_2):'';
+						$parametros['nombre_numero_documento_3']=isset($res_nombre_numero_documento_3)?trim($res_nombre_numero_documento_3):'';
+						$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
+				
+						$parametros['referencia']=isset($referencia)?trim($referencia):'';
+				
+				
+						$pagina="contAvocoConocimientoSeleccion.aspx";
+				
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+				
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+				
+				
+						die();
+							
+							
+					}
+				
+				
+				}
+					
+					
+					
+				
+				
+					
+			}
+			
+			
+			
 	
 		}
 		
