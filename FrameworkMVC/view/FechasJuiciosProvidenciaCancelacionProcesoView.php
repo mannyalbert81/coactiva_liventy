@@ -85,17 +85,15 @@
 			
           var tipo_avoco = $(this).val();
 			
-          if(tipo_avoco == 7)
+          if(tipo_avoco == 15)
           {
-       	   $("#div_reemplazar").fadeIn("slow");
+       	   $("#div_datos_agregar_disposicion").fadeIn("slow");
           }
        	
           else
           {
-       	   $("#div_reemplazar").fadeOut("slow");
-       	  $("#div_datos_impulsor").fadeOut("slow");
-    	  $("#div_datos_secretario").fadeOut("slow");
-          }
+       	   $("#div_datos_agregar_disposicion").fadeOut("slow");
+       	   }
          
 	    });
 	    
@@ -105,17 +103,15 @@
               var tipo_avoco = $(this).val();
 				
               
-              if(tipo_avoco == 7)
+              if(tipo_avoco == 15)
               {
-           	   $("#div_reemplazar").fadeIn("slow");
+           	   $("#div_datos_agregar_disposicion").fadeIn("slow");
               }
            	
               else
               {
-           	   $("#div_reemplazar").fadeOut("slow");
-           	  $("#div_datos_impulsor").fadeOut("slow");
-        	  $("#div_datos_secretario").fadeOut("slow");
-              }
+           	   $("#div_datos_agregar_disposicion").fadeOut("slow");
+           	   }
               
               
 		    });
@@ -5074,14 +5070,18 @@
 			  	<p  class="formulario-subtitulo">Tipo Levantamiento:</p>
 			  	<select name="tipo_lev" id="tipo_lev"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
-						<option value="con_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'con_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Con levantamiento de Suspensión</option>
-						<option value="sin_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'sin_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Sin levantamiento de Suspensión</option>
+						<option value="con_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'con_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Con Levantamiento</option>
+						<option value="sin_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->numero_oficio_3_levantamiento_providencias == 'sin_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Sin Levantamiento</option>
 						
 			    </select>
 			    <div id="mensaje_tipo_lev" class="errores"></div>
 			    </div>
 	            
 	            <br>
+	             
+	             
+	             
+	             
 	             
 	             
 	            <div class="col-lg-6 col-md-6 col-xs-12">
@@ -5275,6 +5275,16 @@
 	            </div>
 	            </div>
 	            </div>
+	            
+	            <div id="div_datos_agregar_disposicion" style="display: none;">
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional):</p>
+			  	<input type="text"  name="res_agregar_disposicion" id="res_agregar_disposicion" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"/> 
+	            <div id="mensaje_res_agregar_disposicion" class="errores"></div>
+	            </div>
+	            </div>
+	            
+	            
 	            
 	            <div class="col-xs-12 col-md-10 col-lg-10" style="margin-top: 17px;">
 		                          <p class="formulario-subtitulo" >Referencia de Entidades (Opcional: Si desea nombrar a alguna entidad Ingresela):</p>
