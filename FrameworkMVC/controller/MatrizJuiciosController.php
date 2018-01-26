@@ -3395,7 +3395,10 @@
 					
 				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-					
+				$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+				
+				
+				
 				$genero_oficio="TRUE";
 					
 				if($cantidad_oficios_generar=="1"){
@@ -3535,7 +3538,7 @@
 				$resultado=$providencias->Insert();
 					
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_SUSPENSION'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 					
 				$traza=new TrazasModel();
@@ -3833,6 +3836,10 @@
 			$estado_procesal = new EstadosProcesalesModel();
 			$resultEstadoProcesal =$estado_procesal->getAll("nombre_estados_procesales_juicios");
 				
+			
+
+
+			
 			$datos=array();
 		
 		
@@ -4317,8 +4324,11 @@
 				
 				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-				
+				$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
 				$genero_oficio="TRUE";
+				
+				
+				
 				
 				
 				if($cantidad_oficios_generar=="1"){
@@ -4426,7 +4436,7 @@
 				$resultado=$providencias->Insert();
 					
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 				
 				$traza=new TrazasModel();
@@ -4719,7 +4729,7 @@
 				
 						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-				
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
 						$genero_oficio="TRUE";
 				
 				
@@ -4828,7 +4838,7 @@
 						$resultado=$providencias->Insert();
 							
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='AVOCO_CONOCIMIENTO'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 				
 						$traza=new TrazasModel();
@@ -8371,9 +8381,41 @@
 					 
 					$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-					 
+					$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+					
+					if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+					{
+						//$identificador_ofi_x_secretaria
+					
+						if (strlen($identificador_ofi_x_secretaria) == 1)
+						{
+							$identificador_secretaria = $identificador_secretaria ."000";
+								
+						}
+					
+						if (strlen($identificador_ofi_x_secretaria) == 2)
+						{
+							$identificador_secretaria = $identificador_secretaria ."00";
+					
+						}
+					
+						if (strlen($identificador_ofi_x_secretaria) == 3)
+						{
+							$identificador_secretaria = $identificador_secretaria ."0";
+					
+						}
+					
+					
+							
+					}
+						
+					
+					
+					
+					
 					$genero_oficio="TRUE";
 					 
+					
 					
 					if($cantidad_oficios_generar=="1"){
 							
@@ -8497,7 +8539,7 @@
 					$resultado=$providencias->Insert();
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_DISCAPACIDAD'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 						
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -8722,7 +8764,35 @@
 					
 					$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+					$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
 					
+					if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+					{
+						//$identificador_ofi_x_secretaria
+					
+						if (strlen($identificador_ofi_x_secretaria) == 1)
+						{
+						
+							$identificador_secretaria = $identificador_secretaria ."000";
+								
+						}
+					
+						if (strlen($identificador_ofi_x_secretaria) == 2)
+						{
+							$identificador_secretaria = $identificador_secretaria ."00";
+					
+						}
+					
+						if (strlen($identificador_ofi_x_secretaria) == 3)
+						{
+							$identificador_secretaria = $identificador_secretaria ."0";
+					
+						}
+					
+					
+							
+					}
+						
 					$genero_oficio="TRUE";
 					
 					if($cantidad_oficios_generar_1=="1"){
@@ -9276,6 +9346,35 @@
 		    	
 		    	$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 		    	$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+		    	$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+		    	
+		    	
+		    	if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+		    	{
+		    		//$identificador_ofi_x_secretaria
+		    	
+		    		if (strlen($identificador_ofi_x_secretaria) == 1)
+		    		{
+		    			$identificador_secretaria = $identificador_secretaria ."000";
+		    				
+		    		}
+		    	
+		    		if (strlen($identificador_ofi_x_secretaria) == 2)
+		    		{
+		    			$identificador_secretaria = $identificador_secretaria ."00";
+		    	
+		    		}
+		    	
+		    		if (strlen($identificador_ofi_x_secretaria) == 3)
+		    		{
+		    			$identificador_secretaria = $identificador_secretaria ."0";
+		    	
+		    		}
+		    	
+		    	
+		    			
+		    	}
+		    		
 		    	
 		    	$genero_oficio="TRUE";
 		    	
@@ -9420,7 +9519,7 @@
 		    	$resultado=$providencias->Insert();
 		    	
 		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
-		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 		    	 
 		    	
 		    	
@@ -10189,7 +10288,35 @@
 					 
 					$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-					 
+					$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+					
+					if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+					{
+						//$identificador_ofi_x_secretaria
+						
+						if (strlen($identificador_ofi_x_secretaria) == 1)
+						{
+							$identificador_secretaria = $identificador_secretaria ."000"; 
+							
+						}
+						
+						if (strlen($identificador_ofi_x_secretaria) == 2)
+						{
+							$identificador_secretaria = $identificador_secretaria ."00";
+								
+						}
+						
+						if (strlen($identificador_ofi_x_secretaria) == 3)
+						{
+							$identificador_secretaria = $identificador_secretaria ."0";
+						
+						}
+						
+						
+					
+					}
+					
+					
 					$genero_oficio="TRUE";
 					 
 					
@@ -10408,7 +10535,7 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 					 
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -10700,7 +10827,36 @@
 				
 						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-				
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+						
+						
+						if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+						{
+							//$identificador_ofi_x_secretaria
+						
+							if (strlen($identificador_ofi_x_secretaria) == 1)
+							{
+								$identificador_secretaria = $identificador_secretaria ."000";
+									
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 2)
+							{
+								$identificador_secretaria = $identificador_secretaria ."00";
+						
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 3)
+							{
+								$identificador_secretaria = $identificador_secretaria ."0";
+						
+							}
+						
+						
+								
+						}
+							
+						
 						$genero_oficio="TRUE";
 				
 							
@@ -10919,7 +11075,7 @@
 							
 							
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
@@ -11214,7 +11370,33 @@
 			   	
 			   	$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 			   	$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+			   	$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+			   	if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+			   	{
+			   		//$identificador_ofi_x_secretaria
 			   	
+			   		if (strlen($identificador_ofi_x_secretaria) == 1)
+			   		{
+			   			$identificador_secretaria = $identificador_secretaria ."000";
+			   				
+			   		}
+			   	
+			   		if (strlen($identificador_ofi_x_secretaria) == 2)
+			   		{
+			   			$identificador_secretaria = $identificador_secretaria ."00";
+			   	
+			   		}
+			   	
+			   		if (strlen($identificador_ofi_x_secretaria) == 3)
+			   		{
+			   			$identificador_secretaria = $identificador_secretaria ."0";
+			   	
+			   		}
+			   	
+			   	
+			   			
+			   	}
+			   		
 			   	
 			   	$genero_oficio="TRUE";
 			   	
@@ -11737,8 +11919,34 @@
 						 
 						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-						 
-						 
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+						if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+						{
+							//$identificador_ofi_x_secretaria
+						
+							if (strlen($identificador_ofi_x_secretaria) == 1)
+							{
+								$identificador_secretaria = $identificador_secretaria ."000";
+									
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 2)
+							{
+								$identificador_secretaria = $identificador_secretaria ."00";
+						
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 3)
+							{
+								$identificador_secretaria = $identificador_secretaria ."0";
+						
+							}
+						
+						
+								
+						}
+							
+						
 						$genero_oficio="TRUE";
 						 
 				
@@ -12288,8 +12496,35 @@
 							
 						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
 							
+						if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+						{
+							//$identificador_ofi_x_secretaria
+						
+							if (strlen($identificador_ofi_x_secretaria) == 1)
+							{
+								$identificador_secretaria = $identificador_secretaria ."000";
+									
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 2)
+							{
+								$identificador_secretaria = $identificador_secretaria ."00";
+						
+							}
+						
+							if (strlen($identificador_ofi_x_secretaria) == 3)
+							{
+								$identificador_secretaria = $identificador_secretaria ."0";
+						
+							}
+						
+						
+								
+						}
 							
+						
 						$genero_oficio="TRUE";
 							
 						
@@ -13723,7 +13958,35 @@
 					
 				$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 				$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+				$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+				
+				if ($identificador_secretaria == "BNF-LIQ-UIO-S3-2018-")
+				{
+					//$identificador_ofi_x_secretaria
+				
+					if (strlen($identificador_ofi_x_secretaria) == 1)
+					{
+						$identificador_secretaria = $identificador_secretaria ."000";
+							
+					}
+				
+					if (strlen($identificador_ofi_x_secretaria) == 2)
+					{
+						$identificador_secretaria = $identificador_secretaria ."00";
+				
+					}
+				
+					if (strlen($identificador_ofi_x_secretaria) == 3)
+					{
+						$identificador_secretaria = $identificador_secretaria ."0";
+				
+					}
+				
+				
+						
+				}
 					
+				
 				$genero_oficio="TRUE";
 					
 				
@@ -13862,7 +14125,7 @@
 				$resultado=$providencias->Insert();
 				
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 					
 				$traza=new TrazasModel();
