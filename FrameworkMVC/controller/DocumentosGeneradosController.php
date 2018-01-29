@@ -7,15 +7,8 @@ public function __construct() {
    
 
 
-
-
-
-
 public function index3(){
 	
-
-
-
 	session_start();
 	
 	if (isset(  $_SESSION['usuario_usuarios']) )
@@ -43,10 +36,6 @@ public function index3(){
 		$resultOrigen =$origen_juicios->getAll("nombre_origen_juicio");
 		
 		
-		
-		
-	
-	
 		$nombre_controladores = "MatrizJuiciosCordinador";
 		$id_rol= $_SESSION['id_rol'];
 		$resultPerVer= $clientes->getPermisosVer("controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
@@ -68,7 +57,6 @@ public function index3(){
 			$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 			if($action == 'ajax')
 			{
-				
 				
 				
 				$juicio_referido_titulo_credito=(isset($_POST['juicio_referido_titulo_credito']))?$_POST['juicio_referido_titulo_credito']:'';
@@ -2798,6 +2786,13 @@ public function firmar()
             		$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios', fecha_ultima_providencia='$fecha_avoco_conocimiento'", "juicios", "id_juicios='$id_juicios'");
             		
             		
+            		$historial_juicios = new HistorialJuiciosModel();
+            		$funcion = "ins_historial_juicios";
+            		$parametros = "'$id_juicios', '$id_estados_procesales_juicios', '$fecha_avoco_conocimiento'";
+            		$historial_juicios->setFuncion($funcion);
+            		$historial_juicios->setParametros($parametros);
+            		$resultado=$historial_juicios->Insert();
+            		
             	}
             
             }
@@ -3110,6 +3105,12 @@ public function firmar()
 			
 					$juicios->UpdateBy("id_estados_procesales_juicios='$id_estados_procesales_juicios', fecha_ultima_providencia='$fecha_providencias'", "juicios", "id_juicios='$id_juicios'");
 			
+					$historial_juicios = new HistorialJuiciosModel();
+					$funcion = "ins_historial_juicios";
+					$parametros = "'$id_juicios', '$id_estados_procesales_juicios', '$fecha_providencias'";
+					$historial_juicios->setFuncion($funcion);
+					$historial_juicios->setParametros($parametros);
+					$resultado=$historial_juicios->Insert();
 			
 				}
 			
