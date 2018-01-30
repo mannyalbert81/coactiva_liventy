@@ -2623,6 +2623,458 @@ public function eliminar()
 
 
 
+
+
+
+
+
+
+public function eliminar_impulsor()
+{
+
+	if(isset($_GET["id_documento"]))
+	{
+		$id_documento=(int)$_GET["id_documento"];
+		$ruta=$_GET["ruta"];
+		$nombre_doc=$_GET["nombre_doc"];
+		$nombre_doc .= ".pdf";
+
+
+
+
+		$directorio = 'F:/coactiva/Documentos/' . $ruta . '/' . $nombre_doc;
+
+
+
+		if($ruta=="Oficios"){
+
+			$oficios=new OficiosModel();
+				
+			$resultDocumento = $oficios->getBy("id_oficios='$id_documento'" );
+			$asignacion_secretarios = new AsignacionSecretariosModel();
+				
+
+			if (! empty($resultDocumento)) {
+				$id_juicios = $resultDocumento[0]->id_juicios;
+				$id_impulsor = $resultDocumento[0]->id_usuario_registra_oficios;
+				$nombre_documento = $resultDocumento[0]->nombre_oficio;
+					
+				$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+				$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+					
+
+
+
+				if($id_juicios>0){
+
+					$tipo_notificaciones = new TipoNotificacionModel();
+					$descripcion_tipo_notificacion="Elimino Oficios";
+					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+						
+						
+					$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+					if (!empty($resultTipNoti)) {
+						$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+
+							
+						if($id_tipo_notificacion>0){
+								
+							$notificaciones = new NotificacionesModel();
+							$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+						}
+							
+					}
+						
+						
+						
+				}
+					
+			}
+				
+				
+			try {
+					
+				$eliminado=unlink($directorio);
+				$oficios->deleteBy("id_oficios",$id_documento);
+					
+					
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}
+
+
+			$traza=new TrazasModel();
+			$_nombre_controlador = "Oficios";
+			$_accion_trazas  = "Borrar";
+			$_parametros_trazas = $id_documento;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+
+		}
+
+
+
+
+		if($ruta=="Avoco_Conocimiento"){
+				
+			$avoco_conocimiento=new AvocoConocimientoModel();
+				
+			$resultDocumento = $avoco_conocimiento->getBy("id_avoco_conocimiento='$id_documento'" );
+				
+			if (! empty($resultDocumento)) {
+				$id_juicios = $resultDocumento[0]->id_juicios;
+				$tipo_avoco = $resultDocumento[0]->tipo_avoco;
+				$id_impulsor = $resultDocumento[0]->id_impulsor;
+				$id_secretario = $resultDocumento[0]->id_secretario;
+				$nombre_documento = $resultDocumento[0]->nombre_documento;
+					
+					
+				if($tipo_avoco > 0 && $id_juicios>0){
+
+					if($tipo_avoco==7){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Avoco Conocimiento Nuevos Procesos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+							}
+								
+						}
+							
+					}
+						
+						
+					if($tipo_avoco==12){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Avoco Conocimiento Cambio Liquidador";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+							}
+
+						}
+							
+					}
+						
+						
+				}
+					
+			}
+				
+				
+			try {
+					
+				//	$eliminado=unlink($directorio);
+				$avoco_conocimiento->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
+
+				//$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
+					
+					
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}
+				
+				
+			$traza=new TrazasModel();
+			$_nombre_controlador = "Avoco Conocimiento";
+			$_accion_trazas  = "Borrar";
+			$_parametros_trazas = $id_documento;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+		}
+
+
+
+		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"    ){
+
+			$providencias=new ProvidenciasModel();
+			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
+
+			if (! empty($resultDocumento)) {
+				$id_juicios = $resultDocumento[0]->id_juicios;
+				$tipo_providencias = $resultDocumento[0]->id_tipo_providencias;
+				$id_impulsor = $resultDocumento[0]->id_impulsor;
+				$id_secretario = $resultDocumento[0]->id_secretario;
+				$nombre_archivo_providencias = $resultDocumento[0]->nombre_archivo_providencias;
+					
+					
+					
+				if($tipo_providencias > 0 && $id_juicios > 0){
+						
+					if($tipo_providencias==1){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Suspensión";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+					}
+					if($tipo_providencias==2){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Levantamiento";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+							
+					}
+					if($tipo_providencias==3){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Pago Total";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+					}
+					if($tipo_providencias==4){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Reestructuración";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+					}
+					if($tipo_providencias==5){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Embargo Cuenta Bancaria";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+					}
+					if($tipo_providencias==6){
+							
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Levantamiento Medida Cautelar Discapacidad";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+					}
+
+
+					if($tipo_providencias==7){
+							
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Levantamiento Medida Cautelar Fallecimiento";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+
+
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+
+						}
+							
+							
+					}
+						
+						
+					if($tipo_providencias==8){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Reestructuración con Avoco Conocimiento";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+
+
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+
+						}
+							
+					}
+						
+					if($tipo_providencias==9){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Pago Total con Avoco Conocimiento";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+
+
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+
+						}
+							
+							
+					}
+						
+						
+				}
+					
+			}
+				
+				
+				
+				
+			try {
+					
+				//$eliminado=unlink($directorio);
+				$providencias->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "providencias", "id_providencias='$id_documento'");
+
+				//$providencias->deleteBy("id_providencias",$id_documento);
+					
+					
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}
+				
+
+			$traza=new TrazasModel();
+			$_nombre_controlador = "Providencias";
+			$_accion_trazas  = "Borrar";
+			$_parametros_trazas = $id_documento;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+		}
+
+
+
+	}
+
+	$this->redirect("DocumentosGenerados", "index");
+}
+
+
+
+
+
+
 public function firmar()
 {
 
@@ -4110,7 +4562,7 @@ session_start();
 			
 			}
 			if($firmado=='f'){
-				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
+				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar_impulsor&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
 				//$html.='<td colspan="2" style="font-size: 18px; text-aling:center;"><a href="#" class="btn btn-primary" style="font-size:65%;"><i class="glyphicon glyphicon-alert"> Revisando</i></a></td>';
 			
 			}

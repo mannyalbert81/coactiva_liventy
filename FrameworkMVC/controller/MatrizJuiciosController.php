@@ -5083,6 +5083,8 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+									  providencias.dispone_1,
+									  providencias.dispone_2,
 									  providencias.fecha_oficio_restructuracion,
 									  providencias.fecha_restructuracion,
 									  providencias.referencia_entidades_restructuracion,
@@ -16731,6 +16733,9 @@
 			
 			
 			$res_agregar_disposicion= $_POST['res_agregar_disposicion'];
+			$res_agregar_disposicion_1= $_POST['res_agregar_disposicion_1'];
+			$res_agregar_disposicion_2= $_POST['res_agregar_disposicion_2'];
+			
 			
 			
 			$cantidad_oficios_generar_1= $_POST['cantidad_oficios_generar_1'];
@@ -21410,7 +21415,7 @@
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 			   	'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', 
 			   	'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-			   	'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   	'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 			   	'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio', 
 			   	'$entidad_va_oficio', '$asunto',
 			   	'$identificador_oficio_1',
@@ -21444,7 +21449,9 @@
 			   	'$res_nombre_numero_documento_2',
 			   	$res_fecha_documento_2_reemplazar,
 			   	'$res_nombre_numero_documento_3',
-			   	$res_fecha_documento_3_reemplazar";
+			   	$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 			   	
 			   	}else {
 			   		
@@ -21457,7 +21464,7 @@
 			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 			   		'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 			   		'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-			   		'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   		'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 			   		'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
 			   		'$entidad_va_oficio', '$asunto',
 			   		'$identificador_oficio_1',
@@ -21491,7 +21498,9 @@
 			   		'$res_nombre_numero_documento_2',
 			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
-			   		$res_fecha_documento_3_reemplazar";
+			   		$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 			   		
 			   		
 			   		
@@ -21584,6 +21593,9 @@
 			   	$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 			   	$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 			   	$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+			   	$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 			   	
 			   	
 			   	
@@ -21623,7 +21635,7 @@
 			   		
 			   	$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 			   	'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-			   	'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   	'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 			   	'$id_secretario','$id_estados_procesales_juicios_actualizar',
 			   	'$fecha_oficio_restructuracion',
 			   	'$fecha_solicitud_restructuracion_reemplazar',
@@ -21633,7 +21645,9 @@
 			   	'$res_nombre_numero_documento_2',
 			   	$res_fecha_documento_2_reemplazar,
 			   	'$res_nombre_numero_documento_3',
-			   	$res_fecha_documento_3_reemplazar";
+			   	$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 			   	
 			   	}else{
 			   		
@@ -21644,7 +21658,7 @@
 			   		
 			   		$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 			   		'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-			   		'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+			   		'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 			   		'$id_secretario','$id_estados_procesales_juicios_actualizar',
 			   		'$fecha_oficio_restructuracion',
 			   		$fecha_solicitud_restructuracion_reemplazar,
@@ -21654,7 +21668,9 @@
 			   		'$res_nombre_numero_documento_2',
 			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
-			   		$res_fecha_documento_3_reemplazar";
+			   		$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 			   		
 			   		
 			   		
@@ -21721,7 +21737,10 @@
 			   	$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
 			   	 
 			   	$parametros['referencia']=isset($referencia)?trim($referencia):'';
-			   	 
+			   	$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
+			   	
 			   		
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
 			   		
@@ -23048,7 +23067,7 @@
 							$parametros1 = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 							'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
 							'$entidad_va_oficio', '$asunto',
 							'$identificador_oficio_1',
@@ -23082,7 +23101,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 							 
 						}else {
 				
@@ -23106,7 +23127,7 @@
 							'$numero_solicitud_restructuracion',
 							'$acta_validacion_restructuracion',
 							'$tipo_lev',
-							'$dirigido_levantamiento',
+							'$res_agregar_disposicion',
 							'$id_impulsor',
 							'$id_secretario',
 							'$id_estados_procesales_juicios_actualizar',
@@ -23145,7 +23166,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 				
 						
@@ -23284,7 +23307,7 @@
 				
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio_restructuracion',
 							'$fecha_solicitud_restructuracion_reemplazar',
@@ -23294,7 +23317,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 							 
 						}else{
 				
@@ -23305,7 +23330,7 @@
 				
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio_restructuracion',
 							$fecha_solicitud_restructuracion_reemplazar,
@@ -23315,7 +23340,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 				
 				
@@ -24723,7 +24750,7 @@
 							$parametros1 = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 							'$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
 							'$entidad_va_oficio', '$asunto',
 							'$identificador_oficio_1',
@@ -24757,7 +24784,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 						}else {
 				
@@ -24781,7 +24810,7 @@
 							'$numero_solicitud_restructuracion',
 							'$acta_validacion_restructuracion',
 							'$tipo_lev',
-							'$dirigido_levantamiento',
+							'$res_agregar_disposicion',
 							'$id_impulsor',
 							'$id_secretario',
 							'$id_estados_procesales_juicios_actualizar',
@@ -24820,7 +24849,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 				
 				
@@ -24921,6 +24952,8 @@
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+						$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 						
 						
 				
@@ -24961,7 +24994,7 @@
 				
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio_restructuracion',
 							'$fecha_solicitud_restructuracion_reemplazar',
@@ -24971,7 +25004,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 						}else{
 				
@@ -24982,7 +25017,7 @@
 				
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias','$ruta_providencias', '$fecha_avoco',
 							'$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_restructuracion', '$numero_solicitud_restructuracion',
-							'$acta_validacion_restructuracion', '$tipo_lev', '$dirigido_levantamiento', '$id_impulsor',
+							'$acta_validacion_restructuracion', '$tipo_lev', '$res_agregar_disposicion', '$id_impulsor',
 							'$id_secretario','$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio_restructuracion',
 							$fecha_solicitud_restructuracion_reemplazar,
@@ -24992,7 +25027,9 @@
 							'$res_nombre_numero_documento_2',
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
-							$res_fecha_documento_3_reemplazar";
+							$res_fecha_documento_3_reemplazar,
+			   	'$res_agregar_disposicion_1',
+			   	'$res_agregar_disposicion_2'";
 				
 				
 				
@@ -25060,6 +25097,8 @@
 				
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
 						$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+						$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 						
 				
 						$pagina="contAvocoConocimientoSeleccion.aspx";
