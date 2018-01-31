@@ -4991,7 +4991,7 @@
 				
 				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
 				$tablas_id="providencias";
-				$where_id ="id_juicios ='$id_juicios' AND id_tipo_providencias=3 GROUP BY id_juicios";
+				$where_id ="id_juicios ='$id_juicios' AND (id_tipo_providencias=3 OR id_tipo_providencias=9) GROUP BY id_juicios";
 				$id_id="id_providencias";
 				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
 					
@@ -5063,7 +5063,7 @@
 
 				$columnas_id_2 = "MAX(id_providencias) as id_providencias, id_juicios";
 				$tablas_id_2="providencias";
-				$where_id_2 ="id_juicios ='$id_juicios' AND id_tipo_providencias=4 GROUP BY id_juicios";
+				$where_id_2 ="id_juicios ='$id_juicios' AND (id_tipo_providencias=4 OR id_tipo_providencias=8) GROUP BY id_juicios";
 				$id_id_2="id_providencias";
 				$resultSet_id_2=$providencias->getCondiciones($columnas_id_2, $tablas_id_2, $where_id_2, $id_id_2);
 					
