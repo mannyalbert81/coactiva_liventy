@@ -82,7 +82,7 @@
        	foreach($resultEstadoProcesal_grafico as $res) {
        		 
        		$data.="'";
-       		$data.=$res->nombre_estados_procesales_juicios."',";
+       		$data.=$res->nombre_tipo_providencias."',";
        		 
        	}
        	 
@@ -119,7 +119,7 @@
   
        <!-- empieza el form --> 
        
-      <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+      <form action="<?php echo $helper->url("GraficasMatrizJuicios","index4"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
          
                  <!-- comienxza busqueda  -->
                  
@@ -127,7 +127,7 @@
          <div class="col-lg-12">
 	         <div class="panel panel-info">
 	         <div class="panel-heading">
-	         <h4><i class='glyphicon glyphicon-edit'></i> Estados Procesales</h4>
+	         <h4><i class='glyphicon glyphicon-edit'></i> Oficios Generados</h4>
 	         </div>
 	         <div class="panel-body">
 			 <div class="panel panel-default">
@@ -198,12 +198,12 @@
   		
   		<div class="col-lg-12 col-md-12 xs-12 " style="text-align: center; margin-top: 10px">
   		
-		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
+		<button type="submit" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index4"); ?>'; this.form.target = '_self'; this.form.submit()" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
 		
 		
 		 <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    
-	    <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>'; this.form.target = '_blank'; this.form.submit()"  class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
+	    <button type="submit" id="reporte_rpt" name="reporte_rpt" value="Imprimir Gráfica" onclick = "this.form.action = '<?php echo $helper->url("GraficasMatrizJuicios","index4"); ?>'; this.form.target = '_blank'; this.form.submit()"  class="btn btn-success" style="margin-top: 10px;" ><i class="glyphicon glyphicon-print"></i> Imprimir Gráfica</button>         
 	  
 		<?php } ?>
 		
@@ -230,7 +230,7 @@
 			
 		
 		<?php  }?>
-         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
+         <form action="<?php echo $helper->url("GraficasMatrizJuicios","index4"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" target="_blank">
       
        <?php  if (!empty($resultEstadoProcesal_grafico)) {	?>	 
 	    <div class="col-lg-12">
