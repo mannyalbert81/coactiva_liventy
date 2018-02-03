@@ -85,7 +85,7 @@
 			
           var tipo_avoco = $(this).val();
 			
-          if(tipo_avoco == 15)
+          if(tipo_avoco == 15 || tipo_avoco == 8 ) 
           {
        	   $("#div_datos_agregar_disposicion").fadeIn("slow");
           }
@@ -103,7 +103,7 @@
               var tipo_avoco = $(this).val();
 				
               
-              if(tipo_avoco == 15)
+              if(tipo_avoco == 15 || tipo_avoco == 8)
               {
            	   $("#div_datos_agregar_disposicion").fadeIn("slow");
               }
@@ -5278,9 +5278,21 @@
 	            
 	            <div id="div_datos_agregar_disposicion" style="display: none;">
 	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
-			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional):</p>
-			  	<input type="text"  name="res_agregar_disposicion" id="res_agregar_disposicion" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"/> 
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 1):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion" id="res_agregar_disposicion" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dirigido_levantamiento_providencias;}}else{} ?></textarea>
 	            <div id="mensaje_res_agregar_disposicion" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 2):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_1" id="res_agregar_disposicion_1" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dispone_1;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_1" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 3):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_2" id="res_agregar_disposicion_2" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dispone_2;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_2" class="errores"></div>
 	            </div>
 	            </div>
 	            

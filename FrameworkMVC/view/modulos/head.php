@@ -131,7 +131,7 @@ $(document).ready(function(){
 		
 			 if  (isset( $_SESSION['nombre_usuarios'] ))  {  
 		?>
-		  <input type="image" name="image" style="margin-top:5px;" src="view/DevuelveImagen.php?id_valor=<?php echo $_SESSION['id_usuarios']; ?>&id_nombre=id_usuarios&tabla=usuarios&campo=imagen_usuarios"  alt="<?php echo $_SESSION['id_usuarios'];?>" width="70" height="60"   >
+		  <input type="image" name="image" style="margin-top:4px;" src="view/DevuelveImagen.php?id_valor=<?php echo $_SESSION['id_usuarios']; ?>&id_nombre=id_usuarios&tabla=usuarios&campo=imagen_usuarios"  alt="<?php echo $_SESSION['id_usuarios'];?>" width="85" height="75"   >
  		
 		  <div class="col-xs-8 col-md-5" style="margin-top:5px;">
 									
@@ -148,9 +148,10 @@ $(document).ready(function(){
 				  </ul>
 								  
 			</div>
-		</div>
-			<!-- empieza notificacion -->
-		
+			<img src="view/images/contacto_masoft.png" style="margin-top: 10px;" class="img-responsive">
+			
+		   </div>
+			
 		
 		
 
@@ -168,7 +169,9 @@ $(document).ready(function(){
 					  </button>
 		
 		    </div>
-			</div>
+		    <br>
+		</div>
+			
 		<?php }
 				
 		 ?>
@@ -177,6 +180,7 @@ $(document).ready(function(){
    </div>  
   
  
+  
   </div>
         
 </div>

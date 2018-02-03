@@ -158,8 +158,6 @@ public function index(){
 						$resultSet=$usuarios->getCondiciones($columnas ,$tablas ,$where_to, $id);
 							
 							
-							
-							
 					}
 				}
 				
@@ -193,13 +191,11 @@ public function index(){
 		
 	}
 	
+	
 	public function InsertaUsuarios(){
-		
 		
 		$resultado = null;
 		$usuarios=new UsuariosModel();
-	
-	
 		
 		//_nombre_categorias character varying, _path_categorias character varying
 		if (isset ($_POST["usuario_usuarios"]) && isset ($_POST["nombre_usuarios"]) && isset ($_POST["clave_usuarios"]) && isset($_POST["id_rol"])  )

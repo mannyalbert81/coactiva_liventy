@@ -235,6 +235,25 @@ $controladores=$_SESSION['controladores'];
           <ul class="dropdown-menu">
           
           <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
+          <a href="index.php?controller=DocumentosGenerados&action=index3"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Documentos Generados</span> </a>
+          </li>	
+          
+          
+           <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
+          <a href="index.php?controller=GraficasMatrizJuicios&action=index4"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Oficios Generados</span> </a>
+          </li>	
+           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
+          <a href="index.php?controller=GraficasMatrizJuicios&action=index4"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Oficios Generados</span> </a>
+          </li>	
+          <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
+          <a href="index.php?controller=GraficasMatrizJuicios&action=index4"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Oficios Generados</span> </a>
+          </li>
+          
+          
+          
+          
+          
+          <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=GraficasMatrizJuicios&action=index"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Estado Procesal</span> </a>
           </li>	
            <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
@@ -256,17 +275,19 @@ $controladores=$_SESSION['controladores'];
           </li>
           
           
-          
+          <!-- 
           <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=GraficasMatrizJuicios&action=index3"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Generación Providencias</span> </a>
-          </li>	
+          </li>
+          
+           	
            <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=GraficasMatrizJuicios&action=index3"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Generación Providencias</span> </a>
           </li>	
           <li style="<?php echo getcontrolador("MatrizJuiciosSecretarios",$controladores) ?>">
           <a href="index.php?controller=GraficasMatrizJuicios&action=index3"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Generación Providencias</span> </a>
           </li>
-          <!-- 
+         
           <li style="<?php echo getcontrolador("MatrizJuicios",$controladores) ?>">
           <a href="index.php?controller=Juicio&action=index2"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true"> Titulos Fomento</span> </a>
           </li>	
@@ -301,10 +322,9 @@ $controladores=$_SESSION['controladores'];
            <li style="<?php echo getcontrolador("MatrizJuiciosCordinador",$controladores) ?>">
           <a href="index.php?controller=MatrizJuicios&action=index7"><span class=" glyphicon glyphicon-list-alt" aria-hidden="true">  Restructuración Juicios</span> </a>
           </li>	
+          
+		 
 		  
-		    <li style="<?php echo getcontrolador("Trazas",$controladores) ?>">
-          <a href="index.php?controller=Trazas&action=index"><span class="glyphicon glyphicon-save-file" aria-hidden="true"> Auditoria del Sistema</span> </a>
-          </li>
 </ul>
 </li>
 
