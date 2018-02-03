@@ -506,11 +506,8 @@ public function index(){
 					
 					}
 					
-					
-					
-					$this->view("Login",array(
-							"allusers"=>""
-					));
+				
+					$this->redirect("Usuarios", "cerrar_sesion");
 					
 					
 				}
