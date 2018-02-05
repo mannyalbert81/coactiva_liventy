@@ -120,8 +120,7 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     				$where_to  = $where . $where_0 . $where_1. $where_2 . $where_3 . $where_4 . $where_5 . $where_6;
     				$resultEstadoProcesal_grafico=$juicios->getCondiciones_grupo($columnas, $tablas, $where_to, $grupo, $id);
     	
-    	
-    	
+					
     				$html="";
     				if (!empty($resultEstadoProcesal_grafico))
     				{
@@ -135,6 +134,7 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     					$html.='</tr>';
     					$html.='</thead>';
     					$html.='<tbody>';
+						$total_general = 0;
     	
     					foreach ($resultEstadoProcesal_grafico as $res)
     					{
@@ -142,9 +142,15 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_tipo_providencias.'</td>';
     						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
     						$html.='</tr>';
+							$total_general = $total_general + $res->total;
     	
     					}
     	
+						$html.='<tr>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+							
     					$html.='</tbody>';
     					$html.='</table>';
     	
@@ -387,14 +393,23 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     					$html.='</thead>';
     					$html.='<tbody>';
     	
+    					$total_general = 0;
+    	
     					foreach ($resultEstadoProcesal_grafico as $res)
     					{
     						$html.='<tr>';
-    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_tipo_providencias.'</td>';
-    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+    						$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$res->nombre_tipo_providencias.'</td>';
+    						$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$res->total.'</td>';
     						$html.='</tr>';
+							$total_general = $total_general + $res->total;
     	
     					}
+    	
+						$html.='<tr>';
+    					$html.='<td style="text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+		
     	
     					$html.='</tbody>';
     					$html.='</table>';
@@ -631,14 +646,23 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     					$html.='</thead>';
     					$html.='<tbody>';
     	
+    					$total_general = 0;
+    	
     					foreach ($resultEstadoProcesal_grafico as $res)
     					{
     						$html.='<tr>';
     						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_tipo_providencias.'</td>';
     						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
     						$html.='</tr>';
+							$total_general = $total_general + $res->total;
     	
     					}
+    	
+						$html.='<tr>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+		
     	
     					$html.='</tbody>';
     					$html.='</table>';
@@ -878,16 +902,24 @@ public function index(){
 					$html.='</tr>';
 					$html.='</thead>';
 					$html.='<tbody>';
-						
-					foreach ($resultEstadoProcesal_grafico as $res)
-					{	
+					$total_general = 0;
+    	
+    					foreach ($resultEstadoProcesal_grafico as $res)
+    					{
+    						$html.='<tr>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+    						$html.='</tr>';
+							$total_general = $total_general + $res->total;
+    	
+    					}
+    	
 						$html.='<tr>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
-						$html.='</tr>';
-				
-					}
-						
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+		
+    		
 					$html.='</tbody>';
 					$html.='</table>';
 				
@@ -1113,16 +1145,25 @@ public function index(){
 					$html.='</tr>';
 					$html.='</thead>';
 					$html.='<tbody>';
-				
-					foreach ($resultEstadoProcesal_grafico as $res)
-					{
+		
+					$total_general = 0;
+    	
+    					foreach ($resultEstadoProcesal_grafico as $res)
+    					{
+    						$html.='<tr>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+    						$html.='</tr>';
+							$total_general = $total_general + $res->total;
+    	
+    					}
+    	
 						$html.='<tr>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
-						$html.='</tr>';
-				
-					}
-				
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+		
+    	
 					$html.='</tbody>';
 					$html.='</table>';
 				
@@ -1342,15 +1383,26 @@ public function index(){
 					$html.='</tr>';
 					$html.='</thead>';
 					$html.='<tbody>';
+						
 				
-					foreach ($resultEstadoProcesal_grafico as $res)
-					{
+					$total_general = 0;
+    	
+    					foreach ($resultEstadoProcesal_grafico as $res)
+    					{
+    						$html.='<tr>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
+    						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
+    						$html.='</tr>';
+							$total_general = $total_general + $res->total;
+    	
+    					}
+    	
 						$html.='<tr>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-						$html.='<td style="text-align: left; font-size: 11px;">'.$res->total.'</td>';
-						$html.='</tr>';
-				
-					}
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">TOTAL</td>';
+    					$html.='<td style="font-weight: bold; text-align: left; font-size: 11px;">'.$total_general.'</td>';
+    					$html.='</tr>';
+		
+    	
 				
 					$html.='</tbody>';
 					$html.='</table>';
