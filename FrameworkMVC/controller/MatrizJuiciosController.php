@@ -5334,7 +5334,7 @@
 			$dispone_1= $_POST['dispone_1'];
 			$dispone_2= $_POST['dispone_2'];
 				
-			
+			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			
 			
 			if($tipo_avoco==7){
@@ -8341,6 +8341,7 @@
 						$parametros['escrito_presentado_por']=isset($escrito_presentado_por)?trim($escrito_presentado_por):'';
 						$parametros['dispone_1']=isset($dispone_1)?trim($dispone_1):'';
 						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
+						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						
 				
 							
@@ -16930,8 +16931,18 @@
 					
 					
 					$genero_oficio="TRUE";
-					 
+					$pie_oficios=""; 
 					
+					if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+						
+			         $pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+						
+						
+					}else{
+						
+						$identificador_secretaria='JC'.$identificador_secretaria; 
+						
+					}
 
 
 
@@ -18260,7 +18271,7 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 					 
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -18332,6 +18343,10 @@
 					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_pago_total_5)?trim($referencia_oficios_tipo_lev_pago_total_5):'';
 					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_pago_total_6)?trim($referencia_oficios_tipo_lev_pago_total_6):'';
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_pago_total_7)?trim($referencia_oficios_tipo_lev_pago_total_7):'';
+					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+						
+					
+					
 					
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -18559,7 +18574,22 @@
 							
 						
 						$genero_oficio="TRUE";
-				
+						$pie_oficios="";
+							
+						if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+						
+							$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+						
+						
+						}else{
+						
+							$identificador_secretaria='JC'.$identificador_secretaria;
+						
+						}
+						
+						
+						
+						
 							
 						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 						
@@ -19885,7 +19915,7 @@
 							
 							
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
@@ -19957,6 +19987,7 @@
 						$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_pago_total_5)?trim($referencia_oficios_tipo_lev_pago_total_5):'';
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_pago_total_6)?trim($referencia_oficios_tipo_lev_pago_total_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_pago_total_7)?trim($referencia_oficios_tipo_lev_pago_total_7):'';
+						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 							
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -20185,6 +20216,21 @@
 			   		
 			   	
 			   	$genero_oficio="TRUE";
+			   	
+			   	$pie_oficios="";
+			   		
+			   	if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+			   	
+			   		$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+			   	
+			   	
+			   	}else{
+			   	
+			   		$identificador_secretaria='JC'.$identificador_secretaria;
+			   	
+			   	}
+			   	
+			   	
 			   	
 			   	
 			   	
@@ -21513,7 +21559,7 @@
 			   	$resultado=$providencias->Insert();
 			   		
 			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 			   	
 			   	$traza=new TrazasModel();
 			   	$_nombre_controlador = "MATRIZ JUICIOS";
@@ -21596,7 +21642,8 @@
 			   	$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
 			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
-			   	
+			   	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+			   		
 			   	
 			   	
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -21841,7 +21888,18 @@
 						
 						$genero_oficio="TRUE";
 						 
+						$pie_oficios="";
+							
+						if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
 						
+							$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+						
+						
+						}else{
+						
+							$identificador_secretaria='JC'.$identificador_secretaria;
+						
+						}
 
 
 						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
@@ -23187,7 +23245,7 @@
 						$resultado=$providencias->Insert();
 				
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 						 
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
@@ -23268,6 +23326,7 @@
 						$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 							
 						
 						 
@@ -23509,12 +23568,29 @@
 							
 						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
-							
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
 					
 							
 						
 						$genero_oficio="TRUE";
+						$pie_oficios="";
 							
+						if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+						
+							$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+						
+						
+						}else{
+						
+							$identificador_secretaria='JC'.$identificador_secretaria;
+						
+						}
+						
+						
+						
+						
+						
+						
 						
 						
 						
@@ -24870,7 +24946,7 @@
 						$resultado=$providencias->Insert();
 				
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 							
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
@@ -24954,7 +25030,8 @@
 						$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
 						$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
-						
+						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+							
 						
 				
 							

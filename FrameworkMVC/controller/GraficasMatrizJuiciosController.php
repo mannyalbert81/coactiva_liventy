@@ -14,6 +14,10 @@ class GraficasMatrizJuiciosController extends ControladorBase{
 
     	session_start();
     	
+    	
+    	if (isset(  $_SESSION['usuario_usuarios']) )
+    	{
+    	
     	$id_rol= $_SESSION['id_rol'];
     	
     	if ($id_rol==3){
@@ -764,6 +768,14 @@ class GraficasMatrizJuiciosController extends ControladorBase{
     	}
     	
     	
+    	}else
+			{
+				$this->view("Login",array(
+						"resultSet"=>""
+			
+				));
+			
+			}
     	 
     	
     }
@@ -791,7 +803,9 @@ class GraficasMatrizJuiciosController extends ControladorBase{
 public function index(){
 	
 		session_start();
-		
+		if (isset(  $_SESSION['usuario_usuarios']) )
+		{
+			 
 		$id_rol= $_SESSION['id_rol'];
 		
 		if ($id_rol==3){
@@ -1504,6 +1518,17 @@ public function index(){
 	}
 	
 	
+	}
+	else
+	{
+		$this->view("Login",array(
+				"resultSet"=>""
+		
+		));
+			
+	}
+	
+	
 }
 	
 
@@ -1579,9 +1604,11 @@ public function Impulsor()
 public function index2(){
 
 	session_start();
-
+	if (isset(  $_SESSION['usuario_usuarios']) )
+	{
 	$id_rol= $_SESSION['id_rol'];
-
+	
+	
 	if ($id_rol==3){
 		$_id_usuarios= $_SESSION['id_usuarios'];
 		$resultSet="";
@@ -2285,6 +2312,23 @@ public function index2(){
 
 	}
 
+	}
+	else
+	{
+		$this->view("Login",array(
+				"resultSet"=>""
+		
+		));
+			
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
 
@@ -2316,7 +2360,8 @@ public function index2(){
 public function index3(){
 
 	session_start();
-
+	if (isset(  $_SESSION['usuario_usuarios']) )
+	{
 	$id_rol= $_SESSION['id_rol'];
 
 	if ($id_rol==3){
@@ -3022,7 +3067,15 @@ public function index3(){
 
 
 	}
-
+	}
+	else
+	{
+		$this->view("Login",array(
+				"resultSet"=>""
+		
+		));
+			
+	}
 
 }
 

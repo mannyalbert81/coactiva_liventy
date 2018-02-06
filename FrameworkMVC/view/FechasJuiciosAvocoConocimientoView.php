@@ -560,7 +560,7 @@
 
 
 
-				var escrito_presentado_por= $("#escrito_presentado_por").val();
+				var remplaza_impulsor= $("#remplaza_impulsor").val();
 				var dispone_1= $("#dispone_1").val();
 				//var dispone_2= $("#dispone_2").val();
 
@@ -1450,24 +1450,46 @@
 
 
 
-
-/*
-
-				if (tipo_avoco == 12 && escrito_presentado_por == "")
+				
+				if (tipo_avoco == 12 && remplaza_impulsor == "")
 		    	{
 			    	
-		    		$("#mensaje_escrito_presentado_por").text("Ingrese nombre");
-		    		$("#mensaje_escrito_presentado_por").fadeIn("slow"); //Muestra mensaje de error
+		    		$("#mensaje_remplaza_impulsor").text("Seleccione");
+		    		$("#mensaje_remplaza_impulsor").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_escrito_presentado_por").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_remplaza_impulsor").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
 
 
+				if (tipo_avoco == 12 && remplaza_impulsor == "Si")
+		    	{
+
+
+					if(dispone_1==""){
+						$("#mensaje_dispone_1").text("Ingrese Disposición");
+			    		$("#mensaje_dispone_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+					}else{
+
+						$("#mensaje_dispone_1").fadeOut("slow"); //Muestra mensaje de error
+						}
+			    	
+		    		
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_dispone_1").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				/*
 
 				if (tipo_avoco == 12 && dispone_1 == "")
 		    	{
@@ -1580,17 +1602,19 @@
 				$( "#nombre_secretario_anterior" ).focus(function() {
 					$("#mensaje_nombre_secretario_anterior").fadeOut("slow");
     			});
+				
 
+				
 
-				/*
-
-				$( "#escrito_presentado_por" ).focus(function() {
-					$("#mensaje_escrito_presentado_por").fadeOut("slow");
+				
+				$( "#remplaza_impulsor" ).focus(function() {
+					$("#mensaje_remplaza_impulsor").fadeOut("slow");
     			});
+				
 				$( "#dispone_1" ).focus(function() {
 					$("#mensaje_dispone_1").fadeOut("slow");
     			});
-				
+				/*
 				$( "#dispone_2" ).focus(function() {
 					$("#mensaje_dispone_2").fadeOut("slow");
     			});
@@ -2092,7 +2116,20 @@
 	          
 	          
 	          <div id="div_datos_cambio_liquidador" style="display: none;">
-	          <div class="col-lg-6 col-md-6 col-xs-12">
+	          
+	          <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>
+			  	<select name="remplaza_impulsor" id="remplaza_impulsor"  class="form-control" >
+			  	<option value="">--Seleccione--</option> 
+			  		<option value="No">No</option> 
+			  		<option value="Si">Si</option> 
+			  	
+				</select>
+				<div id="mensaje_remplaza_impulsor" class="errores"></div>
+	            </div>
+	          
+	          
+	          <div class="col-lg-8 col-md-8 col-xs-12">
 			  	<p class="formulario-subtitulo" >Escrito presentado por:</p>
 			  	<input type="text"  name="escrito_presentado_por" id="escrito_presentado_por" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->escrito_presentado_por;}}else{} ?>" class="form-control" placeholder="Nombre"/> 
 	            <div id="mensaje_escrito_presentado_por" class="errores"></div>
