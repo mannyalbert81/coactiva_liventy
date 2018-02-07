@@ -3400,8 +3400,19 @@
 				
 				
 				$genero_oficio="TRUE";
-					
-				
+				$pie_oficios="";
+				 
+				if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+					 
+					$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+					 
+					 
+				}else{
+					 
+					$identificador_secretaria='JC'.$identificador_secretaria;
+					 
+				}
+				 
 				
 				
 				
@@ -4671,7 +4682,7 @@
 				$resultado=$providencias->Insert();
 					
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_SUSPENSION'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 					
 				$traza=new TrazasModel();
@@ -4725,7 +4736,8 @@
 				$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 				$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 				$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
-				
+				$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+				 
 				
 				$pagina="contProvidenciaSuspension.aspx";
 					
@@ -5011,6 +5023,8 @@
 									  providencias.numero_oficio_2_levantamiento_providencias,
 									  providencias.numero_oficio_3_levantamiento_providencias,
 									  providencias.dirigido_levantamiento_providencias,
+								      providencias.dispone_1,
+									  providencias.dispone_2,
 									  providencias.fecha_oficio_pago_total,
 									  providencias.fecha_solicitud_pago_total,
 									  providencias.fecha_liquidacion_pago_total,
@@ -5335,6 +5349,7 @@
 			$dispone_2= $_POST['dispone_2'];
 				
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
+			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			
 			
 			if($tipo_avoco==7){
@@ -8307,7 +8322,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -8342,6 +8357,8 @@
 						$parametros['dispone_1']=isset($dispone_1)?trim($dispone_1):'';
 						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
+						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
+						
 						
 				
 							
@@ -11752,7 +11769,18 @@
 					
 					
 					$genero_oficio="TRUE";
+					$pie_oficios="";
+						
+					if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
 					
+						$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+					
+					
+					}else{
+					
+						$identificador_secretaria='JC'.$identificador_secretaria;
+					
+					}
 					
 					
 
@@ -12993,7 +13021,7 @@
 					$resultado=$providencias->Insert();
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_DISCAPACIDAD'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 						
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -13057,7 +13085,8 @@
 					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_discapacidad_5)?trim($referencia_oficios_tipo_lev_discapacidad_5):'';
 					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_discapacidad_6)?trim($referencia_oficios_tipo_lev_discapacidad_6):'';
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_discapacidad_7)?trim($referencia_oficios_tipo_lev_discapacidad_7):'';
-					 
+					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+						
 						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -13223,7 +13252,18 @@
 					
 						
 					$genero_oficio="TRUE";
+					$pie_oficios="";
 					
+					if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+							
+						$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+							
+							
+					}else{
+							
+						$identificador_secretaria='JC'.$identificador_secretaria;
+							
+					}
 					
 
 
@@ -14478,7 +14518,7 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_FALLECIMIENTO'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 						
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
@@ -14540,7 +14580,8 @@
 					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
-					 
+					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+						
 						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -14649,11 +14690,13 @@
 			));
 				
 		}
-		
-		
-		
+			
 		
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -14673,7 +14716,6 @@
 		$asignacion_secretarios = new AsignacionSecretariosModel();
 		$juicios = new JuiciosModel();
 		$vista_asignacion_secretarios = new VistaAsignacionSecretariosViewModel();
-		
 		
 
 		$identificador_oficio="";
@@ -14894,10 +14936,19 @@
 		    		
 		    	
 		    	$genero_oficio="TRUE";
+		    	$pie_oficios="";
 		    	
-
-
-
+		    	if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+		    			
+		    		$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+		    			
+		    			
+		    	}else{
+		    			
+		    		$identificador_secretaria='JC'.$identificador_secretaria;
+		    			
+		    	}
+		    		
 
 		    	if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 		    	
@@ -16153,7 +16204,7 @@
 		    	$resultado=$providencias->Insert();
 		    	
 		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
-		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 		    	 
 		    	
 		    	
@@ -16274,7 +16325,8 @@
 		    	$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 		    	$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 		    	$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
-		    	
+		    	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+		    		
 		    	
 		    	$pagina="contAvocoConocimientoSeleccion.aspx";
 		    	
@@ -16811,7 +16863,9 @@
 			$referencia_oficios_tipo_lev_pago_total_6= $_POST['referencia_oficios_tipo_lev_pago_total_6'];
 			$referencia_oficios_tipo_lev_pago_total_7= $_POST['referencia_oficios_tipo_lev_pago_total_7'];
 				
-			
+			$res_agregar_disposicion_pago_total= $_POST['res_agregar_disposicion_pago_total'];
+			$res_agregar_disposicion_1_pago_total= $_POST['res_agregar_disposicion_1_pago_total'];
+			$res_agregar_disposicion_2_pago_total= $_POST['res_agregar_disposicion_2_pago_total'];
 			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_pago_total!=""){
@@ -18160,19 +18214,20 @@
 					$fecha_documento_1_reemplazo= $fecha_documento_1;
 					$fecha_documento_2_reemplazo= $fecha_documento_2;
 					$fecha_documento_3_reemplazo= $fecha_documento_3;
+					$fecha_auto_pago_reemplazo = $fecha_auto_pago;
 					
-					if($fecha_remplazo_solicitud !=""){
+					if($fecha_remplazo_solicitud !="" && $fecha_auto_pago_reemplazo !=""){
 						
 				    $fecha_documento_1_reemplazo= 'null';
 				    $fecha_documento_2_reemplazo= 'null';
 				    $fecha_documento_3_reemplazo= 'null';
-							
+				    
 						
 						
 					 $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 					'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
-					'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento', 
+					'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$res_agregar_disposicion_pago_total', 
 					'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
 					'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
 					'$identificador_oficio_1',
@@ -18200,14 +18255,16 @@
 					'$cantidad_oficios_generar',
 					'$fecha_oficio',
 					'$fecha_remplazo_solicitud',	
-					'$fecha_auto_pago',
+					'$fecha_auto_pago_reemplazo',
 					'$referencia_pago_total',
 					'$nombre_numero_documento_1',	
 					 $fecha_documento_1_reemplazo,
 					'$nombre_numero_documento_2',
 					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
-					 $fecha_documento_3_reemplazo";
+					 $fecha_documento_3_reemplazo,
+					 '$res_agregar_disposicion_1_pago_total',
+					 '$res_agregar_disposicion_2_pago_total'";
 						
 					
 					
@@ -18218,13 +18275,13 @@
 						 $fecha_documento_1_reemplazo= 'null';
 					    $fecha_documento_2_reemplazo= 'null';
 					    $fecha_documento_3_reemplazo= 'null';
-							
+					    $fecha_auto_pago_reemplazo = 'null';
 						
 						
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 						'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
-						'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento',
+						'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$res_agregar_disposicion_pago_total',
 						'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
 						'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
 						'$identificador_oficio_1',
@@ -18252,14 +18309,16 @@
 						'$cantidad_oficios_generar',
 						'$fecha_oficio',
 						$fecha_remplazo_solicitud,
-						'$fecha_auto_pago',
+						$fecha_auto_pago_reemplazo,
 						'$referencia_pago_total',
 						'$nombre_numero_documento_1',
 						$fecha_documento_1_reemplazo,
 						'$nombre_numero_documento_2',
 						$fecha_documento_2_reemplazo,
 						'$nombre_numero_documento_3',
-						$fecha_documento_3_reemplazo";
+						$fecha_documento_3_reemplazo,
+						'$res_agregar_disposicion_1_pago_total',
+						'$res_agregar_disposicion_2_pago_total'";
 						
 						
 					}
@@ -18345,6 +18404,9 @@
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_pago_total_7)?trim($referencia_oficios_tipo_lev_pago_total_7):'';
 					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						
+					$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
+					$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
+					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 					
 					
 					
@@ -18377,8 +18439,9 @@
 					$fecha_documento_1_reemplazo= $fecha_documento_1;
 					$fecha_documento_2_reemplazo= $fecha_documento_2;
 					$fecha_documento_3_reemplazo= $fecha_documento_3;
-					
-					if($fecha_remplazo_solicitud !=""){
+					$fecha_auto_pago_reemplazo = $fecha_auto_pago;
+						
+					if($fecha_remplazo_solicitud !="" && $fecha_auto_pago_reemplazo !="" ){
 					
 						$fecha_documento_1_reemplazo= 'null';
 						$fecha_documento_2_reemplazo= 'null';
@@ -18388,18 +18451,20 @@
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', 
 					'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio', 
 					'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', 
-					'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+					'$res_agregar_disposicion_pago_total', '$id_impulsor', '$id_secretario',
 					'$id_estados_procesales_juicios_actualizar',
 					'$fecha_oficio',
 					'$fecha_remplazo_solicitud',	
-					'$fecha_auto_pago',
+					'$fecha_auto_pago_reemplazo',
 					'$referencia_pago_total',
 					'$nombre_numero_documento_1',	
 					 $fecha_documento_1_reemplazo,
 					'$nombre_numero_documento_2',
 					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
-					 $fecha_documento_3_reemplazo";
+					 $fecha_documento_3_reemplazo,
+					'$res_agregar_disposicion_pago_1_total',
+					'$res_agregar_disposicion_pago_2_total'";
 					
 					}else{
 						
@@ -18407,23 +18472,26 @@
 						$fecha_documento_1_reemplazo= 'null';
 						$fecha_documento_2_reemplazo= 'null';
 						$fecha_documento_3_reemplazo= 'null';
+						$fecha_auto_pago_reemplazo= 'null';
 							
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 						'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
 						'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3',
-						'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+						'$res_agregar_disposicion_pago_total', '$id_impulsor', '$id_secretario',
 						'$id_estados_procesales_juicios_actualizar',
 						'$fecha_oficio',
 						$fecha_remplazo_solicitud,
-						'$fecha_auto_pago',
+						$fecha_auto_pago_reemplazo,
 						'$referencia_pago_total',
 						'$nombre_numero_documento_1',
 						$fecha_documento_1_reemplazo,
 						'$nombre_numero_documento_2',
 						$fecha_documento_2_reemplazo,
 						'$nombre_numero_documento_3',
-						$fecha_documento_3_reemplazo";
+						$fecha_documento_3_reemplazo,
+						'$res_agregar_disposicion_1_pago_total',
+						'$res_agregar_disposicion_2_pago_total'";
 						
 					}
 					
@@ -18476,7 +18544,10 @@
 					$parametros['fecha_documento_2']=isset($fecha_documento_2)?trim($fecha_documento_2):'';
 					$parametros['nombre_numero_documento_3']=isset($nombre_numero_documento_3)?trim($nombre_numero_documento_3):'';
 					$parametros['fecha_documento_3']=isset($fecha_documento_3)?trim($fecha_documento_3):'';
-					
+					$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
+					$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
+					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
+						
 					
 						
 						
@@ -19804,8 +19875,9 @@
 						$fecha_documento_1_reemplazo= $fecha_documento_1;
 						$fecha_documento_2_reemplazo= $fecha_documento_2;
 						$fecha_documento_3_reemplazo= $fecha_documento_3;
+						$fecha_auto_pago_reemplazo = $fecha_auto_pago;
 							
-						if($fecha_remplazo_solicitud !=""){
+						if($fecha_remplazo_solicitud !="" && $fecha_auto_pago_reemplazo !=""){
 				
 							$fecha_documento_1_reemplazo= 'null';
 							$fecha_documento_2_reemplazo= 'null';
@@ -19816,7 +19888,7 @@
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 							'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
-							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento',
+							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$res_agregar_disposicion_pago_total',
 							'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
 							'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
 							'$identificador_oficio_1',
@@ -19844,14 +19916,16 @@
 							'$cantidad_oficios_generar',
 							'$fecha_oficio',
 							'$fecha_remplazo_solicitud',
-							'$fecha_auto_pago',
+							'$fecha_auto_pago_reemplazo',
 							'$referencia_pago_total',
 							'$nombre_numero_documento_1',
 							$fecha_documento_1_reemplazo,
 							'$nombre_numero_documento_2',
 							$fecha_documento_2_reemplazo,
 							'$nombre_numero_documento_3',
-							$fecha_documento_3_reemplazo";
+							$fecha_documento_3_reemplazo,
+							'$res_agregar_disposicion_1_pago_total',
+							'$res_agregar_disposicion_2_pago_total'";
 				
 								
 								
@@ -19862,13 +19936,13 @@
 							$fecha_documento_1_reemplazo= 'null';
 							$fecha_documento_2_reemplazo= 'null';
 							$fecha_documento_3_reemplazo= 'null';
-								
+							$fecha_auto_pago_reemplazo= 'null';
 				
 				
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 							'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
-							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$dirigido_levantamiento',
+							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3', '$res_agregar_disposicion_pago_total',
 							'$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar', '$genero_oficio',
 							'$identificador_oficio', '$entidad_va_oficio_pago_total', '$asunto_pago_total',
 							'$identificador_oficio_1',
@@ -19896,14 +19970,16 @@
 							'$cantidad_oficios_generar',
 							'$fecha_oficio',
 							$fecha_remplazo_solicitud,
-							'$fecha_auto_pago',
+							$fecha_auto_pago_reemplazo,
 							'$referencia_pago_total',
 							'$nombre_numero_documento_1',
 							$fecha_documento_1_reemplazo,
 							'$nombre_numero_documento_2',
 							$fecha_documento_2_reemplazo,
 							'$nombre_numero_documento_3',
-							$fecha_documento_3_reemplazo";
+							$fecha_documento_3_reemplazo,
+							'$res_agregar_disposicion_1_pago_total',
+							'$res_agregar_disposicion_2_pago_total'";
 				
 				
 						}
@@ -19988,6 +20064,9 @@
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_pago_total_6)?trim($referencia_oficios_tipo_lev_pago_total_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_pago_total_7)?trim($referencia_oficios_tipo_lev_pago_total_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+						$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
+						$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
+						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 							
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -20018,8 +20097,10 @@
 						$fecha_documento_1_reemplazo= $fecha_documento_1;
 						$fecha_documento_2_reemplazo= $fecha_documento_2;
 						$fecha_documento_3_reemplazo= $fecha_documento_3;
+						$fecha_auto_pago_reemplazo = $fecha_auto_pago;
+						
 							
-						if($fecha_remplazo_solicitud !=""){
+						if($fecha_remplazo_solicitud !="" && $fecha_auto_pago_reemplazo !=""){
 								
 							$fecha_documento_1_reemplazo= 'null';
 							$fecha_documento_2_reemplazo= 'null';
@@ -20029,18 +20110,20 @@
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 							'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
 							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3',
-							'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+							'$res_agregar_disposicion_pago_total', '$id_impulsor', '$id_secretario',
 							'$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio',
 							'$fecha_remplazo_solicitud',
-							'$fecha_auto_pago',
+							'$fecha_auto_pago_reemplazo',
 							'$referencia_pago_total',
 							'$nombre_numero_documento_1',
 							$fecha_documento_1_reemplazo,
 							'$nombre_numero_documento_2',
 							$fecha_documento_2_reemplazo,
 							'$nombre_numero_documento_3',
-							$fecha_documento_3_reemplazo";
+							$fecha_documento_3_reemplazo,
+							'$res_agregar_disposicion_1_pago_total',
+							'$res_agregar_disposicion_2_pago_total'";
 								
 						}else{
 				
@@ -20048,23 +20131,26 @@
 							$fecha_documento_1_reemplazo= 'null';
 							$fecha_documento_2_reemplazo= 'null';
 							$fecha_documento_3_reemplazo= 'null';
-								
+							$fecha_auto_pago_reemplazo= 'null';
+							
 							$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 							'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 							'$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio',
 							'$numero_solicitud', '$numero_liquidacion', '$numero_oficio3',
-							'$dirigido_levantamiento', '$id_impulsor', '$id_secretario',
+							'$res_agregar_disposicion_pago_total', '$id_impulsor', '$id_secretario',
 							'$id_estados_procesales_juicios_actualizar',
 							'$fecha_oficio',
 							$fecha_remplazo_solicitud,
-							'$fecha_auto_pago',
+							$fecha_auto_pago_reemplazo,
 							'$referencia_pago_total',
 							'$nombre_numero_documento_1',
 							$fecha_documento_1_reemplazo,
 							'$nombre_numero_documento_2',
 							$fecha_documento_2_reemplazo,
 							'$nombre_numero_documento_3',
-							$fecha_documento_3_reemplazo";
+							$fecha_documento_3_reemplazo,
+							'$res_agregar_disposicion_1_pago_total',
+							'$res_agregar_disposicion_2_pago_total'";
 				
 						}
 							
@@ -20117,6 +20203,9 @@
 						$parametros['fecha_documento_2']=isset($fecha_documento_2)?trim($fecha_documento_2):'';
 						$parametros['nombre_numero_documento_3']=isset($nombre_numero_documento_3)?trim($nombre_numero_documento_3):'';
 						$parametros['fecha_documento_3']=isset($fecha_documento_3)?trim($fecha_documento_3):'';
+						$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
+						$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
+						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 							
 							
 				
@@ -25405,7 +25494,19 @@
 				
 				$genero_oficio="TRUE";
 				
-				
+				$pie_oficios="";
+				 
+				if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+					 
+					$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+					 
+					 
+				}else{
+					 
+					$identificador_secretaria='JC'.$identificador_secretaria;
+					 
+				}
+				 
 				
 
 
@@ -26658,7 +26759,7 @@
 				$resultado=$providencias->Insert();
 				
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "documento_consecutivos='$identificador_secretaria'");
+				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
 					
 				$traza=new TrazasModel();
@@ -26712,7 +26813,8 @@
 				$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 				$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 				$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
-				
+				$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+				 
 				
 				$pagina="contProvidenciaLevantamiento.aspx";
 				$conexion_rpt = array();

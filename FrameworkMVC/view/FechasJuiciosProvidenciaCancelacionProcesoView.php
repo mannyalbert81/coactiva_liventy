@@ -75,7 +75,46 @@
       
       
       
-      
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 1 || tipo_avoco == 14 ) 
+          {
+       	   $("#div_datos_agregar_disposicion_pago_total").fadeIn("slow");
+          }
+       	
+          else
+          {
+       	   $("#div_datos_agregar_disposicion_pago_total").fadeOut("slow");
+       	   }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 1 || tipo_avoco == 14)
+              {
+           	   $("#div_datos_agregar_disposicion_pago_total").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_datos_agregar_disposicion_pago_total").fadeOut("slow");
+           	   }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
       
       
         <script type="text/javascript">
@@ -3071,7 +3110,7 @@
 		            
 				}
 		       	
-
+/*
 				if(tipo_avoco == 1  && numero_liquidacion == ""){
 					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
 		    		$("#mensaje_numero_liquidacion").fadeIn("slow"); //Muestra mensaje de error
@@ -3093,7 +3132,7 @@
 		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+*/
 
 				if(tipo_avoco == 1  && generar_oficio_pago_total == 0){
 					$("#mensaje_generar_oficio_pago_total").text("Seleccione");
@@ -3730,7 +3769,7 @@
 		    		$("#mensaje_fecha_oficio").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		       	
+		       	/*
 
 				if(tipo_avoco == 14  && numero_liquidacion == ""){
 					$("#mensaje_numero_liquidacion").text("Ingrese # Liquidación");
@@ -3753,7 +3792,7 @@
 		    		$("#mensaje_fecha_auto_pago").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+*/
 
 				if(tipo_avoco == 14  && generar_oficio_pago_total == 0){
 					$("#mensaje_generar_oficio_pago_total").text("Seleccione");
@@ -4425,14 +4464,14 @@
 				$( "#fecha_oficio" ).focus(function() {
 					$("#mensaje_fecha_oficio").fadeOut("slow");
     			});
-    			
+    			/*
 				$( "#numero_liquidacion" ).focus(function() {
 					$("#mensaje_numero_liquidacion").fadeOut("slow");
     			});
 				$( "#fecha_auto_pago" ).focus(function() {
 					$("#mensaje_fecha_auto_pago").fadeOut("slow");
     			});
-
+*/
 
 				$( "#generar_oficio_pago_total" ).focus(function() {
 					$("#mensaje_generar_oficio_pago_total").fadeOut("slow");
@@ -4974,6 +5013,28 @@
 	            </div>
 	            </div>    
 	            </div>
+	            
+	            
+	            <div id="div_datos_agregar_disposicion_pago_total" style="display: none;">
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 1):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_pago_total" id="res_agregar_disposicion_pago_total" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_levantamiento_providencias;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_pago_total" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 2):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_1_pago_total" id="res_agregar_disposicion_1_pago_total" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_1;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_1_pago_total" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 3):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_2_pago_total" id="res_agregar_disposicion_2_pago_total" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_2;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_2_pago_total" class="errores"></div>
+	            </div>
+	            </div>
+	            
 	            
 			     <div class="col-xs-12 col-md-10 col-lg-10" style='margin-top: 17px;'>
 		                          <p class="formulario-subtitulo" >Referencia de Entidades (Opcional: Si desea nombrar a alguna entidad Ingresela empezando con el numeral 1.1.- ):</p>

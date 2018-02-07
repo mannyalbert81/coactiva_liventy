@@ -1030,7 +1030,7 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 			$firmado=$res->firmado_secretario;
 
 			$html.='<tr>';
-			$html.='<td style="font-size: 25px;"><span class="pull-right"><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" class="img-responsive zoom" width="60" height="60"></a></span></td>';
+			$html.='<td><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" width="40" height="40"></a></td>';
 
 			if($firmado=='t'){
 					
@@ -1039,7 +1039,7 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 			}
 			if($firmado=='f'){
 					
-				$html.='<td  style="font-size: 18px; text-aling:center;"><a href="#" class="btn btn-primary" style="font-size:65%;"><i class="glyphicon glyphicon-info-sign"> Revisando</i></a></td>';
+				$html.='<td  style="font-size: 18px; text-aling:center;"><a href="#" class="btn btn-primary" style="font-size:65%;"><i class="glyphicon glyphicon-info-sign"> Revisión</i></a></td>';
 				
 			}
 
@@ -2117,7 +2117,7 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 			$firmado=$res->firmado_secretario;
 		
 			$html.='<tr>';
-			$html.='<td style="font-size: 25px;"><span class="pull-right"><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" class="img-responsive zoom" width="60" height="60"></a></span></td>';
+			$html.='<td><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" width="40" height="40"></a></td>';
 			
 			if($firmado=='t'){
 			
@@ -4553,7 +4553,7 @@ session_start();
 			$firmado=$res->firmado_secretario;
 			
 			$html.='<tr>';
-			$html.='<td colspan="1"><span class="pull-right"><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" class="img-responsive zoom" width="60" height="60"></a></span></td>';
+			$html.='<td><a target="_blank" href="index.php?controller=DocumentosGenerados&action=verDoc&documento='.$res->id_documento.'-'.$res->ruta_doc.'-'.$res->nombre_doc.'&id_juicios='. $res->id_juicios.' "><img src="view/images/logo_pdf.png" width="40" height="40"></a></td>';
 				
 				
 			if($firmado=='t'){

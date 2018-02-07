@@ -127,6 +127,7 @@
 				          .text(value)); 
 				});
 			}
+			/*
 			if (this.value == "OF")
 			{
 				$('#tipo_documento').empty();
@@ -138,7 +139,7 @@
 				          .append($('<option>', { value : key })
 				          .text(value)); 
 				});
-			}
+			}*/
 			if (this.value == "PR")
 			{
 				$('#tipo_documento').empty();
@@ -392,7 +393,7 @@
 			  	<select name="documento" id="documento"  class="form-control" >
 			  	<option value="ALL">--Seleccione--</option>
 			  	<option value="AC"> Avoco Conocimiento </option>
-			  	<option value="OF"> Oficios </option>
+			  	<!--  <option value="OF"> Oficios </option>-->
 			  	<option value="PR"> Providencias </option>
 			    </select>
 			     <div id="mensaje_documento" class="errores"></div>

@@ -2596,7 +2596,6 @@
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="10">PROVIDENCIA LEVANTAMIENTO MEDIDA CAUTELAR (DISCAPACIDAD)</option>
 					<option value="11">PROVIDENCIA LEVANTAMIENTO MEDIDA CAUTELAR (FALLECIMIENTO)</option>
-					
 				</select>
 				<div id="mensaje_tipo_avoco" class="errores"></div>
 	            </div>

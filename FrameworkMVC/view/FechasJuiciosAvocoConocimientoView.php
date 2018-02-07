@@ -126,6 +126,58 @@
         <script type="text/javascript">
       $(document).ready(function(){
           
+      $("#remplaza_impulsor").click(function() {
+			
+          var remplaza_impulsor = $(this).val();
+			
+          if(remplaza_impulsor == "Si")
+          {
+       	   $("#div_impulsor_cambio_liquidador").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_impulsor_cambio_liquidador").fadeOut("slow");
+         
+         
+     	
+          
+          }
+         
+	    });
+	    
+	    $("#remplaza_impulsor").change(function() {
+			
+              
+              var remplaza_impulsor = $(this).val();
+				
+              
+              if(remplaza_impulsor == "Si")
+              {
+           	   $("#div_impulsor_cambio_liquidador").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_impulsor_cambio_liquidador").fadeOut("slow");
+           
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+        
+      
+      
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
       $("#generar_oficio_avoco_nuevos_procesos").click(function() {
 			
           var generar_oficio_avoco_nuevos_procesos = $(this).val();
@@ -561,6 +613,7 @@
 
 
 				var remplaza_impulsor= $("#remplaza_impulsor").val();
+				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
 				var dispone_1= $("#dispone_1").val();
 				//var dispone_2= $("#dispone_2").val();
 
@@ -1470,21 +1523,21 @@
 		    	{
 
 
-					if(dispone_1==""){
-						$("#mensaje_dispone_1").text("Ingrese Disposición");
-			    		$("#mensaje_dispone_1").fadeIn("slow"); //Muestra mensaje de error
+					if(impulsor_saliente_cambio_liquidador==""){
+						$("#mensaje_impulsor_saliente_cambio_liquidador").text("Ingrese Nombre Abg. Anterior");
+			    		$("#mensaje_impulsor_saliente_cambio_liquidador").fadeIn("slow"); //Muestra mensaje de error
 			            return false;
 
 					}else{
 
-						$("#mensaje_dispone_1").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow"); //Muestra mensaje de error
 						}
 			    	
 		    		
 			    }
 		    	else 
 		    	{
-		    		$("#mensaje_dispone_1").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
@@ -1611,8 +1664,8 @@
 					$("#mensaje_remplaza_impulsor").fadeOut("slow");
     			});
 				
-				$( "#dispone_1" ).focus(function() {
-					$("#mensaje_dispone_1").fadeOut("slow");
+				$( "#impulsor_saliente_cambio_liquidador" ).focus(function() {
+					$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow");
     			});
 				/*
 				$( "#dispone_2" ).focus(function() {
@@ -2117,7 +2170,7 @@
 	          
 	          <div id="div_datos_cambio_liquidador" style="display: none;">
 	          
-	          <div class="col-lg-4 col-md-4 col-xs-12" >
+	            <div class="col-lg-6 col-md-6 col-xs-12" >
 			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>
 			  	<select name="remplaza_impulsor" id="remplaza_impulsor"  class="form-control" >
 			  	<option value="">--Seleccione--</option> 
@@ -2128,14 +2181,23 @@
 				<div id="mensaje_remplaza_impulsor" class="errores"></div>
 	            </div>
 	          
+	         
+	            <div id="div_impulsor_cambio_liquidador" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
+			  	<input type="text"  name="impulsor_saliente_cambio_liquidador" id="impulsor_saliente_cambio_liquidador" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->impulsor_reemplazo;}}else{} ?>" class="form-control" placeholder="Abg. xxxxxxx xxxxxx xxxxx xxxx"/> 
+	            <div id="mensaje_impulsor_saliente_cambio_liquidador" class="errores"></div>
+	            </div>
+	             </div>
 	          
-	          <div class="col-lg-8 col-md-8 col-xs-12">
+	          <br>
+	            <div class="col-lg-12 col-md-12 col-xs-12">
 			  	<p class="formulario-subtitulo" >Escrito presentado por:</p>
 			  	<input type="text"  name="escrito_presentado_por" id="escrito_presentado_por" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->escrito_presentado_por;}}else{} ?>" class="form-control" placeholder="Nombre"/> 
 	            <div id="mensaje_escrito_presentado_por" class="errores"></div>
 	            </div>
 	            
-	            <br>
+	           
 	            
 	            <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Dispone 1.-:</p>	 
