@@ -3530,8 +3530,6 @@ public function firmar()
 				
 			}
 			
-			
-			
 				
 		}
 			
