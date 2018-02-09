@@ -1417,7 +1417,7 @@
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha:</p>
-			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_providencias;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" min="1800-01-01" max="2018-12-30" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_providencias;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control"/ readonly>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control"/ readonly>
@@ -1741,7 +1741,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta" id="fecha_oficio_embargo_cuenta" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_embargo;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta" id="fecha_oficio_embargo_cuenta" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_embargo;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta" class="errores"></div>
 			    </div>
 			    
@@ -1828,7 +1828,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 2):</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta_2" id="fecha_oficio_embargo_cuenta_2" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_2" id="fecha_oficio_embargo_cuenta_2" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta_2" class="errores"></div>
 			    </div>
 			    
@@ -1913,7 +1913,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 3):</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta_3" id="fecha_oficio_embargo_cuenta_3" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_3" id="fecha_oficio_embargo_cuenta_3" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta_3" class="errores"></div>
 			    </div>
 			    
@@ -2013,7 +2013,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 4):</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta_4" id="fecha_oficio_embargo_cuenta_4" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_4" id="fecha_oficio_embargo_cuenta_4" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta_4" class="errores"></div>
 			    </div>
 			    
@@ -2105,7 +2105,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio (Opcional 5):</p>
-			  	<input type="date"  name="fecha_oficio_embargo_cuenta_5" id="fecha_oficio_embargo_cuenta_5" value="" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_embargo_cuenta_5" id="fecha_oficio_embargo_cuenta_5" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_embargo_cuenta_5" class="errores"></div>
 			    </div>
 			    

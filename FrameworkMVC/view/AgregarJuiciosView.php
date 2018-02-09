@@ -230,7 +230,7 @@
 		    		changeMonth: true,
 		    		changeYear: true,
 		    		dateFormat: "yy-mm-dd",
-		    		yearRange: "1850:2017"
+		    		yearRange: "1850:2018"
 		    		});
 		    }
 
@@ -241,7 +241,7 @@
 	    		changeMonth: true,
 	    		changeYear: true,
 	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1850:2017"
+	    		yearRange: "1850:2018"
 	    		});
 		    }
 

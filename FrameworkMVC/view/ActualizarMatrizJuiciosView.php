@@ -338,7 +338,7 @@
 		    		changeMonth: true,
 		    		changeYear: true,
 		    		dateFormat: "yy-mm-dd",
-		    		yearRange: "1900:2017"
+		    		yearRange: "1900:2018"
 		    		});
 			    }
 	
@@ -349,7 +349,7 @@
 		    		changeMonth: true,
 		    		changeYear: true,
 		    		dateFormat: "yy-mm-dd",
-		    		yearRange: "1900:2017"
+		    		yearRange: "1900:2018"
 		    		});
 			    }
 		    }
@@ -361,7 +361,7 @@
 	    		changeMonth: true,
 	    		changeYear: true,
 	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
+	    		yearRange: "1800:2018"
 	    		});
 		    }
 
@@ -372,7 +372,7 @@
 	    		changeMonth: true,
 	    		changeYear: true,
 	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
+	    		yearRange: "1800:2018"
 	    		});
 		    }
 
@@ -384,7 +384,7 @@
 	    		changeMonth: true,
 	    		changeYear: true,
 	    		dateFormat: "yy-mm-dd",
-	    		yearRange: "1800:2017"
+	    		yearRange: "1800:2018"
 	    		});
 		    }
 

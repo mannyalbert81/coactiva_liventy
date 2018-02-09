@@ -25133,7 +25133,7 @@
 								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
 						));
 				
-				
+				exit();
 						die();
 							
 							

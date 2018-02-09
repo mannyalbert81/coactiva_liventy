@@ -4631,7 +4631,7 @@
   							
   		<div class="col-lg-2 col-md-2 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha:</p>
-			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_providencias;}}else{if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_providencias;}}else{}} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_avoco" id="fecha_avoco" min="1800-01-01" max="2018-12-30" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_providencias;}}else{if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_providencias;}}else{}} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha" class="errores"></div>
 			    <input type="hidden"  name="id_juicios" id="id_juicios" value="<?php echo $datos['id_juicios']; ?>" class="form-control" readonly/>
 			    <input type="hidden"  name="id_clientes" id="id_clientes" value="<?php echo $datos['id_clientes']; ?>" class="form-control" readonly/>
@@ -4791,7 +4791,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio" id="fecha_oficio" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio" id="fecha_oficio" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_oficio_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio" class="errores"></div>
 			    </div>
 			    
@@ -4803,7 +4803,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Solicitud::</p>
-			  	<input type="date"  name="fecha_solicitud" id="fecha_solicitud" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_solicitud_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud" id="fecha_solicitud" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_solicitud_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud" class="errores"></div>
 			    </div>
 			    
@@ -4815,7 +4815,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
-			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_auto_pago" id="fecha_auto_pago" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_auto_pago" class="errores"></div>
 			    </div>
 			    
@@ -5051,7 +5051,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_1" id="fecha_documento_1" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_1_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_1" id="fecha_documento_1" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_1_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_1" class="errores"></div>
 			    </div>
 			    
@@ -5065,7 +5065,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_2" id="fecha_documento_2" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_2_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_2" id="fecha_documento_2" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_2_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_2" class="errores"></div>
 			    </div>
 			    
@@ -5078,7 +5078,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
-			  	<input type="date"  name="fecha_documento_3" id="fecha_documento_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_3_pago_total;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_documento_3" id="fecha_documento_3" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_documento_opcional_3_pago_total;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_documento_3" class="errores"></div>
 			    </div>
 			    
@@ -5104,7 +5104,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha de Oficio:</p>
-			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_oficio_restructuracion;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_oficio_restructuracion" id="fecha_oficio_restructuracion" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_oficio_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_oficio_restructuracion" class="errores"></div>
 			    </div>
 			    
@@ -5116,7 +5116,7 @@
 	            
 	           <div class="col-lg-4 col-md-4 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Restructuración:</p>
-			  	<input type="date"  name="fecha_solicitud_restructuracion" id="fecha_solicitud_restructuracion" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_restructuracion;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="fecha_solicitud_restructuracion" id="fecha_solicitud_restructuracion" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud_restructuracion" class="errores"></div>
 			    </div>
 			    
@@ -5373,7 +5373,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 20px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 1 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_1" id="res_fecha_documento_1" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_1_restructuracion;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_1" id="res_fecha_documento_1" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_1_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_1" class="errores"></div>
 			    </div>
 			    
@@ -5387,7 +5387,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 2 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_2" id="res_fecha_documento_2" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_2_restructuracion;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_2" id="res_fecha_documento_2" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_2_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_2" class="errores"></div>
 			    </div>
 			    
@@ -5400,7 +5400,7 @@
 	            
 	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 10px;'>
          		<p class="formulario-subtitulo" >Fecha del Documento 3 (Opcional):</p>
-			  	<input type="date"  name="res_fecha_documento_3" id="res_fecha_documento_3" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_3_restructuracion;}}else{} ?>" class="form-control "/> 
+			  	<input type="date"  name="res_fecha_documento_3" id="res_fecha_documento_3" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->fecha_documento_opcional_3_restructuracion;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_res_fecha_documento_3" class="errores"></div>
 			    </div>
 			      

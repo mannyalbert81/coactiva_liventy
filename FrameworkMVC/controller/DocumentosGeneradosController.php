@@ -91,7 +91,7 @@ public function index3(){
 						$columnas = "ju.regional,tc.id_titulo_credito,ju.id_juicios,tc.numero_titulo_credito, ju.numero_juicios, cl.identificacion_clientes
 								,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
 								,ju.cuantia_inicial,ep.nombre_estados_procesales_juicios, ac.firmado_secretario, ac.id_avoco_conocimiento AS \"id_documento\" , ac.nombre_documento AS \"nombre_doc\"
-								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios,ju.fecha_ultima_providencia ,ju.descripcion_estado_procesal
+								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios, ac.fecha_avoco_conocimiento AS \"fecha_ultima_providencia\" ,ju.descripcion_estado_procesal
 								,ac.modificado, ac.creado AS \"fecha_creado\" ";
 							
 						$where = " 1=1 AND ac.eliminado_documento='false'";
@@ -102,9 +102,9 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios ";
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios";
 								
 								
 								
@@ -139,10 +139,10 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
-								 AND ac.tipo_avoco = 1";
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 1";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
@@ -175,10 +175,10 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
-								 AND ac.tipo_avoco = 2";
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 2";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
@@ -211,9 +211,9 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 3";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -248,9 +248,9 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 6";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -285,9 +285,9 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 7";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -323,9 +323,9 @@ public function index3(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 12";
 								
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -408,7 +408,7 @@ public function index3(){
 							,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
 							, pr.id_providencias  AS \"id_documento\" , pr.firmado_secretario, pr.nombre_archivo_providencias AS \"nombre_doc\" , pr.ruta_providencias AS \"ruta_doc\"
 							,ju.fecha_emision_juicios,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios,ju.descripcion_estado_procesal
-							,pr.modificado, ju.fecha_ultima_providencia, pr.creado AS \"fecha_creado\"";
+							,pr.modificado, pr.fecha_providencias AS \"fecha_ultima_providencia\", pr.creado AS \"fecha_creado\"";
 							
 						$where=" 1=1 AND pr.eliminado_documento='false'";
 	
@@ -417,9 +417,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias	";
 	
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
@@ -454,9 +454,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 2";
 	
@@ -491,9 +491,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 	
@@ -529,9 +529,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 3";
 	
@@ -568,9 +568,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 9";
 	
@@ -608,9 +608,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 4";
 	
@@ -649,9 +649,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 8";
 	
@@ -688,9 +688,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 5";
 	
@@ -726,9 +726,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 6";
 	
@@ -765,9 +765,9 @@ public function index3(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
 	
@@ -812,9 +812,9 @@ public function index3(){
 						$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								";
 							
@@ -1002,6 +1002,7 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 		$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
@@ -1009,7 +1010,7 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Aprobación Secretario</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
+		//$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
@@ -1045,6 +1046,7 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
+			$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
@@ -1052,12 +1054,11 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 			$html.='<td style="font-size: 9px;">'.$res->modificado.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
+			//$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-			//$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
-
+			
 
 			$html.='</tr>';
 
@@ -1190,7 +1191,7 @@ public function index2(){
 						$columnas = "ju.regional,tc.id_titulo_credito,ju.id_juicios,tc.numero_titulo_credito, ju.numero_juicios, cl.identificacion_clientes
 								,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
 								,ju.cuantia_inicial,ep.nombre_estados_procesales_juicios, ac.firmado_secretario, ac.id_avoco_conocimiento AS \"id_documento\" , ac.nombre_documento AS \"nombre_doc\"
-								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios,ju.fecha_ultima_providencia ,ju.descripcion_estado_procesal
+								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios, ac.fecha_avoco_conocimiento AS \"fecha_ultima_providencia\" ,ju.descripcion_estado_procesal
 								,ac.modificado, ac.creado AS \"fecha_creado\" ";
 							
 						$where = " 1=1 AND asv.id_secretario='$_id_usuarios' AND ac.eliminado_documento='false'";
@@ -1201,9 +1202,9 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios ";
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios";
 							
 							
 							
@@ -1238,10 +1239,10 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
-								 AND ac.tipo_avoco = 1";
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 1";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
@@ -1274,10 +1275,10 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
-								 AND ac.tipo_avoco = 2";
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 2";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 							$fechaDesde="";$fechaHasta="";
@@ -1310,9 +1311,9 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 3";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -1347,9 +1348,9 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 6";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -1384,9 +1385,9 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 7";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -1422,9 +1423,9 @@ public function index2(){
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 12";
 							
 							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -1507,7 +1508,7 @@ public function index2(){
 							,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
 							, pr.id_providencias  AS \"id_documento\" , pr.firmado_secretario, pr.nombre_archivo_providencias AS \"nombre_doc\" , pr.ruta_providencias AS \"ruta_doc\"
 							,ju.fecha_emision_juicios,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios,ju.descripcion_estado_procesal
-							,pr.modificado, ju.fecha_ultima_providencia, pr.creado AS \"fecha_creado\"";
+							,pr.modificado, pr.fecha_providencias AS \"fecha_ultima_providencia\", pr.creado AS \"fecha_creado\"";
 							
 						$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
 						
@@ -1516,10 +1517,10 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
-								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias	";
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios";
 	
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 
@@ -1553,9 +1554,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 2";
 	
@@ -1590,9 +1591,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 	
@@ -1628,9 +1629,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 3";
 								
@@ -1667,9 +1668,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 9";
 						
@@ -1707,9 +1708,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 4";
 								
@@ -1748,9 +1749,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 8";
 						
@@ -1787,9 +1788,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 5";
 								
@@ -1825,9 +1826,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 6";
 						
@@ -1864,9 +1865,9 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
 								
@@ -1911,9 +1912,9 @@ public function index2(){
 						$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								";
 							
@@ -2088,6 +2089,7 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 		$html.='<th style="text-align: left;  font-size: 10px;"></th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
@@ -2095,11 +2097,10 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Aprobación Secretario</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
+		//$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
-		//$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
 		
 		$html.='</tr>';
 		$html.='</thead>';
@@ -2133,6 +2134,7 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 			
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
+			$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
@@ -2140,11 +2142,10 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 			$html.='<td style="font-size: 9px;">'.$res->modificado.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
+			//$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
-			//$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
 				
 
 			$html.='</tr>';
@@ -3645,8 +3646,8 @@ session_start();
 							$tipo_doc="AC";
 							$columnas = "ju.regional,tc.id_titulo_credito,ju.id_juicios,tc.numero_titulo_credito, ju.numero_juicios, cl.identificacion_clientes
 								,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
-								,ju.cuantia_inicial,ep.nombre_estados_procesales_juicios , ac.firmado_secretario, ac.id_avoco_conocimiento AS \"id_documento\" , ac.nombre_documento AS \"nombre_doc\"
-								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios,ju.fecha_ultima_providencia ,ju.descripcion_estado_procesal
+								,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios , ac.firmado_secretario, ac.id_avoco_conocimiento AS \"id_documento\" , ac.nombre_documento AS \"nombre_doc\"
+								, ac.ruta_documento AS \"ruta_doc\" ,ju.fecha_emision_juicios, ac.fecha_avoco_conocimiento AS \"fecha_ultima_providencia\" ,ju.descripcion_estado_procesal
 								,ac.modificado, ac.creado AS \"fecha_creado\" ";
 							
 							$where = " 1=1 AND asv.id_abogado='$_id_usuarios' AND ac.eliminado_documento='false'";
@@ -3656,9 +3657,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios ";
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
@@ -3690,10 +3691,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
-								 AND ac.tipo_avoco = 1";
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios AND ac.tipo_avoco = 1";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
@@ -3726,10 +3726,10 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
-								 AND ac.tipo_avoco = 2";
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 2";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
 								$fechaDesde="";$fechaHasta="";
@@ -3762,9 +3762,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
 								AND ac.tipo_avoco = 3";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -3798,9 +3798,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 6";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -3835,9 +3835,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 7";
 								
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -3874,9 +3874,9 @@ session_start();
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								AND ac.tipo_avoco = 12";
 							
 								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
@@ -3958,7 +3958,7 @@ session_start();
 							,cl.nombres_clientes , asv.id_abogado ,asv.impulsores ,asv.id_secretario ,asv.secretarios
 							, pr.id_providencias  AS \"id_documento\" , pr.firmado_secretario, pr.nombre_archivo_providencias AS \"nombre_doc\" , pr.ruta_providencias AS \"ruta_doc\"
 							,ju.fecha_emision_juicios,ju.cuantia_inicial, ep.nombre_estados_procesales_juicios,ju.descripcion_estado_procesal
-							,pr.modificado, ju.fecha_ultima_providencia, pr.creado AS \"fecha_creado\"";
+							,pr.modificado, pr.fecha_providencias AS \"fecha_ultima_providencia\", pr.creado AS \"fecha_creado\"";
 							
 							$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 							
@@ -3967,9 +3967,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias	";
 								
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
@@ -4003,9 +4003,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 2";
 								
@@ -4040,9 +4040,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 1";
 								
@@ -4077,9 +4077,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 3";
 							
@@ -4115,9 +4115,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 9";
 									
@@ -4153,9 +4153,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 4";
 									
@@ -4193,9 +4193,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 8";
 									
@@ -4232,9 +4232,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 5";
 									
@@ -4271,9 +4271,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 6";
 							
@@ -4309,9 +4309,9 @@ session_start();
 								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
 									
@@ -4354,9 +4354,9 @@ session_start();
 						$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes 
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
-								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ju.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias";
 							
 						$where=" 1=0 AND asv.id_abogado='$_id_usuarios'";
@@ -4527,7 +4527,7 @@ session_start();
 		
 		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
-		//$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
+		$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
@@ -4535,7 +4535,7 @@ session_start();
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Aprobacíon Secretario</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
+		//$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
@@ -4562,7 +4562,7 @@ session_start();
 			
 			}
 			if($firmado=='f'){
-				$html.='<td colspan="2" style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar_impulsor&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
+				$html.='<td colspan="2" style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar_impulsor&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"> Eliminar</i></a></span></td>';
 				//$html.='<td colspan="2" style="font-size: 18px; text-aling:center;"><a href="#" class="btn btn-primary" style="font-size:65%;"><i class="glyphicon glyphicon-alert"> Revisando</i></a></td>';
 			
 			}
@@ -4572,7 +4572,7 @@ session_start();
 			
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
-			//$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
+			$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
 				
 			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
@@ -4581,7 +4581,7 @@ session_start();
 			$html.='<td style="font-size: 9px;">'.$res->modificado.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
+			//$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
