@@ -1663,7 +1663,7 @@
 		            
 				}
 
-		    	if (tipo_avoco == 11  && correo_conyuge_sobreviviente == "")
+		    /*	if (tipo_avoco == 11  && correo_conyuge_sobreviviente == "")
 		    	{
 			    	
 		    		$("#mensaje_correo_conyuge_sobreviviente").text("Introduzca un correo");
@@ -1681,6 +1681,9 @@
 		    		$("#mensaje_correo_conyuge_sobreviviente").fadeIn("slow"); //Muestra mensaje de error
 		            return false;	
 			    }
+*/
+
+			    
 		    	if(tipo_avoco == 11  && generar_oficio_fallecimiento == 0){
 					$("#mensaje_generar_oficio_fallecimiento").text("Seleccione");
 		    		$("#mensaje_generar_oficio_fallecimiento").fadeIn("slow"); //Muestra mensaje de error
@@ -2457,10 +2460,11 @@
 				$( "#nombre_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_nombre_conyuge_sobreviviente").fadeOut("slow");
     			});
+    			/*
 				$( "#correo_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_correo_conyuge_sobreviviente").fadeOut("slow");
     			});
-
+*/
 				
 			   	
 						

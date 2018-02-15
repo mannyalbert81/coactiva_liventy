@@ -422,6 +422,7 @@ public function index3(){
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias	";
 	
+							
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 	
 							$fechaDesde="";$fechaHasta="";
@@ -971,6 +972,8 @@ public function BuscadorCordinador($page=1,$columnas,$tablas,$where_to,$tipo=nul
 	$resultSet=$juicios->getCantidad("*", $tablas, $where_to);
 
 	$cantidadResult=(int)$resultSet[0]->total;
+	//$cantidadResult=count($resultSet);
+	
 
 	$per_page = 50; //la cantidad de registros que desea mostrar
 	$adjacents  = 9; //brecha entre páginas después de varios adyacentes
@@ -1517,10 +1520,10 @@ public function index2(){
 							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
 								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
-								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
-								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios";
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios";
 	
 							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
 
