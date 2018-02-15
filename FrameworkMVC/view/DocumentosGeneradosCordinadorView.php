@@ -272,7 +272,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PCPAVOC": "Providencia Pago Total y Avoco Conocimiento", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento"};
+				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PCPAVOC": "Providencia Pago Total y Avoco Conocimiento", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento", "PRF": "Providencia Retención de Fondos"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')

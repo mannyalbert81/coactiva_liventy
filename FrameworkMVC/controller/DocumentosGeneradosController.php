@@ -799,6 +799,45 @@ public function index3(){
 							}
 								
 						}
+						
+						else if($tipo_documento=="PRF")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 10";
+						
+							$where=" 1=1 AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						}
 	
 							
 						break;
@@ -1902,6 +1941,45 @@ public function index2(){
 							
 						}
 						
+
+						else if($tipo_documento=="PRF")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 10";
+						
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+								
+						}
 							
 						break;
 							
@@ -2360,7 +2438,7 @@ public function eliminar()
 		
 		
 		
-		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"    ){
+		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"  || $ruta=="Providencias_Retencion_Fondos"  ){
 				
 			$providencias=new ProvidenciasModel();
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
@@ -2587,6 +2665,30 @@ public function eliminar()
 							
 					}
 					
+					
+					if($tipo_providencias==10){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Retención de Fondos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+					
+					
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+					
+						}
+							
+							
+					}
 					
 				}
 					
@@ -2810,7 +2912,7 @@ public function eliminar_impulsor()
 
 
 
-		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"    ){
+		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento" || $ruta=="Providencias_Retencion_Fondos"    ){
 
 			$providencias=new ProvidenciasModel();
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
@@ -3032,6 +3134,31 @@ public function eliminar_impulsor()
 								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
 							}
 
+						}
+							
+							
+					}
+					
+					
+					if($tipo_providencias==10){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Retención de Fondos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+					
+					
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+					
 						}
 							
 							
@@ -3256,7 +3383,7 @@ public function firmar()
 			
 		}
 	
-	if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"    ){
+	if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"  || $ruta=="Providencias_Retencion_Fondos"  ){
 		
 		$providencias=new ProvidenciasModel();
 			
@@ -3483,6 +3610,34 @@ public function firmar()
 					$id_tipo_restructuracion = 5;
 					$tipo_notificaciones = new TipoNotificacionModel();
 					$descripcion_tipo_notificacion="Firmo Providencia de Pago Total con Avoco Conocimiento";
+					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+				
+				
+					$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+					if (!empty($resultTipNoti)) {
+						$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+							
+							
+						if($id_tipo_notificacion>0){
+				
+							$notificaciones = new NotificacionesModel();
+							$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+						}
+							
+					}
+				
+				
+				}
+				
+				
+				
+				
+				if($tipo_providencias==10){
+				
+				
+					
+					$tipo_notificaciones = new TipoNotificacionModel();
+					$descripcion_tipo_notificacion="Firmo Providencia de Retención de Fondos";
 					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
 				
 				
@@ -4315,6 +4470,43 @@ session_start();
 								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
 								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
 								AND pr.id_tipo_providencias = 7";
+									
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
+								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+								$fechaDesde="";$fechaHasta="";
+								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+								{
+									$fechaDesde=$_POST["fcha_desde"];
+									$fechaHasta=$_POST["fcha_hasta"];
+									if ($fechaDesde != "" && $fechaHasta != "")
+									{
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									}
+								
+									if($fechaDesde != "" && $fechaHasta == ""){
+								
+										$fechaHasta='2018/12/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								
+									}
+									if($fechaDesde == "" && $fechaHasta != ""){
+								
+										$fechaDesde='1800/01/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								
+									}
+								}
+									
+							}else if($tipo_documento=="PRF")
+							{
+								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 10";
 									
 								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
 								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
