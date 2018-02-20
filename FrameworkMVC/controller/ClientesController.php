@@ -10,7 +10,7 @@ public function index(){
 		session_start();
 		
 		
-		
+		//hola
 		
 		if (isset(  $_SESSION['usuario_usuarios']) )
 		{
