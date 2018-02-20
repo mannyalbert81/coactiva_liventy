@@ -100,7 +100,7 @@ public function index3(){
 						if($tipo_documento=="ALL")
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -137,7 +137,7 @@ public function index3(){
 						}else if($tipo_documento==1)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -173,7 +173,7 @@ public function index3(){
 						}else if($tipo_documento==2)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -209,7 +209,7 @@ public function index3(){
 						}else if($tipo_documento==3)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -246,7 +246,7 @@ public function index3(){
 						else if($tipo_documento==6)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -283,7 +283,7 @@ public function index3(){
 						else if($tipo_documento==7)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -321,7 +321,7 @@ public function index3(){
 						else if($tipo_documento==12)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1242,7 +1242,7 @@ public function index2(){
 						if($tipo_documento=="ALL")
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios 
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1279,7 +1279,7 @@ public function index2(){
 						}else if($tipo_documento==1)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1315,7 +1315,7 @@ public function index2(){
 						}else if($tipo_documento==2)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1351,7 +1351,7 @@ public function index2(){
 						}else if($tipo_documento==3)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1388,7 +1388,7 @@ public function index2(){
 						else if($tipo_documento==6)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1425,7 +1425,7 @@ public function index2(){
 						else if($tipo_documento==7)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -1463,7 +1463,7 @@ public function index2(){
 						else if($tipo_documento==12)
 						{
 							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3811,7 +3811,7 @@ session_start();
 							if($tipo_documento=="ALL")
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3845,7 +3845,7 @@ session_start();
 							}else if($tipo_documento==1)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3880,7 +3880,7 @@ session_start();
 							}else if($tipo_documento==2)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3916,7 +3916,7 @@ session_start();
 							}else if($tipo_documento==3)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3952,7 +3952,7 @@ session_start();
 							else if($tipo_documento==6)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -3989,7 +3989,7 @@ session_start();
 							else if($tipo_documento==7)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
@@ -4028,7 +4028,7 @@ session_start();
 							else if($tipo_documento==12)
 							{
 								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
-								INNER JOIN clientes cl ON cl.id_clientes = ju.id_clientes
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
 								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
 								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
 								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios

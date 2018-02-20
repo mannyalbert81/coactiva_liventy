@@ -28,6 +28,12 @@
 			webshims.polyfill('forms forms-ext');
 		</script>
 		
+		
+		
+		
+		
+		
+		
       
       <script type="text/javascript">
       $(document).ready(function(){
@@ -161,6 +167,52 @@
       
       
       
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 15) 
+          {
+       	   $("#div_impulsor_activar").fadeIn("slow");
+          }
+       	
+          else
+          {
+       	   $("#div_impulsor_activar").fadeOut("slow");
+       	   }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 15)
+              {
+           	   $("#div_impulsor_activar").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_impulsor_activar").fadeOut("slow");
+           	   }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
+      
+      
          
         <script type="text/javascript">
       $(document).ready(function(){
@@ -202,6 +254,57 @@
            	  $("#div_datos_impulsor").fadeOut("slow");
         	  $("#div_datos_secretario").fadeOut("slow");
      
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
+      
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#remplaza_impulsor").click(function() {
+			
+          var remplaza_impulsor = $(this).val();
+			
+          if(remplaza_impulsor == "Si")
+          {
+       	   $("#div_impulsor_cambio_liquidador").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_impulsor_cambio_liquidador").fadeOut("slow");
+         
+         
+     	
+          
+          }
+         
+	    });
+	    
+	    $("#remplaza_impulsor").change(function() {
+			
+              
+              var remplaza_impulsor = $(this).val();
+				
+              
+              if(remplaza_impulsor == "Si")
+              {
+           	   $("#div_impulsor_cambio_liquidador").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_impulsor_cambio_liquidador").fadeOut("slow");
+           
               }
               
               
@@ -966,7 +1069,9 @@
 
 
 
-
+                 var remplaza_impulsor= $("#remplaza_impulsor").val();
+ 				 var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
+ 			
 
 
 
@@ -1701,6 +1806,9 @@
 					}
 
 
+
+
+				
 
 
 
@@ -3065,6 +3173,45 @@
 						    
 					}
 
+
+
+
+				if (tipo_avoco == 15 && remplaza_impulsor == "")
+		    	{
+			    	
+		    		$("#mensaje_remplaza_impulsor").text("Seleccione");
+		    		$("#mensaje_remplaza_impulsor").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_remplaza_impulsor").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+				if (tipo_avoco == 15 && remplaza_impulsor == "Si")
+		    	{
+
+
+					if(impulsor_saliente_cambio_liquidador==""){
+						$("#mensaje_impulsor_saliente_cambio_liquidador").text("Ingrese Nombre Abg. Anterior");
+			    		$("#mensaje_impulsor_saliente_cambio_liquidador").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+					}else{
+
+						$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow"); //Muestra mensaje de error
+						}
+			    	
+		    		
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
 
 
@@ -4457,6 +4604,16 @@
 				$( "#entidad_va_oficio_7" ).focus(function() {
 					$("#mensaje_entidad_va_oficio_7").fadeOut("slow");
     			});
+
+
+				$( "#remplaza_impulsor" ).focus(function() {
+					$("#mensaje_remplaza_impulsor").fadeOut("slow");
+    			});
+				
+				$( "#impulsor_saliente_cambio_liquidador" ).focus(function() {
+					$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow");
+    			});
+    			
     			
 				$( "#numero_oficio" ).focus(function() {
 					$("#mensaje_numero_oficio").fadeOut("slow");
@@ -5145,7 +5302,7 @@
 	             
 	             
 	             
-	            <div class="col-lg-6 col-md-6 col-xs-12">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 15px;'>
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio" id="generar_oficio"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -5159,7 +5316,7 @@
 	            
 	            
 	             <div id="div_datos_generar_oficio" style="display: none;">
-	            <div class="col-lg-4 col-md-4 col-xs-12">
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar_1" id="cantidad_oficios_generar_1"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -5337,7 +5494,38 @@
 	            </div>
 	            </div>
 	            
+	             
 	            <div id="div_datos_agregar_disposicion" style="display: none;">
+	            
+	            
+	            <div id="div_impulsor_activar" style="display: none;">
+	            
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
+			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>
+			  	<select name="remplaza_impulsor" id="remplaza_impulsor"  class="form-control" >
+			  	<option value="">--Seleccione--</option> 
+			  		<option value="No">No</option> 
+			  		<option value="Si">Si</option> 
+			  	
+				</select>
+				<div id="mensaje_remplaza_impulsor" class="errores"></div>
+	            </div>
+	          
+	         
+	            <div id="div_impulsor_cambio_liquidador" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 15px;'>
+			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
+			  	<input type="text"  name="impulsor_saliente_cambio_liquidador" id="impulsor_saliente_cambio_liquidador" value="" class="form-control" placeholder="Ejem1.  de la Abg. xxx xxxx   Ejem2.  del Abg. xxx xxxx"/> 
+	           <FONT FACE="arial" SIZE=1.9 COLOR=red>(Ingrese preposición dependiendo el sexo del abogado(a).)</FONT>
+                
+	            <div id="mensaje_impulsor_saliente_cambio_liquidador" class="errores"></div>
+	            	 
+	            </div>
+	            </div>
+	            </div>
+	            
+	            <br>
+	            
 	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
 			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 1):</p>
 			  	<textarea type="text"  name="res_agregar_disposicion" id="res_agregar_disposicion" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dirigido_levantamiento_providencias;}}else{} ?></textarea>

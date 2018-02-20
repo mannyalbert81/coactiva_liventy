@@ -11730,6 +11730,17 @@
 			$nombre_conyuge_sobreviviente = $_POST['nombre_conyuge_sobreviviente'];
 			$correo_conyuge_sobreviviente = $_POST['correo_conyuge_sobreviviente'];
 			
+			
+			$res_agregar_disposicion= $_POST['res_agregar_disposicion'];
+			$res_agregar_disposicion_1= $_POST['res_agregar_disposicion_1'];
+			$res_agregar_disposicion_2= $_POST['res_agregar_disposicion_2'];
+			
+			$tipo_lev= $_POST['tipo_lev'];
+			$nombre_canton= $_POST['nombre_canton'];
+			
+			
+			
+			
 			$generar_oficio_discapacidad= $_POST['generar_oficio_discapacidad'];
 			$entidad_va_oficio_discapacidad= $_POST['entidad_va_oficio_discapacidad'];
 			$asunto_discapacidad= $_POST['asunto_discapacidad'];
@@ -14736,6 +14747,12 @@
 					$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
 					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+					$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+					$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+					$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
+					$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+					$parametros['nombre_canton']=isset($nombre_canton)?trim($nombre_canton):'';
+					
 					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						
 						
@@ -14818,6 +14835,13 @@
 				
 				$parametros['ruta_avoco']=$ruta_providencias;
 				$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+				$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
+				$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
+				$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
+				$parametros['tipo_lev']=isset($tipo_lev)?trim($tipo_lev):'';
+				$parametros['nombre_canton']=isset($nombre_canton)?trim($nombre_canton):'';
+				
+				
 				
 				
 				$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -18294,7 +18318,11 @@
 									  providencias.referencia_oficios_tipo_lev_6,
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
-									  providencias.cantidad_oficios_generados";
+									  providencias.cantidad_oficios_generados,
+								      providencias.dispone_3,
+								      providencias.dispone_2,
+								      providencias.dispone_1,
+								 providencias.tipo_levantamiento";
 						$tablas_prov_2="public.providencias";
 						$where_prov_2 ="id_providencias ='$id_providencias_2'";
 						$id_prov_2="id_providencias";
@@ -18420,7 +18448,9 @@
 			$res_fecha_documento_3= $_POST['res_fecha_documento_3'];
 			
 			$tipo_lev= $_POST['tipo_lev'];
-			
+			$remplaza_impulsor= $_POST['remplaza_impulsor'];
+			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
+				
 			
 		
 			
@@ -23378,7 +23408,7 @@
 			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 			   	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-			   		
+			   	
 			   	
 			   	
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -26766,7 +26796,9 @@
 						$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-							
+						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
+						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
+						
 						
 				
 							
@@ -26911,6 +26943,8 @@
 						$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
 						$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
+						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
+						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						
 				
 						$pagina="contAvocoConocimientoSeleccion.aspx";

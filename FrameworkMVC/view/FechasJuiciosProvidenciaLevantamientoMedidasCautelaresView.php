@@ -50,11 +50,13 @@
           if(tipo_avoco == 11 )
           {
        	   $("#div_datos_medida_cautelar_fallecimiento").fadeIn("slow");
+       	  $("#div_datos_agregar_disposicion").fadeIn("slow");
           }
        	
           else
           {
        	   $("#div_datos_medida_cautelar_fallecimiento").fadeOut("slow");
+       	   $("#div_datos_agregar_disposicion").fadeOut("slow");
           }
           
 	    });
@@ -78,11 +80,14 @@
               if(tipo_avoco == 11 )
               {
            	   $("#div_datos_medida_cautelar_fallecimiento").fadeIn("slow");
+               $("#div_datos_agregar_disposicion").fadeIn("slow");
+            
               }
            	
               else
               {
            	   $("#div_datos_medida_cautelar_fallecimiento").fadeOut("slow");
+           	   $("#div_datos_agregar_disposicion").fadeOut("slow");
               }
               
 		    });
@@ -91,7 +96,7 @@
       </script>
       
       
-      
+       
       
          <script type="text/javascript">
       $(document).ready(function(){
@@ -724,8 +729,10 @@
 			    var fecha_oficio_embargo_cuenta = $("#fecha_oficio_embargo_cuenta").val();
 			    var tipo_cuenta = $("#tipo_cuenta").val();
 
+			    var tipo_lev= $("#tipo_lev").val();
+				var nombre_canton= $("#nombre_canton").val();
 
-
+			    
 			    var numero_oficio_medida_cuatelar_discapacidad = $("#numero_oficio_medida_cuatelar_discapacidad").val();
 			    var fecha_oficio_medida_cuatelar_discapacidad = $("#fecha_oficio_medida_cuatelar_discapacidad").val();
 			    var numero_liquidacion_medida_cuatelar_discapacidad = $("#numero_liquidacion_medida_cuatelar_discapacidad").val();
@@ -1683,6 +1690,30 @@
 			    }
 */
 
+		    	if(tipo_avoco == 11  && nombre_canton == ""){
+					$("#mensaje_nombre_canton").text("Ingrese Cantón");
+		    		$("#mensaje_nombre_canton").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_nombre_canton").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+		    	if(tipo_avoco == 11  && tipo_lev == 0){
+					$("#mensaje_tipo_lev").text("Seleccione");
+		    		$("#mensaje_tipo_lev").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_tipo_lev").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
 			    
 		    	if(tipo_avoco == 11  && generar_oficio_fallecimiento == 0){
 					$("#mensaje_generar_oficio_fallecimiento").text("Seleccione");
@@ -2460,12 +2491,20 @@
 				$( "#nombre_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_nombre_conyuge_sobreviviente").fadeOut("slow");
     			});
+    			
     			/*
 				$( "#correo_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_correo_conyuge_sobreviviente").fadeOut("slow");
     			});
 */
-				
+
+
+				$( "#nombre_canton" ).focus(function() {
+					$("#mensaje_nombre_canton").fadeOut("slow");
+				});
+				$( "#tipo_lev" ).focus(function() {
+					$("#mensaje_tipo_lev").fadeOut("slow");
+    			});
 			   	
 						
 		}); 
@@ -2678,6 +2717,8 @@
 			  	<input type="text"  name="nombre_discapacitado" id="nombre_discapacitado" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_3_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="Name"/> 
 	            <div id="mensaje_nombre_discapacitado" class="errores"></div>
 	            </div>
+	            
+	            
 	            
 	            
 	             <div class="col-lg-3 col-md-3 col-xs-12">
@@ -2946,9 +2987,49 @@
 	            <div id="mensaje_correo_conyuge_sobreviviente" class="errores"></div>
 	            </div>
 			  
+			  
+			   <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Cantón Resgistro de Propiedad:</p>
+			  	<input type="text"  name="nombre_canton" id="nombre_canton" value="" class="form-control" placeholder="Ingrese Nombre"/> 
+	            <div id="mensaje_nombre_canton" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p  class="formulario-subtitulo">Tipo Levantamiento:</p>
+			  	<select name="tipo_lev" id="tipo_lev"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="con_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->tipo_levantamiento == 'con_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Con Levantamiento</option>
+						<option value="sin_levantamiento" <?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){ if($res_edit->tipo_levantamiento == 'sin_levantamiento'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Sin Levantamiento</option>
+						
+			    </select>
+			    <div id="mensaje_tipo_lev" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	            
+	            <div id="div_datos_agregar_disposicion" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 1):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion" id="res_agregar_disposicion" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dispone_1;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 2):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_1" id="res_agregar_disposicion_1" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dispone_2;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_1" class="errores"></div>
+	            </div>
+	            
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 20px;'>
+			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 3):</p>
+			  	<textarea type="text"  name="res_agregar_disposicion_2" id="res_agregar_disposicion_2" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->dispone_3;}}else{} ?></textarea>
+	            <div id="mensaje_res_agregar_disposicion_2" class="errores"></div>
+	            </div>
+	            </div>
 	            
 	            
-	             <div class="col-lg-3 col-md-3 col-xs-12">
+	            
+	             <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:15px;">
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio_fallecimiento" id="generar_oficio_fallecimiento"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -2960,8 +3041,8 @@
 				<div id="mensaje_generar_oficio_fallecimiento" class="errores"></div>
 			    </div>
 	            
-	             <div id="div_datos_generar_oficio_fallecimiento" style="display: none;">
-	             <div class="col-lg-3 col-md-3 col-xs-12">
+	             <div id="div_datos_generar_oficio_fallecimiento" style="display: none; ">
+	             <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:15px;">
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar_1" id="cantidad_oficios_generar_1"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
