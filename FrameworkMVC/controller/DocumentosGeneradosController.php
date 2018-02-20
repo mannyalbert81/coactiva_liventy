@@ -838,6 +838,48 @@ public function index3(){
 							}
 						
 						}
+						
+						
+						else if($tipo_documento=="PRFAVOC")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 11";
+						
+							$where=" 1=1 AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						}
+						
+						
 	
 							
 						break;
@@ -1980,6 +2022,48 @@ public function index2(){
 							}
 								
 						}
+						
+						
+						else if($tipo_documento=="PRFAVOC")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 11";
+						
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						}
+						
+						
 							
 						break;
 							
@@ -4535,6 +4619,46 @@ session_start();
 								}
 									
 							}
+							else if($tipo_documento=="PRFAVOC")
+							{
+								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 11";
+									
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
+								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+								$fechaDesde="";$fechaHasta="";
+								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+								{
+									$fechaDesde=$_POST["fcha_desde"];
+									$fechaHasta=$_POST["fcha_hasta"];
+									if ($fechaDesde != "" && $fechaHasta != "")
+									{
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									}
+							
+									if($fechaDesde != "" && $fechaHasta == ""){
+							
+										$fechaHasta='2018/12/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+									}
+									if($fechaDesde == "" && $fechaHasta != ""){
+							
+										$fechaDesde='1800/01/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+									}
+								}
+									
+							}
+							
+							
 							break;
 							
 						case "ALL" :
