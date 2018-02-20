@@ -13259,7 +13259,7 @@
 					$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_discapacidad_6)?trim($referencia_oficios_tipo_lev_discapacidad_6):'';
 					$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_discapacidad_7)?trim($referencia_oficios_tipo_lev_discapacidad_7):'';
 					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-					$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					
 						
@@ -14762,7 +14762,7 @@
 					$parametros['nombre_canton']=isset($nombre_canton)?trim($nombre_canton):'';
 					
 					$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-					$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					
 						
@@ -16461,9 +16461,9 @@
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
-						$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
-						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-						
+						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
+					    $parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+					  
 						
 						 
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -18011,9 +18011,9 @@
 		    	$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 		    	$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 		    	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-		    	$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
-		    	$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-		    	
+		    	$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
+				$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+					
 		    	
 		    	$pagina="contAvocoConocimientoSeleccion.aspx";
 		    	
@@ -20101,7 +20101,7 @@
 					$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 					$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
-					$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					
 					
@@ -21763,9 +21763,9 @@
 						$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 						$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
-						$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-						
+							
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
 				
@@ -23430,9 +23430,9 @@
 			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 			   	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-			   	$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
-			   	$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-			   	
+			   	$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
+				$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+					
 			   	
 			   	
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -25116,9 +25116,9 @@
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-						$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-						
+							
 						
 						 
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -26824,9 +26824,9 @@
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
-						$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
+						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-						
+							
 						
 				
 							
@@ -27084,8 +27084,7 @@
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
 			
-			$fecha_oficios = $_POST['fecha_oficios'];
-			$texto_oficios = $_POST['texto_oficio'];
+			
 
 
 			$resultSet_prov="";
@@ -28524,8 +28523,6 @@
 				$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 				$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 				$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-				$parametros['fecha_oficios']=isset($feha_oficios)?trim($feha_oficios):'';
-				$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 				
 				
 				$pagina="contProvidenciaLevantamiento.aspx";
