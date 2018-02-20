@@ -3046,7 +3046,7 @@
 			  	<select name="tipo_avoco" id="tipo_avoco"  class="form-control" >
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="16">PROVIDENCIA RETENCIÓN (FONDOS)</option>
-			  		<option value="17">PROVIDENCIA RETENCIÓN (FONDOS Y AVOCO CONOCIMIENTO)</option>
+			  		<option value="17">PROVIDENCIA RETENCIÓN (FONDOS Y AVOCO CONOCIMIENTO + MEDIDAS)</option>
 			  		<option value="9">PROVIDENCIA EMBARGO (CUENTA BANCARIA)</option>
 			  		
 			  		<!-- <option value="13">PROVIDENCIA EMBARGO (BIENES)</option> -->
