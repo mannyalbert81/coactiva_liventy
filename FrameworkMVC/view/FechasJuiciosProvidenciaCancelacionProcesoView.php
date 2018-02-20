@@ -5016,13 +5016,32 @@
 	           
 	             <div id="div_datos_cantidad_oficios" style="display: none; margin-top: 20px;">
 	            
-	               <div class="panel panel-default">
-	             <div class="panel-body">
+	            <div class="panel panel-default">
+	            <div class="panel-body">
+	            <div class="row">
+	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
+	            				<p  class="formulario-subtitulo">Fecha Oficios</p>
+	            				<input type="date"  name="fecha_oficios" id="fecha_oficios" min="1800-01-01" max="<?php echo date('Y-m-d')."+ 10 days";?>" value="<?php ?>" class="form-control "/>			
+	            			</div>
+	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
+	            				<p  class="formulario-subtitulo">Texto Integro Providencia</p>
+	            				<select name="texto_oficio" id="texto_oficio"  class="form-control" >
+                			  			<option value="SI" >SI</option>
+                						<option value="NO" >NO</option>		
+                						
+                			    </select>			
+	            			</div>
+	            			
+	            		</div>
+	            
+	            
+	            <div class="row">
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto Oficios:</p>
 			  	 <textarea type="text"  class="form-control" id="asunto_pago_total" name="asunto_pago_total" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->asunto_oficio;}}else{} ?></textarea>
                 <div id="mensaje_asunto_pago_total" class="errores"></div>
 	            </div>
+	           </div>
 	           </div>
 	           </div>
 	            
@@ -5343,10 +5362,30 @@
 	             
 	           <div class="panel panel-default">
 	           <div class="panel-body">
+	           
+	           
+	            <div class="row">
+	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
+	            				<p  class="formulario-subtitulo">Fecha Oficios</p>
+	            				<input type="date"  name="fecha_oficios" id="fecha_oficios" min="1800-01-01" max="<?php echo date('Y-m-d')."+ 10 days";?>" value="<?php ?>" class="form-control "/>			
+	            			</div>
+	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
+	            				<p  class="formulario-subtitulo">Texto Integro Providencia</p>
+	            				<select name="texto_oficio" id="texto_oficio"  class="form-control" >
+                			  			<option value="SI" >SI</option>
+                						<option value="NO" >NO</option>		
+                						
+                			    </select>			
+	            			</div>
+	            			
+	            		</div>
+	           
+	           <div class="row">
 	           <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Asunto Oficios:</p>
 			  	 <textarea type="text"  class="form-control" id="asunto" name="asunto" value=""  placeholder="Ejem.  Dentro del juicio coactivo No. xxx, seguido en contra de xxx xxx xxx, con CC. xxxxxxxxxx, en calidad de deudor principal y otros de la operación No. xxxxxxx, en su parte pertinente dispone: "><?php if(!empty($resultSet_edit_2)){ foreach ($resultSet_edit_2 as $res_edit){echo $res_edit->asunto_oficio;}}else{} ?></textarea>
                  <div id="mensaje_asunto" class="errores"></div>
+	            </div>
 	            </div>
 	           </div>
 	           </div>
