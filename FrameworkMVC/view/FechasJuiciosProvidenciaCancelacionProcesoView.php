@@ -212,6 +212,50 @@
       
       
       
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 14) 
+          {
+       	   $("#div_impulsor_activar_pago_total").fadeIn("slow");
+          }
+       	
+          else
+          {
+       	   $("#div_impulsor_activar_pago_total").fadeOut("slow");
+       	   }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 14)
+              {
+           	   $("#div_impulsor_activar_pago_total").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_impulsor_activar_pago_total").fadeOut("slow");
+           	   }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
       
          
         <script type="text/javascript">
@@ -313,6 +357,54 @@
 	   
       </script>
       
+      
+      
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#remplaza_impulsor_pago_total").click(function() {
+			
+          var remplaza_impulsor = $(this).val();
+			
+          if(remplaza_impulsor == "Si")
+          {
+       	   $("#div_impulsor_cambio_liquidador_pago_total").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_impulsor_cambio_liquidador_pago_total").fadeOut("slow");
+         
+         
+     	
+          
+          }
+         
+	    });
+	    
+	    $("#remplaza_impulsor_pago_total").change(function() {
+			
+              
+              var remplaza_impulsor = $(this).val();
+				
+              
+              if(remplaza_impulsor == "Si")
+              {
+           	   $("#div_impulsor_cambio_liquidador_pago_total").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_impulsor_cambio_liquidador_pago_total").fadeOut("slow");
+           
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
       
       
       
@@ -1072,7 +1164,9 @@
                  var remplaza_impulsor= $("#remplaza_impulsor").val();
  				 var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
  			
-
+ 				 var remplaza_impulsor_pago_total= $("#remplaza_impulsor_pago_total").val();
+				 var impulsor_saliente_cambio_liquidador_pago_total = $("#impulsor_saliente_cambio_liquidador_pago_total").val();
+			
 
 
   		       
@@ -4529,7 +4623,43 @@
 					$("#mensaje_entidad_va_oficio_pago_total_7").fadeOut("slow"); //Muestra mensaje de error
 					
 				}
-				
+
+				if (tipo_avoco == 14 && remplaza_impulsor_pago_total == "")
+		    	{
+			    	
+		    		$("#mensaje_remplaza_impulsor_pago_total").text("Seleccione");
+		    		$("#mensaje_remplaza_impulsor_pago_total").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_remplaza_impulsor_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+				if (tipo_avoco == 14 && remplaza_impulsor_pago_total == "Si")
+		    	{
+
+
+					if(impulsor_saliente_cambio_liquidador_pago_total==""){
+						$("#mensaje_impulsor_saliente_cambio_liquidador_pago_total").text("Ingrese Nombre Abg. Anterior");
+			    		$("#mensaje_impulsor_saliente_cambio_liquidador_pago_total").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+					}else{
+
+						$("#mensaje_impulsor_saliente_cambio_liquidador_pago_total").fadeOut("slow"); //Muestra mensaje de error
+						}
+			    	
+		    		
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_impulsor_saliente_cambio_liquidador_pago_total").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
 		    	
 			}); 
@@ -4667,6 +4797,17 @@
 				$( "#entidad_va_oficio_pago_total_7" ).focus(function() {
 					$("#mensaje_entidad_va_oficio_pago_total_7").fadeOut("slow");
     			});
+
+
+				$( "#remplaza_impulsor_pago_total" ).focus(function() {
+					$("#mensaje_remplaza_impulsor_pago_total").fadeOut("slow");
+    			});
+				
+				$( "#impulsor_saliente_cambio_liquidador_pago_total" ).focus(function() {
+					$("#mensaje_impulsor_saliente_cambio_liquidador_pago_total").fadeOut("slow");
+    			});
+    			
+    			
 				$( "#reemplazar" ).focus(function() {
 					$("#mensaje_reemplazar").fadeOut("slow");
     			});
@@ -4978,7 +5119,7 @@
 			    
 			       <br>
 			           
-	            <div class="col-lg-6 col-md-6 col-xs-12">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 15px;'>
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio_pago_total" id="generar_oficio_pago_total"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -4992,7 +5133,7 @@
 	            
 	            
 	            <div id="div_datos_generar_oficio_pago_total" style="display: none;">
-	            <div class="col-lg-4 col-md-4 col-xs-12">
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar" id="cantidad_oficios_generar"  class="form-control" >
 			  		<option value="0">--Seleccione--</option>
@@ -5192,6 +5333,31 @@
 	            
 	            
 	            <div id="div_datos_agregar_disposicion_pago_total" style="display: none;">
+	            
+	            <div id="div_impulsor_activar_pago_total" style="display: none;">
+	            <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
+			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>
+			  	<select name="remplaza_impulsor_pago_total" id="remplaza_impulsor_pago_total"  class="form-control" >
+			  	<option value="">--Seleccione--</option> 
+			  		<option value="No">No</option> 
+			  		<option value="Si">Si</option> 
+			  	</select>
+				<div id="mensaje_remplaza_impulsor_pago_total" class="errores"></div>
+	            </div>
+	          
+	         
+	            <div id="div_impulsor_cambio_liquidador_pago_total" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12" style='margin-top: 15px;'>
+			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
+			  	<input type="text"  name="impulsor_saliente_cambio_liquidador_pago_total" id="impulsor_saliente_cambio_liquidador_pago_total" value="" class="form-control" placeholder="Ejem1.  de la Abg. xxx xxxx   Ejem2.  del Abg. xxx xxxx"/> 
+	            <FONT FACE="arial" SIZE=1.9 COLOR=red>(Ingrese preposición dependiendo el sexo del abogado(a).)</FONT>
+                <div id="mensaje_impulsor_saliente_cambio_liquidador_pago_total" class="errores"></div>
+	            </div>
+	            </div>
+	            </div>
+	            
+	            <br>
+	            
 	            <div class="col-lg-10 col-md-10 col-xs-12" style='margin-top: 20px;'>
 			  	<p class="formulario-subtitulo">Agregar Nueva Disposición (Opcional 1):</p>
 			  	<textarea type="text"  name="res_agregar_disposicion_pago_total" id="res_agregar_disposicion_pago_total" value="" class="form-control" placeholder="Ingrese solo el texto sin el numeral"><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_levantamiento_providencias;}}else{} ?></textarea>

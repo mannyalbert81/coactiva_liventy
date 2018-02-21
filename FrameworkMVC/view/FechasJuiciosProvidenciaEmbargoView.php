@@ -569,7 +569,7 @@
 				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
 				var cantidad_retener_avoco_conocimiento= $("#cantidad_retener_avoco_conocimiento").val();
                 var direccion_juzgado= $("#direccion_juzgado").val();
-
+				var tipo_cartera= $("#tipo_cartera").val();
 
    				
 		    	if (fecha_avoco == "")
@@ -2718,9 +2718,23 @@
 					}
 
 
-		    	
+				
 
 
+				if (tipo_avoco == 17 && tipo_cartera == 0)
+		    	{
+			    	
+		    		$("#mensaje_tipo_cartera").text("Seleccione");
+		    		$("#mensaje_tipo_cartera").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_tipo_cartera").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				
 
 		    	if (tipo_avoco == 17 && remplaza_impulsor == "")
 		    	{
@@ -2892,6 +2906,11 @@
 					$("#mensaje_cantidad_retener").fadeOut("slow");
     			});
 
+				$( "#tipo_cartera" ).focus(function() {
+					$("#mensaje_tipo_cartera").fadeOut("slow");
+    			});
+				
+				
 
 				$( "#remplaza_impulsor" ).focus(function() {
 					$("#mensaje_remplaza_impulsor").fadeOut("slow");
@@ -3805,6 +3824,19 @@
 	           <div id="div_datos_retencion_fondos_avoco_conocimiento" style="display: none;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
+	        	
+	        	<div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p  class="formulario-subtitulo">Tipo Cartera:</p>
+			  	<select name="tipo_cartera" id="tipo_cartera"  class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="nueva_cartera">Nueva Cartera</option>
+						<option value="antigua_cartera">Antigua Cartera</option>
+				</select>
+			    <div id="mensaje_tipo_cartera" class="errores"></div>
+			    </div>
+	            
+	            <br>
+	             
 	        	
 	        	<div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
 			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>

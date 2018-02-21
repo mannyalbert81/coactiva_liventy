@@ -15030,7 +15030,7 @@
 			$cantidad_retener_avoco_conocimiento= $_POST['cantidad_retener_avoco_conocimiento'];
 			$direccion_juzgado= $_POST['direccion_juzgado'];
 			$referencia= $_POST['referencia'];
-				
+	        $tipo_cartera= $_POST['tipo_cartera'];
 			
 			
 			
@@ -16266,13 +16266,7 @@
 									$identificador_oficio_7=$identificador_secretaria.$ident_7;
 								}
 				
-				
-				
-				
-				
 							}
-				
-				
 				
 				
 				
@@ -16476,11 +16470,8 @@
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						$parametros['direccion_juzgado']=isset($direccion_juzgado)?trim($direccion_juzgado):'';
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
+						$parametros['tipo_cartera']=isset($tipo_cartera)?trim($tipo_cartera):'';
 						
-						
-				
-						
-				
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
 							
@@ -16542,6 +16533,7 @@
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						$parametros['direccion_juzgado']=isset($direccion_juzgado)?trim($direccion_juzgado):'';
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
+						$parametros['tipo_cartera']=isset($tipo_cartera)?trim($tipo_cartera):'';
 						
 				
 				
@@ -16560,31 +16552,9 @@
 				
 				}
 				
-				
-				
-				
-				
 					
 				
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			
 			
@@ -19986,6 +19956,9 @@
 			$tipo_lev= $_POST['tipo_lev'];
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
+			
+			$remplaza_impulsor_pago_total= $_POST['remplaza_impulsor_pago_total'];
+			$impulsor_saliente_cambio_liquidador_pago_total= $_POST['impulsor_saliente_cambio_liquidador_pago_total'];
 				
 			
 			$fecha_oficios = $_POST['fecha_oficios'];
@@ -20193,8 +20166,6 @@
 					$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
 					$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
 					$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
-					
-					
 					
 					
 					$genero_oficio="TRUE";
@@ -23284,7 +23255,9 @@
 						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-							
+						$parametros['remplaza_impulsor']=isset($remplaza_impulsor_pago_total)?trim($remplaza_impulsor_pago_total):'';
+						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador_pago_total)?trim($impulsor_saliente_cambio_liquidador_pago_total):'';
+						
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
 				
@@ -23423,7 +23396,9 @@
 						$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 						$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
-							
+						$parametros['remplaza_impulsor']=isset($remplaza_impulsor_pago_total)?trim($remplaza_impulsor_pago_total):'';
+						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador_pago_total)?trim($impulsor_saliente_cambio_liquidador_pago_total):'';
+						
 							
 				
 				
