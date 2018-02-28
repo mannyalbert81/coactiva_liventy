@@ -3865,7 +3865,7 @@ public function firmar()
 			
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
 				
-			if (! empty($resultDocumento)) {
+			if (!empty($resultDocumento)) {
 				$id_juicios = $resultDocumento[0]->id_juicios;
 				$id_estados_procesales_juicios = $resultDocumento[0]->id_estados_procesales_juicios;
 				$fecha_providencias = $resultDocumento[0]->fecha_providencias;

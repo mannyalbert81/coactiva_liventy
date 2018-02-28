@@ -3042,7 +3042,7 @@
 								$key = (int) substr($xaux, 0, 3);
 								if (TRUE === array_key_exists($key, $xarray)){  // busco si la centena es número redondo (100, 200, 300, 400, etc..)
 									$xseek = $xarray[$key];
-									$xsub = subfijo($xaux); // devuelve el subfijo correspondiente (Millón, Millones, Mil o nada)
+									$xsub = $this->subfijo($xaux); // devuelve el subfijo correspondiente (Millón, Millones, Mil o nada)
 									if (substr($xaux, 0, 3) == 100)
 										$xcadena = " " . $xcadena . " CIEN " . $xsub;
 										else
@@ -15033,7 +15033,9 @@
 	        $tipo_cartera= $_POST['tipo_cartera'];
 			
 			
-			
+	        $citado= $_POST['citado'];
+	        $disposicion_citar= $_POST['disposicion_citar'];
+	        	
            
             
 			$juicios = new JuiciosModel();
@@ -15131,7 +15133,7 @@
 					$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
 					$cantidad_retener_letras="";
-					if($cantidad_retener_avoco_conocimiento > 0.00){
+					if($cantidad_retener_avoco_conocimiento > 0.00 ){
 						$cantidad_retener_letras = $this->numtoletras($cantidad_retener_avoco_conocimiento);
 							
 					}
@@ -16471,6 +16473,10 @@
 						$parametros['direccion_juzgado']=isset($direccion_juzgado)?trim($direccion_juzgado):'';
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
 						$parametros['tipo_cartera']=isset($tipo_cartera)?trim($tipo_cartera):'';
+						$parametros['citado']=isset($citado)?trim($citado):'';
+						$parametros['disposicion_citar']=isset($disposicion_citar)?trim($disposicion_citar):'';
+						
+						
 						
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -16534,6 +16540,8 @@
 						$parametros['direccion_juzgado']=isset($direccion_juzgado)?trim($direccion_juzgado):'';
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
 						$parametros['tipo_cartera']=isset($tipo_cartera)?trim($tipo_cartera):'';
+						$parametros['citado']=isset($citado)?trim($citado):'';
+						$parametros['disposicion_citar']=isset($disposicion_citar)?trim($disposicion_citar):'';
 						
 				
 				

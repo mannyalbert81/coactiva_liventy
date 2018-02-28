@@ -175,6 +175,62 @@
       </script>
       
       
+      
+      
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#citado").click(function() {
+			
+          var citado = $(this).val();
+			
+          if(citado == "No")
+          {
+       	   $("#div_citado").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_citado").fadeOut("slow");
+         
+         
+     	
+          
+          }
+         
+	    });
+	    
+	    $("#citado").change(function() {
+			
+              
+              var citado = $(this).val();
+				
+              
+              if(citado == "No")
+              {
+           	   $("#div_citado").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_citado").fadeOut("slow");
+           
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
+      
+      
+      
+      
        <script type="text/javascript">
       $(document).ready(function(){
           
@@ -570,7 +626,11 @@
 				var cantidad_retener_avoco_conocimiento= $("#cantidad_retener_avoco_conocimiento").val();
                 var direccion_juzgado= $("#direccion_juzgado").val();
 				var tipo_cartera= $("#tipo_cartera").val();
+				var disposicion_citar= $("#disposicion_citar").val();
+				var citado= $("#citado").val();
 
+
+				
    				
 		    	if (fecha_avoco == "")
 		    	{
@@ -1298,7 +1358,7 @@
 		            
 				}
 
-		    	if(tipo_avoco == 9  && tipo_cuenta == 0){
+		    	/*if(tipo_avoco == 9  && tipo_cuenta == 0){
 					$("#mensaje_tipo_cuenta").text("Seleccione Tipo Cuenta");
 		    		$("#mensaje_tipo_cuenta").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
@@ -1307,7 +1367,7 @@
 		    	{
 		    		$("#mensaje_tipo_cuenta").fadeOut("slow"); //Muestra mensaje de error
 		            
-				}
+				}*/
 
 		    	if(tipo_avoco == 9  && numero_cuenta == ""){
 					$("#mensaje_numero_cuenta").text("Ingrese # Cuenta");
@@ -2734,6 +2794,47 @@
 		            
 				}
 
+
+
+				
+
+		    	if (tipo_avoco == 17 && citado == "")
+		    	{
+			    	
+		    		$("#mensaje_citado").text("Seleccione");
+		    		$("#mensaje_citado").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_citado").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+
+		    	if (tipo_avoco == 17 && citado == "No")
+		    	{
+
+
+					if(disposicion_citar==""){
+						$("#mensaje_disposicion_citar").text("Ingrese disposición para citar");
+			    		$("#mensaje_disposicion_citar").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+					}else{
+
+						$("#mensaje_disposicion_citar").fadeOut("slow"); //Muestra mensaje de error
+						}
+			    	
+		    		
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_disposicion_citar").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 				
 
 		    	if (tipo_avoco == 17 && remplaza_impulsor == "")
@@ -2868,11 +2969,11 @@
 				$( "#fecha_oficio_embargo_cuenta" ).focus(function() {
 					$("#mensaje_fecha_oficio_embargo_cuenta").fadeOut("slow");
     			});
-				
+				/*
 				$( "#tipo_cuenta" ).focus(function() {
 					$("#mensaje_tipo_cuenta").fadeOut("slow");
     			});
-    			
+    			*/
 				$( "#numero_cuenta" ).focus(function() {
 					$("#mensaje_numero_cuenta").fadeOut("slow");
     			});
@@ -2910,6 +3011,17 @@
 					$("#mensaje_tipo_cartera").fadeOut("slow");
     			});
 				
+
+
+
+
+				$( "#citado" ).focus(function() {
+					$("#mensaje_citado").fadeOut("slow");
+    			});
+				
+				$( "#disposicion_citar" ).focus(function() {
+					$("#mensaje_disposicion_citar").fadeOut("slow");
+    			});
 				
 
 				$( "#remplaza_impulsor" ).focus(function() {
@@ -3835,7 +3947,30 @@
 			    <div id="mensaje_tipo_cartera" class="errores"></div>
 			    </div>
 	            
-	            <br>
+	            
+	            
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p  class="formulario-subtitulo">Citado:</p>
+			  	<select name="citado" id="citado"  class="form-control" >
+			  		<option value="">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+				</select>
+			    <div id="mensaje_citado" class="errores"></div>
+			    </div>
+	            
+	             
+	             
+	            <div id="div_citado" style="display: none;">
+	            <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 10px;">
+		                          <p class="formulario-subtitulo" >Disposición para Citar:</p>
+		                          <textarea type="text"  class="form-control" id="disposicion_citar" name="disposicion_citar" value=""  placeholder="Ingrese solo el texto sin numeral."></textarea>
+                                    <FONT FACE="arial" SIZE=1.9 COLOR=red>(Ingrese solo el texto sin numeral.)</FONT>
+              
+                                   <div id="mensaje_disposicion_citar" class="errores"></div>
+	            </div>
+	            </div>
+	             
 	             
 	        	
 	        	<div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
@@ -3855,16 +3990,14 @@
 			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
 			  	<input type="text"  name="impulsor_saliente_cambio_liquidador" id="impulsor_saliente_cambio_liquidador" value="" class="form-control" placeholder="Ejem1.  de la Abg. xxx xxxx   Ejem2.  del Abg. xxx xxxx"/> 
 	           <FONT FACE="arial" SIZE=1.9 COLOR=red>(Ingrese preposición dependiendo el sexo del abogado(a).)</FONT>
-                
-	            <div id="mensaje_impulsor_saliente_cambio_liquidador" class="errores"></div>
-	            	 
+                <div id="mensaje_impulsor_saliente_cambio_liquidador" class="errores"></div>
 	            </div>
 	            </div>
 	        	
 	        	<br>
                 <div class="col-lg-4 col-md-4 col-xs-12"  style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Cantidad a Retener:</p>
-			  	<input type="text"  class='form-control cantidades1' id='cantidad_retener_avoco_conocimiento' name='cantidad_retener_avoco_conocimiento' value='<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->valor_retencion_fondos;}}else{ echo "0";}?>' 
+			  	<input type="text"  class='form-control cantidades1' id='cantidad_retener_avoco_conocimiento' name='cantidad_retener_avoco_conocimiento' value='0' 
 			  	 data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
 			  	
 	            <div id="mensaje_cantidad_retener_avoco_conocimiento" class="errores"></div>
@@ -3879,7 +4012,7 @@
 	            
 	            <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 10px;">
 		                          <p class="formulario-subtitulo" >Disposiciones (Opcional: Si desea disponer ingrese el texto aqui):</p>
-                                  <textarea type="text"  class="form-control" id="referencia" name="referencia" value=""  placeholder="Empieze con el numeral 2.3.-"></textarea>
+                                  <textarea type="text"  class="form-control" id="referencia" name="referencia" value=""  placeholder="Si esta citado empieze con el numeral 2.3.- Si no esta citado empieze con el numeral 3.3.-"></textarea>
                                    <div id="mensaje_referencia" class="errores"></div>
 	            </div>
 	            

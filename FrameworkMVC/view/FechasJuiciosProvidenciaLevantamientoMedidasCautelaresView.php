@@ -1688,7 +1688,7 @@
 		    		$("#mensaje_correo_conyuge_sobreviviente").fadeIn("slow"); //Muestra mensaje de error
 		            return false;	
 			    }
-*/
+
 
 		    	if(tipo_avoco == 11  && nombre_canton == ""){
 					$("#mensaje_nombre_canton").text("Ingrese Cantón");
@@ -1700,7 +1700,7 @@
 		    		$("#mensaje_nombre_canton").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+*/
 		    	if(tipo_avoco == 11  && tipo_lev == 0){
 					$("#mensaje_tipo_lev").text("Seleccione");
 		    		$("#mensaje_tipo_lev").fadeIn("slow"); //Muestra mensaje de error
@@ -2498,10 +2498,12 @@
     			});
 */
 
-
+/*
 				$( "#nombre_canton" ).focus(function() {
 					$("#mensaje_nombre_canton").fadeOut("slow");
 				});
+
+*/
 				$( "#tipo_lev" ).focus(function() {
 					$("#mensaje_tipo_lev").fadeOut("slow");
     			});
