@@ -720,7 +720,6 @@
 		    $("#generar").click(function() 
 			{
 		    	var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-		    	
 		    	var fecha_avoco = $("#fecha_avoco").val();
 		     	var hora_avoco = $("#hora_avoco").val();
 		        var tipo_avoco = $("#tipo_avoco").val();
@@ -1658,7 +1657,7 @@
 		    		$("#mensaje_fecha_solicitud_fallecimiento").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		    	
+		    	/*
 		    	if(tipo_avoco == 11  && nombre_conyuge_sobreviviente == ""){
 					$("#mensaje_nombre_conyuge_sobreviviente").text("Ingrese Nombre Cónyuge");
 		    		$("#mensaje_nombre_conyuge_sobreviviente").fadeIn("slow"); //Muestra mensaje de error
@@ -1670,7 +1669,7 @@
 		            
 				}
 
-		    /*	if (tipo_avoco == 11  && correo_conyuge_sobreviviente == "")
+		    	if (tipo_avoco == 11  && correo_conyuge_sobreviviente == "")
 		    	{
 			    	
 		    		$("#mensaje_correo_conyuge_sobreviviente").text("Introduzca un correo");
@@ -2488,11 +2487,14 @@
 				$( "#fecha_solicitud_fallecimiento" ).focus(function() {
 					$("#mensaje_fecha_solicitud_fallecimiento").fadeOut("slow");
     			});
+
+
+/*
 				$( "#nombre_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_nombre_conyuge_sobreviviente").fadeOut("slow");
     			});
     			
-    			/*
+    			
 				$( "#correo_conyuge_sobreviviente" ).focus(function() {
 					$("#mensaje_correo_conyuge_sobreviviente").fadeOut("slow");
     			});
