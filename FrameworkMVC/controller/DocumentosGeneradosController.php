@@ -838,6 +838,44 @@ public function index3(){
 							}
 						
 						}
+						else if($tipo_documento=="PRC")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 12";
+						
+							$where=" 1=1 AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						}
 						
 						
 						else if($tipo_documento=="PRFAVOC")
@@ -2022,7 +2060,44 @@ public function index2(){
 							}
 								
 						}
+						else if($tipo_documento=="PRC")
+						{
+							$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 12";
 						
+							$where=" 1=1 AND asv.id_secretario='$_id_usuarios' AND pr.eliminado_documento='false'";
+							if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						}
 						
 						else if($tipo_documento=="PRFAVOC")
 						{
@@ -2291,9 +2366,20 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 				
 			}
 			if($firmado=='f'){
-					
-				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=firmar&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-success" style="font-size:65%;"><i class="glyphicon glyphicon-ok"></i></a></span></td>';
-				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="index.php?controller=DocumentosGenerados&action=eliminar&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
+				
+				
+				
+				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="javascript:;" class="btn btn-success" onClick="funcion('.$res->id_documento.');" style="font-size:65%;"><i class="glyphicon glyphicon-ok"></i></a></span></td>';
+				
+				
+				
+				//$html.='<td style="font-size: 18px;"><span class="pull-right"><a id="linkfavorito" href="index.php?controller=DocumentosGenerados&action=firmar&id_documento='.$res->id_documento.'&ruta='.$res->ruta_doc.'&nombre_doc='.$res->nombre_doc.'" target="_blank" class="btn btn-success" style="font-size:65%;"><i class="glyphicon glyphicon-ok"></i></a></span></td>';
+				$html.='<td style="font-size: 18px;"><span class="pull-right"><a href="javascript:;" class="btn btn-danger" onClick="funcioneliminar('.$res->id_documento.');" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a></span></td>';
+				
+				
+				
+				
+				
 				
 			}
 			
@@ -2345,11 +2431,72 @@ public function BuscadorSecretarios($page=1,$columnas,$tablas,$where_to,$tipo=nu
 
 
 
+
+
+
+public function firmar_pruebas(){
+
+	
+	session_start();
+	$resultado=0;
+	if(isset($_GET["id_documento"]))
+	{
+		$fichas_favoritos = new ProvidenciasModel();
+		
+		
+		
+		$id_fichas=(int)$_GET["id_documento"];
+		
+		
+		$resultSes=$fichas_favoritos->UpdateBy("firmado_secretario='true'", "providencias", "id_providencias='$id_fichas'");
+		
+		
+		if (strpos($resultSes, "Error") !== false) {
+			echo "error";
+		}else{
+			echo "1";
+		}
+		
+		
+		die();
+
+	}
+
+	
+
+}
+
+
+
+
+
+
 public function eliminar()
 {
 
-	if(isset($_GET["id_documento"]))
+	$ruta="";
+	
+	if(isset($_GET["id_documento"]) && isset($_GET["documento"]))
 	{
+		
+		$id_documento=(int)$_GET["id_documento"];
+		$documento=$_GET["documento"];
+		
+		if(!empty($documento)){
+				
+				
+			if($documento=="AC"){
+		
+				$ruta="Avoco_Conocimiento";
+			}
+				
+			if($documento=="PR"){
+		
+				$ruta="Providencias";
+			}
+		}
+		
+		/*
 		$id_documento=(int)$_GET["id_documento"];
 		$ruta=$_GET["ruta"];
 		$nombre_doc=$_GET["nombre_doc"];
@@ -2359,7 +2506,7 @@ public function eliminar()
 		
 		
 		$directorio = 'F:/coactiva/Documentos/' . $ruta . '/' . $nombre_doc;
-		
+		*/
 		
 		
 		if($ruta=="Oficios"){
@@ -2500,29 +2647,49 @@ public function eliminar()
 			
 			try {
 			
-			//	$eliminado=unlink($directorio);
-				$avoco_conocimiento->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
-				
-				//$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
-					
-			
-			} catch (Exception $e)
-			{
-				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
-			}
-			
 			
 			$traza=new TrazasModel();
 			$_nombre_controlador = "Avoco Conocimiento";
 			$_accion_trazas  = "Borrar";
 			$_parametros_trazas = $id_documento;
 			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}
+			
+			
+			
+			try {
+					
+				//	$eliminado=unlink($directorio);
+				$resultSes=$avoco_conocimiento->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
+			
+				//$avoco_conocimiento->deleteBy("id_avoco_conocimiento",$id_documento);
+					
+				if (strpos($resultSes, "Error") !== false) {
+					echo "error";
+				}else{
+					echo "1";
+				}
+				
+				
+				die();
+				
+					
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}
+			
+			
+			
 			
 		}
 		
 		
 		
-		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"  || $ruta=="Providencias_Retencion_Fondos"  ){
+		if($ruta=="Providencias"){
 				
 			$providencias=new ProvidenciasModel();
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
@@ -2773,6 +2940,29 @@ public function eliminar()
 							
 							
 					}
+					if($tipo_providencias==12){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Retención de Cuentas";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+					}
 					
 					
 					if($tipo_providencias==11){
@@ -2803,17 +2993,33 @@ public function eliminar()
 				}
 					
 			}
-			
-			
+			try {
+			$traza=new TrazasModel();
+			$_nombre_controlador = "Providencias";
+			$_accion_trazas  = "Borrar";
+			$_parametros_trazas = $id_documento;
+			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"no se elimino el archivo <br>".$e->getMessage()));
+			}	
 			
 			
 			try {
 					
 				//$eliminado=unlink($directorio);
-				$providencias->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "providencias", "id_providencias='$id_documento'");
+				$resultSes=$providencias->UpdateBy("firmado_secretario='true', eliminado_documento='true'", "providencias", "id_providencias='$id_documento'");
 				
 				//$providencias->deleteBy("id_providencias",$id_documento);
 					
+				if (strpos($resultSes, "Error") !== false) {
+					echo "error";
+				}else{
+					echo "1";
+				}
+				
+				
+				die();
 					
 			} catch (Exception $e)
 			{
@@ -2821,11 +3027,6 @@ public function eliminar()
 			}
 			
 				
-			$traza=new TrazasModel();
-			$_nombre_controlador = "Providencias";
-			$_accion_trazas  = "Borrar";
-			$_parametros_trazas = $id_documento;
-			$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
 			
 		}
 		
@@ -2833,7 +3034,8 @@ public function eliminar()
 		
 	}
 
-	$this->redirect("DocumentosGenerados", "index2");
+	
+	//$this->redirect("DocumentosGenerados", "index2");
 }
 
 
@@ -3022,7 +3224,7 @@ public function eliminar_impulsor()
 
 
 
-		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento" || $ruta=="Providencias_Retencion_Fondos"    ){
+		if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento" || $ruta=="Providencias_Retencion_Fondos" || $ruta=="Providencias_Retencion_Cuentas"){
 
 			$providencias=new ProvidenciasModel();
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
@@ -3273,6 +3475,29 @@ public function eliminar_impulsor()
 							
 							
 					}
+					if($tipo_providencias==12){
+							
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Providencia de Retención de Cuentas";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+							}
+								
+						}
+							
+							
+					}
 					
 					
 					if($tipo_providencias==11){
@@ -3343,11 +3568,30 @@ public function eliminar_impulsor()
 
 public function firmar()
 {
-
-	if(isset($_GET["id_documento"]))
+	
+	$ruta="";
+	
+	if(isset($_GET["id_documento"]) && isset($_GET["documento"]))
 	{
 		$id_documento=(int)$_GET["id_documento"];
-		$ruta=$_GET["ruta"];
+		$documento=$_GET["documento"];
+		
+		if(!empty($documento)){
+			
+			
+			if($documento=="AC"){
+				
+				$ruta="Avoco_Conocimiento";
+			}
+			
+			if($documento=="PR"){
+				
+				$ruta="Providencias";
+			}
+		}
+		
+		
+		
 	
 		$juicios = new JuiciosModel();
 		
@@ -3481,15 +3725,7 @@ public function firmar()
 			}
 			
 			
-			try {
-					
-				$avoco_conocimiento->UpdateBy("firmado_secretario='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
-				
-					
-			} catch (Exception $e)
-			{
-				$this->view("Error", array("resultado"=>"No se actualizo la firma en avoco conocimiento. <br>".$e->getMessage()));
-			}
+			
 			
 			
             $resultDocumento = $avoco_conocimiento->getBy("id_avoco_conocimiento='$id_documento'" );
@@ -3514,11 +3750,34 @@ public function firmar()
             	}
             
             }
+            
+            
+            try {
+            		
+            	$resultSes=$avoco_conocimiento->UpdateBy("firmado_secretario='true'", "avoco_conocimiento", "id_avoco_conocimiento='$id_documento'");
+            
+            	if (strpos($resultSes, "Error") !== false) {
+            		echo "error";
+            	}else{
+            		echo "1";
+            	}
+            	
+            	
+            	die();
+            		
+            } catch (Exception $e)
+            {
+            	$this->view("Error", array("resultado"=>"No se actualizo la firma en avoco conocimiento. <br>".$e->getMessage()));
+            }
+            
+            
+            
+            
 			
 			
 		}
 	
-	if($ruta=="Providencias_Suspension" || $ruta=="Providencias_Embargo_Cuenta_Bancaria"  || $ruta=="Providencias_Pago_Total" || $ruta=="Providencias_Restructuracion"  || $ruta=="Providencias_Levantamiento"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Discapacidad"  || $ruta=="Providencias_Levantamiento_Medida_Cautelar_Fallecimiento"  || $ruta=="Providencias_Retencion_Fondos"  ){
+	if($ruta=="Providencias"  ){
 		
 		$providencias=new ProvidenciasModel();
 			
@@ -3791,6 +4050,30 @@ public function firmar()
 				
 				
 				}
+				if($tipo_providencias==12){
+				
+				
+						
+					$tipo_notificaciones = new TipoNotificacionModel();
+					$descripcion_tipo_notificacion="Firmo Providencia de Retención de Fondos";
+					$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+				
+				
+					$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+					if (!empty($resultTipNoti)) {
+						$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+							
+							
+						if($id_tipo_notificacion>0){
+				
+							$notificaciones = new NotificacionesModel();
+							$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_archivo_providencias);
+						}
+							
+					}
+				
+				
+				}
 				
 				
 				if($tipo_providencias==11){
@@ -3852,20 +4135,12 @@ public function firmar()
 				
 		}
 			
-			try {
-					
-				$providencias->UpdateBy("firmado_secretario='true'", "providencias", "id_providencias='$id_documento'");
 			
-					
-			} catch (Exception $e)
-			{
-				$this->view("Error", array("resultado"=>"No se actualizo la firma en providencias. <br>".$e->getMessage()));
-			}
 			
 			
 			$resultDocumento = $providencias->getBy("id_providencias='$id_documento'" );
 				
-			if (!empty($resultDocumento)) {
+			if (! empty($resultDocumento)) {
 				$id_juicios = $resultDocumento[0]->id_juicios;
 				$id_estados_procesales_juicios = $resultDocumento[0]->id_estados_procesales_juicios;
 				$fecha_providencias = $resultDocumento[0]->fecha_providencias;
@@ -3885,12 +4160,34 @@ public function firmar()
 				}
 			
 			}
+			
+			
+			try {
+					
+				$resultSes=$providencias->UpdateBy("firmado_secretario='true'", "providencias", "id_providencias='$id_documento'");
+					
+				if (strpos($resultSes, "Error") !== false) {
+					echo "error";
+				}else{
+					echo "1";
+				}
+				
+				
+				die();
+				
+				
+			} catch (Exception $e)
+			{
+				$this->view("Error", array("resultado"=>"No se actualizo la firma en providencias. <br>".$e->getMessage()));
+			}
+			
+			
 						
 		}
 	
 	}
 
-	$this->redirect("DocumentosGenerados", "index2");
+	//$this->redirect("DocumentosGenerados", "index2");
 }
 
 
@@ -4692,6 +4989,44 @@ session_start();
 										$fechaDesde='1800/01/01';
 										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
 								
+									}
+								}
+									
+							}
+							else if($tipo_documento=="PRC")
+							{
+								$tablas=" juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN providencias pr  ON pr.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = pr.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								INNER JOIN tipo_providencias tpr ON tpr.id_tipo_providencias = pr.id_tipo_providencias
+								AND pr.id_tipo_providencias = 12";
+									
+								$where=" 1=1 AND asv.id_abogado='$_id_usuarios' AND pr.eliminado_documento='false'";
+								if($firma!=""){$where.=" AND pr.firmado_secretario='$firma'";}
+								$fechaDesde="";$fechaHasta="";
+								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+								{
+									$fechaDesde=$_POST["fcha_desde"];
+									$fechaHasta=$_POST["fcha_hasta"];
+									if ($fechaDesde != "" && $fechaHasta != "")
+									{
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									}
+							
+									if($fechaDesde != "" && $fechaHasta == ""){
+							
+										$fechaHasta='2018/12/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
+									}
+									if($fechaDesde == "" && $fechaHasta != ""){
+							
+										$fechaDesde='1800/01/01';
+										$where .= " AND DATE(pr.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+							
 									}
 								}
 									

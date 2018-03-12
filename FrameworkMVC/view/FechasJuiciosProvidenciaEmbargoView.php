@@ -127,6 +127,46 @@
 	}); 	
 	   
       </script>
+       <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 20 )
+          {
+       	   $("#div_datos_retencion_cuentas").fadeIn("slow");
+          }
+       	
+          else
+          {
+       	   $("#div_datos_retencion_cuentas").fadeOut("slow");
+          }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 16)
+              {
+           	   $("#div_datos_retencion_cuentas").fadeIn("slow");
+              }
+           	
+              else
+              {
+           	   $("#div_datos_retencion_cuentas").fadeOut("slow");
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
       
       
       
@@ -3179,6 +3219,8 @@
 			  		<option value="16">PROVIDENCIA RETENCIÓN (FONDOS)</option>
 			  		<option value="17">PROVIDENCIA RETENCIÓN (FONDOS Y AVOCO CONOCIMIENTO + MEDIDAS)</option>
 			  		<option value="9">PROVIDENCIA EMBARGO (CUENTA BANCARIA)</option>
+			  		<option value="20">PROVIDENCIA RETENCIÓN (CUENTAS)</option>
+			  		
 			  		
 			  		<!-- <option value="13">PROVIDENCIA EMBARGO (BIENES)</option> -->
 			 	</select>
@@ -3930,6 +3972,26 @@
 	            </div>
 	            </div>
 	          </div>
+	          
+	                <div id="div_datos_retencion_cuentas" style="display: none;">
+	             <div class="panel panel-default">
+	             <div class="panel-body">
+	        	
+                <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >Cantidad a Retener:</p>
+			  	<input type="text"  class='form-control cantidades1' id='cantidad_retener' name='cantidad_retener' value='<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->valor_retencion_fondos;}}else{ echo "0";}?>' 
+			  	 data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
+			  	
+	            <div id="mensaje_cantidad_retener" class="errores"></div>
+	            </div>
+	            
+	            
+	            
+	            </div>
+	            </div>
+	          </div>
+	          
+	         
 	          
 	          
 	          

@@ -1,3 +1,5 @@
+
+
 	   <?php include("view/modulos/head.php"); ?>		
        <?php include("view/modulos/modal.php"); ?>
        <?php include("view/modulos/menu.php"); ?>
@@ -22,7 +24,18 @@
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          
  		
+ 		<style type="text/css">
  		
+ 		a.linkfavorito {
+			display: inline-block;
+			text-decoration: none;
+			padding: 5px;
+			background: #222;
+			color: #fff;
+			text-transform: uppercase;
+			box-shadow: 0 0 1px #000
+			}
+ 		</style>
  		
     
     
@@ -59,13 +72,24 @@
 	});
 
 	</script>
+	
+	
+	
+	
+	
+	
+	
+	
      
     <script type="text/javascript">
 	$(document).ready(function(){
 		//load_juicios(1);
 
+		
+		
+		
 		$("#buscar").click(function(){
-
+			
 
 			var documento = $("#documento").val();
 	     	
@@ -100,6 +124,20 @@
 			});
 
 
+
+
+
+
+		
+
+
+
+
+
+		    
+
+
+		
 
 
 		$( "#documento" ).focus(function() {
@@ -139,7 +177,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PCPAVOC": "Providencia Pago Total y Avoco Conocimiento", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento", "PRF": "Providencia Retención de Fondos", "PRFAVOC": "Providencia Retención de Fondos y Avoco Conocimiento + Medidas"};
+				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PCPAVOC": "Providencia Pago Total y Avoco Conocimiento", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento", "PRF": "Providencia Retención de Fondos", "PRFAVOC": "Providencia Retención de Fondos y Avoco Conocimiento + Medidas", "PRC": "Providencia Retención de Cuentas"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')
@@ -222,6 +260,131 @@
 	}
 	
 	</script>
+	
+	
+	
+	
+	
+	<script language="javascript" type="text/javascript">
+		function funcion(id){
+
+			var con_documento=$("#documento").val();
+
+			
+	     	
+	    	if (con_documento == "ALL")
+	    	{
+		    	
+	    		$("#mensaje_documento").text("Seleccione");
+	    		$("#mensaje_documento").fadeIn("slow"); //Muestra mensaje de error
+	            return false;
+		    }
+	    	else 
+	    	{
+	    		$("#mensaje_documento").fadeOut("slow"); //Muestra mensaje de error
+
+
+
+	    		 var con_datos={
+						  documento:con_documento,
+						  id_documento:id
+						  
+	    				  };
+		
+				  $("#matriz").fadeIn('slow');
+				     $.ajax({
+				               beforeSend: function(){
+				                 $("#matriz").html("<b>FIRMADO PROVIDENCIA...</b>")
+				               },
+				               url: 'index.php?controller=DocumentosGenerados&action=firmar',
+				               type: 'GET',
+				               data: con_datos,
+				               success: function(x){
+
+				            	   if(x==1){
+				            	   load_Documentos(1);
+				            	   
+				            	   }
+				            	   if(x==0){
+				            		   $("#matriz").html("<b>NO SE PUDO FIRMAR</b>");
+					                }
+				               },
+				              error: function(jqXHR,estado,error){
+				                $("#matriz").html("<b>NO SE PUDO FIRMAR</b>");
+				              }
+				            });
+
+
+	    		
+			}
+
+			
+			
+			 
+			 
+			
+		}
+
+		$( "#documento" ).focus(function() {
+			$("#mensaje_documento").fadeOut("slow");
+		});
+	</script>
+	
+	
+	
+	
+	
+	
+	<script language="javascript" type="text/javascript">
+		function funcioneliminar(id1){
+
+			var con_documento1=$("#documento").val();
+
+			if (con_documento1 == "ALL")
+	    	{
+		    	
+	    		$("#mensaje_documento").text("Seleccione");
+	    		$("#mensaje_documento").fadeIn("slow"); //Muestra mensaje de error
+	            return false;
+		    }
+	    	else 
+	    	{
+	    		$("#mensaje_documento").fadeOut("slow"); //Muestra mensaje de error
+			
+			
+			  var con_datos1={
+					  documento:con_documento1,
+					  id_documento:id1
+					  
+    				  };
+	
+			  $("#matriz").fadeIn('slow');
+			     $.ajax({
+			               beforeSend: function(){
+			                 $("#matriz").html("<b>ELIMINANDO PROVIDENCIA...</b>")
+			               },
+			               url: 'index.php?controller=DocumentosGenerados&action=eliminar',
+			               type: 'GET',
+			               data: con_datos1,
+			               success: function(y){
+							   
+			            	   load_Documentos(1);
+			            	  
+			               },
+			              error: function(jqXHR,estado,error){
+			                $("#matriz").html("<b>NO SE PUDO ELIMINAR</b>");
+			              }
+			            });
+	    	}
+			
+		}
+
+		$( "#documento" ).focus(function() {
+			$("#mensaje_documento").fadeOut("slow");
+		});
+	</script>
+	
+	
 	
 	
 	 <script>
@@ -535,7 +698,8 @@
 	        </div>
          
          
-        		 
+					
+       
 		 
 		 <div class="col-lg-12 col-md-12 col-xs-12">
 		 

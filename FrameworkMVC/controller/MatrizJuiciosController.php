@@ -5069,7 +5069,8 @@
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
 									  providencias.cantidad_oficios_generados,
-								       providencias.valor_retencion_fondos";
+								       providencias.valor_retencion_fondos,
+								providencias.valor_retencion_cuentas";
 						$tablas_prov="public.providencias";
 						$where_prov ="id_providencias ='$id_providencias'";
 						$id_prov="id_providencias";
@@ -5509,6 +5510,7 @@
 			$escrito_presentado_por= $_POST['escrito_presentado_por'];
 			$dispone_1= $_POST['dispone_1'];
 			$dispone_2= $_POST['dispone_2'];
+			$dispone_3= $_POST['dispone_3'];
 				
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
@@ -6967,7 +6969,7 @@
 					
 					
 				$funcion = "ins_avoco_conocimiento_liventy";
-				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2'";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -8518,6 +8520,7 @@
 						$parametros['escrito_presentado_por']=isset($escrito_presentado_por)?trim($escrito_presentado_por):'';
 						$parametros['dispone_1']=isset($dispone_1)?trim($dispone_1):'';
 						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
+						$parametros['dispone_3']=isset($dispone_3)?trim($dispone_3):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						
@@ -16565,7 +16568,1483 @@
 			}
 			
 			
+			if($tipo_avoco==20){
+
+
+
+				$resultSet_prov="";
+				$firmado_secretario="";
+				$columnas_prov = "firmado_secretario";
+				$tablas_prov="providencias";
+				$where_prov ="id_juicios ='$id_juicios' AND (id_tipo_providencias=12)";
+				$id_prov="id_providencias";
+				$resultSet_prov=$providencias->getCondiciones($columnas_prov, $tablas_prov, $where_prov, $id_prov);
+				
+				
+				if(!empty($resultSet_prov)){
+				
+					foreach ($resultSet_prov as $res_prov)
+					{
+						$firmado_secretario=$res_prov->firmado_secretario;
+					}
+				}else{
+				
+					$firmado_secretario="";
+				}
+				
+				
+				
+				
+				if($firmado_secretario=='f'){
+				
+					$existe="Ya existe generada una providencia de retención de cuentas de este juicio, comunique a su abogado secretario para que lo apruebe o lo elimine en caso de contener errores.";
+				
+					$this->view("NoPuedeGenerarDocumentos",array(
+							"existe"=>$existe
+					));
+				
+					exit();
+				
+				}else{
+				
+				
+				
+				
+				
+					$id_tipo_providencias=12;
+					$consecutivo= new ConsecutivosModel();
+					$resultConsecutivo= $consecutivo->getBy("documento_consecutivos='PROVIDENCIAS_RETENCION_CUENTAS'");
+					$identificador_providencias=$resultConsecutivo[0]->real_consecutivos;
+					$ruta_providencias="Providencias_Retencion_Cuentas";
+				
+					$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
+				
+					$cantidad_retener_letras="";
+					if($cantidad_retener > 0.00){
+						$cantidad_retener_letras = $this->numtoletras($cantidad_retener);
+					    
+					}
+				
+					$cantidad_reporte= $cantidad_retener.' ('.$cantidad_retener_letras.')';
+				
+					if($generar_oficio=="Si"){
+							
+							
+						$id_impulsor=$_SESSION['id_usuarios'];
+						$resultSecre = $vista_asignacion_secretarios->getBy("id_abogado ='$id_impulsor'");
+						$id_secretario=$resultSecre[0]->id_secretario;
+						$identificador_secretaria=$resultSecre[0]->identificador_secretaria;
+						 
+						$resultConsecutivoOfi= $consecutivo->getBy("documento_consecutivos='$identificador_secretaria'");
+						$identificador_ofi_x_secretaria=$resultConsecutivoOfi[0]->real_consecutivos;
+						$id_consecutivos = $resultConsecutivoOfi[0]->id_consecutivos;
+						 
+				
+						 
+						$genero_oficio="TRUE";
+						$pie_oficios="";
+						 
+						if($identificador_secretaria=="BNF-LIQ-UIO-S1-2018-"){
+							 
+							$pie_oficios="Una vez cumplido lo dispuesto, se remitirá información a esta Judicatura, ubicada en la Avenida Veintimilla E9-26 y Leónidas Plaza, Edificio UZIEL, sexto piso Oficina 603, telfs (02) 2551523 / (02) 2232809.";
+							 
+							 
+						}else{
+							 
+							$identificador_secretaria='JC'.$identificador_secretaria;
+							 
+						}
+				
+				
+						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
+						  
+						  
+							if($cantidad_oficios_generar=="1"){
+								 
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									 
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								}
+				
+							}
+						  
+							if($cantidad_oficios_generar=="2"){
+				
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if (strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if (strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									 
+								}
+				
+				
+								 
+							}
+						  
+							if($cantidad_oficios_generar=="3"){
+								 
+				
+				
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if (strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if (strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								}
+				
+							}
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="4"){
+								 
+				
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									$ident_3=$ident_2+1;
+									if(strlen($ident_3) == 1){
+										$identificador_oficio_3=$identificador_secretaria.'000'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+								}
+				
+								else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									$ident_3=$ident_2+1;
+									$identificador_oficio_3=$identificador_secretaria.$ident_3;
+								}
+				
+				
+				
+				
+							}
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="5"){
+								 
+				
+								 
+								 
+								 
+								 
+								 
+								 
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									$ident_3=$ident_2+1;
+									if(strlen($ident_3) == 1){
+										$identificador_oficio_3=$identificador_secretaria.'000'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									if(strlen($ident_4) == 1){
+										$identificador_oficio_4=$identificador_secretaria.'000'.$ident_4;
+									}else if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									$ident_3=$ident_2+1;
+									$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									$ident_4=$ident_3+1;
+									$identificador_oficio_4=$identificador_secretaria.$ident_4;
+								}
+							}
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="6"){
+								 
+								 
+								 
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									$ident_3=$ident_2+1;
+									if(strlen($ident_3) == 1){
+										$identificador_oficio_3=$identificador_secretaria.'000'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									if(strlen($ident_4) == 1){
+										$identificador_oficio_4=$identificador_secretaria.'000'.$ident_4;
+									}else if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 1){
+										$identificador_oficio_5=$identificador_secretaria.'000'.$ident_5;
+									}else if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									$ident_3=$ident_2+1;
+									$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									$ident_4=$ident_3+1;
+									$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									$ident_5=$ident_4+1;
+									$identificador_oficio_5=$identificador_secretaria.$ident_5;
+								}
+				
+				
+								 
+				
+							}
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="7"){
+								 
+								 
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									$ident_3=$ident_2+1;
+									if(strlen($ident_3) == 1){
+										$identificador_oficio_3=$identificador_secretaria.'000'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									if(strlen($ident_4) == 1){
+										$identificador_oficio_4=$identificador_secretaria.'000'.$ident_4;
+									}else if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 1){
+										$identificador_oficio_5=$identificador_secretaria.'000'.$ident_5;
+									}else if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 1){
+										$identificador_oficio_6=$identificador_secretaria.'000'.$ident_6;
+									}else if(strlen($ident_6) == 2){
+										$identificador_oficio_6=$identificador_secretaria.'00'.$ident_6;
+									}else if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 2){
+										$identificador_oficio_6=$identificador_secretaria.'00'.$ident_6;
+									}else  if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									$ident_3=$ident_2+1;
+									$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									$ident_4=$ident_3+1;
+									$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									$ident_5=$ident_4+1;
+									$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									$ident_6=$ident_5+1;
+									$identificador_oficio_6=$identificador_secretaria.$ident_6;
+								}
+								 
+								 
+				
+				
+							}
+						  
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="8"){
+				
+				
+								 
+								 
+								if(strlen($identificador_ofi_x_secretaria) == 1){
+									$identificador_oficio=$identificador_secretaria.'000'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 1){
+										$identificador_oficio_1=$identificador_secretaria.'000'.$ident_1;
+									}else if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 1){
+										$identificador_oficio_2=$identificador_secretaria.'000'.$ident_2;
+									}else if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									 
+									$ident_3=$ident_2+1;
+									if(strlen($ident_3) == 1){
+										$identificador_oficio_3=$identificador_secretaria.'000'.$ident_3;
+									}else if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									if(strlen($ident_4) == 1){
+										$identificador_oficio_4=$identificador_secretaria.'000'.$ident_4;
+									}else if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 1){
+										$identificador_oficio_5=$identificador_secretaria.'000'.$ident_5;
+									}else if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 1){
+										$identificador_oficio_6=$identificador_secretaria.'000'.$ident_6;
+									}else if(strlen($ident_6) == 2){
+										$identificador_oficio_6=$identificador_secretaria.'00'.$ident_6;
+									}else if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									$ident_7=$ident_6+1;
+									if(strlen($ident_7) == 1){
+										$identificador_oficio_7=$identificador_secretaria.'000'.$ident_7;
+									}else if(strlen($ident_7) == 2){
+										$identificador_oficio_7=$identificador_secretaria.'00'.$ident_7;
+									}else if(strlen($ident_7) == 3){
+										$identificador_oficio_7=$identificador_secretaria.'0'.$ident_7;
+									}else{
+										$identificador_oficio_7=$identificador_secretaria.$ident_7;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 2){
+									 
+									$identificador_oficio=$identificador_secretaria.'00'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 2){
+										$identificador_oficio_1=$identificador_secretaria.'00'.$ident_1;
+									}else if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 2){
+										$identificador_oficio_2=$identificador_secretaria.'00'.$ident_2;
+									}else if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 2){
+										$identificador_oficio_3=$identificador_secretaria.'00'.$ident_3;
+									}else if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 2){
+										$identificador_oficio_4=$identificador_secretaria.'00'.$ident_4;
+									}else if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 2){
+										$identificador_oficio_5=$identificador_secretaria.'00'.$ident_5;
+									}else if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 2){
+										$identificador_oficio_6=$identificador_secretaria.'00'.$ident_6;
+									}else if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									$ident_7=$ident_6+1;
+									if(strlen($ident_7) == 2){
+										$identificador_oficio_7=$identificador_secretaria.'00'.$ident_7;
+									}else if(strlen($ident_7) == 3){
+										$identificador_oficio_7=$identificador_secretaria.'0'.$ident_7;
+									}else{
+										$identificador_oficio_7=$identificador_secretaria.$ident_7;
+									}
+									 
+									 
+								}else if(strlen($identificador_ofi_x_secretaria) == 3){
+									 
+									$identificador_oficio=$identificador_secretaria.'0'.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									 
+									if(strlen($ident_1) == 3){
+										$identificador_oficio_1=$identificador_secretaria.'0'.$ident_1;
+									}else{
+										$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									}
+									 
+									$ident_2=$ident_1+1;
+									 
+									if(strlen($ident_2) == 3){
+										$identificador_oficio_2=$identificador_secretaria.'0'.$ident_2;
+									}else{
+										$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									}
+									 
+									$ident_3=$ident_2+1;
+									 
+									if(strlen($ident_3) == 3){
+										$identificador_oficio_3=$identificador_secretaria.'0'.$ident_3;
+									}else{
+										$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									}
+									 
+									 
+									$ident_4=$ident_3+1;
+									 
+									if(strlen($ident_4) == 3){
+										$identificador_oficio_4=$identificador_secretaria.'0'.$ident_4;
+									}else{
+										$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									}
+									 
+									$ident_5=$ident_4+1;
+									if(strlen($ident_5) == 3){
+										$identificador_oficio_5=$identificador_secretaria.'0'.$ident_5;
+									}else{
+										$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									}
+									 
+									$ident_6=$ident_5+1;
+									if(strlen($ident_6) == 3){
+										$identificador_oficio_6=$identificador_secretaria.'0'.$ident_6;
+									}else{
+										$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									}
+									 
+									$ident_7=$ident_6+1;
+									if(strlen($ident_7) == 3){
+										$identificador_oficio_7=$identificador_secretaria.'0'.$ident_7;
+									}else{
+										$identificador_oficio_7=$identificador_secretaria.$ident_7;
+									}
+									 
+									 
+								}else{
+									 
+									$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+									$ident_1=$identificador_ofi_x_secretaria+1;
+									$identificador_oficio_1=$identificador_secretaria.$ident_1;
+									$ident_2=$ident_1+1;
+									$identificador_oficio_2=$identificador_secretaria.$ident_2;
+									$ident_3=$ident_2+1;
+									$identificador_oficio_3=$identificador_secretaria.$ident_3;
+									$ident_4=$ident_3+1;
+									$identificador_oficio_4=$identificador_secretaria.$ident_4;
+									$ident_5=$ident_4+1;
+									$identificador_oficio_5=$identificador_secretaria.$ident_5;
+									$ident_6=$ident_5+1;
+									$identificador_oficio_6=$identificador_secretaria.$ident_6;
+									$ident_7=$ident_6+1;
+									$identificador_oficio_7=$identificador_secretaria.$ident_7;
+								}
+				
+				
+				
+				
+				
+							}
+						  
+						  
+						  
+						  
+						  
+						}else{
+						  
+						  
+						  
+							if($cantidad_oficios_generar=="1"){
+						   
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+						   
+							}
+						  
+							if($cantidad_oficios_generar=="2"){
+						   
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+						   
+							}
+						  
+							if($cantidad_oficios_generar=="3"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+							}
+				
+							if($cantidad_oficios_generar=="4"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								$ident_3=$ident_2+1;
+								$identificador_oficio_3=$identificador_secretaria.$ident_3;
+							}
+							if($cantidad_oficios_generar=="5"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								$ident_3=$ident_2+1;
+								$identificador_oficio_3=$identificador_secretaria.$ident_3;
+								$ident_4=$ident_3+1;
+								$identificador_oficio_4=$identificador_secretaria.$ident_4;
+							}
+							if($cantidad_oficios_generar=="6"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								$ident_3=$ident_2+1;
+								$identificador_oficio_3=$identificador_secretaria.$ident_3;
+								$ident_4=$ident_3+1;
+								$identificador_oficio_4=$identificador_secretaria.$ident_4;
+								$ident_5=$ident_4+1;
+								$identificador_oficio_5=$identificador_secretaria.$ident_5;
+							}
+						  
+							if($cantidad_oficios_generar=="7"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								$ident_3=$ident_2+1;
+								$identificador_oficio_3=$identificador_secretaria.$ident_3;
+								$ident_4=$ident_3+1;
+								$identificador_oficio_4=$identificador_secretaria.$ident_4;
+								$ident_5=$ident_4+1;
+								$identificador_oficio_5=$identificador_secretaria.$ident_5;
+								$ident_6=$ident_5+1;
+								$identificador_oficio_6=$identificador_secretaria.$ident_6;
+							}
+						  
+							if($cantidad_oficios_generar=="8"){
+								 
+								$identificador_oficio=$identificador_secretaria.$identificador_ofi_x_secretaria;
+								$ident_1=$identificador_ofi_x_secretaria+1;
+								$identificador_oficio_1=$identificador_secretaria.$ident_1;
+								$ident_2=$ident_1+1;
+								$identificador_oficio_2=$identificador_secretaria.$ident_2;
+								$ident_3=$ident_2+1;
+								$identificador_oficio_3=$identificador_secretaria.$ident_3;
+								$ident_4=$ident_3+1;
+								$identificador_oficio_4=$identificador_secretaria.$ident_4;
+								$ident_5=$ident_4+1;
+								$identificador_oficio_5=$identificador_secretaria.$ident_5;
+								$ident_6=$ident_5+1;
+								$identificador_oficio_6=$identificador_secretaria.$ident_6;
+								$ident_7=$ident_6+1;
+								$identificador_oficio_7=$identificador_secretaria.$ident_7;
+							}
+						  
+						}
+						 
+						 
+						 
+						 
+						$funcion = "ins_providencias_retencion_cuentas_con_oficio_liventy";
+						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios',
+						'$id_clientes', '$id_titulo_credito','$id_impulsor', '$id_secretario',
+						'$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
+						'$entidad_va_oficio', '$asunto',
+						'$identificador_oficio_1',
+						'$identificador_oficio_2',
+						'$identificador_oficio_3',
+						'$identificador_oficio_4',
+						'$identificador_oficio_5',
+						'$identificador_oficio_6',
+						'$identificador_oficio_7',
+						'$entidad_va_oficio_1',
+						'$entidad_va_oficio_2',
+						'$entidad_va_oficio_3',
+						'$entidad_va_oficio_4',
+						'$entidad_va_oficio_5',
+						'$entidad_va_oficio_6',
+						'$entidad_va_oficio_7',
+						'$referencia_oficios_tipo_lev',
+						'$referencia_oficios_tipo_lev_1',
+						'$referencia_oficios_tipo_lev_2',
+						'$referencia_oficios_tipo_lev_3',
+						'$referencia_oficios_tipo_lev_4',
+						'$referencia_oficios_tipo_lev_5',
+						'$referencia_oficios_tipo_lev_6',
+						'$referencia_oficios_tipo_lev_7',
+						'$cantidad_oficios_generar',
+						'$cantidad_retener'";
+						$providencias->setFuncion($funcion);
+						$providencias->setParametros($parametros);
+						$resultado=$providencias->Insert();
+						 
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_RETENCION_CUENTAS'");
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+				
+						 
+						 
+						$traza=new TrazasModel();
+						$_nombre_controlador = "MATRIZ JUICIOS";
+						$_accion_trazas  = "Genero Providencia de Retención de Cuentas con Oficio";
+						$_parametros_trazas = $id_juicios;
+						$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+						 
+						 
+						 
+						 
+						$parametros = array();
+				
+						$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+						$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+						$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+						$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+						$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+						$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+						 
+						$parametros['ruta_avoco']=$ruta_providencias;
+						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+						$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
+						$parametros['entidad_va_oficio']=isset($entidad_va_oficio)?trim($entidad_va_oficio):'';
+						$parametros['asunto']=isset($asunto)?trim($asunto):'';
+						$parametros['generar_oficio']=isset($generar_oficio)?trim($generar_oficio):'';
+						$parametros['identificador_oficio_2']=isset($identificador_oficio_1)?trim($identificador_oficio_1):'';
+						$parametros['entidad_va_oficio_2']=isset($entidad_va_oficio_1)?trim($entidad_va_oficio_1):'';
+						$parametros['identificador_oficio_3']=isset($identificador_oficio_2)?trim($identificador_oficio_2):'';
+						$parametros['entidad_va_oficio_3']=isset($entidad_va_oficio_2)?trim($entidad_va_oficio_2):'';
+						$parametros['identificador_oficio_4']=isset($identificador_oficio_3)?trim($identificador_oficio_3):'';
+						$parametros['entidad_va_oficio_4']=isset($entidad_va_oficio_3)?trim($entidad_va_oficio_3):'';
+						$parametros['identificador_oficio_5']=isset($identificador_oficio_4)?trim($identificador_oficio_4):'';
+						$parametros['entidad_va_oficio_5']=isset($entidad_va_oficio_4)?trim($entidad_va_oficio_4):'';
+						$parametros['identificador_oficio_6']=isset($identificador_oficio_5)?trim($identificador_oficio_5):'';
+						$parametros['entidad_va_oficio_6']=isset($entidad_va_oficio_5)?trim($entidad_va_oficio_5):'';
+						$parametros['identificador_oficio_7']=isset($identificador_oficio_6)?trim($identificador_oficio_6):'';
+						$parametros['entidad_va_oficio_7']=isset($entidad_va_oficio_6)?trim($entidad_va_oficio_6):'';
+						$parametros['identificador_oficio_8']=isset($identificador_oficio_7)?trim($identificador_oficio_7):'';
+						$parametros['entidad_va_oficio_8']=isset($entidad_va_oficio_7)?trim($entidad_va_oficio_7):'';
+						$parametros['referencia_oficios_tipo_lev']=isset($referencia_oficios_tipo_lev)?trim($referencia_oficios_tipo_lev):'';
+						$parametros['referencia_oficios_tipo_lev_2']=isset($referencia_oficios_tipo_lev_1)?trim($referencia_oficios_tipo_lev_1):'';
+						$parametros['referencia_oficios_tipo_lev_3']=isset($referencia_oficios_tipo_lev_2)?trim($referencia_oficios_tipo_lev_2):'';
+						$parametros['referencia_oficios_tipo_lev_4']=isset($referencia_oficios_tipo_lev_3)?trim($referencia_oficios_tipo_lev_3):'';
+						$parametros['referencia_oficios_tipo_lev_5']=isset($referencia_oficios_tipo_lev_4)?trim($referencia_oficios_tipo_lev_4):'';
+						$parametros['referencia_oficios_tipo_lev_6']=isset($referencia_oficios_tipo_lev_5)?trim($referencia_oficios_tipo_lev_5):'';
+						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
+						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
+						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
+						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
+					    $parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+					  
+						
+						 
+						$pagina="contAvocoConocimientoSeleccion.aspx";
+						 
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+						 
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+						 
+						 
+						die();
+						 
+						 
+						 
+							
+					}else{
+				
+				
+				
+						$id_impulsor=$_SESSION['id_usuarios'];
+						$resultSecre = $asignacion_secretarios->getBy("id_abogado_asignacion_secretarios ='$id_impulsor'");
+						$id_secretario=$resultSecre[0]->id_secretario_asignacion_secretarios;
+				
+						$funcion = "ins_providencias_retencion_cuentas";
+						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
+						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
+						'$id_titulo_credito', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
+						'$cantidad_retener'";
+						$providencias->setFuncion($funcion);
+						$providencias->setParametros($parametros);
+						$resultado=$providencias->Insert();
+				
+						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_RETENCION_CUENTAS'");
+				
+						$traza=new TrazasModel();
+						$_nombre_controlador = "MATRIZ JUICIOS";
+						$_accion_trazas  = "Genero Providencia de Retención de Cuentas";
+						$_parametros_trazas = $id_juicios;
+						$resultado = $traza->AuditoriaControladores($_accion_trazas, $_parametros_trazas, $_nombre_controlador);
+				
+				
+				
+				
+						$parametros = array();
+							
+						$parametros['id_juicios']=isset($id_juicios)?trim($id_juicios):0;
+						$parametros['id_clientes']=isset($id_clientes)?trim($id_clientes):0;
+						$parametros['id_titulo_credito']=isset($id_titulo_credito)?trim($id_titulo_credito):0;
+						$parametros['id_rol']= $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
+						$parametros['fecha_avoco']=isset($fecha_avoco)?trim($fecha_avoco):0;
+						$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
+						$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
+						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
+						$parametros['ruta_avoco']=$ruta_providencias;
+						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
+						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						
+						
+				
+						$pagina="contAvocoConocimientoSeleccion.aspx";
+				
+						$conexion_rpt = array();
+						$conexion_rpt['pagina']=$pagina;
+				
+						$this->view("ReporteRpt", array(
+								"parametros"=>$parametros,"conexion_rpt"=>$conexion_rpt
+						));
+				
+				
+						die();
+					}
+				
+				}
+				
+						
+				
+				
+				
 			
+				
+			}
 			
 			if($tipo_avoco==16){
 

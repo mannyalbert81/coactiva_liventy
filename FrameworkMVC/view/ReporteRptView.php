@@ -62,10 +62,10 @@
    }
    $cadena_param=trim($cadena_param,'&');
    
-  // die ($cadena_param);
+  
    $url.=$cadena_param;
    $url;
-   
+   //die ($url);
   //echo  $cadena_param;
    
    
@@ -101,6 +101,7 @@
    $url.=$cadena_param;
    $url;
  */
+
   ?>
     
    <div class="pagina" >

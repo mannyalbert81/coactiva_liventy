@@ -21,7 +21,7 @@ class Conectar{
 
 
         //$con = pg_connect("host=192.168.10.10 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
-         $con = pg_connect("host=186.4.203.42 port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=.Romina.2012 ");
+         $con = pg_connect("host=localhost port=5432 dbname=ad_coactiva_liventy_2408 user=postgres password=123 ");
 
         	if(!$con){
         		echo "No se puedo Conectar a la Base";
@@ -45,7 +45,7 @@ class Conectar{
 	
 
            	//$pdo = new PDO('pgsql:host=192.168.10.10;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
-       		$pdo = new PDO('pgsql:host=186.4.203.42;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '.Romina.2012' );
+       		$pdo = new PDO('pgsql:host=localhost;port=5432;dbname=ad_coactiva_liventy_2408', 'postgres', '123' );
         		
 
             	$fpdo = new FluentPDO($pdo);
