@@ -5392,7 +5392,8 @@
 									      tipo_reemplazo_avoco,
 								          escrito_presentado_por,
 								          dispone_1,
-										  dispone_2";
+										  dispone_2,
+										  dispone_3";
 						
 						$tablas_prov="avoco_conocimiento";
 						$where_prov ="id_avoco_conocimiento ='$id_avoco_conocimiento'";
@@ -5504,9 +5505,6 @@
 			$referencia_oficios_tipo_lev_5= $_POST['referencia_oficios_tipo_lev_5'];
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
-			
-			
-			
 			$escrito_presentado_por= $_POST['escrito_presentado_por'];
 			$dispone_1= $_POST['dispone_1'];
 			$dispone_2= $_POST['dispone_2'];
@@ -8486,7 +8484,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();

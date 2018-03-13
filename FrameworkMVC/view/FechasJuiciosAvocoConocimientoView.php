@@ -2219,7 +2219,7 @@
                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Dispone 3.-:</p>	
                                   <textarea type="text"  class="form-control" id="dispone_3" name="dispone_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
-                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>2.- </b> no olvide poner punto al final del texto.)</FONT>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_3" class="errores"></div>
                  </div>
