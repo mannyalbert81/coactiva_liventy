@@ -631,7 +631,6 @@
 		    	var fecha_avoco = $("#fecha_avoco").val();
 		     	var hora_avoco = $("#hora_avoco").val();
 		        var tipo_avoco = $("#tipo_avoco").val();
-			   
 			    var numero_oficio_embargo_cuenta = $("#numero_oficio_embargo_cuenta").val();
 			    var fecha_oficio_embargo_cuenta = $("#fecha_oficio_embargo_cuenta").val();
 			    var tipo_cuenta = $("#tipo_cuenta").val();
@@ -2153,6 +2152,662 @@
 				else 
 		    	{
 		    		$("#mensaje_cantidad_retener").fadeOut("slow"); //Muestra mensaje de error
+		            
+				} 
+
+
+		    	//retencion desde aki cuentas
+		    	if(tipo_avoco == 20  && generar_oficio == 0){
+					$("#mensaje_generar_oficio").text("Seleccione");
+		    		$("#mensaje_generar_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_generar_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	if(tipo_avoco == 20  && cantidad_oficios_generar == 0 && generar_oficio=="Si"){
+					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
+		    		$("#mensaje_cantidad_oficios_generar").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_cantidad_oficios_generar").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+		    	if(tipo_avoco == 20 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && asunto == "" ){
+					$("#mensaje_asunto").text("Ingrese el Asunto");
+		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && entidad_va_oficio == "" ){
+					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+				
+
+
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 2 && generar_oficio == "Si" ){
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+				if(entidad_va_oficio == ""){
+					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}else{
+					$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+				
+
+
+
+				if(entidad_va_oficio_1 == ""){
+					$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+		    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}else{
+					$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+
+					
+				}else
+				{
+					$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					   
+				}
+				
+
+
+
+				//aqui 3
+				
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 3 && generar_oficio == "Si" ){
+
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+					if(entidad_va_oficio == ""){
+						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+
+					if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+
+
+
+					if(entidad_va_oficio_2 == ""){
+						$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					
+						
+					}else
+					{
+						$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					}
+
+
+
+
+
+					// aqui 4
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 4 && generar_oficio == "Si" ){
+
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+					if(entidad_va_oficio == ""){
+						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					
+					if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+
+
+					if(entidad_va_oficio_2 == ""){
+						$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					if(entidad_va_oficio_3 == ""){
+						$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+
+
+					}else
+					{
+						$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 5 && generar_oficio == "Si"){
+
+					 if(asunto == ""){
+							$("#mensaje_asunto").text("Ingrese el Asunto");
+				    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}
+						else 
+				    	{
+				    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+				            
+						}
+						
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	               
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		  
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		
+
+
+
+		           		 if(entidad_va_oficio_3 == ""){
+								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+							}else{
+						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   		 }
+			           		
+
+
+			           		 if(entidad_va_oficio_4 == ""){
+									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
+						    		$("#mensaje_entidad_va_oficio_4").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+								}else{
+							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						   		 }
+				           		
+
+
+
+
+
+									
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					   $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+					       
+			            
+					}
+
+
+
+
+
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 6 && generar_oficio == "Si"){
+
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}
+					else 
+			    	{
+			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	                
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		
+
+
+
+		           		 if(entidad_va_oficio_3 == ""){
+								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+							}else{
+						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   		 }
+			           		
+
+
+			           		 if(entidad_va_oficio_4 == ""){
+									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
+						    		$("#mensaje_entidad_va_oficio_4").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+								}else{
+							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						   		 }
+				           		
+
+
+
+				           		 if(entidad_va_oficio_5 == ""){
+										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
+							    		$("#mensaje_entidad_va_oficio_5").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+									}else{
+								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+							   		 }
+					           		
+
+
+					           		
+
+									
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+					    
+					}
+
+
+
+
+
+
+
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 7 && generar_oficio == "Si"){
+
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}
+					else 
+			    	{
+			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	                
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		 
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		
+
+
+
+		           		 if(entidad_va_oficio_3 == ""){
+								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+							}else{
+						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   		 }
+			           		 
+
+
+			           		 if(entidad_va_oficio_4 == ""){
+									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
+						    		$("#mensaje_entidad_va_oficio_4").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+								}else{
+							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						   		 }
+				           		
+
+
+
+				           		 if(entidad_va_oficio_5 == ""){
+										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
+							    		$("#mensaje_entidad_va_oficio_5").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+									}else{
+								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+							   		 }
+					           		
+
+
+					           		 if(entidad_va_oficio_6 == ""){
+											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
+								    		$("#mensaje_entidad_va_oficio_6").fadeIn("slow"); //Muestra mensaje de error
+								            return false;
+										}else{
+									    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
+								   		 }
+						           		
+
+									
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
+					     
+			            
+					}
+				
+
+
+
+
+
+
+				if(tipo_avoco == 20 && cantidad_oficios_generar == 8 && generar_oficio == "Si"){
+
+					if(asunto == ""){
+						$("#mensaje_asunto").text("Ingrese el Asunto");
+			    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}
+					else 
+			    	{
+			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+			            
+					}
+					
+				    if(entidad_va_oficio == ""){
+							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+					}else{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+				    }
+	                
+
+
+	                if(entidad_va_oficio_1 == ""){
+						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
+			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+					}else{
+				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+			   		 }
+	           		  
+
+
+
+	           		    if(entidad_va_oficio_2 == ""){
+							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
+				    		$("#mensaje_entidad_va_oficio_2").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+						}else{
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+				   		 }
+		           		
+
+
+
+		           		 if(entidad_va_oficio_3 == ""){
+								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
+					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+							}else{
+						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   		 }
+			           		
+
+			           		 if(entidad_va_oficio_4 == ""){
+									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
+						    		$("#mensaje_entidad_va_oficio_4").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+								}else{
+							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						   		 }
+				           		
+
+
+
+				           		 if(entidad_va_oficio_5 == ""){
+										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
+							    		$("#mensaje_entidad_va_oficio_5").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+									}else{
+								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+							   		 }
+					           		
+
+
+					           		 if(entidad_va_oficio_6 == ""){
+											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
+								    		$("#mensaje_entidad_va_oficio_6").fadeIn("slow"); //Muestra mensaje de error
+								            return false;
+										}else{
+									    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
+								   		 }
+						           		
+
+
+						           		 if(entidad_va_oficio_7 == ""){
+												$("#mensaje_entidad_va_oficio_7").text("Ingrese a quien va Dirigido");
+									    		$("#mensaje_entidad_va_oficio_7").fadeIn("slow"); //Muestra mensaje de error
+									            return false;
+											}else{
+										    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
+									   		 }
+							           		
+
+									
+							
+					}
+					else 
+			    	{
+					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
+					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
+					    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
+					     
+			            
+			            
+					}
+				
+
+
+				
+		    	if(tipo_avoco == 20  && cuenta_retener == 0.00){
+					$("#mensaje_cuenta_retener").text("Ingrese Cantidad");
+		    		$("#mensaje_cuenta_retener").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_cuenta_retener").fadeOut("slow"); //Muestra mensaje de error
 		            
 				} 
 		    	
