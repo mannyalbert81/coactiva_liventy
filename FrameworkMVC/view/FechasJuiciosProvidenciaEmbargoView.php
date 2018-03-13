@@ -660,6 +660,7 @@
 
 
                 var cantidad_retener= $("#cantidad_retener").val();
+                var cuenta_retener= $("#cuenta_retener").val();
                 
                 var remplaza_impulsor= $("#remplaza_impulsor").val();
 				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
@@ -2154,28 +2155,9 @@
 		    		$("#mensaje_cantidad_retener").fadeOut("slow"); //Muestra mensaje de error
 		            
 				} 
+		    	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		    
 
 		    	if(tipo_avoco == 17  && generar_oficio == 0){
 					$("#mensaje_generar_oficio").text("Seleccione");
@@ -3045,6 +3027,9 @@
 				
 				$( "#cantidad_retener" ).focus(function() {
 					$("#mensaje_cantidad_retener").fadeOut("slow");
+    			});
+				$( "#cuenta_retener" ).focus(function() {
+					$("#mensaje_cuenta_retener").fadeOut("slow");
     			});
 
 				$( "#tipo_cartera" ).focus(function() {
@@ -3979,11 +3964,11 @@
 	        	
                 <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p class="formulario-subtitulo" >Cantidad a Retener:</p>
-			  	<input type="text"  class='form-control cantidades1' id='cantidad_retener' name='cantidad_retener' value='<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->valor_retencion_fondos;}}else{ echo "0";}?>' 
+			  	<input type="text"  class='form-control cantidades1' id='cuenta_retener' name='cuenta_retener' value='<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->valor_retencion_cuentas;}}else{ echo "0";}?>' 
 			  	 data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
-			  	
-	            <div id="mensaje_cantidad_retener" class="errores"></div>
-	            </div>
+			  	  <div id="mensaje_cuenta_retener" class="errores"></div>
+	          
+	              </div>
 	            
 	            
 	            

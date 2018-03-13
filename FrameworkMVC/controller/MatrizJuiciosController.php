@@ -5024,7 +5024,7 @@
 
 				$columnas_id = "MAX(id_providencias) as id_providencias, id_juicios";
 				$tablas_id="providencias";
-				$where_id ="id_juicios ='$id_juicios' AND (id_tipo_providencias=5 OR id_tipo_providencias=10 OR id_tipo_providencias=11) GROUP BY id_juicios";
+				$where_id ="id_juicios ='$id_juicios' AND (id_tipo_providencias=5 OR id_tipo_providencias=10 OR id_tipo_providencias=11 OR id_tipo_providencias=12) GROUP BY id_juicios";
 				$id_id="id_providencias";
 				$resultSet_id=$providencias->getCondiciones($columnas_id, $tablas_id, $where_id, $id_id);
 					
@@ -5069,8 +5069,8 @@
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
 									  providencias.cantidad_oficios_generados,
-								       providencias.valor_retencion_fondos,
-								providencias.valor_retencion_cuentas";
+								      providencias.valor_retencion_fondos,
+									  providencias.valor_retencion_cuentas";
 						$tablas_prov="public.providencias";
 						$where_prov ="id_providencias ='$id_providencias'";
 						$id_prov="id_providencias";
@@ -14931,7 +14931,6 @@
 			$hora_avoco= $_POST['hora_avoco'];
 			$razon_avoco= $_POST['razon_avoco'];
 			$id_estados_procesales_juicios_actualizar= $_POST['id_estados_procesales_juicios_actualizar'];
-			
 			$numero_oficio_embargo_cuenta= $_POST['numero_oficio_embargo_cuenta'];
 			$fecha_oficio_embargo_cuenta= $_POST['fecha_oficio_embargo_cuenta'];
 			$tipo_cuenta= $_POST['tipo_cuenta'];
@@ -14942,9 +14941,6 @@
 			$identificacion_titular_cuenta= $_POST['identificacion_titular_cuenta'];
 			$depositario_judicial= $_POST['depositario_judicial'];
 			$identificacion_depositario_judicial= $_POST['identificacion_depositario_judicial'];
-			
-			
-			
 			$numero_oficio_embargo_cuenta_2= $_POST['numero_oficio_embargo_cuenta_2'];
 			$fecha_oficio_embargo_cuenta_2= $_POST['fecha_oficio_embargo_cuenta_2'];
 			$tipo_cuenta_2= $_POST['tipo_cuenta_2'];
@@ -14955,11 +14951,8 @@
 			$identificacion_titular_cuenta_2= $_POST['identificacion_titular_cuenta_2'];
 			$depositario_judicial_2= $_POST['depositario_judicial_2'];
 			$identificacion_depositario_judicial_2= $_POST['identificacion_depositario_judicial_2'];
-				
-				
 			$fecha_oficios = $_POST['fecha_oficios'];
 			$texto_oficios = $_POST['texto_oficio'];
-			
 			$numero_oficio_embargo_cuenta_3= $_POST['numero_oficio_embargo_cuenta_3'];
 			$fecha_oficio_embargo_cuenta_3= $_POST['fecha_oficio_embargo_cuenta_3'];
 			$tipo_cuenta_3= $_POST['tipo_cuenta_3'];
@@ -14970,9 +14963,6 @@
 			$identificacion_titular_cuenta_3= $_POST['identificacion_titular_cuenta_3'];
 			$depositario_judicial_3= $_POST['depositario_judicial_3'];
 			$identificacion_depositario_judicial_3= $_POST['identificacion_depositario_judicial_3'];
-			
-			
-			
 			$numero_oficio_embargo_cuenta_4= $_POST['numero_oficio_embargo_cuenta_4'];
 			$fecha_oficio_embargo_cuenta_4= $_POST['fecha_oficio_embargo_cuenta_4'];
 			$tipo_cuenta_4= $_POST['tipo_cuenta_4'];
@@ -14983,9 +14973,6 @@
 			$identificacion_titular_cuenta_4= $_POST['identificacion_titular_cuenta_4'];
 			$depositario_judicial_4= $_POST['depositario_judicial_4'];
 			$identificacion_depositario_judicial_4= $_POST['identificacion_depositario_judicial_4'];
-				
-				
-			
 			$numero_oficio_embargo_cuenta_5= $_POST['numero_oficio_embargo_cuenta_5'];
 			$fecha_oficio_embargo_cuenta_5= $_POST['fecha_oficio_embargo_cuenta_5'];
 			$tipo_cuenta_5= $_POST['tipo_cuenta_5'];
@@ -15027,7 +15014,8 @@
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
 			
 			$cantidad_retener= $_POST['cantidad_retener'];
-			
+			$cuenta_retener= $_POST['cuenta_retener'];
+				
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			$cantidad_retener_avoco_conocimiento= $_POST['cantidad_retener_avoco_conocimiento'];
@@ -16619,13 +16607,13 @@
 				
 					$nombre_archivo_providencias=$ruta_providencias.$identificador_providencias;
 				
-					$cantidad_retener_letras="";
-					if($cantidad_retener > 0.00){
-						$cantidad_retener_letras = $this->numtoletras($cantidad_retener);
+					$cuenta_retener_letras="";
+					if($cuenta_retener > 0.00){
+						$cuenta_retener_letras = $this->numtoletras($cuenta_retener);
 					    
 					}
 				
-					$cantidad_reporte= $cantidad_retener.' ('.$cantidad_retener_letras.')';
+					$cuenta_reporte= $cuenta_retener.' ('.$cuenta_retener_letras.')';
 				
 					if($generar_oficio=="Si"){
 							
@@ -17899,7 +17887,8 @@
 						'$referencia_oficios_tipo_lev_6',
 						'$referencia_oficios_tipo_lev_7',
 						'$cantidad_oficios_generar',
-						'$cantidad_retener'";
+						'$cuenta_retener'";
+						
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -17928,7 +17917,6 @@
 						$parametros['hora_avoco']=isset($hora_avoco)?trim($hora_avoco):0;
 						$parametros['razon_avoco']=isset($razon_avoco)?trim($razon_avoco):'';
 						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
-						 
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
 						$parametros['identificador_oficio']=isset($identificador_oficio)?trim($identificador_oficio):'';
@@ -17958,7 +17946,7 @@
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					    $parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					  
@@ -17991,7 +17979,7 @@
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 						'$id_titulo_credito', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
-						'$cantidad_retener'";
+						'$cuenta_retener'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -18019,7 +18007,7 @@
 						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
 						
 						
 				
