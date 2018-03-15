@@ -617,6 +617,7 @@
 				var dispone_1= $("#dispone_1").val();
 				//var dispone_2= $("#dispone_2").val();
 				var dispone_3= $("#dispone_3").val();
+				var dispone_4= $("#dispone_4").val();
 
                 
 
@@ -2222,6 +2223,13 @@
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_3" class="errores"></div>
+                 </div>
+                 <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 4.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_4" name="dispone_4" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_4" class="errores"></div>
                  </div>
 	            
 	          </div>

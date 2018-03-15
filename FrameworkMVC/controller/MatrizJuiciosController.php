@@ -5393,7 +5393,8 @@
 								          escrito_presentado_por,
 								          dispone_1,
 										  dispone_2,
-										  dispone_3";
+										  dispone_3,
+										  dispone_4";
 						
 						$tablas_prov="avoco_conocimiento";
 						$where_prov ="id_avoco_conocimiento ='$id_avoco_conocimiento'";
@@ -5509,6 +5510,7 @@
 			$dispone_1= $_POST['dispone_1'];
 			$dispone_2= $_POST['dispone_2'];
 			$dispone_3= $_POST['dispone_3'];
+			$dispone_4= $_POST['dispone_4'];
 				
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
@@ -6967,7 +6969,7 @@
 					
 					
 				$funcion = "ins_avoco_conocimiento_liventy";
-				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3'";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -8484,7 +8486,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -8519,6 +8521,7 @@
 						$parametros['dispone_1']=isset($dispone_1)?trim($dispone_1):'';
 						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
 						$parametros['dispone_3']=isset($dispone_3)?trim($dispone_3):'';
+						$parametros['dispone_4']=isset($dispone_4)?trim($dispone_4):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						
@@ -21298,10 +21301,11 @@
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
 									  providencias.cantidad_oficios_generados,
-								      providencias.dispone_3,
+									  providencias.dispone_4,      
+									  providencias.dispone_3,
 								      providencias.dispone_2,
 								      providencias.dispone_1,
-								 providencias.tipo_levantamiento";
+								 	  providencias.tipo_levantamiento";
 						$tablas_prov_2="public.providencias";
 						$where_prov_2 ="id_providencias ='$id_providencias_2'";
 						$id_prov_2="id_providencias";
