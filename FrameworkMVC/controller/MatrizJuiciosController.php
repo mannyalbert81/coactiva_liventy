@@ -5394,7 +5394,11 @@
 								          dispone_1,
 										  dispone_2,
 										  dispone_3,
-										  dispone_4";
+										  dispone_4,
+										  resolucion_3,
+										  resolucion_4,
+										  disponer_2,
+										  disponer_3";
 						
 						$tablas_prov="avoco_conocimiento";
 						$where_prov ="id_avoco_conocimiento ='$id_avoco_conocimiento'";
@@ -5511,7 +5515,10 @@
 			$dispone_2= $_POST['dispone_2'];
 			$dispone_3= $_POST['dispone_3'];
 			$dispone_4= $_POST['dispone_4'];
-				
+			$resolucion_3= $_POST['resolucion_3'];
+			$resolucion_4= $_POST['resolucion_4'];
+			$disponer_2= $_POST['disponer_2'];
+			$disponer_3= $_POST['disponer_3'];
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			
@@ -6969,7 +6976,7 @@
 					
 					
 				$funcion = "ins_avoco_conocimiento_liventy";
-				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4'";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -7011,6 +7018,10 @@
 				$parametros['numero_solicitud']=isset($numero_solicitud)?trim($numero_solicitud):'';
 				$parametros['fecha_solicitud']=isset($fecha_solicitud)?trim($fecha_solicitud):'';
 				$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
+				$parametros['resolucion_3']=isset($resolucion_3)?trim($resolucion_3):'';
+				$parametros['resolucion_4']=isset($resolucion_4)?trim($resolucion_4):'';
+				$parametros['disponer_2']=isset($disponer_2)?trim($disponer_2):'';
+				$parametros['disponer_3']=isset($disponer_3)?trim($disponer_3):'';
 					
 				
 					
@@ -8486,7 +8497,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -8522,6 +8533,7 @@
 						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
 						$parametros['dispone_3']=isset($dispone_3)?trim($dispone_3):'';
 						$parametros['dispone_4']=isset($dispone_4)?trim($dispone_4):'';
+								
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						
@@ -21301,9 +21313,7 @@
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
 									  providencias.cantidad_oficios_generados,
-									  providencias.dispone_4,      
-									  providencias.dispone_3,
-								      providencias.dispone_2,
+									  providencias.dispone_2,
 								      providencias.dispone_1,
 								 	  providencias.tipo_levantamiento";
 						$tablas_prov_2="public.providencias";

@@ -1841,7 +1841,8 @@
 			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  		<option value="CÚMPLASE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_notificacion_avoco == 'CÚMPLASE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE Y NOTIFÍQUESE</option> 
 			  		<option value="CÚMPLASE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_notificacion_avoco == 'CÚMPLASE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE Y CÍTESE</option> 
-			  	
+			  	 	<option value="CÚMPLASE, NOTIFÍQUESE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_notificacion_avoco == 'CÚMPLASE, NOTIFÍQUESE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, NOTIFÍQUESE Y CÍTESE</option> 
+			
 				</select>
 				<div id="mensaje_tipo_acto" class="errores"></div>
 	            </div>
@@ -2076,7 +2077,43 @@
 						<option value="3" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_reemplazo_avoco == '3'){echo ' selected="selected" ' ;}else{}}}else{} ?>>Secretario y Impulsor</option>
 			    </select>
 				<div id="mensaje_reemplazar" class="errores"></div>
-			    </div>
+			   </div>
+			    
+			    
+			          <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+					<br><br>              
+		              <FONT FACE="arial" SIZE=4 COLOR=red>AGREGUESE AL PROCESO (OPCIONALES)</FONT>
+					<br>
+		                          <p class="formulario-subtitulo" >Agreguese al Proceso 3.-:</p>	
+                                  <textarea type="text"  class="form-control" id="resolucion_3" name="resolucion_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+                 <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Agreguese al Proceso 4.-:</p>	
+                                  <textarea type="text"  class="form-control" id="resolucion_4" name="resolucion_4" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
+			     <br><br>
+			     <FONT FACE="arial" SIZE=4 COLOR=red>DISPOSICIONES (OPCIONALES)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+			             <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Disponer 2.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_2" name="disponer_2" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>2.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+                 <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Disponer 3.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_3" name="disponer_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+			    
   		        </div>
   		        <br>
               
