@@ -16410,7 +16410,7 @@
 						'$referencia_oficios_tipo_lev_6',
 						'$referencia_oficios_tipo_lev_7',
 						'$cantidad_oficios_generar',
-						'$cantidad_retener'";
+						'$cantidad_retener_avoco_conocimiento'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -16469,7 +16469,7 @@
 						$parametros['referencia_oficios_tipo_lev_7']=isset($referencia_oficios_tipo_lev_6)?trim($referencia_oficios_tipo_lev_6):'';
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
-						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						$parametros['cantidad_retener_avoco_conocimiento']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
@@ -16510,7 +16510,7 @@
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 						'$id_titulo_credito', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
-						'$cantidad_retener'";
+						'$cantidad_retener_avoco_conocimiento'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -16538,7 +16538,7 @@
 						$parametros['tipo_avoco']=isset($tipo_avoco)?trim($tipo_avoco):0;
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
-						$parametros['cantidad_retener']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
+						$parametros['cantidad_retener_avoco_conocimiento']=isset($cantidad_reporte)?trim($cantidad_reporte):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						$parametros['direccion_juzgado']=isset($direccion_juzgado)?trim($direccion_juzgado):'';
