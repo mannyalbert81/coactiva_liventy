@@ -618,6 +618,8 @@
 				//var dispone_2= $("#dispone_2").val();
 				var dispone_3= $("#dispone_3").val();
 				var dispone_4= $("#dispone_4").val();
+				var dispone_5= $("#dispone_5").val();
+				var dispone_6= $("#dispone_6").val();
 
                 
 
@@ -2085,31 +2087,62 @@
 		              <FONT FACE="arial" SIZE=4 COLOR=red>AGREGUESE AL PROCESO (OPCIONALES)</FONT>
 					<br>
 		                          <p class="formulario-subtitulo" >Agreguese al Proceso 3.-:</p>	
-                                  <textarea type="text"  class="form-control" id="resolucion_3" name="resolucion_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                                  <textarea type="text"  class="form-control" id="resolucion_3" name="resolucion_3" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->resolucion_3;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_" class="errores"></div>
                  </div>
                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Agreguese al Proceso 4.-:</p>	
-                                  <textarea type="text"  class="form-control" id="resolucion_4" name="resolucion_4" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                                  <textarea type="text"  class="form-control" id="resolucion_4" name="resolucion_4" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->resolucion_4;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
+			     <br><br>
+
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+                     <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Agreguese al Proceso 5.-:</p>	
+                                  <textarea type="text"  class="form-control" id="resolucion_5" name="resolucion_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->resolucion_5;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto al final del texto.)</FONT>
+			     <br><br>
+
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+                     <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Agreguese al Proceso 6.-:</p>	
+                                  <textarea type="text"  class="form-control" id="resolucion_6" name="resolucion_6" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->resolucion_6;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>6.- </b> no olvide poner punto al final del texto.)</FONT>
 			     <br><br>
 			     <FONT FACE="arial" SIZE=4 COLOR=red>DISPOSICIONES (OPCIONALES)</FONT>
 			
                  <div id="mensaje_dispone_" class="errores"></div>
                  </div>
 			             <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
-		                          <p class="formulario-subtitulo" >Disponer 2.-:</p>	
-                                  <textarea type="text"  class="form-control" id="disponer_2" name="disponer_2" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+		                          <p class="formulario-subtitulo" >Dispone 2.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_2" name="disponer_2" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_2;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>2.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_" class="errores"></div>
                  </div>
                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
-		                          <p class="formulario-subtitulo" >Disponer 3.-:</p>	
-                                  <textarea type="text"  class="form-control" id="disponer_3" name="disponer_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+		                          <p class="formulario-subtitulo" >Dispone 3.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_3" name="disponer_3" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_3;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
+                        <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 4.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_4" name="disponer_4" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_4;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>       <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 5.-:</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_5" name="disponer_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_5;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_" class="errores"></div>
                  </div>
@@ -2256,17 +2289,31 @@
                  
                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Dispone 3.-:</p>	
-                                  <textarea type="text"  class="form-control" id="dispone_3" name="dispone_3" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                                  <textarea type="text"  class="form-control" id="dispone_3" name="dispone_3" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_3;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_3" class="errores"></div>
                  </div>
                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Dispone 4.-:</p>	
-                                  <textarea type="text"  class="form-control" id="dispone_4" name="dispone_4" value=""  placeholder="Ejem.  Agréguese al proceso."></textarea>
+                                  <textarea type="text"  class="form-control" id="dispone_4" name="dispone_4" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_4;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
 			
                  <div id="mensaje_dispone_4" class="errores"></div>
+                 </div>
+                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 5.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_5" name="dispone_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_5;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_5" class="errores"></div>
+                 </div>
+                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 6.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_6" name="dispone_6" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_6;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>6.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_6" class="errores"></div>
                  </div>
 	            
 	          </div>
