@@ -11749,8 +11749,8 @@
 				
 			$numero_oficio_medida_cuatelar_discapacidad= $_POST['numero_oficio_medida_cuatelar_discapacidad'];
 			$fecha_oficio_medida_cuatelar_discapacidad= $_POST['fecha_oficio_medida_cuatelar_discapacidad'];
-			$numero_liquidacion_medida_cuatelar_discapacidad= $_POST['numero_liquidacion_medida_cuatelar_discapacidad'];
-			$fecha_liquidacion_medida_cuatelar_discapacidad= $_POST['fecha_liquidacion_medida_cuatelar_discapacidad'];
+			//$numero_liquidacion_medida_cuatelar_discapacidad= $_POST['numero_liquidacion_medida_cuatelar_discapacidad'];
+			//$fecha_liquidacion_medida_cuatelar_discapacidad= $_POST['fecha_liquidacion_medida_cuatelar_discapacidad'];
 			$numero_solicitud_discapacidad= $_POST['numero_solicitud_discapacidad'];
 			$fecha_solicitud_discapacidad= $_POST['fecha_solicitud_discapacidad'];
 			$nombre_discapacitado= $_POST['nombre_discapacitado'];
@@ -13211,14 +13211,14 @@
 		    	    $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 		    	    '$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
 		    	    '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
-		    	    '$numero_liquidacion_medida_cuatelar_discapacidad', '$numero_solicitud_discapacidad',
+		    	     '$numero_solicitud_discapacidad',
 		    	    '$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
 		    	    '$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
 		    	    '$entidad_va_oficio_discapacidad', '$asunto_discapacidad',
 			    	'$identificador_oficio_1', '$identificador_oficio_2', '$identificador_oficio_3', '$identificador_oficio_4', '$identificador_oficio_5', '$identificador_oficio_6',
 					'$identificador_oficio_7', '$entidad_va_oficio_discapacidad_1','$entidad_va_oficio_discapacidad_2',
 					'$entidad_va_oficio_discapacidad_3', '$entidad_va_oficio_discapacidad_4',
-					'$entidad_va_oficio_discapacidad_5','$entidad_va_oficio_discapacidad_6', '$entidad_va_oficio_discapacidad_7', '$referencia_oficios_tipo_lev_discapacidad', '$referencia_oficios_tipo_lev_discapacidad_1', '$referencia_oficios_tipo_lev_discapacidad_2', '$referencia_oficios_tipo_lev_discapacidad_3', '$referencia_oficios_tipo_lev_discapacidad_4', '$referencia_oficios_tipo_lev_discapacidad_5', '$referencia_oficios_tipo_lev_discapacidad_6', '$referencia_oficios_tipo_lev_discapacidad_7', '$cantidad_oficios_generar', '$fecha_oficio_medida_cuatelar_discapacidad', '$fecha_liquidacion_medida_cuatelar_discapacidad', '$fecha_solicitud_discapacidad'";
+					'$entidad_va_oficio_discapacidad_5','$entidad_va_oficio_discapacidad_6', '$entidad_va_oficio_discapacidad_7', '$referencia_oficios_tipo_lev_discapacidad', '$referencia_oficios_tipo_lev_discapacidad_1', '$referencia_oficios_tipo_lev_discapacidad_2', '$referencia_oficios_tipo_lev_discapacidad_3', '$referencia_oficios_tipo_lev_discapacidad_4', '$referencia_oficios_tipo_lev_discapacidad_5', '$referencia_oficios_tipo_lev_discapacidad_6', '$referencia_oficios_tipo_lev_discapacidad_7', '$cantidad_oficios_generar', '$fecha_oficio_medida_cuatelar_discapacidad', '$fecha_solicitud_discapacidad'";
 		    	    
 		    	    
 		    	    
@@ -13328,12 +13328,11 @@
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 				'$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
-				'$numero_liquidacion_medida_cuatelar_discapacidad', '$numero_solicitud_discapacidad',
+				'$numero_solicitud_discapacidad',
 				'$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
 				'$id_estados_procesales_juicios_actualizar',
 		    	'$fecha_oficio_medida_cuatelar_discapacidad',
-		        '$fecha_liquidacion_medida_cuatelar_discapacidad',
-		    	'$fecha_solicitud_discapacidad'";
+		        '$fecha_solicitud_discapacidad'";
 				
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
@@ -21240,12 +21239,10 @@
 										  providencias.hora_providencias,
 										  providencias.razon_providencias,
 										  providencias.numero_oficio_levantamiento_providencias,
-										  providencias.numero_oficio_1_levantamiento_providencias,
 										  providencias.numero_oficio_2_levantamiento_providencias,
 										  providencias.numero_oficio_3_levantamiento_providencias,
 										  providencias.dirigido_levantamiento_providencias,
 										  providencias.fecha_oficio_discapacidad,
-										  providencias.fecha_liquidacion_discapacidad,
 										  providencias.fecha_solicitud_discapacidad,
 										  providencias.genero_oficio,
 										  providencias.identificador_oficio,

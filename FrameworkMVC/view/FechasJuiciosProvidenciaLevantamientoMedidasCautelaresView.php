@@ -734,8 +734,8 @@
 			    
 			    var numero_oficio_medida_cuatelar_discapacidad = $("#numero_oficio_medida_cuatelar_discapacidad").val();
 			    var fecha_oficio_medida_cuatelar_discapacidad = $("#fecha_oficio_medida_cuatelar_discapacidad").val();
-			    var numero_liquidacion_medida_cuatelar_discapacidad = $("#numero_liquidacion_medida_cuatelar_discapacidad").val();
-			    var fecha_liquidacion_medida_cuatelar_discapacidad = $("#fecha_liquidacion_medida_cuatelar_discapacidad").val();
+			    //var numero_liquidacion_medida_cuatelar_discapacidad = $("#numero_liquidacion_medida_cuatelar_discapacidad").val();
+			    //var fecha_liquidacion_medida_cuatelar_discapacidad = $("#fecha_liquidacion_medida_cuatelar_discapacidad").val();
 			    var numero_solicitud_discapacidad = $("#numero_solicitud_discapacidad").val();
 			    var fecha_solicitud_discapacidad = $("#fecha_solicitud_discapacidad").val();
 			    var nombre_discapacitado = $("#nombre_discapacitado").val();
@@ -2691,13 +2691,13 @@
 			    <div class="col-lg-6 col-md-6 col-xs-12">
 			  	<p class="formulario-subtitulo" >Número de Liquidación:</p>
 			  	<input type="text"  name="numero_liquidacion_medida_cuatelar_discapacidad" id="numero_liquidacion_medida_cuatelar_discapacidad" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_1_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="#"/> 
-	            <div id="mensaje_numero_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>
+	           <!-- <div id="mensaje_numero_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>-->   
 	            </div>
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
          		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
 			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_discapacidad" id="fecha_liquidacion_medida_cuatelar_discapacidad" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_discapacidad;}}else{} ?>" class="form-control "/> 
-			  	<div id="mensaje_fecha_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>
+			  	<!-- <div id="mensaje_fecha_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>-->
 			    </div>
 			    
 			    
