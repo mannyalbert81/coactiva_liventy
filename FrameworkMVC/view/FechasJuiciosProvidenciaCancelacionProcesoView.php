@@ -29,7 +29,7 @@
 		</script>
 		
 		
-		
+	
 		
 		
 		
@@ -1112,7 +1112,9 @@
 		     	var nombre_impulsor_anterior = $("#nombre_impulsor_anterior").val();
 			    var nombre_secretario_anterior = $("#nombre_secretario_anterior").val();
 			    var tipo_avoco = $("#tipo_avoco").val();
-			    var numero_liquidacion = $("#numero_liquidacion").val();
+			    var tipo_ley = $("#tipo_ley").val();
+				   
+				    var numero_liquidacion = $("#numero_liquidacion").val();
 			    var fecha_auto_pago = $("#fecha_auto_pago").val();
 
 			    var numero_oficio = $("#numero_oficio").val();
@@ -1215,6 +1217,18 @@
 		            
 				}
 
+		    	if (tipo_ley == 0)
+		    	{
+			    	
+		    		$("#mensaje_tipo_ley").text("Seleccione Tipo de Ley");
+		    		$("#mensaje_tipo_ley").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_tipo_ley").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
 
 
@@ -4676,7 +4690,9 @@
 				$( "#tipo_avoco" ).focus(function() {
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
-				
+				$( "#tipo_ley" ).focus(function() {
+					$("#mensaje_tipo_ley").fadeOut("slow");
+    			});
 				
 				$( "#numero_oficio_restructuracion" ).focus(function() {
 					$("#mensaje_numero_oficio_restructuracion").fadeOut("slow");
@@ -4999,6 +5015,16 @@
 				</select>
                  <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del jucio.)</FONT>
                  </div>
+                  <div class="col-lg-12 col-md-12 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Tipo de Ley:</p>
+			  	<select name="tipo_ley" id="tipo_ley"  class="form-control" >
+			  		<option value=""><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="LEY ORGÁNICA PARA LA RECTIVACIÓN DE LA ECONOMÍA, FORTALECIMIENTO DE LA DOLARIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN FINANCIERA" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_ley == 'LEY ORGÁNICA PARA LA RECTIVACIÓN DE LA ECONOMÍA, FORTALECIMIENTO DE LA DOLARIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN FINANCIERA'){echo ' selected="selected" ' ;}else{}}}else{} ?>>LEY ORGÁNICA PARA LA RECTIVACIÓN DE LA ECONOMÍA, FORTALECIMIENTO DE LA DOLARIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN FINANCIERA</option> 
+			  		<option value="LEY ORGÁNICA PARA LA RESTRUCTURACIÓN DE LAS DEUDAS DE LA BANCA PÚBLICA, BANCA CERRADA Y GESTIÓN DEL SISTEMA FINANCIERO NACIONAL Y RÉGIMEN DE VALORES" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_ley == 'LEY ORGÁNICA PARA LA RESTRUCTURACIÓN DE LAS DEUDAS DE LA BANCA PÚBLICA, BANCA CERRADA Y GESTIÓN DEL SISTEMA FINANCIERO NACIONAL Y RÉGIMEN DE VALORES'){echo ' selected="selected" ' ;}else{}}}else{} ?>>LEY ORGÁNICA PARA LA RESTRUCTURACIÓN DE LAS DEUDAS DE LA BANCA PÚBLICA, BANCA CERRADA Y GESTIÓN DEL SISTEMA FINANCIERO NACIONAL Y RÉGIMEN DE VALORES</option> 
+			  	 	
+				</select>
+				<div id="mensaje_tipo_ley" class="errores"></div>
+	            </div>
 	            
 	            
 	            </div>
@@ -5019,7 +5045,7 @@
   		       <div class="col-lg-6 col-md-6 col-xs-12">
 			  	<p  class="formulario-subtitulo">Reemplazar A:</p>
 			  	<select name="reemplazar" id="reemplazar"  class="form-control" >
-			  		<option value="0">--Seleccione--</option>
+			  		<option value="0">--Seleccione---</option>
 						<option value="1">Solo Secretario</option>
 						<option value="2">Solo Impulsor</option>
 						<option value="3">Secretario y Impulsor</option>

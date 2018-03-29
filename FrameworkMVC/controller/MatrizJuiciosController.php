@@ -5217,7 +5217,8 @@
 									  providencias.referencia_oficios_tipo_lev_6,
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
-									  providencias.cantidad_oficios_generados";
+									  providencias.cantidad_oficios_generados,
+			    					  providencias.tipo_ley";
 						$tablas_prov="public.providencias";
 						$where_prov ="id_providencias ='$id_providencias'";
 						$id_prov="id_providencias";
@@ -5290,7 +5291,8 @@
 									  providencias.referencia_oficios_tipo_lev_6,
 									  providencias.referencia_oficios_tipo_lev_7,
 									  providencias.referencia_oficios_tipo_lev_8,
-									  providencias.cantidad_oficios_generados";
+									  providencias.cantidad_oficios_generados,
+			    					  providencias.tipo_ley";
 						$tablas_prov_2="public.providencias";
 						$where_prov_2 ="id_providencias ='$id_providencias_2'";
 						$id_prov_2="id_providencias";
@@ -21496,7 +21498,7 @@
 			$referencia_oficios_tipo_lev_5= $_POST['referencia_oficios_tipo_lev_5'];
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
-				
+			$tipo_ley= $_POST['tipo_ley'];
 			
 			
 			
@@ -21554,6 +21556,7 @@
 			$res_agregar_disposicion_pago_total= $_POST['res_agregar_disposicion_pago_total'];
 			$res_agregar_disposicion_1_pago_total= $_POST['res_agregar_disposicion_1_pago_total'];
 			$res_agregar_disposicion_2_pago_total= $_POST['res_agregar_disposicion_2_pago_total'];
+			$tipo_ley= $_POST['tipo_ley'];
 			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio_pago_total!=""){
@@ -22949,8 +22952,10 @@
 					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
 					 $fecha_documento_3_reemplazo,
-					 '$res_agregar_disposicion_1_pago_total',
-					 '$res_agregar_disposicion_2_pago_total'";
+					'$res_agregar_disposicion_1_pago_total',
+					'$res_agregar_disposicion_2_pago_total',
+					'$tipo_ley'";
+						
 						
 					
 					
@@ -23004,7 +23009,8 @@
 						'$nombre_numero_documento_3',
 						$fecha_documento_3_reemplazo,
 						'$res_agregar_disposicion_1_pago_total',
-						'$res_agregar_disposicion_2_pago_total'";
+						'$res_agregar_disposicion_2_pago_total',
+						'$tipo_ley'";
 						
 						
 					}
@@ -23095,7 +23101,8 @@
 					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-					
+					$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
+						
 					
 					
 					
@@ -23151,9 +23158,13 @@
 					 $fecha_documento_2_reemplazo,	
 					'$nombre_numero_documento_3',
 					 $fecha_documento_3_reemplazo,
-					'$res_agregar_disposicion_pago_1_total',
-					'$res_agregar_disposicion_pago_2_total'";
+					'$res_agregar_disposicion_1_pago_total',
+					'$res_agregar_disposicion_2_pago_total',
+					'$tipo_ley'";
+						
 					
+					
+				
 					}else{
 						
 						$fecha_remplazo_solicitud= 'null';
@@ -23179,7 +23190,9 @@
 						'$nombre_numero_documento_3',
 						$fecha_documento_3_reemplazo,
 						'$res_agregar_disposicion_1_pago_total',
-						'$res_agregar_disposicion_2_pago_total'";
+						'$res_agregar_disposicion_2_pago_total',
+						'$tipo_ley'";
+						
 						
 					}
 					
@@ -23235,6 +23248,7 @@
 					$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 					$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
+					$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 					
 						
@@ -24613,7 +24627,8 @@
 							'$nombre_numero_documento_3',
 							$fecha_documento_3_reemplazo,
 							'$res_agregar_disposicion_1_pago_total',
-							'$res_agregar_disposicion_2_pago_total'";
+							'$res_agregar_disposicion_2_pago_total',
+							'$tipo_ley'";
 				
 								
 								
@@ -24667,7 +24682,8 @@
 							'$nombre_numero_documento_3',
 							$fecha_documento_3_reemplazo,
 							'$res_agregar_disposicion_1_pago_total',
-							'$res_agregar_disposicion_2_pago_total'";
+							'$res_agregar_disposicion_2_pago_total',
+							'$tipo_ley'";
 				
 				
 						}
@@ -24759,6 +24775,7 @@
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor_pago_total)?trim($remplaza_impulsor_pago_total):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador_pago_total)?trim($impulsor_saliente_cambio_liquidador_pago_total):'';
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 							
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -24815,7 +24832,8 @@
 							'$nombre_numero_documento_3',
 							$fecha_documento_3_reemplazo,
 							'$res_agregar_disposicion_1_pago_total',
-							'$res_agregar_disposicion_2_pago_total'";
+							'$res_agregar_disposicion_2_pago_total',
+							'$tipo_ley'";
 								
 						}else{
 				
@@ -24842,7 +24860,8 @@
 							'$nombre_numero_documento_3',
 							$fecha_documento_3_reemplazo,
 							'$res_agregar_disposicion_1_pago_total',
-							'$res_agregar_disposicion_2_pago_total'";
+							'$res_agregar_disposicion_2_pago_total',
+							'$tipo_ley'";
 				
 						}
 							
@@ -24900,6 +24919,7 @@
 						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor_pago_total)?trim($remplaza_impulsor_pago_total):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador_pago_total)?trim($impulsor_saliente_cambio_liquidador_pago_total):'';
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 							
 				
@@ -26280,7 +26300,8 @@
 			   	'$res_nombre_numero_documento_3',
 			   	$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+			   	'$tipo_ley'";
 			   	
 			   	}else {
 			   		
@@ -26328,8 +26349,9 @@
 			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
 			   		$res_fecha_documento_3_reemplazar,
-			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   		'$res_agregar_disposicion_1',
+			   		'$res_agregar_disposicion_2',
+			   		'$tipo_ley'";
 			   		
 			   		
 			   		
@@ -26428,7 +26450,8 @@
 			   	$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 			   	$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 				$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-					
+				$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
+				
 			   	
 			   	
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -26479,7 +26502,8 @@
 			   	'$res_nombre_numero_documento_3',
 			   	$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+			   	'$tipo_ley'";
 			   	
 			   	}else{
 			   		
@@ -26501,8 +26525,9 @@
 			   		$res_fecha_documento_2_reemplazar,
 			   		'$res_nombre_numero_documento_3',
 			   		$res_fecha_documento_3_reemplazar,
-			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+				   	'$res_agregar_disposicion_1',
+				   	'$res_agregar_disposicion_2',
+				   	'$tipo_ley'";
 			   		
 			   		
 			   		
@@ -26572,7 +26597,8 @@
 			   	$parametros['agregar_disposicion']=isset($res_agregar_disposicion)?trim($res_agregar_disposicion):'';
 			   	$parametros['agregar_disposicion_1']=isset($res_agregar_disposicion_1)?trim($res_agregar_disposicion_1):'';
 			   	$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
-			   	
+			   	$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
+			   	 
 			   		
 			   	$pagina="contAvocoConocimientoSeleccion.aspx";
 			   		
@@ -29649,7 +29675,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 						}else {
 				
@@ -29714,7 +29741,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 				
 				
@@ -29822,6 +29850,7 @@
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 							
 						
 				
@@ -29874,7 +29903,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 						}else{
 				
@@ -29897,7 +29927,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 				
 				
@@ -29969,6 +30000,7 @@
 						$parametros['agregar_disposicion_2']=isset($res_agregar_disposicion_2)?trim($res_agregar_disposicion_2):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor)?trim($remplaza_impulsor):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador)?trim($impulsor_saliente_cambio_liquidador):'';
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 				
 						$pagina="contAvocoConocimientoSeleccion.aspx";
