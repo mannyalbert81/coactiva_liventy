@@ -1,4 +1,4 @@
-<?php
+	<?php
 
     class MatrizJuiciosController extends ControladorBase{
 	public function __construct() {
@@ -3429,6 +3429,16 @@
 			$referencia_oficios_tipo_lev_5= $_POST['referencia_oficios_tipo_lev_5'];
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
+		
+			$anulada_oficios= $_POST['anulada_oficios'];
+			$numero_oficios_anulada_1= $_POST['numero_oficios_anulada_1'];
+			$numero_oficios_anulada_2= $_POST['numero_oficios_anulada_2'];
+			$numero_oficios_anulada_3= $_POST['numero_oficios_anulada_3'];
+			$numero_oficios_anulada_4= $_POST['numero_oficios_anulada_4'];
+			$numero_oficios_anulada_5= $_POST['numero_oficios_anulada_5'];
+			$numero_oficios_anulada_6= $_POST['numero_oficios_anulada_6'];
+			$numero_oficios_anulada_7= $_POST['numero_oficios_anulada_7'];
+			$numero_oficios_anulada_8= $_POST['numero_oficios_anulada_8'];
 			
 			
 			
@@ -3575,6 +3585,20 @@
 				}
 				 
 				
+				if($anulada_oficios=="Si"){
+						
+						
+					$identificador_oficio=$numero_oficios_anulada_1;
+					$identificador_oficio_1=$numero_oficios_anulada_2;
+					$identificador_oficio_2=$numero_oficios_anulada_3;
+					$identificador_oficio_3=$numero_oficios_anulada_4;
+					$identificador_oficio_4=$numero_oficios_anulada_5;
+					$identificador_oficio_5=$numero_oficios_anulada_6;
+					$identificador_oficio_6=$numero_oficios_anulada_7;
+					$identificador_oficio_7=$numero_oficios_anulada_8;
+						
+						
+				}else{
 				
 				
 				
@@ -4802,7 +4826,7 @@
 				
 				}
 				
-				
+				}
 				
 				
 					
@@ -4843,10 +4867,11 @@
 				$resultado=$providencias->Insert();
 					
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_SUSPENSION'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-				
-					
-				$traza=new TrazasModel();
+				if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
+						$traza=new TrazasModel();
 				$_nombre_controlador = "MATRIZ JUICIOS";
 				$_accion_trazas  = "Genero Providencia de Suspensión con Oficio";
 				$_parametros_trazas = $id_juicios;
@@ -5070,7 +5095,9 @@
 									  providencias.referencia_oficios_tipo_lev_8,
 									  providencias.cantidad_oficios_generados,
 								      providencias.valor_retencion_fondos,
-									  providencias.valor_retencion_cuentas";
+									  providencias.valor_retencion_cuentas,
+									  providencias.disponer_5,
+									  providencias.tipo_acto";
 						$tablas_prov="public.providencias";
 						$where_prov ="id_providencias ='$id_providencias'";
 						$id_prov="id_providencias";
@@ -5304,9 +5331,8 @@
 							
 						$resultSet_edit_2="";
 					}
+					
 				}
-				
-				
 				
 				
 				
@@ -15015,18 +15041,10 @@
 			$identificacion_titular_cuenta_5= $_POST['identificacion_titular_cuenta_5'];
 			$depositario_judicial_5= $_POST['depositario_judicial_5'];
 			$identificacion_depositario_judicial_5= $_POST['identificacion_depositario_judicial_5'];
-				
-			
-			
-			
 			$tipo_avoco= $_POST['tipo_avoco'];
-			
-			
 			$generar_oficio= $_POST['generar_oficio'];
 			$entidad_va_oficio= $_POST['entidad_va_oficio'];
 			$asunto= $_POST['asunto'];
-			
-			
 			$cantidad_oficios_generar= $_POST['cantidad_oficios_generar'];
 			$entidad_va_oficio_1= $_POST['entidad_va_oficio_1'];
 			$entidad_va_oficio_2= $_POST['entidad_va_oficio_2'];
@@ -15035,7 +15053,6 @@
 			$entidad_va_oficio_5= $_POST['entidad_va_oficio_5'];
 			$entidad_va_oficio_6= $_POST['entidad_va_oficio_6'];
 			$entidad_va_oficio_7= $_POST['entidad_va_oficio_7'];
-				
 			$referencia_oficios_tipo_lev= $_POST['referencia_oficios_tipo_lev'];
 			$referencia_oficios_tipo_lev_1= $_POST['referencia_oficios_tipo_lev_1'];
 			$referencia_oficios_tipo_lev_2= $_POST['referencia_oficios_tipo_lev_2'];
@@ -15044,20 +15061,18 @@
 			$referencia_oficios_tipo_lev_5= $_POST['referencia_oficios_tipo_lev_5'];
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
-			
 			$cantidad_retener= $_POST['cantidad_retener'];
 			$cuenta_retener= $_POST['cuenta_retener'];
-				
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			$cantidad_retener_avoco_conocimiento= $_POST['cantidad_retener_avoco_conocimiento'];
 			$direccion_juzgado= $_POST['direccion_juzgado'];
 			$referencia= $_POST['referencia'];
 	        $tipo_cartera= $_POST['tipo_cartera'];
-			
-			
-	        $citado= $_POST['citado'];
+			$citado= $_POST['citado'];
 	        $disposicion_citar= $_POST['disposicion_citar'];
+	        $disponer_5= $_POST['disponer_5'];
+	        $tipo_acto= $_POST['tipo_acto'];
 	        	
            
             
@@ -17919,7 +17934,9 @@
 						'$referencia_oficios_tipo_lev_6',
 						'$referencia_oficios_tipo_lev_7',
 						'$cantidad_oficios_generar',
-						'$cuenta_retener'";
+						'$cuenta_retener',
+						'$disponer_5',
+						'$tipo_acto'";
 						
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
@@ -17981,7 +17998,9 @@
 						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					    $parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-					  
+					    $parametros['disponer_5']=isset($disponer_5)?trim($disponer_5):'';
+					    $parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
+					    
 						
 						 
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -18011,7 +18030,7 @@
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 						'$id_titulo_credito', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
-						'$cuenta_retener'";
+						'$cuenta_retener','$disponer_5', '$tipo_acto'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -18040,6 +18059,9 @@
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
 						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
+						$parametros['disponer_5']=isset($disponer_5)?trim($disponer_5):'';
+						$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
+						
 						
 						
 				
@@ -21502,6 +21524,32 @@
 			
 			
 			
+			
+			
+		    $anulada_oficios= $_POST['anulada_oficios'];
+			$numero_oficios_anulada_1= $_POST['numero_oficios_anulada_1'];
+			$numero_oficios_anulada_2= $_POST['numero_oficios_anulada_2'];
+			$numero_oficios_anulada_3= $_POST['numero_oficios_anulada_3'];
+			$numero_oficios_anulada_4= $_POST['numero_oficios_anulada_4'];
+			$numero_oficios_anulada_5= $_POST['numero_oficios_anulada_5'];
+			$numero_oficios_anulada_6= $_POST['numero_oficios_anulada_6'];
+			$numero_oficios_anulada_7= $_POST['numero_oficios_anulada_7'];
+			$numero_oficios_anulada_8= $_POST['numero_oficios_anulada_8'];
+			
+			$anulada_oficios_pago= $_POST['anulada_oficios_pago'];
+			$numero_oficios_anulada_1_pago= $_POST['numero_oficios_anulada_1_pago'];
+			$numero_oficios_anulada_2_pago= $_POST['numero_oficios_anulada_2_pago'];
+			$numero_oficios_anulada_3_pago= $_POST['numero_oficios_anulada_3_pago'];
+			$numero_oficios_anulada_4_pago= $_POST['numero_oficios_anulada_4_pago'];
+			$numero_oficios_anulada_5_pago= $_POST['numero_oficios_anulada_5_pago'];
+			$numero_oficios_anulada_6_pago= $_POST['numero_oficios_anulada_6_pago'];
+			$numero_oficios_anulada_7_pago= $_POST['numero_oficios_anulada_7_pago'];
+			$numero_oficios_anulada_8_pago= $_POST['numero_oficios_anulada_8_pago'];
+			
+			
+			
+			
+			
 			$entidades = New EntidadesModel();
 			if($entidad_va_oficio!=""){
 				$result=$entidades->InsertaEntidades($entidad_va_oficio);
@@ -21687,7 +21735,20 @@
 						
 					}
 
-
+					if($anulada_oficios_pago=="Si"){
+							
+							
+						$identificador_oficio=$numero_oficios_anulada_1_pago;
+						$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+						$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+						$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+						$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+						$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+						$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+						$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+							
+							
+					}else{
 
 					if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 					
@@ -22899,6 +22960,10 @@
 					
 					}
 					
+					}
+					
+					//aqui hay que serrar
+					
 					$fecha_remplazo_solicitud = $fecha_solicitud;
 					$fecha_documento_1_reemplazo= $fecha_documento_1;
 					$fecha_documento_2_reemplazo= $fecha_documento_2;
@@ -23022,8 +23087,13 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
+					
+					
+					if($anulada_oficios_pago=="Si"){
+						
+					}else{
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-					 
+					}
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
 					$_accion_trazas  = "Genero Providencia de Pago Total con Oficio";
@@ -23359,7 +23429,20 @@
 							$identificador_secretaria='JC'.$identificador_secretaria;
 						
 						}
-						
+						if($anulada_oficios_pago=="Si"){
+								
+								
+							$identificador_oficio=$numero_oficios_anulada_1_pago;
+							$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+							$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+							$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+							$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+							$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+							$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+							$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+								
+								
+						}else{	
 						
 						
 						
@@ -24572,6 +24655,7 @@
 						}
 							
 						}
+						}
 							
 						$fecha_remplazo_solicitud = $fecha_solicitud;
 						$fecha_documento_1_reemplazo= $fecha_documento_1;
@@ -24695,9 +24779,15 @@
 							
 							
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_PAGO_TOTAL'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					//	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
 				
-						$traza=new TrazasModel();
+						if($anulada_oficios_pago=="Si"){
+						
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}
+					
+					$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Pago Total y Avoco Conocimiento con Oficio";
 						$_parametros_trazas = $id_juicios;
@@ -25033,7 +25123,20 @@
 			   	
 			   	}
 			   	
-			   	
+			   	if($anulada_oficios=="Si"){
+			   			
+			   			
+			   		$identificador_oficio=$numero_oficios_anulada_1;
+			   		$identificador_oficio_1=$numero_oficios_anulada_2;
+			   		$identificador_oficio_2=$numero_oficios_anulada_3;
+			   		$identificador_oficio_3=$numero_oficios_anulada_4;
+			   		$identificador_oficio_4=$numero_oficios_anulada_5;
+			   		$identificador_oficio_5=$numero_oficios_anulada_6;
+			   		$identificador_oficio_6=$numero_oficios_anulada_7;
+			   		$identificador_oficio_7=$numero_oficios_anulada_8;
+			   			
+			   			
+			   	}else{
 			   	
 			   	
 			   	
@@ -26250,6 +26353,8 @@
 			   	
 			   	}
 			   	
+			   	}
+			   	
 			   	$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
 			   	$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
 			   	$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
@@ -26364,8 +26469,12 @@
 			   	$resultado=$providencias->Insert();
 			   		
 			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-			   	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-			   	
+			  
+			   if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
+						
 			   	$traza=new TrazasModel();
 			   	$_nombre_controlador = "MATRIZ JUICIOS";
 			   	$_accion_trazas  = "Genero Providencia de Restructuracion con Oficio";
@@ -26711,6 +26820,23 @@
 							$identificador_secretaria='JC'.$identificador_secretaria;
 						
 						}
+						
+						
+						if($anulada_oficios=="Si"){
+								
+								
+							$identificador_oficio=$numero_oficios_anulada_1;
+							$identificador_oficio_1=$numero_oficios_anulada_2;
+							$identificador_oficio_2=$numero_oficios_anulada_3;
+							$identificador_oficio_3=$numero_oficios_anulada_4;
+							$identificador_oficio_4=$numero_oficios_anulada_5;
+							$identificador_oficio_5=$numero_oficios_anulada_6;
+							$identificador_oficio_6=$numero_oficios_anulada_7;
+							$identificador_oficio_7=$numero_oficios_anulada_8;
+								
+								
+						}else{
+								
 
 
 						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
@@ -27921,7 +28047,9 @@
 						}
 						 
 						}
-						 
+						
+						}
+						
 						$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
 						$res_fecha_documento_1_reemplazar = $res_fecha_documento_1;
 						$res_fecha_documento_2_reemplazar = $res_fecha_documento_2;
@@ -27972,7 +28100,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 							 
 						}else {
 				
@@ -28037,7 +28166,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 				
 						
@@ -28056,8 +28186,11 @@
 						$resultado=$providencias->Insert();
 				
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-						 
+						if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
+					 
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Restructuración y Avoco Conocimiento con Oficio";
@@ -28140,7 +28273,7 @@
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
-							
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 						 
 						$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -28191,7 +28324,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 							 
 						}else{
 				
@@ -28214,8 +28348,8 @@
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
 			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2'";
-				
+			   	'$res_agregar_disposicion_2',
+							'$tipo_ley'";
 				
 				
 						}
@@ -28281,7 +28415,7 @@
 						$parametros['fecha_documento_3']=isset($res_fecha_documento_3)?trim($res_fecha_documento_3):'';
 				
 						$parametros['referencia']=isset($referencia)?trim($referencia):'';
-				
+						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 				
 						$pagina="contAvocoConocimientoSeleccion.aspx";
 				
@@ -28316,8 +28450,10 @@
 			if($tipo_avoco==15){
 				
 
-
-
+				
+				//AQUI MAYCOL EMPIEZO GRABANDO XD.. XD
+				
+				
 
 
 
@@ -28404,6 +28540,20 @@
 						
 						
 						
+						if($anulada_oficios=="Si"){
+							
+							
+							$identificador_oficio=$numero_oficios_anulada_1;
+							$identificador_oficio_1=$numero_oficios_anulada_2;
+							$identificador_oficio_2=$numero_oficios_anulada_3;
+							$identificador_oficio_3=$numero_oficios_anulada_4;
+							$identificador_oficio_4=$numero_oficios_anulada_5;
+							$identificador_oficio_5=$numero_oficios_anulada_6;
+							$identificador_oficio_6=$numero_oficios_anulada_7;
+							$identificador_oficio_7=$numero_oficios_anulada_8;
+							
+							
+						}else{
 						
 						
 						
@@ -29622,7 +29772,8 @@
 						
 						
 					}
-							
+					
+					}
 							
 							
 						$fecha_solicitud_restructuracion_reemplazar =$fecha_solicitud_restructuracion;
@@ -29761,8 +29912,11 @@
 						$resultado=$providencias->Insert();
 				
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='RESTRUCTURACION'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-							
+						
+						if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Restructuración y Avoco Conocimiento con Oficio";
@@ -30112,7 +30266,16 @@
 			$referencia_oficios_tipo_lev_6= $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
 			
-			
+			$anulada_oficios= $_POST['anulada_oficios'];
+			$numero_oficios_anulada_1= $_POST['numero_oficios_anulada_1'];
+			$numero_oficios_anulada_2= $_POST['numero_oficios_anulada_2'];
+			$numero_oficios_anulada_3= $_POST['numero_oficios_anulada_3'];
+			$numero_oficios_anulada_4= $_POST['numero_oficios_anulada_4'];
+			$numero_oficios_anulada_5= $_POST['numero_oficios_anulada_5'];
+			$numero_oficios_anulada_6= $_POST['numero_oficios_anulada_6'];
+			$numero_oficios_anulada_7= $_POST['numero_oficios_anulada_7'];
+			$numero_oficios_anulada_8= $_POST['numero_oficios_anulada_8'];
+				
 
 
 			$resultSet_prov="";
@@ -30245,7 +30408,21 @@
 				}
 				 
 				
-
+				if($anulada_oficios=="Si"){
+				
+				
+					$identificador_oficio=$numero_oficios_anulada_1;
+					$identificador_oficio_1=$numero_oficios_anulada_2;
+					$identificador_oficio_2=$numero_oficios_anulada_3;
+					$identificador_oficio_3=$numero_oficios_anulada_4;
+					$identificador_oficio_4=$numero_oficios_anulada_5;
+					$identificador_oficio_5=$numero_oficios_anulada_6;
+					$identificador_oficio_6=$numero_oficios_anulada_7;
+					$identificador_oficio_7=$numero_oficios_anulada_8;
+				
+				
+				}else{
+						
 
 
 				if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
@@ -31458,6 +31635,7 @@
 					$identificador_oficio_7=$identificador_secretaria.$ident_7;
 				}
 				}
+				}
 				 
 				$funcion = "ins_providencias_levantamiento_con_oficio_liventy";
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
@@ -31496,9 +31674,10 @@
 				$resultado=$providencias->Insert();
 				
 				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO'");
-				$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-				
-					
+				if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
 				$traza=new TrazasModel();
 				$_nombre_controlador = "MATRIZ JUICIOS";
 				$_accion_trazas  = "Genero Providencia de Levantamiento con Oficio";

@@ -668,7 +668,7 @@
 				var tipo_cartera= $("#tipo_cartera").val();
 				var disposicion_citar= $("#disposicion_citar").val();
 				var citado= $("#citado").val();
-
+				var tipo_acto= $("#tipo_acto").val();
 
 				
    				
@@ -715,6 +715,7 @@
 		            
 				}
 
+		    	
 		    	if(tipo_avoco == 9  && generar_oficio == 0){
 					$("#mensaje_generar_oficio").text("Seleccione");
 		    		$("#mensaje_generar_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -726,7 +727,19 @@
 		            
 				}
 
-
+		    	if (tipo_acto == 0)
+		    	{
+			    	
+		    		$("#mensaje_tipo_acto").text("Seleccione Tipo");
+		    		$("#mensaje_tipo_acto").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_tipo_acto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	
 		    	if(tipo_avoco == 9  && cantidad_oficios_generar == 0 && generar_oficio=="Si"){
 					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
 		    		$("#mensaje_cantidad_oficios_generar").fadeIn("slow"); //Muestra mensaje de error
@@ -3594,6 +3607,10 @@
 					$("#mensaje_tipo_avoco").fadeOut("slow");
     			});
 
+				$( "#tipo_acto" ).focus(function() {
+					$("#mensaje_tipo_acto").fadeOut("slow");
+    			});
+			
 				$( "#generar_oficio" ).focus(function() {
 					$("#mensaje_generar_oficio").fadeOut("slow");
     			});
@@ -4624,8 +4641,25 @@
 			  	  <div id="mensaje_cuenta_retener" class="errores"></div>
 	          
 	              </div>
+	                 <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Seleccione:</p>
+			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE</option> 
+			  		<option value="CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE</option> 
+			  	 	<option value="CÚMPLASE, OFÍCIESE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y CÍTESE</option> 
+			
+				</select>
+				<div id="mensaje_tipo_acto" class="errores"></div>
+	            </div>
 	            
-	            
+	               <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 5.-: (Opcional)</p>	
+                                  <textarea type="text"  class="form-control" id="disponer_5" name="disponer_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_5;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto y raya al final del texto.-)</FONT>
+			
+                 <div id="mensaje_dispone_" class="errores"></div>
+                 </div>
 	            
 	            </div>
 	            </div>
