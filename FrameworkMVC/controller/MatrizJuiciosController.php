@@ -11834,6 +11834,26 @@
 			$referencia_oficios_tipo_lev_discapacidad_5 = $_POST['referencia_oficios_tipo_lev_discapacidad_5'];
 			$referencia_oficios_tipo_lev_discapacidad_6 = $_POST['referencia_oficios_tipo_lev_discapacidad_6'];
 			$referencia_oficios_tipo_lev_discapacidad_7 = $_POST['referencia_oficios_tipo_lev_discapacidad_7'];
+			$anulada_oficios= $_POST['anulada_oficios'];
+			$numero_oficios_anulada_1= $_POST['numero_oficios_anulada_1'];
+			$numero_oficios_anulada_2= $_POST['numero_oficios_anulada_2'];
+			$numero_oficios_anulada_3= $_POST['numero_oficios_anulada_3'];
+			$numero_oficios_anulada_4= $_POST['numero_oficios_anulada_4'];
+			$numero_oficios_anulada_5= $_POST['numero_oficios_anulada_5'];
+			$numero_oficios_anulada_6= $_POST['numero_oficios_anulada_6'];
+			$numero_oficios_anulada_7= $_POST['numero_oficios_anulada_7'];
+			$numero_oficios_anulada_8= $_POST['numero_oficios_anulada_8'];
+			
+			$anulada_oficios_pago= $_POST['anulada_oficios_pago'];
+			$numero_oficios_anulada_1_pago= $_POST['numero_oficios_anulada_1_pago'];
+			$numero_oficios_anulada_2_pago= $_POST['numero_oficios_anulada_2_pago'];
+			$numero_oficios_anulada_3_pago= $_POST['numero_oficios_anulada_3_pago'];
+			$numero_oficios_anulada_4_pago= $_POST['numero_oficios_anulada_4_pago'];
+			$numero_oficios_anulada_5_pago= $_POST['numero_oficios_anulada_5_pago'];
+			$numero_oficios_anulada_6_pago= $_POST['numero_oficios_anulada_6_pago'];
+			$numero_oficios_anulada_7_pago= $_POST['numero_oficios_anulada_7_pago'];
+			$numero_oficios_anulada_8_pago= $_POST['numero_oficios_anulada_8_pago'];
+				
 				
 			
 			$entidades = New EntidadesModel();
@@ -12017,7 +12037,21 @@
 					
 					}
 					
+
+					if($anulada_oficios=="Si"){
 					
+					
+						$identificador_oficio=$numero_oficios_anulada_1;
+						$identificador_oficio_1=$numero_oficios_anulada_2;
+						$identificador_oficio_2=$numero_oficios_anulada_3;
+						$identificador_oficio_3=$numero_oficios_anulada_4;
+						$identificador_oficio_4=$numero_oficios_anulada_5;
+						$identificador_oficio_5=$numero_oficios_anulada_6;
+						$identificador_oficio_6=$numero_oficios_anulada_7;
+						$identificador_oficio_7=$numero_oficios_anulada_8;
+					
+					
+					}else{
 
 
 
@@ -13232,6 +13266,7 @@
 					}
 					 
 					}
+					}
 					
 					$funcion = "ins_providencias_discapacidad_con_oficio_liventy";
 					
@@ -13256,8 +13291,10 @@
 					$resultado=$providencias->Insert();
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_DISCAPACIDAD'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-						
+					if($anulada_oficios=="Si"){
+						}else{
+							$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+						}
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
 					$_accion_trazas  = "Genero Providencia de Levantamiento Medida Cautelar Discapacidad con Oficio";
@@ -13501,7 +13538,20 @@
 							
 					}
 					
-
+					if($anulada_oficios_pago=="Si"){
+							
+							
+						$identificador_oficio=$numero_oficios_anulada_1_pago;
+						$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+						$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+						$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+						$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+						$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+						$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+						$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+							
+							
+					}else{
 
 					if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 					
@@ -14712,7 +14762,7 @@
 					
 					}
 					
-					
+					}
 					$funcion = "ins_providencias_fallecimiento_con_oficio_liventy";
 					$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 					'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios',
@@ -14754,8 +14804,11 @@
 					
 					
 					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_LEVANTAMIENTO_MEDIDA_CAUTELAR_FALLECIMIENTO'");
-					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+				if($anulada_oficios_pago=="Si"){
 						
+					}else{
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar_1'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}
 					$traza=new TrazasModel();
 					$_nombre_controlador = "MATRIZ JUICIOS";
 					$_accion_trazas  = "Genero Providencia de Levantamiento Medida Cautelar Fallecimiento con Oficio";
@@ -21488,7 +21541,10 @@
 				
 			
 			$fecha_oficios = $_POST['fecha_oficios'];
+			$fecha_oficios_1 = $_POST['fecha_oficios_1'];
+				
 			$texto_oficios = $_POST['texto_oficio'];
+			$texto_oficios_1 = $_POST['texto_oficio_1'];
 			
 			$referencia = $_POST['referencia'];
 			$generar_oficio= $_POST['generar_oficio'];
@@ -23169,8 +23225,8 @@
 					$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 					$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 					$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
-					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
-					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+					$parametros['fecha_oficios']=isset($fecha_oficios_1)?trim($fecha_oficios_1):'';
+					$parametros['texto_oficios']=isset($texto_oficios_1)?trim($texto_oficios_1):'';
 					$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
 						
 					
@@ -24861,8 +24917,8 @@
 						$parametros['agregar_disposicion_pago_total']=isset($res_agregar_disposicion_pago_total)?trim($res_agregar_disposicion_pago_total):'';
 						$parametros['agregar_disposicion_1_pago_total']=isset($res_agregar_disposicion_1_pago_total)?trim($res_agregar_disposicion_1_pago_total):'';
 						$parametros['agregar_disposicion_2_pago_total']=isset($res_agregar_disposicion_2_pago_total)?trim($res_agregar_disposicion_2_pago_total):'';
-						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
-						$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
+						$parametros['fecha_oficios']=isset($fecha_oficios_1)?trim($fecha_oficios_1):'';
+						$parametros['texto_oficios']=isset($texto_oficios_1)?trim($texto_oficios_1):'';
 						$parametros['remplaza_impulsor']=isset($remplaza_impulsor_pago_total)?trim($remplaza_impulsor_pago_total):'';
 						$parametros['impulsor_saliente_cambio_liquidador']=isset($impulsor_saliente_cambio_liquidador_pago_total)?trim($impulsor_saliente_cambio_liquidador_pago_total):'';
 						$parametros['tipo_ley']=isset($tipo_ley)?trim($tipo_ley):'';
@@ -29891,8 +29947,8 @@
 							$res_fecha_documento_2_reemplazar,
 							'$res_nombre_numero_documento_3',
 							$res_fecha_documento_3_reemplazar,
-			   	'$res_agregar_disposicion_1',
-			   	'$res_agregar_disposicion_2',
+						   	'$res_agregar_disposicion_1',
+						   	'$res_agregar_disposicion_2',
 							'$tipo_ley'";
 				
 				

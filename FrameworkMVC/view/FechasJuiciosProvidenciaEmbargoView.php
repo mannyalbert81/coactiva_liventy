@@ -3895,7 +3895,17 @@
 				</select>
                  <FONT FACE="arial" SIZE=1.9 COLOR=red>(Seleccionar solo si desea actualizar el estado procesal del jucio.)</FONT>
                  </div>
-	            
+	                         <div class="col-lg-4 col-md-4 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Seleccione Tipo de Acto:</p>
+			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
+			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  		<option value="CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE</option> 
+			  		<option value="CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE</option> 
+			  	 	<option value="CÚMPLASE, OFÍCIESE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y CÍTESE</option> 
+			
+				</select>
+				<div id="mensaje_tipo_acto" class="errores"></div>
+	            </div>
 	            <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
 			  	<select name="generar_oficio" id="generar_oficio"  class="form-control" >
@@ -3907,10 +3917,7 @@
 			    </select>
 				<div id="mensaje_generar_oficio" class="errores"></div>
 			    </div>
-	            
-	            
-	            
-	            <div id="div_datos_generar_oficio" style="display: none;">
+		        <div id="div_datos_generar_oficio" style="display: none;">
 	            <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar" id="cantidad_oficios_generar"  class="form-control" >
@@ -4641,17 +4648,7 @@
 			  	  <div id="mensaje_cuenta_retener" class="errores"></div>
 	          
 	              </div>
-	                 <div class="col-lg-4 col-md-4 col-xs-12" >
-			  	<p  class="formulario-subtitulo">Seleccione:</p>
-			  	<select name="tipo_acto" id="tipo_acto"  class="form-control" >
-			  		<option value="0"><?php echo "--Seleccione--";  ?> </option>
-			  		<option value="CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y NOTIFÍQUESE</option> 
-			  		<option value="CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE, CÍTESE Y NOTIFÍQUESE</option> 
-			  	 	<option value="CÚMPLASE, OFÍCIESE Y CÍTESE" <?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){ if($res_edit->tipo_acto == 'CÚMPLASE, OFÍCIESE Y CÍTESE'){echo ' selected="selected" ' ;}else{}}}else{} ?>>CÚMPLASE, OFÍCIESE Y CÍTESE</option> 
-			
-				</select>
-				<div id="mensaje_tipo_acto" class="errores"></div>
-	            </div>
+	        
 	            
 	               <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
 		                          <p class="formulario-subtitulo" >Dispone 5.-: (Opcional)</p>	

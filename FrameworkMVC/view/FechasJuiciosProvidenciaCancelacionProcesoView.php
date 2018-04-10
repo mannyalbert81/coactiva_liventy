@@ -4688,7 +4688,6 @@
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
-
 						$("#mensaje_numero_oficios_anulada_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_numero_oficios_anulada_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_numero_oficios_anulada_3").fadeOut("slow"); //Muestra mensaje de error
@@ -5038,7 +5037,7 @@
 						$("#mensaje_numero_oficios_anulada_4").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_numero_oficios_anulada_5").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_numero_oficios_anulada_6").fadeOut("slow"); //Muestra mensaje de error
-						$("#mensaje_numero_oficios_anulada_7S").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7").fadeOut("slow"); //Muestra mensaje de error
 						    
 					}
 
@@ -8045,11 +8044,11 @@
 	            <div class="row">
 	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
 	            				<p  class="formulario-subtitulo">Fecha Oficios</p>
-	            				<input type="date"  name="fecha_oficios" id="fecha_oficios" min="1800-01-01" max="<?php echo date('Y-m-d')."+ 10 days";?>" value="<?php ?>" class="form-control "/>			
+	            				<input type="date"  name="fecha_oficios_1" id="fecha_oficios_1" min="1800-01-01" max="<?php echo date('Y-m-d')."+ 10 days";?>" value="<?php ?>" class="form-control "/>			
 	            			</div>
 	            			<div class="col-lg-6 col-md-6 col-xs-6" style='margin-top: 10px;'>
 	            				<p  class="formulario-subtitulo">Texto Integro Providencia</p>
-	            				<select name="texto_oficio" id="texto_oficio"  class="form-control" >
+	            				<select name="texto_oficio_1" id="texto_oficio_1"  class="form-control" >
                 			  			<option value="SI" >SI</option>
                 						<option value="NO" >NO</option>		
                 						
