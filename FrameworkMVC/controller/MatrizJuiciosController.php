@@ -11777,12 +11777,18 @@
 				
 			$numero_oficio_medida_cuatelar_discapacidad= $_POST['numero_oficio_medida_cuatelar_discapacidad'];
 			$fecha_oficio_medida_cuatelar_discapacidad= $_POST['fecha_oficio_medida_cuatelar_discapacidad'];
-			//$numero_liquidacion_medida_cuatelar_discapacidad= $_POST['numero_liquidacion_medida_cuatelar_discapacidad'];
-			//$fecha_liquidacion_medida_cuatelar_discapacidad= $_POST['fecha_liquidacion_medida_cuatelar_discapacidad'];
 			$numero_solicitud_discapacidad= $_POST['numero_solicitud_discapacidad'];
 			$fecha_solicitud_discapacidad= $_POST['fecha_solicitud_discapacidad'];
 			$nombre_discapacitado= $_POST['nombre_discapacitado'];
-				
+			$numero_conadis_discapacidad= $_POST['numero_conadis_discapacidad'];
+			$fecha_conadis_discapacidad= $_POST['fecha_conadis_discapacidad'];
+			$porcentaje_discapacidad= $_POST['porcentaje_discapacidad'];
+			$acta_validacion_discapacidad= $_POST['acta_validacion_discapacidad'];
+			$numero_memorando_discapacidad= $_POST['numero_memorando_discapacidad'];
+			$fecha_memorando_discapacidad= $_POST['fecha_memorando_discapacidad'];
+			$porcentaje_condonacion_discapacidad= $_POST['porcentaje_condonacion_discapacidad'];
+			$porcentaje_restructuracion_discapacidad= $_POST['porcentaje_restructuracion_discapacidad'];
+			
 			
 			$depositario_judicial="";
 			
@@ -11907,9 +11913,7 @@
 			$referencia_oficios_tipo_lev_5 = $_POST['referencia_oficios_tipo_lev_5'];
 			$referencia_oficios_tipo_lev_6 = $_POST['referencia_oficios_tipo_lev_6'];
 			$referencia_oficios_tipo_lev_7 = $_POST['referencia_oficios_tipo_lev_7'];
-			
-			
-			
+				
 			
 			
 			$entidades = New EntidadesModel();
@@ -13271,18 +13275,61 @@
 					$funcion = "ins_providencias_discapacidad_con_oficio_liventy";
 					
 							
-		    	    $parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
-		    	    '$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco',
-		    	    '$id_juicios', '$id_clientes', '$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
-		    	     '$numero_solicitud_discapacidad',
-		    	    '$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
-		    	    '$id_estados_procesales_juicios_actualizar', '$genero_oficio', '$identificador_oficio',
-		    	    '$entidad_va_oficio_discapacidad', '$asunto_discapacidad',
-			    	'$identificador_oficio_1', '$identificador_oficio_2', '$identificador_oficio_3', '$identificador_oficio_4', '$identificador_oficio_5', '$identificador_oficio_6',
-					'$identificador_oficio_7', '$entidad_va_oficio_discapacidad_1','$entidad_va_oficio_discapacidad_2',
-					'$entidad_va_oficio_discapacidad_3', '$entidad_va_oficio_discapacidad_4',
-					'$entidad_va_oficio_discapacidad_5','$entidad_va_oficio_discapacidad_6', '$entidad_va_oficio_discapacidad_7', '$referencia_oficios_tipo_lev_discapacidad', '$referencia_oficios_tipo_lev_discapacidad_1', '$referencia_oficios_tipo_lev_discapacidad_2', '$referencia_oficios_tipo_lev_discapacidad_3', '$referencia_oficios_tipo_lev_discapacidad_4', '$referencia_oficios_tipo_lev_discapacidad_5', '$referencia_oficios_tipo_lev_discapacidad_6', '$referencia_oficios_tipo_lev_discapacidad_7', '$cantidad_oficios_generar', '$fecha_oficio_medida_cuatelar_discapacidad', '$fecha_solicitud_discapacidad'";
-		    	    
+		    	    $parametros = "'$id_tipo_providencias',
+		    	    '$identificador_providencias',
+		    	    '$nombre_archivo_providencias',
+		    	    '$ruta_providencias',
+		    	    '$fecha_avoco',
+		    	    '$hora_avoco',
+		    	    '$razon_avoco',
+		    	    '$id_juicios',
+		    	    '$id_clientes',
+		    	    '$id_titulo_credito',
+		    	    '$numero_oficio_medida_cuatelar_discapacidad',
+		    	    '$numero_solicitud_discapacidad',
+		    	    '$nombre_discapacitado',
+		    	    '$depositario_judicial',
+		    	    '$id_impulsor',
+		    	    '$id_secretario',
+		    	    '$id_estados_procesales_juicios_actualizar',
+		    	    '$genero_oficio',
+		    	    '$identificador_oficio',
+		    	    '$entidad_va_oficio_discapacidad',
+		    	    '$asunto_discapacidad',
+			    	'$identificador_oficio_1',
+			    	'$identificador_oficio_2',
+			    	'$identificador_oficio_3',
+			    	'$identificador_oficio_4',
+			    	'$identificador_oficio_5',
+			    	'$identificador_oficio_6',
+					'$identificador_oficio_7',
+					'$entidad_va_oficio_discapacidad_1',
+					'$entidad_va_oficio_discapacidad_2',
+					'$entidad_va_oficio_discapacidad_3',
+					'$entidad_va_oficio_discapacidad_4',
+					'$entidad_va_oficio_discapacidad_5',
+					'$entidad_va_oficio_discapacidad_6',
+					'$entidad_va_oficio_discapacidad_7',
+					'$referencia_oficios_tipo_lev_discapacidad',
+					'$referencia_oficios_tipo_lev_discapacidad_1',
+					'$referencia_oficios_tipo_lev_discapacidad_2',
+					'$referencia_oficios_tipo_lev_discapacidad_3',
+					'$referencia_oficios_tipo_lev_discapacidad_4',
+					'$referencia_oficios_tipo_lev_discapacidad_5',
+					'$referencia_oficios_tipo_lev_discapacidad_6',
+					'$referencia_oficios_tipo_lev_discapacidad_7',
+					'$cantidad_oficios_generar',
+					'$fecha_oficio_medida_cuatelar_discapacidad',
+					'$fecha_solicitud_discapacidad',
+		    	    '$numero_conadis_discapacidad',
+					'$fecha_conadis_discapacidad',
+					'$porcentaje_discapacidad',
+					'$acta_validacion_discapacidad',
+					'$numero_memorando_discapacidad',
+					'$fecha_memorando_discapacidad',
+					'$porcentaje_condonacion_discapacidad',
+					'$porcentaje_restructuracion_discapacidad'";
+			    	    
 		    	    
 		    	    
 		    	    
@@ -13317,13 +13364,11 @@
 					
 					$parametros['numero_oficio_medida_cuatelar_discapacidad']=isset($numero_oficio_medida_cuatelar_discapacidad)?trim($numero_oficio_medida_cuatelar_discapacidad):'';
 					$parametros['fecha_oficio_medida_cuatelar_discapacidad']=isset($fecha_oficio_medida_cuatelar_discapacidad)?trim($fecha_oficio_medida_cuatelar_discapacidad):'';
-					$parametros['numero_liquidacion_medida_cuatelar_discapacidad']=isset($numero_liquidacion_medida_cuatelar_discapacidad)?trim($numero_liquidacion_medida_cuatelar_discapacidad):'';
-					$parametros['fecha_liquidacion_medida_cuatelar_discapacidad']=isset($fecha_liquidacion_medida_cuatelar_discapacidad)?trim($fecha_liquidacion_medida_cuatelar_discapacidad):'';
-					
+						
 					$parametros['numero_solicitud_discapacidad']=isset($numero_solicitud_discapacidad)?trim($numero_solicitud_discapacidad):'';
 					$parametros['fecha_solicitud_discapacidad']=isset($fecha_solicitud_discapacidad)?trim($fecha_solicitud_discapacidad):'';
 					$parametros['nombre_discapacitado']=isset($nombre_discapacitado)?trim($nombre_discapacitado):'';
-					
+						
 					
 					$parametros['ruta_avoco']=$ruta_providencias;
 					$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
@@ -13361,6 +13406,15 @@
 					$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					$parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					
+					$parametros['numero_conadis_discapacidad']=isset($numero_conadis_discapacidad)?trim($numero_conadis_discapacidad):'';
+					$parametros['fecha_conadis_discapacidad']=isset($fecha_conadis_discapacidad)?trim($fecha_conadis_discapacidad):'';
+					$parametros['porcentaje_discapacidad']=isset($porcentaje_discapacidad)?trim($porcentaje_discapacidad):'';
+					$parametros['acta_validacion_discapacidad']=isset($acta_validacion_discapacidad)?trim($acta_validacion_discapacidad):'';
+					$parametros['numero_memorando_discapacidad']=isset($numero_memorando_discapacidad)?trim($numero_memorando_discapacidad):'';
+					$parametros['fecha_memorando_discapacidad']=isset($fecha_memorando_discapacidad)?trim($fecha_memorando_discapacidad):'';
+					$parametros['porcentaje_condonacion_discapacidad']=isset($porcentaje_condonacion_discapacidad)?trim($porcentaje_condonacion_discapacidad):'';
+					$parametros['porcentaje_restructuracion_discapacidad']=isset($porcentaje_restructuracion_discapacidad)?trim($porcentaje_restructuracion_discapacidad):'';
+					
 						
 					
 					$pagina="contAvocoConocimientoSeleccion.aspx";
@@ -13393,12 +13447,21 @@
 				$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 				'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 				'$id_titulo_credito', '$numero_oficio_medida_cuatelar_discapacidad',
-				'$numero_solicitud_discapacidad',
-				'$nombre_discapacitado', '$depositario_judicial', '$id_impulsor', '$id_secretario',
+			   	'$numero_solicitud_discapacidad',
+				'$nombre_discapacitado',
+				'$depositario_judicial', '$id_impulsor', '$id_secretario',
 				'$id_estados_procesales_juicios_actualizar',
 		    	'$fecha_oficio_medida_cuatelar_discapacidad',
-		        '$fecha_solicitud_discapacidad'";
-				
+		        '$fecha_solicitud_discapacidad',
+				'$numero_conadis_discapacidad',
+				'$fecha_conadis_discapacidad',
+				'$porcentaje_discapacidad',
+				'$acta_validacion_discapacidad',
+				'$numero_memorando_discapacidad',
+				'$fecha_memorando_discapacidad',
+				'$porcentaje_condonacion_discapacidad',
+				'$porcentaje_restructuracion_discapacidad'";
+					
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -13427,12 +13490,18 @@
 		
 				$parametros['numero_oficio_medida_cuatelar_discapacidad']=isset($numero_oficio_medida_cuatelar_discapacidad)?trim($numero_oficio_medida_cuatelar_discapacidad):'';
 				$parametros['fecha_oficio_medida_cuatelar_discapacidad']=isset($fecha_oficio_medida_cuatelar_discapacidad)?trim($fecha_oficio_medida_cuatelar_discapacidad):'';
-				$parametros['numero_liquidacion_medida_cuatelar_discapacidad']=isset($numero_liquidacion_medida_cuatelar_discapacidad)?trim($numero_liquidacion_medida_cuatelar_discapacidad):'';
-				$parametros['fecha_liquidacion_medida_cuatelar_discapacidad']=isset($fecha_liquidacion_medida_cuatelar_discapacidad)?trim($fecha_liquidacion_medida_cuatelar_discapacidad):'';
-		
+				
 				$parametros['numero_solicitud_discapacidad']=isset($numero_solicitud_discapacidad)?trim($numero_solicitud_discapacidad):'';
 				$parametros['fecha_solicitud_discapacidad']=isset($fecha_solicitud_discapacidad)?trim($fecha_solicitud_discapacidad):'';
 				$parametros['nombre_discapacitado']=isset($nombre_discapacitado)?trim($nombre_discapacitado):'';
+				$parametros['numero_conadis_discapacidad']=isset($numero_conadis_discapacidad)?trim($numero_conadis_discapacidad):'';
+				$parametros['fecha_conadis_discapacidad']=isset($fecha_conadis_discapacidad)?trim($fecha_conadis_discapacidad):'';
+				$parametros['porcentaje_discapacidad']=isset($porcentaje_discapacidad)?trim($porcentaje_discapacidad):'';
+				$parametros['acta_validacion_discapacidad']=isset($acta_validacion_discapacidad)?trim($acta_validacion_discapacidad):'';
+				$parametros['numero_memorando_discapacidad']=isset($numero_memorando_discapacidad)?trim($numero_memorando_discapacidad):'';
+				$parametros['fecha_memorando_discapacidad']=isset($fecha_memorando_discapacidad)?trim($fecha_memorando_discapacidad):'';
+				$parametros['porcentaje_condonacion_discapacidad']=isset($porcentaje_condonacion_discapacidad)?trim($porcentaje_condonacion_discapacidad):'';
+				$parametros['porcentaje_restructuracion_discapacidad']=isset($porcentaje_restructuracion_discapacidad)?trim($porcentaje_restructuracion_discapacidad):'';
 				
 								
 				$parametros['ruta_avoco']=$ruta_providencias;
@@ -15116,6 +15185,8 @@
 			$referencia_oficios_tipo_lev_7= $_POST['referencia_oficios_tipo_lev_7'];
 			$cantidad_retener= $_POST['cantidad_retener'];
 			$cuenta_retener= $_POST['cuenta_retener'];
+			$nombre_entidad_cuenta= $_POST['nombre_entidad_cuenta'];
+			
 			$remplaza_impulsor= $_POST['remplaza_impulsor'];
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			$cantidad_retener_avoco_conocimiento= $_POST['cantidad_retener_avoco_conocimiento'];
@@ -16713,6 +16784,10 @@
 					    
 					}
 				
+					
+					
+					
+					
 					$cuenta_reporte= $cuenta_retener.' ('.$cuenta_retener_letras.')';
 				
 					if($generar_oficio=="Si"){
@@ -17988,6 +18063,7 @@
 						'$referencia_oficios_tipo_lev_7',
 						'$cantidad_oficios_generar',
 						'$cuenta_retener',
+						'$nombre_entidad_cuenta',
 						'$disponer_5',
 						'$tipo_acto'";
 						
@@ -18049,6 +18125,7 @@
 						$parametros['referencia_oficios_tipo_lev_8']=isset($referencia_oficios_tipo_lev_7)?trim($referencia_oficios_tipo_lev_7):'';
 						$parametros['pie_oficios']=isset($pie_oficios)?trim($pie_oficios):'';
 						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
+						$parametros['nombre_entidad_cuenta']=isset($nombre_entidad_cuenta)?trim($nombre_entidad_cuenta):'';
 						$parametros['fecha_oficios']=isset($fecha_oficios)?trim($fecha_oficios):'';
 					    $parametros['texto_oficios']=isset($texto_oficios)?trim($texto_oficios):'';
 					    $parametros['disponer_5']=isset($disponer_5)?trim($disponer_5):'';
@@ -18083,7 +18160,7 @@
 						$parametros = "'$id_tipo_providencias','$identificador_providencias', '$nombre_archivo_providencias',
 						'$ruta_providencias', '$fecha_avoco', '$hora_avoco', '$razon_avoco', '$id_juicios', '$id_clientes',
 						'$id_titulo_credito', '$id_impulsor', '$id_secretario','$id_estados_procesales_juicios_actualizar',
-						'$cuenta_retener','$disponer_5', '$tipo_acto'";
+						'$cuenta_retener','$nombre_entidad_cuenta','$disponer_5', '$tipo_acto'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -18112,6 +18189,8 @@
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
 						$parametros['cuenta_retener']=isset($cuenta_reporte)?trim($cuenta_reporte):'';
+						$parametros['nombre_entidad_cuenta']=isset($nombre_entidad_cuenta)?trim($nombre_entidad_cuenta):'';
+							
 						$parametros['disponer_5']=isset($disponer_5)?trim($disponer_5):'';
 						$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
 						

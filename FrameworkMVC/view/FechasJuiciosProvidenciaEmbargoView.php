@@ -659,7 +659,8 @@
 
 
                 var cantidad_retener= $("#cantidad_retener").val();
-                var cuenta_retener= $("#cuenta_retener").val();
+                var cuenta_retener1= $("#cuenta_retener1").val();
+                var nombre_entidad_cuenta= $("#nombre_entidad_cuenta").val();
                 
                 var remplaza_impulsor= $("#remplaza_impulsor").val();
 				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
@@ -2813,18 +2814,28 @@
 
 
 				
-		    	if(tipo_avoco == 20  && cuenta_retener == 0.00){
-					$("#mensaje_cuenta_retener").text("Ingrese Cantidad");
-		    		$("#mensaje_cuenta_retener").fadeIn("slow"); //Muestra mensaje de error
+		    	if(tipo_avoco == 20  && cuenta_retener1 == 0.00){
+					$("#mensaje_cuenta_retener1").text("Ingrese Cantidad");
+		    		$("#mensaje_cuenta_retener1").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 				}
 				else 
 		    	{
-		    		$("#mensaje_cuenta_retener").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_cuenta_retener1").fadeOut("slow"); //Muestra mensaje de error
 		            
 				} 
 		    	
-
+		     	if(tipo_avoco == 20  && nombre_entidad_cuenta == 0.00){
+					$("#mensaje_nombre_entidad_cuenta").text("Ingrese entidad");
+		    		$("#mensaje_nombre_entidad_cuenta").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_nombre_entidad_cuenta").fadeOut("slow"); //Muestra mensaje de error
+		            
+				} 
+		   
 		    
 
 		    	if(tipo_avoco == 17  && generar_oficio == 0){
@@ -3700,11 +3711,14 @@
 				$( "#cantidad_retener" ).focus(function() {
 					$("#mensaje_cantidad_retener").fadeOut("slow");
     			});
-				$( "#cuenta_retener" ).focus(function() {
-					$("#mensaje_cuenta_retener").fadeOut("slow");
+				$( "#cuenta_retener1" ).focus(function() {
+					$("#mensaje_cuenta_retener1").fadeOut("slow");
     			});
-
-				$( "#tipo_cartera" ).focus(function() {
+				$( "#nombre_entidad_cuenta" ).focus(function() {
+					$("#mensaje_nombre_entidad_cuenta").fadeOut("slow");
+    			});
+		
+					$( "#tipo_cartera" ).focus(function() {
 					$("#mensaje_tipo_cartera").fadeOut("slow");
     			});
 				
@@ -4648,10 +4662,14 @@
 			  	  <div id="mensaje_cuenta_retener" class="errores"></div>
 	          
 	              </div>
-	        
+	         <div class="col-lg-4 col-md-4 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombre Entidad:</p>
+			  	<input type="text"  name="nombre_entidad_cuenta" id="nombre_entidad_cuenta" value="" class="form-control" placeholder="Entidad"/> 
+	            <div id="mensaje_nombre_entidad_cuenta" class="errores"></div>
+	            </div>
 	            
 	               <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
-		                          <p class="formulario-subtitulo" >Dispone 5.-: (Opcional)</p>	
+		                          <p class="formulario-subtitulo" >Dispone .-: (Opcional)</p>	
                                   <textarea type="text"  class="form-control" id="disponer_5" name="disponer_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_5;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto y raya al final del texto.-)</FONT>
 			

@@ -1388,13 +1388,18 @@
 			    
 			    var numero_oficio_medida_cuatelar_discapacidad = $("#numero_oficio_medida_cuatelar_discapacidad").val();
 			    var fecha_oficio_medida_cuatelar_discapacidad = $("#fecha_oficio_medida_cuatelar_discapacidad").val();
-			    //var numero_liquidacion_medida_cuatelar_discapacidad = $("#numero_liquidacion_medida_cuatelar_discapacidad").val();
-			    //var fecha_liquidacion_medida_cuatelar_discapacidad = $("#fecha_liquidacion_medida_cuatelar_discapacidad").val();
+			    var numero_conadis_discapacidad = $("#numero_conadis_discapacidad").val();
+			    var fecha_conadis_discapacidad = $("#fecha_conadis_discapacidad").val();
 			    var numero_solicitud_discapacidad = $("#numero_solicitud_discapacidad").val();
 			    var fecha_solicitud_discapacidad = $("#fecha_solicitud_discapacidad").val();
 			    var nombre_discapacitado = $("#nombre_discapacitado").val();
-
-
+			    var porcentaje_discapacidad = $("#porcentaje_discapacidad").val();
+			    var acta_validacion_discapacidad = $("#acta_validacion_discapacidad").val();
+			    var numero_memorando_discapacidad = $("#numero_memorando_discapacidad").val();
+			    var fecha_memorando_discapacidad = $("#fecha_memorando_discapacidad").val();
+			    var porcentaje_condonacion_discapacidad = $("#porcentaje_condonacion_discapacidad").val();
+			    var porcentaje_restructuracion_discapacidad = $("#porcentaje_restructuracion_discapacidad").val();
+					  
 
 
 			    var numero_oficio_medida_cuatelar_fallecimiento = $("#numero_oficio_medida_cuatelar_fallecimiento").val();
@@ -1540,26 +1545,26 @@
 				}
 
 
-		    	if(tipo_avoco == 10  && numero_liquidacion_medida_cuatelar_discapacidad == ""){
-					$("#mensaje_numero_liquidacion_medida_cuatelar_discapacidad").text("Ingrese # Liquidación");
-		    		$("#mensaje_numero_liquidacion_medida_cuatelar_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		    	if(tipo_avoco == 10  && numero_conadis_discapacidad == ""){
+					$("#mensaje_numero_conadis_discapacidad").text("Ingrese # de oficio CONADIS");
+		    		$("#mensaje_numero_conadis_discapacidad").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 				}
 				else 
 		    	{
-		    		$("#mensaje_numero_liquidacion_medida_cuatelar_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_numero_conadis_discapacidad").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
 
-		    	if(tipo_avoco == 10  && fecha_liquidacion_medida_cuatelar_discapacidad == ""){
-					$("#mensaje_fecha_liquidacion_medida_cuatelar_discapacidad").text("Seleccione Fecha");
-		    		$("#mensaje_fecha_liquidacion_medida_cuatelar_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		    	if(tipo_avoco == 10  && fecha_conadis_discapacidad == ""){
+					$("#mensaje_fecha_conadis_discapacidad").text("Seleccione Fecha");
+		    		$("#mensaje_fecha_conadis_discapacidad").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 				}
 				else 
 		    	{
-		    		$("#mensaje_fecha_liquidacion_medida_cuatelar_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		    		$("#mensaje_fecha_conadis_discapacidad").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 
@@ -1596,7 +1601,72 @@
 		    		$("#mensaje_nombre_discapacitado").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+		     	if(tipo_avoco == 10  && porcentaje_discapacidad == ""){
+					$("#mensaje_porcentaje_discapacidad").text("Ingrese porcentaje");
+		    		$("#mensaje_porcentaje_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_porcentaje_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
+		     	if(tipo_avoco == 10  && acta_validacion_discapacidad == ""){
+					$("#mensaje_acta_validacion_discapacidad").text("Ingrese Número de Acta");
+		    		$("#mensaje_acta_validacion_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_acta_validacion_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+		      	if(tipo_avoco == 10  && numero_memorando_discapacidad == ""){
+					$("#mensaje_numero_memorando_discapacidad").text("Ingrese # Memorando");
+		    		$("#mensaje_numero_memorando_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_memorando_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
+
+		    	if(tipo_avoco == 10  && fecha_memorando_discapacidad == ""){
+					$("#mensaje_fecha_memorando_discapacidad").text("Seleccione Fecha");
+		    		$("#mensaje_fecha_memorando_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_fecha_memorando_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	if(tipo_avoco == 10  && porcentaje_condonacion_discapacidad == ""){
+					$("#mensaje_porcentaje_condonacion_discapacidad").text("Ingrese porcentaje");
+		    		$("#mensaje_porcentaje_condonacion_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_porcentaje_condonacion_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	if(tipo_avoco == 10  && porcentaje_restructuracion_discapacidad == ""){
+					$("#mensaje_porcentaje_restructuracion_discapacidad").text("Ingrese porcentaje");
+		    		$("#mensaje_porcentaje_restructuracion_discapacidad").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_porcentaje_restructuracion_discapacidad").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+					
+		     	
 
 		    	if(tipo_avoco == 10  && generar_oficio_discapacidad == 0){
 					$("#mensaje_generar_oficio_discapacidad").text("Seleccione");
@@ -4040,12 +4110,12 @@
     			});
 
 
-				$( "#numero_liquidacion_medida_cuatelar_discapacidad" ).focus(function() {
-					$("#mensaje_numero_liquidacion_medida_cuatelar_discapacidad").fadeOut("slow");
+				$( "#numero_conadis_discapacidad" ).focus(function() {
+					$("#mensaje_numero_conadis_discapacidad").fadeOut("slow");
     			});
 
-				$( "#fecha_liquidacion_medida_cuatelar_discapacidad" ).focus(function() {
-					$("#mensaje_fecha_liquidacion_medida_cuatelar_discapacidad").fadeOut("slow");
+				$( "#fecha_conadis_discapacidad" ).focus(function() {
+					$("#mensaje_fecha_conadis_discapacidad").fadeOut("slow");
     			});
 				
 
@@ -4061,10 +4131,29 @@
 					$("#mensaje_nombre_discapacitado").fadeOut("slow");
     			});
 
+				$( "#porcentaje_discapacidad" ).focus(function() {
+					$("#mensaje_porcentaje_discapacidad").fadeOut("slow");
+    			});
 
+				$( "#acta_validacion_discapacidad" ).focus(function() {
+					$("#mensaje_acta_validacion_discapacidad").fadeOut("slow");
+    			});
+				$( "#numero_memorando_discapacidad" ).focus(function() {
+					$("#mensaje_numero_memorando_discapacidad").fadeOut("slow");
+    			});
 
+				$( "#fecha_memorando_discapacidad" ).focus(function() {
+					$("#mensaje_fecha_memorando_discapacidad").fadeOut("slow");
+    			});
 
-				$( "#numero_oficio_medida_cuatelar_fallecimiento" ).focus(function() {
+				$( "#porcentaje_condonacion_discapacidad" ).focus(function() {
+					$("#mensaje_porcentaje_condonacion_discapacidad").fadeOut("slow");
+    			});
+				$( "#porcentaje_restructuracion_discapacidad" ).focus(function() {
+					$("#mensaje_porcentaje_restructuracion_discapacidad").fadeOut("slow");
+    			});
+	    			
+					$( "#numero_oficio_medida_cuatelar_fallecimiento" ).focus(function() {
 					$("#mensaje_numero_oficio_medida_cuatelar_fallecimiento").fadeOut("slow");
     			});
 				$( "#fecha_oficio_medida_cuatelar_fallecimiento" ).focus(function() {
@@ -4284,21 +4373,21 @@
 			    </div>
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12">
-			  	<p class="formulario-subtitulo" >Número de Liquidación:</p>
-			  	<input type="text"  name="numero_liquidacion_medida_cuatelar_discapacidad" id="numero_liquidacion_medida_cuatelar_discapacidad" value="" class="form-control" placeholder="#"/> 
-	           <!-- <div id="mensaje_numero_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>-->   
+			  	<p class="formulario-subtitulo" >Número de Oficio CONADIS:</p>
+			  	<input type="text"  name="numero_conadis_discapacidad" id="numero_conadis_discapacidad" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_conadis_discapacidad" class="errores"></div>   
 	            </div>
 	            
 	            <div class="col-lg-6 col-md-6 col-xs-12">
-         		<p class="formulario-subtitulo" >Fecha de Liquidación:</p>
-			  	<input type="date"  name="fecha_liquidacion_medida_cuatelar_discapacidad" id="fecha_liquidacion_medida_cuatelar_discapacidad" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_liquidacion_discapacidad;}}else{} ?>" class="form-control "/> 
-			  	<!-- <div id="mensaje_fecha_liquidacion_medida_cuatelar_discapacidad" class="errores"></div>-->
+         		<p class="formulario-subtitulo" >Fecha de Oficio CONADIS:</p>
+			  	<input type="date"  name="fecha_conadis_discapacidad" id="fecha_conadis_discapacidad" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_conadis_discapacidad;}}else{} ?>" class="form-control "/> 
+			  	<div id="mensaje_fecha_conadis_discapacidad" class="errores"></div>
 			    </div>
 			    
 			    
 			    <div class="col-lg-6 col-md-6 col-xs-12">
 			  	<p class="formulario-subtitulo" >Número Solicitud de Discapacidad:</p>
-			  	<input type="text"  name="numero_solicitud_discapacidad" id="numero_solicitud_discapacidad" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_2_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="#"/> 
+			  	<input type="text"  name="numero_solicitud_discapacidad" id="numero_solicitud_discapacidad" value="" class="form-control" placeholder="#"/> 
 	            <div id="mensaje_numero_solicitud_discapacidad" class="errores"></div>
 	            </div>
 	            
@@ -4307,18 +4396,48 @@
 			  	<input type="date"  name="fecha_solicitud_discapacidad" id="fecha_solicitud_discapacidad" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_solicitud_discapacidad;}}else{} ?>" class="form-control "/> 
 			  	<div id="mensaje_fecha_solicitud_discapacidad" class="errores"></div>
 			    </div>
-			    
-			  
-	          
-	            
+	
 	            <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p class="formulario-subtitulo" >Nombre del Discapacitado:</p>
-			  	<input type="text"  name="nombre_discapacitado" id="nombre_discapacitado" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->numero_oficio_3_levantamiento_providencias;}}else{} ?>" class="form-control" placeholder="Name"/> 
+			  	<input type="text"  name="nombre_discapacitado" id="nombre_discapacitado" value="" class="form-control" placeholder="Nombre"/> 
 	            <div id="mensaje_nombre_discapacitado" class="errores"></div>
 	            </div>
+	        
+	              <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >Porcentaje de Discapacidad:</p>
+			  	<input type="text"  name="porcentaje_discapacidad" id="porcentaje_discapacidad" value="" class="form-control" placeholder="%"/> 
+	            <div id="mensaje_porcentaje_discapacidad" class="errores"></div>
+	            </div>
 	            
+	               <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >N° Acta de Validacion:</p>
+			  	<input type="text"  name="acta_validacion_discapacidad" id="acta_validacion_discapacidad" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_acta_validacion_discapacidad" class="errores"></div>
+	            </div>
+	     
+	            <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >Número de Memorando:</p>
+			  	<input type="text"  name="numero_memorando_discapacidad" id="numero_memorando_discapacidad" value="" class="form-control" placeholder="#"/> 
+	            <div id="mensaje_numero_memorando_discapacidad" class="errores"></div>   
+	            </div>
 	            
-	            
+	            <div class="col-lg-3 col-md-3 col-xs-12">
+         		<p class="formulario-subtitulo" >Fecha de Memorando:</p>
+			  	<input type="date"  name="fecha_memorando_discapacidad" id="fecha_memorando_discapacidad" min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->fecha_memorando_discapacidad;}}else{} ?>" class="form-control "/> 
+			  	<div id="mensaje_fecha_memorando_discapacidad" class="errores"></div>
+			    </div>
+			   
+	    		  <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >Porcentaje de Condonación:</p>
+			  	<input type="text"  name="porcentaje_condonacion_discapacidad" id="porcentaje_condonacion_discapacidad" value="" class="form-control" placeholder="%"/> 
+	            <div id="mensaje_porcentaje_condonacion_discapacidad" class="errores"></div>
+	            </div>
+	           
+	              <div class="col-lg-3 col-md-3 col-xs-12">
+			  	<p class="formulario-subtitulo" >Porcentaje de Restructuración:</p>
+			  	<input type="text"  name="porcentaje_restructuracion_discapacidad" id="porcentaje_restructuracion_discapacidad" value="" class="form-control" placeholder="%"/> 
+	            <div id="mensaje_porcentaje_restructuracion_discapacidad" class="errores"></div>
+	            </div>      
 	            
 	             <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Generar Oficio:</p>
