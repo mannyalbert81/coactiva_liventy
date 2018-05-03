@@ -4669,9 +4669,9 @@
 	            </div>
 	            
 	               <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
-		                          <p class="formulario-subtitulo" >Dispone .-: (Opcional)</p>	
+		                          <p class="formulario-subtitulo" >Dispone 7.-: (Opcional)</p>	
                                   <textarea type="text"  class="form-control" id="disponer_5" name="disponer_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_5;}}else{} ?></textarea>
-                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto y raya al final del texto.-)</FONT>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>7.- </b> no olvide poner punto y raya al final del texto.-)</FONT>
 			
                  <div id="mensaje_dispone_" class="errores"></div>
                  </div>

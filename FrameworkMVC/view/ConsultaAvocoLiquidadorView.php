@@ -188,7 +188,7 @@
 		 </div>
 		 
 		 <div class="col-xs-2 ">
-			  	<p  class="formulario-subtitulo" >Identificacion:</p>
+			  	<p  class="formulario-subtitulo" >Identificación:</p>
 			  	<input type="text"  name="identificacion" id="identificacion" value="<?php echo $sel_identificacion;?>" class="form-control"/> 
 			    <div id="mensaje_identificacion" class="errores"></div>
 
