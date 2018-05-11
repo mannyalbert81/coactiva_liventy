@@ -15197,6 +15197,16 @@
 	        $disposicion_citar= $_POST['disposicion_citar'];
 	        $disponer_5= $_POST['disponer_5'];
 	        $tipo_acto= $_POST['tipo_acto'];
+	        
+	        $anulada_oficios_pago= $_POST['anulada_oficios_pago'];
+	        $numero_oficios_anulada_1_pago= $_POST['numero_oficios_anulada_1_pago'];
+	        $numero_oficios_anulada_2_pago= $_POST['numero_oficios_anulada_2_pago'];
+	        $numero_oficios_anulada_3_pago= $_POST['numero_oficios_anulada_3_pago'];
+	        $numero_oficios_anulada_4_pago= $_POST['numero_oficios_anulada_4_pago'];
+	        $numero_oficios_anulada_5_pago= $_POST['numero_oficios_anulada_5_pago'];
+	        $numero_oficios_anulada_6_pago= $_POST['numero_oficios_anulada_6_pago'];
+	        $numero_oficios_anulada_7_pago= $_POST['numero_oficios_anulada_7_pago'];
+	        $numero_oficios_anulada_8_pago= $_POST['numero_oficios_anulada_8_pago'];
 	        	
            
             
@@ -15330,6 +15340,20 @@
 				
 						}
 				
+						if($anulada_oficios_pago=="Si"){
+								
+								
+							$identificador_oficio=$numero_oficios_anulada_1_pago;
+							$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+							$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+							$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+							$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+							$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+							$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+							$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+								
+								
+						}else{
 				
 						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 				
@@ -16535,6 +16559,7 @@
 							}
 				
 						}
+						}
 							
 							
 							
@@ -16574,11 +16599,12 @@
 						$resultado=$providencias->Insert();
 							
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_RETENCION_FONDOS'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-				
-							
-							
-						$traza=new TrazasModel();
+					if($anulada_oficios_pago=="Si"){
+						
+					}else{
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}
+					$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Retención de Fondos y Avoco Conocimiento con Oficio";
 						$_parametros_trazas = $id_juicios;
@@ -16818,8 +16844,22 @@
 							 
 						}
 				
-				
-						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
+						if($anulada_oficios_pago=="Si"){
+								
+								
+							$identificador_oficio=$numero_oficios_anulada_1_pago;
+							$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+							$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+							$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+							$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+							$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+							$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+							$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+								
+								
+						}else{
+						
+							if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 						  
 						  
 							if($cantidad_oficios_generar=="1"){
@@ -18029,7 +18069,7 @@
 							}
 						  
 						}
-						 
+						}
 						 
 						 
 						 
@@ -18072,11 +18112,12 @@
 						$resultado=$providencias->Insert();
 						 
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_RETENCION_CUENTAS'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-				
-						 
-						 
-						$traza=new TrazasModel();
+					if($anulada_oficios_pago=="Si"){
+						
+					}else{
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}
+					$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Retención de Cuentas con Oficio";
 						$_parametros_trazas = $id_juicios;
@@ -18306,7 +18347,20 @@
 							$identificador_secretaria='JC'.$identificador_secretaria;
 							 
 						}
-				
+						if($anulada_oficios_pago=="Si"){
+								
+								
+							$identificador_oficio=$numero_oficios_anulada_1_pago;
+							$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+							$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+							$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+							$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+							$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+							$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+							$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+								
+								
+						}else{
 				
 						if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 						  
@@ -19518,7 +19572,7 @@
 							}
 						  
 						}
-						 
+						}
 						 
 						 
 						 
@@ -19557,10 +19611,11 @@
 						$resultado=$providencias->Insert();
 						 
 						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_RETENCION_FONDOS'");
-						$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-				
-						 
-						 
+					if($anulada_oficios_pago=="Si"){
+						
+					}else{
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}	 
 						$traza=new TrazasModel();
 						$_nombre_controlador = "MATRIZ JUICIOS";
 						$_accion_trazas  = "Genero Providencia de Retención de Fondos con Oficio";
@@ -19784,7 +19839,20 @@
 		    			
 		    	}
 		    		
-
+		    	if($anulada_oficios_pago=="Si"){
+		    			
+		    			
+		    		$identificador_oficio=$numero_oficios_anulada_1_pago;
+		    		$identificador_oficio_1=$numero_oficios_anulada_2_pago;
+		    		$identificador_oficio_2=$numero_oficios_anulada_3_pago;
+		    		$identificador_oficio_3=$numero_oficios_anulada_4_pago;
+		    		$identificador_oficio_4=$numero_oficios_anulada_5_pago;
+		    		$identificador_oficio_5=$numero_oficios_anulada_6_pago;
+		    		$identificador_oficio_6=$numero_oficios_anulada_7_pago;
+		    		$identificador_oficio_7=$numero_oficios_anulada_8_pago;
+		    			
+		    			
+		    	}else{
 		    	if($identificador_secretaria=="BNF-LIQ-UIO-S3-2018-"){
 		    	
 		    	
@@ -20996,7 +21064,7 @@
 		    	
 		    	}
 		    	
-		    	
+		    	}
 		    	
 		    	
 		    	$funcion = "ins_providencias_embargo_con_oficio_liventy";
@@ -21039,10 +21107,11 @@
 		    	$resultado=$providencias->Insert();
 		    	
 		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+1", "consecutivos", "documento_consecutivos='PROVIDENCIAS_EMBARGO_CUENTA_BANCARIA'");
-		    	$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
-		    	 
-		    	
-		    	
+		    if($anulada_oficios_pago=="Si"){
+						
+					}else{
+					$consecutivo->UpdateBy("real_consecutivos=real_consecutivos+'$cantidad_oficios_generar'", "consecutivos", "id_consecutivos='$id_consecutivos'");
+					}	
 		    	$traza=new TrazasModel();
 		    	$_nombre_controlador = "MATRIZ JUICIOS";
 		    	$_accion_trazas  = "Genero Providencia de Embargo Cuenta Bancaria con Oficio";

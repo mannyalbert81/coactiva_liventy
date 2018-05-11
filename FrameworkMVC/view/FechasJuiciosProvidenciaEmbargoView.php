@@ -620,6 +620,333 @@
       </script>
       
       
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#anulada_oficios_pago").click(function() {
+			
+          var anulada_oficios_pago = $(this).val();
+			
+          if(anulada_oficios_pago  == "Si")
+          {
+           $("#div_datos_anulada_1_pago").fadeIn("slow");
+   	       $("#div_datos_anulada_2_pago").fadeIn("slow");
+   	       $("#div_datos_anulada_3_pago").fadeIn("slow");
+   	       $("#div_datos_anulada_4_pago").fadeIn("slow");
+    	   $("#div_datos_anulada_5_pago").fadeIn("slow");
+    	   $("#div_datos_anulada_6_pago").fadeIn("slow");  
+    	   $("#div_datos_anulada_7_pago").fadeIn("slow");
+    	   $("#div_datos_anulada_8_pago").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+
+
+        	  $("#div_datos_anulada_1_pago").fadeOut("slow");
+      	       $("#div_datos_anulada_2_pago").fadeOut("slow");
+      	       $("#div_datos_anulada_3_pago").fadeOut("slow");
+      	       $("#div_datos_anulada_4_pago").fadeOut("slow");
+       	   $("#div_datos_anulada_5_pago").fadeOut("slow");
+       	   $("#div_datos_anulada_6_pago").fadeOut("slow");  
+       	   $("#div_datos_anulada_7_pago").fadeOut("slow");
+       	   $("#div_datos_anulada_8_pago").fadeOut("slow");
+
+
+          
+          }
+         
+	    });
+	    
+	    $("#anulada_oficios_pago").change(function() {
+			
+              
+              var anulada_oficios_pago = $(this).val();
+				
+              
+              if(anulada_oficios_pago == "Si")
+              {
+            	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+          	       $("#div_datos_anulada_2_pago").fadeIn("slow");
+          	       $("#div_datos_anulada_3_pago").fadeIn("slow");
+          	       $("#div_datos_anulada_4_pago").fadeIn("slow");
+           	   $("#div_datos_anulada_5_pago").fadeIn("slow");
+           	   $("#div_datos_anulada_6_pago").fadeIn("slow");  
+           	   $("#div_datos_anulada_7_pago").fadeIn("slow");
+           	   $("#div_datos_anulada_8_pago").fadeIn("slow");
+              }
+           	
+              else
+              {
+            	  $("#div_datos_anulada_1_pago").fadeOut("slow");
+         	       $("#div_datos_anulada_2_pago").fadeOut("slow");
+         	       $("#div_datos_anulada_3_pago").fadeOut("slow");
+         	       $("#div_datos_anulada_4_pago").fadeOut("slow");
+          	   $("#div_datos_anulada_5_pago").fadeOut("slow");
+          	   $("#div_datos_anulada_6_pago").fadeOut("slow");  
+          	   $("#div_datos_anulada_7_pago").fadeOut("slow");
+          	   $("#div_datos_anulada_8_pago").fadeOut("slow");
+            
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+      
+      
+      
+      
+      
+      
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#cantidad_oficios_generar").click(function() {
+			
+          var cantidad_oficios_generar = $(this).val();
+			
+          if(cantidad_oficios_generar == "1")
+          {
+       	   $("#div_datos_anulada_1_pago").fadeIn("slow");
+       	 
+          }
+       	
+          else  if(cantidad_oficios_generar == "2")
+              
+          {
+        	   $("#div_datos_anulada_1_pago").fadeIn("slow");
+        	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+              	
+          }
+
+          else  if(cantidad_oficios_generar == "3")
+              
+          {
+        	   $("#div_datos_anulada_1_pago").fadeIn("slow");
+        	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+        	   $("#div_datos_anulada_3_pago").fadeIn("slow");
+               
+          }
+          else  if(cantidad_oficios_generar == "4")
+              
+          {
+        	   $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_3_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_4_pago").fadeIn("slow");
+               
+          }
+
+          else  if(cantidad_oficios_generar == "5")
+              
+          {
+        	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_3_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_4_pago").fadeIn("slow");
+        	  $("#div_datos_anulada_5_pago").fadeIn("slow");
+               
+          }
+		 else  if(cantidad_oficios_generar == "6")
+              
+          {
+			   $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_3_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_4_pago").fadeIn("slow");
+      	       $("#div_datos_anulada_5_pago").fadeIn("slow");
+      	       $("#div_datos_anulada_6_pago").fadeIn("slow");
+               
+          }
+		 else  if(cantidad_oficios_generar == "7")
+             
+         {
+			  $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_2_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_3_pago").fadeIn("slow");
+	       	   $("#div_datos_anulada_4_pago").fadeIn("slow");
+    	       $("#div_datos_anulada_5_pago").fadeIn("slow");
+    	       $("#div_datos_anulada_6_pago").fadeIn("slow");  
+    	       $("#div_datos_anulada_7_pago").fadeIn("slow");  
+         }
+ 		else  if(cantidad_oficios_generar == "8")
+             
+         {
+ 		   $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       $("#div_datos_anulada_2_pago").fadeIn("slow");
+	       $("#div_datos_anulada_3_pago").fadeIn("slow");
+	       $("#div_datos_anulada_4_pago").fadeIn("slow");
+ 	       $("#div_datos_anulada_5_pago").fadeIn("slow");
+ 	       $("#div_datos_anulada_6_pago").fadeIn("slow");  
+ 	       $("#div_datos_anulada_7_pago").fadeIn("slow");
+ 	      $("#div_datos_anulada_8_pago").fadeIn("slow");
+         }
+
+
+          else{
+
+        	  $("#div_datos_anulada_1_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_2_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_3_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_4_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+        	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+            
+
+          }
+         
+	    });
+	    
+	    $("#cantidad_oficios_generar").change(function() {
+			
+              
+              var cantidad_oficios_generar = $(this).val();
+				
+              if(cantidad_oficios_generar == "1")
+              {
+           	  
+           	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+	       	  $("#div_datos_anulada_2_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_3_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_4_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+            
+           
+           	 
+              }
+           	
+              else  if(cantidad_oficios_generar == "2")
+                  
+              {
+            	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_3_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_4_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+               
+                
+              }
+
+              else  if(cantidad_oficios_generar == "3")
+                  
+              {
+            	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_4_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                 
+                   
+                   
+              }
+              else  if(cantidad_oficios_generar == "4")
+                  
+              {
+            	  $("#div_datos_anulada_1_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_4_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+    	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                 
+                   
+              }
+
+             else  if(cantidad_oficios_generar == "5")
+                  
+              {
+              $("#div_datos_anulada_1_pago").fadeIn("slow");
+   	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+   	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+   	       	  $("#div_datos_anulada_4_pago").fadeIn("slow");
+   	       	  $("#div_datos_anulada_5_pago").fadeIn("slow");
+   	       	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+   	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+   	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                   
+              }
+             else  if(cantidad_oficios_generar == "6")
+                 
+             {
+            	 $("#div_datos_anulada_1_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_4_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_5_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_6_pago").fadeIn("slow");
+      	       	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+      	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                
+                  
+             }
+ 			else  if(cantidad_oficios_generar == "7")
+                 
+             {
+ 				  $("#div_datos_anulada_1_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_4_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_5_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_6_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_7_pago").fadeIn("slow");
+    	       	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                
+                  
+             }
+
+ 			else  if(cantidad_oficios_generar == "8")
+                
+            {
+ 				$("#div_datos_anulada_1_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_2_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_3_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_4_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_5_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_6_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_7_pago").fadeIn("slow");
+  	       	  $("#div_datos_anulada_8_pago").fadeIn("slow");
+               
+                 
+            }
+
+              else{
+
+
+            	  $("#div_datos_anulada_1_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_2_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_3_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_4_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_5_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_6_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_7_pago").fadeOut("slow");
+            	  $("#div_datos_anulada_8_pago").fadeOut("slow");
+                
+
+              }
+              
+		    });
+	}); 	
+	   
+      </script>
+      
       
            <script >
 		$(document).ready(function(){
@@ -670,6 +997,15 @@
 				var disposicion_citar= $("#disposicion_citar").val();
 				var citado= $("#citado").val();
 				var tipo_acto= $("#tipo_acto").val();
+			 	var anulada_oficios_pago = $("#anulada_oficios_pago").val();
+				var numero_oficios_anulada_1_pago = $("#numero_oficios_anulada_1_pago").val();
+				var numero_oficios_anulada_2_pago = $("#numero_oficios_anulada_2_pago").val();
+				var numero_oficios_anulada_3_pago = $("#numero_oficios_anulada_3_pago").val();
+				var numero_oficios_anulada_4_pago = $("#numero_oficios_anulada_4_pago").val();
+				var numero_oficios_anulada_5_pago = $("#numero_oficios_anulada_5_pago").val();
+				var numero_oficios_anulada_6_pago = $("#numero_oficios_anulada_6_pago").val();
+				var numero_oficios_anulada_7_pago = $("#numero_oficios_anulada_7_pago").val();
+				var numero_oficios_anulada_8_pago = $("#numero_oficios_anulada_8_pago").val()
 
 				
    				
@@ -727,7 +1063,18 @@
 		    		$("#mensaje_generar_oficio").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+		    	if(tipo_avoco == 9  && anulada_oficios_pago == 0 && generar_oficio=="Si"){
+					$("#mensaje_anulada_oficios_pago").text("Seleccione");
+		    		$("#mensaje_anulada_oficios_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_anulada_oficios_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
+		    	
 		    	if (tipo_acto == 0)
 		    	{
 			    	
@@ -751,6 +1098,7 @@
 		    		$("#mensaje_cantidad_oficios_generar").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+				
 
 		    	if(tipo_avoco == 9 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && asunto == "" ){
 					$("#mensaje_asunto").text("Ingrese el Asunto");
@@ -760,6 +1108,16 @@
 				else 
 		    	{
 		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		    	if(tipo_avoco == 9  && cantidad_oficios_generar == 1 && generar_oficio == "Si" &&  anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+					$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
 		    	
@@ -786,6 +1144,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				if(entidad_va_oficio == ""){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -797,6 +1165,16 @@
 				}
 
 
+				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+					$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+		    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+					}else{
+
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+					}
 				
 
 
@@ -836,6 +1214,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -847,7 +1235,19 @@
 					}
 
 
+					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+
+		
 					if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -858,6 +1258,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -879,7 +1289,11 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+			
+								}
 
 
 
@@ -896,6 +1310,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -907,6 +1331,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -917,6 +1351,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -929,6 +1373,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 					if(entidad_va_oficio_3 == ""){
 						$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -947,7 +1401,12 @@
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+			
+								}
 
 
 
@@ -974,7 +1433,18 @@
 				    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 				            
 						}
-						
+
+						if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+				    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+							
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -983,7 +1453,17 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	               
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -993,6 +1473,16 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		  
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -1005,7 +1495,17 @@
 				   		 }
 		           		
 
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1014,7 +1514,17 @@
 							}else{
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
-			           		
+		         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+				           		
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -1041,6 +1551,11 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 					   $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
 					       
 			            
 					}
@@ -1061,7 +1576,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+						
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -1070,6 +1595,16 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 	                if(entidad_va_oficio_1 == ""){
@@ -1081,6 +1616,17 @@
 			   		 }
 	           		
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -1092,7 +1638,17 @@
 				   		 }
 		           		
 
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1103,6 +1659,16 @@
 					   		 }
 			           		
 
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -1111,7 +1677,17 @@
 								}else{
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
-				           		
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
+
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+				          		
 
 
 
@@ -1139,7 +1715,13 @@
 					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
-					    
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								    
 					}
 
 
@@ -1160,6 +1742,16 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -1170,7 +1762,17 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -1179,7 +1781,17 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -1190,7 +1802,17 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 
 		           		 if(entidad_va_oficio_3 == ""){
@@ -1201,6 +1823,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		 
+		         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -1211,7 +1843,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+			
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -1222,6 +1864,16 @@
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
 					           		
+				           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
+
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
 
 
 					           		 if(entidad_va_oficio_6 == ""){
@@ -1246,7 +1898,14 @@
 					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+						     
 			            
 					}
 				
@@ -1268,7 +1927,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -1277,7 +1946,17 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -1287,7 +1966,17 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		  
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -1299,7 +1988,17 @@
 				   		 }
 		           		
 
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1309,6 +2008,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -1318,7 +2027,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+						
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -1329,7 +2048,17 @@
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
 					           		
+				         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
 
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
+						
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -1338,7 +2067,17 @@
 										}else{
 									    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 								   		 }
-						           		
+					           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_8_pago==""){
+
+										$("#mensaje_numero_oficios_anulada_8_pago").text("Ingrese # Oficio 8");
+							    		$("#mensaje_numero_oficios_anulada_8_pago").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+
+										}else{
+
+											$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+										}
+										           		
 
 
 						           		 if(entidad_va_oficio_7 == ""){
@@ -1364,7 +2103,15 @@
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+				     
 			            
 			            
 					}
@@ -1527,6 +2274,16 @@
 		            
 				}
 
+		    	if(tipo_avoco == 16  && anulada_oficios_pago == 0 && generar_oficio=="Si"){
+					$("#mensaje_anulada_oficios_pago").text("Seleccione");
+		    		$("#mensaje_anulada_oficios_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_anulada_oficios_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
 		    	if(tipo_avoco == 16  && cantidad_oficios_generar == 0 && generar_oficio=="Si"){
 					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
@@ -1538,7 +2295,7 @@
 		    		$("#mensaje_cantidad_oficios_generar").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+		    
 		    	if(tipo_avoco == 16 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && asunto == "" ){
 					$("#mensaje_asunto").text("Ingrese el Asunto");
 		    		$("#mensaje_asunto").fadeIn("slow"); //Muestra mensaje de error
@@ -1549,6 +2306,18 @@
 		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
+
+		    	if(tipo_avoco == 16  && cantidad_oficios_generar == 1 && generar_oficio == "Si" &&  anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+					$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+				
 		    	
 				if(tipo_avoco == 16 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && entidad_va_oficio == "" ){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -1573,6 +2342,19 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+
+
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+					
 					
 				if(entidad_va_oficio == ""){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -1583,10 +2365,17 @@
 		            
 				}
 
+				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+					$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+		    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+					}else{
+
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+					}
 				
-
-
 
 				if(entidad_va_oficio_1 == ""){
 					$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -1605,6 +2394,8 @@
 					$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
 					   
 				}
 				
@@ -1623,6 +2414,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -1633,6 +2434,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_1 == ""){
@@ -1645,6 +2456,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -1666,7 +2487,11 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+			
+									}
 
 
 
@@ -1683,6 +2508,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -1694,6 +2529,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -1704,6 +2549,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -1716,6 +2571,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 					if(entidad_va_oficio_3 == ""){
 						$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1734,7 +2599,12 @@
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+				
+							}
 
 
 
@@ -1761,7 +2631,17 @@
 				    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 				            
 						}
-						
+						if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+				    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+							
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -1770,7 +2650,17 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	               
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -1781,7 +2671,18 @@
 			   		 }
 	           		  
 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+
+			
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -1790,7 +2691,17 @@
 						}else{
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
-		           		
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			       		
 
 
 
@@ -1803,6 +2714,16 @@
 					   		 }
 			           		
 
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -1828,7 +2749,12 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 					   $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
-					       
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						       
 			            
 					}
 
@@ -1848,7 +2774,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+						
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -1857,7 +2793,18 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+
+			
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -1867,7 +2814,17 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -1878,8 +2835,17 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
 
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+					
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1889,6 +2855,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -1899,7 +2875,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+					
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -1926,6 +2912,12 @@
 					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
 					    
 					}
 
@@ -1947,7 +2939,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -1957,7 +2959,17 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -1967,7 +2979,17 @@
 			   		 }
 	           		 
 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -1978,7 +3000,17 @@
 				   		 }
 		           		
 
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+					
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -1988,7 +3020,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		 
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -1999,7 +3040,17 @@
 						   		 }
 				           		
 
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+				
 
 				           		 if(entidad_va_oficio_5 == ""){
 										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
@@ -2008,7 +3059,17 @@
 									}else{
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
-					           		
+				     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
+
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
+								           		
 
 
 					           		 if(entidad_va_oficio_6 == ""){
@@ -2033,7 +3094,14 @@
 					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+							     
 			            
 					}
 				
@@ -2055,6 +3123,16 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2064,6 +3142,16 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 	                if(entidad_va_oficio_1 == ""){
@@ -2075,7 +3163,17 @@
 			   		 }
 	           		  
 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -2086,7 +3184,17 @@
 				   		 }
 		           		
 
+	        			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -2096,6 +3204,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -2104,7 +3222,17 @@
 								}else{
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
-				           		
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
+
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+					           		
 
 
 
@@ -2116,7 +3244,17 @@
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
 					           		
+				           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
 
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
+				
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -2127,7 +3265,18 @@
 								   		 }
 						           		
 
+					         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_8_pago==""){
 
+										$("#mensaje_numero_oficios_anulada_8_pago").text("Ingrese # Oficio 8");
+							    		$("#mensaje_numero_oficios_anulada_8_pago").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+
+										}else{
+
+											$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+										}
+
+						
 						           		 if(entidad_va_oficio_7 == ""){
 												$("#mensaje_entidad_va_oficio_7").text("Ingrese a quien va Dirigido");
 									    		$("#mensaje_entidad_va_oficio_7").fadeIn("slow"); //Muestra mensaje de error
@@ -2151,7 +3300,15 @@
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+				     
 			            
 			            
 					}
@@ -2183,6 +3340,17 @@
 				}
 
 
+				if(tipo_avoco == 20  && anulada_oficios_pago == 0 && generar_oficio=="Si"){
+					$("#mensaje_anulada_oficios_pago").text("Seleccione");
+		    		$("#mensaje_anulada_oficios_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_anulada_oficios_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
 		    	if(tipo_avoco == 20  && cantidad_oficios_generar == 0 && generar_oficio=="Si"){
 					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
 		    		$("#mensaje_cantidad_oficios_generar").fadeIn("slow"); //Muestra mensaje de error
@@ -2204,7 +3372,17 @@
 		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		    	
+		    	if(tipo_avoco == 20  && cantidad_oficios_generar == 1 && generar_oficio == "Si" &&  anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+					$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+		  	
 				if(tipo_avoco == 20 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && entidad_va_oficio == "" ){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2217,7 +3395,7 @@
 				}
 
 				
-
+// dos
 
 				if(tipo_avoco == 20 && cantidad_oficios_generar == 2 && generar_oficio == "Si" ){
 					if(asunto == ""){
@@ -2228,7 +3406,18 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+
+				
 				if(entidad_va_oficio == ""){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2239,7 +3428,18 @@
 				}
 
 
+				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+					$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+		    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+					}else{
+
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+					}
 				
+			
 
 
 
@@ -2260,6 +3460,8 @@
 					$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
 					   
 				}
 				
@@ -2278,7 +3480,17 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2288,6 +3500,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_1 == ""){
@@ -2300,6 +3522,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -2321,7 +3553,11 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+		
+								}
 
 
 
@@ -2338,6 +3574,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2347,6 +3593,16 @@
 						$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					
@@ -2360,6 +3616,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_2 == ""){
@@ -2371,6 +3637,16 @@
 			            
 					}
 
+			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 					if(entidad_va_oficio_3 == ""){
 						$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -2389,7 +3665,12 @@
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+			
+									}
 
 
 
@@ -2416,7 +3697,17 @@
 				    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 				            
 						}
-						
+						if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+				    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2425,6 +3716,16 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	               
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 	                if(entidad_va_oficio_1 == ""){
@@ -2436,6 +3737,16 @@
 			   		 }
 	           		  
 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -2446,7 +3757,17 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 
 
 		           		 if(entidad_va_oficio_3 == ""){
@@ -2457,6 +3778,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -2483,7 +3814,12 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 					   $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
-					       
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+			       
 			            
 					}
 
@@ -2503,7 +3839,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2513,7 +3859,18 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+
+	
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -2522,7 +3879,17 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		
+	    			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -2533,7 +3900,17 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 
 		           		 if(entidad_va_oficio_3 == ""){
@@ -2544,6 +3921,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -2554,7 +3941,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+			
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -2581,7 +3978,13 @@
 					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
-					    
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+				    
 					}
 
 
@@ -2602,6 +4005,16 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2612,7 +4025,17 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -2621,6 +4044,16 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -2632,6 +4065,16 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+	    				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 
@@ -2643,6 +4086,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		 
+		     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -2653,7 +4106,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+			
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -2665,6 +4128,16 @@
 							   		 }
 					           		
 
+				         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
+
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -2688,7 +4161,14 @@
 					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+				     
 			            
 					}
 				
@@ -2710,6 +4190,16 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2720,7 +4210,18 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+					
+		
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -2730,7 +4231,17 @@
 			   		 }
 	           		  
 
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -2741,7 +4252,17 @@
 				   		 }
 		           		
 
+	    				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+		
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -2750,7 +4271,17 @@
 							}else{
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
-			           		
+		         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+				           		
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -2761,7 +4292,17 @@
 						   		 }
 				           		
 
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+				
 
 				           		 if(entidad_va_oficio_5 == ""){
 										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
@@ -2771,7 +4312,17 @@
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
 					           		
+				     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
 
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
+					
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -2781,6 +4332,16 @@
 									    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 								   		 }
 						           		
+					         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_8_pago==""){
+
+										$("#mensaje_numero_oficios_anulada_8_pago").text("Ingrese # Oficio 8");
+							    		$("#mensaje_numero_oficios_anulada_8_pago").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+
+										}else{
+
+											$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+										}
 
 
 						           		 if(entidad_va_oficio_7 == ""){
@@ -2806,7 +4367,15 @@
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+						     
 			            
 			            
 					}
@@ -2849,6 +4418,17 @@
 		            
 				}
 
+				if(tipo_avoco == 17  && anulada_oficios_pago == 0 && generar_oficio=="Si"){
+					$("#mensaje_anulada_oficios_pago").text("Seleccione");
+		    		$("#mensaje_anulada_oficios_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_anulada_oficios_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+
 
 		    	if(tipo_avoco == 17  && cantidad_oficios_generar == 0 && generar_oficio=="Si"){
 					$("#mensaje_cantidad_oficios_generar").text("Seleccione");
@@ -2871,7 +4451,17 @@
 		    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-		    	
+		    	if(tipo_avoco == 17  && cantidad_oficios_generar == 1 && generar_oficio == "Si" &&  anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+					$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+				}
+				else 
+		    	{
+		    		$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
+			
 				if(tipo_avoco == 17 && cantidad_oficios_generar == 1 && generar_oficio == "Si" && entidad_va_oficio == "" ){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 		    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -2884,7 +4474,7 @@
 				}
 
 				
-
+//dos
 
 				if(tipo_avoco == 17 && cantidad_oficios_generar == 2 && generar_oficio == "Si" ){
 					if(asunto == ""){
@@ -2895,6 +4485,17 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				if(entidad_va_oficio == ""){
 					$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2907,7 +4508,17 @@
 
 
 				
+				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+					$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+		    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+					}else{
+
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+					}
+	
 
 
 				if(entidad_va_oficio_1 == ""){
@@ -2927,6 +4538,8 @@
 					$("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 					$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+					$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
 					   
 				}
 				
@@ -2945,6 +4558,16 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -2955,6 +4578,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_1 == ""){
@@ -2968,6 +4601,16 @@
 
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_2 == ""){
@@ -2988,7 +4631,11 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+			
+								}
 
 
 
@@ -3005,7 +4652,17 @@
 						$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 					if(entidad_va_oficio == ""){
 						$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -3015,6 +4672,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 					
 					if(entidad_va_oficio_1 == ""){
@@ -3027,6 +4694,16 @@
 					}
 
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 					if(entidad_va_oficio_2 == ""){
@@ -3038,6 +4715,16 @@
 			            
 					}
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 					if(entidad_va_oficio_3 == ""){
 						$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -3056,7 +4743,12 @@
 						$("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 						$("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
-					}
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+		
+								}
 
 
 
@@ -3083,7 +4775,17 @@
 				    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 				            
 						}
-						
+						if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+				    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+			
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -3092,7 +4794,17 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	               
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -3102,6 +4814,16 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		  
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 
@@ -3114,7 +4836,17 @@
 				   		 }
 		           		
 
+	        			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+		
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -3124,6 +4856,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -3150,6 +4892,11 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 					   $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
 					       
 			            
 					}
@@ -3170,6 +4917,16 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 					
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
@@ -3179,6 +4936,16 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
 
 
 	                if(entidad_va_oficio_1 == ""){
@@ -3189,7 +4956,17 @@
 				    $("#mensaje_entidad_va_oficio_1").fadeOut("slow"); //Muestra mensaje de error
 			   		 }
 	           		
+	        		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 
 	           		    if(entidad_va_oficio_2 == ""){
@@ -3201,7 +4978,17 @@
 				   		 }
 		           		
 
+	    				if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+		
 
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
@@ -3210,7 +4997,17 @@
 							}else{
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
-			           		
+		         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+				           		
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -3221,7 +5018,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			         		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+				
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -3248,7 +5055,13 @@
 					    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
-					    
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+		    
 					}
 
 
@@ -3269,7 +5082,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -3278,7 +5101,17 @@
 					    $("#mensaje_entidad_va_oficio").fadeOut("slow"); //Muestra mensaje de error
 				    }
 	                
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
@@ -3289,7 +5122,17 @@
 			   		 }
 	           		 
 
+	    			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+		
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -3301,7 +5144,17 @@
 		           		
 
 
+	if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+			    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+			
 		           		 if(entidad_va_oficio_3 == ""){
 								$("#mensaje_entidad_va_oficio_3").text("Ingrese a quien va Dirigido");
 					    		$("#mensaje_entidad_va_oficio_3").fadeIn("slow"); //Muestra mensaje de error
@@ -3310,6 +5163,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		 
+		           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 
 			           		 if(entidad_va_oficio_4 == ""){
@@ -3320,7 +5183,17 @@
 							    $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 						   		 }
 				           		
+			           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+					
 
 
 				           		 if(entidad_va_oficio_5 == ""){
@@ -3332,6 +5205,16 @@
 							   		 }
 					           		
 
+				           		if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
+
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -3355,7 +5238,14 @@
 					   $("#mensaje_entidad_va_oficio_4").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
-					     
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+							     
 			            
 					}
 				
@@ -3377,7 +5267,17 @@
 			    		$("#mensaje_asunto").fadeOut("slow"); //Muestra mensaje de error
 			            
 					}
-					
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_1_pago==""){
+
+						$("#mensaje_numero_oficios_anulada_1_pago").text("Ingrese # Oficio 1");
+			    		$("#mensaje_numero_oficios_anulada_1_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+				
 				    if(entidad_va_oficio == ""){
 							$("#mensaje_entidad_va_oficio").text("Ingrese a quien va Dirigido");
 				    		$("#mensaje_entidad_va_oficio").fadeIn("slow"); //Muestra mensaje de error
@@ -3387,7 +5287,17 @@
 				    }
 	                
 
+					if(anulada_oficios_pago == "Si" && numero_oficios_anulada_2_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_2_pago").text("Ingrese # Oficio 2");
+			    		$("#mensaje_numero_oficios_anulada_2_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 	                if(entidad_va_oficio_1 == ""){
 						$("#mensaje_entidad_va_oficio_1").text("Ingrese a quien va Dirigido");
 			    		$("#mensaje_entidad_va_oficio_1").fadeIn("slow"); //Muestra mensaje de error
@@ -3397,7 +5307,17 @@
 			   		 }
 	           		  
 
+	    			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_3_pago==""){
 
+						$("#mensaje_numero_oficios_anulada_3_pago").text("Ingrese # Oficio 3");
+			    		$("#mensaje_numero_oficios_anulada_3_pago").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+						}else{
+
+							$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						}
+	
 
 	           		    if(entidad_va_oficio_2 == ""){
 							$("#mensaje_entidad_va_oficio_2").text("Ingrese a quien va Dirigido");
@@ -3407,7 +5327,17 @@
 					    $("#mensaje_entidad_va_oficio_2").fadeOut("slow"); //Muestra mensaje de error
 				   		 }
 		           		
+	           			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_4_pago==""){
 
+							$("#mensaje_numero_oficios_anulada_4_pago").text("Ingrese # Oficio 4");
+				    		$("#mensaje_numero_oficios_anulada_4_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
+				
 
 
 		           		 if(entidad_va_oficio_3 == ""){
@@ -3418,6 +5348,16 @@
 						    $("#mensaje_entidad_va_oficio_3").fadeOut("slow"); //Muestra mensaje de error
 					   		 }
 			           		
+		     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_5_pago==""){
+
+							$("#mensaje_numero_oficios_anulada_5_pago").text("Ingrese # Oficio 5");
+				    		$("#mensaje_numero_oficios_anulada_5_pago").fadeIn("slow"); //Muestra mensaje de error
+				            return false;
+
+							}else{
+
+								$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+							}
 
 			           		 if(entidad_va_oficio_4 == ""){
 									$("#mensaje_entidad_va_oficio_4").text("Ingrese a quien va Dirigido");
@@ -3428,7 +5368,17 @@
 						   		 }
 				           		
 
+			     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_6_pago==""){
 
+								$("#mensaje_numero_oficios_anulada_6_pago").text("Ingrese # Oficio 6");
+					    		$("#mensaje_numero_oficios_anulada_6_pago").fadeIn("slow"); //Muestra mensaje de error
+					            return false;
+
+								}else{
+
+									$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+								}
+				
 
 				           		 if(entidad_va_oficio_5 == ""){
 										$("#mensaje_entidad_va_oficio_5").text("Ingrese a quien va Dirigido");
@@ -3438,7 +5388,17 @@
 								    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 							   		 }
 					           		
+				     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_7_pago==""){
 
+									$("#mensaje_numero_oficios_anulada_7_pago").text("Ingrese # Oficio 7");
+						    		$("#mensaje_numero_oficios_anulada_7_pago").fadeIn("slow"); //Muestra mensaje de error
+						            return false;
+
+									}else{
+
+										$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+									}
+					
 
 					           		 if(entidad_va_oficio_6 == ""){
 											$("#mensaje_entidad_va_oficio_6").text("Ingrese a quien va Dirigido");
@@ -3449,6 +5409,16 @@
 								   		 }
 						           		
 
+					     			if(anulada_oficios_pago == "Si" && numero_oficios_anulada_8_pago==""){
+
+										$("#mensaje_numero_oficios_anulada_8_pago").text("Ingrese # Oficio 8");
+							    		$("#mensaje_numero_oficios_anulada_8_pago").fadeIn("slow"); //Muestra mensaje de error
+							            return false;
+
+										}else{
+
+											$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
+										}
 
 						           		 if(entidad_va_oficio_7 == ""){
 												$("#mensaje_entidad_va_oficio_7").text("Ingrese a quien va Dirigido");
@@ -3473,6 +5443,14 @@
 					    $("#mensaje_entidad_va_oficio_5").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_6").fadeOut("slow"); //Muestra mensaje de error
 					    $("#mensaje_entidad_va_oficio_7").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow"); //Muestra mensaje de error
+						$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow"); //Muestra mensaje de error
 					     
 			            
 			            
@@ -3665,6 +5643,39 @@
 
 				$( "#entidad_va_oficio_7" ).focus(function() {
 					$("#mensaje_entidad_va_oficio_7").fadeOut("slow");
+    			});
+
+				$( "#anulada_oficios_pago" ).focus(function() {
+					$("#mensaje_anulada_oficios_pago").fadeOut("slow");
+    			});
+    			
+				$( "#numero_oficios_anulada_1_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_1_pago").fadeOut("slow");
+    			});
+
+				$( "#numero_oficios_anulada_2_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_2_pago").fadeOut("slow");
+    			});
+				
+				$( "#numero_oficios_anulada_3_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_3_pago").fadeOut("slow");
+    			});
+
+				$( "#numero_oficios_anulada_4_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_4_pago").fadeOut("slow");
+    			});
+
+				$( "#numero_oficios_anulada_5_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_5_pago").fadeOut("slow");
+    			});
+				$( "#numero_oficios_anulada_6_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_6_pago").fadeOut("slow");
+    			});
+				$( "#numero_oficios_anulada_7_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_7_pago").fadeOut("slow");
+    			});
+				$( "#numero_oficios_anulada_8_pago" ).focus(function() {
+					$("#mensaje_numero_oficios_anulada_8_pago").fadeOut("slow");
     			});
     			
 				$( "#numero_oficio_embargo_cuenta" ).focus(function() {
@@ -3932,6 +5943,17 @@
 				<div id="mensaje_generar_oficio" class="errores"></div>
 			    </div>
 		        <div id="div_datos_generar_oficio" style="display: none;">
+		        
+		           <div class="col-lg-4 col-md-4 col-xs-12" style='margin-top: 15px;'>
+			  	<p  class="formulario-subtitulo">Anulada:</p>
+			  	<select name="anulada_oficios_pago" id="anulada_oficios_pago"   class="form-control" >
+			  		<option value="0">--Seleccione--</option>
+						<option value="Si">Si</option>
+						<option value="No">No</option>
+			    </select>
+				<div id="mensaje_anulada_oficios_pago" class="errores"></div>
+			    </div>
+			    
 	            <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo"># Oficios a Generar:</p>
 			  	<select name="cantidad_oficios_generar" id="cantidad_oficios_generar"  class="form-control" >
@@ -3985,6 +6007,14 @@
 	            <div class="panel panel-default">
 	             <div class="panel-body">
 	          
+	             <div id="div_datos_anulada_1_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 1:</p>
+			  	<input type="text"  name="numero_oficios_anulada_1_pago" id="numero_oficios_anulada_1_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_1_pago" class="errores"></div>
+	            </div>
+	            </div>
+	             
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #1:</p>
 			  	<input type="text"  name="entidad_va_oficio" id="entidad_va_oficio" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
@@ -4008,6 +6038,14 @@
 		        <div id="div_datos_cantidad_oficios_1" style="display: none; margin-top: 20px;">
 	            <div class="panel panel-default">
 	            <div class="panel-body">
+	            
+	                <div id="div_datos_anulada_2_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 2:</p>
+			  	<input type="text"  name="numero_oficios_anulada_2_pago" id="numero_oficios_anulada_2_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_2_pago" class="errores"></div>
+	            </div>
+	            </div>
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #2:</p>
@@ -4031,6 +6069,14 @@
 		        <div id="div_datos_cantidad_oficios_2" style="display: none; margin-top: 20px;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
+	             
+	                  <div id="div_datos_anulada_3_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 3:</p>
+			  	<input type="text"  name="numero_oficios_anulada_3_pago" id="numero_oficios_anulada_3_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_3_pago" class="errores"></div>
+	            </div>
+	            </div>
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #3:</p>
@@ -4054,7 +6100,15 @@
 	            <div id="div_datos_cantidad_oficios_3" style="display: none; margin-top: 20px;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
-	          
+	       
+	         	<div id="div_datos_anulada_4_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 4:</p>
+			  	<input type="text"  name="numero_oficios_anulada_4_pago" id="numero_oficios_anulada_4_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_4_pago" class="errores"></div>
+	            </div>
+	            </div>   
+	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #4:</p>
 			  	<input type="text"  name="entidad_va_oficio_3" id="entidad_va_oficio_3" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_4;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
@@ -4078,6 +6132,14 @@
                  <div id="div_datos_cantidad_oficios_4" style="display: none; margin-top: 20px;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
+	             
+	                 <div id="div_datos_anulada_5_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 5:</p>
+			  	<input type="text"  name="numero_oficios_anulada_5_pago" id="numero_oficios_anulada_5_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_5_pago" class="errores"></div>
+	            </div>
+	            </div>
 	          
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #5:</p>
@@ -4101,6 +6163,15 @@
 	             <div class="panel panel-default">
 	             <div class="panel-body">
 	          
+	                 <div id="div_datos_anulada_6_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 6:</p>
+			  	<input type="text"  name="numero_oficios_anulada_6_pago" id="numero_oficios_anulada_6_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_6_pago" class="errores"></div>
+	            </div>
+	            </div>
+	    
+	    
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #6:</p>
 			  	<input type="text"  name="entidad_va_oficio_5" id="entidad_va_oficio_5" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_6;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
@@ -4123,7 +6194,18 @@
        		     <div id="div_datos_cantidad_oficios_6" style="display: none; margin-top: 20px;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
-	          
+	       
+	                 
+	              <div id="div_datos_anulada_7_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 7:</p>
+			  	<input type="text"  name="numero_oficios_anulada_7_pago" id="numero_oficios_anulada_7_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_7_pago" class="errores"></div>
+	            </div>
+	            </div>
+	            
+	   
+	     
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #7:</p>
 			  	<input type="text"  name="entidad_va_oficio_6" id="entidad_va_oficio_6" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_7;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
@@ -4145,7 +6227,15 @@
                  <div id="div_datos_cantidad_oficios_7" style="display: none; margin-top: 20px;">
 	             <div class="panel panel-default">
 	             <div class="panel-body">
-	          
+	    
+	          <div id="div_datos_anulada_8_pago" style="display: none;">
+	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
+			  	<p class="formulario-subtitulo" >Número Oficio 8:</p>
+			  	<input type="text"  name="numero_oficios_anulada_8_pago" id="numero_oficios_anulada_8_pago" value="" class="form-control" placeholder="Número Oficio"/> 
+	            <div id="mensaje_numero_oficios_anulada_8_pago" class="errores"></div>
+	            </div>
+	            </div>
+	            
 	            <div class="col-lg-12 col-md-12 col-xs-12" style='margin-top: 10px;'>
 			  	<p class="formulario-subtitulo" >Dirigido A #8:</p>
 			  	<input type="text"  name="entidad_va_oficio_7" id="entidad_va_oficio_7" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dirigido_a_entidad_8;}}else{} ?>" class="form-control" placeholder="Nombre Entidad"/> 
