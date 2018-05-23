@@ -56,7 +56,8 @@
                 var cuantia_inicial = $("#cuantia_inicial").val();
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
 		        var numero_carton = $("#numero_carton").val();
-		     	
+		        var observaciones = $("#observaciones").val();
+
 		    	if (id_origen_juicio == "")
 		    	{
 			    	
@@ -155,7 +156,18 @@
 				}
 
 		    
-		     
+		     	if(observaciones==0){
+
+
+		    		$("#mensaje_observaciones").text("Seleccione Observación");
+		    		$("#mensaje_observaciones").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_observaciones").fadeOut("slow"); //Muestra mensaje de error
+			   }
 		    	
 /*
 
@@ -203,7 +215,9 @@
 					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
     			});
 
-			
+				$( "#observaciones" ).focus(function() {
+					$("#mensaje_observaciones").fadeOut("slow");
+    			});
     			
 /*
 				$( "#fecha_ultima_providencia" ).focus(function() {
@@ -794,12 +808,29 @@
 				        <textarea type='text' class='form-control' id='estrategia_seguir' name='estrategia_seguir'  placeholder='Estrategia a Seguir'></textarea>
 	                    </div>
 				        </div>
-				        <div class = 'col-xs-12 col-md-12 col-lg-12'>
+				        <!--<div class = 'col-xs-12 col-md-12 col-lg-12'>
 				        <div class='form-group'>
 				        <label for='observaciones' class='control-label'>Observaciones</label><br>
 				        <textarea type='text' class='form-control' id='observaciones' name='observaciones'  placeholder='Observaciones'></textarea>
 		                </div>
 				        </div>
+				        -->
+				        
+				        <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='observaciones' class='control-label'>Observaciones</label><br>
+			  			<select name="observaciones" id="observaciones"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="REPOSICIÓN DE PROCESOS" >REPOSICIÓN DE PROCESOS</option> 
+			  			<option value="CONVENIO DE PAGO" >CONVENIO DE PAGO</option> 
+			  	 		<option value="RESTRUCTURACIÓN" >RESTRUCTURACIÓN</option> 
+						<option value="AVOCO" >AVOCO</option> 
+						<option value="LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO" >LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO</option> 
+						<option value="OTROS" >OTROS</option> 
+						</select>
+						<div id="mensaje_observaciones" class="errores"></div>
+			            </div>
+			            </div>
 			
 		    
 		</div>
