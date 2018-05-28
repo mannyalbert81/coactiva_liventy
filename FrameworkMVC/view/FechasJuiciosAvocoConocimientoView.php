@@ -119,6 +119,48 @@
 	   
       </script>
       
+        <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#tipo_avoco").click(function() {
+			
+          var tipo_avoco = $(this).val();
+			
+          if(tipo_avoco == 21)
+          {
+       	   $("#div_datos_continuacion_proceso").fadeIn("slow");
+          }
+       	
+          else
+          {
+        	  $("#div_datos_continuacion_proceso").fadeOut("slow");
+       	
+          }
+         
+	    });
+	    
+	    $("#tipo_avoco").change(function() {
+			
+              
+              var tipo_avoco = $(this).val();
+				
+              
+              if(tipo_avoco == 21)
+              {
+           	   $("#div_datos_continuacion_proceso").fadeIn("slow");
+              }
+           	
+              else
+              {
+            	  $("#div_datos_continuacion_proceso").fadeOut("slow");
+           	 
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
       
       
       
@@ -161,6 +203,54 @@
               else
               {
               $("#div_impulsor_cambio_liquidador").fadeOut("slow");
+           
+              }
+              
+              
+		    });
+	}); 	
+	   
+      </script>
+      
+      
+         <script type="text/javascript">
+      $(document).ready(function(){
+          
+      $("#remplaza_impulsor_continuacion_proceso").click(function() {
+			
+          var remplaza_impulsor_continuacion_proceso = $(this).val();
+			
+          if(remplaza_impulsor_continuacion_proceso == "Si")
+          {
+       	   $("#div_impulsor_continuacion_proceso").fadeIn("slow");
+       	 
+          }
+       	
+          else
+          {
+           $("#div_impulsor_continuacion_proceso").fadeOut("slow");
+         
+         
+     	
+          
+          }
+         
+	    });
+	    
+	    $("#remplaza_impulsor_continuacion_proceso").change(function() {
+			
+              
+              var remplaza_impulsor_continuacion_proceso = $(this).val();
+				
+              
+              if(remplaza_impulsor_continuacion_proceso == "Si")
+              {
+           	   $("#div_impulsor_continuacion_proceso").fadeIn("slow");
+              }
+           	
+              else
+              {
+              $("#div_impulsor_continuacion_proceso").fadeOut("slow");
            
               }
               
@@ -614,6 +704,8 @@
 
 				var remplaza_impulsor= $("#remplaza_impulsor").val();
 				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
+				var remplaza_impulsor_continuacion_proceso= $("#remplaza_impulsor_continuacion_proceso").val();
+				var impulsor_saliente_continuacion_proceso = $("#impulsor_saliente_continuacion_proceso").val();
 				var dispone_1= $("#dispone_1").val();
 				//var dispone_2= $("#dispone_2").val();
 				var dispone_3= $("#dispone_3").val();
@@ -1545,7 +1637,42 @@
 		            
 				}
 
+				if (tipo_avoco == 21 && remplaza_impulsor_continuacion_proceso == "")
+		    	{
+			    	
+		    		$("#mensaje_remplaza_impulsor_continuacion_proceso").text("Seleccione");
+		    		$("#mensaje_remplaza_impulsor_continuacion_proceso").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_remplaza_impulsor_continuacion_proceso").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 
+
+
+				if (tipo_avoco == 21 && remplaza_impulsor_continuacion_proceso == "Si")
+		    	{
+
+
+					if(impulsor_saliente_continuacion_proceso==""){
+						$("#mensaje_impulsor_saliente_continuacion_proceso").text("Ingrese Nombre Abg. Anterior");
+			    		$("#mensaje_impulsor_saliente_continuacion_proceso").fadeIn("slow"); //Muestra mensaje de error
+			            return false;
+
+					}else{
+
+						$("#mensaje_impulsor_saliente_continuacion_proceso").fadeOut("slow"); //Muestra mensaje de error
+						}
+			    	
+		    		
+			    }
+		    	else 
+		    	{
+		    		$("#mensaje_impulsor_saliente_continuacion_proceso").fadeOut("slow"); //Muestra mensaje de error
+		            
+				}
 				/*
 
 				if (tipo_avoco == 12 && dispone_1 == "")
@@ -1671,6 +1798,15 @@
 				$( "#impulsor_saliente_cambio_liquidador" ).focus(function() {
 					$("#mensaje_impulsor_saliente_cambio_liquidador").fadeOut("slow");
     			});
+
+				$( "#remplaza_impulsor_continuacion_proceso" ).focus(function() {
+					$("#mensaje_remplaza_impulsor_continuacion_proceso").fadeOut("slow");
+    			});
+				
+				$( "#impulsor_saliente_continuacion_proceso" ).focus(function() {
+					$("#mensaje_impulsor_saliente_continuacion_proceso").fadeOut("slow");
+    			});
+				/*
 				/*
 				$( "#dispone_2" ).focus(function() {
 					$("#mensaje_dispone_2").fadeOut("slow");
@@ -1827,6 +1963,7 @@
 			  		<!-- <option value="6">AVOCO CONOCIMIENTO</option>   -->
 			  		<option value="7">AVOCO CONOCIMIENTO (NUEVOS PROCESOS)</option> 
 			  		<option value="12">AVOCO CONOCIMIENTO (CAMBIO LIQUIDADOR)</option> 
+			  		<option value="21">AVOCO CONOCIMIENTO (CONTINUACIÓN DE PROCESO)</option> 
 			  		<!-- <option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option> -->
 					<!--<option value="1">AVOCO CONOCIMIENTO (PAGO TOTAL)</option>-->
 					<!-- <option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option> -->
@@ -2259,6 +2396,84 @@
 			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
 			  	<input type="text"  name="impulsor_saliente_cambio_liquidador" id="impulsor_saliente_cambio_liquidador" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->impulsor_reemplazo;}}else{} ?>" class="form-control" placeholder="Abg. xxxxxxx xxxxxx xxxxx xxxx"/> 
 	            <div id="mensaje_impulsor_saliente_cambio_liquidador" class="errores"></div>
+	            </div>
+	             </div>
+	          
+	          <br>
+	            <div class="col-lg-12 col-md-12 col-xs-12">
+			  	<p class="formulario-subtitulo" >Escrito presentado por:</p>
+			  	<input type="text"  name="escrito_presentado_por" id="escrito_presentado_por" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->escrito_presentado_por;}}else{} ?>" class="form-control" placeholder="Nombre"/> 
+	            <div id="mensaje_escrito_presentado_por" class="errores"></div>
+	            </div>
+	            
+	           
+	            
+	            <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 1.-:</p>	 
+                                  <textarea type="text"  class="form-control" id="dispone_1" name="dispone_1" value=""  placeholder="Ejem.  Déjese sin efecto el nombramiento."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_1;}}else{} ?></textarea>
+                                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>1.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                <div id="mensaje_dispone_1" class="errores"></div>               
+                </div>
+	            
+	             <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 2.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_2" name="dispone_2" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_2;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>2.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_2" class="errores"></div>
+                 </div>
+                 
+                 <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 3.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_3" name="dispone_3" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_3;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>3.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_3" class="errores"></div>
+                 </div>
+                 <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 4.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_4" name="dispone_4" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_4;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>4.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_4" class="errores"></div>
+                 </div>
+                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 5.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_5" name="dispone_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_5;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>5.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_5" class="errores"></div>
+                 </div>
+                  <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
+		                          <p class="formulario-subtitulo" >Dispone 6.-:</p>	
+                                  <textarea type="text"  class="form-control" id="dispone_6" name="dispone_6" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->dispone_6;}}else{} ?></textarea>
+                  <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>6.- </b> no olvide poner punto al final del texto.)</FONT>
+			
+                 <div id="mensaje_dispone_6" class="errores"></div>
+                 </div>
+	            
+	          </div>
+	          
+	             <div id="div_datos_continuacion_proceso" style="display: none;">
+	          
+	            <div class="col-lg-6 col-md-6 col-xs-12" >
+			  	<p  class="formulario-subtitulo">Reemplazar Impulsor:</p>
+			  	<select name="remplaza_impulsor_continuacion_proceso" id="remplaza_impulsor_continuacion_proceso"  class="form-control" >
+			  	<option value="">--Seleccione--</option> 
+			  		<option value="No">No</option> 
+			  		<option value="Si">Si</option> 
+			  	
+				</select>
+				<div id="mensaje_remplaza_impulsor_continuacion_proceso" class="errores"></div>
+	            </div>
+	          
+	         
+	            <div id="div_impulsor_continuacion_proceso" style="display: none;">
+	            <div class="col-lg-6 col-md-6 col-xs-12">
+			  	<p class="formulario-subtitulo" >Nombre Impulsor Anterior:</p>
+			  	<input type="text"  name="impulsor_saliente_continuacion_proceso" id="impulsor_saliente_continuacion_proceso" value="<?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->impulsor_reemplazo;}}else{} ?>" class="form-control" placeholder="Abg. xxxxxxx xxxxxx xxxxx xxxx"/> 
+	            <div id="mensaje_impulsor_saliente_continuacion_proceso" class="errores"></div>
 	            </div>
 	             </div>
 	          

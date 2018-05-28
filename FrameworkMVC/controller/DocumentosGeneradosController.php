@@ -355,6 +355,43 @@ public function index3(){
 								
 	
 						}
+						else if($tipo_documento==21)
+						{
+							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 21";
+						
+							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+						
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+						
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+						
+								}
+							}
+						
+						
+						}
 							
 						break;
 							
@@ -1577,6 +1614,43 @@ public function index2(){
 							
 								
 						}
+						else if($tipo_documento==21)
+						{
+							$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 21";
+								
+							if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
+							$fechaDesde="";$fechaHasta="";
+							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+							{
+								$fechaDesde=$_POST["fcha_desde"];
+								$fechaHasta=$_POST["fcha_hasta"];
+								if ($fechaDesde != "" && $fechaHasta != "")
+								{
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+								}
+									
+								if($fechaDesde != "" && $fechaHasta == ""){
+										
+									$fechaHasta='2018/12/01';
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+										
+								}
+								if($fechaDesde == "" && $fechaHasta != ""){
+										
+									$fechaDesde='1800/01/01';
+									$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+										
+								}
+							}
+								
+						
+						}
 							
 						break;
 							
@@ -2638,7 +2712,27 @@ public function eliminar()
 						}
 							
 					}
+					if($tipo_avoco==21){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Avoco Conocimiento Continuación Procesos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+								
 					
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+							}
+					
+						}
+							
+					}
 			
 				}
 					
@@ -3193,7 +3287,27 @@ public function eliminar_impulsor()
 						}
 							
 					}
-						
+					if($tipo_avoco==21){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Elimino Avoco Conocimiento Continuación Procesos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
+					
+					
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+							}
+					
+						}
+							
+					}	
 						
 				}
 					
@@ -3719,7 +3833,27 @@ public function firmar()
 						}
 							
 					}
+					if($tipo_avoco==21){
+							
+						$tipo_notificaciones = new TipoNotificacionModel();
+						$descripcion_tipo_notificacion="Firmo Avoco Conocimiento Continuación Procesos";
+						$result=$tipo_notificaciones->Inser_Tipo_Notificaciones($descripcion_tipo_notificacion, $id_impulsor, $id_secretario);
+							
+							
+						$resultTipNoti = $tipo_notificaciones->getBy("descripcion_notificacion='$descripcion_tipo_notificacion' AND id_impulsor='$id_impulsor' AND id_secretario='$id_secretario'" );
+						if (!empty($resultTipNoti)) {
+							$id_tipo_notificacion = $resultTipNoti[0]->id_tipo_notificacion;
 					
+								
+							if($id_tipo_notificacion>0){
+									
+								$notificaciones = new NotificacionesModel();
+								$result=$notificaciones->Inser_Notificaciones($id_juicios, $id_tipo_notificacion, $nombre_documento);
+							}
+								
+						}
+							
+					}
 						
 				}
 			}
@@ -4521,6 +4655,43 @@ session_start();
 									
 							}
 							
+							else if($tipo_documento==21)
+							{
+								$tablas = " juicios ju INNER JOIN  titulo_credito tc ON tc.id_titulo_credito = ju.id_titulo_credito
+								INNER JOIN clientes cl ON cl.id_clientes = tc.id_clientes
+								INNER JOIN provincias pv ON pv.id_provincias = cl.id_provincias
+								INNER JOIN avoco_conocimiento ac  ON ac.id_juicios = ju.id_juicios
+								INNER JOIN estados_procesales_juicios ep ON ep.id_estados_procesales_juicios = ac.id_estados_procesales_juicios
+								INNER JOIN asignacion_secretarios_view asv ON asv.id_abogado = tc.id_usuarios
+								AND ac.tipo_avoco = 21";
+									
+								if($firma!=""){$where.=" AND ac.firmado_secretario='$firma'";}
+								$fechaDesde="";$fechaHasta="";
+								if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
+								{
+									$fechaDesde=$_POST["fcha_desde"];
+									$fechaHasta=$_POST["fcha_hasta"];
+									if ($fechaDesde != "" && $fechaHasta != "")
+									{
+										$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+									}
+										
+									if($fechaDesde != "" && $fechaHasta == ""){
+											
+										$fechaHasta='2018/12/01';
+										$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+											
+									}
+									if($fechaDesde == "" && $fechaHasta != ""){
+											
+										$fechaDesde='1800/01/01';
+										$where .= " AND DATE(ac.creado) BETWEEN '$fechaDesde' AND '$fechaHasta'  ";
+											
+									}
+								}
+									
+									
+							}
 							break;
 							
 						case "OF" :
