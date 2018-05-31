@@ -5432,7 +5432,14 @@
 										  resolucion_5,
 										  resolucion_6,
 				   						  disponer_4,
-										  disponer_5";
+										  disponer_5,
+										  escrito_presentado_por_continuacion_proceso,
+										  dispone_1_continuacion_proceso,
+										  dispone_2_continuacion_proceso,
+										  dispone_3_continuacion_proceso,
+										  dispone_4_continuacion_proceso,
+										  dispone_5_continuacion_proceso,
+										  dispone_6_continuacion_proceso";
 						
 						$tablas_prov="avoco_conocimiento";
 						$where_prov ="id_avoco_conocimiento ='$id_avoco_conocimiento'";
@@ -5563,7 +5570,13 @@
 			$impulsor_saliente_cambio_liquidador= $_POST['impulsor_saliente_cambio_liquidador'];
 			$remplaza_impulsor_continuacion_proceso= $_POST['remplaza_impulsor_continuacion_proceso'];
 			$impulsor_saliente_continuacion_proceso= $_POST['impulsor_saliente_continuacion_proceso'];
-			
+			$escrito_presentado_por_continuacion_proceso= $_POST['escrito_presentado_por_continuacion_proceso'];
+			$dispone_1_continuacion_proceso= $_POST['dispone_1_continuacion_proceso'];
+			$dispone_2_continuacion_proceso= $_POST['dispone_2_continuacion_proceso'];
+			$dispone_3_continuacion_proceso= $_POST['dispone_3_continuacion_proceso'];
+			$dispone_4_continuacion_proceso= $_POST['dispone_4_continuacion_proceso'];
+			$dispone_5_continuacion_proceso= $_POST['dispone_5_continuacion_proceso'];
+			$dispone_6_continuacion_proceso= $_POST['dispone_6_continuacion_proceso'];
 			
 			if($tipo_avoco==7){
 			
@@ -7018,7 +7031,7 @@
 					
 					
 				$funcion = "ins_avoco_conocimiento_liventy";
-				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5'";
+				$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5', '$escrito_presentado_por_continuacion_proceso', '$dispone_1_continuacion_proceso', '$dispone_2_continuacion_proceso', '$dispone_3_continuacion_proceso', '$dispone_4_continuacion_proceso', '$dispone_5_continuacion_proceso', '$dispone_6_continuacion_proceso'";
 				$providencias->setFuncion($funcion);
 				$providencias->setParametros($parametros);
 				$resultado=$providencias->Insert();
@@ -8543,7 +8556,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$nombre_impulsor_anterior', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5', '$escrito_presentado_por_continuacion_proceso', '$dispone_1_continuacion_proceso', '$dispone_2_continuacion_proceso', '$dispone_3_continuacion_proceso', '$dispone_4_continuacion_proceso', '$dispone_5_continuacion_proceso', '$dispone_6_continuacion_proceso'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -10061,7 +10074,7 @@
 							
 							
 						$funcion = "ins_avoco_conocimiento_liventy";
-						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5'";
+						$parametros = "'$id_juicios','$id_ciudad', '$id_secretario','$id_impulsor','$id_impulsor', '$nombre_archivo_providencias', '$ruta_providencias', '$identificador_providencias', '$nombre_secretario_anterior', '$impulsor_saliente_cambio_liquidador', '$tipo_avoco', '$numero_liquidacion', '$razon_avoco', '$id_clientes', '$id_titulo_credito','$id_estados_procesales_juicios_actualizar','$fecha_avoco', '$hora_avoco', '$tipo_acto', '$reemplazar', '$escrito_presentado_por', '$dispone_1', '$dispone_2', '$dispone_3', '$dispone_4', '$resolucion_3', '$resolucion_4', '$disponer_2', '$disponer_3', '$dispone_5', '$dispone_6', '$resolucion_5', '$resolucion_6', '$disponer_4', '$disponer_5', '$escrito_presentado_por_continuacion_proceso', '$dispone_1_continuacion_proceso', '$dispone_2_continuacion_proceso', '$dispone_3_continuacion_proceso', '$dispone_4_continuacion_proceso', '$dispone_5_continuacion_proceso', '$dispone_6_continuacion_proceso'";
 						$providencias->setFuncion($funcion);
 						$providencias->setParametros($parametros);
 						$resultado=$providencias->Insert();
@@ -10092,14 +10105,13 @@
 						$parametros['ruta_avoco']=$ruta_providencias;
 						$parametros['nombre_archivo_avoco']=$nombre_archivo_providencias;
 						$parametros['tipo_acto']=isset($tipo_acto)?trim($tipo_acto):'';
-						$parametros['escrito_presentado_por']=isset($escrito_presentado_por)?trim($escrito_presentado_por):'';
-						$parametros['dispone_1']=isset($dispone_1)?trim($dispone_1):'';
-						$parametros['dispone_2']=isset($dispone_2)?trim($dispone_2):'';
-						$parametros['dispone_3']=isset($dispone_3)?trim($dispone_3):'';
-						$parametros['dispone_4']=isset($dispone_4)?trim($dispone_4):'';
-						$parametros['dispone_5']=isset($dispone_5)?trim($dispone_5):'';
-						$parametros['dispone_6']=isset($dispone_6)?trim($dispone_6):'';
-				
+						$parametros['escrito_presentado_por_continuacion_proceso']=isset($escrito_presentado_por_continuacion_proceso)?trim($escrito_presentado_por_continuacion_proceso):'';
+						$parametros['dispone_1_continuacion_proceso']=isset($dispone_1_continuacion_proceso)?trim($dispone_1_continuacion_proceso):'';
+						$parametros['dispone_2_continuacion_proceso']=isset($dispone_2_continuacion_proceso)?trim($dispone_2_continuacion_proceso):'';
+						$parametros['dispone_3_continuacion_proceso']=isset($dispone_3_continuacion_proceso)?trim($dispone_3_continuacion_proceso):'';
+						$parametros['dispone_4_continuacion_proceso']=isset($dispone_4_continuacion_proceso)?trim($dispone_4_continuacion_proceso):'';
+						$parametros['dispone_5_continuacion_proceso']=isset($dispone_5_continuacion_proceso)?trim($dispone_5_continuacion_proceso):'';
+						$parametros['dispone_6_continuacion_proceso']=isset($dispone_6_continuacion_proceso)?trim($dispone_6_continuacion_proceso):'';
 						$parametros['remplaza_impulsor_continuacion_proceso']=isset($remplaza_impulsor_continuacion_proceso)?trim($remplaza_impulsor_continuacion_proceso):'';
 						$parametros['impulsor_saliente_continuacion_proceso']=isset($impulsor_saliente_continuacion_proceso)?trim($impulsor_saliente_continuacion_proceso):'';
 				
@@ -40461,11 +40473,6 @@ public function index11(){
 	
 	
 }
-
-
-
-
-
 
 	
 }
