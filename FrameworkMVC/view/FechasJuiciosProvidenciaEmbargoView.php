@@ -987,7 +987,7 @@
 
                 var cantidad_retener= $("#cantidad_retener").val();
                 var cuenta_retener1= $("#cuenta_retener1").val();
-                var nombre_entidad_cuenta= $("#nombre_entidad_cuenta").val();
+                //var nombre_entidad_cuenta= $("#nombre_entidad_cuenta").val();
                 
                 var remplaza_impulsor= $("#remplaza_impulsor").val();
 				var impulsor_saliente_cambio_liquidador = $("#impulsor_saliente_cambio_liquidador").val();
@@ -6755,11 +6755,11 @@
 	         <div class="col-lg-4 col-md-4 col-xs-12">
 			  	<p class="formulario-subtitulo" >Nombre Entidad:</p>
 			  	<input type="text"  name="nombre_entidad_cuenta" id="nombre_entidad_cuenta" value="" class="form-control" placeholder="Entidad"/> 
-	            <div id="mensaje_nombre_entidad_cuenta" class="errores"></div>
+	            <div id="mensaje_nombre_entidad_cuenta_1" class="errores"></div>
 	            </div>
 	            
 	               <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 16px;">
-		                          <p class="formulario-subtitulo" >Dispone 7.-: (Opcional)</p>	
+		                          <p class="formulario-subtitulo" >Dispone 8.-: (Opcional)</p>	
                                   <textarea type="text"  class="form-control" id="disponer_5" name="disponer_5" value=""  placeholder="Ejem.  Agréguese al proceso."><?php if(!empty($resultSet_edit)){ foreach ($resultSet_edit as $res_edit){echo $res_edit->disponer_5;}}else{} ?></textarea>
                   <FONT FACE="arial" SIZE=2 COLOR=red>(Ingrese el texto en el siguiente campo, sin incluir el numeral <b>7.- </b> no olvide poner punto y raya al final del texto.-)</FONT>
 			
