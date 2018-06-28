@@ -1040,6 +1040,7 @@
 			  			<option value="CONVENIO DE PAGO" <?php  if($resEdit->observaciones == 'CONVENIO DE PAGO'){echo ' selected="selected" ' ;}else{} ?>>CONVENIO DE PAGO</option> 
 			  	 		<option value="RESTRUCTURACIÓN" <?php if($resEdit->observaciones == 'RESTRUCTURACIÓN'){echo ' selected="selected" ' ;}else{} ?>>RESTRUCTURACIÓN</option> 
 						<option value="AVOCO" <?php if($resEdit->observaciones == 'AVOCO'){echo ' selected="selected" ' ;}else{} ?>>AVOCO</option> 
+						<option value="PAGO TOTAL" <?php if($resEdit->observaciones == 'PAGO TOTAL'){echo ' selected="selected" ' ;}else{} ?>>PAGO TOTAL</option> 
 						<option value="LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO" <?php if($resEdit->observaciones == 'LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO'){echo ' selected="selected" ' ;}else{} ?>>LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO</option> 
 						<option value="OTROS" <?php  if($resEdit->observaciones == 'OTROS'){echo ' selected="selected" ' ;}else{} ?>>OTROS</option> 
 						</select>
