@@ -726,6 +726,11 @@
 								  juicios.fecha_ultima_providencia,
 								  juicios.estrategia_seguir,
 								  juicios.observaciones,
+								  juicios.tipo_leyes,
+								  juicios.medida_cautelar,
+								  juicios.embargo_bienes,
+								  juicios.detalle_embargo_bienes,
+								  juicios.observacion,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
@@ -912,10 +917,15 @@
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Riesgo Actual</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Etapa Procesal</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Estrategia a Seguir</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Tipo de Ley</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Medida Cautelar</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Embargo de Bienes</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Detalle Embargo Bienes</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
@@ -976,6 +986,11 @@
 									$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->estrategia_seguir.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->tipo_leyes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->medida_cautelar.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->embargo_bienes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->detalle_embargo_bienes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->observacion.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 									//$html.='<td style="font-size: 15px;"><a href="javascript:null()" id="'.$res->id_juicios.'?/&'.$i.'?/&'.$res->regional.'?/&'.$res->juicio_referido_titulo_credito.'?/&'.$res->year_juicios.'?/&'.$res->identificacion_clientes.'?/&'.$res->nombres_clientes.'?/&'.$res->nombre_garantes.'?/&'.$res->identificacion_garantes.'?/&'.$res->nombre_provincias.'?/&'.$res->numero_titulo_credito.'?/&'.$res->fecha_emision_juicios.'?/&'.$res->cuantia_inicial.'?/&'.$res->riesgo_actual.'?/&'.$res->nombre_estados_procesales_juicios.'?/&'.$res->descripcion_estado_procesal.'?/&'.$res->fecha_ultima_providencia.'?/&'.$res->estrategia_seguir.'?/&'.$res->observaciones.'?/&'.$res->impulsores.'?/&'.$res->secretarios.'?/&'.$res->id_provincias.'?/&'.$res->id_estados_procesales_juicios.'?/&'.$res->id_clientes.'?/&'.$res->id_titulo_credito.'?/&'.$res->identificacion_clientes_1.'?/&'.$res->nombre_clientes_1.'?/&'.$res->identificacion_clientes_2.'?/&'.$res->nombre_clientes_2.'?/&'.$res->identificacion_clientes_3.'?/&'.$res->nombre_clientes_3.'?/&'.$res->identificacion_garantes_1.'?/&'.$res->nombre_garantes_1.'?/&'.$res->identificacion_garantes_2.'?/&'.$res->nombre_garantes_2.'?/&'.$res->identificacion_garantes_3.'?/&'.$res->nombre_garantes_3.'?/&'.$res->correo_clientes.'?/&'.$res->correo_clientes_1.'?/&'.$res->correo_clientes_2.'?/&'.$res->correo_clientes_3.'?/&'.$res->direccion_clientes.'?/&'.$res->direccion_clientes_1.'?/&'.$res->direccion_clientes_2.'?/&'.$res->direccion_clientes_3.'"  onclick="editar_matriz(this)" ><i class="glyphicon glyphicon-edit"></i></a></td>';
@@ -1023,7 +1038,8 @@
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 							$parametros['fecha_providencias']=(isset($_POST['fecha_providencias']))?trim($_POST['fecha_providencias']):0;
 							$parametros['hora_providencias']=(isset($_POST['hora_providencias']))?trim($_POST['hora_providencias']):0;
-							
+							$parametros['tipo_reporte']=(isset($_POST['tipo_reporte']))?trim($_POST['tipo_reporte']):0;
+								
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
 							{
@@ -1086,7 +1102,8 @@
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-							
+							$parametros['tipo_reporte']=(isset($_POST['tipo_reporte']))?trim($_POST['tipo_reporte']):0;
+								
 							/*para las fechas*/
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -1265,6 +1282,11 @@
 								  juicios.fecha_ultima_providencia,
 								  juicios.estrategia_seguir,
 								  juicios.observaciones,
+								  juicios.tipo_leyes,
+								  juicios.medida_cautelar,
+								  juicios.embargo_bienes,
+								  juicios.detalle_embargo_bienes,
+								  juicios.observacion,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
@@ -1417,10 +1439,15 @@
 									$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Riesgo Actual</th>';
-									$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Etapa Procesal</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Estrategia a Seguir</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Tipo de Ley</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Medida Cautelar</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Embargo Bienes</th>';
+									$html.='<th style="text-align: left;  font-size: 10px;">Detalle Embargo Bienes</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 									$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
@@ -1457,6 +1484,11 @@
 										$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->estrategia_seguir.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
+										$html.='<td style="font-size: 9px;">'.$res->tipo_leyes.'</td>';
+										$html.='<td style="font-size: 9px;">'.$res->medida_cautelar.'</td>';
+										$html.='<td style="font-size: 9px;">'.$res->embargo_bienes.'</td>';
+										$html.='<td style="font-size: 9px;">'.$res->detalle_embargo_bienes.'</td>';
+										$html.='<td style="font-size: 9px;">'.$res->observacion.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 										$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 										$html.='</tr>';
@@ -1505,6 +1537,7 @@
 								$parametros['identificacion_clientes']=(isset($_POST['identificacion_clientes']))?trim($_POST['identificacion_clientes']):'';
 								$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
 								$parametros['id_origen_juicio']=(isset($_POST['id_origen_juicio']))?trim($_POST['id_origen_juicio']):0;
+								$parametros['tipo_reporte']=(isset($_POST['tipo_reporte']))?trim($_POST['tipo_reporte']):0;
 								$parametros['numero_carton_jucios']=(isset($_POST['numero_carton_jucios']))?trim($_POST['numero_carton_jucios']):'';
 								
 								/*para las fechas*/
@@ -10212,6 +10245,11 @@
 				
 				$_estrategia_seguir= $_POST["estrategia_seguir"];
 				$_observaciones= $_POST["observaciones"];
+				$_tipo_leyes= $_POST["tipo_leyes"];
+				$_medida_cautelar= $_POST["medida_cautelar"];
+				$_embargo_bienes= $_POST["embargo_bienes"];
+				$_detalle_embargo_bienes= $_POST["detalle_embargo_bienes"];
+				$_observacion= $_POST["observacion"];
 				$_impulsores= $_POST["impulsores"];
 				$_secretarios= $_POST["secretarios"];
 				$_id_provincias= $_POST["id_provincias"];
@@ -10259,6 +10297,11 @@
 					year_juicios='$_year_juicios',
 					estrategia_seguir='$_estrategia_seguir',
 					observaciones='$_observaciones',
+					tipo_leyes='$_tipo_leyes',
+					medida_cautelar='$_medida_cautelar',
+					embargo_bienes='$_embargo_bienes',
+					detalle_embargo_bienes='$_detalle_embargo_bienes',
+					observacion='$_observacion',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10308,6 +10351,11 @@
 					year_juicios='$_year_juicios',
 					estrategia_seguir='$_estrategia_seguir',
 					observaciones='$_observaciones',
+					tipo_leyes='$_tipo_leyes',
+					medida_cautelar='$_medida_cautelar',
+					embargo_bienes='$_embargo_bienes',
+					detalle_embargo_bienes='$_detalle_embargo_bienes',
+					observacion='$_observacion',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10360,6 +10408,11 @@
 					fecha_ultima_providencia=$_fecha_ultima_providencia,
 					estrategia_seguir='$_estrategia_seguir',
 					observaciones='$_observaciones',
+					tipo_leyes='$_tipo_leyes',
+					medida_cautelar='$_medida_cautelar',
+					embargo_bienes='$_embargo_bienes',
+					detalle_embargo_bienes='$_detalle_embargo_bienes',
+					observacion='$_observacion',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10411,6 +10464,11 @@
 					fecha_ultima_providencia=$_fecha_ultima_providencia,
 					estrategia_seguir='$_estrategia_seguir',
 					observaciones='$_observaciones',
+					tipo_leyes='$_tipo_leyes',
+					medida_cautelar='$_medida_cautelar',
+					embargo_bienes='$_embargo_bienes',
+					detalle_embargo_bienes='$_detalle_embargo_bienes',
+					observacion='$_observacion',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10963,13 +11021,18 @@
 								  juicios.fecha_ultima_providencia,
 								  juicios.estrategia_seguir,
 								  juicios.observaciones,
+								  juicios.tipo_leyes,
+								  juicios.medida_cautelar,
+								  juicios.embargo_bienes,
+								  juicios.detalle_embargo_bienes,
+								  juicios.observacion,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
 								  ciudad.nombre_ciudad,
-								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_1, 
 								  clientes.correo_garantes_2, 
 								  clientes.correo_garantes_3, 
 								  clientes.correo_garantes_4, 
@@ -11122,7 +11185,6 @@
 								$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Origen</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Cartón</th>';
-								
 								$html.='<th style="text-align: left;  font-size: 10px;">Regional</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Año Juicio</th>';
@@ -11163,10 +11225,15 @@
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Auto Pago</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Riesgo Actual</th>';
-								$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Etapa Procesal</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Estrategia a Seguir</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Tipo de ley</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Medida Cautelar</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Embargo Bienes</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Detalle Embargo Bienes</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
@@ -11234,6 +11301,11 @@
 									$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->estrategia_seguir.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->observaciones.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->tipo_leyes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->medida_cautelar.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->embargo_bienes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->detalle_embargo_bienes.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->observacion.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 										
@@ -11277,7 +11349,8 @@
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-								
+							$parametros['tipo_reporte']=(isset($_POST['tipo_reporte']))?trim($_POST['tipo_reporte']):0;
+							
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
 							{
@@ -11338,7 +11411,8 @@
 							$parametros['id_estados_procesales_juicios']=(isset($_POST['id_estados_procesales_juicios']))?trim($_POST['id_estados_procesales_juicios']):0;
 							$parametros['id_provincias']=(isset($_POST['id_provincias']))?trim($_POST['id_provincias']):0;
 							$parametros['id_rol'] = $_SESSION['id_rol']?trim($_SESSION['id_rol']):0;
-	
+							$parametros['tipo_reporte']=(isset($_POST['tipo_reporte']))?trim($_POST['tipo_reporte']):0;
+							
 							/*para las fechas*/
 							$fechaDesde="";$fechaHasta="";
 							if(isset($_POST["fcha_desde"])&&isset($_POST["fcha_hasta"]))
@@ -11496,13 +11570,18 @@
 								  juicios.fecha_ultima_providencia,
 								  juicios.estrategia_seguir,
 								  juicios.observaciones,
+								  juicios.tipo_leyes,
+								  juicios.medida_cautelar,
+								  juicios.embargo_bienes,
+								  juicios.detalle_embargo_bienes,
+								  juicios.observacion,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
 								  asignacion_secretarios_view.secretarios,
 								  ciudad.id_ciudad,
 								  ciudad.nombre_ciudad,
-								clientes.correo_garantes_1, 
+								  clientes.correo_garantes_1, 
 								  clientes.correo_garantes_2, 
 								  clientes.correo_garantes_3, 
 								  clientes.correo_garantes_4, 
@@ -11510,8 +11589,8 @@
 								  clientes.direccion_garantes_2, 
 								  clientes.direccion_garantes_3, 
 								  clientes.direccion_garantes_4,
-								 juicios.id_origen_juicio,
-								 carton_juicuis.numero_carton_jucios";
+								  juicios.id_origen_juicio,
+								  carton_juicuis.numero_carton_jucios";
 	
 						$tablas_edit=" public.clientes,
 							  public.titulo_credito,
