@@ -1078,6 +1078,11 @@
 			  			<option value="MUEBLES" <?php  if($resEdit->embargo_bienes == 'MUEBLES'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES</option> 
 			  			<option value="INMUEBLES" <?php  if($resEdit->embargo_bienes == 'INMUEBLES'){echo ' selected="selected" ' ;}else{} ?>>INMUEBLES</option> 
 			  	 		<option value="DINERO" <?php  if($resEdit->embargo_bienes == 'DINERO'){echo ' selected="selected" ' ;}else{} ?>>DINERO</option> 
+			  	 		<option value="MUEBLES, INMUEBLES" <?php  if($resEdit->embargo_bienes == 'MUEBLES, INMUEBLES'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES, INMUEBLES</option> 
+			  	 		<option value="MUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'MUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES, DINERO</option> 
+			  	 		<option value="INMUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'INMUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>INMUEBLES, DINERO</option> 
+			  	 		<option value="MUEBLES, INMUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'MUEBLES, INMUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES, INMUEBLES, DINERO</option> 
+			  	 		
 			  	 		<option value="NINGUNO" <?php  if($resEdit->embargo_bienes == 'NINGUNO'){echo ' selected="selected" ' ;}else{} ?>>NINGUNO</option> 
 			  	 		</select>
 						<div id="mensaje_embargo_bienes" class="errores"></div>
