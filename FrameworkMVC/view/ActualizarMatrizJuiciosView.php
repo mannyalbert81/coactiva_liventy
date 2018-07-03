@@ -71,6 +71,7 @@
 			    var tipo_leyes = $("#tipo_leyes").val();
 			    var medida_cautelar = $("#medida_cautelar").val();
 			    var embargo_bienes = $("#embargo_bienes").val();
+			    var forma_pago = $("#forma_pago").val();
 		     	
 		    	if (id_origen_juicio == "")
 		    	{
@@ -218,6 +219,18 @@
 
 				   $("#mensaje_embargo_bienes").fadeOut("slow"); //Muestra mensaje de error
 			   }
+		    	if(forma_pago==0){
+
+
+		    		$("#mensaje_forma_pago").text("Seleccione Forma de Pago");
+		    		$("#mensaje_forma_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_forma_pago").fadeOut("slow"); //Muestra mensaje de error
+			   }
 		    
 		     
 		    	
@@ -278,6 +291,9 @@
     			});
 				$( "#embargo_bienes" ).focus(function() {
 					$("#mensaje_embargo_bienes").fadeOut("slow");
+    			});
+				$( "#forma_pago" ).focus(function() {
+					$("#mensaje_forma_pago").fadeOut("slow");
     			});
 				
     			
@@ -1042,7 +1058,6 @@
 						<option value="AVOCO" <?php if($resEdit->observaciones == 'AVOCO'){echo ' selected="selected" ' ;}else{} ?>>AVOCO</option> 
 						<option value="PAGO TOTAL" <?php if($resEdit->observaciones == 'PAGO TOTAL'){echo ' selected="selected" ' ;}else{} ?>>PAGO TOTAL</option> 
 						<option value="LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO" <?php if($resEdit->observaciones == 'LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO'){echo ' selected="selected" ' ;}else{} ?>>LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO</option> 
-						<option value="OTROS" <?php  if($resEdit->observaciones == 'OTROS'){echo ' selected="selected" ' ;}else{} ?>>OTROS</option> 
 						</select>
 						<div id="mensaje_observaciones" class="errores"></div>
 			            </div>
@@ -1082,10 +1097,23 @@
 			  	 		<option value="MUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'MUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES, DINERO</option> 
 			  	 		<option value="INMUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'INMUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>INMUEBLES, DINERO</option> 
 			  	 		<option value="MUEBLES, INMUEBLES, DINERO" <?php  if($resEdit->embargo_bienes == 'MUEBLES, INMUEBLES, DINERO'){echo ' selected="selected" ' ;}else{} ?>>MUEBLES, INMUEBLES, DINERO</option> 
-			  	 		
 			  	 		<option value="NINGUNO" <?php  if($resEdit->embargo_bienes == 'NINGUNO'){echo ' selected="selected" ' ;}else{} ?>>NINGUNO</option> 
 			  	 		</select>
 						<div id="mensaje_embargo_bienes" class="errores"></div>
+			            </div>
+			            </div>
+			             <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='forma_pago' class='control-label'>Forma de Pago</label><br>
+			  			<select name="forma_pago" id="forma_pago"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="PAGO TOTAL" <?php  if($resEdit->forma_pago == 'PAGO TOTAL'){echo ' selected="selected" ' ;}else{} ?>>PAGO TOTAL</option> 
+			  			<option value="REESTRUCTURA" <?php  if($resEdit->forma_pago == 'REESTRUCTURA'){echo ' selected="selected" ' ;}else{} ?>>REESTRUCTURA</option> 
+			  	 		<option value="EXTINCIÓN DE DEUDA" <?php  if($resEdit->forma_pago == 'EXTINCIÓN DE DEUDA'){echo ' selected="selected" ' ;}else{} ?>>EXTINCIÓN DE DEUDA</option> 
+			  	 		<option value="REESTRUCTURA Y CONDONACIÓN POR DISCAPACIDAD" <?php  if($resEdit->forma_pago == 'REESTRUCTURA Y CONDONACIÓN POR DISCAPACIDAD'){echo ' selected="selected" ' ;}else{} ?>>REESTRUCTURA Y CONDONACIÓN POR DISCAPACIDAD</option> 
+			  	 		<option value="NINGUNO" <?php  if($resEdit->forma_pago == 'NINGUNO'){echo ' selected="selected" ' ;}else{} ?>>NINGUNO</option> 
+			  	 		</select>
+						<div id="mensaje_forma_pago" class="errores"></div>
 			            </div>
 			            </div>
 			            <div class = 'col-xs-12 col-md-6 col-lg-6'>
@@ -1100,6 +1128,7 @@
 				        <textarea type='text' class='form-control' id='observacion' name='observacion'  placeholder='Observaciones'><?php echo $resEdit->observacion; ?></textarea>
 	                    </div>
 				        </div>
+				                 
 	       
 			
 		    </div>

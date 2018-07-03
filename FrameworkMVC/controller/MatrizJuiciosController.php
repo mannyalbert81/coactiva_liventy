@@ -10250,6 +10250,7 @@
 				$_embargo_bienes= $_POST["embargo_bienes"];
 				$_detalle_embargo_bienes= $_POST["detalle_embargo_bienes"];
 				$_observacion= $_POST["observacion"];
+				$_forma_pago= $_POST["forma_pago"];
 				$_impulsores= $_POST["impulsores"];
 				$_secretarios= $_POST["secretarios"];
 				$_id_provincias= $_POST["id_provincias"];
@@ -10302,6 +10303,7 @@
 					embargo_bienes='$_embargo_bienes',
 					detalle_embargo_bienes='$_detalle_embargo_bienes',
 					observacion='$_observacion',
+					forma_pago='$_forma_pago',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10356,6 +10358,7 @@
 					embargo_bienes='$_embargo_bienes',
 					detalle_embargo_bienes='$_detalle_embargo_bienes',
 					observacion='$_observacion',
+					forma_pago='$_forma_pago',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10413,6 +10416,7 @@
 					embargo_bienes='$_embargo_bienes',
 					detalle_embargo_bienes='$_detalle_embargo_bienes',
 					observacion='$_observacion',
+					forma_pago='$_forma_pago',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -10469,6 +10473,7 @@
 					embargo_bienes='$_embargo_bienes',
 					detalle_embargo_bienes='$_detalle_embargo_bienes',
 					observacion='$_observacion',
+					forma_pago='$_forma_pago',
 					descripcion_estado_procesal='$_descripcion_estado_procesal',
 					regional='$_regional',
 					cuantia_inicial='$_cuantia_inicial',
@@ -11026,6 +11031,7 @@
 								  juicios.embargo_bienes,
 								  juicios.detalle_embargo_bienes,
 								  juicios.observacion,
+								  juicios.forma_pago,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
@@ -11235,6 +11241,7 @@
 								$html.='<th style="text-align: left;  font-size: 10px;">Embargo Bienes</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Detalle Embargo Bienes</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Observaciones</th>';
+								$html.='<th style="text-align: left;  font-size: 10px;">Forma de Pago</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
 								$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
 								$html.='</tr>';
@@ -11306,6 +11313,7 @@
 									$html.='<td style="font-size: 9px;">'.$res->embargo_bienes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->detalle_embargo_bienes.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->observacion.'</td>';
+									$html.='<td style="font-size: 9px;">'.$res->forma_pago.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
 									$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 										
@@ -11575,6 +11583,7 @@
 								  juicios.embargo_bienes,
 								  juicios.detalle_embargo_bienes,
 								  juicios.observacion,
+								  juicios.forma_pago,
 								  asignacion_secretarios_view.id_abogado,
 								  asignacion_secretarios_view.impulsores,
 								  asignacion_secretarios_view.id_secretario,
