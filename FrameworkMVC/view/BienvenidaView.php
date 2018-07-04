@@ -40,8 +40,7 @@
 	  </script>
 
 	<div id="dialog" title="INFORMACIÓN"><br><br>
-	<p style="text-align: justify;">Estimados <strong>usuarios</strong>, les comunicamos que hemos implementado los campos de actualización de la matriz de coactivados sugeridos por la Superintendencia de Bancos, el sistema (Allcoercive) ahora cuenta con los campos mensionados anteriormente y deben ser actualizados desde el proceso de Actualización de matriz en el sistema.</p>
-   	<p style="text-align: justify; margin-top:40px;"><strong>Estimados Usuarios se modifico nuevamente la Actualización de la matriz y se agrego la Opción de Forma de Pago como campo obligatorio dispuesta por la Directora de Coactiva con fecha 2/07/2018</strong></p>
+	<p style="text-align: justify; margin-top:20px;"><strong>ESTIMADOS USUARIOS AGREGO UN NUEVO TIPO DE REPORTE EN EL SISTEMA QUE ES DE PROVIDENCIAS MANUALES PARA AQUELLOS DOCUMENTOS QUE SON CASOS ESPECIALES Y NO SE PUEDEN CREAR FORMATOS ESPECIFICOS EL TIPO DE EXTENCIÓN A SUBIR SIEMPRE SERA TIPO PDF CASO CONTRARIO NO PERMITIRA SU SUBIDA</strong></p>
     <p style="text-align: justify; margin-top:40px;"><strong>Gracias por su Atención</strong></p>
     
 	 </div> 
