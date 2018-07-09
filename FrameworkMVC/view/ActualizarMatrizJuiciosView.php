@@ -1058,6 +1058,7 @@
 						<option value="AVOCO" <?php if($resEdit->observaciones == 'AVOCO'){echo ' selected="selected" ' ;}else{} ?>>AVOCO</option> 
 						<option value="PAGO TOTAL" <?php if($resEdit->observaciones == 'PAGO TOTAL'){echo ' selected="selected" ' ;}else{} ?>>PAGO TOTAL</option> 
 						<option value="LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO" <?php if($resEdit->observaciones == 'LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO'){echo ' selected="selected" ' ;}else{} ?>>LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO</option> 
+				    	<option value="NINGUNO" <?php if($resEdit->observaciones == 'NINGUNO'){echo ' selected="selected" ' ;}else{} ?>>NINGUNO</option> 
 						</select>
 						<div id="mensaje_observaciones" class="errores"></div>
 			            </div>

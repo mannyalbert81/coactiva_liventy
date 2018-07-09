@@ -12867,7 +12867,13 @@
 			
 			$_estrategia_seguir= $_POST["estrategia_seguir"];
 			$_observaciones= $_POST["observaciones"];
-		
+			$_tipo_leyes= $_POST["tipo_leyes"];
+			$_medida_cautelar= $_POST["medida_cautelar"];
+			$_embargo_bienes= $_POST["embargo_bienes"];
+			$_detalle_embargo_bienes= $_POST["detalle_embargo_bienes"];
+			$_observacion= $_POST["observacion"];
+			$_forma_pago= $_POST["forma_pago"];
+			
 			
 			
 			$_correo_garantes_1= $_POST["correo_garantes_1"];
@@ -13140,7 +13146,7 @@
 						//// INSERTO JUICIO
 						
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios','$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_tipo_leyes','$_medida_cautelar','$_embargo_bienes','$_detalle_embargo_bienes','$_observacion','$_forma_pago','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();
@@ -13190,7 +13196,7 @@
 						//// INSERTO JUICIO
 					
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', '$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', '$_fecha_emision_juicios','$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_tipo_leyes','$_medida_cautelar','$_embargo_bienes','$_detalle_embargo_bienes','$_observacion','$_forma_pago','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();
@@ -13243,7 +13249,7 @@
 						//// INSERTO JUICIO
 							
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios','$_fecha_ultima_providencia','$_estrategia_seguir','$_observaciones','$_tipo_leyes','$_medida_cautelar','$_embargo_bienes','$_detalle_embargo_bienes','$_observacion','$_forma_pago','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();
@@ -13296,7 +13302,7 @@
 						//// INSERTO JUICIO
 							
 						$funcion3 = "ins_juicios_liventy";
-						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
+						$parametros3 = "'$_id_entidades','$_id_ciudad','$_juicio_referido_titulo_credito','$_id_abogado','$_id_titulo_credito','$_id_clientes','$_id_estados_procesales_juicios', $_fecha_emision_juicios,'$_id_estados_auto_pago_juicios','$_juicio_referido_titulo_credito','$_year_juicios',$_fecha_ultima_providencia,'$_estrategia_seguir','$_observaciones','$_tipo_leyes','$_medida_cautelar','$_embargo_bienes','$_detalle_embargo_bienes','$_observacion','$_forma_pago','$_descripcion_estado_procesal','$_orden','$_regional','$_cuantia_inicial','$_riesgo_actual', '$_id_origen_juicio', '$_id_carton_juicios'";
 						$juicios->setFuncion($funcion3);
 						$juicios->setParametros($parametros3);
 						$resultado3=$juicios->Insert();

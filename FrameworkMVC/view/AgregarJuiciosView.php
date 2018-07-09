@@ -57,6 +57,10 @@
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
 		        var numero_carton = $("#numero_carton").val();
 		        var observaciones = $("#observaciones").val();
+		        var tipo_leyes = $("#tipo_leyes").val();
+			    var medida_cautelar = $("#medida_cautelar").val();
+			    var embargo_bienes = $("#embargo_bienes").val();
+			    var forma_pago = $("#forma_pago").val();
 		      
 		    	if (id_origen_juicio == "")
 		    	{
@@ -145,7 +149,7 @@
 		    	if (id_estados_procesales_juicios == "")
 		    	{
 			    	
-		    		$("#mensaje_id_estados_procesales_juicios").text("Seleccione Un Estado Procesal");
+		    		$("#mensaje_id_estados_procesales_juicios").text("Seleccione Una Etapa Procesal");
 		    		$("#mensaje_id_estados_procesales_juicios").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 			    }
@@ -159,7 +163,7 @@
 		     	if(observaciones==0){
 
 
-		    		$("#mensaje_observaciones").text("Seleccione Observación");
+		    		$("#mensaje_observaciones").text("Seleccione un Estado Procesal");
 		    		$("#mensaje_observaciones").fadeIn("slow"); //Muestra mensaje de error
 		            return false;
 
@@ -168,7 +172,57 @@
 
 				   $("#mensaje_observaciones").fadeOut("slow"); //Muestra mensaje de error
 			   }
-		     
+		     	if(tipo_leyes==0){
+
+
+		    		$("#mensaje_tipo_leyes").text("Seleccione Tipo de Ley");
+		    		$("#mensaje_tipo_leyes").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_tipo_leyes").fadeOut("slow"); //Muestra mensaje de error
+			   }
+				   
+		    	if(medida_cautelar==0){
+
+
+		    		$("#mensaje_medida_cautelar").text("Seleccione si existe Medida Cautelar");
+		    		$("#mensaje_medida_cautelar").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_medida_cautelar").fadeOut("slow"); //Muestra mensaje de error
+			   }
+
+		    	if(embargo_bienes==0){
+
+
+		    		$("#mensaje_embargo_bienes").text("Seleccione Tipo de Embargo");
+		    		$("#mensaje_embargo_bienes").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_embargo_bienes").fadeOut("slow"); //Muestra mensaje de error
+			   }
+		    	if(forma_pago==0){
+
+
+		    		$("#mensaje_forma_pago").text("Seleccione Forma de Pago");
+		    		$("#mensaje_forma_pago").fadeIn("slow"); //Muestra mensaje de error
+		            return false;
+
+
+			   }else{
+
+				   $("#mensaje_forma_pago").fadeOut("slow"); //Muestra mensaje de error
+			   }
+		    
 /*
 
 		    	if (fecha_ultima_providencia == "")
@@ -218,7 +272,18 @@
 				$( "#observaciones" ).focus(function() {
 					$("#mensaje_observaciones").fadeOut("slow");
     			});
-			
+				$( "#tipo_leyes" ).focus(function() {
+					$("#mensaje_tipo_leyes").fadeOut("slow");
+    			});
+				$( "#medida_cautelar" ).focus(function() {
+					$("#mensaje_medida_cautelar").fadeOut("slow");
+    			});
+				$( "#embargo_bienes" ).focus(function() {
+					$("#mensaje_embargo_bienes").fadeOut("slow");
+    			});
+				$( "#forma_pago" ).focus(function() {
+					$("#mensaje_forma_pago").fadeOut("slow");
+    			});
 /*
 				$( "#fecha_ultima_providencia" ).focus(function() {
 					$("#mensaje_fecha_ultima_providencia").fadeOut("slow");
@@ -755,7 +820,7 @@
 						
 						<div class="col-xs-12 col-md-2 col-lg-2">
  						 <div class='form-group'>
-			  			 <label for='id_estados_procesales_juicios' class='control-label'>Estado Procesal</label>
+			  			 <label for='id_estados_procesales_juicios' class='control-label'>Etapa Procesal</label>
 			  			<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 						 <option value="" selected="selected">--Seleccione--</option>
 						<?php foreach($resultEstadoProcesal as $res) {?>
@@ -818,19 +883,88 @@
 				        
 				        <div class="col-lg-6 col-md-6 col-xs-12" >
 				        <div class='form-group'>
-					  	<label for='observaciones' class='control-label'>Observaciones</label><br>
+					  	<label for='observaciones' class='control-label'>Estado Procesal</label><br>
 			  			<select name="observaciones" id="observaciones"  class="form-control" >
 			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
 			  			<option value="REPOSICIÓN DE PROCESOS" >REPOSICIÓN DE PROCESOS</option> 
 			  			<option value="CONVENIO DE PAGO" >CONVENIO DE PAGO</option> 
 			  	 		<option value="RESTRUCTURACIÓN" >RESTRUCTURACIÓN</option> 
 						<option value="AVOCO" >AVOCO</option> 
+						<option value="PAGO TOTAL" >PAGO TOTAL</option> 
 						<option value="LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO" >LEVANTAMIENTO DE SUSPENSIÓN O SUSPENSO</option> 
-						<option value="OTROS" >OTROS</option> 
+						<option value="NINGUNO" >NINGUNO</option> 
 						</select>
 						<div id="mensaje_observaciones" class="errores"></div>
 			            </div>
-			            </div>			            
+			            </div>	
+			            
+			               <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='tipo_leyes' class='control-label'>Tipo de ley</label><br>
+			  			<select name="tipo_leyes" id="tipo_leyes"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="REACTIVACIÓN DE LA ECONOMÍA" >REACTIVACIÓN DE LA ECONOMÍA</option> 
+			  			<option value="RESTRUCTURACIÓN DE LAS DEUDAS" >RESTRUCTURACIÓN DE LAS DEUDAS</option> 
+			  	 		<option value="NINGUNO" >NINGUNO</option> 
+			  	 		</select>
+						<div id="mensaje_tipo_leyes" class="errores"></div>
+			            </div>
+			            </div>
+			             <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='medida_cautelar' class='control-label'>Medida Cautelar</label><br>
+			  			<select name="medida_cautelar" id="medida_cautelar"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="SI" >SI</option> 
+			  			<option value="NO" >NO</option> 
+			  	 		</select>
+						<div id="mensaje_medida_cautelar" class="errores"></div>
+			            </div>
+			            </div>
+			               <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='embargo_bienes' class='control-label'>Embargo de Bienes</label><br>
+			  			<select name="embargo_bienes" id="embargo_bienes"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="MUEBLES" >MUEBLES</option> 
+			  			<option value="INMUEBLES" >INMUEBLES</option> 
+			  	 		<option value="DINERO" >DINERO</option> 
+			  	 		<option value="MUEBLES, INMUEBLES" >MUEBLES, INMUEBLES</option> 
+			  	 		<option value="MUEBLES, DINERO" >MUEBLES, DINERO</option> 
+			  	 		<option value="INMUEBLES, DINERO" >INMUEBLES, DINERO</option> 
+			  	 		<option value="MUEBLES, INMUEBLES, DINERO" >MUEBLES, INMUEBLES, DINERO</option> 
+			  	 		<option value="NINGUNO" >NINGUNO</option> 
+			  	 		</select>
+						<div id="mensaje_embargo_bienes" class="errores"></div>
+			            </div>
+			            </div>
+			             <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class='form-group'>
+					  	<label for='forma_pago' class='control-label'>Forma de Pago</label><br>
+			  			<select name="forma_pago" id="forma_pago"  class="form-control" >
+			  			<option value="0"><?php echo "--Seleccione--";  ?> </option>
+			  			<option value="PAGO TOTAL" >PAGO TOTAL</option> 
+			  			<option value="REESTRUCTURA" >REESTRUCTURA</option> 
+			  	 		<option value="EXTINCIÓN DE DEUDA" >EXTINCIÓN DE DEUDA</option> 
+			  	 		<option value="REESTRUCTURA Y CONDONACIÓN POR DISCAPACIDAD" >REESTRUCTURA Y CONDONACIÓN POR DISCAPACIDAD</option> 
+			  	 		<option value="NINGUNO" >NINGUNO</option> 
+			  	 		</select>
+						<div id="mensaje_forma_pago" class="errores"></div>
+			            </div>
+			            </div>
+			            <div class = 'col-xs-12 col-md-6 col-lg-6'>
+				        <div class='form-group'>
+				        <label for='detalle_embargo_bienes' class='control-label'>Detalle de Bien Embargado</label><br>
+				        <textarea type='text' class='form-control' id='detalle_embargo_bienes' name='detalle_embargo_bienes'  placeholder='Detalle de Bien Embargado'></textarea>
+	                    </div>
+				        </div>
+				        <div class = 'col-xs-12 col-md-6 col-lg-6'>
+				        <div class='form-group'>
+				        <label for='observacion' class='control-label'>Observaciones</label><br>
+				        <textarea type='text' class='form-control' id='observacion' name='observacion'  placeholder='Observaciones'></textarea>
+	                    </div>
+				        </div>
+			            
 			         
 			
 		    
