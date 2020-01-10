@@ -183,8 +183,7 @@
          
                  <br> 
                  <div class="col-lg-12 col-md-12 col-xs-12" style=" text-aling: justify;">
-            	 <p align="justify"><b><font face="univers" size=3>***Estimados usuarios al generar un documento en el sistema se actualizara la fecha de última providencia y el estado procesal del juicio cuando su abogado SECRETARIO lo apruebe.***</font></b></p>
-				
+         		
             	 </div>
                  <br> 
                         

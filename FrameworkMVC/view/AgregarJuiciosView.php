@@ -55,12 +55,12 @@
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
                 var cuantia_inicial = $("#cuantia_inicial").val();
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
-		        var numero_carton = $("#numero_carton").val();
-		        var observaciones = $("#observaciones").val();
-		        var tipo_leyes = $("#tipo_leyes").val();
-			    var medida_cautelar = $("#medida_cautelar").val();
-			    var embargo_bienes = $("#embargo_bienes").val();
-			    var forma_pago = $("#forma_pago").val();
+		  //      var numero_carton = $("#numero_carton").val();
+		     //   var observaciones = $("#observaciones").val();
+		  //      var tipo_leyes = $("#tipo_leyes").val();
+			//    var medida_cautelar = $("#medida_cautelar").val();
+			  //  var embargo_bienes = $("#embargo_bienes").val();
+			    //var forma_pago = $("#forma_pago").val();
 		      
 		    	if (id_origen_juicio == "")
 		    	{
@@ -76,7 +76,7 @@
 				}
 
 				
-		    	if (numero_carton == "")
+		    /*	if (numero_carton == "")
 		    	{
 			    	
 		    		$("#mensaje_numero_carton").text("Ingrese # Cartón");
@@ -88,7 +88,7 @@
 		    		$("#mensaje_numero_carton").fadeOut("slow"); //Muestra mensaje de error
 		            
 				}
-
+*/
 				
 		   				
 		     	if (juicio_referido_titulo_credito == "")
@@ -160,7 +160,7 @@
 				}
 
 		    
-		     	if(observaciones==0){
+		     /*	if(observaciones==0){
 
 
 		    		$("#mensaje_observaciones").text("Seleccione un Estado Procesal");
@@ -223,7 +223,6 @@
 				   $("#mensaje_forma_pago").fadeOut("slow"); //Muestra mensaje de error
 			   }
 		    
-/*
 
 		    	if (fecha_ultima_providencia == "")
 		    	{
@@ -269,7 +268,7 @@
 					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
     			});
 
-				$( "#observaciones" ).focus(function() {
+			/*	$( "#observaciones" ).focus(function() {
 					$("#mensaje_observaciones").fadeOut("slow");
     			});
 				$( "#tipo_leyes" ).focus(function() {
@@ -283,7 +282,7 @@
     			});
 				$( "#forma_pago" ).focus(function() {
 					$("#mensaje_forma_pago").fadeOut("slow");
-    			});
+    			});*/
 /*
 				$( "#fecha_ultima_providencia" ).focus(function() {
 					$("#mensaje_fecha_ultima_providencia").fadeOut("slow");
@@ -381,20 +380,8 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Datos del Juicio</h4>
 	         </div>
 	         <div class="panel-body">
-			            <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='modal_edit_orden' class='control-label'>Orden</label><br>
-				        <input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value="" readonly >
-				        </div>
-					    </div>
-					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='regional' class='control-label'>Regional</label><br>
-				        <input type='text' class='form-control' id='regional' name='regional' value="" >
-				       </div>
-				        </div>	
-				        
-				        <div class="col-xs-12 col-md-2 col-lg-2">
+			            
+				        <div class="col-xs-12 col-md-9 col-lg-9">
  						 <div class='form-group'>
 			  			 <label for='id_origen_juicio' class='control-label'>Origen Juicio</label>
 			  			<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
@@ -408,7 +395,7 @@
 			  			</div>
 						</div>
 						
-						 <div class = 'col-xs-12 col-md-2 col-lg-2'>
+						 <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='numero_carton' class='control-label'># Cartón</label><br>
 				        <input type='text' class='form-control' id='numero_carton' name='numero_carton' value="">
@@ -416,19 +403,13 @@
 				        </div>
 				        </div>	
 						
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='juicio_referido_titulo_credito' class='control-label'># Juicio</label><br>
 				        <input type='text' class='form-control' id='juicio_referido_titulo_credito' name='juicio_referido_titulo_credito' value="">
 				        <div id="mensaje_juicio_referido_titulo_credito" class="errores"></div>
 				        </div>
 				         </div>	
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='year_juicios' class='control-label'>Año Juicio</label><br>
-				        <input type='text' class='form-control' id='year_juicios' name='year_juicios' value=""  >
-				        </div>
-				        </div>	
 			 </div>
 		</div>
 			
@@ -476,123 +457,12 @@
 				        </div>
 				        </div>	
 
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>
-				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_1' name='identificacion_clientes_1' value="" >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
-				        <div class='form-group'>
-				        <label for='nombre_clientes_1' class='control-label'>Nombres Cliente 2</label><br>
-				        <input type='text' class='form-control' id='nombre_clientes_1' name='nombre_clientes_1' value=""  >
-				        </div>
-				        </div>
-
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
-				        <div class='form-group'>
-				        <label for='sexo_clientes_1' class='control-label'>Sexo</label><br>
-						<select name="sexo_clientes_1" id="sexo_clientes_1"  class="form-control">
-							<option value="_" selected="selected">---</option>
-										<option value="M" >M </option>
-						            	<option value="F"  >F </option>
-					    </select>
-  						</div>
-				        </div>
-				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='correo_clientes_1' class='control-label'>Correo Cliente 2</label><br>
-				        <input type='email' class='form-control' id='correo_clientes_1' name='correo_clientes_1' value=""  >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
-				        <div class='form-group'>
-				        <label for='direccion_clientes_1' class='control-label'>Dirección Cliente 2</label><br>
-				        <input type='text' class='form-control' id='direccion_clientes_1' name='direccion_clientes_1' value="" >
-				        </div>
-				        </div>
-
-				       
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>
-				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_2' name='identificacion_clientes_2' value=""  >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
-				        <div class='form-group'>
-				        <label for='nombre_clientes_2' class='control-label'>Nombres Cliente 3</label><br>
-				        <input type='text' class='form-control' id='nombre_clientes_2' name='nombre_clientes_2' value=""  >
-				        </div>
-				        </div>
-
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
-				        <div class='form-group'>
-				        <label for='sexo_clientes_2' class='control-label'>Sexo</label><br>
-						<select name="sexo_clientes_2" id="sexo_clientes_2"  class="form-control">
-							<option value="_" selected="selected">---</option>
-										<option value="M"  >M </option>
-						            	<option value="F"  >F </option>
-					    </select>
-  						</div>
-				        </div>
-				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='correo_clientes_2' class='control-label'>Correo Cliente 3</label><br>
-				        <input type='email' class='form-control' id='correo_clientes_2' name='correo_clientes_2' value="" >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
-				        <div class='form-group'>
-				        <label for='direccion_clientes_2' class='control-label'>Dirección Cliente 3</label><br>
-				        <input type='text' class='form-control' id='direccion_clientes_2' name='direccion_clientes_2' value=""  >
-				        </div>
-				        </div>
-				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>
-				        <input type='text' maxlength='13' class='form-control' id='identificacion_clientes_3' name='identificacion_clientes_3' value="" >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
-				        <div class='form-group'>
-				        <label for='nombre_clientes_3' class='control-label'>Nombres Cliente 4</label><br>
-				        <input type='text' class='form-control' id='nombre_clientes_3' name='nombre_clientes_3' value=""  >
-				        </div>
-				        </div>
-						
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
-				        <div class='form-group'>
-				        <label for='sexo_clientes_3' class='control-label'>Sexo</label><br>
-						<select name="sexo_clientes_3" id="sexo_clientes_3"  class="form-control">
-							<option value="_" selected="selected">---</option>
-							<option value="M"  >M </option>
-						    <option value="F"  >F </option>
-					    </select>
-  						</div>
-				        </div>
-
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='correo_clientes_3' class='control-label'>Correo Cliente 4</label><br>
-				        <input type='email' class='form-control' id='correo_clientes_3' name='correo_clientes_3' value="" >
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
-				        <div class='form-group'>
-				        <label for='direccion_clientes_3' class='control-label'>Dirección Cliente 4</label><br>
-				        <input type='text' class='form-control' id='direccion_clientes_3' name='direccion_clientes_3' value=""  >
-				        </div>
-				        </div>
-			
+				        			
 			
 		    </div>
 		</div>
 			
-			<div class="panel panel-info">
+			<div class="panel panel-info" style="display: none">
 	         <div class="panel-heading">
 	         <h4><i class='glyphicon glyphicon-edit'></i> Datos del Garante</h4>
 	         </div>
@@ -774,37 +644,9 @@
 				         <div id="mensaje_numero_titulo_credito" class="errores"></div>
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
-				        <div class='form-group'>
-				        <label for='fecha_emision_juicios' class='control-label'>Fecha Auto Pago</label>
-				        <input type='date' class='form-control' id='fecha_emision_juicios' min="1800-01-01" max="<?php echo date('Y-m-d');?>"  name='fecha_emision_juicios' value=""   >
-				        <div id="mensaje_fecha_emision_juicios" class="errores"></div>
-				        </div>
-				        </div>	
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
-				        <div class='form-group'>
-				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
-				        <input type='text' class='form-control cantidades' id='cuantia_inicial' name='cuantia_inicial' value="0"  
-				        data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
-				        <div id="mensaje_cuantia_inicial" class="errores"></div>
-				        </div>
-				        </div>	
-				        
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
-				        <div class='form-group'>
-				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label>
-				        <input type='text' class='form-control' id='riesgo_actual' name='riesgo_actual' value="">
-				        </div>
-				        </div>	
-				        
-				        
-				  
-				        	
-   
-<br>
+				   
 
-
- 						<div class="col-xs-12 col-md-2 col-lg-2">
+ 						<div class="col-xs-12 col-md-3 col-lg-3">
  						 <div class='form-group'>
 			  			 <label for='id_provincias' class='control-label'>Provincia</label>
 			  			<select name="id_provincias" id="id_provincias"  class="form-control" >
@@ -818,7 +660,7 @@
 			  			</div>
 						</div>
 						
-						<div class="col-xs-12 col-md-2 col-lg-2">
+						<div class="col-xs-12 col-md-3 col-lg-3">
  						 <div class='form-group'>
 			  			 <label for='id_estados_procesales_juicios' class='control-label'>Etapa Procesal</label>
 			  			<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
@@ -832,7 +674,7 @@
 			  			</div>
 						</div>
 						
-					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
+					    <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Ult Providencia</label>
 				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value=""  >
@@ -840,7 +682,23 @@
 				        </div>
 				        </div>
 				        
-				        <div class="col-lg-3 col-md-3 col-xs-12">
+				             <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
+				        <div class='form-group'>
+				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
+				        <input type='text' class='form-control cantidades' id='cuantia_inicial' name='cuantia_inicial' value="0"  
+				        data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false">
+				        <div id="mensaje_cuantia_inicial" class="errores"></div>
+				        </div>
+				        </div>	
+				        
+				        <div class = 'col-xs-12 col-md-4 col-lg-4' style="display: none">
+				        <div class='form-group'>
+				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label>
+				        <input type='text' class='form-control' id='riesgo_actual' name='riesgo_actual' value="">
+				        </div>
+				        </div>	
+				        
+				        <div class="col-lg-3 col-md-3 col-xs-12" style="display: none">
 				        <div class='form-group'>
 			  			<label for='id_abogado'  class='control-label' >Impulsor:</label>
 			  			<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
@@ -849,7 +707,7 @@
 		 				</div>
 		 				</div>
 		 				
-				         <div class="col-lg-3 col-md-3 col-xs-12">
+				         <div class="col-lg-3 col-md-3 col-xs-12" style="display: none">
 				         <div class='form-group'>
 			  			<label  for='id_secretario'   class='control-label'>Secretario:</label>
 			  				<select name="id_secretario" id="id_secretario"  class="form-control" readonly>
@@ -861,7 +719,7 @@
 		 				</div>
  						</div>
  						<br>
-					    <div class = 'col-xs-12 col-md-6 col-lg-6'>
+					    <div class = 'col-xs-12 col-md-6 col-lg-6' style="display: none">
 				        <div class='form-group'>
 				        <label for='descripcion_estado_procesal' class='control-label'>Descripción Etapa Procesal</label><br>
 				        <textarea type='text' class='form-control' id='descripcion_estado_procesal' name='descripcion_estado_procesal'  placeholder='Descripción'></textarea>
@@ -881,7 +739,7 @@
 				        </div>
 				        -->
 				        
-				        <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class="col-lg-6 col-md-6 col-xs-12"  style="display: none">
 				        <div class='form-group'>
 					  	<label for='observaciones' class='control-label'>Estado Procesal</label><br>
 			  			<select name="observaciones" id="observaciones"  class="form-control" >
@@ -898,7 +756,7 @@
 			            </div>
 			            </div>	
 			            
-			               <div class="col-lg-6 col-md-6 col-xs-12" >
+			               <div class="col-lg-6 col-md-6 col-xs-12" style="display: none" >
 				        <div class='form-group'>
 					  	<label for='tipo_leyes' class='control-label'>Tipo de ley</label><br>
 			  			<select name="tipo_leyes" id="tipo_leyes"  class="form-control" >
@@ -910,7 +768,7 @@
 						<div id="mensaje_tipo_leyes" class="errores"></div>
 			            </div>
 			            </div>
-			             <div class="col-lg-6 col-md-6 col-xs-12" >
+			             <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='medida_cautelar' class='control-label'>Medida Cautelar</label><br>
 			  			<select name="medida_cautelar" id="medida_cautelar"  class="form-control" >
@@ -921,7 +779,7 @@
 						<div id="mensaje_medida_cautelar" class="errores"></div>
 			            </div>
 			            </div>
-			               <div class="col-lg-6 col-md-6 col-xs-12" >
+			               <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='embargo_bienes' class='control-label'>Embargo de Bienes</label><br>
 			  			<select name="embargo_bienes" id="embargo_bienes"  class="form-control" >
@@ -938,7 +796,7 @@
 						<div id="mensaje_embargo_bienes" class="errores"></div>
 			            </div>
 			            </div>
-			             <div class="col-lg-6 col-md-6 col-xs-12" >
+			             <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='forma_pago' class='control-label'>Forma de Pago</label><br>
 			  			<select name="forma_pago" id="forma_pago"  class="form-control" >
@@ -952,7 +810,7 @@
 						<div id="mensaje_forma_pago" class="errores"></div>
 			            </div>
 			            </div>
-			            <div class = 'col-xs-12 col-md-6 col-lg-6'>
+			            <div class = 'col-xs-12 col-md-6 col-lg-6' style="display: none">
 				        <div class='form-group'>
 				        <label for='detalle_embargo_bienes' class='control-label'>Detalle de Bien Embargado</label><br>
 				        <textarea type='text' class='form-control' id='detalle_embargo_bienes' name='detalle_embargo_bienes'  placeholder='Detalle de Bien Embargado'></textarea>

@@ -66,12 +66,12 @@
 		     	var juicio_referido_titulo_credito = $("#juicio_referido_titulo_credito").val();
 
 		     	var id_origen_juicio = $("#id_origen_juicio").val();
-		     	 var numero_carton = $("#numero_carton").val();
-			    var observaciones = $("#observaciones").val();
-			    var tipo_leyes = $("#tipo_leyes").val();
-			    var medida_cautelar = $("#medida_cautelar").val();
-			    var embargo_bienes = $("#embargo_bienes").val();
-			    var forma_pago = $("#forma_pago").val();
+		   //  	 var numero_carton = $("#numero_carton").val();
+			//    var observaciones = $("#observaciones").val();
+			 //   var tipo_leyes = $("#tipo_leyes").val();
+			  //  var medida_cautelar = $("#medida_cautelar").val();
+			   // var embargo_bienes = $("#embargo_bienes").val();
+			   // var forma_pago = $("#forma_pago").val();
 		     	
 		    	if (id_origen_juicio == "")
 		    	{
@@ -86,7 +86,7 @@
 		            
 				}
 		    
-		    	if (numero_carton == "")
+		    /*/	if (numero_carton == "")
 		    	{
 			    	
 		    		$("#mensaje_numero_carton").text("Ingrese # Cartón");
@@ -97,7 +97,7 @@
 		    	{
 		    		$("#mensaje_numero_carton").fadeOut("slow"); //Muestra mensaje de error
 		            
-				}
+				}*/
 		   				
 		     	if (juicio_referido_titulo_credito == "")
 		    	{
@@ -168,69 +168,7 @@
 
 
 
-		    	if(observaciones==0){
-
-
-		    		$("#mensaje_observaciones").text("Seleccione Estado Procesal");
-		    		$("#mensaje_observaciones").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-
-
-			   }else{
-
-				   $("#mensaje_observaciones").fadeOut("slow"); //Muestra mensaje de error
-			   }
-				   
-		       	if(tipo_leyes==0){
-
-
-		    		$("#mensaje_tipo_leyes").text("Seleccione Tipo de Ley");
-		    		$("#mensaje_tipo_leyes").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-
-
-			   }else{
-
-				   $("#mensaje_tipo_leyes").fadeOut("slow"); //Muestra mensaje de error
-			   }
-				   
-		    	if(medida_cautelar==0){
-
-
-		    		$("#mensaje_medida_cautelar").text("Seleccione si existe Medida Cautelar");
-		    		$("#mensaje_medida_cautelar").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-
-
-			   }else{
-
-				   $("#mensaje_medida_cautelar").fadeOut("slow"); //Muestra mensaje de error
-			   }
-
-		    	if(embargo_bienes==0){
-
-
-		    		$("#mensaje_embargo_bienes").text("Seleccione Tipo de Embargo");
-		    		$("#mensaje_embargo_bienes").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-
-
-			   }else{
-
-				   $("#mensaje_embargo_bienes").fadeOut("slow"); //Muestra mensaje de error
-			   }
-		    	if(forma_pago==0){
-
-
-		    		$("#mensaje_forma_pago").text("Seleccione Forma de Pago");
-		    		$("#mensaje_forma_pago").fadeIn("slow"); //Muestra mensaje de error
-		            return false;
-
-
-			   }else{
-
-				   $("#mensaje_forma_pago").fadeOut("slow"); //Muestra mensaje de error
-			   }
+		    
 		    
 		     
 		    	
@@ -257,9 +195,9 @@
 			$( "#id_origen_juicio" ).focus(function() {
 				$("#mensaje_id_origen_juicio").fadeOut("slow");
 			});
-			$( "#numero_carton" ).focus(function() {
+		/*	$( "#numero_carton" ).focus(function() {
 				$("#mensaje_numero_carton").fadeOut("slow");
-			});
+			});*/
 		    $( "#juicio_referido_titulo_credito" ).focus(function() {
 				$("#mensaje_juicio_referido_titulo_credito").fadeOut("slow");
 			});
@@ -280,21 +218,6 @@
 					$("#mensaje_id_estados_procesales_juicios").fadeOut("slow");
     			});
 
-				$( "#observaciones" ).focus(function() {
-					$("#mensaje_observaciones").fadeOut("slow");
-    			});
-				$( "#tipo_leyes" ).focus(function() {
-					$("#mensaje_tipo_leyes").fadeOut("slow");
-    			});
-				$( "#medida_cautelar" ).focus(function() {
-					$("#mensaje_medida_cautelar").fadeOut("slow");
-    			});
-				$( "#embargo_bienes" ).focus(function() {
-					$("#mensaje_embargo_bienes").fadeOut("slow");
-    			});
-				$( "#forma_pago" ).focus(function() {
-					$("#mensaje_forma_pago").fadeOut("slow");
-    			});
 				
     			
 /*
@@ -553,13 +476,13 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Juicios</h4>
 	         </div>
 	         <div class="panel-body">
-			            <div class = 'col-xs-12 col-md-2 col-lg-2'>
+			            <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='modal_edit_orden' class='control-label'>Orden</label><br>
 				        <input type='text' class='form-control' id='modal_edit_orden' name='modal_edit_orden' value="<?php echo $resEdit->id_juicios; ?>" readonly >
 				        </div>
 					    </div>
-					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
+					    <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='regional' class='control-label'>Regional</label><br>
 				        <input type='text' class='form-control' id='regional' name='regional' value="<?php echo $resEdit->regional; ?>" >
@@ -569,35 +492,34 @@
 						</div>
 				        </div>	
 				        
-				         <div class="col-xs-12 col-md-2 col-lg-2">
+				         <div class="col-xs-12 col-md-9 col-lg-9">
  						 <div class='form-group'>
 			  			 <label for='id_origen_juicio' class='control-label'>Origen Juicio</label>
 			  			<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
 			  			 <option value="" selected="selected">--Seleccione--</option>
 						<?php foreach($resultOrigen as $res) {?>
 						<option value="<?php echo $res->id_origen_juicio; ?>" <?php if ($res->id_origen_juicio == $resEdit->id_origen_juicio )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_origen_juicio; ?></option>
-						            
 						<?php } ?>
 						</select> 
 						  <div id="mensaje_id_origen_juicio" class="errores"></div>
 			  			</div>
 						</div>
 						
-						<div class = 'col-xs-12 col-md-2 col-lg-2'>
+						<div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='numero_carton' class='control-label'># Cartón</label><br>
 				        <input type='text' class='form-control' id='numero_carton' name='numero_carton' value="<?php echo $resEdit->numero_carton_jucios; ?>">
 				        <div id="mensaje_numero_carton" class="errores"></div>
 				        </div>
 				        </div>	
-						
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='juicio_referido_titulo_credito' class='control-label'># Juicio</label><br>
 				        <input type='text' class='form-control' id='juicio_referido_titulo_credito' name='juicio_referido_titulo_credito' value="<?php echo $resEdit->juicio_referido_titulo_credito; ?>">
+				        <div id="mensaje_juicio_referido_titulo_credito" class="errores"></div>
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='year_juicios' class='control-label'>Año Juicio</label><br>
 				        <input type='text' class='form-control' id='year_juicios' name='year_juicios' value="<?php echo $resEdit->year_juicios; ?>"  >
@@ -651,20 +573,20 @@
 				        </div>
 				        </div>	
 
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_1' class='control-label'>Cedula Cliente 2</label><br>
 				        <input type='text' class='form-control' id='identificacion_clientes_1' name='identificacion_clientes_1' value="<?php echo $resEdit->identificacion_clientes_1; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
+				        <div class = 'col-xs-12 col-md-4 col-lg-4' style="display: none">
 				        <div class='form-group'>
 				        <label for='nombre_clientes_1' class='control-label'>Nombres Cliente 2</label><br>
 				        <input type='text' class='form-control' id='nombre_clientes_1' name='nombre_clientes_1' value="<?php echo $resEdit->nombre_clientes_1; ?>"  >
 				        </div>
 				        </div>
 
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
+						<div class = 'col-xs-12 col-md-1 col-lg-1' style="display: none">
 				        <div class='form-group'>
 				        <label for='sexo_clientes_1' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_1" id="sexo_clientes_1"  class="form-control">
@@ -675,13 +597,13 @@
   						</div>
 				        </div>
 				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='correo_clientes_1' class='control-label'>Correo Cliente 2</label><br>
 				        <input type='email' class='form-control' id='correo_clientes_1' name='correo_clientes_1' value="<?php echo $resEdit->correo_clientes_1; ?>"  >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='direccion_clientes_1' class='control-label'>Dirección Cliente 2</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_1' name='direccion_clientes_1' value="<?php echo $resEdit->direccion_clientes_1; ?>" >
@@ -689,20 +611,20 @@
 				        </div>
 
 				       
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_2' class='control-label'>Cedula Cliente 3</label><br>
 				        <input type='text' class='form-control' id='identificacion_clientes_2' name='identificacion_clientes_2' value="<?php echo $resEdit->identificacion_clientes_2; ?>"  >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
+				        <div class = 'col-xs-12 col-md-4 col-lg-4' style="display: none">
 				        <div class='form-group'>
 				        <label for='nombre_clientes_2' class='control-label'>Nombres Cliente 3</label><br>
 				        <input type='text' class='form-control' id='nombre_clientes_2' name='nombre_clientes_2' value="<?php echo $resEdit->nombre_clientes_2; ?>"  >
 				        </div>
 				        </div>
 
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
+						<div class = 'col-xs-12 col-md-1 col-lg-1' style="display: none">
 				        <div class='form-group'>
 				        <label for='sexo_clientes_2' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_2" id="sexo_clientes_2"  class="form-control">
@@ -713,33 +635,33 @@
   						</div>
 				        </div>
 				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='correo_clientes_2' class='control-label'>Correo Cliente 3</label><br>
 				        <input type='email' class='form-control' id='correo_clientes_2' name='correo_clientes_2' value="<?php echo $resEdit->correo_clientes_2; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='direccion_clientes_2' class='control-label'>Dirección Cliente 3</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_2' name='direccion_clientes_2' value="<?php echo $resEdit->direccion_clientes_2; ?>"  >
 				        </div>
 				        </div>
 				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='identificacion_clientes_3' class='control-label'>Cedula Cliente 4</label><br>
 				        <input type='text' class='form-control' id='identificacion_clientes_3' name='identificacion_clientes_3' value="<?php echo $resEdit->identificacion_clientes_3; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
+				        <div class = 'col-xs-12 col-md-4 col-lg-4' style="display: none">
 				        <div class='form-group'>
 				        <label for='nombre_clientes_3' class='control-label'>Nombres Cliente 4</label><br>
 				        <input type='text' class='form-control' id='nombre_clientes_3' name='nombre_clientes_3' value="<?php echo $resEdit->nombre_clientes_3; ?>"  >
 				        </div>
 				        </div>
 						
-						<div class = 'col-xs-12 col-md-1 col-lg-1'>
+						<div class = 'col-xs-12 col-md-1 col-lg-1' style="display: none">
 				        <div class='form-group'>
 				        <label for='sexo_clientes_3' class='control-label'>Sexo</label><br>
 						<select name="sexo_clientes_3" id="sexo_clientes_3"  class="form-control">
@@ -750,13 +672,13 @@
   						</div>
 				        </div>
 
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='correo_clientes_3' class='control-label'>Correo Cliente 4</label><br>
 				        <input type='email' class='form-control' id='correo_clientes_3' name='correo_clientes_3' value="<?php echo $resEdit->correo_clientes_3; ?>" >
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='direccion_clientes_3' class='control-label'>Dirección Cliente 4</label><br>
 				        <input type='text' class='form-control' id='direccion_clientes_3' name='direccion_clientes_3' value="<?php echo $resEdit->direccion_clientes_3; ?>"  >
@@ -770,7 +692,7 @@
 		    </div>
 		</div>
 			
-			<div class="panel panel-info">
+			<div class="panel panel-info" style="display: none">
 	         <div class="panel-heading">
 	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Garante</h4>
 	         </div>
@@ -950,9 +872,11 @@
 				        <div class='form-group'>
 				        <label for='numero_titulo_credito' class='control-label'># Operación</label><br>
 				        <input type='text' class='form-control' id='numero_titulo_credito' name='numero_titulo_credito' value="<?php echo $resEdit->numero_titulo_credito; ?>"  >
+				        <div id="mensaje_numero_titulo_credito" class="errores"></div>
+				    
 				        </div>
 				        </div>	
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='fecha_emision_juicios' class='control-label'>Fecha Auto Pagos</label><br>
 				        <input type='date' class='form-control' id='fecha_emision_juicios' name='fecha_emision_juicios' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php echo $resEdit->fecha_emision_juicios; ?>"   >
@@ -962,7 +886,7 @@
 				       	
 				        
 				        
-				        <div class = 'col-xs-12 col-md-2 col-lg-2'>
+				        <div class = 'col-xs-12 col-md-2 col-lg-2' style="display: none">
 				        <div class='form-group'>
 				        <label for='cuantia_inicial' class='control-label'>Cuantia Inicial</label>
 				        <input type='text' class='form-control cantidades' id='cuantia_inicial' name='cuantia_inicial' value="<?php echo $resEdit->cuantia_inicial; ?>"  
@@ -971,17 +895,15 @@
 				        </div>
 				        
 				        
-				        <div class = 'col-xs-12 col-md-4 col-lg-4'>
+				        <div class = 'col-xs-12 col-md-4 col-lg-4' style="display: none">
 				        <div class='form-group'>
 				        <label for='riesgo_actual' class='control-label'>Riesgo Actual</label><br>
 				        <input type='text' class='form-control' id='riesgo_actual' name='riesgo_actual' value="<?php echo $resEdit->riesgo_actual; ?>">
 				        </div>
 				        </div>	
-				        
-				        
-<br>
+
  						
- 						<div class="col-xs-12 col-md-2 col-lg-2">
+ 						<div class="col-xs-12 col-md-3 col-lg-3">
  						 <div class='form-group'>
 			  			 <label for='id_provincias' class='control-label'>Provincia</label>
 			  			<select name="id_provincias" id="id_provincias"  class="form-control" >
@@ -993,7 +915,7 @@
 			  			</div>
 						</div>
 						
-						<div class="col-xs-12 col-md-2 col-lg-2">
+						<div class="col-xs-12 col-md-3 col-lg-3">
  						 <div class='form-group'>
 			  			 <label for='id_estados_procesales_juicios' class='control-label'>Etapa Procesal</label>
 			  			<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
@@ -1005,7 +927,7 @@
 			  			</div>
 						</div>
 						
-					    <div class = 'col-xs-12 col-md-2 col-lg-2'>
+					    <div class = 'col-xs-12 col-md-3 col-lg-3'>
 				        <div class='form-group'>
 				        <label for='fecha_ultima_providencia' class='control-label'>Fecha Ult Providencia</label><br>
 				        <input type='date' class='form-control' id='fecha_ultima_providencia' name='fecha_ultima_providencia' min="1800-01-01" max="<?php echo date('Y-m-d');?>" value="<?php echo $resEdit->fecha_ultima_providencia; ?>"  >
@@ -1013,13 +935,13 @@
 				        </div>
 				        </div>
 				        
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='impulsores' class='control-label'>Impulsor</label><br>
 				        <input type='text' class='form-control' id='impulsores' name='impulsores' value="<?php echo $resEdit->impulsores; ?>" readonly>
 				        </div>
 				        </div>
-				        <div class = 'col-xs-12 col-md-3 col-lg-3'>
+				        <div class = 'col-xs-12 col-md-3 col-lg-3' style="display: none">
 				        <div class='form-group'>
 				        <label for='secretarios' class='control-label'>Secretario</label><br>
 				        <input type='text' class='form-control' id='secretarios' name='secretarios' value="<?php echo $resEdit->secretarios; ?>" readonly>
@@ -1027,7 +949,7 @@
 				        </div>
  						
  						<br>
-					    <div class = 'col-xs-12 col-md-6 col-lg-6'>
+					    <div class = 'col-xs-12 col-md-6 col-lg-6' style="display: none">
 				        <div class='form-group'>
 				        <label for='descripcion_estado_procesal' class='control-label'>Descripción Etapa Procesal</label><br>
 				        <textarea type='text' class='form-control' id='descripcion_estado_procesal' name='descripcion_estado_procesal'  placeholder='Descripción'><?php echo $resEdit->descripcion_estado_procesal; ?></textarea>
@@ -1047,7 +969,7 @@
 				        </div>
 				         -->
 				        
-				        <div class="col-lg-6 col-md-6 col-xs-12" >
+				        <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='observaciones' class='control-label'>Estado Procesal</label><br>
 			  			<select name="observaciones" id="observaciones"  class="form-control" >
@@ -1063,7 +985,7 @@
 						<div id="mensaje_observaciones" class="errores"></div>
 			            </div>
 			            </div>
-			             <div class="col-lg-6 col-md-6 col-xs-12" >
+			             <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='tipo_leyes' class='control-label'>Tipo de ley</label><br>
 			  			<select name="tipo_leyes" id="tipo_leyes"  class="form-control" >
@@ -1075,7 +997,7 @@
 						<div id="mensaje_tipo_leyes" class="errores"></div>
 			            </div>
 			            </div>
-			             <div class="col-lg-6 col-md-6 col-xs-12" >
+			             <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='medida_cautelar' class='control-label'>Medida Cautelar</label><br>
 			  			<select name="medida_cautelar" id="medida_cautelar"  class="form-control" >
@@ -1086,7 +1008,7 @@
 						<div id="mensaje_medida_cautelar" class="errores"></div>
 			            </div>
 			            </div>
-			               <div class="col-lg-6 col-md-6 col-xs-12" >
+			               <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='embargo_bienes' class='control-label'>Embargo de Bienes</label><br>
 			  			<select name="embargo_bienes" id="embargo_bienes"  class="form-control" >
@@ -1103,7 +1025,7 @@
 						<div id="mensaje_embargo_bienes" class="errores"></div>
 			            </div>
 			            </div>
-			             <div class="col-lg-6 col-md-6 col-xs-12" >
+			             <div class="col-lg-6 col-md-6 col-xs-12" style="display: none">
 				        <div class='form-group'>
 					  	<label for='forma_pago' class='control-label'>Forma de Pago</label><br>
 			  			<select name="forma_pago" id="forma_pago"  class="form-control" >
@@ -1117,7 +1039,7 @@
 						<div id="mensaje_forma_pago" class="errores"></div>
 			            </div>
 			            </div>
-			            <div class = 'col-xs-12 col-md-6 col-lg-6'>
+			            <div class = 'col-xs-12 col-md-6 col-lg-6' style="display: none">
 				        <div class='form-group'>
 				        <label for='detalle_embargo_bienes' class='control-label'>Detalle de Bien Embargado</label><br>
 				        <textarea type='text' class='form-control' id='detalle_embargo_bienes' name='detalle_embargo_bienes'  placeholder='Detalle de Bien Embargado'><?php echo $resEdit->detalle_embargo_bienes; ?></textarea>
@@ -1138,7 +1060,7 @@
 	
 		
 	
-			    <div class="panel panel-info">
+			    <div class="panel panel-info" style="display: none">
 	         	<div class="panel-heading">
 	         		<h4><i class='glyphicon glyphicon-edit'></i> Actualizar Datos Restructuración  (LLENAR SOLO SI TIENE RESTRUCTURACION DEL PROCESO)</h4>
 	         	</div>
@@ -1287,7 +1209,7 @@
   			<div class="panel-body">
   	
   		<div class="row">
-  		 <div class="col-lg-2 col-md-2 col-xs-12">
+  		 <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
@@ -1295,72 +1217,18 @@
 			    </select>
 		 </div>
   							
-  		<div class="col-lg-2 col-md-2 col-xs-12">
+  		<div class="col-lg-3 col-md-3 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $sel_juicio_referido_titulo_credito;?>" class="form-control "/> 
 			   
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-3 col-md-3 col-xs-12">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
-			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Cliente 2:</p>
-			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Cliente 3:</p>
-			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
-			    
-		 </div>
-		 </div>
-		 <div class="row">
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Cliente 4:</p>
-			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		 
-		 
-		 <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Garante 1:</p>
-			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Garante 2:</p>
-			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Garante 3:</p>
-			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
-         		<p class="formulario-subtitulo" >CI Garante 4:</p>
-			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		 
-		 
-		 <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -1370,10 +1238,65 @@
 				</select>
 
          </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
+			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 2:</p>
+			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 3:</p>
+			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 </div>
+		 <div class="row">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 4:</p>
+			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		 
+		 
+		 <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 1:</p>
+			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 2:</p>
+			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 3:</p>
+			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 4:</p>
+			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		 
+		 
+		
 		 </div>
          
 		 <div class="row">
-         <div class="col-lg-2 col-md-2 col-xs-12">
+         <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -1384,7 +1307,7 @@
 
          </div>
          
-           <div class="col-lg-2 col-md-2 col-xs-12">
+           <div class="col-lg-3 col-md-3 col-xs-12" >
 			  	<p  class="formulario-subtitulo">Origen Juicio:</p>
 			  	<select name="id_origen_juicio" id="id_origen_juicio"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -1394,7 +1317,7 @@
 				</select>
 
           </div>
-             <div class="col-lg-2 col-md-2 col-xs-12">
+             <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
 			  	<p  class="formulario-subtitulo">Tipo Reporte:</p>
 			  	<select name="tipo_reporte" id="tipo_reporte"  class="form-control" >
 			  			<option value="inventario_juicios" >Inventario de Juicios</option> 
@@ -1404,16 +1327,16 @@
 
           </div>
          
-         <div class="col-lg-2 col-md-2 col-xs-12">
+         <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >Número Cartón:</p>
 			  	<input type="text"  name="numero_carton_jucios" id="numero_carton_jucios" value="<?php echo $sel_numero_carton_jucios;?>" class="form-control "/> 
 		 </div>
         
-		<div class="col-lg-2 col-md-2 col-xs-12">
+		<div class="col-lg-3 col-md-3 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Desde:</p>
 			<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
 		</div>
-		<div class="col-lg-2 col-md-2 col-xs-12">
+		<div class="col-lg-3 col-md-3 col-xs-12">
 			<p class="formulario-subtitulo" >Fecha Hasta:</p>
 			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
 		</div> 

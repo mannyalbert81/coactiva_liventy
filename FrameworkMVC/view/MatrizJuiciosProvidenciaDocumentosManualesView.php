@@ -511,7 +511,7 @@
   			
   		
   			<div class="row">
-  		 <div class="col-lg-2 col-md-2 xs-6">
+  		 <div class="col-lg-3 col-md-3 xs-6">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
@@ -519,71 +519,18 @@
 			    </select>
 		 </div>
   							
-  		<div class="col-lg-2 col-md-2 xs-6">
+  		<div class="col-lg-3 col-md-3 xs-6">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $sel_juicio_referido_titulo_credito;?>" class="form-control "/> 
 			   
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-3 col-md-3 xs-6">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
-		 
-		 <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
-			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Cliente 2:</p>
-			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Cliente 3:</p>
-			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
-			    
-		 </div>
-		 </div>
-		 
-		 <div class="row">
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Cliente 4:</p>
-			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		 
-		 
-		 <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Garante 1:</p>
-			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Garante 2:</p>
-			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Garante 3:</p>
-			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		  <div class="col-lg-2 col-md-2 xs-6">
-         		<p class="formulario-subtitulo" >CI Garante 4:</p>
-			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
-			    
-		 </div>
-		 
-		 <div class="col-lg-2 col-md-2 xs-6">
+		  <div class="col-lg-3 col-md-3 xs-6">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -593,10 +540,64 @@
 				</select>
 
          </div>
+		 
+		 <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 1:</p>
+			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 2:</p>
+			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 3:</p>
+			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 </div>
+		 
+		 <div class="row">
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Cliente 4:</p>
+			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		 
+		 
+		 <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 1:</p>
+			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 2:</p>
+			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 3:</p>
+			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		  <div class="col-lg-2 col-md-2 xs-6" style="display: none">
+         		<p class="formulario-subtitulo" >CI Garante 4:</p>
+			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
+			    
+		 </div>
+		 
+		
           </div>
 		  
 		  <div class="row">
-         <div class="col-lg-2 col-md-2 xs-6">
+         <div class="col-lg-4 col-md-4 xs-6">
 			  	<p  class="formulario-subtitulo">Provincia:</p>
 			  	<select name="id_provincias" id="id_provincias"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -608,13 +609,13 @@
          </div>
          
         
-          <div class="col-lg-2 col-md-2 xs-6">
+          <div class="col-lg-4 col-md-4 xs-6">
          		<p class="formulario-subtitulo" >Fecha Desde:</p>
 			  	<input type="date"  name="fcha_desde" id="fcha_desde" value="<?php echo '';?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		 <div class="col-lg-2 col-md-2 xs-6">
+		 <div class="col-lg-4 col-md-4 xs-6">
          		<p class="formulario-subtitulo" >Fecha Hasta:</p>
 			  	<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
 			    
@@ -745,7 +746,6 @@
 			  		<option value="3">AVOCO CONOCIMIENTO Y SUSPENSIÓN</option>
 					<option value="1">AVOCO CONOCIMIENTO PAGO TOTAL</option>
 					<option value="2">AVOCO CONOCIMIENTO (EXTENSO)</option>
-
 			        <option value="4">AVOCO CONOCIMIENTO (SIMPLE)</option>
 			        
 				</select>

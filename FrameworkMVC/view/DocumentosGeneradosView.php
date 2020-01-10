@@ -144,7 +144,7 @@
 			{
 				$('#tipo_documento').empty();
 				$('#div_tipo_documento').css({"display":"block"});
-				var items = {"ALL":"Todos","PS": "Providencia Suspensión", "PL": "Providencia Levantamiento", "PCP": "Providencia Pago Total", "PCPAVOC": "Providencia Pago Total y Avoco Conocimiento", "PRES": "Providencia Restructuración", "PRESAVOC": "Providencia Restructuración y Avoco Conocimiento", "PEMCUBAN": "Providencia Embargo Cuenta Bancaria", "PLMCD": "Providencia Levantamiento Medida Cautelar Discapacidad", "PLMCF": "Providencia Levantamiento Medida Cautelar Fallecimiento", "PRF": "Providencia Retención de Fondos", "PRFAVOC": "Providencia Retención de Fondos y Avoco Conocimiento + Medidas", "PRC": "Providencia Retención de Cuentas", "PRMANUAL": "Providencias Manuales"};
+				var items = {"ALL":"Todos", "PRMANUAL": "Providencias Manuales"};
 				
 				$.each(items, function(key, value) {   
 				     $('#tipo_documento')
@@ -380,7 +380,7 @@
   			<div class="panel-body">
   	
   		<div class="row">
-  		 <div class="col-lg-2 col-md-2 col-xs-12">
+  		 <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" >Impulsor:</p>
 			  	<select name="id_abogado" id="id_abogado"  class="form-control" readonly>
 			   <option value="<?php echo $_SESSION['id_usuarios'];  ?>" <?php if($sel_id_abogado==$_SESSION['id_usuarios']){echo "selected";}?>  ><?php echo $_SESSION['nombre_usuarios'];  ?></option>  
@@ -388,12 +388,10 @@
 			    </select>
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo" style="" > Documento:</p>
 			  	<select name="documento" id="documento"  class="form-control" >
 			  	<option value="ALL">--Seleccione--</option>
-			  	<option value="AC"> Avoco Conocimiento </option>
-			  	<!--  <option value="OF"> Oficios </option>-->
 			  	<option value="PR"> Providencias </option>
 			    </select>
 			     <div id="mensaje_documento" class="errores"></div>
@@ -403,13 +401,13 @@
 		 
 		 
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12" style="display:none;" id="div_tipo_documento">
+		  <div class="col-lg-3 col-md-3 col-xs-12" style="display:none;" id="div_tipo_documento">
 			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
 			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
 			   </select>
 		 </div>
   			
-  			 <div class="col-lg-2 col-md-2 col-xs-12">
+  			 <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
 			  	<p  class="formulario-subtitulo" style="" > Firmado / Aprobado:</p>
 			  	<select name="firma" id="firma"  class="form-control" >
 			  	<option value="">--Todos--</option>
@@ -419,37 +417,37 @@
 			     
 		 </div>
 		 				
-  		<div class="col-lg-2 col-md-2 col-xs-12">
+  		<div class="col-lg-3 col-md-3 col-xs-12">
          		<p class="formulario-subtitulo" ># Juicio:</p>
 			  	<input type="text"  name="juicio_referido_titulo_credito" id="juicio_referido_titulo_credito" value="<?php echo $sel_juicio_referido_titulo_credito;?>" class="form-control "/> 
 			   
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-3 col-md-3 col-xs-12">
          		<p class="formulario-subtitulo" ># Operación:</p>
 			  	<input type="text"  name="numero_titulo_credito" id="numero_titulo_credito" value="<?php echo $sel_numero_titulo_credito;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Cliente 1:</p>
 			  	<input type="text"  name="identificacion_clientes" id="identificacion_clientes" value="<?php echo $sel_identificacion_clientes;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Cliente 2:</p>
 			  	<input type="text"  name="identificacion_clientes_1" id="identificacion_clientes_1" value="<?php echo $sel_identificacion_clientes_1;?>" class="form-control "/> 
 			    
 		 </div>
 		
 		
-		 <div class="col-lg-2 col-md-2 col-xs-12">
+		 <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Cliente 3:</p>
 			  	<input type="text"  name="identificacion_clientes_2" id="identificacion_clientes_2" value="<?php echo $sel_identificacion_clientes_2;?>" class="form-control "/> 
 			    
 		 </div>
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Cliente 4:</p>
 			  	<input type="text"  name="identificacion_clientes_3" id="identificacion_clientes_3" value="<?php echo $sel_identificacion_clientes_3;?>" class="form-control "/> 
 			    
@@ -457,32 +455,32 @@
 		 
 		 
 		 
-		 <div class="col-lg-2 col-md-2 col-xs-12">
+		 <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Garante 1:</p>
 			  	<input type="text"  name="identificacion_garantes" id="identificacion_garantes" value="<?php echo $sel_identificacion_garantes;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Garante 2:</p>
 			  	<input type="text"  name="identificacion_garantes_1" id="identificacion_garantes_1" value="<?php echo $sel_identificacion_garantes_1;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Garante 3:</p>
 			  	<input type="text"  name="identificacion_garantes_2" id="identificacion_garantes_2" value="<?php echo $sel_identificacion_garantes_2;?>" class="form-control "/> 
 			    
 		 </div>
 		 
-		  <div class="col-lg-2 col-md-2 col-xs-12">
+		  <div class="col-lg-2 col-md-2 col-xs-12" style="display: none">
          		<p class="formulario-subtitulo" >CI Garante 4:</p>
 			  	<input type="text"  name="identificacion_garantes_3" id="identificacion_garantes_3" value="<?php echo $sel_identificacion_garantes_3;?>" class="form-control "/> 
 			    
 		 </div>
 		 
 		 
-		 <div class="col-lg-2 col-md-2 col-xs-12">
+		 <div class="col-lg-3 col-md-3 col-xs-12">
 			  	<p  class="formulario-subtitulo">Estado Procesal:</p>
 			  	<select name="id_estados_procesales_juicios" id="id_estados_procesales_juicios"  class="form-control" >
 			  		<option value="0"><?php echo "--TODOS--";  ?> </option>
@@ -512,7 +510,7 @@
 			<p class="formulario-subtitulo" >Fecha Creación Hasta:</p>
 			<input type="date"  name="fcha_hasta" id="fcha_hasta" value="<?php echo '';?>" class="form-control "/> 
 		</div>
-		<div id="div_tipo_documento" class="col-lg-2 col-md-2 col-xs-12" style="display:none;" >
+		<div id="div_tipo_documento" class="col-lg-3 col-md-3 col-xs-12" style="display:none;" >
 			  	<p  class="formulario-subtitulo" style="" >Tipo Documento:</p>
 			  	<select name="tipo_documento" id="tipo_documento"  class="form-control" >
 			    </select>
@@ -526,7 +524,6 @@
   		<div class="col-lg-12 col-md-12 col-xs-12 " style="text-align: center; margin-top: 10px">
   		    
 		 <button type="button" id="buscar" name="buscar" value="Buscar"   class="btn btn-info" style="margin-top: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-		 <button type="submit" id="reporte_documentos" name="reporte_documentos" value="Reporte"   class="btn btn-success" style="margin-top: 10px;"><i class="glyphicon glyphicon-print"></i></button>         
 	  
 	     </div>
 		 

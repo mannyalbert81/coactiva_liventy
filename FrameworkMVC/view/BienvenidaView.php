@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
@@ -39,11 +39,6 @@
     	  } );
 	  </script>
 
-	<div id="dialog" title="INFORMACIÓN"><br><br>
-	<p style="text-align: justify; margin-top:20px;"><strong>ESTIMADOS USUARIOS AGREGO UN NUEVO TIPO DE REPORTE EN EL SISTEMA QUE ES DE PROVIDENCIAS MANUALES PARA AQUELLOS DOCUMENTOS QUE SON CASOS ESPECIALES Y NO SE PUEDEN CREAR FORMATOS ESPECIFICOS EL TIPO DE EXTENCIÓN A SUBIR SIEMPRE SERA TIPO PDF CASO CONTRARIO NO PERMITIRA SU SUBIDA</strong></p>
-    <p style="text-align: justify; margin-top:40px;"><strong>Gracias por su Atención</strong></p>
-    
-	 </div> 
             
        <footer class="col-lg-12">
            <?php include("view/modulos/footer.php"); ?>

@@ -5622,17 +5622,12 @@ session_start();
 		$html.='<th style="text-align: left;  font-size: 10px;">Ord.</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Juicio</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombre Documento</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Cedula Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Nombres Cliente Principal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;"># Operación</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Creacion Doc</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Aprobacíon Secretario</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Cuantía Inicial</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Estado Procesal</th>';
 		//$html.='<th style="text-align: left;  font-size: 10px;">Descripción Etapa Procesal</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Fecha Última Providencia</th>';
 		$html.='<th style="text-align: left;  font-size: 10px;">Impulsor</th>';
-		$html.='<th style="text-align: left;  font-size: 10px;">Secretario</th>';
 		$html.='</tr>';
 		$html.='</thead>';
 		$html.='<tbody>';
@@ -5667,18 +5662,12 @@ session_start();
 			$html.='<td style="font-size: 9px;">'.$i.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_juicios.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombre_doc.'</td>';
-				
-			$html.='<td style="font-size: 9px;">'.$res->identificacion_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombres_clientes.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->numero_titulo_credito.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->fecha_creado.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->modificado.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->cuantia_inicial.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->nombre_estados_procesales_juicios.'</td>';
 			//$html.='<td style="font-size: 9px;">'.$res->descripcion_estado_procesal.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->fecha_ultima_providencia.'</td>';
 			$html.='<td style="font-size: 9px;">'.$res->impulsores.'</td>';
-			$html.='<td style="font-size: 9px;">'.$res->secretarios.'</td>';
 				
 				
 			$html.='</tr>';
@@ -5781,7 +5770,7 @@ session_start();
 			$arraydoc = explode('-', $documento);
 			
 		//para produccion
-		$mi_pdf = 'F:/coactiva/Documentos/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
+		$mi_pdf = 'C:/coactiva/Documentos/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';
 		
 		//para pruebas			
 			//$mi_pdf = 'C:/Users/M/Desktop/paraservidor/'.$arraydoc[1].'/'.$arraydoc[2].'.pdf';

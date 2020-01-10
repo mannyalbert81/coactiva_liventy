@@ -18,7 +18,6 @@ class ProductosController extends ControladorBase{
 				
 		$resultEdit = "";
 
-		
 		session_start();
 
 	
